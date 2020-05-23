@@ -6,5 +6,6 @@ RUN mkdir /sugomori-api
 WORKDIR /sugomori-api
 COPY Gemfile /sugomori-api/Gemfile
 COPY Gemfile.lock /sugomori-api/Gemfile.lock
+RUN gem install bundler
 RUN bundle install
 ADD . /sugomori-api
