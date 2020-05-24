@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :set_user, only: %i[show update destroy]
   def index
     users = User.order(created_at: :desc)
     render json: { status: 'SUCCESS', message: 'Loaded users', data: users }
@@ -41,29 +42,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:title)
   end
-
-  # def index
-  #   @user = User.all
-  #   render json: @user
-  # end
-
-  # def create
-  #   @user = User.create(user: params[:user])
-  #   render json: @user
-  # end
-
-  # def update
-  #   @user = User.find(params[:id])
-  #   @user.update_attributes(user: params[:user])
-  #   render json: @user
-  # end
-
-  # def destroy
-  #   @user = User.find(params[:id])
-  #   if @user.destroy
-  #     head :no_content, status: :ok
-  #   else
-  #     render json: @user.errors, status: :unprocessable_entity
-  #   end
-  # end
 end

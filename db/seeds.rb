@@ -9,11 +9,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 20.times do |n|
-  User.create(name: "#{n}-name", email: "#{n}@example.com")
+  User.create(name: "#{n + 1}-name", email: "#{n + 1}@example.com")
 end
 
 20.times do |n|
-  Post.create(content: "#{n}-post")
+  Post.create(content: "#{n + 1}-post")
 end
 
 # User.create!(
