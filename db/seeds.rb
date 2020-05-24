@@ -30,16 +30,16 @@ end
 #   ]
 # )
 
-Post.create!(
-  [
-    {
-      content: '勉強'
-    },
-    {
-      content: '映画鑑賞'
-    },
-    {
-      content: '掃除'
-    }
-  ]
-)
+# Post.create!(
+#   [
+#     {
+#       content: '勉強'
+#     },
+#     {
+#       content: '映画鑑賞'
+#     },
+#     {
+#       content: '掃除'
+#     }
+#   ]
+# )
