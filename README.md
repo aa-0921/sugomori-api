@@ -21,4 +21,11 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* how to start（Docker command）
+docker-compose down
+docker-compose build
+docker-compose up
+docker-compose run api bash
+rails db:create
+rails db:migrate
+rails db:seed
