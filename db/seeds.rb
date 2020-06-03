@@ -8,9 +8,25 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-20.times do |n|
-  User.create(name: "#{n + 1}-name", email: "#{n + 1}@example.com")
+User.create!(name: 'Example AdminUser',
+             email: 'example_admin@example.com',
+             password: 'password',
+             password_confirmation: 'password',
+             admin: true)
+
+99.times do |n|
+  name  = Faker::Name.name + (n + 1)
+  email = "example-#{n + 1}@example.com"
+  password = 'password'
+  User.create!(name: name,
+               email: email,
+               password: password,
+               password_confirmation: password)
 end
+
+# 20.times do |n|
+#   User.create(name: "#{n + 1}-name", email: "#{n + 1}@example.com")
+# end
 
 20.times do |n|
   Post.create(content: "#{n + 1}-post")
