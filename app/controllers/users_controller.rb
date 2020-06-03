@@ -2,6 +2,8 @@
 
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show update destroy]
+  before_action :logged_in_user, only: %i[edit update]
+
   def index
     users = User.order(created_at: :desc)
     render json: { status: 'SUCCESS', message: 'Loaded users', data: users }
@@ -39,6 +41,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(user_params)
       render json: { status: 'SUCCESS', message: 'Updated the user', data: @user }
+      # redirect_to @user
     else
       render json: { status: 'SUCCESS', message: 'Not updated', data: @user.errors }
       # render 'edit'
@@ -53,5 +56,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:title)
+  end
+
+  def logged_in_user
+    return if logged_in?
+
+    flash[:danger] = 'Please log in.'
+    redirect_to login_url
   end
 end
