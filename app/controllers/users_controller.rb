@@ -42,13 +42,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(user_params)
-      render json: { status: 'SUCCESS', message: 'Updated the user', data: @user }
-      # redirect_to @user
-    else
-      render json: { status: 'SUCCESS', message: 'Not updated', data: @user.errors }
-      # render 'edit'
-    end
+    # if @user.update_attributes(user_params)
+    #   render json: { status: 'SUCCESS', message: 'Updated the user', data: @user }
+    #   # redirect_to @user
+    # else
+    #   render json: { status: 'SUCCESS', message: 'Not updated', data: @user.errors }
+    #   # render 'edit'
+    # end
   end
 
   private

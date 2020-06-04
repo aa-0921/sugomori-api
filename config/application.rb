@@ -41,5 +41,6 @@ module Myapp
                  methods: %i[get post patch delete options]
       end
     end
+    config.middleware.use ActionDispatch::Cookies
   end
 end
