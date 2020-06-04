@@ -20,7 +20,7 @@ class StaticPagesController < ApplicationController
     #   # format.xml  { render xml: @users }
     #   # format.json { render json: @users }
     # end
-    render file: 'app/views/static_pages/home.html.erb'
+    render file: 'app/views/static_pages/home.html'
   end
 
   def help; end
