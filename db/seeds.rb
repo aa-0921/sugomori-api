@@ -15,7 +15,9 @@ User.create!(name: 'Example AdminUser',
              admin: true)
 
 99.times do |n|
-  name  = Faker::Name.name + (n + 1)
+  # name  = Faker::Name.name + (n + 1)
+  name = Faker::Name.name
+
   email = "example-#{n + 1}@example.com"
   password = 'password'
   User.create!(name: name,
@@ -29,7 +31,7 @@ end
 # end
 
 20.times do |n|
-  Post.create(content: "#{n + 1}-post")
+  Picpost.create(content: "#{n + 1}-post")
 end
 
 # User.create!(
