@@ -4,7 +4,7 @@ require 'devise_token_auth'
 Rails.application.routes.draw do
   resources :users
   resources :picposts
-  devise_for :users
+  # devise_for :users
 
   # token auth routes available at /api/v1/auth
   namespace :api do

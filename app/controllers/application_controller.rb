@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
-  include ActionController::RequestForgeryProtection
+  # include ActionController::RequestForgeryProtection
   # protect_from_forgeryo
   protect_from_forgery with: :null_session
   # protect_from_forgery with: :exception
