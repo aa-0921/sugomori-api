@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
-class ApplicationController < ActionController::API
+# module Api
+#   module V1
+class Api::V1::ApplicationController < ActionController::API # Note: here is not ::BASE
   include ActionController::RequestForgeryProtection
-  # protect_from_forgeryo
-  protect_from_forgery with: :null_session
-  # protect_from_forgery with: :exception
+  protect_from_forgery with: :exception
 
-  # protect_from_forgery unless: -> { request.format.json? }
+  include DeviseTokenAuth::Concerns::SetUserByToken
+  # protect_from_forgery with: :null_session
   # include DeviseTokenAuth::Concerns::SetUserByToken
   include SessionsHelper
   skip_before_action :verify_authenticity_token, raise: false, if: :devise_controller?
@@ -14,5 +15,7 @@ class ApplicationController < ActionController::API
 
   # def set_host
   #   Rails.application.routes.default_url_options[:host] = request.host_with_port
+  # end
+  #   end
   # end
 end

@@ -8,8 +8,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# http://localhost:3000/api/v1/auth/sign_in
+
 User.create!(name: 'Example AdminUser',
-             email: 'example_admin@example.com',
+             email: 'example_admin-1@example.com',
+             uid: 'example_admin-1@example.com',
              password: 'password',
              password_confirmation: 'password',
              admin: true)
@@ -18,10 +21,13 @@ User.create!(name: 'Example AdminUser',
   # name  = Faker::Name.name + (n + 1)
   name = Faker::Name.name
 
-  email = "example-#{n + 1}@example.com"
+  email = "example-#{n + 2}@example.com"
+  # uid = "example-#{n + 1}@example.com"
+
   password = 'password'
   User.create!(name: name,
                email: email,
+               uid: email,
                password: password,
                password_confirmation: password)
 end
