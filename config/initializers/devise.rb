@@ -15,7 +15,6 @@ Devise.setup do |config|
   # config.parent_controller = 'DeviseController'
 
   # config.parent_controller = 'Api::V1::ApplicationController'
-  # config.parent_controller = 'Api::V1::BaseController'
   config.parent_controller = 'Api::V1::BaseController'
 
   # ==> Mailer Configuration
