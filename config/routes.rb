@@ -2,16 +2,29 @@
 
 require 'devise_token_auth'
 Rails.application.routes.draw do
-  resources :users
+  mount_devise_token_auth_for User.name, at: 'api/v1/auth', controllers: {
+    registrations: 'api/v1/auth/registrations'
+  }
+  # resources :users
   resources :picposts
   # devise_for :users
 
+  # namespace :api do
+  #   namespace :v1 do
+  #     mount_devise_token_auth_for 'User', at: 'auth', controllers: {
+  #       registrations: 'api/v1/auth/registrations'
+  #     }
+  #   end
+  # end
+
+
+
   # token auth routes available at /api/v1/auth
-  namespace :api do
-    scope :v1 do
-      mount_devise_token_auth_for 'User', at: 'auth'
-    end
-  end
+  # namespace :api do
+  #   scope :v1 do
+  #     mount_devise_token_auth_for 'User', at: 'auth'
+  #   end
+  # end
 
   # mount_devise_token_auth_for 'User', at: 'auth'
   # root 'static_pages#home'
