@@ -10,7 +10,6 @@ class Api::V1::ApplicationController < ActionController::API # Note: here is not
   # session[:_csrf_token]
   # include ActionController::RequestForgeryProtection
   # protect_from_forgery with: :exception
-
   include DeviseTokenAuth::Concerns::SetUserByToken
   protect_from_forgery with: :null_session
   # include DeviseTokenAuth::Concerns::SetUserByToken

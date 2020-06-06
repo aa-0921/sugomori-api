@@ -42,5 +42,6 @@ module Myapp
     #   end
     # end
     config.middleware.use ActionDispatch::Cookies
+    config.action_controller.default_protect_from_forgery = false
   end
 end
