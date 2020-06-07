@@ -2,8 +2,8 @@
 
 one:
   content: MyText
-  user: one
+  picture: MyString
 
 two:
   content: MyText
-  user: two
+  picture: MyString
