@@ -25,8 +25,10 @@ AllCops:
 Style/Documentation:
   Enabled: false
 
-
 Metrics/BlockLength:
   Enabled: false
   # Exclude:
   #   - '**/**/*'
+
+Metrics/MethodLength:
+  Enabled: false
