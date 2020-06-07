@@ -15,6 +15,7 @@ class StaticPagesController < ApplicationController
         @feed_items = current_user.feed.paginate(page: params[:page])
       end
     end
+    render json: @users
   end
 
   def help; end
