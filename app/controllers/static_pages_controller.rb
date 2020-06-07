@@ -15,12 +15,6 @@ class StaticPagesController < ApplicationController
         @feed_items = current_user.feed.paginate(page: params[:page])
       end
     end
-    # respond_to do |format|
-    #   format.html home.html.erb
-    #   # format.xml  { render xml: @users }
-    #   # format.json { render json: @users }
-    # end
-    render file: 'app/views/static_pages/home.html'
   end
 
   def help; end
