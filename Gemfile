@@ -13,7 +13,6 @@ gem 'faker'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
-gem 'omniauth-twitter'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
 gem 'sentry-raven'
 
