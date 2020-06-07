@@ -23,7 +23,5 @@ AllCops:
     - 'path/ruby'
 
 Style/Documentation:
-  Include:
-    - app/models/**/*
-    - lib/**/*
+  Enabled: false
 
