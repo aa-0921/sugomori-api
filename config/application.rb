@@ -43,5 +43,10 @@ module Myapp
     # end
     config.middleware.use ActionDispatch::Cookies
     config.action_controller.default_protect_from_forgery = false
+    # deviseを使うのに必要
+    config.middleware.use Rack::MethodOverride
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
+    config.middleware.use ActionDispatch::Flash
   end
 end
