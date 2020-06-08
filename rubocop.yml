@@ -27,3 +27,10 @@ Style/Documentation:
     - app/models/**/*
     - lib/**/*
 
+Metrics/BlockLength:
+  Enabled: false
+  # Exclude:
+  #   - '**/**/*'
+
+Metrics/MethodLength:
+  Enabled: false
