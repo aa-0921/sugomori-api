@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class SessionsController < DeviseTokenAuth::SessionsController
+# class SessionsController < DeviseTokenAuth::SessionsController
+class SessionsController < Devise::SessionsController
   def new
     redirect_to root_url unless Rails.env.test?
   end

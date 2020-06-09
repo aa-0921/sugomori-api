@@ -41,6 +41,9 @@ module Myapp
     #              methods: %i[get post patch delete options]
     #   end
     # end
+
+    config.action_controller.allow_forgery_protection = false
+
     config.middleware.use ActionDispatch::Cookies
     config.action_controller.default_protect_from_forgery = false
     # deviseを使うのに必要
