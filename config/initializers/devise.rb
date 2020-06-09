@@ -3,8 +3,12 @@
 Devise.setup do |config|
   OAUTH_CONFIG = YAML.load_file("#{Rails.root}/config/omniauth.yml")[Rails.env].symbolize_keys!
 
-  config.omniauth :facebook, OAUTH_CONFIG[:facebook]['key'], OAUTH_CONFIG[:facebook]['secret'], scope: 'public_profile, email,user_birthday'
-  # , callback_url: 'https://localhost:3000/users/auth/facebook/callback'
+  config.omniauth :facebook, OAUTH_CONFIG[:facebook]['key'], OAUTH_CONFIG[:facebook]['secret'], scope: 'public_profile, email,user_birthday', callback_url: 'localhost:3000/omniauth/facebook/callback'
+  
+  
+  # , callback_url: 'https://www.youtube.com/?hl=ja&gl=JP/omniauth/facebook/callback'
+  # , callback_url: 'localhost:3000/omniauth/facebook/callback'
+
   # publish_stream,
 
   config.omniauth :github, OAUTH_CONFIG[:github]['key'], OAUTH_CONFIG[:github]['secret'], scope: 'user,public_repo', callback_url: 'localhost:3000/omniauth/github/callback'
