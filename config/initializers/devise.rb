@@ -3,17 +3,19 @@
 Devise.setup do |config|
   OAUTH_CONFIG = YAML.load_file("#{Rails.root}/config/omniauth.yml")[Rails.env].symbolize_keys!
 
-  FACEBOOK_CALLBACK_URL = { 'production' => 'sugomori.herokuapp.com/omniauth/facebook/callback' }.freeze
-  FACEBOOK_CALLBACK_URL.defualt = 'localhost:3000/omniauth/facebook/callback'
-  config.omniauth :facebook, OAUTH_CONFIG[:facebook]['key'], OAUTH_CONFIG[:facebook]['secret'], scope: 'public_profile, email,user_birthday', callback_url: FACEBOOK_CALLBACK_URL[Rails.env]
+  # facebook_callback_url = Rails.env.production? ? 'piyopiyo.herokuapp.com/omniauth/facebook/callback' : 'localhost:3000/omniauth/facebook/callback'
 
-  GITHUB_CALLBACK_URL = { 'production' => 'sugomori.herokuapp.com/omniauth/github/callback' }.freeze
-  GITHUB_CALLBACK_URL.defualt = 'localhost:3000/omniauth/github/callback'
-  config.omniauth :github, OAUTH_CONFIG[:github]['key'], OAUTH_CONFIG[:github]['secret'], scope: 'user,public_repo', callback_url: GITHUB_CALLBACK_URL[Rails.env]
+  facebook_callback_url = { 'production' => 'sugomori.herokuapp.com/omniauth/facebook/callback' }
+  facebook_callback_url.default = 'localhost:3000/omniauth/facebook/callback'
+  config.omniauth :facebook, OAUTH_CONFIG[:facebook]['key'], OAUTH_CONFIG[:facebook]['secret'], scope: 'public_profile, email,user_birthday', callback_url: facebook_callback_url[Rails.env]
 
-  TWITTER_CALLBACK_URL = { 'production' => 'sugomori.herokuapp.com/omniauth/twitter/callback' }.freeze
-  TWITTER_CALLBACK_URL.defualt = 'localhost:3000/omniauth/twitter/callback'
-  config.omniauth :twitter, OAUTH_CONFIG[:twitter]['key'], OAUTH_CONFIG[:twitter]['secret'], callback_url: TWITTER_CALLBACK_URL[Rails.env]
+  github_callback_url = { 'production' => 'sugomori.herokuapp.com/omniauth/github/callback' }
+  github_callback_url.default = 'localhost:3000/omniauth/github/callback'
+  config.omniauth :github, OAUTH_CONFIG[:github]['key'], OAUTH_CONFIG[:github]['secret'], scope: 'user,public_repo', callback_url: github_callback_url[Rails.env]
+
+  twitter_callback_url = { 'production' => 'sugomori.herokuapp.com/omniauth/twitter/callback' }
+  twitter_callback_url.default = 'localhost:3000/omniauth/twitter/callback'
+  config.omniauth :twitter, OAUTH_CONFIG[:twitter]['key'], OAUTH_CONFIG[:twitter]['secret'], callback_url: twitter_callback_url[Rails.env]
 
   # config.omniauth :google_oauth2,
   #                 OAUTH_CONFIG[:google]['key'], OAUTH_CONFIG[:google]['secret'], scope: 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/plus.me https://www.google.com/m8/feeds', name: :google

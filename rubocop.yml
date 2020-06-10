@@ -35,3 +35,8 @@ Metrics/MethodLength:
   Enabled: false
   CountComments: false  # count full line comments?
   Max: 200
+
+Metrics/LineLength:
+  Enabled: false
+  CountComments: false  # count full line comments?
+  Max: 200
