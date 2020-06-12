@@ -4,7 +4,8 @@ class User < ApplicationRecord
   # Include default devise modules.
   include DeviseTokenAuth::Concerns::User
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
+         :recoverable, :rememberable, :validatable, :omniauthable, :confirmable
+  before_save -> { skip_confirmation! }
   #  , omniauth_providers: %i[facebook]
 
   #  omniauth_providers: %i[facebook twitter github]

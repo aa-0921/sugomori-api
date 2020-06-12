@@ -2,9 +2,10 @@
 
 # module Api
 #   module V1
-class Api::V1::Auth::ApplicationController < ActionController::API # Note: here is not ::BASE
+class Api::V1::Auth::ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
   skip_before_action :verify_authenticity_token, raise: false, if: :devise_controller?
+  # protect_from_forgery with: :null_session
 
   include SessionsHelper
 
@@ -13,7 +14,6 @@ class Api::V1::Auth::ApplicationController < ActionController::API # Note: here 
   # session[:_csrf_token]
   # include ActionController::RequestForgeryProtection
   # protect_from_forgery with: :exception
-  # protect_from_forgery with: :null_session
   # include DeviseTokenAuth::Concerns::SetUserByToken
   # include SessionsHelper
 
