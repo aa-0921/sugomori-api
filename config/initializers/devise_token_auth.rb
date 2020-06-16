@@ -10,12 +10,4 @@ DeviseTokenAuth.setup do |config|
                            expiry: 'expiry',
                            uid: 'uid',
                            'token-type': 'token-type' }
-  # config.headers_names = { 'access-token': 'access-token',
-  #                          client: 'client',
-  #                          expiry: 'expiry',
-  #                          uid: 'uid',
-  #                          'token-type': 'token-type' }
-
-  # config.enable_standard_devise_support = true
-  # config.default_confirm_success_url = 'confirmed'
 end
