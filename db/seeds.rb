@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
-Faker::Config.locale = :ja
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+
+# http://localhost:3000/api/v1/auth/sign_in
 
 User.create!(name: 'Example AdminUser',
              email: 'example_admin-1@example.com',
@@ -10,9 +18,11 @@ User.create!(name: 'Example AdminUser',
              admin: true)
 
 99.times do |n|
+  # name  = Faker::Name.name + (n + 1)
   name = Faker::Name.name
 
   email = "example-#{n + 2}@example.com"
+  # uid = "example-#{n + 1}@example.com"
 
   password = 'password'
   User.create!(name: name,
@@ -22,21 +32,13 @@ User.create!(name: 'Example AdminUser',
                password_confirmation: password)
 end
 
-users = User.order(:created_at).take(50)
-count = 1
-
-users.each do |user|
-  content = Faker::Lorem.sentence(word_count: 3)
-  emoji = Faker::Lorem.multibyte
-
-  user.picposts.create!(content: "#{content}#{emoji}")
-  # picture: open("db/seeds/images/image-#{count}.jpg")
-  count += 1
-end
-
 # 20.times do |n|
-#   Picpost.create(content: "#{n + 1}-post")
+#   User.create(name: "#{n + 1}-name", email: "#{n + 1}@example.com")
 # end
+
+20.times do |n|
+  Picpost.create(content: "#{n + 1}-post")
+end
 
 # User.create!(
 #   [

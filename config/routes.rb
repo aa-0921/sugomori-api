@@ -15,5 +15,4 @@ Rails.application.routes.draw do
                               }
 
   resources :picposts
-  resources :users
 end
