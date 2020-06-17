@@ -42,7 +42,7 @@ class PicpostsController < ApplicationController
 
   def picpost_params
     # params.require(:picpost).permit(:content, :picture)
-    params.permit(:content, :picture, :user_id)
+    params.permit(:content, :picture, :user_id, :file)
   end
 
   # def index
