@@ -3,14 +3,6 @@
 class PicpostsController < ApplicationController
   before_action :set_picpost, only: %i[show update destroy]
 
-  def index
-    picposts = Picpost.order(created_at: :desc)
-    render json: { status: 'SUCCESS', message: 'Loaded posts', data: picposts }
-  end
-
-  def show
-    render json: { status: 'SUCCESS', message: 'Loaded the post', data: @picpost }
-  end
 
   def create
     picpost = Picpost.new(picpost_params)
@@ -20,6 +12,17 @@ class PicpostsController < ApplicationController
       render json: { status: 'ERROR', data: picpost.errors }
     end
   end
+  
+  def index
+    picposts = Picpost.order(created_at: :desc)
+    render json: { status: 'SUCCESS', message: 'Loaded posts', data: picposts }
+  end
+
+  def show
+    render json: { status: 'SUCCESS', message: 'Loaded the post', data: @picpost }
+  end
+
+
 
   def destroy
     @picpost.destroy
