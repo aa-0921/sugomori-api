@@ -28,7 +28,7 @@ default: &default
 development:
   <<: *default
   # adapter: postgresql
-  database: sugomori-api
+  database: sugomori_with_aws
   username: postgres 
   password: password
   port: 5432
