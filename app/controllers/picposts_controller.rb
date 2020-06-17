@@ -13,7 +13,7 @@ class PicpostsController < ApplicationController
   end
 
   def create
-    picpost = Picpost.new(post_params)
+    picpost = Picpost.new(picpost_params)
     if picpost.save
       render json: { status: 'SUCCESS', data: picpost }
     else
@@ -41,7 +41,7 @@ class PicpostsController < ApplicationController
   end
 
   def picpost_params
-    params.require(:picpost).permit(:title)
+    params.require(:picpost).permit(:content, :picture)
   end
 
   # def index
