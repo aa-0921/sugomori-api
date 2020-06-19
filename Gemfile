@@ -16,6 +16,8 @@ gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
+gem 'aws-sdk'
+gem 'dotenv-rails'
 # gem 'sentry-raven'
 
 # Use postgresql as the database for Active Record

@@ -29,7 +29,9 @@ users.each do |user|
   content = Faker::Lorem.sentence(word_count: 3)
   emoji = Faker::Lorem.multibyte
 
-  user.picposts.create!(content: "#{content}#{emoji}")
+  user.picposts.create!(content: "#{content}#{emoji}",
+                        picture: "#{count}-test-picture",
+                        user_id: "#{count}-test-user_id")
   # picture: open("db/seeds/images/image-#{count}.jpg")
   count += 1
 end
