@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  include DeviseTokenAuth::Concerns::User #ここだけがDevise Token Auth用
+
   acts_as_followable
   acts_as_follower
   # Include default devise modules.
