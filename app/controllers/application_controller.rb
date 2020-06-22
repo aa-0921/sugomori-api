@@ -3,7 +3,7 @@
 class ApplicationController < ActionController::API
   # include DeviseTokenAuth::Concerns::SetUserByToken
   include SessionsHelper
-before_action :authenticate_admin!
+  # before_action :authenticate_admin!
   # protect_from_forgery with: :exception
   # before_filter :set_host # この行を追加
 

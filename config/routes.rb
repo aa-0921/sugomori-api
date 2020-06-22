@@ -2,7 +2,7 @@
 
 require 'devise_token_auth'
 Rails.application.routes.draw do
-  # devise_for :User,
+  devise_for :User
   #            controllers: {
   #              omniauth_callbacks: 'omniauth_callbacks'
   #            }

@@ -3,7 +3,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show update destroy]
   # before_action :logged_in_user, only: %i[index edit update]
-  before_action :logged_in_user, only: %i[edit update]
+  # before_action :logged_in_user, only: %i[edit update]
   before_action :admin_user,     only: :destroy
 
 
@@ -54,19 +54,36 @@ class UsersController < ApplicationController
   end
 
   def follow
-    p "current_userの内容"
-    p current_user
+    json_request = JSON.parse(request.body.read)
+    # p "json_requestの内容"
+    # p json_request
+    # p json_request["current_user_id"]
 
+    # current_user_id = json_request["current_user_id"].to_i
+    current_user_id = json_request["current_user_id"].to_i
+
+    p "current_user_idの内容"
+    p current_user_id
+    p current_user_id.to_i
+    
+
+    rails_current_user = User.find_by(id: current_user_id)
     @user = User.find(params[:user_id])
-    current_user.follow(@user)
-    redirect_to user_path(@user)
+    # p @user
+    p "paramsの内容"
+    p params
+    p "paramsの内容"
+
+
+    rails_current_user.follow(@user)
+    # redirect_to user_path(@user)
   end
 #フォローする
 
   def unfollow
-      @user = User.find(params[:user_id])
-      current_user.stop_following(@user)
-      redirect_to user_path(@user)
+    @user = User.find(params[:user_id])
+    current_user.stop_following(@user)
+    redirect_to user_path(@user)
   end
 #フォローを外す
 

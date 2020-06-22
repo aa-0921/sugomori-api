@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/tcocca/acts_as_follower.git
+  revision: c5ac7b9601c4af01eb4d9112330b27be4d694ecc
+  specs:
+    acts_as_follower (0.2.1)
+      activerecord (>= 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -42,7 +49,6 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    acts_as_follower (0.2.1)
     arel (9.0.0)
     ast (2.4.1)
     aws-eventstream (1.1.0)
@@ -1051,7 +1057,7 @@ GEM
       ast (~> 2.4.1)
     pg (1.2.3)
     puma (3.12.6)
-    rack (2.2.3)
+    rack (2.0.9)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
     rack-test (1.1.0)
@@ -1140,7 +1146,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_follower
+  acts_as_follower!
   aws-sdk
   bcrypt
   bootsnap (>= 1.1.0)
@@ -1157,6 +1163,7 @@ DEPENDENCIES
   omniauth-twitter
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
+  rack (~> 2.0.8)
   rack-cors
   rails (~> 5.2.4, >= 5.2.4.3)
   rubocop (= 0.76.0)
