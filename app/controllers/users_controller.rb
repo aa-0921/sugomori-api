@@ -55,35 +55,26 @@ class UsersController < ApplicationController
 
   def follow
     json_request = JSON.parse(request.body.read)
-    # p "json_requestの内容"
-    # p json_request
-    # p json_request["current_user_id"]
 
-    # current_user_id = json_request["current_user_id"].to_i
     current_user_id = json_request["current_user_id"].to_i
 
-    p "current_user_idの内容"
-    p current_user_id
-    p current_user_id.to_i
-    
-
-    rails_current_user = User.find_by(id: current_user_id)
+    current_user = User.find_by(id: current_user_id)
     @user = User.find(params[:user_id])
-    # p @user
-    p "paramsの内容"
-    p params
-    p "paramsの内容"
 
+    current_user.follow(@user)
 
-    rails_current_user.follow(@user)
-    # redirect_to user_path(@user)
   end
 #フォローする
 
   def unfollow
+    json_request = JSON.parse(request.body.read)
+
+    current_user_id = json_request["current_user_id"].to_i
+
+    current_user = User.find_by(id: current_user_id)
     @user = User.find(params[:user_id])
     current_user.stop_following(@user)
-    redirect_to user_path(@user)
+    # redirect_to user_path(@user)
   end
 #フォローを外す
 
