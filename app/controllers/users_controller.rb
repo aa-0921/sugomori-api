@@ -54,6 +54,7 @@ class UsersController < ApplicationController
   end
 
   def follow
+
     json_request = JSON.parse(request.body.read)
 
     current_user_id = json_request["current_user_id"].to_i
@@ -81,6 +82,7 @@ class UsersController < ApplicationController
 
   def follow_list
     @user = User.find(params[:user_id])
+    render json: { status: 'SUCCESS', data: @user.all_following  }
   end
 #フォローしてる人の一覧ページ
 

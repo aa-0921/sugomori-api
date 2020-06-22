@@ -36,34 +36,9 @@ users.each do |user|
   count += 1
 end
 
-# 20.times do |n|
-#   Picpost.create(content: "#{n + 1}-post")
-# end
-
-# User.create!(
-#   [
-#     {
-#       name: 'Mary'
-#     },
-#     {
-#       name: 'Alice'
-#     },
-#     {
-#       name: 'John'
-#     }
-#   ]
-# )
-
-# Post.create!(
-#   [
-#     {
-#       content: '勉強'
-#     },
-#     {
-#       content: '映画鑑賞'
-#     },
-#     {
-#       content: '掃除'
-#     }
-#   ]
-# )
+users = User.all
+user  = users.first
+following = users[25..50]
+followers = users[2..24]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
