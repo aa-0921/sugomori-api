@@ -10,14 +10,16 @@ class Api::V1::Auth::ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
   # before_action :authenticate_user!, except: [:new, :create]
 
-  skip_before_action :verify_authenticity_token, raise: false, if: :devise_controller?
+  skip_before_action :verify_authenticity_token
+  protect_from_forgery with: :exception
+  # , raise: false, if: :devise_controller?
 
   # include SessionsHelper
 
-  serialization_scope :view_context
+  # serialization_scope :view_context
 
-  before_action :authenticate_account!, unless: :devise_controller?
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  # before_action :authenticate_account!, unless: :devise_controller?
+  # before_action :configure_permitted_parameters, if: :devise_controller?
 
   private
 
