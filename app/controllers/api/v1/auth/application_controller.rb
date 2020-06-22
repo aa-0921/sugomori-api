@@ -5,6 +5,9 @@
 class Api::V1::Auth::ApplicationController < ActionController::API
   before_action :authenticate_user!, except: %i[new create]
   include DeviseTokenAuth::Concerns::SetUserByToken
+  
+  # before_action :authenticate_user!, except: [:new, :create]
+
   skip_before_action :verify_authenticity_token, raise: false, if: :devise_controller?
 
   include SessionsHelper

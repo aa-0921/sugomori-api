@@ -4,6 +4,8 @@ class PicpostsController < ApplicationController
   before_action :set_picpost, only: %i[show update destroy]
 
     def create
+      p "current_userの内容"
+      p current_user
       picpost = Picpost.create!(picpost_params)
       
       if picpost.save 

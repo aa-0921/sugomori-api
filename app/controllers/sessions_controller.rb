@@ -2,9 +2,17 @@
 
 class SessionsController < DeviseTokenAuth::SessionsController
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user!, except: [:new, :create]
 
   respond_to :json
 
+  def create
+    super
+    # bypass_sign_in(user)
+    p "current_userの中身"
+    # current_user    # returns nil
+    p current_user    # returns nil
+  end
   # def create
   #   @user = current_user
   #   super do

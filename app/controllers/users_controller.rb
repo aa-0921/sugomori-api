@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show update destroy]
   # before_action :logged_in_user, only: %i[index edit update]
   before_action :logged_in_user, only: %i[edit update]
-
   before_action :admin_user,     only: :destroy
+
 
   def index
     users = User.order(created_at: :desc)
@@ -53,10 +53,13 @@ class UsersController < ApplicationController
     # end
   end
 
-    def follow
-      @user = User.find(params[:user_id])
-      current_user.follow(@user)
-      redirect_to user_path(@user)
+  def follow
+    p "current_userの内容"
+    p current_user
+
+    @user = User.find(params[:user_id])
+    current_user.follow(@user)
+    redirect_to user_path(@user)
   end
 #フォローする
 

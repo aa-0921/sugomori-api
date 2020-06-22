@@ -37,14 +37,15 @@ module Myapp
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
-    # config.middleware.insert_before 0, Rack::Cors do
-    #   allow do
-    #     origins 'http://localhost:3030'
-    #     resource '*',
-    #              headers: :any,
-    #              methods: %i[get post patch delete options]
-    #   end
-    # end
+  #  config.middleware.use Rack::Cors do
+  #     allow do
+  #       origins '*'
+  #       resource '*',
+  #         headers: :any,
+  #         expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+  #         methods: [:get, :post, :options, :delete, :put]
+  #     end
+  #   end
 
     config.action_controller.allow_forgery_protection = false
 

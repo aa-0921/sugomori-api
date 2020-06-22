@@ -1,6 +1,7 @@
-# frozen_string_literal: true
+# # frozen_string_literal: true
 
-class ApplicationController < ActionController::API
-  include DeviseTokenAuth::Concerns::SetUserByToken
-  include SessionsHelper
-end
+# class ApplicationController < ActionController::API
+#   include DeviseTokenAuth::Concerns::SetUserByToken
+#   include SessionsHelper
+
+# end
