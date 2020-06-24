@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show update destroy]
+  before_action :set_user, only: %i(show update destroy)
   # before_action :logged_in_user, only: %i[index edit update]
   # before_action :logged_in_user, only: %i[edit update]
   before_action :admin_user,     only: :destroy
-
 
   def index
     users = User.order(created_at: :desc)
@@ -54,53 +53,49 @@ class UsersController < ApplicationController
   end
 
   def follow
-
     json_request = JSON.parse(request.body.read)
 
-    current_user_id = json_request["current_user_id"].to_i
+    current_user_id = json_request['current_user_id'].to_i
 
     current_user = User.find_by(id: current_user_id)
     @user = User.find(params[:user_id])
 
     # current_user.follow(@user)
-    
+
     if current_user.follow(@user)
       render json: { status: 'SUCCESS' }
     else
       render json: { status: 'ERROR' }
     end
   end
-#フォローする
+  # フォローする
 
   def unfollow
     json_request = JSON.parse(request.body.read)
 
-    current_user_id = json_request["current_user_id"].to_i
+    current_user_id = json_request['current_user_id'].to_i
 
     current_user = User.find_by(id: current_user_id)
     @user = User.find(params[:user_id])
-    
+
     if current_user.stop_following(@user)
       render json: { status: 'SUCCESS' }
     else
       render json: { status: 'ERROR' }
     end
-
   end
-#フォローを外す
-
+  # フォローを外す
 
   def follow_list
     @user = User.find(params[:user_id])
-    render json: { status: 'SUCCESS', data: @user.all_following  }
+    render json: { status: 'SUCCESS', data: @user.all_following }
   end
-#フォローしてる人の一覧ページ
+  # フォローしてる人の一覧ページ
 
   def follower_list
     @user = User.find(params[:user_id])
   end
-#フォロワーの一覧ページ
-
+  # フォロワーの一覧ページ
 
   private
 
