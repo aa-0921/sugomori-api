@@ -79,8 +79,13 @@ class UsersController < ApplicationController
 
     current_user = User.find_by(id: current_user_id)
     @user = User.find(params[:user_id])
-    current_user.stop_following(@user)
-    # redirect_to user_path(@user)
+    
+    if current_user.stop_following(@user)
+      render json: { status: 'SUCCESS' }
+    else
+      render json: { status: 'ERROR' }
+    end
+
   end
 #フォローを外す
 
