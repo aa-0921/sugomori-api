@@ -18,7 +18,6 @@ gem 'omniauth-twitter'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
 gem 'aws-sdk'
 gem 'dotenv-rails'
-# gem "acts_as_follower"
 gem "acts_as_follower", github: "tcocca/acts_as_follower"
 # gem 'sentry-raven'
 
