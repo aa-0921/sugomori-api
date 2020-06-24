@@ -36,9 +36,24 @@ users.each do |user|
   count += 1
 end
 
-users = User.all
-user  = users.first
-following = users[25..50]
-followers = users[2..24]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
+
+all_users = User.all
+
+following = all_users[25..50]
+followers = all_users[2..24]
+following.each { |followed| first_user.follow(followed) }
+followers.each { |follower| follower.follow(first_user) }
+
+picposts = Picpost.all
+
+
+
+
+like_users = users[0..25]
+like_posts = picposts[0..25]
+
+like_users.each do |like_user|
+  like_posts.each do |like_post|
+    like_post.iine(like_user) 
+  end
+end
