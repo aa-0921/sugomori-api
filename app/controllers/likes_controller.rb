@@ -19,7 +19,8 @@ class LikesController < ApplicationController
     current_user_id = json_request['current_user_id'].to_i
     current_user = User.find_by(id: current_user_id)
 
-    @picpost = Like.find(params[:id]).picpost
+    # @picpost = Like.find(params[:id]).picpost
+    @picpost = Picpost.find(params[:picropost_id])
 
     if @picpost.uniine(current_user)
       render json: { status: 'SUCCESS' }
