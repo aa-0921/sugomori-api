@@ -29,8 +29,8 @@ Rails.application.routes.draw do
 
   # resources :likes, only: [:create, :destroy]
 
-  put 'picposts/like/:picpost_id' => 'picposts#like'
-  put 'picposts/unlike/:picpost_id' => 'picposts#unlike'
+  put 'picposts/like/:picpost_id' => 'likes#create'
+  put 'picposts/unlike/:picpost_id' => 'likes#destroy'
 
-  get 'picposts/like_list/:user_id' => 'picposts#like_list'
+  get 'picposts/like_list/:user_id' => 'likes#like_list'
 end
