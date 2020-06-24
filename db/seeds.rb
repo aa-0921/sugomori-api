@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Faker::Config.locale = :ja
+# Faker::Config.locale = :ja
 
 User.create!(name: 'Example AdminUser',
              email: 'example_admin-1@example.com',
