@@ -28,4 +28,11 @@ class LikesController < ApplicationController
       render json: { status: 'ERROR' }
     end
   end
+
+  def like_list
+    @user = User.find(params[:user_id])
+    current_user_likes = @user.likes.all
+    render json: { status: 'SUCCESS', data: current_user_likes }
+  end
+  # フォローしてる人の一覧ページ
 end
