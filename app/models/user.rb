@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  include DeviseTokenAuth::Concerns::User #ここだけがDevise Token Auth用
+  include DeviseTokenAuth::Concerns::User # ここだけがDevise Token Auth用
 
   acts_as_followable
   acts_as_follower
@@ -22,6 +22,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
 
   has_many :picposts, dependent: :destroy
+  has_many :likes, dependent: :destroy
   # def self.digest(string)
   #   cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
   #                                                 BCrypt::Engine.cost

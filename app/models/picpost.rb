@@ -6,4 +6,5 @@ class Picpost < ApplicationRecord
   validates :content, presence: false, length: { maximum: 140 }
   validates :picture, presence: true
 
+  has_many :likes, dependent: :destroy
 end
