@@ -54,13 +54,9 @@ class UsersController < ApplicationController
 
   def follow
     json_request = JSON.parse(request.body.read)
-
     current_user_id = json_request['current_user_id'].to_i
-
     current_user = User.find_by(id: current_user_id)
     @user = User.find(params[:user_id])
-
-    # current_user.follow(@user)
 
     if current_user.follow(@user)
       render json: { status: 'SUCCESS' }
@@ -72,9 +68,7 @@ class UsersController < ApplicationController
 
   def unfollow
     json_request = JSON.parse(request.body.read)
-
     current_user_id = json_request['current_user_id'].to_i
-
     current_user = User.find_by(id: current_user_id)
     @user = User.find(params[:user_id])
 
