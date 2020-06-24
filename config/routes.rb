@@ -32,5 +32,5 @@ Rails.application.routes.draw do
   put 'picposts/like/:picpost_id' => 'picposts#like'
   put 'picposts/unlike/:picpost_id' => 'picposts#unlike'
 
-  get 'picposts/like_list/:picpost_id' => 'picposts#like_list'
+  get 'picposts/like_list/:user_id' => 'picposts#like_list'
 end
