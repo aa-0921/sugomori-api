@@ -2,8 +2,8 @@
 
 require 'devise_token_auth'
 Rails.application.routes.draw do
-  get 'likes/create'
-  get 'likes/destroy'
+  # get 'likes/create'
+  # get 'likes/destroy'
   devise_for :User
   #            controllers: {
   #              omniauth_callbacks: 'omniauth_callbacks'
@@ -25,7 +25,12 @@ Rails.application.routes.draw do
 
   get 'users/follow_list/:user_id' => 'users#follow_list'
   get 'users/follower_list/:user_id' => 'users#follower_list'
-  # フォロー・フォロワーの一覧ページ
+  # フォロー・フォロワーの一覧取得
 
-  resources :likes, only: [:create, :destroy]
+  # resources :likes, only: [:create, :destroy]
+
+  put 'picposts/like/:picpost_id' => 'picposts#like'
+  put 'picposts/unlike/:picpost_id' => 'picposts#unlike'
+
+  get 'picposts/like_list/:picpost_id' => 'picposts#like_list'
 end
