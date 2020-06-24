@@ -62,8 +62,13 @@ class UsersController < ApplicationController
     current_user = User.find_by(id: current_user_id)
     @user = User.find(params[:user_id])
 
-    current_user.follow(@user)
-
+    # current_user.follow(@user)
+    
+    if current_user.follow(@user)
+      render json: { status: 'SUCCESS' }
+    else
+      render json: { status: 'ERROR' }
+    end
   end
 #フォローする
 
