@@ -33,4 +33,7 @@ Rails.application.routes.draw do
   put 'picposts/unlike/:picpost_id' => 'likes#destroy'
 
   get 'picposts/like_list/:user_id' => 'likes#like_list'
+
+  get 'likes' => 'likes#index'
+  get 'likes/:like_id' => 'likes#show'
 end
