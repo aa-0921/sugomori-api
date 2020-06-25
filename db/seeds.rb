@@ -23,7 +23,15 @@ User.create!(name: 'Example AdminUser',
 end
 
 users = User.order(:created_at).take(4)
-img_srcs =[]
+img_srcs =[
+  "https://images.unsplash.com/photo-1522444195799-478538b28823?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+  "https://images.unsplash.com/photo-1510563800743-aed236490d08?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1471560090527-d1af5e4e6eb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1488117382278-329ccc22eecb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1509660933844-6910e12765a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1513807182286-b1ddd7ab204b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60",
+  "https://images.unsplash.com/photo-1533499966477-9333968a4e28?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60"
+]
 count = 1
 
 
@@ -34,7 +42,7 @@ p count
   user.picposts.create!(content: "#{content}#{emoji}",
                         # picture: "#{count}-test-picture",
                         user_id: "#{count}-test-user_id",
-                        picture: "https://unsplash.com/photos/nWX4pKwzLoE")
+                        picture: img_srcs.sample)
   count += 1
 end
 
