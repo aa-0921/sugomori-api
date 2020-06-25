@@ -38,19 +38,18 @@ end
 
 
 all_users = User.all
+first_user  = all_users[0]
 
 following = all_users[25..50]
 followers = all_users[2..24]
 following.each { |followed| first_user.follow(followed) }
 followers.each { |follower| follower.follow(first_user) }
 
-picposts = Picpost.all
+all_picposts = Picpost.all
 
 
-
-
-like_users = users[0..25]
-like_posts = picposts[0..25]
+like_users = all_users[0..9]
+like_posts = all_picposts[0..9]
 
 like_users.each do |like_user|
   like_posts.each do |like_post|
