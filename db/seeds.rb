@@ -22,17 +22,19 @@ User.create!(name: 'Example AdminUser',
                password_confirmation: password)
 end
 
-users = User.order(:created_at).take(50)
+users = User.order(:created_at).take(4)
+img_srcs =[]
 count = 1
+
 
 users.each do |user|
   content = Faker::Lorem.sentence(word_count: 3)
   emoji = Faker::Lorem.multibyte
-
+p count
   user.picposts.create!(content: "#{content}#{emoji}",
-                        picture: "#{count}-test-picture",
-                        user_id: "#{count}-test-user_id")
-  # picture: open("db/seeds/images/image-#{count}.jpg")
+                        # picture: "#{count}-test-picture",
+                        user_id: "#{count}-test-user_id",
+                        picture: "https://unsplash.com/photos/nWX4pKwzLoE")
   count += 1
 end
 
