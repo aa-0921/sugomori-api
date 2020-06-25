@@ -35,4 +35,14 @@ class LikesController < ApplicationController
     render json: { status: 'SUCCESS', data: current_user_likes }
   end
   # フォローしてる人の一覧ページ
+
+  def index
+    likes = Like.all
+    render json: { status: 'SUCCESS', data: likes }
+  end
+
+  def show
+    like = Like.find(params[:id])
+    render json: { status: 'SUCCESS', data: like }
+  end
 end
