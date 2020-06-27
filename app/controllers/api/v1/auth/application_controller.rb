@@ -10,7 +10,7 @@ class Api::V1::Auth::ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
   # before_action :authenticate_user!, except: [:new, :create]
 
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
   protect_from_forgery with: :exception
 
   include ActionController::RequestForgeryProtection
