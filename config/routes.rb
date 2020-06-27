@@ -4,18 +4,18 @@ require 'devise_token_auth'
 Rails.application.routes.draw do
   # get 'likes/create'
   # get 'likes/destroy'
-  devise_for :User
-  #            controllers: {
-  #              omniauth_callbacks: 'omniauth_callbacks'
-  #            }
+  devise_for :User,
+             controllers: {
+               omniauth_callbacks: 'omniauth_callbacks'
+             }
 
   mount_devise_token_auth_for 'User',
                               at: 'api/v1/auth'
-  # controllers: {
-  #   registrations: 'api/v1/auth/registrations',
-  #   sessions: 'api/v1/auth/sessions'
-  #   omniauth_callbacks: 'omniauth_callbacks'
-  # }
+  controllers: {
+    registrations: 'api/v1/auth/registrations',
+    sessions: 'api/v1/auth/sessions'
+    # omniauth_callbacks: 'omniauth_callbacks'
+  }
 
   resources :picposts
   resources :users

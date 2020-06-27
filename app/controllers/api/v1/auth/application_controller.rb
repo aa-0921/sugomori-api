@@ -4,14 +4,22 @@
 #   module V1
 class Api::V1::Auth::ApplicationController < ActionController::API
   # protect_from_forgery with: :null_session
-  # protect_from_forgery unless: -> { request.format.json? } 
+  # protect_from_forgery unless: -> { request.format.json? }
 
-  before_action :authenticate_user!, except: %i[new create]
+  before_action :authenticate_user!, except: %i(new create)
   include DeviseTokenAuth::Concerns::SetUserByToken
   # before_action :authenticate_user!, except: [:new, :create]
 
   skip_before_action :verify_authenticity_token
   protect_from_forgery with: :exception
+
+  include ActionController::RequestForgeryProtection
+
+  after_action :set_csrf_token_header
+
+  def set_csrf_token_header
+    response.set_header("X-CSRF-Token", form_authenticity_token)
+  end
   # , raise: false, if: :devise_controller?
 
   # include SessionsHelper
