@@ -22,6 +22,8 @@ Bundler.require(*Rails.groups)
 module Myapp
   class Application < Rails::Application
     # config.session_store :cookie_store, key: '_your_app_session'
+        config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore, {:key=>"_csrf_protection_example_session"}
     # config.middleware.use ActionDispatch::Cookies
     # config.middleware.use ActionDispatch::Session::CookieStore, config.session_options
 
