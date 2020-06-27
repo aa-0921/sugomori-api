@@ -17,6 +17,10 @@ Rails.application.routes.draw do
                                 # omniauth_callbacks: 'omniauth_callbacks'
                               }
 
+  # CSRF_token関係
+  get '/get', to: 'top#get'
+  post '/post', to: 'top#post'
+
   resources :picposts
   resources :users
   put 'users/follow/:user_id' => 'users#follow'
