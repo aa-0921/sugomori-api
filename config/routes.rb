@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   post '/post', to: 'top#post'
 
   resources :picposts
-  resources :users
+  # resources :users
   put 'users/follow/:user_id' => 'users#follow'
   put 'users/unfollow/:user_id' => 'users#unfollow'
   # フォローとフォローを外すアクション
