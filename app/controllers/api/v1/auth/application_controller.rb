@@ -18,6 +18,9 @@ class Api::V1::Auth::ApplicationController < ActionController::API
   after_action :set_csrf_token_header
 
   def set_csrf_token_header
+    p "form_authenticity_tokenの内容"
+    p form_authenticity_token
+
     response.set_header("X-CSRF-Token", form_authenticity_token)
   end
   # , raise: false, if: :devise_controller?

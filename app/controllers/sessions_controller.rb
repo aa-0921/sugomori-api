@@ -9,13 +9,14 @@ class SessionsController < Devise::SessionsController
 
   # skip_before_action :verify_authenticity_token, only: :create
 
-  # def create
-  #   super
-  #   # bypass_sign_in(user)
-  #   p "current_userの中身"
-  #   # current_user    # returns nil
-  #   p current_user    # returns nil
-  # end
+  def create
+    super
+    p "form_authenticity_tokenの内容"
+    p form_authenticity_token
+    # bypass_sign_in(user)
+    p "current_userの中身"
+    p current_user # returns nil
+  end
   # def create
   #   @user = current_user
   #   super do
