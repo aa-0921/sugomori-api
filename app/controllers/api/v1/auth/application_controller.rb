@@ -5,7 +5,14 @@
 class Api::V1::Auth::ApplicationController < ActionController::API
   # protect_from_forgery with: :null_session
   # protect_from_forgery unless: -> { request.format.json? }
+  after_action :set_csrf_token_header
 
+  def set_csrf_token_header
+    p "form_authenticity_tokenの内容(application_controller.rb)"
+    p form_authenticity_token
+
+    response.set_header("X-CSRF-Token", form_authenticity_token)
+  end
   before_action :authenticate_user!, except: %i(new create)
   include DeviseTokenAuth::Concerns::SetUserByToken
   # before_action :authenticate_user!, except: [:new, :create]
@@ -15,14 +22,6 @@ class Api::V1::Auth::ApplicationController < ActionController::API
 
   include ActionController::RequestForgeryProtection
 
-  after_action :set_csrf_token_header
-
-  def set_csrf_token_header
-    p "form_authenticity_tokenの内容"
-    p form_authenticity_token
-
-    response.set_header("X-CSRF-Token", form_authenticity_token)
-  end
   # , raise: false, if: :devise_controller?
 
   # include SessionsHelper

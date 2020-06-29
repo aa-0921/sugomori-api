@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# class SessionsController < DeviseTokenAuth::SessionsController
-class SessionsController < Devise::SessionsController
+class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
+  # class SessionsController < Devise::SessionsController
   # before_action :configure_permitted_parameters, if: :devise_controller?
   # before_action :authenticate_user!, except: [:new, :create]
 
@@ -11,11 +11,20 @@ class SessionsController < Devise::SessionsController
 
   def create
     super
-    p "form_authenticity_tokenの内容"
+    p "form_authenticity_tokenの内容(sessions_controller.rb)"
     p form_authenticity_token
     # bypass_sign_in(user)
     p "current_userの中身"
     p current_user # returns nil
+  end
+
+  after_action :set_csrf_token_header
+
+  def set_csrf_token_header
+    p "form_authenticity_tokenの内容(application_controller.rb)"
+    p form_authenticity_token
+
+    response.set_header("X-CSRF-Token", form_authenticity_token)
   end
   # def create
   #   @user = current_user

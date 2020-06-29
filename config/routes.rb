@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   devise_for :User,
              controllers: {
                omniauth_callbacks: 'omniauth_callbacks',
-               sessions: 'sessions',
              }
 
   mount_devise_token_auth_for 'User',
@@ -15,6 +14,7 @@ Rails.application.routes.draw do
                               controllers: {
                                 registrations: 'api/v1/auth/registrations',
                                 # omniauth_callbacks: 'omniauth_callbacks'
+                                sessions: 'api/v1/auth/sessions',
                               }
 
   # CSRF_token関係
