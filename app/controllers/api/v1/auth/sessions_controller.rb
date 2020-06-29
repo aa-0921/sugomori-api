@@ -16,6 +16,10 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
     # bypass_sign_in(user)
     p "current_userの中身"
     p current_user # returns nil
+    json_request = JSON.parse(request.body.read)
+
+    p "json_requestの内容"
+    p json_request
   end
 
   after_action :set_csrf_token_header
