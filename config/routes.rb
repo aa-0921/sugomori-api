@@ -40,4 +40,6 @@ Rails.application.routes.draw do
 
   get 'likes' => 'likes#index'
   get 'likes/:like_id' => 'likes#show'
+
+  get 'users/get_token' => 'users#get_token'
 end

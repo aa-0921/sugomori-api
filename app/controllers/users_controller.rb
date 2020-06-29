@@ -6,6 +6,10 @@ class UsersController < ApplicationController
   # before_action :logged_in_user, only: %i[edit update]
   before_action :admin_user,     only: :destroy
 
+  def get_token
+    render json: { status: 'SUCCESS', message: 'get token' }
+  end
+
   def index
     users = User.order(created_at: :desc)
     render json: { status: 'SUCCESS', message: 'Loaded users', data: users }
