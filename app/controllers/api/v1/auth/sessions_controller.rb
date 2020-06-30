@@ -3,24 +3,15 @@
 class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
   # class SessionsController < Devise::SessionsController
   # before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_user!, except: [:new :create]
+  include ActionController::RequestForgeryProtection
+  before_action :authenticate_user!, except: [:new, :create]
+  # before_action :authenticate_user!
+
+  protect_from_forgery with: :exception
 
   # respond_to :json
 
-  # skip_before_action :verify_authenticity_token, only: :create
-
-  def create
-    super
-    p "form_authenticity_tokenの内容(sessions_controller.rb)"
-    p form_authenticity_token
-    # bypass_sign_in(user)
-    p "current_userの中身"
-    p current_user # returns nil
-    json_request = JSON.parse(request.body.read)
-
-    p "json_requestの内容"
-    p json_request
-  end
+  skip_before_action :verify_authenticity_token, only: :create
 
   after_action :set_csrf_token_header
 
@@ -30,6 +21,23 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
 
     response.set_header("X-CSRF-Token", form_authenticity_token)
   end
+
+  def create
+    super
+    p "form_authenticity_tokenの内容(sessions_controller.rb)"
+    p form_authenticity_token
+    # bypass_sign_in(user)
+    p "current_userの中身"
+    p current_user # returns nil
+    p "JSON.parse(request.headers)"
+    # p JSON.parse(request.headers)
+    # json_request = JSON.parse(request.headers.read)
+    json_request = JSON.parse(request.headers.get('X-CSRF-Token'))
+
+    p "json_request('X-CSRF-Token')の内容（sessions_controller.rb）"
+    p json_request
+  end
+
   # def create
   #   @user = current_user
   #   super do

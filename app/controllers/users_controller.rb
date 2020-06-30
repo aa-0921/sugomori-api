@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: %i(show update destroy)
+  before_action :set_user, only: %i(show update destroy), except: [:get_token]
   # before_action :logged_in_user, only: %i[index edit update]
   # before_action :logged_in_user, only: %i[edit update]
   before_action :admin_user,     only: :destroy
@@ -28,6 +28,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    p "アクションshow"
+    p "current_userの内容"
+
+    p current_user
+
     render json: { status: 'SUCCESS', message: 'Loaded the user', data: @user }
   end
 

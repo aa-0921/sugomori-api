@@ -6,6 +6,7 @@ class Api::V1::Auth::ApplicationController < ActionController::API
   # protect_from_forgery with: :null_session
   # protect_from_forgery unless: -> { request.format.json? }
   after_action :set_csrf_token_header
+  protect_from_forgery with: :exception
 
   def set_csrf_token_header
     p "form_authenticity_tokenの内容(application_controller.rb)"
