@@ -82,12 +82,8 @@ ActiveRecord::Schema.define(version: 2020_06_24_115444) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.boolean "admin", default: false
-    t.string "provider", default: "email", null: false
-    t.string "uid", default: "", null: false
-    t.text "tokens"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
   add_foreign_key "social_profiles", "users"

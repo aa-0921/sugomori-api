@@ -4,7 +4,7 @@
 
 User.create!(name: 'Example AdminUser',
              email: 'example_admin-1@example.com',
-             uid: 'example_admin-1@example.com',
+            #  uid: 'example_admin-1@example.com',
              password: 'papapa',
              password_confirmation: 'papapa',
              admin: true)
@@ -17,7 +17,7 @@ User.create!(name: 'Example AdminUser',
   password = 'password'
   User.create!(name: name,
                email: email,
-               uid: email,
+              #  uid: email,
                password: password,
                password_confirmation: password)
 end
