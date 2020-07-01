@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  include DeviseTokenAuth::Concerns::User # ここだけがDevise Token Auth用
+  # include DeviseTokenAuth::Concerns::User # ここだけがDevise Token Auth用
 
   acts_as_followable
   acts_as_follower
   # Include default devise modules.
-  include DeviseTokenAuth::Concerns::User
+  # include DeviseTokenAuth::Concerns::User
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, :confirmable
+         :recoverable, :rememberable, :validatable, :confirmable
+  #  :omniauthable
   before_save -> { skip_confirmation! }
   before_save { self.email = email.downcase }
 

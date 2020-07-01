@@ -8,15 +8,15 @@ class UsersController < ApplicationController
 
   # before_action :authenticate_user!, only: %i(edit update)
 
-  include ActionController::RequestForgeryProtection
-  after_action :set_csrf_token_header
-  protect_from_forgery with: :exception
-  def set_csrf_token_header
-    p "form_authenticity_tokenの内容(application_controller.rb)"
-    p form_authenticity_token
+  # include ActionController::RequestForgeryProtection
+  # after_action :set_csrf_token_header
+  # # protect_from_forgery with: :exception
+  # def set_csrf_token_header
+  #   p "form_authenticity_tokenの内容(application_controller.rb)"
+  #   p form_authenticity_token
 
-    response.set_header("X-CSRF-Token", form_authenticity_token)
-  end
+  #   response.set_header("X-CSRF-Token", form_authenticity_token)
+  # end
 
   def get_token
     render json: { status: 'SUCCESS', message: 'get token' }
