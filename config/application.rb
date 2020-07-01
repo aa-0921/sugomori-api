@@ -23,7 +23,7 @@ module Myapp
   class Application < Rails::Application
     # config.session_store :cookie_store, key: '_your_app_session'
     config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore, {:key=>"_csrf_protection_example_session"}
+    # config.middleware.use ActionDispatch::Session::CookieStore, {:key=>"_csrf_protection_example_session"}
     # config.middleware.use ActionDispatch::Cookies
     # config.middleware.use ActionDispatch::Session::CookieStore, config.session_options
 
@@ -53,7 +53,7 @@ module Myapp
   #     end
   #   end
 
-    config.action_controller.allow_forgery_protection = false
+    # config.action_controller.allow_forgery_protection = false
 
     config.middleware.use ActionDispatch::Cookies
     config.action_controller.default_protect_from_forgery = false
