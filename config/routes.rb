@@ -2,13 +2,12 @@
 
 # require 'devise_token_auth'
 Rails.application.routes.draw do
-  devise_for :users
-  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
-  # get 'likes/create'
-  # get 'likes/destroy'
   root 'pages#index'
   get 'pages/show'
-  # devise_for :users
+
+  devise_for :users
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+
   #            controllers: {
   #              #  omniauth_callbacks: 'omniauth_callbacks',
   #              sessions: 'api/v1/auth/sessions'
@@ -27,7 +26,7 @@ Rails.application.routes.draw do
   post '/post', to: 'top#post'
 
   resources :picposts
-  resources :users
+  # resources :users
   put 'users/follow/:user_id' => 'users#follow'
   put 'users/unfollow/:user_id' => 'users#unfollow'
   # フォローとフォローを外すアクション
