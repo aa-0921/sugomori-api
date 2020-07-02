@@ -64,7 +64,7 @@ group :development do
   gem 'letter_opener_web'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 3.5.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
