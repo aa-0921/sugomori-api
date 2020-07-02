@@ -1,0 +1,52 @@
+inherit_from:
+  - .rubocop-airbnb.yml
+
+require:
+  - rubocop-rails
+  # - rubocop-rspec
+
+# Rails用に最適化
+Rails:
+  Enabled: true
+
+# # 文字数の上限を８０文字から変更
+# # LineLength:
+# #   Max: 130
+
+#rubocopで検証したくないフォルダを指定
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'bin/*'
+    - 'config/environments/*'
+    - 'config/application.rb'
+    - 'config/initializers/*'
+    - 'config/spring.rb'
+    - 'lib/tasks/*'
+    - 'vendor/**/*'
+    - 'path/ruby'
+
+Style/Documentation:
+  Enabled: false
+
+
+Metrics/BlockLength:
+  Enabled: false
+  Exclude:
+    - '*'
+  Max: 200
+
+Metrics/MethodLength:
+  Enabled: false
+  CountComments: false  # count full line comments?
+  Max: 200
+
+# Metrics/LineLength:
+#   Enabled: true
+#   CountComments: false  # count full line comments?
+#   Max: 500
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+

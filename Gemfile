@@ -11,7 +11,10 @@ gem 'devise'
 gem 'devise-i18n'
 # gem 'devise_token_auth'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower'
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower'
 gem 'aws-sdk'
+gem 'aws-sdk'
+gem 'dotenv-rails'
 gem 'dotenv-rails'
 gem 'faker'
 gem 'omniauth'
@@ -20,7 +23,6 @@ gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
-gem 'sqlite3', '~> 1.3.6'
 # gem 'sentry-raven'
 
 # Use postgresql as the database for Active Record
@@ -50,7 +52,7 @@ gem 'rack-cors', require: 'rack/cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'byebug', platforms: %i(mri mingw x64_mingw)
   gem 'rubocop', '0.76.0'
   gem 'rubocop-airbnb'
   # gem 'rubocop-rails', '2.3.2'
@@ -66,4 +68,4 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'tzinfo-data', platforms: %i(mingw mswin x64_mingw jruby)
