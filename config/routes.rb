@@ -2,11 +2,13 @@
 
 # require 'devise_token_auth'
 Rails.application.routes.draw do
+  devise_for :users
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   # get 'likes/create'
   # get 'likes/destroy'
   root 'pages#index'
   get 'pages/show'
-  devise_for :users
+  # devise_for :users
   #            controllers: {
   #              #  omniauth_callbacks: 'omniauth_callbacks',
   #              sessions: 'api/v1/auth/sessions'
