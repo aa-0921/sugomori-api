@@ -4,7 +4,9 @@
 Rails.application.routes.draw do
   # get 'likes/create'
   # get 'likes/destroy'
-  # devise_for :User,
+  root 'pages#index'
+  get 'pages/show'
+  devise_for :users
   #            controllers: {
   #              #  omniauth_callbacks: 'omniauth_callbacks',
   #              sessions: 'api/v1/auth/sessions'
