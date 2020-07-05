@@ -2,7 +2,10 @@
 
 # require 'devise_token_auth'
 Rails.application.routes.draw do
-  root 'pages#index'
+  # コンポーネント表示用
+  root 'top#index'
+
+  get 'pages/index'
   get 'pages/show'
 
   devise_for :users
@@ -22,8 +25,8 @@ Rails.application.routes.draw do
   #                             }
 
   # CSRF_token関係
-  get '/get', to: 'top#get'
-  post '/post', to: 'top#post'
+  # get '/get', to: 'top#get'
+  # post '/post', to: 'top#post'
 
   resources :picposts
   # resources :users
