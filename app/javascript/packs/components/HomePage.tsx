@@ -4,9 +4,7 @@ import { Pickup } from '../pages/Pickup';
 import { ZeitSample } from '../pages/zeit-sample';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import { Header } from './header';
-// import { Footer } from './footer';
 import { About } from '../pages/About';
-// import { ShowPost } from './ShowPost';
 import { PostsApp } from '../pages/PostsApp';
 import ProfilePage from '../pages/ProfilePage';
 import { MemberListApp } from '../pages/MemberListApp';
@@ -21,8 +19,7 @@ export const HomePage = () => {
   }
   return (
     <BrowserRouter>
-      <Header />
-      {/* <header style={{ height: 100, background: '#ddd' }}>head</header> */}
+      {/* <Header /> */}
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/pickup" component={Pickup} />
@@ -31,7 +28,6 @@ export const HomePage = () => {
         <Route exact path="/profilepage/:id" component={ProfilePage} />
         <Route exact path="/MemberListApp" component={MemberListApp} />
 
-        {/* <Route path="/showpost" component={ShowPost} /> */}
         <Route exact path="/postsApp" component={PostsApp} />
       </Switch>
       {/* <Footer /> */}

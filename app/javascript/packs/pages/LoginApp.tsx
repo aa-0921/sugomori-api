@@ -10,7 +10,7 @@ import { HomePage } from '../components/HomePage';
 import { Auth } from '../components/Auth';
 import User from '../components/User';
 // import { List } from './list';
-import { App } from '../../src/App';
+import { App } from '../App';
 // import { UserButton } from '../components/UserButton';
 import { PostsApp } from './PostsApp';
 
