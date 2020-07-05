@@ -2,7 +2,10 @@
 
 # require 'devise_token_auth'
 Rails.application.routes.draw do
-  root 'pages#index'
+  # コンポーネント表示用
+  root 'top#index'
+
+  get 'pages#index'
   get 'pages/show'
 
   devise_for :users
