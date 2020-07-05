@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # コンポーネント表示用
   root 'top#index'
 
-  get 'pages#index'
+  get 'pages/index'
   get 'pages/show'
 
   devise_for :users
