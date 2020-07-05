@@ -85,7 +85,9 @@ export const PostsApp = () => {
 
   useEffect(() => {
     const getClickedPostUserUrl: string =
-      process.env.REACT_APP_API_URL_USERS + '/' + clickedPost.user_id;
+      // process.env.REACT_APP_API_URL_USERS + '/' + clickedPost.user_id;
+      'http://localhost:3000/users/' + clickedPost.user_id;
+    
     FetchData(getClickedPostUserUrl).then((res) => setClickedPostUser(res.data));
   }, [clickedPost]);
   console.log('post: ', clickedPost.id);
@@ -95,8 +97,10 @@ export const PostsApp = () => {
 
   // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
   const currentUserId = 1;
-  const getLikeListUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like_list/' + currentUserId;
-  // const getLikeListUrl: string ='http://localhost:3000/picposts/like_list/' + currentUserId;
+
+  // const getLikeListUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like_list/' + currentUserId;
+
+  const getLikeListUrl: string ='http://localhost:3000/picposts/like_list/' + currentUserId;
   
   useEffect(() => {
     FetchData(getLikeListUrl).then((res) => {
@@ -126,7 +130,9 @@ export const PostsApp = () => {
     };
     const body = JSON.stringify(obj);
     const method = 'PUT';
-    const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like/' + postId;
+    // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like/' + postId;
+    const postUrl: string = 'http://localhost:3000/picposts/like/' + postId;
+
 
     await fetch(postUrl, { method, body })
       .then((response) => {
@@ -156,7 +162,9 @@ export const PostsApp = () => {
     };
     const body = JSON.stringify(obj);
     const method = 'PUT';
-    const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/unlike/' + postId;
+    // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/unlike/' + postId;
+    const postUrl: string = 'http://localhost:3000/picposts/unlike/' + postId;
+
 
     await fetch(postUrl, { method, body })
       .then((response) => {
@@ -221,12 +229,13 @@ export const PostsApp = () => {
                   <Grid>
                     <Modal.Content>
                       <div className=" flex flex-col items-center">
+                          <img src={clickedPost.picture} className="rounded-lg" />
+                        
+                        <Divider />
+                        <div className="flex-1  text-center">
                         <Link to={'/profilepage/' + clickedPost.user_id}>
                           <span>{clickedPostUser.name}</span>
                         </Link>
-                        <Divider />
-                        <div className="flex-1  text-center">
-                          <span>{clickedPostUser.name}</span>
                           <Link to={'/profilepage/' + clickedPost.id}>
                             &emsp; {clickedPost.content}&emsp;
                           </Link>
