@@ -19,9 +19,9 @@ export const HomePage = () => {
   }
   return (
     <BrowserRouter>
-      {/* <Header /> */}
+      <Header />
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={PostsApp} />
         <Route exact path="/pickup" component={Pickup} />
         <Route exact path="/zeit-sample" component={ZeitSample} />
         <Route exact path="/about" component={About} />
