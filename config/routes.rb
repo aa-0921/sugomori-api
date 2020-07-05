@@ -22,8 +22,8 @@ Rails.application.routes.draw do
   #                             }
 
   # CSRF_token関係
-  get '/get', to: 'top#get'
-  post '/post', to: 'top#post'
+  # get '/get', to: 'top#get'
+  # post '/post', to: 'top#post'
 
   resources :picposts
   # resources :users
