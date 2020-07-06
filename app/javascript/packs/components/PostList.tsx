@@ -5,7 +5,7 @@ import sizeMe from 'react-sizeme';
 // @ts-ignore
 import StackGrid, { transitions } from 'react-stack-grid';
 
-const { scaleDown } = transitions;
+// const { scaleDown } = transitions;
 export const PostList = (props: any): any => {
   return (
     <>
@@ -24,13 +24,14 @@ export const PostList = (props: any): any => {
           // entered={scaleDown.entered}
           // leaved={scaleDown.leaved}
         >
-          {props.fetchPosts.map((post: any) => (
+          {props.filterPosts.map((post: any, index: number) => (
             <Post
               post={post}
               likeList={props.likeList}
               pushToLikeList={props.pushToLikeList}
               removeFromLikeList={props.removeFromLikeList}
               modalOpenHandler={props.modalOpenHandler}
+              index={props.index}
             />
           ))}
         </StackGrid>

@@ -14,6 +14,17 @@ export function Header() {
     }
   };
 
+  type LoginProps = {
+  history: any;
+
+};
+
+
+  const refreshPage = (props:LoginProps) => { 
+    props.history.push('/pages/index');
+    window.location.reload(); 
+  }
+  
   return (
     <header>
       <div>
@@ -94,6 +105,25 @@ export function Header() {
                       >
                         Home
                       </Link>
+                      {/* <Link
+                        to="/pages/index"
+                        onClick={()=>refreshPage}
+                        // onClick={()=>location.reload}
+                        
+                        className="text-lg text-white ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                      >
+                        Login
+                      </Link> */}
+                      <a
+                        href="http://localhost:3000/pages/index"
+                        // onClick={()=>refreshPage}
+                        // onClick={()=>location.reload}
+                        
+                        className="text-lg text-white ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                      >
+                        Login
+                      </a>
+                      
                       <Link
                         to="/PostsApp"
                         className="text-lg text-white ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"

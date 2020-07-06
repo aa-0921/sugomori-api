@@ -13,7 +13,45 @@ require('dotenv').config();
 import * as Icon from '@zeit-ui/react-icons';
 
 export const PostsApp = () => {
-  const [fetchPosts, setFetchPosts] = useState([]);
+  // 全投稿の配列のState定義
+  // const [fetchPosts, setFetchPosts] = useState<string[]>([]);
+  const [fetchPosts, setFetchPosts] = useState<string[]>([]);
+  const [initialFetchPosts, setInitialFetchPosts] = useState<string[]>([]);
+  // 検索のfilter後の投稿の配列の定義
+  const [filterPosts, setFilterPosts] = useState<string[]>([]);
+
+  const getAllPostUrl: string = 'http://localhost:3000/picposts';
+  // const getAllPostUrl: string = process.env.REACT_APP_API_URL_POSTS!;
+
+
+  console.log('getAllPostUrl:', getAllPostUrl);
+
+  useEffect(() => {
+    FetchData(getAllPostUrl).then((res) => {
+      setFetchPosts(res.data);
+      setInitialFetchPosts(res.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    setFilterPosts(fetchPosts);
+  }, [fetchPosts]);
+
+  const filterList = (e: any) => {
+    // if (!e.target.value) {
+    //   setFetchPosts(initialFetchPosts);
+    //   return;
+    // }
+    const updateList = initialFetchPosts.filter((post: any) => {
+      console.log('post.content', post.content);
+      return post.content.search(e.target.value) !== -1;
+    });
+    console.log('updateList', updateList);
+
+    setFetchPosts(updateList);
+  };
+  console.log('fetchPosts', fetchPosts);
+
   const [likeList, setLikeList] = useState<number[]>([]);
   const [clickedPostUser, setClickedPostUser] = useState({
     id: 0,
@@ -47,7 +85,9 @@ export const PostsApp = () => {
 
   useEffect(() => {
     const getClickedPostUserUrl: string =
-      process.env.REACT_APP_API_URL_USERS + '/' + clickedPost.user_id;
+      // process.env.REACT_APP_API_URL_USERS + '/' + clickedPost.user_id;
+      'http://localhost:3000/users/' + clickedPost.user_id;
+    
     FetchData(getClickedPostUserUrl).then((res) => setClickedPostUser(res.data));
   }, [clickedPost]);
   console.log('post: ', clickedPost.id);
@@ -57,8 +97,11 @@ export const PostsApp = () => {
 
   // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
   const currentUserId = 1;
-  const getLikeListUrl: string =
-    process.env.REACT_APP_API_URL_POSTS + '/like_list/' + currentUserId;
+
+  // const getLikeListUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like_list/' + currentUserId;
+
+  const getLikeListUrl: string ='http://localhost:3000/picposts/like_list/' + currentUserId;
+  
   useEffect(() => {
     FetchData(getLikeListUrl).then((res) => {
       setLikeList(res.data.map((like: any) => like.id));
@@ -87,7 +130,9 @@ export const PostsApp = () => {
     };
     const body = JSON.stringify(obj);
     const method = 'PUT';
-    const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like/' + postId;
+    // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like/' + postId;
+    const postUrl: string = 'http://localhost:3000/picposts/like/' + postId;
+
 
     await fetch(postUrl, { method, body })
       .then((response) => {
@@ -117,7 +162,9 @@ export const PostsApp = () => {
     };
     const body = JSON.stringify(obj);
     const method = 'PUT';
-    const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/unlike/' + postId;
+          // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/unlike/' + postId;
+    const postUrl: string = 'http://localhost:3000/picposts/unlike/' + postId;
+
 
     await fetch(postUrl, { method, body })
       .then((response) => {
@@ -140,13 +187,14 @@ export const PostsApp = () => {
   };
   // clickLike,unlike
 
-  const getAllPostUrl: string = process.env.REACT_APP_API_URL_POSTS!;
-
-  console.log('getAllPostUrl:', getAllPostUrl);
-
-  useEffect(() => {
-    FetchData(getAllPostUrl).then((res) => setFetchPosts(res.data));
-  }, []);
+  const useDelay = (msec: any) => {
+    const [waiting, setWaiting] = useState(true);
+    useEffect(() => {
+      setTimeout(() => setWaiting(false), msec);
+    }, []);
+    return waiting;
+  };
+  const waiting = useDelay(200);
 
   return (
     <>
@@ -159,14 +207,21 @@ export const PostsApp = () => {
               {/* <DropZone /> */}
               <FormikPost />
               <Divider />
+              <form action="">
+                <input type="text" placeholder="search" onChange={filterList} />
+              </form>
 
-              <PostList
-                fetchPosts={fetchPosts}
-                likeList={likeList}
-                pushToLikeList={pushToLikeList}
-                removeFromLikeList={removeFromLikeList}
-                modalOpenHandler={modalOpenHandler}
-              />
+              {!waiting && (
+                <PostList
+                  fetchPosts={fetchPosts}
+                  likeList={likeList}
+                  pushToLikeList={pushToLikeList}
+                  removeFromLikeList={removeFromLikeList}
+                  modalOpenHandler={modalOpenHandler}
+                  filterList={filterList}
+                  filterPosts={filterPosts}
+                />
+              )}
             </div>
             <Modal width="35rem" open={modalOpen} onClose={closeHandler}>
               <>
@@ -174,10 +229,13 @@ export const PostsApp = () => {
                   <Grid>
                     <Modal.Content>
                       <div className=" flex flex-col items-center">
-                        <img src={clickedPost.picture} className="rounded-lg" />
+                          <img src={clickedPost.picture} className="rounded-lg" />
+                        
                         <Divider />
                         <div className="flex-1  text-center">
+                        <Link to={'/profilepage/' + clickedPost.user_id}>
                           <span>{clickedPostUser.name}</span>
+                        </Link>
                           <Link to={'/profilepage/' + clickedPost.id}>
                             &emsp; {clickedPost.content}&emsp;
                           </Link>
