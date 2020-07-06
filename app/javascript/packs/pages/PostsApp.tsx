@@ -20,18 +20,33 @@ export const PostsApp = () => {
   // 検索のfilter後の投稿の配列の定義
   const [filterPosts, setFilterPosts] = useState<string[]>([]);
 
+
+
   const getAllPostUrl: string = 'http://localhost:3000/picposts';
-  // const getAllPostUrl: string = process.env.REACT_APP_API_URL_POSTS!;
-
-
-  console.log('getAllPostUrl:', getAllPostUrl);
 
   useEffect(() => {
+
+
     FetchData(getAllPostUrl).then((res) => {
+      console.log('useEffect内！！！！！');
+
       setFetchPosts(res.data);
       setInitialFetchPosts(res.data);
     });
+
+      FetchData(getLikeListUrl).then((res) => {
+      setLikeList(res.data.map((like: any) => like.id));
+    });
   }, []);
+
+    // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
+  const currentUserId = 1;
+
+  // const getLikeListUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like_list/' + currentUserId;
+  const getLikeListUrl: string ='http://localhost:3000/picposts/like_list/' + currentUserId;
+  
+
+
 
   useEffect(() => {
     setFilterPosts(fetchPosts);
@@ -82,31 +97,18 @@ export const PostsApp = () => {
 
   // console.log('getClickedPostUserUrl:', getClickedPostUserUrl);
   console.log('clickedPost.user_id:', clickedPost.user_id);
-
+  const getClickedPostUserUrl: string = 'http://localhost:3000/users/' + clickedPost.user_id;
+  
   useEffect(() => {
-    const getClickedPostUserUrl: string =
-      // process.env.REACT_APP_API_URL_USERS + '/' + clickedPost.user_id;
-      'http://localhost:3000/users/' + clickedPost.user_id;
-    
-    FetchData(getClickedPostUserUrl).then((res) => setClickedPostUser(res.data));
+    if (clickedPost.user_id = 0) {
+      FetchData(getClickedPostUserUrl).then((res) => setClickedPostUser(res.data));
+    } 
   }, [clickedPost]);
   console.log('post: ', clickedPost.id);
 
   console.log('clickedPostUser.name: ', clickedPostUser.name);
   console.log('clickedPostUser.id: ', clickedPostUser.id);
 
-  // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
-  const currentUserId = 1;
-
-  // const getLikeListUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like_list/' + currentUserId;
-
-  const getLikeListUrl: string ='http://localhost:3000/picposts/like_list/' + currentUserId;
-  
-  useEffect(() => {
-    FetchData(getLikeListUrl).then((res) => {
-      setLikeList(res.data.map((like: any) => like.id));
-    });
-  }, []);
 
   const pushToLikeList = (picpost_id: number) => {
     console.log(picpost_id, 'ma');
@@ -187,15 +189,6 @@ export const PostsApp = () => {
   };
   // clickLike,unlike
 
-  const useDelay = (msec: any) => {
-    const [waiting, setWaiting] = useState(true);
-    useEffect(() => {
-      setTimeout(() => setWaiting(false), msec);
-    }, []);
-    return waiting;
-  };
-  const waiting = useDelay(200);
-
   return (
     <>
       <Router>
@@ -211,7 +204,7 @@ export const PostsApp = () => {
                 <input type="text" placeholder="search" onChange={filterList} />
               </form>
 
-              {!waiting && (
+              {/* {!waiting && ( */}
                 <PostList
                   fetchPosts={fetchPosts}
                   likeList={likeList}
@@ -221,7 +214,7 @@ export const PostsApp = () => {
                   filterList={filterList}
                   filterPosts={filterPosts}
                 />
-              )}
+              )
             </div>
             <Modal width="35rem" open={modalOpen} onClose={closeHandler}>
               <>
@@ -229,7 +222,8 @@ export const PostsApp = () => {
                   <Grid>
                     <Modal.Content>
                       <div className=" flex flex-col items-center">
-                          <img src={clickedPost.picture} className="rounded-lg" />
+                        <img src={clickedPost.picture} className="rounded-lg" />
+                        {/* <span>{currentUserData.name}</span> */}
                         
                         <Divider />
                         <div className="flex-1  text-center">

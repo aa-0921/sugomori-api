@@ -67,7 +67,6 @@ followers.each { |follower| follower.follow(first_user) }
 
 all_picposts = Picpost.all
 
-
 like_users = all_users[0..9]
 like_posts = all_picposts[0..9]
 

@@ -76,6 +76,7 @@ export const Post = (props: any) => {
         <div className="flex-1  text-center"> */}
       {/* <li key={props.post.id} className="flex items-center m-auto"> */}
       <img
+        key={props.post.id}
         src={props.post.picture}
         className="rounded-lg"
         onClick={() => props.modalOpenHandler(props.post)}
