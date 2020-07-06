@@ -115,7 +115,7 @@ export function Header() {
                         Login
                       </Link> */}
                       <a
-                        href="http://localhost:3000/pages/index"
+                        href="/pages/index"
                         // onClick={()=>refreshPage}
                         // onClick={()=>location.reload}
                         
