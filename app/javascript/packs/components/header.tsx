@@ -1,9 +1,35 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
 import User from '../components/User';
 import { ButtonDropdown, Grid, Row, Input, Button } from '@zeit-ui/react';
+import { FetchData } from '../scripts/api/FetchData';
+
 
 export function Header() {
+
+  // const [currentUserData, setCurrentUserData] = useState({
+  //   id: 0,
+  //   email: '',
+  //   name: '',
+  // })
+
+  const [currentUserData, setCurrentUserData] = useState(null)
+  const getInitialDataUrl: string = 'http://localhost:3000/initial_data/show';
+
+  useEffect(() => {
+    FetchData(getInitialDataUrl).then((res) => {
+      setCurrentUserData(res.data);
+      console.log('getInitialDataUrl', getInitialDataUrl);
+      console.log('res.data', res.data);
+      console.log('currentUserData', currentUserData);
+      console.log('currentUserData');
+    });
+  }, []);
+
+  console.log('currentUserData', currentUserData);
+
+
   // ログアウト
   const onClickLogout = async () => {
     try {
