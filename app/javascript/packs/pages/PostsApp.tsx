@@ -21,9 +21,11 @@ export const PostsApp = () => {
   const [filterPosts, setFilterPosts] = useState<string[]>([]);
 
   // const [currentUser, setCurrentUser] = useState<null | string>(null);
-  const [currentUserData, setCurrentUserData] = useState(null);
-
-
+  const [currentUserData, setCurrentUserData] = useState({
+    id: 0,
+    email: '',
+    name: '',
+  });
 
   const getInitialDataUrl: string = 'http://localhost:3000/initial_data/show';
       console.log('getInitialDataUrl', getInitialDataUrl);
@@ -213,9 +215,9 @@ useEffect(() => console.log(currentUserData))
   // };
   // const waiting = useDelay(200);
   // console.log('currentUserData: ', currentUserData.class);
-  // console.log('currentUserData: ', currentUserData['id']);
+  console.log('currentUserData: ', currentUserData['id']);
   
-  // console.log('currentUserData: ', currentUserData.name);
+  console.log('currentUserData: ', currentUserData.name);
 
 
   return (
@@ -251,7 +253,8 @@ useEffect(() => console.log(currentUserData))
                   <Grid>
                     <Modal.Content>
                       <div className=" flex flex-col items-center">
-                          <img src={clickedPost.picture} className="rounded-lg" />
+                        <img src={clickedPost.picture} className="rounded-lg" />
+                        {/* <span>{currentUserData.name}</span> */}
                         
                         <Divider />
                         <div className="flex-1  text-center">
