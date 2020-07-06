@@ -24,15 +24,18 @@ export const PostList = (props: any): any => {
           // entered={scaleDown.entered}
           // leaved={scaleDown.leaved}
         >
-          {props.filterPosts.map((post: any, index: number) => (
-            <Post
-              post={post}
-              likeList={props.likeList}
-              pushToLikeList={props.pushToLikeList}
-              removeFromLikeList={props.removeFromLikeList}
-              modalOpenHandler={props.modalOpenHandler}
-              index={props.index}
-            />
+          {/* {props.filterPosts.map((post: any, index: number) => ( */}
+          {props.filterPosts.map((post: any,index:number) => (
+            <div key={index} className="list">
+              <Post
+                post={post}
+                likeList={props.likeList}
+                pushToLikeList={props.pushToLikeList}
+                removeFromLikeList={props.removeFromLikeList}
+                modalOpenHandler={props.modalOpenHandler}
+                // index={index}
+              />
+            </div>
           ))}
         </StackGrid>
       </div>
