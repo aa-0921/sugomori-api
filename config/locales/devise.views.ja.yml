@@ -28,6 +28,23 @@ ja:
         updated_at: 更新日
     models:
       user: ユーザ
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "が空になっています"
+            password:
+              blank: "が空になっています"
+              too_short: "を6字以上にする必要があります"
+            current_password:
+              blank: "が空になっています"
+            email:
+              blank: "が空になっています"
+              invalid: "が正しくありません"
+              taken: "は既に使用されています。"
+            password_confirmation:
+              confirmation: "をご確認下さい"
   users:
     confirmations:
       confirmed: メールアドレスが確認できました。
