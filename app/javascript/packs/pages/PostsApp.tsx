@@ -20,29 +20,12 @@ export const PostsApp = () => {
   // 検索のfilter後の投稿の配列の定義
   const [filterPosts, setFilterPosts] = useState<string[]>([]);
 
-  // const [currentUser, setCurrentUser] = useState<null | string>(null);
-  const [currentUserData, setCurrentUserData] = useState({
-    id: 0,
-    email: '',
-    name: '',
-  });
 
-  const getInitialDataUrl: string = 'http://localhost:3000/initial_data/show';
-      console.log('getInitialDataUrl', getInitialDataUrl);
-  
-  // useEffect(() => {
 
-  // }, []);
-useEffect(() => console.log(currentUserData))
   const getAllPostUrl: string = 'http://localhost:3000/picposts';
+
   useEffect(() => {
-    FetchData(getInitialDataUrl).then((res) => {
-      setCurrentUserData(res.data);
-      console.log('getInitialDataUrl', getInitialDataUrl);
-      console.log('res.data', res.data);
-      console.log('currentUserData', currentUserData);
-      console.log('currentUserData');
-    });
+
 
     FetchData(getAllPostUrl).then((res) => {
       console.log('useEffect内！！！！！');
@@ -205,20 +188,6 @@ useEffect(() => console.log(currentUserData))
       });
   };
   // clickLike,unlike
-
-  // const useDelay = (msec: any) => {
-  //   const [waiting, setWaiting] = useState(true);
-  //   useEffect(() => {
-  //     setTimeout(() => setWaiting(false), msec);
-  //   }, []);
-  //   return waiting;
-  // };
-  // const waiting = useDelay(200);
-  // console.log('currentUserData: ', currentUserData.class);
-  console.log('currentUserData: ', currentUserData['id']);
-  
-  console.log('currentUserData: ', currentUserData.name);
-
 
   return (
     <>
