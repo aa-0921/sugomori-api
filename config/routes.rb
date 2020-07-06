@@ -2,6 +2,7 @@
 
 # require 'devise_token_auth'
 Rails.application.routes.draw do
+  get 'initial_data/show'
   # コンポーネント表示用
   root 'top#index'
 
