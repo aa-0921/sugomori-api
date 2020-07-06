@@ -2,18 +2,18 @@
 
 # require 'devise_token_auth'
 Rails.application.routes.draw do
+  # devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+  }
+
   get 'initial_data/show'
   # コンポーネント表示用
   root 'top#index'
 
   get 'pages/index'
   get 'pages/show'
-
-  # devise_for :users
-  devise_for :users, controllers: {
-    registrations: 'users/registrations',
-    sessions: 'users/sessions',
-  }
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
