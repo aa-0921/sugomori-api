@@ -33,7 +33,9 @@ export const FormikPost = () => {
     const headers = {
       'content-type': 'multipart/form-data',
     };
-    const postUrl: string = process.env.REACT_APP_API_URL_POSTS!;
+    // const postUrl: string = process.env.REACT_APP_API_URL_POSTS!;
+    const postUrl: string = 'http://localhost:3000/picposts';
+
     if (process.env.NODE_ENV !== 'production') {
       console.log('postUrl:', postUrl);
     }
@@ -100,7 +102,7 @@ export const FormikPost = () => {
           <Form onSubmit={handleSubmit}>
             <div>
               <img
-                src="http://localhost:8000/d8ccdf6e-f571-4761-852c-79752ed7b71c"
+                src=""
 
                 // src={props.post.picture}
                 // className="rounded-lg"

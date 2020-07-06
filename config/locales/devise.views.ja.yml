@@ -34,6 +34,7 @@ ja:
           attributes:
             name:
               blank: "が空になっています"
+              too_long: "が長すぎます"
             password:
               blank: "が空になっています"
               too_short: "を6字以上にする必要があります"
