@@ -5,16 +5,14 @@ import User from '../components/User';
 import { ButtonDropdown, Grid, Row, Input, Button } from '@zeit-ui/react';
 import { FetchData } from '../scripts/api/FetchData';
 
-
 export function Header() {
-
   // const [currentUserData, setCurrentUserData] = useState({
   //   id: 0,
   //   email: '',
   //   name: '',
   // })
 
-  const [currentUserData, setCurrentUserData] = useState(null)
+  const [currentUserData, setCurrentUserData] = useState(null);
   const getInitialDataUrl: string = 'http://localhost:3000/initial_data/show';
 
   useEffect(() => {
@@ -29,28 +27,6 @@ export function Header() {
 
   console.log('currentUserData', currentUserData);
 
-
-  // ログアウト
-  const onClickLogout = async () => {
-    try {
-      await User.logout;
-      User.logout();
-    } catch (e) {
-      // setErrMessage('メールアドレスかパスワードが違います');
-    }
-  };
-
-  type LoginProps = {
-  history: any;
-
-};
-
-
-  const refreshPage = (props:LoginProps) => { 
-    props.history.push('/pages/index');
-    window.location.reload(); 
-  }
-  
   return (
     <header>
       <div>
@@ -64,122 +40,97 @@ export function Header() {
                 <div>
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline">
-                      <a
-                        href="#"
-                        className="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700"
-                      >
-                        Dashboard
-                      </a>
+                      {currentUserData != null ? (
+                        <>
+                          <Link
+                            to="/"
+                            className="text-lg text-white ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                          >
+                            Home
+                          </Link>
+                          <Link
+                            to="/zeit-sample"
+                            className="text-lg text-white ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                          >
+                            Feed
+                          </Link>
+
+                          <Link
+                            to="/profilepage"
+                            className="text-lg text-white ml-4 px-3 py-2 rounded-md text-sm font-medium  hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                          >
+                            Profile
+                          </Link>
+                          <Link
+                            to="/MemberListApp"
+                            className="text-lg text-white ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                          >
+                            MemberInfo
+                          </Link>
+                        </>
+                      ) : (
+                        <>
+                          <Link
+                            to="/"
+                            className="text-lg text-white ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                          >
+                            Home
+                          </Link>
+                        </>
+                      )}
 
                       <div className="ml-3 relative">
                         <ButtonDropdown size="small">
-                          <ButtonDropdown.Item main className="bg-indigo-300">
-                            <div className="text-lg text-gray ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
-                              Setting
-                            </div>
-                            {/* <div>
-                            <button
-                              className="max-w-xs flex items-center text-sm rounded-full text-white focus:outline-none focus:shadow-solid"
-                              id="user-menu"
-                              aria-label="User menu"
-                              aria-haspopup="true"
-                            ></button>
-                          </div> */}
-                          </ButtonDropdown.Item>
-                          {/* <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg"> */}
-                          {/* <div
-                            className="py-1 rounded-md bg-white shadow-xs"
-                            role="menu"
-                            aria-orientation="vertical"
-                            aria-labelledby="user-menu"
-                          > */}
-                          <ButtonDropdown.Item>
-                            <a
-                              href="#"
-                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                              role="menuitem"
-                            >
-                              Your Profile
-                            </a>
-                          </ButtonDropdown.Item>
-                          <ButtonDropdown.Item>
-                            <a
-                              href="#"
-                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                              role="menuitem"
-                            >
-                              Settings
-                            </a>
-                          </ButtonDropdown.Item>
-                          <ButtonDropdown.Item>
-                            <a
-                              href="#"
-                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                              role="menuitem"
-                              onClick={onClickLogout}
-                            >
-                              Sign out
-                            </a>
-                          </ButtonDropdown.Item>
-                          {/* </div> */}
-                          {/* </div> */}
+                          {currentUserData != null ? (
+                            <>
+                              <ButtonDropdown.Item main className="bg-indigo-300">
+                                <div className="text-lg text-gray ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+                                  Setting
+                                </div>
+                              </ButtonDropdown.Item>
+                              <ButtonDropdown.Item>
+                                <a
+                                  href="#"
+                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                  role="menuitem"
+                                >
+                                  Your Profile
+                                </a>
+                              </ButtonDropdown.Item>
+                              <ButtonDropdown.Item>
+                                <a
+                                  href="#"
+                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                  role="menuitem"
+                                >
+                                  Settings
+                                </a>
+                              </ButtonDropdown.Item>
+                              <ButtonDropdown.Item>
+                                <a
+                                  href="/pages/index"
+                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                  role="menuitem"
+                                >
+                                  Login
+                                </a>
+                              </ButtonDropdown.Item>
+                            </>
+                          ) : (
+                            <>
+                              <ButtonDropdown.Item>
+                                <a
+                                  href="/pages/index"
+                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                  role="menuitem"
+                                >
+                                  Login
+                                </a>
+                              </ButtonDropdown.Item>
+                            </>
+                          )}
                         </ButtonDropdown>
                       </div>
-                      <Link
-                        to="/"
-                        className="text-lg text-white ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                      >
-                        Home
-                      </Link>
-                      {/* <Link
-                        to="/pages/index"
-                        onClick={()=>refreshPage}
-                        // onClick={()=>location.reload}
-                        
-                        className="text-lg text-white ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                      >
-                        Login
-                      </Link> */}
-                      <a
-                        href="/pages/index"
-                        // onClick={()=>refreshPage}
-                        // onClick={()=>location.reload}
-                        
-                        className="text-lg text-white ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                      >
-                        Login
-                      </a>
-                      
-                      <Link
-                        to="/PostsApp"
-                        className="text-lg text-white ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                      >
-                        PostsApp
-                      </Link>
-                      <Link
-                        to="/profilepage"
-                        className="text-lg text-white ml-4 px-3 py-2 rounded-md text-sm font-medium  hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                      >
-                        Profile
-                      </Link>
-                      <Link
-                        to="/MemberListApp"
-                        className="text-lg text-white ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                      >
-                        MemberInfo
-                      </Link>
-                      <Link
-                        to="/zeit-sample"
-                        className="text-lg text-white ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                      >
-                        Feed
-                      </Link>
-                      <Link
-                        to="/about"
-                        className="text-lg text-white ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                      >
-                        About
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -237,78 +188,6 @@ export function Header() {
                       />
                     </svg>
                   </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="hidden md:hidden">
-              <div className="px-2 pt-2 pb-3 sm:px-3">
-                <a
-                  href="#"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700"
-                >
-                  Dashboard
-                </a>
-                <a
-                  href="#"
-                  className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                >
-                  Team
-                </a>
-                <a
-                  href="#"
-                  className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                >
-                  Projects
-                </a>
-                <a
-                  href="#"
-                  className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                >
-                  Calendar
-                </a>
-                <a
-                  href="#"
-                  className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                >
-                  Reports
-                </a>
-              </div>
-              <div className="pt-4 pb-3 border-t border-gray-700">
-                <div className="flex items-center px-5">
-                  <div className="flex-shrink-0">
-                    <img
-                      className="h-10 w-10 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
-                    />
-                  </div>
-                  <div className="ml-3">
-                    <div className="text-base font-medium leading-none text-white">Tom Cook</div>
-                    <div className="mt-1 text-sm font-medium leading-none text-gray-400">
-                      tom@example.com
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-3 px-2">
-                  <a
-                    href="#"
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                  >
-                    Your Profile
-                  </a>
-                  <a
-                    href="#"
-                    className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                  >
-                    Settings
-                  </a>
-                  <a
-                    href="#"
-                    className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                  >
-                    Sign out
-                  </a>
                 </div>
               </div>
             </div>

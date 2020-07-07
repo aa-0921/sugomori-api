@@ -223,8 +223,6 @@ export const PostsApp = () => {
                     <Modal.Content>
                       <div className=" flex flex-col items-center">
                         <img src={clickedPost.picture} className="rounded-lg" />
-                        {/* <span>{currentUserData.name}</span> */}
-                        
                         <Divider />
                         <div className="flex-1  text-center">
                         <Link to={'/profilepage/' + clickedPost.user_id}>
