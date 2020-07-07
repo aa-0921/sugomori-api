@@ -24,7 +24,7 @@
     "@typescript-eslint/parser": "^3.4.0",
     "@zeit-ui/react": "^1.6.0-canary.2",
     "@zeit-ui/react-icons": "^1.3.0",
-    "autoprefixer": "^9.8.0",
+    "autoprefixer": "^9.8.4",
     "axios": "^0.19.2",
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",

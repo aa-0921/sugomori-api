@@ -86,11 +86,7 @@ export function Header() {
                         <ButtonDropdown size="small">
                           {currentUserData != null ? (
                             <>
-                              <ButtonDropdown.Item main className="bg-indigo-300">
-                                <div className="text-lg text-gray ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
-                                  Setting
-                                </div>
-                              </ButtonDropdown.Item>
+                              <ButtonDropdown.Item main>Setting</ButtonDropdown.Item>
                               <ButtonDropdown.Item>
                                 <a
                                   href="/users/edit"
@@ -112,26 +108,12 @@ export function Header() {
                             </>
                           ) : (
                             <>
-                              <ButtonDropdown.Item main>
-                                <div className="text-lg text-gray ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
-                                  Setting
-                                </div>
-                                <a
-                                  href="/pages/index"
-                                  className="block px-4 py-2 sm:test-sm text-gray-700 hover:bg-gray-100"
-                                  role="menuitem"
-                                >
-                                  Login
-                                </a>
+                              <ButtonDropdown.Item main>Setting</ButtonDropdown.Item>
+                              <ButtonDropdown.Item>
+                                <a href="/pages/index">Login</a>
                               </ButtonDropdown.Item>
                               <ButtonDropdown.Item>
-                                <a
-                                  href="/users/sign_in"
-                                  className="block px-4 py-2 sm:test-sm text-gray-700 hover:bg-gray-100"
-                                  role="menuitem"
-                                >
-                                  サインイン
-                                </a>
+                                <a href="/users/sign_in">サインイン</a>
                               </ButtonDropdown.Item>
                             </>
                           )}
