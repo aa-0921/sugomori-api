@@ -85,16 +85,5 @@
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "webpack-dev-server": "^3.11.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "git add"
-    ]
   }
 }
