@@ -15,12 +15,6 @@
     "allowSyntheticDefaultImports": true, // 追加
     "jsx": "react" // 追加
   },
-  "exclude": [
-    "**/*.spec.ts",
-    "node_modules",
-    "vendor",
-    "public"
-  ],
-  "compileOnSave": false,
-  "allowSyntheticDefaultImports": true
+  "exclude": ["**/*.spec.ts", "node_modules", "vendor", "public"],
+  "compileOnSave": false
 }
