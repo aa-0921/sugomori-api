@@ -113,6 +113,9 @@ export function Header() {
                           ) : (
                             <>
                               <ButtonDropdown.Item main>
+                                <div className="text-lg text-gray ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+                                  Setting
+                                </div>
                                 <a
                                   href="/pages/index"
                                   className="block px-4 py-2 sm:test-sm text-gray-700 hover:bg-gray-100"
