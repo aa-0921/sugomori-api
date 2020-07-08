@@ -5,6 +5,10 @@
   <title>SugomoriApi</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
@@ -21,6 +25,45 @@
       <%= link_to 'ログイン', new_user_session_path %>
       <% end %>
     </nav>
+    <%# ------------ %>
+    <div>
+      <nav class="bg-indigo-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <span class="font-semibold text-xl tracking-tight text-white">SUGOMORI</span>
+              </div>
+              <div>
+                <div class="hidden md:block">
+                  <div class="ml-10 flex items-baseline w-auto">
+                    <div class="flex-auto">
+                      <Link to="/" class="text-lg text-white ml-4 px-3 py-2 rounded-md sm:sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+                      Home
+                      </Link>
+                      <Link to="/" class="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+                      Feed
+                      </Link>
+                      <Link to="/profilepage" class="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium  hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+                      Profile
+                      </Link>
+                      <Link to="/MemberListApp" class="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+                      MemberInfo
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    </nav>
+    </div>
+
+
+
+    <%# ------------- %>
   </header>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
