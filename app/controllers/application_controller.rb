@@ -19,11 +19,12 @@ class ApplicationController < ActionController::Base
   #   root_path
   # end
 
-  private
+  # private
 
-  def after_sign_out_path_for(resource_or_scope)
-    p "after_sign_out_path_for"
-    root_path
-    # new_user_session_path
-  end
+  # def after_sign_out_path_for(resource_or_scope)
+  #   p "after_sign_out_path_for"
+  #   binding.pry
+  #   root_path
+  #   # new_user_session_path
+  # end
 end
