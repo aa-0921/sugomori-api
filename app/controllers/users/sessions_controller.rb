@@ -32,11 +32,11 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   # # ログアウト後のリダイレクト先
-  # def after_sign_out_path_for(resource)
-  #   p "after_sign_out_path_for"
-  #   root_path
-  #   # new_user_session_path
-  # end
+  def after_sign_out_path_for(resource)
+    p "after_sign_out_path_for"
+    root_path
+    # new_user_session_path
+  end
 
   # ログアウト後のリダイレクト先
   # def sign_out_and_redirect(resource)
