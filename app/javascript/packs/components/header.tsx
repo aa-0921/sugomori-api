@@ -83,7 +83,9 @@ export function Header() {
                         {currentUserData != null ? (
                           <>
                             <ButtonDropdown size="small">
-                              <ButtonDropdown.Item main>Settings</ButtonDropdown.Item>
+                              <ButtonDropdown.Item main>
+                                <a href="/pages/index">Settings</a>
+                              </ButtonDropdown.Item>
                               <ButtonDropdown.Item>
                                 <a
                                   href="/users/edit"
@@ -108,10 +110,10 @@ export function Header() {
                           <>
                             <ButtonDropdown size="small">
                               <ButtonDropdown.Item main>
-                                <a href="/pages/index">ログイン</a>
+                                <a href="/users/sign_in">ログイン</a>
                               </ButtonDropdown.Item>
                               <ButtonDropdown.Item>
-                                <a href="/users/sign_in">新規登録</a>
+                                <a href="/users/sign_up">新規登録</a>
                               </ButtonDropdown.Item>
                             </ButtonDropdown>
                           </>
