@@ -29,7 +29,6 @@
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <form class="flex flex-col pt-3 md:pt-8" onsubmit="event.preventDefault();">
           <div class="field flex flex-col pt-4">
-            <%# <%= f.label :email,class:"text-lg" %>
             <label for="email" class="text-lg">Email</label>
             <%= f.email_field :email ,autofocus: true, autocomplete: "email" ,:placeholder =>"your@email.com", class:"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" %>
           </div>
