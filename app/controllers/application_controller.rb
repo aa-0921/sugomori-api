@@ -3,11 +3,9 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  private
-
-  def after_sign_out_path_for(resource_or_scope)
-    root_path
-  end
+  # def after_sign_out_path_for(resource_or_scope)
+  #   root_path
+  # end
 
   protected
 
@@ -17,13 +15,15 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 
-  def after_sign_out_path_for(scope)
-    root_path
-  end
-
-  # def after_sign_out_path_for(resource)
-  #   p "after_sign_out_path_for"
+  # def after_sign_out_path_for(scope)
   #   root_path
-  #   # new_user_session_path
   # end
+
+  private
+
+  def after_sign_out_path_for(resource_or_scope)
+    p "after_sign_out_path_for"
+    root_path
+    # new_user_session_path
+  end
 end

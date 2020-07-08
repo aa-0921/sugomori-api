@@ -3,7 +3,8 @@
 class Users::SessionsController < Devise::SessionsController
   before_action :authenticate_user!
   # before_action :configure_sign_in_params, only: [:create]
-  skip_before_action :verify_signed_out_user
+  # skip_before_action :verify_signed_out_user
+  # prepend_before_action :verify_signed_out_user, only: :destroy
 
   # GET /resource/sign_in
   # def new
@@ -16,9 +17,9 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  def destroy
-    super
-  end
+  # def destroy
+  #   super
+  # end
 
   # protected
 
@@ -33,11 +34,11 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   # # ログアウト後のリダイレクト先
-  def after_sign_out_path_for(resource)
-    p "after_sign_out_path_for"
-    root_path
-    # new_user_session_path
-  end
+  # def after_sign_out_path_for(resource)
+  #   p "after_sign_out_path_for"
+  #   root_path
+  #   # new_user_session_path
+  # end
 
   # ログアウト後のリダイレクト先
   # def sign_out_and_redirect(resource)
