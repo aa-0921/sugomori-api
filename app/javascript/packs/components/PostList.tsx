@@ -25,7 +25,7 @@ export const PostList = (props: any): any => {
           // leaved={scaleDown.leaved}
         >
           {/* {props.filterPosts.map((post: any, index: number) => ( */}
-          {props.filterPosts.map((post: any,index:number) => (
+          {props.filterPosts.map((post: any, index: number) => (
             <div key={index} className="list">
               <Post
                 post={post}

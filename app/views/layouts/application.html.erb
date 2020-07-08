@@ -7,23 +7,49 @@
   <%= csp_meta_tag %>
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
+  <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
   <header>
-    <nav>
-      <% if user_signed_in? %>
-      <strong><%= link_to current_user.name, pages_show_path %></strong>
-      <%= link_to 'プロフィール変更', edit_user_registration_path %>
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :get, remote: true %>
-      <%= link_to 'Home', root_path %>
+    <div>
+      <nav class="bg-indigo-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <span class="font-semibold text-xl tracking-tight text-white">SUGOMORI</span>
+              </div>
+              <div>
+                <div class="hidden md:block">
+                  <div class="ml-10 flex items-baseline w-auto">
+                    <div class="flex-auto">
+                      <nav>
+                        <% if user_signed_in? %>
+                        <%= link_to current_user.name, pages_show_path, class: "text-xl text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700" %>
+                        <%= link_to 'プロフィール変更', edit_user_registration_path, class: "text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700" %>
+                        <%= link_to 'ログアウト', destroy_user_session_path, method: :get, class: "text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700" %>
+                        <%= link_to 'Home', root_path, class: "text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700" %>
 
-      <% else %>
-      <%= link_to 'サインアップ', new_user_registration_path %>
-      <%= link_to 'ログイン', new_user_session_path %>
-      <% end %>
-    </nav>
+                        <% else %>
+                        <%= link_to 'サインアップ', new_user_registration_path, class: "text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700" %>
+                        <%= link_to 'ログイン', new_user_session_path, class: "text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700" %>
+                        <% end %>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+
+
+    <%# ------------- %>
   </header>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
