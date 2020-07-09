@@ -40,7 +40,7 @@
     "formik": "^2.1.4",
     "html-webpack-plugin": "^4.3.0",
     "js-cookie": "^2.2.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^4.12",
     "package.json": "^2.0.1",
     "path": "^0.12.7",
     "postcss-cli": "^7.1.1",
