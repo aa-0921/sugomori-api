@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
-import User from '../components/User';
+import User from './User';
 import { ButtonDropdown, Grid, Row, Input, Button } from '@zeit-ui/react';
 import { FetchData } from '../scripts/api/FetchData';
 

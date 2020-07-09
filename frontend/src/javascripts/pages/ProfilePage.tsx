@@ -9,7 +9,7 @@ import * as Icon from '@zeit-ui/react-icons';
 import User from '../components/User';
 import { Profile } from './UserIndex';
 
-export const ProfilePage = (props: any) => {
+export const ProfilePage = () => {
   // const { params } = this.props.match;
   // const id = parseInt(params.id, 10);
   // const member = members.filter((e) => e.id === id)[0];
