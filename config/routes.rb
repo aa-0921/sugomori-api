@@ -55,4 +55,6 @@ Rails.application.routes.draw do
   get 'likes/:like_id' => 'likes#show'
 
   get 'users/token/get' => 'users#get_token'
+
+  get '*unmatched_route' => 'top#index'
 end

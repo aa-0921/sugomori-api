@@ -5,6 +5,8 @@ import { HomePage } from './components/HomePage';
 import './scss/index.scss';
 // import './App.scss'
 import { ZeitProvider, CssBaseline } from '@zeit-ui/react';
+import { ProfilePage } from '../pages/ProfilePage';
+
 
 // export function App() {
 //   return (
@@ -16,10 +18,12 @@ import { ZeitProvider, CssBaseline } from '@zeit-ui/react';
 // }
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <ZeitProvider>
-      <CssBaseline />
-      <HomePage />
-    </ZeitProvider>,
+      <ProfilePage />,
+
+    // <ZeitProvider>
+    //   <CssBaseline />
+    //   <HomePage />
+    // </ZeitProvider>,
     document.body.appendChild(document.createElement('div')),
   );
 });
