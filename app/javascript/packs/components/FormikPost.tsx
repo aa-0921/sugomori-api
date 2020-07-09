@@ -80,6 +80,10 @@ export const FormikPost = () => {
   //   picpost_image: '',
   //   constent: '',
   // };
+  const fileInputStyle = {
+    width: '400px',
+  };
+
   return (
     <Formik
       initialValues={{ picture: '', content: '', user_id: 0 }}
@@ -111,18 +115,11 @@ export const FormikPost = () => {
               <label>投稿画像</label>
               <React.Fragment>
                 <Field
+                  className={fileInputStyle}
+                  // style={fileInputStyle}
                   type="file"
-                  // name="picture"
                   id="file"
                   name="file"
-                  // value={values.picture}
-                  // onChange={(e: any) => setImage(e, setFieldValue)}
-                  // onChange={(event: any) => {
-                  //   setFieldValue(
-                  //     'file',
-                  //     event.currentTarget.files !== null ? event.currentTarget.files[0] : null,
-                  //   );
-                  // }}
                   onChange={(e: any) => {
                     setImage(e, setFieldValue);
 
@@ -135,6 +132,7 @@ export const FormikPost = () => {
 
                     reader.readAsDataURL(file);
                   }}
+                  render={({ field }) => <input {...field} type="file" style={fileInputStyle} />}
                 />
                 <Field type="hidden" name="post_image" />
               </React.Fragment>

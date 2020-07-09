@@ -7,24 +7,15 @@ import { FetchData } from '../scripts/api/FetchData';
 import { Grid, Row, Note, Button, Divider } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
 import User from '../components/User';
+import { Profile } from './UserIndex';
 
-// export const ProfilePage = (props: any) => {
-const ProfilePage = (props: any) => {
+export const ProfilePage = (props: any) => {
   // const { params } = this.props.match;
   // const id = parseInt(params.id, 10);
   // const member = members.filter((e) => e.id === id)[0];
   return (
     <div>
       <h2>ProfilePage</h2>
-      <p>{`history: ${JSON.stringify(props.history)}`}</p>
-      <p>{`location: ${JSON.stringify(props.location)}`}</p>
-      <p>{`match: ${JSON.stringify(props.match)}`}</p>
-      <div>{/* {id}: {member.name} - {member.info} */}</div>
-      <hr />
-      <div>{/* <MemberList /> */}</div>
-      <div>
-        <Link to="/">TOP</Link>
-      </div>
     </div>
     // <section className="text-gray-700 body-font">
     //   <div className="container px-5 py-24 mx-auto flex flex-col">
@@ -97,4 +88,4 @@ const ProfilePage = (props: any) => {
     // </section>
   );
 };
-export default ProfilePage;
+// export default ProfilePage;

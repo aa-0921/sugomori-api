@@ -16,11 +16,11 @@ export const MemberListApp = () => {
   const currentUserId = 1;
   const getFollowListUrl: string =
     process.env.REACT_APP_API_URL_USERS + '/follow_list/' + currentUserId;
-  useEffect(() => {
-    FetchData(getFollowListUrl).then((res) => {
-      setFollowUsers(res.data.map((el: any) => el.id));
-    });
-  }, []);
+  // useEffect(() => {
+  //   FetchData(getFollowListUrl).then((res) => {
+  //     setFollowUsers(res.data.map((el: any) => el.id));
+  //   });
+  // }, []);
 
   const pushToFollowUsers = (target: number) => {
     console.log(target, 'ma');
@@ -48,9 +48,9 @@ export const MemberListApp = () => {
   // };
   const url: string = process.env.REACT_APP_API_URL_USERS!;
 
-  useEffect(() => {
-    FetchData(url).then((res) => setFetchUsers(res.data));
-  }, []);
+  // useEffect(() => {
+  //   FetchData(url).then((res) => setFetchUsers(res.data));
+  // }, []);
   return (
     <>
       <Router>
