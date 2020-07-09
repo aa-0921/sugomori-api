@@ -14,55 +14,38 @@ import * as Icon from '@zeit-ui/react-icons';
 
 export const PostsApp = () => {
   // 全投稿の配列のState定義
-  // const [fetchPosts, setFetchPosts] = useState<string[]>([]);
   const [fetchPosts, setFetchPosts] = useState<string[]>([]);
   const [initialFetchPosts, setInitialFetchPosts] = useState<string[]>([]);
   // 検索のfilter後の投稿の配列の定義
   const [filterPosts, setFilterPosts] = useState<string[]>([]);
 
-
-
   const getAllPostUrl: string = 'http://localhost:3000/picposts';
 
   useEffect(() => {
-
-
     FetchData(getAllPostUrl).then((res) => {
-      console.log('useEffect内！！！！！');
-
       setFetchPosts(res.data);
       setInitialFetchPosts(res.data);
     });
 
-      FetchData(getLikeListUrl).then((res) => {
+    FetchData(getLikeListUrl).then((res) => {
       setLikeList(res.data.map((like: any) => like.id));
     });
   }, []);
 
-    // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
+  // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
   const currentUserId = 1;
 
   // const getLikeListUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like_list/' + currentUserId;
-  const getLikeListUrl: string ='http://localhost:3000/picposts/like_list/' + currentUserId;
-  
-
-
+  const getLikeListUrl: string = 'http://localhost:3000/picposts/like_list/' + currentUserId;
 
   useEffect(() => {
     setFilterPosts(fetchPosts);
   }, [fetchPosts]);
 
   const filterList = (e: any) => {
-    // if (!e.target.value) {
-    //   setFetchPosts(initialFetchPosts);
-    //   return;
-    // }
     const updateList = initialFetchPosts.filter((post: any) => {
-      console.log('post.content', post.content);
       return post.content.search(e.target.value) !== -1;
     });
-    console.log('updateList', updateList);
-
     setFetchPosts(updateList);
   };
   console.log('fetchPosts', fetchPosts);
@@ -72,6 +55,7 @@ export const PostsApp = () => {
     id: 0,
     name: '',
   });
+
   const [clickedPost, setClickedPost] = useState({
     id: 0,
     picture: '',
@@ -79,36 +63,34 @@ export const PostsApp = () => {
     user_id: 0,
   });
 
+  // modal,open,close
   const [modalOpen, setModalOpen] = useState(false);
   const modalOpenHandler = (post: any) => {
     setClickedPost(post);
-    console.log('post: ', clickedPost.id);
-    console.log('post: ', clickedPost.picture);
-
     setModalOpen(true);
   };
   const closeHandler = () => {
     setModalOpen(false);
-    console.log('modal-closed');
   };
-  // clickedPost.idからそのpostの投稿者を取得
 
-  // console.log('PostsApp.tsx44行目:', getClickedPostUserUrl);
-
-  // console.log('getClickedPostUserUrl:', getClickedPostUserUrl);
-  console.log('clickedPost.user_id:', clickedPost.user_id);
   const getClickedPostUserUrl: string = 'http://localhost:3000/users/' + clickedPost.user_id;
-  
+  console.log('getClickedPostUserUrl', getClickedPostUserUrl);
+
   useEffect(() => {
-    if (clickedPost.user_id = 0) {
+    if (clickedPost.user_id != 0) {
+      console.log('clickedPost.user_id', clickedPost.user_id);
+      console.log('getClickedPostUserUrl', getClickedPostUserUrl);
+
       FetchData(getClickedPostUserUrl).then((res) => setClickedPostUser(res.data));
-    } 
+      console.log('clickedPostUser', clickedPostUser);
+    }
   }, [clickedPost]);
+
   console.log('post: ', clickedPost.id);
+  console.log('getClickedPostUserUrl', getClickedPostUserUrl);
 
   console.log('clickedPostUser.name: ', clickedPostUser.name);
   console.log('clickedPostUser.id: ', clickedPostUser.id);
-
 
   const pushToLikeList = (picpost_id: number) => {
     console.log(picpost_id, 'ma');
@@ -134,7 +116,6 @@ export const PostsApp = () => {
     const method = 'PUT';
     // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like/' + postId;
     const postUrl: string = 'http://localhost:3000/picposts/like/' + postId;
-
 
     await fetch(postUrl, { method, body })
       .then((response) => {
@@ -164,9 +145,8 @@ export const PostsApp = () => {
     };
     const body = JSON.stringify(obj);
     const method = 'PUT';
-          // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/unlike/' + postId;
+    // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/unlike/' + postId;
     const postUrl: string = 'http://localhost:3000/picposts/unlike/' + postId;
-
 
     await fetch(postUrl, { method, body })
       .then((response) => {
@@ -203,17 +183,16 @@ export const PostsApp = () => {
               <form action="">
                 <input type="text" placeholder="search" onChange={filterList} />
               </form>
-
               {/* {!waiting && ( */}
-                <PostList
-                  fetchPosts={fetchPosts}
-                  likeList={likeList}
-                  pushToLikeList={pushToLikeList}
-                  removeFromLikeList={removeFromLikeList}
-                  modalOpenHandler={modalOpenHandler}
-                  filterList={filterList}
-                  filterPosts={filterPosts}
-                />
+              <PostList
+                fetchPosts={fetchPosts}
+                likeList={likeList}
+                pushToLikeList={pushToLikeList}
+                removeFromLikeList={removeFromLikeList}
+                modalOpenHandler={modalOpenHandler}
+                filterList={filterList}
+                filterPosts={filterPosts}
+              />
               )
             </div>
             <Modal width="35rem" open={modalOpen} onClose={closeHandler}>
@@ -225,9 +204,9 @@ export const PostsApp = () => {
                         <img src={clickedPost.picture} className="rounded-lg" />
                         <Divider />
                         <div className="flex-1  text-center">
-                        <Link to={'/profilepage/' + clickedPost.user_id}>
-                          <span>{clickedPostUser.name}</span>
-                        </Link>
+                          <Link to={'/profilepage/' + clickedPost.user_id}>
+                            <span>{clickedPostUser.name}</span>
+                          </Link>
                           <Link to={'/profilepage/' + clickedPost.id}>
                             &emsp; {clickedPost.content}&emsp;
                           </Link>
