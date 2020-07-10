@@ -17,10 +17,6 @@ export const FormikPost = () => {
   //   content: '',
   // };
   const createPicpost = async (postFormData: any) => {
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('postFormData:', postFormData);
-    }
-
     const csrf = sessionStorage.getItem('X-CSRF-Token');
     const obj = {
       'X-CSRF-Token': csrf,
@@ -33,19 +29,17 @@ export const FormikPost = () => {
     const headers = {
       'content-type': 'multipart/form-data',
     };
-    // const postUrl: string = process.env.REACT_APP_API_URL_POSTS!;
     const postUrl: string = 'http://localhost:3000/picposts';
 
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('postUrl:', postUrl);
-    }
     await axios.post(postUrl, body, { headers });
   };
   const setImage = (e: any, setFieldValue: any) => {
     const canvas: any = document.getElementById('canvas');
     console.log('canvas:', canvas);
-
-    const ctx = canvas!.getContext('2d');
+    if (canvas == null) {
+      return
+    }
+    const ctx = canvas.getContext('2d');
     const maxW = 250;
     const maxH = 250;
 
@@ -108,9 +102,9 @@ export const FormikPost = () => {
               <img
                 src=""
 
-                // src={props.post.picture}
-                // className="rounded-lg"
-                // onClick={() => props.modalOpenHandler(props.post)}
+              // src={props.post.picture}
+              // className="rounded-lg"
+              // onClick={() => props.modalOpenHandler(props.post)}
               />
               <label>投稿画像</label>
               <React.Fragment>

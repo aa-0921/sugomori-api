@@ -1,11 +1,10 @@
-require('dotenv').config();
-import React from 'react';
+import * as React from 'react';
 import { UserList } from './UserList';
 import { Spacer } from '@zeit-ui/react';
 
 export const MemberList = (props: any): any => {
   return (
-    <>
+    <React.Fragment>
       <Spacer y={1.5} />
       <div>
         {props.fetchUsers.map((user: any) => (
@@ -17,6 +16,6 @@ export const MemberList = (props: any): any => {
           />
         ))}
       </div>
-    </>
+    </React.Fragment>
   );
 };

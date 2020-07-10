@@ -3,10 +3,6 @@ import { Grid, Row, Note, Button } from '@zeit-ui/react';
 
 export const Profile = () => {
   const clickFollowUser = async (followUserId: any) => {
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('followUserId:', followUserId);
-    }
-
     const csrf = sessionStorage.getItem('X-CSRF-Token');
     const obj = {
       followUserId: followUserId,
@@ -18,10 +14,8 @@ export const Profile = () => {
     const headers = {
       'Content-Type': 'application/json',
     };
-    const postUrl: string = process.env.REACT_APP_API_URL_POSTS!;
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('postUrl:', postUrl);
-    }
+    const postUrl: string = '/picposts';
+
     await fetch(postUrl, { method, headers, body });
   };
   return (

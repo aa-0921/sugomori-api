@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { FetchData } from '../api/FetchData';
+import * as React from 'react';
+import { useState, useEffect } from 'react';
+
+import { FetchData } from '../api/FetchData'
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { PostList } from '../components/PostList';
-import User from '../components/User';
+
 import { FormikPost } from '../components/FormikPost';
 
 import { Modal, Button, Grid, Divider } from '@zeit-ui/react';
-
-require('dotenv').config();
 
 import * as Icon from '@zeit-ui/react-icons';
 
 export const PostsApp = () => {
   // 全投稿の配列のState定義
-  const [fetchPosts, setFetchPosts] = useState<string[]>([]);
-  const [initialFetchPosts, setInitialFetchPosts] = useState<string[]>([]);
+  const [fetchPosts, setFetchPosts] = useState([]);
+  const [initialFetchPosts, setInitialFetchPosts] = useState([]);
   // 検索のfilter後の投稿の配列の定義
-  const [filterPosts, setFilterPosts] = useState<string[]>([]);
+  const [filterPosts, setFilterPosts] = useState([]);
 
   const getAllPostUrl: string = 'http://localhost:3000/picposts';
 
@@ -35,7 +35,6 @@ export const PostsApp = () => {
   // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
   const currentUserId = 1;
 
-  // const getLikeListUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like_list/' + currentUserId;
   const getLikeListUrl: string = 'http://localhost:3000/picposts/like_list/' + currentUserId;
 
   useEffect(() => {
@@ -50,7 +49,7 @@ export const PostsApp = () => {
   };
   console.log('fetchPosts', fetchPosts);
 
-  const [likeList, setLikeList] = useState<number[]>([]);
+  const [likeList, setLikeList] = useState([]);
   const [clickedPostUser, setClickedPostUser] = useState({
     id: 0,
     name: '',
@@ -109,7 +108,8 @@ export const PostsApp = () => {
   const onClickLike = async (postId: any) => {
     const csrf = sessionStorage.getItem('X-CSRF-Token');
     const obj = {
-      current_user_id: User.get('currentUserId'),
+      // 一旦user_id 1で固定
+      current_user_id: 1,
       'X-CSRF-Token': csrf,
     };
     const body = JSON.stringify(obj);
@@ -125,27 +125,21 @@ export const PostsApp = () => {
 
           pushToLikeList(clickedPost.id);
         } else {
-          if (process.env.NODE_ENV !== 'production') {
-            console.log('いいね失敗');
-          }
           throw new Error();
         }
       })
-      .catch((error) => {
-        if (process.env.NODE_ENV !== 'production') {
-          console.log('いいね失敗');
-        }
-      });
+      .catch((error) => { });
   };
   const onClickUnLike = async (postId: any) => {
     const csrf = sessionStorage.getItem('X-CSRF-Token');
     const obj = {
-      current_user_id: User.get('currentUserId'),
+      // 一旦user_id 1で固定
+      current_user_id: 1,
       'X-CSRF-Token': csrf,
     };
     const body = JSON.stringify(obj);
     const method = 'PUT';
-    // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/unlike/' + postId;
+
     const postUrl: string = 'http://localhost:3000/picposts/unlike/' + postId;
 
     await fetch(postUrl, { method, body })
@@ -155,22 +149,15 @@ export const PostsApp = () => {
         if (response.status == 200) {
           removeFromLikeList(clickedPost.id);
         } else {
-          if (process.env.NODE_ENV !== 'production') {
-            console.log('いいね失敗');
-          }
           throw new Error();
         }
       })
-      .catch((error) => {
-        if (process.env.NODE_ENV !== 'production') {
-          console.log('いいね失敗');
-        }
-      });
+      .catch((error) => { });
   };
   // clickLike,unlike
 
   return (
-    <>
+    <React.Fragment>
       <Router>
         <div>
           {/* <Show /> */}
@@ -196,7 +183,7 @@ export const PostsApp = () => {
               )
             </div>
             <Modal width="35rem" open={modalOpen} onClose={closeHandler}>
-              <>
+              <React.Fragment>
                 <Grid.Container justify="center">
                   <Grid>
                     <Modal.Content>
@@ -222,17 +209,17 @@ export const PostsApp = () => {
                               UnLike
                             </Button>
                           ) : (
-                            <Button
-                              type="success"
-                              size="mini"
-                              auto
-                              ghost
-                              onClick={() => onClickLike(clickedPost.id)}
-                            >
-                              <Icon.Heart size={8} />
+                              <Button
+                                type="success"
+                                size="mini"
+                                auto
+                                ghost
+                                onClick={() => onClickLike(clickedPost.id)}
+                              >
+                                <Icon.Heart size={8} />
                               Like
-                            </Button>
-                          )}
+                              </Button>
+                            )}
                         </div>
                       </div>
                     </Modal.Content>
@@ -241,7 +228,7 @@ export const PostsApp = () => {
                 <Modal.Action passive onClick={() => setModalOpen(false)}>
                   Cancel
                 </Modal.Action>
-              </>
+              </React.Fragment>
             </Modal>
           </div>
           <Switch>
@@ -250,6 +237,6 @@ export const PostsApp = () => {
           </Switch>
         </div>
       </Router>
-    </>
+    </React.Fragment>
   );
 };

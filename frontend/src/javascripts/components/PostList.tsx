@@ -1,14 +1,15 @@
-import React from 'react';
+import * as React from 'react';
+
 import { Post } from './Post';
 import { Spacer } from '@zeit-ui/react';
-import sizeMe from 'react-sizeme';
+// import sizeMe from 'react-sizeme';
 // @ts-ignore
 import StackGrid, { transitions } from 'react-stack-grid';
 
 // const { scaleDown } = transitions;
 export const PostList = (props: any): any => {
   return (
-    <>
+  <React.Fragment>
       <Spacer y={1.5} />
       <div>
         <StackGrid
@@ -39,6 +40,6 @@ export const PostList = (props: any): any => {
           ))}
         </StackGrid>
       </div>
-    </>
+  </React.Fragment>
   );
 };
