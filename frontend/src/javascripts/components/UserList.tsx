@@ -1,10 +1,9 @@
-require('dotenv').config();
+import * as React from 'react';
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
 import { Grid, Row, Note, Button, Divider, Spacer } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
-import User from './User';
 
 export const UserList = (props: any) => {
   const onClickFollow = async (userId: any) => {
@@ -15,7 +14,7 @@ export const UserList = (props: any) => {
     };
     const body = JSON.stringify(obj);
     const method = 'PUT';
-    const postUrl: string = process.env.REACT_APP_API_URL_USERS + '/follow/' + userId;
+    const postUrl: string = '/users/follow/' + userId;
 
     await fetch(postUrl, { method, body })
       .then((response) => {
@@ -24,17 +23,10 @@ export const UserList = (props: any) => {
         if (response.status == 200) {
           props.pushToFollowUsers(props.user.id);
         } else {
-          if (process.env.NODE_ENV !== 'production') {
-            console.log('投稿失敗');
-          }
           throw new Error();
         }
       })
-      .catch((error) => {
-        if (process.env.NODE_ENV !== 'production') {
-          console.log('投稿失敗');
-        }
-      });
+      .catch((error) => { });
   };
   const onClickUnFollow = async (userId: any) => {
     const obj = {
@@ -43,7 +35,7 @@ export const UserList = (props: any) => {
 
     const body = JSON.stringify(obj);
     const method = 'PUT';
-    const postUrl: string = process.env.REACT_APP_API_URL_USERS + '/unfollow/' + userId;
+    const postUrl: string = '/users/unfollow/' + userId;
 
     await fetch(postUrl, { method, body })
       .then((response) => {
@@ -52,23 +44,16 @@ export const UserList = (props: any) => {
         if (response.status == 200) {
           props.removeFromFollowUsers(props.user.id);
         } else {
-          if (process.env.NODE_ENV !== 'production') {
-            console.log('投稿失敗');
-          }
           throw new Error();
         }
       })
-      .catch((error) => {
-        if (process.env.NODE_ENV !== 'production') {
-          console.log('投稿失敗');
-        }
-      });
+      .catch((error) => { });
   };
   // var listyle = {
   //   list-style-type: none;
   // };
   return (
-    <>
+    <React.Fragment>
       <Row>
         <div className="flex items-center">
           <div className="flex-1  text-center">
@@ -87,22 +72,23 @@ export const UserList = (props: any) => {
                   UnFollow
                 </Button>
               ) : (
-                <Button
-                  type="success"
-                  size="small"
-                  auto
-                  ghost
-                  onClick={() => onClickFollow(props.user.id)}
-                >
-                  <Icon.Eye size={16} />
+                  <Button
+                    type="success"
+                    size="small"
+                    auto
+                    ghost
+                    onClick={() => onClickFollow(props.user.id)}
+                  >
+                    <Icon.Eye size={16} />
                   Follow
-                </Button>
-              )}
+                  </Button>
+                )}
             </li>{' '}
           </div>
         </div>
       </Row>
       <Divider />
-    </>
+    </React.Fragment>
+
   );
 };

@@ -1,21 +1,16 @@
-require('dotenv').config();
+
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import { FetchData } from '../scripts/api/FetchData';
-import { Grid, Row, Note, Button, Divider } from '@zeit-ui/react';
-import * as Icon from '@zeit-ui/react-icons';
-import { Number } from 'core-js';
 import { MemberList } from '../components/memberList';
 
 export const MemberListApp = () => {
   const [fetchUsers, setFetchUsers] = useState([]);
-  const [followUsers, setFollowUsers] = useState<number[]>([]);
+  const [followUsers, setFollowUsers] = useState([]);
 
   // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
   const currentUserId = 1;
-  const getFollowListUrl: string =
-    process.env.REACT_APP_API_URL_USERS + '/follow_list/' + currentUserId;
+  const getFollowListUrl: string = `/users/follow_list/${currentUserId}`;
   // useEffect(() => {
   //   FetchData(getFollowListUrl).then((res) => {
   //     setFollowUsers(res.data.map((el: any) => el.id));
@@ -46,13 +41,13 @@ export const MemberListApp = () => {
   //     </div>
   //   );
   // };
-  const url: string = process.env.REACT_APP_API_URL_USERS!;
+  const url: string = '/users';
 
   // useEffect(() => {
   //   FetchData(url).then((res) => setFetchUsers(res.data));
   // }, []);
   return (
-    <>
+    <React.Fragment>
       <Router>
         <div>
           {/* <Show /> */}
@@ -71,6 +66,6 @@ export const MemberListApp = () => {
           </Switch>
         </div>
       </Router>
-    </>
+    </React.Fragment>
   );
 };

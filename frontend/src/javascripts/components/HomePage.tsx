@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
+
+// import React, { useState, useEffect } from 'react';
 
 import { Home } from '../pages/Home';
 import { Pickup } from '../pages/Pickup';
@@ -9,7 +11,7 @@ import { About } from '../pages/About';
 import { PostsApp } from '../pages/PostsApp';
 import { ProfilePage } from '../pages/ProfilePage';
 import { MemberListApp } from '../pages/MemberListApp';
-import { FetchData } from '../scripts/api/FetchData';
+// import { FetchData } from '../api/FetchData'
 // import { MemberListApp } from '../pages/MemberListApp';
 
 export const HomePage = () => {

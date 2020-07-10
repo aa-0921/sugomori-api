@@ -1,9 +1,6 @@
 import * as React from 'react';
 
-import '../scss/index.scss';
 
-// import '../../public/style.css';
-// css / tailwind.css;
 
 export function About() {
   return (

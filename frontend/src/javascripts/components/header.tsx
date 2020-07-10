@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
+import { useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
-import User from './User';
 import { ButtonDropdown, Grid, Row, Input, Button } from '@zeit-ui/react';
-import { FetchData } from '../scripts/api/FetchData';
+import { FetchData } from '../api/FetchData';
 
 export function Header() {
   // const [currentUserData, setCurrentUserData] = useState({
@@ -42,7 +42,7 @@ export function Header() {
                     <div className="ml-10 flex items-baseline w-auto">
                       <div className="flex-auto">
                         {currentUserData != null ? (
-                          <>
+                          <React.Fragment>
                             <Link
                               to="/"
                               className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
@@ -67,21 +67,21 @@ export function Header() {
                             >
                               MemberInfo
                             </Link>
-                          </>
+                          </React.Fragment>
                         ) : (
-                          <>
-                            <Link
-                              to="/"
-                              className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                            >
-                              Home
+                            <React.Fragment>
+                              <Link
+                                to="/"
+                                className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                              >
+                                Home
                             </Link>
-                          </>
-                        )}
+                            </React.Fragment>
+                          )}
                       </div>
                       <div className="flex-auto float-right">
                         {currentUserData != null ? (
-                          <>
+                          <React.Fragment>
                             <ButtonDropdown size="small">
                               <ButtonDropdown.Item main>
                                 <a href="/pages/index">Settings</a>
@@ -105,19 +105,19 @@ export function Header() {
                                 </a>
                               </ButtonDropdown.Item>
                             </ButtonDropdown>
-                          </>
+                          </React.Fragment>
                         ) : (
-                          <>
-                            <ButtonDropdown size="small">
-                              <ButtonDropdown.Item main>
-                                <a href="/users/sign_in">ログイン</a>
-                              </ButtonDropdown.Item>
-                              <ButtonDropdown.Item>
-                                <a href="/users/sign_up">新規登録</a>
-                              </ButtonDropdown.Item>
-                            </ButtonDropdown>
-                          </>
-                        )}
+                            <React.Fragment>
+                              <ButtonDropdown size="small">
+                                <ButtonDropdown.Item main>
+                                  <a href="/users/sign_in">ログイン</a>
+                                </ButtonDropdown.Item>
+                                <ButtonDropdown.Item>
+                                  <a href="/users/sign_up">新規登録</a>
+                                </ButtonDropdown.Item>
+                              </ButtonDropdown>
+                            </React.Fragment>
+                          )}
                       </div>
                     </div>
                   </div>
