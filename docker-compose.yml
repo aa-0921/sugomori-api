@@ -8,9 +8,6 @@ services:
       - '3000:3000'
     command: |
       /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    environment:
-      WEBPACKER_DEV_SERVER_HOST: webpacker
-      WEBPACKER_DEV_SERVER_PUBLIC: 0.0.0.0:3035
     volumes:
       - .:/sugomori-api
     depends_on:
@@ -19,6 +16,8 @@ services:
     image: postgres:9.5.18
     environment:
       POSTGRES_PASSWORD: password
+    volumes:
+      - ./database:/var/lib/postgresql
 
 volumes:
   dbdata:
