@@ -9,12 +9,10 @@ import { ZeitProvider, CssBaseline } from '@zeit-ui/react';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    // <ZeitProvider>
-    // <CssBaseline />
-    // <HomePage />,
-    <PostsApp />,
-
-    // </ZeitProvider>,
+    <ZeitProvider>
+      <CssBaseline />
+      <HomePage />,{/* // <PostsApp />, */}
+    </ZeitProvider>,
     document.body.appendChild(document.createElement('div')),
   );
 });
