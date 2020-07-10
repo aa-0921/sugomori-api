@@ -5,6 +5,9 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 module.exports = [
   {
     mode: 'none',
+    resolve: {
+      extensions: ['.js', '.jsx'],
+    },
     entry: {
       application: './src/javascripts/application.tsx',
     },
@@ -16,12 +19,35 @@ module.exports = [
       rules: [
         {
           test: /\.(js|jsx|tsx)$/,
+          // test: /\.js$|tsx/,
           exclude: /node_modules/,
-          loader: 'babel-loader',
-          query: {
-            presets: ['es2015', 'react'],
-          },
+          use: [
+            {
+              loader: 'babel-loader',
+              query: {
+                presets: [
+                  // '@babel/preset-env',
+                  'es2015',
+                  'react',
+                ],
+              },
+            },
+          ],
         },
+        {
+          test: /\.(css|scss)$/,
+          use: ['style-loader'],
+        },
+        {
+          // test: /\.ts$/,
+          test: /\.(js|jsx|tsx)$/,
+          loader: 'ts-loader',
+        },
+        { test: /\.css$/, loader: 'style!css' },
+        { test: /\.scss$/, loader: 'style-loader!css-loader' },
+        { test: /\.(png|jpg|jpeg|gif|woff)$/, loader: 'url?limit=8192' },
+        { test: /\.(otf|eot|ttf)$/, loader: 'file?prefix=font/' },
+        { test: /\.svg$/, loader: 'file' },
       ],
     },
     plugins: [new CaseSensitivePathsPlugin()],
@@ -40,6 +66,7 @@ module.exports = [
           test: /\.scss$/,
           use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
         },
+        { test: /\.css$/, loader: 'style-loader!css-loader' },
       ],
     },
     plugins: [

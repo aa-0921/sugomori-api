@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FetchData } from '../scripts/api/FetchData';
+import { FetchData } from '../api/FetchData';
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { PostList } from '../components/PostList';

@@ -9,10 +9,11 @@ import { About } from '../pages/About';
 import { PostsApp } from '../pages/PostsApp';
 import { ProfilePage } from '../pages/ProfilePage';
 import { MemberListApp } from '../pages/MemberListApp';
-import { FetchData } from '../scripts/api/FetchData';
+// import { FetchData } from '../scripts/api/FetchData';
 // import { MemberListApp } from '../pages/MemberListApp';
 
 export const HomePage = () => {
+  // function HomePage() {
   // interface ISquareProps {
   //     id: number,
   //     email: string,
@@ -60,3 +61,4 @@ export const HomePage = () => {
     </BrowserRouter>
   );
 };
+// export default HomePage;

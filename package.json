@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "@types/node": "^14.0.20",
+    "@zeit-ui/react": "^1.8.0-canary.4",
+    "autoprefixer": "^9.8.4",
+    "file-loader": "^6.0.0",
+    "postcss-cli": "^7.1.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "sass-loader": "^9.0.2",
+    "tailwindcss": "^1.4.6",
+    "url-loader": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.41",
+    "@types/react-dom": "^16.9.8"
+  }
+}

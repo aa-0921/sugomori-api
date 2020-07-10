@@ -1,27 +1,19 @@
 import * as React from 'react';
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 
 import { HomePage } from './components/HomePage';
-import './scss/index.scss';
-// import './App.scss'
-import { ZeitProvider, CssBaseline } from '@zeit-ui/react';
-import { ProfilePage } from '../javascripts/pages/ProfilePage';
+import '../stylesheets/scss/index.scss';
+import { PostsApp } from '../javascripts/pages/PostsApp';
 
-// export function App() {
-//   return (
-//     <ZeitProvider>
-//       <CssBaseline />
-//       <HomePage />
-//     </ZeitProvider>
-//   );
-// }
+import { ZeitProvider, CssBaseline } from '@zeit-ui/react';
+
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <ProfilePage />,
-
     // <ZeitProvider>
-    //   <CssBaseline />
-    //   <HomePage />
+    // <CssBaseline />
+    // <HomePage />,
+    <PostsApp />,
+
     // </ZeitProvider>,
     document.body.appendChild(document.createElement('div')),
   );

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import User from './User';
 import { ButtonDropdown, Grid, Row, Input, Button } from '@zeit-ui/react';
-import { FetchData } from '../scripts/api/FetchData';
+import { FetchData } from '../api/FetchData';
 
 export function Header() {
   // const [currentUserData, setCurrentUserData] = useState({
