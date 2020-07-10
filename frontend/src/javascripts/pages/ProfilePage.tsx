@@ -1,18 +1,6 @@
 // import { Grid, Row, Note, Button } from '@zeit-ui/react';
-<<<<<<< HEAD
-require('dotenv').config();
-
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import { FetchData } from '../api/FetchData';
-import { Grid, Row, Note, Button, Divider } from '@zeit-ui/react';
-import * as Icon from '@zeit-ui/react-icons';
-import User from '../components/User';
-import { Profile } from './UserIndex';
-=======
 import * as React from 'react';
-import { useState } from 'react';
->>>>>>> fix/webpack-errors
+
 
 export const ProfilePage = () => {
   // const { params } = this.props.match;
