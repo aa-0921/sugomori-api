@@ -67171,7 +67171,8 @@ var UserList = exports.UserList = function UserList(props) {
   var onClickFollow = async function onClickFollow(userId) {
     var csrf = sessionStorage.getItem('X-CSRF-Token');
     var obj = {
-      current_user_id: User.get('currentUserId'),
+      // 一時的にuser_idを1に
+      current_user_id: 1,
       'X-CSRF-Token': csrf
     };
     var body = JSON.stringify(obj);
@@ -67190,7 +67191,9 @@ var UserList = exports.UserList = function UserList(props) {
   };
   var onClickUnFollow = async function onClickUnFollow(userId) {
     var obj = {
-      current_user_id: User.get('currentUserId')
+
+      // 一時的にuser_idを1に
+      current_user_id: 1
     };
 
     var body = JSON.stringify(obj);

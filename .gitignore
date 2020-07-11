@@ -40,3 +40,6 @@ yarn-debug.log*
 .yarn-integrity
 
 /frontend/node_modules/
+
+/app/assets/javascripts/application.js
+/app/assets/stylesheets/application.scss
