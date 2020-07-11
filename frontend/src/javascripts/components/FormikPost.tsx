@@ -7,7 +7,7 @@ import { Input, Spacer } from '@zeit-ui/react';
 
 
 export const FormikPost = () => {
-  const [postImage, setPostImage] = useState('');
+  // const [postImage, setPostImage] = useState('');
 
   // type bodyProps = {
   //   picture: string;
@@ -18,14 +18,8 @@ export const FormikPost = () => {
   //   picture: picpostImage,
   //   content: '',
   // };
-  const createPicpost = async (postFormData: any) => {
-    // const csrf = sessionStorage.getItem('X-CSRF-Token');
-    const obj = {
-      // 'X-CSRF-Token': csrf,
-      postFormData: postFormData,
-    };
-    const body = JSON.stringify(obj);
-    // const method = 'POST';
+  const createPicpost = async (body: any) => {
+
     const headers = {
       'content-type': 'multipart/form-data',
     };
@@ -35,31 +29,27 @@ export const FormikPost = () => {
     await axios.post(postUrl, body, { headers });
   };
   const setImage = (e: any, setFieldValue: any) => {
-    const canvas: any = document.getElementById('canvas');
-    console.log('canvas:', canvas);
-    if (canvas == null) {
-      return
-    }
-    const ctx = canvas.getContext('2d');
-    const maxW = 250;
-    const maxH = 250;
+    let canvas: any = document.getElementById('canvas');
+    let ctx = canvas.getContext('2d');
+    let maxW = 250;
+    let maxH = 250;
 
-    const img = new Image();
+    let img = new Image();
     img.onload = () => {
-      const iw = img.width;
-      const ih = img.height;
-      const scale = Math.min(maxW / iw, maxH / ih);
-      const iwScaled = iw * scale;
-      const ihScaled = ih * scale;
+      let iw = img.width;
+      let ih = img.height;
+      let scale = Math.min(maxW / iw, maxH / ih);
+      let iwScaled = iw * scale;
+      let ihScaled = ih * scale;
       canvas.width = iwScaled;
       canvas.height = ihScaled;
       ctx.drawImage(img, 0, 0, iwScaled, ihScaled);
       const resizeData = canvas.toDataURL('image/jpeg', 0.5);
-      setPostImage(resizeData);
-      console.log('postImage:', postImage);
+      // setPostImage(resizeData);
+      // console.log('postImage:', postImage);
 
-      setFieldValue('post_image', resizeData);
-      console.log('resizeData:', resizeData);
+      // setFieldValue('post_image', resizeData);
+      // console.log('resizeData:', resizeData);
     };
     console.log('img:', img);
 
@@ -75,10 +65,10 @@ export const FormikPost = () => {
   //   picpost_image: '',
   //   constent: '',
   // };
-  const fileInputStyle = {
-    width: '1000px',
+  // const fileInputStyle = {
+  //   width: '1000px',
 
-  };
+  // };
 
   return (
     <Formik
@@ -87,18 +77,19 @@ export const FormikPost = () => {
         values.user_id = 1;
         console.log('values: ', values);
         console.log('values.picture: ', values.picture);
+        console.log('values.content: ', values.content);
+
         const submitData = new FormData();
 
         submitData.append('picture', values.picture);
         submitData.append('content', values.content);
         submitData.append('user_id', '1');
-        // ↑ 一時的にuser_id:1を設定
-        const postFormData = submitData;
-        console.log('postFormData: ', postFormData);
+        const body = submitData;
 
-        createPicpost(postFormData);
+
+        createPicpost(body);
       }}
-      render={({ values, handleSubmit, handleChange, setFieldValue, isSubmitting }) => {
+      render={({ values, handleSubmit, handleChange, setFieldValue }) => {
         return (
           <Form onSubmit={handleSubmit}>
             <div>
@@ -111,23 +102,23 @@ export const FormikPost = () => {
                 <label className="transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer">
                   ファイルを選択して下さい
                 <Field
-                    className={fileInputStyle}
-                    // style={fileInputStyle}
                     type="file"
                     id="file"
                     name="file"
                     onChange={(e: any) => {
-                      setImage(e, setFieldValue);
+                      // setImage(e, setFieldValue);
 
-                      const file = e.target.files[0];
-                      const reader = new FileReader();
+                      var file = e.target.files[0];
+                      var reader = new FileReader();
 
+                      // この部分でpictureに値が入っていない？？
                       reader.onload = function (item) {
                         setFieldValue('picture', item.target !== null ? item.target.result : null);
                       };
 
                       reader.readAsDataURL(file);
                     }}
+
                     render={({ field }) => <input {...field} type="file" className="hidden" />}
                   />
                 </label>
@@ -155,9 +146,11 @@ export const FormikPost = () => {
             <Field
               className="input"
               type="text"
-              name="name"
+              name="content"
+              value={values.content}
+              onChange={handleChange}
               render={({ field }) => <input {...field} type="text" className="shadow border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />} />
-            <button className="submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-700 transform hover:-translate-y-1 hover:scale-100 text-white font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-600 rounded-full cursor-pointer" type="submit" disabled={isSubmitting}>
+            <button className="submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-700 transform hover:-translate-y-1 hover:scale-100 text-white font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-600 rounded-full cursor-pointer" type="submit" >
               送信
             </button>
             {/* </Field> */}

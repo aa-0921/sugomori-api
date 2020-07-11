@@ -1,33 +1,32 @@
 # frozen_string_literal: true
 
 class PicpostsController < ApplicationController
-  before_action :set_picpost, only: %i[show update destroy]
+  before_action :set_picpost, only: %i(show update destroy)
 
-    def create
-      p "current_userの内容"
-      p current_user
-      picpost = Picpost.create!(picpost_params)
-      
-      if picpost.save 
-        fix_param= params[:picture].slice!(23..-1)
-        bin = Base64.decode64(fix_param)
-  
-        bucket = Aws::S3::Resource.new(
-          :region => 'ap-northeast-1',
-          :access_key_id => ENV['AWS_ACCCES_KEY'],
-          :secret_access_key => ENV['AWS_ACCCES_SECRET_KEY'],
-        ).bucket('sugomori-app') 
+  def create
+    p "current_userの内容"
+    p current_user
+    picpost = Picpost.create!(picpost_params)
 
-        bucket.object("picpost_id_#{picpost.id}_post_image.jpg").put(:body => bin)
-        picpost.picture= bucket.object("picpost_id_#{picpost.id}_post_image.jpg").public_url
+    if picpost.save
+      fix_param = params[:picture].slice!(23..-1)
+      bin = Base64.decode64(fix_param)
 
-        render json: { status: 'SUCCESS', data: picpost }
-      else
-        render json: { status: 'ERROR', data: picpost.errors }
-      end
+      bucket = Aws::S3::Resource.new(
+        :region => 'ap-northeast-1',
+        :access_key_id => ENV['AWS_ACCCES_KEY'],
+        :secret_access_key => ENV['AWS_ACCCES_SECRET_KEY'],
+      ).bucket('sugomori-app')
+
+      bucket.object("picpost_id_#{picpost.id}_post_image.jpg").put(:body => bin)
+      picpost.picture = bucket.object("picpost_id_#{picpost.id}_post_image.jpg").public_url
+
+      render json: { status: 'SUCCESS', data: picpost }
+    else
+      render json: { status: 'ERROR', data: picpost.errors }
     end
+  end
 
-  
   def index
     picposts = Picpost.order(created_at: :desc)
     render json: { status: 'SUCCESS', message: 'Loaded posts', data: picposts }
@@ -36,8 +35,6 @@ class PicpostsController < ApplicationController
   def show
     render json: { status: 'SUCCESS', message: 'Loaded the post', data: @picpost }
   end
-
-
 
   def destroy
     @picpost.destroy

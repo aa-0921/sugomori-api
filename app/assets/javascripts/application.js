@@ -55334,8 +55334,6 @@ exports.FormikPost = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
 var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
@@ -55353,10 +55351,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var FormikPost = exports.FormikPost = function FormikPost() {
-  var _useState = (0, _react.useState)(''),
-      _useState2 = _slicedToArray(_useState, 2),
-      postImage = _useState2[0],
-      setPostImage = _useState2[1];
+  // const [postImage, setPostImage] = useState('');
 
   // type bodyProps = {
   //   picture: string;
@@ -55367,16 +55362,8 @@ var FormikPost = exports.FormikPost = function FormikPost() {
   //   picture: picpostImage,
   //   content: '',
   // };
+  var createPicpost = async function createPicpost(body) {
 
-
-  var createPicpost = async function createPicpost(postFormData) {
-    // const csrf = sessionStorage.getItem('X-CSRF-Token');
-    var obj = {
-      // 'X-CSRF-Token': csrf,
-      postFormData: postFormData
-    };
-    var body = JSON.stringify(obj);
-    // const method = 'POST';
     var headers = {
       'content-type': 'multipart/form-data'
     };
@@ -55387,10 +55374,6 @@ var FormikPost = exports.FormikPost = function FormikPost() {
   };
   var setImage = function setImage(e, setFieldValue) {
     var canvas = document.getElementById('canvas');
-    console.log('canvas:', canvas);
-    if (canvas == null) {
-      return;
-    }
     var ctx = canvas.getContext('2d');
     var maxW = 250;
     var maxH = 250;
@@ -55406,11 +55389,11 @@ var FormikPost = exports.FormikPost = function FormikPost() {
       canvas.height = ihScaled;
       ctx.drawImage(img, 0, 0, iwScaled, ihScaled);
       var resizeData = canvas.toDataURL('image/jpeg', 0.5);
-      setPostImage(resizeData);
-      console.log('postImage:', postImage);
+      // setPostImage(resizeData);
+      // console.log('postImage:', postImage);
 
-      setFieldValue('post_image', resizeData);
-      console.log('resizeData:', resizeData);
+      // setFieldValue('post_image', resizeData);
+      // console.log('resizeData:', resizeData);
     };
     console.log('img:', img);
 
@@ -55426,10 +55409,10 @@ var FormikPost = exports.FormikPost = function FormikPost() {
   //   picpost_image: '',
   //   constent: '',
   // };
-  var fileInputStyle = {
-    width: '1000px'
+  // const fileInputStyle = {
+  //   width: '1000px',
 
-  };
+  // };
 
   return React.createElement(_formik.Formik, {
     initialValues: { picture: '', content: '', user_id: 0 },
@@ -55437,23 +55420,22 @@ var FormikPost = exports.FormikPost = function FormikPost() {
       values.user_id = 1;
       console.log('values: ', values);
       console.log('values.picture: ', values.picture);
+      console.log('values.content: ', values.content);
+
       var submitData = new FormData();
 
       submitData.append('picture', values.picture);
       submitData.append('content', values.content);
       submitData.append('user_id', '1');
-      // ↑ 一時的にuser_id:1を設定
-      var postFormData = submitData;
-      console.log('postFormData: ', postFormData);
+      var body = submitData;
 
-      createPicpost(postFormData);
+      createPicpost(body);
     },
     render: function render(_ref) {
       var values = _ref.values,
           handleSubmit = _ref.handleSubmit,
           handleChange = _ref.handleChange,
-          setFieldValue = _ref.setFieldValue,
-          isSubmitting = _ref.isSubmitting;
+          setFieldValue = _ref.setFieldValue;
 
       return React.createElement(
         _formik.Form,
@@ -55478,23 +55460,23 @@ var FormikPost = exports.FormikPost = function FormikPost() {
               { className: 'transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer' },
               '\u30D5\u30A1\u30A4\u30EB\u3092\u9078\u629E\u3057\u3066\u4E0B\u3055\u3044',
               React.createElement(_formik.Field, {
-                className: fileInputStyle
-                // style={fileInputStyle}
-                , type: 'file',
+                type: 'file',
                 id: 'file',
                 name: 'file',
                 onChange: function onChange(e) {
-                  setImage(e, setFieldValue);
+                  // setImage(e, setFieldValue);
 
                   var file = e.target.files[0];
                   var reader = new FileReader();
 
+                  // この部分でpictureに値が入っていない？？
                   reader.onload = function (item) {
                     setFieldValue('picture', item.target !== null ? item.target.result : null);
                   };
 
                   reader.readAsDataURL(file);
                 },
+
                 render: function render(_ref2) {
                   var field = _ref2.field;
                   return React.createElement('input', _extends({}, field, { type: 'file', className: 'hidden' }));
@@ -55521,14 +55503,16 @@ var FormikPost = exports.FormikPost = function FormikPost() {
         React.createElement(_formik.Field, {
           className: 'input',
           type: 'text',
-          name: 'name',
+          name: 'content',
+          value: values.content,
+          onChange: handleChange,
           render: function render(_ref3) {
             var field = _ref3.field;
             return React.createElement('input', _extends({}, field, { type: 'text', className: 'shadow border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline' }));
           } }),
         React.createElement(
           'button',
-          { className: 'submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-700 transform hover:-translate-y-1 hover:scale-100 text-white font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-600 rounded-full cursor-pointer', type: 'submit', disabled: isSubmitting },
+          { className: 'submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-700 transform hover:-translate-y-1 hover:scale-100 text-white font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-600 rounded-full cursor-pointer', type: 'submit' },
           '\u9001\u4FE1'
         )
       );
