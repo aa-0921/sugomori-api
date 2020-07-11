@@ -55332,8 +55332,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.FormikPost = undefined;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
@@ -55344,14 +55342,12 @@ var _axios = __webpack_require__(515);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _react2 = __webpack_require__(35);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var FormikPost = exports.FormikPost = function FormikPost() {
-  // const [postImage, setPostImage] = useState('');
+  // const [picpostImage, setPicpostImage] = useState('');
 
   // type bodyProps = {
   //   picture: string;
@@ -55364,42 +55360,54 @@ var FormikPost = exports.FormikPost = function FormikPost() {
   // };
   var createPicpost = async function createPicpost(body) {
 
-    var headers = {
-      'content-type': 'multipart/form-data'
-    };
+    var method = 'POST';
+
+    var headers = { 'content-type': 'multipart/form-data' };
     var postUrl = '/picposts';
-    console.log('createPicpost直前postUrl:', postUrl);
-
     await _axios2.default.post(postUrl, body, { headers: headers });
+    // .post(postUrl, body)
+
+    // .then(({ data }) => {
+    // if (data) {
+    // setPicpost(data);
+    // } else {
+    // throw new Error(message);
+    // }
+    // })
+    // .catch((e) => alert(e.message));
+    // fetch(postUrl, { method, headers, body })
+    //   .then(function (response) {
+    //     if (response.data) {
+    //       setPicpost(data);
+    //     } else {
+    //       throw new Error(response.message);
+    //     }
+    //   })
+    //   .catch((e) => alert(e.message));
   };
-  var setImage = function setImage(e, setFieldValue) {
-    var canvas = document.getElementById('canvas');
-    var ctx = canvas.getContext('2d');
-    var maxW = 250;
-    var maxH = 250;
+  // const setImage = (e: any, setFieldValue: any) => {
+  //   let canvas: any = document.getElementById('canvas');
+  //   let ctx = canvas.getContext('2d');
+  //   let maxW = 250;
+  //   let maxH = 250;
 
-    var img = new Image();
-    img.onload = function () {
-      var iw = img.width;
-      var ih = img.height;
-      var scale = Math.min(maxW / iw, maxH / ih);
-      var iwScaled = iw * scale;
-      var ihScaled = ih * scale;
-      canvas.width = iwScaled;
-      canvas.height = ihScaled;
-      ctx.drawImage(img, 0, 0, iwScaled, ihScaled);
-      var resizeData = canvas.toDataURL('image/jpeg', 0.5);
-      // setPostImage(resizeData);
-      // console.log('postImage:', postImage);
-
-      // setFieldValue('post_image', resizeData);
-      // console.log('resizeData:', resizeData);
-    };
-    console.log('img:', img);
-
-    img.src = URL.createObjectURL(e.target.files[0]);
-    console.log('img.src :', img.src);
-  };
+  //   let img = new Image();
+  //   img.onload = () => {
+  //     let iw = img.width;
+  //     let ih = img.height;
+  //     let scale = Math.min(maxW / iw, maxH / ih);
+  //     let iwScaled = iw * scale;
+  //     let ihScaled = ih * scale;
+  //     canvas.width = iwScaled;
+  //     canvas.height = ihScaled;
+  //     ctx.drawImage(img, 0, 0, iwScaled, ihScaled);
+  //     const resizeData = canvas.toDataURL('image/jpeg', 0.5);
+  //     // setPicpostImage(resizeData);
+  //     // setFieldValue('picpost_image', resizeData);
+  //     // setFieldValue('picture', resizeData);
+  //   };
+  //   img.src = URL.createObjectURL(e.target.files[0]);
+  // };
   // interface FormValues {
   //   picpost_image: string;
   //   name: string;
@@ -55409,21 +55417,18 @@ var FormikPost = exports.FormikPost = function FormikPost() {
   //   picpost_image: '',
   //   constent: '',
   // };
-  // const fileInputStyle = {
-  //   width: '1000px',
-
-  // };
-
   return React.createElement(_formik.Formik, {
     initialValues: { picture: '', content: '', user_id: 0 },
     onSubmit: function onSubmit(values) {
       values.user_id = 1;
+
       console.log('values: ', values);
       console.log('values.picture: ', values.picture);
-      console.log('values.content: ', values.content);
-
       var submitData = new FormData();
 
+      // submitData.append('formData', JSON.stringify(content));
+      // submitData.append('formData', JSON.user_id(c1);
+      // submitData.append('image', fileInput!.current.files[0]);
       submitData.append('picture', values.picture);
       submitData.append('content', values.content);
       submitData.append('user_id', '1');
@@ -55443,48 +55448,43 @@ var FormikPost = exports.FormikPost = function FormikPost() {
         React.createElement(
           'div',
           null,
-          React.createElement('img', {
-            src: ''
-            // 選択した画像を一時表示したい。
-          }),
           React.createElement(
             'label',
             null,
             '\u6295\u7A3F\u753B\u50CF'
           ),
-          React.createElement(
-            React.Fragment,
-            null,
-            React.createElement(
-              'label',
-              { className: 'transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer' },
-              '\u30D5\u30A1\u30A4\u30EB\u3092\u9078\u629E\u3057\u3066\u4E0B\u3055\u3044',
-              React.createElement(_formik.Field, {
-                type: 'file',
-                id: 'file',
-                name: 'file',
-                onChange: function onChange(e) {
-                  // setImage(e, setFieldValue);
+          React.createElement(_formik.Field, {
+            type: 'file'
+            // name="picture"
+            , id: 'file',
+            name: 'file'
+            // value={values.picture}
+            // onChange={(e: any) => setImage(e, setFieldValue)}
+            // onChange={(event: any) => {
+            //   setFieldValue(
+            //     'file',
+            //     event.currentTarget.files !== null ? event.currentTarget.files[0] : null,
+            //   );
+            // }}
+            , onChange: function onChange(e) {
+              var file = e.target.files[0];
+              var reader = new FileReader();
+              // setFieldValue('attachment_filename', file.name);
+              reader.onload = function (item) {
+                setFieldValue('picture', item.target !== null ? item.target.result : null);
 
-                  var file = e.target.files[0];
-                  var reader = new FileReader();
+                // setFieldValue('attachment_data', item.target.result);
+              };
 
-                  // この部分でpictureに値が入っていない？？
-                  reader.onload = function (item) {
-                    setFieldValue('picture', item.target !== null ? item.target.result : null);
-                  };
-
-                  reader.readAsDataURL(file);
-                },
-
-                render: function render(_ref2) {
-                  var field = _ref2.field;
-                  return React.createElement('input', _extends({}, field, { type: 'file', className: 'hidden' }));
-                }
-              })
-            ),
-            React.createElement(_formik.Field, { type: 'hidden', name: 'post_image' })
-          )
+              reader.readAsDataURL(file);
+            }
+            // onChange={(event: any) => {
+            //   handleChange;
+            //   setFieldValue('file', event.currentTarget.files[0]);
+            // }}
+            // onChange={handleChange}
+            // id="select_posts_image"
+          })
         ),
         React.createElement('canvas', {
           id: 'canvas',
@@ -55494,30 +55494,60 @@ var FormikPost = exports.FormikPost = function FormikPost() {
           width: '64',
           height: '64'
         }),
-        React.createElement(_react2.Spacer, { y: 30 }),
         React.createElement(
-          'label',
+          'div',
           null,
-          '\u30B3\u30E1\u30F3\u30C8'
+          React.createElement(
+            'label',
+            null,
+            'comment'
+          ),
+          React.createElement(_formik.Field, { type: 'text', name: 'content', value: values.content, onChange: handleChange })
         ),
-        React.createElement(_formik.Field, {
-          className: 'input',
-          type: 'text',
-          name: 'content',
-          value: values.content,
-          onChange: handleChange,
-          render: function render(_ref3) {
-            var field = _ref3.field;
-            return React.createElement('input', _extends({}, field, { type: 'text', className: 'shadow border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline' }));
-          } }),
         React.createElement(
           'button',
-          { className: 'submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-700 transform hover:-translate-y-1 hover:scale-100 text-white font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-600 rounded-full cursor-pointer', type: 'submit' },
+          { type: 'submit' },
           '\u9001\u4FE1'
         )
       );
     }
   });
+  // return (
+  // <Formik initialValues={initialValues} onSubmit={createPicpost}>
+  //   {({ setFieldValue, isSubmitting }) => {
+  //     return (
+  //       <Form>
+  //         <label>投稿画像</label>
+  //         <img src={!picpostImage ? '' : picpostImage} />
+  //         <React.Fragment>
+  //           {/* ※※ */}
+  //           <Field
+  //             id="select_posts_image"
+  //             type="file"
+  //             name="picture"
+  //             onChange={(e: any) => setImage(e, setFieldValue)}
+  //           />
+  //           <Field type="hidden" name="post_image" />
+  //         </React.Fragment>
+
+  //         <canvas
+  //           id="canvas"
+  //           style={{
+  //             display: 'none',
+  //           }}
+  //           width="64"
+  //           height="64"
+  //         />
+  //         <label>コメント</label>
+  //         <Field className="input" type="text" name="content" />
+  //         <button className="submit-button" type="submit" disabled={isSubmitting}>
+  //           送信
+  //         </button>
+  //       </Form>
+  //     );
+  //   }}
+  // </Formik>
+  // );
 };
 
 /***/ }),
