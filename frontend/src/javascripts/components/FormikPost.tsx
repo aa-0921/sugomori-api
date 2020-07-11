@@ -75,7 +75,8 @@ export const FormikPost = () => {
   //   constent: '',
   // };
   const fileInputStyle = {
-    width: '400px',
+    width: '1000px',
+
   };
 
   return (
@@ -108,26 +109,34 @@ export const FormikPost = () => {
               />
               <label>投稿画像</label>
               <React.Fragment>
+                <label className="transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer">
+                  ファイルを選択して下さい
                 <Field
-                  className={fileInputStyle}
+                    className={fileInputStyle}
+                    // style={fileInputStyle}
+                    type="file"
+                    id="file"
+                    name="file"
+                    onChange={(e: any) => {
+                      setImage(e, setFieldValue);
+
+                      const file = e.target.files[0];
+                      const reader = new FileReader();
+
+                      reader.onload = function (item) {
+                        setFieldValue('picture', item.target !== null ? item.target.result : null);
+                      };
+
+                      reader.readAsDataURL(file);
+                    }}
+                    // ファイル選択ボタンの見た目編集
+                    // ファイル選択ボタンの見た目編集
+                    render={({ field }) => <input {...field} type="file" className="hidden" />}
+                  // ファイル選択ボタンの見た目編集
                   // style={fileInputStyle}
-                  type="file"
-                  id="file"
-                  name="file"
-                  onChange={(e: any) => {
-                    setImage(e, setFieldValue);
-
-                    const file = e.target.files[0];
-                    const reader = new FileReader();
-
-                    reader.onload = function (item) {
-                      setFieldValue('picture', item.target !== null ? item.target.result : null);
-                    };
-
-                    reader.readAsDataURL(file);
-                  }}
-                  render={({ field }) => <input {...field} type="file" style={fileInputStyle} />}
-                />
+                  // ファイル選択ボタンの見た目編集
+                  />
+                </label>
                 <Field type="hidden" name="post_image" />
               </React.Fragment>
               {

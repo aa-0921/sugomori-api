@@ -55425,7 +55425,8 @@ var FormikPost = exports.FormikPost = function FormikPost() {
   //   constent: '',
   // };
   var fileInputStyle = {
-    width: '400px'
+    width: '1000px'
+
   };
 
   return React.createElement(_formik.Formik, {
@@ -55472,29 +55473,39 @@ var FormikPost = exports.FormikPost = function FormikPost() {
           React.createElement(
             React.Fragment,
             null,
-            React.createElement(_formik.Field, {
-              className: fileInputStyle
-              // style={fileInputStyle}
-              , type: 'file',
-              id: 'file',
-              name: 'file',
-              onChange: function onChange(e) {
-                setImage(e, setFieldValue);
+            React.createElement(
+              'label',
+              { className: 'transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer' },
+              '\u30D5\u30A1\u30A4\u30EB\u3092\u9078\u629E\u3057\u3066\u4E0B\u3055\u3044',
+              React.createElement(_formik.Field, {
+                className: fileInputStyle
+                // style={fileInputStyle}
+                , type: 'file',
+                id: 'file',
+                name: 'file',
+                onChange: function onChange(e) {
+                  setImage(e, setFieldValue);
 
-                var file = e.target.files[0];
-                var reader = new FileReader();
+                  var file = e.target.files[0];
+                  var reader = new FileReader();
 
-                reader.onload = function (item) {
-                  setFieldValue('picture', item.target !== null ? item.target.result : null);
-                };
+                  reader.onload = function (item) {
+                    setFieldValue('picture', item.target !== null ? item.target.result : null);
+                  };
 
-                reader.readAsDataURL(file);
-              },
-              render: function render(_ref2) {
-                var field = _ref2.field;
-                return React.createElement('input', _extends({}, field, { type: 'file', style: fileInputStyle }));
-              }
-            }),
+                  reader.readAsDataURL(file);
+                }
+                // ファイル選択ボタンの見た目編集
+                // ファイル選択ボタンの見た目編集
+                , render: function render(_ref2) {
+                  var field = _ref2.field;
+                  return React.createElement('input', _extends({}, field, { type: 'file', className: 'hidden' }));
+                }
+                // ファイル選択ボタンの見た目編集
+                // style={fileInputStyle}
+                // ファイル選択ボタンの見た目編集
+              })
+            ),
             React.createElement(_formik.Field, { type: 'hidden', name: 'post_image' })
           )
         ),

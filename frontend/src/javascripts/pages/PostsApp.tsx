@@ -174,6 +174,7 @@ export const PostsApp = () => {
 
           <div>
             <div>
+
               {/* <DropZone /> */}
 
               <form action="">
@@ -248,6 +249,7 @@ export const PostsApp = () => {
                     <Modal.Content>
                       <div className=" flex flex-col items-center">
                         <FormikPost />
+
                         <Divider />
                       </div>
                     </Modal.Content>
