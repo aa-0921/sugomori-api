@@ -156,6 +156,16 @@ export const PostsApp = () => {
   };
   // clickLike,unlike
 
+
+  // 投稿フォームmodal,open,close
+  const [postModalOpen, setPostModalOpen] = useState(false);
+  const postModalOpenHandler = () => {
+    setPostModalOpen(true);
+  };
+  const postModalCloseHandler = () => {
+    setPostModalOpen(false);
+  };
+
   return (
     <React.Fragment>
       <Router>
@@ -165,8 +175,7 @@ export const PostsApp = () => {
           <div>
             <div>
               {/* <DropZone /> */}
-              <FormikPost />
-              <Divider />
+
               <form action="">
                 <input type="text" placeholder="search" onChange={filterList} />
               </form>
@@ -231,6 +240,25 @@ export const PostsApp = () => {
               </React.Fragment>
             </Modal>
             {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
+            {/* 投稿フォームモーダル */}
+            <Modal width="35rem" open={postModalOpen} onClose={postModalCloseHandler}>
+              <React.Fragment>
+                <Grid.Container justify="center">
+                  <Grid>
+                    <Modal.Content>
+                      <div className=" flex flex-col items-center">
+                        <FormikPost />
+                        <Divider />
+                      </div>
+                    </Modal.Content>
+                  </Grid>
+                </Grid.Container>
+                <Modal.Action passive onClick={() => setModalOpen(false)}>
+                  Cancel
+                </Modal.Action>
+              </React.Fragment>
+            </Modal>
+            {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
             {/* 投稿ボタン */}
             <div className="postButton fixed bottom-0 right-0 z-10 m-12">
               {/* <Button
@@ -240,7 +268,9 @@ export const PostsApp = () => {
                 ghost
               // onClick={() => onClickLike(clickedPost.id)}
               > */}
-              <button className="transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer">
+              <button
+                onClick={() => postModalOpenHandler()}
+                className="transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer">
                 <Icon.PlusCircle size={50} />
 
               </button>

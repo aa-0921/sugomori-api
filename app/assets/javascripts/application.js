@@ -47424,6 +47424,21 @@ var PostsApp = exports.PostsApp = function PostsApp() {
   };
   // clickLike,unlike
 
+
+  // 投稿フォームmodal,open,close
+
+  var _useState15 = (0, _react.useState)(false),
+      _useState16 = _slicedToArray(_useState15, 2),
+      postModalOpen = _useState16[0],
+      setPostModalOpen = _useState16[1];
+
+  var postModalOpenHandler = function postModalOpenHandler() {
+    setPostModalOpen(true);
+  };
+  var postModalCloseHandler = function postModalCloseHandler() {
+    setPostModalOpen(false);
+  };
+
   return React.createElement(
     React.Fragment,
     null,
@@ -47439,8 +47454,6 @@ var PostsApp = exports.PostsApp = function PostsApp() {
           React.createElement(
             'div',
             null,
-            React.createElement(_FormikPost.FormikPost, null),
-            React.createElement(_react2.Divider, null),
             React.createElement(
               'form',
               { action: '' },
@@ -47538,11 +47551,48 @@ var PostsApp = exports.PostsApp = function PostsApp() {
             )
           ),
           React.createElement(
+            _react2.Modal,
+            { width: '35rem', open: postModalOpen, onClose: postModalCloseHandler },
+            React.createElement(
+              React.Fragment,
+              null,
+              React.createElement(
+                _react2.Grid.Container,
+                { justify: 'center' },
+                React.createElement(
+                  _react2.Grid,
+                  null,
+                  React.createElement(
+                    _react2.Modal.Content,
+                    null,
+                    React.createElement(
+                      'div',
+                      { className: ' flex flex-col items-center' },
+                      React.createElement(_FormikPost.FormikPost, null),
+                      React.createElement(_react2.Divider, null)
+                    )
+                  )
+                )
+              ),
+              React.createElement(
+                _react2.Modal.Action,
+                { passive: true, onClick: function onClick() {
+                    return setModalOpen(false);
+                  } },
+                'Cancel'
+              )
+            )
+          ),
+          React.createElement(
             'div',
             { className: 'postButton fixed bottom-0 right-0 z-10 m-12' },
             React.createElement(
               'button',
-              { className: 'transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer' },
+              {
+                onClick: function onClick() {
+                  return postModalOpenHandler();
+                },
+                className: 'transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer' },
               React.createElement(Icon.PlusCircle, { size: 50 })
             )
           )
