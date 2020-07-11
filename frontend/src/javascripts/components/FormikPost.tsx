@@ -3,6 +3,8 @@ import { Formik, Form, Field } from 'formik';
 import { useState } from 'react';
 import { useFormikContext, useField } from 'formik';
 import axios from 'axios';
+import { Input, Spacer } from '@zeit-ui/react';
+
 
 export const FormikPost = () => {
   const [postImage, setPostImage] = useState('');
@@ -92,6 +94,7 @@ export const FormikPost = () => {
         submitData.append('picture', values.picture);
         submitData.append('content', values.content);
         submitData.append('user_id', '1');
+        // ↑ 一時的にuser_id:1を設定
         const postFormData = submitData;
 
         createPicpost(postFormData);
@@ -102,10 +105,7 @@ export const FormikPost = () => {
             <div>
               <img
                 src=""
-
-              // src={props.post.picture}
-              // className="rounded-lg"
-              // onClick={() => props.modalOpenHandler(props.post)}
+              // 選択した画像を一時表示したい。
               />
               <label>投稿画像</label>
               <React.Fragment>
@@ -156,9 +156,14 @@ export const FormikPost = () => {
               width="64"
               height="64"
             />
+            <Spacer y={30} />
             <label>コメント</label>
-            <Field className="input" type="text" name="name" />
-            <button className="submit-button" type="submit" disabled={isSubmitting}>
+            <Field
+              className="input"
+              type="text"
+              name="name"
+              render={({ field }) => <input {...field} type="text" className="shadow border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />} />
+            <button className="submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-700 transform hover:-translate-y-1 hover:scale-100 text-white font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-600 rounded-full cursor-pointer" type="submit" disabled={isSubmitting}>
               送信
             </button>
             {/* </Field> */}

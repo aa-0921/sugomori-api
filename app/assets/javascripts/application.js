@@ -55345,6 +55345,8 @@ var _axios = __webpack_require__(515);
 
 var _axios2 = _interopRequireDefault(_axios);
 
+var _react2 = __webpack_require__(35);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
@@ -55441,6 +55443,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
       submitData.append('picture', values.picture);
       submitData.append('content', values.content);
       submitData.append('user_id', '1');
+      // ↑ 一時的にuser_id:1を設定
       var postFormData = submitData;
 
       createPicpost(postFormData);
@@ -55460,10 +55463,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
           null,
           React.createElement('img', {
             src: ''
-
-            // src={props.post.picture}
-            // className="rounded-lg"
-            // onClick={() => props.modalOpenHandler(props.post)}
+            // 選択した画像を一時表示したい。
           }),
           React.createElement(
             'label',
@@ -55517,15 +55517,23 @@ var FormikPost = exports.FormikPost = function FormikPost() {
           width: '64',
           height: '64'
         }),
+        React.createElement(_react2.Spacer, { y: 30 }),
         React.createElement(
           'label',
           null,
           '\u30B3\u30E1\u30F3\u30C8'
         ),
-        React.createElement(_formik.Field, { className: 'input', type: 'text', name: 'name' }),
+        React.createElement(_formik.Field, {
+          className: 'input',
+          type: 'text',
+          name: 'name',
+          render: function render(_ref3) {
+            var field = _ref3.field;
+            return React.createElement('input', _extends({}, field, { type: 'text', className: 'shadow border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline' }));
+          } }),
         React.createElement(
           'button',
-          { className: 'submit-button', type: 'submit', disabled: isSubmitting },
+          { className: 'submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-700 transform hover:-translate-y-1 hover:scale-100 text-white font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-600 rounded-full cursor-pointer', type: 'submit', disabled: isSubmitting },
           '\u9001\u4FE1'
         )
       );
