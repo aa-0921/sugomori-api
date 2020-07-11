@@ -47542,7 +47542,7 @@ var PostsApp = exports.PostsApp = function PostsApp() {
             { className: 'postButton fixed bottom-0 right-0 z-10 m-12' },
             React.createElement(
               'button',
-              { className: 'bg-blue-500 hover:bg-blue-400 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-blue-500 rounded-full' },
+              { className: 'transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer' },
               React.createElement(Icon.PlusCircle, { size: 50 })
             )
           )

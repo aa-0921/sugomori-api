@@ -240,7 +240,7 @@ export const PostsApp = () => {
                 ghost
               // onClick={() => onClickLike(clickedPost.id)}
               > */}
-              <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-blue-500 rounded-full">
+              <button className="transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer">
                 <Icon.PlusCircle size={50} />
 
               </button>
