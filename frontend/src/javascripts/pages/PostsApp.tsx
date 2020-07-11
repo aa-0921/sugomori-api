@@ -230,6 +230,26 @@ export const PostsApp = () => {
                 </Modal.Action>
               </React.Fragment>
             </Modal>
+            {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
+            {/* 投稿ボタン */}
+            <div className="postButton fixed bottom-0 right-0 z-10 m-12">
+              {/* <Button
+                type="success-light"
+                size="Large"
+                auto
+                ghost
+              // onClick={() => onClickLike(clickedPost.id)}
+              > */}
+              <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-blue-500 rounded-full">
+                <Icon.PlusCircle size={50} />
+
+              </button>
+              {/* </Button> */}
+            </div>
+            {/* 投稿ボタン */}
+            {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
+
+
           </div>
           <Switch>
             {/* <Route path="/post/:id" component={Show} /> */}
