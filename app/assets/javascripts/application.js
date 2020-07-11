@@ -55494,16 +55494,11 @@ var FormikPost = exports.FormikPost = function FormikPost() {
                   };
 
                   reader.readAsDataURL(file);
-                }
-                // ファイル選択ボタンの見た目編集
-                // ファイル選択ボタンの見た目編集
-                , render: function render(_ref2) {
+                },
+                render: function render(_ref2) {
                   var field = _ref2.field;
                   return React.createElement('input', _extends({}, field, { type: 'file', className: 'hidden' }));
                 }
-                // ファイル選択ボタンの見た目編集
-                // style={fileInputStyle}
-                // ファイル選択ボタンの見た目編集
               })
             ),
             React.createElement(_formik.Field, { type: 'hidden', name: 'post_image' })

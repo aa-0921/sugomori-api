@@ -128,12 +128,7 @@ export const FormikPost = () => {
 
                       reader.readAsDataURL(file);
                     }}
-                    // ファイル選択ボタンの見た目編集
-                    // ファイル選択ボタンの見た目編集
                     render={({ field }) => <input {...field} type="file" className="hidden" />}
-                  // ファイル選択ボタンの見た目編集
-                  // style={fileInputStyle}
-                  // ファイル選択ボタンの見た目編集
                   />
                 </label>
                 <Field type="hidden" name="post_image" />
