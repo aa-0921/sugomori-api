@@ -47448,6 +47448,7 @@ var PostsApp = exports.PostsApp = function PostsApp() {
       React.createElement(
         'div',
         null,
+        React.createElement(_FormikPost.FormikPost, null),
         React.createElement(
           'div',
           null,
@@ -55369,19 +55370,18 @@ var FormikPost = exports.FormikPost = function FormikPost() {
 
 
   var createPicpost = async function createPicpost(postFormData) {
-    var csrf = sessionStorage.getItem('X-CSRF-Token');
+    // const csrf = sessionStorage.getItem('X-CSRF-Token');
     var obj = {
-      'X-CSRF-Token': csrf,
+      // 'X-CSRF-Token': csrf,
       postFormData: postFormData
     };
     var body = JSON.stringify(obj);
-
-    var method = 'POST';
-
+    // const method = 'POST';
     var headers = {
       'content-type': 'multipart/form-data'
     };
-    var postUrl = 'http://localhost:3000/picposts';
+    var postUrl = '/picposts';
+    console.log('createPicpost直前postUrl:', postUrl);
 
     await _axios2.default.post(postUrl, body, { headers: headers });
   };
@@ -55435,7 +55435,6 @@ var FormikPost = exports.FormikPost = function FormikPost() {
     initialValues: { picture: '', content: '', user_id: 0 },
     onSubmit: function onSubmit(values) {
       values.user_id = 1;
-
       console.log('values: ', values);
       console.log('values.picture: ', values.picture);
       var submitData = new FormData();
@@ -55445,6 +55444,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
       submitData.append('user_id', '1');
       // ↑ 一時的にuser_id:1を設定
       var postFormData = submitData;
+      console.log('postFormData: ', postFormData);
 
       createPicpost(postFormData);
     },

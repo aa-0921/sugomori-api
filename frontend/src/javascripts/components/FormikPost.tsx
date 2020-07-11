@@ -19,19 +19,18 @@ export const FormikPost = () => {
   //   content: '',
   // };
   const createPicpost = async (postFormData: any) => {
-    const csrf = sessionStorage.getItem('X-CSRF-Token');
+    // const csrf = sessionStorage.getItem('X-CSRF-Token');
     const obj = {
-      'X-CSRF-Token': csrf,
+      // 'X-CSRF-Token': csrf,
       postFormData: postFormData,
     };
     const body = JSON.stringify(obj);
-
-    const method = 'POST';
-
+    // const method = 'POST';
     const headers = {
       'content-type': 'multipart/form-data',
     };
-    const postUrl: string = 'http://localhost:3000/picposts';
+    const postUrl: string = '/picposts';
+    console.log('createPicpost直前postUrl:', postUrl);
 
     await axios.post(postUrl, body, { headers });
   };
@@ -86,7 +85,6 @@ export const FormikPost = () => {
       initialValues={{ picture: '', content: '', user_id: 0 }}
       onSubmit={(values) => {
         values.user_id = 1;
-
         console.log('values: ', values);
         console.log('values.picture: ', values.picture);
         const submitData = new FormData();
@@ -96,6 +94,7 @@ export const FormikPost = () => {
         submitData.append('user_id', '1');
         // ↑ 一時的にuser_id:1を設定
         const postFormData = submitData;
+        console.log('postFormData: ', postFormData);
 
         createPicpost(postFormData);
       }}

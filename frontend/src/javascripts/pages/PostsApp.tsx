@@ -171,7 +171,7 @@ export const PostsApp = () => {
       <Router>
         <div>
           {/* <Show /> */}
-          {/* <FormikPost /> */}
+          <FormikPost />
 
           <div>
             <div>
