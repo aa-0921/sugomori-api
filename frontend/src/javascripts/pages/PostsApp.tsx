@@ -168,9 +168,11 @@ export const PostsApp = () => {
         <div>
           <div>
             <div>
-              <form action="">
-                <input type="text" placeholder="search" onChange={filterList} />
-              </form>
+              <div className="flex justify-end mr-5 mt-3">
+                <form action="">
+                  <input type="text" placeholder="search" onChange={filterList} className="w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline" />
+                </form>
+              </div>
               {/* {!waiting && ( */}
               <PostList
                 fetchPosts={fetchPosts}

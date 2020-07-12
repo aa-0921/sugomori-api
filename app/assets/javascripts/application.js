@@ -47427,9 +47427,13 @@ var PostsApp = exports.PostsApp = function PostsApp() {
             'div',
             null,
             React.createElement(
-              'form',
-              { action: '' },
-              React.createElement('input', { type: 'text', placeholder: 'search', onChange: filterList })
+              'div',
+              { className: 'flex justify-end mr-5 mt-3' },
+              React.createElement(
+                'form',
+                { action: '' },
+                React.createElement('input', { type: 'text', placeholder: 'search', onChange: filterList, className: 'w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline' })
+              )
             ),
             React.createElement(_PostList.PostList, {
               fetchPosts: fetchPosts,
@@ -67174,9 +67178,13 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
       'div',
       null,
       React.createElement(
-        'form',
-        { action: '' },
-        React.createElement('input', { type: 'text', placeholder: 'search', onChange: filterList })
+        'div',
+        { className: 'flex justify-end mr-5' },
+        React.createElement(
+          'form',
+          { action: '' },
+          React.createElement('input', { type: 'text', placeholder: 'search', onChange: filterList, className: 'w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline' })
+        )
       ),
       React.createElement(_PostList.PostList, {
         fetchPosts: fetchPosts,
