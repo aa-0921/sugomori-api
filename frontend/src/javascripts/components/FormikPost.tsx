@@ -55,10 +55,12 @@ export const FormikPost = () => {
         return (
           <Form onSubmit={handleSubmit}>
             <div>
-              <label>投稿画像</label>
               {postFilePreview != null ? (
                 <div>
+                  <label>選択されたファイル</label>
                   <img src={postFilePreview} className="object-scale-down h-48 w-full" />
+                  < Spacer y={1} />
+                  <h5>{postFileName}</h5>
                 </div>
               ) : (
                   <div></div>
@@ -89,7 +91,6 @@ export const FormikPost = () => {
 
               </label>
               <Spacer y={3} />
-              <h3>{postFileName}</h3>
 
             </div>
             <canvas
@@ -103,8 +104,8 @@ export const FormikPost = () => {
             <Spacer y={3} />
 
             <div>
-              <label>comment</label>
-              {/* <input */}
+              <label>コメント</label>
+
               <Field
                 type="text"
                 name="content"

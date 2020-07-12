@@ -55411,15 +55411,21 @@ var FormikPost = exports.FormikPost = function FormikPost() {
         React.createElement(
           'div',
           null,
-          React.createElement(
-            'label',
-            null,
-            '\u6295\u7A3F\u753B\u50CF'
-          ),
           postFilePreview != null ? React.createElement(
             'div',
             null,
-            React.createElement('img', { src: postFilePreview, className: 'object-scale-down h-48 w-full' })
+            React.createElement(
+              'label',
+              null,
+              '\u9078\u629E\u3055\u308C\u305F\u30D5\u30A1\u30A4\u30EB'
+            ),
+            React.createElement('img', { src: postFilePreview, className: 'object-scale-down h-48 w-full' }),
+            React.createElement(_react2.Spacer, { y: 1 }),
+            React.createElement(
+              'h5',
+              null,
+              postFileName
+            )
           ) : React.createElement('div', null),
           React.createElement(_react2.Spacer, { y: 3 }),
           React.createElement(
@@ -55447,12 +55453,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
               }
             })
           ),
-          React.createElement(_react2.Spacer, { y: 3 }),
-          React.createElement(
-            'h3',
-            null,
-            postFileName
-          )
+          React.createElement(_react2.Spacer, { y: 3 })
         ),
         React.createElement('canvas', {
           id: 'canvas',
@@ -55469,7 +55470,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
           React.createElement(
             'label',
             null,
-            'comment'
+            '\u30B3\u30E1\u30F3\u30C8'
           ),
           React.createElement(_formik.Field, {
             type: 'text',
