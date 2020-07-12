@@ -55346,6 +55346,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
       _useState4 = _slicedToArray(_useState3, 2),
       postFilePreview = _useState4[0],
       setPostFilePreview = _useState4[1];
+  // const fileInput = React.useRef(null)
 
   var createPicpost = async function createPicpost(body) {
 
@@ -55367,6 +55368,11 @@ var FormikPost = exports.FormikPost = function FormikPost() {
       setPostFilePreview(null);
     }
   };
+  // できれば投稿画像のリセットを実装
+  // const resetInput = () => {
+  //   fileInput.current.value = ''
+  //   setPostFilePreview(null)
+  // }
 
   return React.createElement(_formik.Formik, {
     initialValues: { picture: '', content: '', user_id: 0 },
@@ -55391,100 +55397,91 @@ var FormikPost = exports.FormikPost = function FormikPost() {
           handleChange = _ref.handleChange,
           setFieldValue = _ref.setFieldValue;
 
-      return (
-        // <Grid.Container justify="center">
-        // <Grid>
+      return React.createElement(
+        _formik.Form,
+        { onSubmit: handleSubmit },
         React.createElement(
-          _formik.Form,
-          { onSubmit: handleSubmit },
-          React.createElement(
-            'div',
-            null,
-            postFilePreview != null ?
-            // <Grid.Container justify="center">
-            // <Grid>
-            React.createElement(
-              'div',
-              { className: 'flex flex-col items-center' },
-              React.createElement(
-                'label',
-                null,
-                '\u9078\u629E\u3055\u308C\u305F\u30D5\u30A1\u30A4\u30EB'
-              ),
-              React.createElement(_react2.Spacer, { y: 3 }),
-              React.createElement('img', { src: postFilePreview, className: 'object-scale-down h-48 w-full' }),
-              React.createElement(_react2.Spacer, { y: 1 }),
-              React.createElement(
-                'h5',
-                null,
-                postFileName
-              )
-            )
-            // </Grid>
-            // </Grid.Container>
-            : React.createElement(
-              'div',
-              { className: 'flex flex-col items-center' },
-              React.createElement(
-                'label',
-                { className: 'transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer' },
-                '\u30D5\u30A1\u30A4\u30EB\u3092\u9078\u629E\u3057\u3066\u4E0B\u3055\u3044',
-                React.createElement('input', {
-                  className: 'hidden',
-                  id: 'file',
-                  name: 'file',
-                  type: 'file',
-                  onChange: function onChange(e) {
-                    console.log('postFileName', postFileName);
-
-                    var file = e.target.files[0];
-                    var reader = new FileReader();
-                    reader.onload = function (item) {
-                      setFieldValue('picture', item.target !== null ? item.target.result : null);
-                    };
-
-                    reader.readAsDataURL(file);
-
-                    setPostFileName(e.target.files[0].name);
-                    onFileChange(e);
-                  }
-                })
-              )
-            ),
-            React.createElement(_react2.Spacer, { y: 3 })
-          ),
-          React.createElement(
-            'div',
-            null,
-            React.createElement(
-              'label',
-              null,
-              '\u30B3\u30E1\u30F3\u30C8'
-            ),
-            React.createElement(_formik.Field, {
-              type: 'text',
-              name: 'content',
-              value: values.content,
-              onChange: handleChange,
-              className: 'shadow border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline'
-            })
-          ),
-          React.createElement(_react2.Spacer, { y: 1 }),
-          React.createElement(
+          'div',
+          null,
+          postFilePreview != null ? React.createElement(
             'div',
             { className: 'flex flex-col items-center' },
             React.createElement(
-              'button',
-              { type: 'submit', className: 'submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-300 transform hover:-translate-y-1 hover:scale-100 text-white hover:text-green font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-300 rounded-full cursor-pointer' },
-              '\u6295\u7A3F'
+              'label',
+              null,
+              '\u9078\u629E\u3055\u308C\u305F\u30D5\u30A1\u30A4\u30EB'
+            ),
+            React.createElement(_react2.Spacer, { y: 3 }),
+            React.createElement('img', { src: postFilePreview, className: 'object-scale-down h-48 w-full' }),
+            React.createElement(_react2.Spacer, { y: 1 }),
+            React.createElement(
+              'h5',
+              null,
+              postFileName
+            )
+          ) : React.createElement(
+            'div',
+            { className: 'flex flex-col items-center' },
+            React.createElement(
+              'label',
+              { className: 'transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer' },
+              '\u30D5\u30A1\u30A4\u30EB\u3092\u9078\u629E\u3057\u3066\u4E0B\u3055\u3044',
+              React.createElement('input', {
+                className: 'hidden',
+                id: 'file',
+                name: 'file',
+                type: 'file'
+                // ref={fileInput}
+                , onChange: function onChange(e) {
+                  console.log('postFileName', postFileName);
+
+                  var file = e.target.files[0];
+                  var reader = new FileReader();
+                  reader.onload = function (item) {
+                    setFieldValue('picture', item.target !== null ? item.target.result : null);
+                  };
+
+                  reader.readAsDataURL(file);
+
+                  setPostFileName(e.target.files[0].name);
+                  onFileChange(e);
+                }
+              })
             )
           ),
-          React.createElement(_react2.Spacer, { y: 1 })
-        )
-        // </Grid>
-        // </Grid.Container>
-
-      );
+          React.createElement(_react2.Spacer, { y: 3 })
+        ),
+        React.createElement(
+          'div',
+          null,
+          React.createElement(
+            'label',
+            null,
+            '\u30B3\u30E1\u30F3\u30C8'
+          ),
+          React.createElement(_formik.Field, {
+            type: 'text',
+            name: 'content',
+            value: values.content,
+            onChange: handleChange,
+            className: 'shadow border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline'
+          })
+        ),
+        React.createElement(_react2.Spacer, { y: 1 }),
+        React.createElement(
+          'div',
+          { className: 'flex flex-col items-center' },
+          React.createElement(
+            'button',
+            { type: 'submit', className: 'submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-300 transform hover:-translate-y-1 hover:scale-100 text-white hover:text-green font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-300 rounded-full cursor-pointer' },
+            '\u6295\u7A3F'
+          )
+        ),
+        React.createElement(_react2.Spacer, { y: 1 })
+      )
+      // </Grid>
+      // </Grid.Container>
+      ;
     }
   });
 };

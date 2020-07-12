@@ -9,7 +9,7 @@ import { Modal, Button, Grid, Divider } from '@zeit-ui/react';
 export const FormikPost = () => {
   const [postFileName, setPostFileName] = useState('');
   const [postFilePreview, setPostFilePreview] = useState(null);
-
+  // const fileInput = React.useRef(null)
 
   const createPicpost = async (body: any) => {
 
@@ -31,7 +31,11 @@ export const FormikPost = () => {
       setPostFilePreview(null)
     }
   }
-
+  // できれば投稿画像のリセットを実装
+  // const resetInput = () => {
+  //   fileInput.current.value = ''
+  //   setPostFilePreview(null)
+  // }
 
   return (
     <Formik
@@ -54,23 +58,19 @@ export const FormikPost = () => {
 
       render={({ values, handleSubmit, handleChange, setFieldValue }) => {
         return (
-          // <Grid.Container justify="center">
-          // <Grid>
           <Form onSubmit={handleSubmit}>
             <div>
               {postFilePreview != null ? (
-                // <Grid.Container justify="center">
-                // <Grid>
                 <div className="flex flex-col items-center">
                   <label>選択されたファイル</label>
                   < Spacer y={3} />
-
                   <img src={postFilePreview} className="object-scale-down h-48 w-full" />
+                  {/* <div>
+                    <button type="button" onClick={resetInput.bind(this)}>リセットする</button>
+                  </div> */}
                   < Spacer y={1} />
                   <h5>{postFileName}</h5>
                 </div>
-                // </Grid>
-                // </Grid.Container>
               ) : (
                   <div className="flex flex-col items-center" >
                     <label className="transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer">
@@ -80,6 +80,7 @@ export const FormikPost = () => {
                         id="file"
                         name="file"
                         type="file"
+                        // ref={fileInput}
                         onChange={(e: any) => {
                           console.log('postFileName', postFileName)
 
