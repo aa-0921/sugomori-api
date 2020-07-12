@@ -55419,7 +55419,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
           postFilePreview != null ? React.createElement(
             'div',
             null,
-            React.createElement('img', { src: postFilePreview })
+            React.createElement('img', { src: postFilePreview, className: 'object-scale-down h-48 w-full' })
           ) : React.createElement('div', null),
           React.createElement(_react2.Spacer, { y: 3 }),
           React.createElement(
@@ -55427,7 +55427,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
             { className: 'transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer' },
             '\u30D5\u30A1\u30A4\u30EB\u3092\u9078\u629E\u3057\u3066\u4E0B\u3055\u3044',
             React.createElement('input', {
-              className: '',
+              className: 'hidden',
               id: 'file',
               name: 'file',
               type: 'file',
@@ -55471,12 +55471,18 @@ var FormikPost = exports.FormikPost = function FormikPost() {
             null,
             'comment'
           ),
-          React.createElement(_formik.Field, { type: 'text', name: 'content', value: values.content, onChange: handleChange })
+          React.createElement(_formik.Field, {
+            type: 'text',
+            name: 'content',
+            value: values.content,
+            onChange: handleChange,
+            className: 'shadow border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline'
+          })
         ),
         React.createElement(
           'button',
-          { type: 'submit' },
-          '\u9001\u4FE1'
+          { type: 'submit', className: 'submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-700 transform hover:-translate-y-1 hover:scale-100 text-white font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-600 rounded-full cursor-pointer' },
+          '\u6295\u7A3F'
         )
       );
     }

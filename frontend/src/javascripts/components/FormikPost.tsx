@@ -58,7 +58,7 @@ export const FormikPost = () => {
               <label>投稿画像</label>
               {postFilePreview != null ? (
                 <div>
-                  <img src={postFilePreview} />
+                  <img src={postFilePreview} className="object-scale-down h-48 w-full" />
                 </div>
               ) : (
                   <div></div>
@@ -67,7 +67,7 @@ export const FormikPost = () => {
               <label className="transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer">
                 ファイルを選択して下さい
               <input
-                  className=""
+                  className="hidden"
                   id="file"
                   name="file"
                   type="file"
@@ -105,9 +105,15 @@ export const FormikPost = () => {
             <div>
               <label>comment</label>
               {/* <input */}
-              <Field type="text" name="content" value={values.content} onChange={handleChange} />
+              <Field
+                type="text"
+                name="content"
+                value={values.content}
+                onChange={handleChange}
+                className="shadow border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+              />
             </div>
-            <button type="submit">送信</button>
+            <button type="submit" className="submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-700 transform hover:-translate-y-1 hover:scale-100 text-white font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-600 rounded-full cursor-pointer">投稿</button>
             {/* </Field> */}
           </Form>
         );
