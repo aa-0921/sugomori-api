@@ -170,14 +170,8 @@ export const PostsApp = () => {
     <React.Fragment>
       <Router>
         <div>
-          {/* <Show /> */}
-          <FormikPost />
-
           <div>
             <div>
-
-              {/* <DropZone /> */}
-
               <form action="">
                 <input type="text" placeholder="search" onChange={filterList} />
               </form>
@@ -245,18 +239,10 @@ export const PostsApp = () => {
             {/* 投稿フォームモーダル */}
             <Modal width="35rem" open={postModalOpen} onClose={postModalCloseHandler}>
               <React.Fragment>
-                <Grid.Container justify="center">
-                  <Grid>
-                    <Modal.Content>
-                      <div className=" flex flex-col items-center">
-                        <FormikPost />
-
-                        <Divider />
-                      </div>
-                    </Modal.Content>
-                  </Grid>
-                </Grid.Container>
-                <Modal.Action passive onClick={() => setModalOpen(false)}>
+                <Modal.Content>
+                  <FormikPost />
+                </Modal.Content>
+                <Modal.Action passive onClick={() => setPostModalOpen(false)}>
                   Cancel
                 </Modal.Action>
               </React.Fragment>
@@ -264,28 +250,16 @@ export const PostsApp = () => {
             {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
             {/* 投稿ボタン */}
             <div className="postButton fixed bottom-0 right-0 z-10 m-12">
-              {/* <Button
-                type="success-light"
-                size="Large"
-                auto
-                ghost
-              // onClick={() => onClickLike(clickedPost.id)}
-              > */}
               <button
                 onClick={() => postModalOpenHandler()}
                 className="transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer">
                 <Icon.PlusCircle size={50} />
-
               </button>
-              {/* </Button> */}
             </div>
             {/* 投稿ボタン */}
             {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
-
-
           </div>
           <Switch>
-            {/* <Route path="/post/:id" component={Show} /> */}
             <Route path="/"></Route>
           </Switch>
         </div>

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useFormikContext, useField } from 'formik';
 import axios from 'axios';
 import { Input, Spacer } from '@zeit-ui/react';
+import { Modal, Button, Grid, Divider } from '@zeit-ui/react';
 
 export const FormikPost = () => {
   const [postFileName, setPostFileName] = useState('');
@@ -53,56 +54,54 @@ export const FormikPost = () => {
 
       render={({ values, handleSubmit, handleChange, setFieldValue }) => {
         return (
+          // <Grid.Container justify="center">
+          // <Grid>
           <Form onSubmit={handleSubmit}>
             <div>
               {postFilePreview != null ? (
-                <div>
+                // <Grid.Container justify="center">
+                // <Grid>
+                <div className="flex flex-col items-center">
                   <label>選択されたファイル</label>
+                  < Spacer y={3} />
+
                   <img src={postFilePreview} className="object-scale-down h-48 w-full" />
                   < Spacer y={1} />
                   <h5>{postFileName}</h5>
                 </div>
+                // </Grid>
+                // </Grid.Container>
               ) : (
-                  <div></div>
+                  <div className="flex flex-col items-center" >
+                    <label className="transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer">
+                      ファイルを選択して下さい
+                          <input
+                        className="hidden"
+                        id="file"
+                        name="file"
+                        type="file"
+                        onChange={(e: any) => {
+                          console.log('postFileName', postFileName)
+
+                          var file = e.target.files[0];
+                          var reader = new FileReader();
+                          reader.onload = function (item) {
+                            setFieldValue('picture', item.target !== null ? item.target.result : null);
+                          };
+
+                          reader.readAsDataURL(file);
+
+                          setPostFileName(e.target.files[0].name)
+                          onFileChange(e)
+                        }}
+                      />
+                    </label>
+                  </div>
+
                 )}
               < Spacer y={3} />
-              <label className="transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer">
-                ファイルを選択して下さい
-              <input
-                  className="hidden"
-                  id="file"
-                  name="file"
-                  type="file"
-                  onChange={(e: any) => {
-                    console.log('postFileName', postFileName)
-
-                    var file = e.target.files[0];
-                    var reader = new FileReader();
-                    reader.onload = function (item) {
-                      setFieldValue('picture', item.target !== null ? item.target.result : null);
-                    };
-
-                    reader.readAsDataURL(file);
-
-                    setPostFileName(e.target.files[0].name)
-                    onFileChange(e)
-                  }}
-                />
-
-              </label>
-              <Spacer y={3} />
 
             </div>
-            <canvas
-              id="canvas"
-              style={{
-                display: 'none',
-              }}
-              width="64"
-              height="64"
-            />
-            <Spacer y={3} />
-
             <div>
               <label>コメント</label>
 
@@ -114,9 +113,15 @@ export const FormikPost = () => {
                 className="shadow border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
-            <button type="submit" className="submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-700 transform hover:-translate-y-1 hover:scale-100 text-white font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-600 rounded-full cursor-pointer">投稿</button>
-            {/* </Field> */}
+            < Spacer y={1} />
+
+            <div className="flex flex-col items-center" >
+              <button type="submit" className="submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-300 transform hover:-translate-y-1 hover:scale-100 text-white hover:text-green font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-300 rounded-full cursor-pointer">投稿</button>
+            </div>
+            < Spacer y={1} />
           </Form>
+          // </Grid>
+          // </Grid.Container>
         );
       }}
     />
