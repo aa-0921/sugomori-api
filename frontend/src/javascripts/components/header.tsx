@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { ButtonDropdown, Grid, Row, Input, Button } from '@zeit-ui/react';
 import { FetchData } from '../api/FetchData';
 
-export function Header() {
+export function Header(props: any) {
   // const [currentUserData, setCurrentUserData] = useState({
   //   id: 0,
   //   email: '',
@@ -25,7 +25,7 @@ export function Header() {
     });
   }, []);
 
-  console.log('currentUserData', currentUserData);
+  console.log('currentUserData', currentUserData.id);
 
   return (
     <header>
@@ -55,11 +55,15 @@ export function Header() {
                             >
                               Feed
                             </Link>
+
                             <Link
-                              to="/profilepage"
+                              to={'/profilepage/' + currentUserData.id}
+                              onClick={() => {
+                                props.history.push('/profilepage/' + currentUserData.id);
+                              }}
                               className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium  hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                             >
-                              Profile
+                              YourProfile
                             </Link>
                             <Link
                               to="/MemberListApp"

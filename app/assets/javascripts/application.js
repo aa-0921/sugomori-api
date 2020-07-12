@@ -32671,7 +32671,7 @@ var _FetchData = __webpack_require__(304);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-function Header() {
+function Header(props) {
   // const [currentUserData, setCurrentUserData] = useState({
   //   id: 0,
   //   email: '',
@@ -32693,7 +32693,7 @@ function Header() {
     });
   }, []);
 
-  console.log('currentUserData', currentUserData);
+  console.log('currentUserData', currentUserData.id);
 
   return React.createElement(
     'header',
@@ -32756,10 +32756,13 @@ function Header() {
                         React.createElement(
                           _reactRouterDom.Link,
                           {
-                            to: '/profilepage',
+                            to: '/profilepage/' + currentUserData.id,
+                            onClick: function onClick() {
+                              props.history.push('/profilepage/' + currentUserData.id);
+                            },
                             className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium  hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
                           },
-                          'Profile'
+                          'YourProfile'
                         ),
                         React.createElement(
                           _reactRouterDom.Link,

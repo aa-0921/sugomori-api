@@ -193,8 +193,6 @@ export const PostsApp = (props: any) => {
                         <img src={clickedPost.picture} className="rounded-lg" />
                         <Divider />
                         <div className="flex-1  text-center">
-                          {/* props.history.push("/Home"); */}
-                          {/* <Link to={'/profilepage/' + clickedPost.user_id}> */}
                           <Link
                             to={'/profilepage/' + clickedPost.user_id}
                             onClick={() => {
