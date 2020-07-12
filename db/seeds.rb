@@ -5,8 +5,10 @@
 User.create!(name: 'Example User',
              email: 'example-1@example.com',
             #  uid: 'example_admin-1@example.com',
-             password: 'papapa',
-             password_confirmation: 'papapa')
+             password: 'ababab',
+             password_confirmation: 'ababab',
+            #  サインアップ認証パスの為追加。
+             confirmed_at:'Sun, 12 Jul 2020 07:33:13 UTC +00:00')
 
 99.times do |n|
   name = Faker::Name.name
