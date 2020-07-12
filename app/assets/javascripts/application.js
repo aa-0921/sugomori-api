@@ -28610,37 +28610,9 @@ var _MemberListApp = __webpack_require__(865);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-// import { FetchData } from '../api/FetchData'
-// import { MemberListApp } from '../pages/MemberListApp';
-
 // import React, { useState, useEffect } from 'react';
 
 var HomePage = exports.HomePage = function HomePage() {
-  // interface ISquareProps {
-  //     id: number,
-  //     email: string,
-  //     name: string,
-
-  // const [currentUserData, setCurrentUserData] = useState<{}>({})
-  // }  // const [currentUserData, setCurrentUserData] = useState({
-  //   id: 0,
-  //   email: '',
-  //   name: '',
-  // })
-
-  // const getInitialDataUrl: string = 'http://localhost:3000/initial_data/show';
-
-  // useEffect(() => {
-  //   FetchData(getInitialDataUrl).then((res) => {
-  //     setCurrentUserData(res.data);
-  //     console.log('getInitialDataUrl', getInitialDataUrl);
-  //     console.log('res.data', res.data);
-  //     console.log('currentUserData', currentUserData);
-  //     console.log('currentUserData');
-  //   });
-  // }, []);
-
-  // console.log('currentUserData', currentUserData);
 
   return React.createElement(
     _reactRouterDom.BrowserRouter,
@@ -66931,94 +66903,32 @@ var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
 
+var _react2 = __webpack_require__(35);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-// import { Grid, Row, Note, Button } from '@zeit-ui/react';
 var ProfilePage = exports.ProfilePage = function ProfilePage() {
-  // const { params } = this.props.match;
-  // const id = parseInt(params.id, 10);
-  // const member = members.filter((e) => e.id === id)[0];
+
   return React.createElement(
-    'div',
+    React.Fragment,
     null,
+    React.createElement(_react2.Spacer, { y: 1 }),
     React.createElement(
-      'h2',
-      null,
-      'ProfilePage'
+      _react2.Card,
+      { shadow: true },
+      React.createElement(
+        'h4',
+        null,
+        'The Evil Rabbit'
+      ),
+      React.createElement(
+        'p',
+        null,
+        'shadow card.'
+      )
     )
-  )
-  // <section className="text-gray-700 body-font">
-  //   <div className="container px-5 py-24 mx-auto flex flex-col">
-  //     <div className="lg:w-4/6 mx-auto">
-  //       <div className="rounded-lg h-64 overflow-hidden">
-  //         <img
-  //           alt="content"
-  //           className="object-cover object-center h-full w-full"
-  //           src="https://dummyimage.com/1200x500"
-  //         />
-  //       </div>
-  //       <div className="flex flex-col sm:flex-row mt-10">
-  //         <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
-  //           <div className="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
-  //             <svg
-  //               fill="none"
-  //               stroke="currentColor"
-  //               stroke-linecap="round"
-  //               stroke-linejoin="round"
-  //               stroke-width="2"
-  //               className="w-10 h-10"
-  //               viewBox="0 0 24 24"
-  //             >
-  //               <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-  //               <circle cx="12" cy="7" r="4"></circle>
-  //             </svg>
-  //           </div>
-  //           <div className="flex flex-col items-center text-center justify-center">
-  //             <h2 className="font-medium title-font mt-4 text-gray-900 text-lg">
-  //               Phoebe Caulfield
-  //             </h2>
-  //             <div className="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
-  //             <p className="text-base text-gray-600">
-  //               Raclette knausgaard hella meggs normcore williamsburg enamel pin sartorial venmo
-  //               tbh hot chicken gentrify portland.
-  //             </p>
-  //           </div>
-  //         </div>
-  //         <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-300 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-  //           <p className="leading-relaxed text-lg mb-4">
-  //             Meggings portland fingerstache lyft, post-ironic fixie man bun banh mi umami
-  //             everyday carry hexagon locavore direct trade art party. Locavore small batch
-  //             listicle gastropub farm-to-table lumbersexual salvia messenger bag. Coloring book
-  //             flannel truffaut craft beer drinking vinegar sartorial, disrupt fashion axe normcore
-  //             meh butcher. Portland 90's scenester vexillologist forage post-ironic asymmetrical,
-  //             chartreuse disrupt butcher paleo intelligentsia pabst before they sold out four
-  //             loko. 3 wolf moon brooklyn.
-  //           </p>
-  //           <a className="text-indigo-500 inline-flex items-center">
-  //             Learn More
-  //             <svg
-  //               fill="none"
-  //               stroke="currentColor"
-  //               stroke-linecap="round"
-  //               stroke-linejoin="round"
-  //               stroke-width="2"
-  //               className="w-4 h-4 ml-2"
-  //               viewBox="0 0 24 24"
-  //             >
-  //               <path d="M5 12h14M12 5l7 7-7 7"></path>
-  //             </svg>
-  //           </a>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  /* <Button type="success" ghost onClick={clickFollowUser(followUserId)}> */
-  /* FOLLOW */
-  /* </Button> */
-  // </section>
-  ;
-};
-// export default ProfilePage;
+  );
+}; // import { Grid, Row, Note, Button } from '@zeit-ui/react';
 
 /***/ }),
 /* 865 */

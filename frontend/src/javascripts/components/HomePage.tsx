@@ -11,39 +11,11 @@ import { About } from '../pages/About';
 import { PostsApp } from '../pages/PostsApp';
 import { ProfilePage } from '../pages/ProfilePage';
 import { MemberListApp } from '../pages/MemberListApp';
-// import { FetchData } from '../api/FetchData'
-// import { MemberListApp } from '../pages/MemberListApp';
 
 export const HomePage = () => {
-  // interface ISquareProps {
-  //     id: number,
-  //     email: string,
-  //     name: string,
-
-  // const [currentUserData, setCurrentUserData] = useState<{}>({})
-  // }  // const [currentUserData, setCurrentUserData] = useState({
-  //   id: 0,
-  //   email: '',
-  //   name: '',
-  // })
-
-  // const getInitialDataUrl: string = 'http://localhost:3000/initial_data/show';
-
-  // useEffect(() => {
-  //   FetchData(getInitialDataUrl).then((res) => {
-  //     setCurrentUserData(res.data);
-  //     console.log('getInitialDataUrl', getInitialDataUrl);
-  //     console.log('res.data', res.data);
-  //     console.log('currentUserData', currentUserData);
-  //     console.log('currentUserData');
-  //   });
-  // }, []);
-
-  // console.log('currentUserData', currentUserData);
 
   return (
     <BrowserRouter>
-      {/* <Header currentUserData={currentUserData}/> */}
       <Header />
 
       <Switch>
