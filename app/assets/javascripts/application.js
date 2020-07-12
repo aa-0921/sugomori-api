@@ -66947,12 +66947,14 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
   }, []);
 
   // 投稿一覧関連
-  // 全投稿の配列のState定義
+  // 全投稿aの配列のState定義
+  // const [fetchPosts, setFetchPosts] = useState([]);
+  // このページのユーザーの投稿一覧
 
   var _useState3 = (0, _react.useState)([]),
       _useState4 = _slicedToArray(_useState3, 2),
-      fetchPosts = _useState4[0],
-      setFetchPosts = _useState4[1];
+      fetchUserPosts = _useState4[0],
+      setFetchUserPosts = _useState4[1];
 
   var _useState5 = (0, _react.useState)([]),
       _useState6 = _slicedToArray(_useState5, 2),
@@ -66967,37 +66969,16 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
       setFilterPosts = _useState8[1];
 
   // このページのユーザーの投稿だけ取得
-  // const onClickFollow = async (userId: any) => {
-  //   const csrf = sessionStorage.getItem('X-CSRF-Token');
-  //   const obj = {
-  //     // 一時的にuser_idを1に
-  //     current_user_id: 1,
-  //     'X-CSRF-Token': csrf,
-  //   };
-  //   const body = JSON.stringify(obj);
-  //   const method = 'PUT';
-  //   const postUrl: string = '/users/follow/' + userId;
 
-  //   await fetch(postUrl, { method, body })
-  //     .then((response) => {
-  //       console.log(response.status);
-  //       // if (response.status == 204) {
-  //       if (response.status == 200) {
-  //         props.pushToFollowUsers(props.user.id);
-  //       } else {
-  //         throw new Error();
-  //       }
-  //     })
-  //     .catch((error) => { });
-  // };
+  var userPostUrl = '/users/picposts/' + props.match.params.id;
 
-  // このページのユーザーの投稿だけ取得
+  // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
+  var currentUserId = 1;
+  var getLikeListUrl = 'http://localhost:3000/picposts/like_list/' + currentUserId;
 
-
-  var getAllPostUrl = 'http://localhost:3000/picposts';
   (0, _react.useEffect)(function () {
-    (0, _FetchData.FetchData)(getAllPostUrl).then(function (res) {
-      setFetchPosts(res.data);
+    (0, _FetchData.FetchData)(userPostUrl).then(function (res) {
+      setFetchUserPosts(res.data);
       setInitialFetchPosts(res.data);
     });
 
@@ -67008,22 +66989,19 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
     });
   }, []);
 
-  // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
-  var currentUserId = 1;
-
-  var getLikeListUrl = 'http://localhost:3000/picposts/like_list/' + currentUserId;
+  // このページのユーザーの投稿だけ取得
 
   (0, _react.useEffect)(function () {
-    setFilterPosts(fetchPosts);
-  }, [fetchPosts]);
+    setFilterPosts(fetchUserPosts);
+  }, [fetchUserPosts]);
 
   var filterList = function filterList(e) {
     var updateList = initialFetchPosts.filter(function (post) {
       return post.content.search(e.target.value) !== -1;
     });
-    setFetchPosts(updateList);
+    setFetchUserPosts(updateList);
   };
-  console.log('fetchPosts', fetchPosts);
+  console.log('fetchUserPosts', fetchUserPosts);
 
   var _useState9 = (0, _react.useState)([]),
       _useState10 = _slicedToArray(_useState9, 2),
@@ -67187,7 +67165,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
         )
       ),
       React.createElement(_PostList.PostList, {
-        fetchPosts: fetchPosts,
+        fetchUserPosts: fetchUserPosts,
         likeList: likeList,
         pushToLikeList: pushToLikeList,
         removeFromLikeList: removeFromLikeList,

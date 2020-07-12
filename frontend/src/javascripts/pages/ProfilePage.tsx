@@ -21,8 +21,11 @@ export const ProfilePage = (props) => {
   }, []);
 
   // 投稿一覧関連
-  // 全投稿の配列のState定義
-  const [fetchPosts, setFetchPosts] = useState([]);
+  // 全投稿aの配列のState定義
+  // const [fetchPosts, setFetchPosts] = useState([]);
+  // このページのユーザーの投稿一覧
+  const [fetchUserPosts, setFetchUserPosts] = useState([]);
+
   const [initialFetchPosts, setInitialFetchPosts] = useState([]);
   // 検索のfilter後の投稿の配列の定義
   const [filterPosts, setFilterPosts] = useState([]);
@@ -30,46 +33,16 @@ export const ProfilePage = (props) => {
 
 
   // このページのユーザーの投稿だけ取得
-  // const onClickFollow = async (userId: any) => {
-  //   const csrf = sessionStorage.getItem('X-CSRF-Token');
-  //   const obj = {
-  //     // 一時的にuser_idを1に
-  //     current_user_id: 1,
-  //     'X-CSRF-Token': csrf,
-  //   };
-  //   const body = JSON.stringify(obj);
-  //   const method = 'PUT';
-  //   const postUrl: string = '/users/follow/' + userId;
 
-  //   await fetch(postUrl, { method, body })
-  //     .then((response) => {
-  //       console.log(response.status);
-  //       // if (response.status == 204) {
-  //       if (response.status == 200) {
-  //         props.pushToFollowUsers(props.user.id);
-  //       } else {
-  //         throw new Error();
-  //       }
-  //     })
-  //     .catch((error) => { });
-  // };
+  const userPostUrl: string = `/users/picposts/${props.match.params.id}`;
 
-  // このページのユーザーの投稿だけ取得
+  // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
+  const currentUserId = 1;
+  const getLikeListUrl: string = 'http://localhost:3000/picposts/like_list/' + currentUserId;
 
-
-
-
-
-
-
-
-
-
-
-  const getAllPostUrl: string = 'http://localhost:3000/picposts';
   useEffect(() => {
-    FetchData(getAllPostUrl).then((res) => {
-      setFetchPosts(res.data);
+    FetchData(userPostUrl).then((res) => {
+      setFetchUserPosts(res.data);
       setInitialFetchPosts(res.data);
     });
 
@@ -78,22 +51,19 @@ export const ProfilePage = (props) => {
     });
   }, []);
 
-  // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
-  const currentUserId = 1;
-
-  const getLikeListUrl: string = 'http://localhost:3000/picposts/like_list/' + currentUserId;
+  // このページのユーザーの投稿だけ取得
 
   useEffect(() => {
-    setFilterPosts(fetchPosts);
-  }, [fetchPosts]);
+    setFilterPosts(fetchUserPosts);
+  }, [fetchUserPosts]);
 
   const filterList = (e: any) => {
     const updateList = initialFetchPosts.filter((post: any) => {
       return post.content.search(e.target.value) !== -1;
     });
-    setFetchPosts(updateList);
+    setFetchUserPosts(updateList);
   };
-  console.log('fetchPosts', fetchPosts);
+  console.log('fetchUserPosts', fetchUserPosts);
 
   const [likeList, setLikeList] = useState([]);
   const [clickedPostUser, setClickedPostUser] = useState({
@@ -223,7 +193,7 @@ export const ProfilePage = (props) => {
         </div>
         {/* {!waiting && ( */}
         <PostList
-          fetchPosts={fetchPosts}
+          fetchUserPosts={fetchUserPosts}
           likeList={likeList}
           pushToLikeList={pushToLikeList}
           removeFromLikeList={removeFromLikeList}
