@@ -55350,9 +55350,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-// import ErrorMessage from './ErrorMessage';
-
-
 var FormikPost = exports.FormikPost = function FormikPost() {
   var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -55433,7 +55430,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
             { className: 'transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer' },
             '\u30D5\u30A1\u30A4\u30EB\u3092\u9078\u629E\u3057\u3066\u4E0B\u3055\u3044',
             React.createElement('input', {
-              className: 'hidden',
+              className: '',
               id: 'file',
               name: 'file',
               type: 'file',
@@ -55447,7 +55444,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
                 };
 
                 reader.readAsDataURL(file);
-                // setFieldValue("file", e.currentTarget.files[0])
+
                 setPostFileName(e.target.files[0].name);
                 onFileChange(e);
               }

@@ -4,13 +4,10 @@ import { useState } from 'react';
 import { useFormikContext, useField } from 'formik';
 import axios from 'axios';
 import { Input, Spacer } from '@zeit-ui/react';
-// import ErrorMessage from './ErrorMessage';
-
 
 export const FormikPost = () => {
   const [postFileName, setPostFileName] = useState('');
   const [postFilePreview, setPostFilePreview] = useState(null);
-
 
 
   const createPicpost = async (body: any) => {
@@ -73,7 +70,7 @@ export const FormikPost = () => {
               <label className="transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer">
                 ファイルを選択して下さい
               <input
-                  className="hidden"
+                  className=""
                   id="file"
                   name="file"
                   type="file"
@@ -87,7 +84,7 @@ export const FormikPost = () => {
                     };
 
                     reader.readAsDataURL(file);
-                    // setFieldValue("file", e.currentTarget.files[0])
+
                     setPostFileName(e.target.files[0].name)
                     onFileChange(e)
                   }}
