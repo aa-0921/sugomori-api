@@ -23,8 +23,8 @@ export const HomePage = () => {
         <Route exact path="/pickup" component={Pickup} />
         {/* <Route exact path="/zeit-sample" component={ZeitSample} /> */}
         <Route exact path="/about" component={About} />
-        {/* <Route path="/profilepage/:id" component={ProfilePage} /> */}
-        <Route path="/profilepage" component={ProfilePage} />
+        <Route path="/profilepage/:id" component={ProfilePage} />
+        {/* <Route path="/profilepage" component={ProfilePage} /> */}
 
         <Route exact path="/MemberListApp" component={MemberListApp} />
 

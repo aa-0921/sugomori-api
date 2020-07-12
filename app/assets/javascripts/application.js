@@ -28624,7 +28624,7 @@ var HomePage = exports.HomePage = function HomePage() {
       React.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _PostsApp.PostsApp }),
       React.createElement(_reactRouterDom.Route, { exact: true, path: '/pickup', component: _Pickup.Pickup }),
       React.createElement(_reactRouterDom.Route, { exact: true, path: '/about', component: _About.About }),
-      React.createElement(_reactRouterDom.Route, { path: '/profilepage', component: _ProfilePage.ProfilePage }),
+      React.createElement(_reactRouterDom.Route, { path: '/profilepage/:id', component: _ProfilePage.ProfilePage }),
       React.createElement(_reactRouterDom.Route, { exact: true, path: '/MemberListApp', component: _MemberListApp.MemberListApp }),
       React.createElement(_reactRouterDom.Route, { exact: true, path: '/postsApp', component: _PostsApp.PostsApp })
     )
@@ -66899,16 +66899,36 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ProfilePage = undefined;
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }(); // import { Grid, Row, Note, Button } from '@zeit-ui/react';
+
+
 var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
 
 var _react2 = __webpack_require__(35);
 
+var _FetchData = __webpack_require__(304);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-var ProfilePage = exports.ProfilePage = function ProfilePage() {
+var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
+  // const [fetchUser, setFetchUser] = useState({});
+  var _useState = (0, _react.useState)({
+    id: 0,
+    name: ''
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      fetchUser = _useState2[0],
+      setFetchUser = _useState2[1];
 
+  var getAllPostUrl = '/users/' + props.match.params.id;
+
+  (0, _react.useEffect)(function () {
+    (0, _FetchData.FetchData)(getAllPostUrl).then(function (res) {
+      setFetchUser(res.data);
+    });
+  }, []);
   return React.createElement(
     React.Fragment,
     null,
@@ -66917,18 +66937,23 @@ var ProfilePage = exports.ProfilePage = function ProfilePage() {
       _react2.Card,
       { shadow: true },
       React.createElement(
+        'h1',
+        null,
+        props.match.params.id
+      ),
+      React.createElement(
         'h4',
         null,
-        'The Evil Rabbit'
+        fetchUser.name
       ),
       React.createElement(
         'p',
         null,
-        'shadow card.'
+        '\u81EA\u5DF1\u7D39\u4ECB'
       )
     )
   );
-}; // import { Grid, Row, Note, Button } from '@zeit-ui/react';
+};
 
 /***/ }),
 /* 865 */
