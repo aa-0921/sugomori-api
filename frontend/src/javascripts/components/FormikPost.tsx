@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Input, Spacer } from '@zeit-ui/react';
 import { Modal, Button, Grid, Divider } from '@zeit-ui/react';
 
+// export const FormikPost = (props: any) => {
 export const FormikPost = () => {
   const [postFileName, setPostFileName] = useState('');
   const [postFilePreview, setPostFilePreview] = useState(null);
@@ -13,9 +14,13 @@ export const FormikPost = () => {
 
   const createPicpost = async (body: any) => {
 
+    // console.log('postModalCloseHandler前')
+    // props.postModalCloseHandler
+    // console.log('postModalCloseHandler後')
     const headers = { 'content-type': 'multipart/form-data' };
     const postUrl: string = '/picposts';
     await axios.post(postUrl, body, { headers });
+
   };
   const onFileChange = (e: any) => {
     const files = e.target.files
@@ -53,6 +58,7 @@ export const FormikPost = () => {
         const body = submitData;
         createPicpost(body);
         // 投稿後に入力欄を全て初期化したい。
+
 
       }}
 

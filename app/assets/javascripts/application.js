@@ -55336,6 +55336,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+// export const FormikPost = (props: any) => {
 var FormikPost = exports.FormikPost = function FormikPost() {
   var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -55350,6 +55351,9 @@ var FormikPost = exports.FormikPost = function FormikPost() {
 
   var createPicpost = async function createPicpost(body) {
 
+    // console.log('postModalCloseHandler前')
+    // props.postModalCloseHandler
+    // console.log('postModalCloseHandler後')
     var headers = { 'content-type': 'multipart/form-data' };
     var postUrl = '/picposts';
     await _axios2.default.post(postUrl, body, { headers: headers });
@@ -55389,6 +55393,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
       var body = submitData;
       createPicpost(body);
       // 投稿後に入力欄を全て初期化したい。
+
     },
 
     render: function render(_ref) {
