@@ -46,17 +46,17 @@ img_srcs =[
 ]
 count = 1
 
-
+# 3.times {
 users.each do |user|
   content = Faker::Lorem.sentence(word_count: 3)
   emoji = Faker::Lorem.multibyte
-p count
   user.picposts.create!(content: "#{content}#{emoji}",
                         # picture: "#{count}-test-picture",
                         user_id: "#{count}-test-user_id",
                         picture: img_srcs.sample)
   count += 1
 end
+# }
 
 
 all_users = User.all
