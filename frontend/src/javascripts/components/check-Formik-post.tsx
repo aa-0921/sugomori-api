@@ -9,28 +9,15 @@ import { Input, Spacer } from '@zeit-ui/react';
 export const FormikPost = () => {
   const [postImage, setPostImage] = useState('');
 
-  // type bodyProps = {
-  //   picture: string;
-  //   content: string;
-  // };
-
-  // const values = {
-  //   picture: picpostImage,
-  //   content: '',
-  // };
   const createPicpost = async (postFormData: any) => {
-    // const csrf = sessionStorage.getItem('X-CSRF-Token');
     const obj = {
-      // 'X-CSRF-Token': csrf,
       postFormData: postFormData,
     };
     const body = JSON.stringify(obj);
-    // const method = 'POST';
     const headers = {
       'content-type': 'multipart/form-data',
     };
     const postUrl: string = '/picposts';
-    console.log('createPicpost直前postUrl:', postUrl);
 
     await axios.post(postUrl, body, { headers });
   };
@@ -66,15 +53,6 @@ export const FormikPost = () => {
     img.src = URL.createObjectURL(e.target.files[0]);
     console.log('img.src :', img.src);
   };
-  // interface FormValues {
-  //   picpost_image: string;
-  //   name: string;
-  // }
-  // 初期値は必要なさそうなので、後々消す。
-  // const initialValues: any = {
-  //   picpost_image: '',
-  //   constent: '',
-  // };
   const fileInputStyle = {
     width: '1000px',
 
@@ -111,8 +89,6 @@ export const FormikPost = () => {
                 <label className="transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer">
                   ファイルを選択して下さい
                 <Field
-                    className={fileInputStyle}
-                    // style={fileInputStyle}
                     type="file"
                     id="file"
                     name="file"
@@ -128,19 +104,11 @@ export const FormikPost = () => {
 
                       reader.readAsDataURL(file);
                     }}
-                    render={({ field }) => <input {...field} type="file" className="hidden" />}
+                    render={({ field }) => <input {...field} type="file" id="file" className="hidden" />}
                   />
                 </label>
                 <Field type="hidden" name="post_image" />
               </React.Fragment>
-              {
-                // onChange={(event: any) => {
-                //   handleChange;
-                //   setFieldValue('file', event.currentTarget.files[0]);
-                // }}
-                // onChange={handleChange}
-                // id="select_posts_image"
-              }
             </div>
             <canvas
               id="canvas"

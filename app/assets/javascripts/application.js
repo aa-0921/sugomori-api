@@ -55332,6 +55332,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.FormikPost = undefined;
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
@@ -55348,10 +55350,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-var FormikPost = exports.FormikPost = function FormikPost() {
-  var createPicpost = async function createPicpost(body) {
+// import ErrorMessage from './ErrorMessage';
 
-    var method = 'POST';
+
+var FormikPost = exports.FormikPost = function FormikPost() {
+  var _useState = (0, _react.useState)(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      postFileName = _useState2[0],
+      setPostFileName = _useState2[1];
+
+  var createPicpost = async function createPicpost(body) {
 
     var headers = { 'content-type': 'multipart/form-data' };
     var postUrl = '/picposts';
@@ -55360,6 +55368,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
 
   return React.createElement(_formik.Formik, {
     initialValues: { picture: '', content: '', user_id: 0 },
+
     onSubmit: function onSubmit(values) {
       values.user_id = 1;
 
@@ -55371,6 +55380,10 @@ var FormikPost = exports.FormikPost = function FormikPost() {
 
       var body = submitData;
       createPicpost(body);
+
+      submitData.append('picture', '');
+      submitData.append('content', '');
+      submitData.append('user_id', '');
     },
     render: function render(_ref) {
       var values = _ref.values,
@@ -55389,19 +55402,41 @@ var FormikPost = exports.FormikPost = function FormikPost() {
             null,
             '\u6295\u7A3F\u753B\u50CF'
           ),
-          React.createElement(_formik.Field, {
-            type: 'file',
-            id: 'file',
-            name: 'file',
-            onChange: function onChange(e) {
-              var file = e.target.files[0];
-              var reader = new FileReader();
-              reader.onload = function (item) {
-                setFieldValue('picture', item.target !== null ? item.target.result : null);
-              };
-              reader.readAsDataURL(file);
-            }
-          })
+          React.createElement('img', {
+            src: ''
+            // 選択した画像を一時表示したい。
+          }),
+          React.createElement(_react2.Spacer, { y: 20 }),
+          React.createElement(
+            'label',
+            { className: 'transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer' },
+            '\u30D5\u30A1\u30A4\u30EB\u3092\u9078\u629E\u3057\u3066\u4E0B\u3055\u3044',
+            React.createElement('input', {
+              className: 'hidden',
+              id: 'file',
+              name: 'file',
+              type: 'file',
+              onChange: function onChange(e) {
+                console.log('postFileName', postFileName);
+
+                var file = e.target.files[0];
+                var reader = new FileReader();
+                reader.onload = function (item) {
+                  setFieldValue('picture', item.target !== null ? item.target.result : null);
+                };
+
+                reader.readAsDataURL(file);
+                // setFieldValue("file", e.currentTarget.files[0])
+                setPostFileName(e.target.files[0].name);
+              }
+            })
+          ),
+          React.createElement(_react2.Spacer, { y: 3 }),
+          React.createElement(
+            'h3',
+            null,
+            postFileName
+          )
         ),
         React.createElement('canvas', {
           id: 'canvas',
@@ -55411,6 +55446,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
           width: '64',
           height: '64'
         }),
+        React.createElement(_react2.Spacer, { y: 20 }),
         React.createElement(
           'div',
           null,
