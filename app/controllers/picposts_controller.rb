@@ -5,7 +5,12 @@ class PicpostsController < ApplicationController
 
   def user_posts
     page_user = User.find_by(id: params[:user_id])
+    p "page_userの内容"
+    p page_user
     @user_posts = page_user.picposts
+
+    p "@user_postsの内容"
+    p @user_posts
 
     render json: { status: 'SUCCESS', message: 'Loaded user_posts', data: @user_posts }
   end

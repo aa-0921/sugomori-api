@@ -66942,6 +66942,9 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
   var getUserUrl = '/users/' + props.match.params.id;
   (0, _react.useEffect)(function () {
     (0, _FetchData.FetchData)(getUserUrl).then(function (res) {
+      console.log('res', res);
+      console.log('res.data', res.data);
+
       setFetchUser(res.data);
     });
   }, []);
@@ -66971,6 +66974,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
   // このページのユーザーの投稿だけ取得
 
   var userPostUrl = '/users/picposts/' + props.match.params.id;
+  console.log('userPostUrl', userPostUrl);
 
   // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
   var currentUserId = 1;
@@ -66978,11 +66982,19 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
 
   (0, _react.useEffect)(function () {
     (0, _FetchData.FetchData)(userPostUrl).then(function (res) {
+      console.log('userPostUrlのres', res);
+      console.log('userPostUrlのres.data', res.data);
       setFetchUserPosts(res.data);
       setInitialFetchPosts(res.data);
+      console.log('userPostUrlのfetchUserPosts', fetchUserPosts);
+      console.log('userPostUrlのinitialFetchPosts', initialFetchPosts);
     });
+  }, []);
 
+  (0, _react.useEffect)(function () {
     (0, _FetchData.FetchData)(getLikeListUrl).then(function (res) {
+      console.log('getLikeListUrlのres', res);
+      console.log('getLikeListUrlのres.data', res.data);
       setLikeList(res.data.map(function (like) {
         return like.id;
       }));

@@ -56,7 +56,7 @@ Rails.application.routes.draw do
 
   get 'users/token/get' => 'users#get_token'
 
-  get 'users/picpots/:user_id' => 'picposts#user_posts'
+  get 'users/picposts/:user_id' => 'picposts#user_posts'
 
   get '*unmatched_route' => 'top#index'
 end

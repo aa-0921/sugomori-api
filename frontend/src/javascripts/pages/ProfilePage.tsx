@@ -16,6 +16,9 @@ export const ProfilePage = (props) => {
   const getUserUrl: string = `/users/${props.match.params.id}`;
   useEffect(() => {
     FetchData(getUserUrl).then((res) => {
+      console.log('res', res)
+      console.log('res.data', res.data)
+
       setFetchUser(res.data);
     });
   }, []);
@@ -35,6 +38,7 @@ export const ProfilePage = (props) => {
   // このページのユーザーの投稿だけ取得
 
   const userPostUrl: string = `/users/picposts/${props.match.params.id}`;
+  console.log('userPostUrl', userPostUrl)
 
   // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
   const currentUserId = 1;
@@ -42,11 +46,19 @@ export const ProfilePage = (props) => {
 
   useEffect(() => {
     FetchData(userPostUrl).then((res) => {
+      console.log('userPostUrlのres', res)
+      console.log('userPostUrlのres.data', res.data)
       setFetchUserPosts(res.data);
       setInitialFetchPosts(res.data);
+      console.log('userPostUrlのfetchUserPosts', fetchUserPosts)
+      console.log('userPostUrlのinitialFetchPosts', initialFetchPosts)
     });
+  }, []);
 
+  useEffect(() => {
     FetchData(getLikeListUrl).then((res) => {
+      console.log('getLikeListUrlのres', res)
+      console.log('getLikeListUrlのres.data', res.data)
       setLikeList(res.data.map((like: any) => like.id));
     });
   }, []);
