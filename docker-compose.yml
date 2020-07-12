@@ -16,6 +16,8 @@ services:
     image: postgres:9.5.18
     environment:
       POSTGRES_PASSWORD: password
+    volumes:
+      - ./database:/var/lib/postgresql
 
 volumes:
   dbdata:

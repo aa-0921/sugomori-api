@@ -97,18 +97,16 @@ var React = _interopRequireWildcard(_react);
 
 var _reactDom = __webpack_require__(6);
 
-var _reactDom2 = _interopRequireDefault(_reactDom);
+var ReactDOM = _interopRequireWildcard(_reactDom);
 
 var _HomePage = __webpack_require__(12);
 
 var _react2 = __webpack_require__(35);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 document.addEventListener('DOMContentLoaded', function () {
-  _reactDom2.default.render(React.createElement(
+  ReactDOM.render(React.createElement(
     _react2.ZeitProvider,
     null,
     React.createElement(_react2.CssBaseline, null),
@@ -28616,6 +28614,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 // import React, { useState, useEffect } from 'react';
 
 var HomePage = exports.HomePage = function HomePage() {
+  // function HomePage() {
   // interface ISquareProps {
   //     id: number,
   //     email: string,
@@ -28658,6 +28657,7 @@ var HomePage = exports.HomePage = function HomePage() {
     )
   );
 };
+// export default HomePage;
 
 /***/ }),
 /* 13 */
@@ -66931,7 +66931,6 @@ var React = _interopRequireWildcard(_react);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-// import { Grid, Row, Note, Button } from '@zeit-ui/react';
 var ProfilePage = exports.ProfilePage = function ProfilePage() {
   // const { params } = this.props.match;
   // const id = parseInt(params.id, 10);
@@ -67017,6 +67016,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage() {
   ;
 };
 // export default ProfilePage;
+// import { Grid, Row, Note, Button } from '@zeit-ui/react';
 
 /***/ }),
 /* 865 */

@@ -15,6 +15,7 @@ import { MemberListApp } from '../pages/MemberListApp';
 // import { MemberListApp } from '../pages/MemberListApp';
 
 export const HomePage = () => {
+  // function HomePage() {
   // interface ISquareProps {
   //     id: number,
   //     email: string,
@@ -62,3 +63,4 @@ export const HomePage = () => {
     </BrowserRouter>
   );
 };
+// export default HomePage;

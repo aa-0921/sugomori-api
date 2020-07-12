@@ -1,6 +1,6 @@
 // import { Grid, Row, Note, Button } from '@zeit-ui/react';
 import * as React from 'react';
-import { useState } from 'react';
+
 
 export const ProfilePage = () => {
   // const { params } = this.props.match;
