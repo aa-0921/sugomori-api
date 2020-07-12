@@ -47,11 +47,8 @@ export const FormikPost = () => {
 
         const body = submitData;
         createPicpost(body);
+        // 投稿後に入力欄を全て初期化したい。
 
-
-        submitData.append('picture', '');
-        submitData.append('content', '');
-        submitData.append('user_id', '');
       }}
 
       render={({ values, handleSubmit, handleChange, setFieldValue }) => {
@@ -66,7 +63,7 @@ export const FormikPost = () => {
               ) : (
                   <div></div>
                 )}
-              < Spacer y={20} />
+              < Spacer y={3} />
               <label className="transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer">
                 ファイルを選択して下さい
               <input
@@ -103,7 +100,7 @@ export const FormikPost = () => {
               width="64"
               height="64"
             />
-            <Spacer y={30} />
+            <Spacer y={3} />
 
             <div>
               <label>comment</label>

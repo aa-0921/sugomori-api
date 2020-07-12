@@ -55396,10 +55396,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
 
       var body = submitData;
       createPicpost(body);
-
-      submitData.append('picture', '');
-      submitData.append('content', '');
-      submitData.append('user_id', '');
+      // 投稿後に入力欄を全て初期化したい。
     },
 
     render: function render(_ref) {
@@ -55424,7 +55421,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
             null,
             React.createElement('img', { src: postFilePreview })
           ) : React.createElement('div', null),
-          React.createElement(_react2.Spacer, { y: 20 }),
+          React.createElement(_react2.Spacer, { y: 3 }),
           React.createElement(
             'label',
             { className: 'transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer' },
@@ -55465,7 +55462,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
           width: '64',
           height: '64'
         }),
-        React.createElement(_react2.Spacer, { y: 30 }),
+        React.createElement(_react2.Spacer, { y: 3 }),
         React.createElement(
           'div',
           null,
