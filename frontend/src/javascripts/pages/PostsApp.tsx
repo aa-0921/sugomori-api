@@ -8,7 +8,7 @@ import { FormikPost } from '../components/FormikPost';
 import { Modal, Button, Grid, Divider } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
 
-export const PostsApp = () => {
+export const PostsApp = (props: any) => {
   // 全投稿の配列のState定義
   const [fetchPosts, setFetchPosts] = useState([]);
   const [initialFetchPosts, setInitialFetchPosts] = useState([]);
@@ -193,7 +193,14 @@ export const PostsApp = () => {
                         <img src={clickedPost.picture} className="rounded-lg" />
                         <Divider />
                         <div className="flex-1  text-center">
-                          <Link to={'/profilepage/' + clickedPost.user_id}>
+                          {/* props.history.push("/Home"); */}
+                          {/* <Link to={'/profilepage/' + clickedPost.user_id}> */}
+                          <Link
+                            to={'/profilepage/' + clickedPost.user_id}
+                            onClick={() => {
+                              props.history.push('/profilepage/' + clickedPost.user_id);
+                            }}
+                          >
                             <span>{clickedPostUser.name}</span>
                           </Link>
                           <Link to={'/profilepage/' + clickedPost.id}>

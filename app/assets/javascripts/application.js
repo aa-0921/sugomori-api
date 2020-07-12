@@ -47222,7 +47222,7 @@ var Icon = _interopRequireWildcard(_reactIcons);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-var PostsApp = exports.PostsApp = function PostsApp() {
+var PostsApp = exports.PostsApp = function PostsApp(props) {
   // 全投稿の配列のState定義
   var _useState = (0, _react.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -47470,7 +47470,12 @@ var PostsApp = exports.PostsApp = function PostsApp() {
                         { className: 'flex-1  text-center' },
                         React.createElement(
                           _reactRouterDom.Link,
-                          { to: '/profilepage/' + clickedPost.user_id },
+                          {
+                            to: '/profilepage/' + clickedPost.user_id,
+                            onClick: function onClick() {
+                              props.history.push('/profilepage/' + clickedPost.user_id);
+                            }
+                          },
                           React.createElement(
                             'span',
                             null,
