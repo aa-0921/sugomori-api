@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { FetchData } from '../api/FetchData'
+
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { PostList } from '../components/PostList';
 import { FormikPost } from '../components/FormikPost';
-import { Modal, Button, Grid, Divider, Link } from '@zeit-ui/react';
+import { Modal, Button, Grid, Divider } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
 
 export const PostsApp = () => {
@@ -162,98 +164,103 @@ export const PostsApp = () => {
 
   return (
     <React.Fragment>
-      <div>
+      <Router>
         <div>
           <div>
-            <form action="">
-              <input type="text" placeholder="search" onChange={filterList} />
-            </form>
-            {/* {!waiting && ( */}
-            <PostList
-              fetchPosts={fetchPosts}
-              likeList={likeList}
-              pushToLikeList={pushToLikeList}
-              removeFromLikeList={removeFromLikeList}
-              modalOpenHandler={modalOpenHandler}
-              filterList={filterList}
-              filterPosts={filterPosts}
-            />
-          </div>
-          <Modal width="35rem" open={modalOpen} onClose={closeHandler}>
-            <React.Fragment>
-              <Grid.Container justify="center">
-                <Grid>
-                  <Modal.Content>
-                    <div className=" flex flex-col items-center">
-                      <img src={clickedPost.picture} className="rounded-lg" />
-                      <Divider />
-                      <div className="flex-1  text-center">
-                        <Link to={'/profilepage/' + clickedPost.user_id}>
-                          <span>{clickedPostUser.name}</span>
+            <div>
+              <form action="">
+                <input type="text" placeholder="search" onChange={filterList} />
+              </form>
+              {/* {!waiting && ( */}
+              <PostList
+                fetchPosts={fetchPosts}
+                likeList={likeList}
+                pushToLikeList={pushToLikeList}
+                removeFromLikeList={removeFromLikeList}
+                modalOpenHandler={modalOpenHandler}
+                filterList={filterList}
+                filterPosts={filterPosts}
+              />
+            </div>
+            <Modal width="35rem" open={modalOpen} onClose={closeHandler}>
+              <React.Fragment>
+                <Grid.Container justify="center">
+                  <Grid>
+                    <Modal.Content>
+                      <div className=" flex flex-col items-center">
+                        <img src={clickedPost.picture} className="rounded-lg" />
+                        <Divider />
+                        <div className="flex-1  text-center">
+                          <Link to={'/profilepage/' + clickedPost.user_id}>
+                            <span>{clickedPostUser.name}</span>
+                          </Link>
+                          <Link to={'/profilepage/' + clickedPost.id}>
+                            &emsp; {clickedPost.content}&emsp;
                         </Link>
-                        <Link to={'/profilepage/' + clickedPost.id}>
-                          &emsp; {clickedPost.content}&emsp;
-                        </Link>
-                        {likeList.includes(clickedPost.id) ? (
-                          <Button
-                            type="warning"
-                            size="mini"
-                            auto
-                            ghost
-                            onClick={() => onClickUnLike(clickedPost.id)}
-                          >
-                            <Icon.HeartFill size={12} />
-                              UnLike
-                          </Button>
-                        ) : (
+                          {likeList.includes(clickedPost.id) ? (
                             <Button
-                              type="success"
+                              type="warning"
                               size="mini"
                               auto
                               ghost
-                              onClick={() => onClickLike(clickedPost.id)}
+                              onClick={() => onClickUnLike(clickedPost.id)}
                             >
-                              <Icon.Heart size={8} />
-                              Like
+                              <Icon.HeartFill size={12} />
+                              UnLike
                             </Button>
-                          )}
+                          ) : (
+                              <Button
+                                type="success"
+                                size="mini"
+                                auto
+                                ghost
+                                onClick={() => onClickLike(clickedPost.id)}
+                              >
+                                <Icon.Heart size={8} />
+                              Like
+                              </Button>
+                            )}
+                        </div>
                       </div>
-                    </div>
-                  </Modal.Content>
-                </Grid>
-              </Grid.Container>
-              <Modal.Action passive onClick={() => setModalOpen(false)}>
-                Cancel
+                    </Modal.Content>
+                  </Grid>
+                </Grid.Container>
+                <Modal.Action passive onClick={() => setModalOpen(false)}>
+                  Cancel
                 </Modal.Action>
-            </React.Fragment>
-          </Modal>
-          {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
-          {/* 投稿フォームモーダル */}
-          <Modal width="35rem" open={postModalOpen} onClose={postModalCloseHandler}>
-            <React.Fragment>
-              <Modal.Content>
-                <FormikPost postModalCloseHandler={postModalCloseHandler} />
-                {/* <FormikPost /> */}
+              </React.Fragment>
+            </Modal>
+            {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
+            {/* 投稿フォームモーダル */}
+            <Modal width="35rem" open={postModalOpen} onClose={postModalCloseHandler}>
+              <React.Fragment>
+                <Modal.Content>
+                  <FormikPost postModalCloseHandler={postModalCloseHandler} />
+                  {/* <FormikPost /> */}
 
-              </Modal.Content>
-              <Modal.Action passive onClick={() => setPostModalOpen(false)}>
-                Cancel
+                </Modal.Content>
+                <Modal.Action passive onClick={() => setPostModalOpen(false)}>
+                  Cancel
                 </Modal.Action>
-            </React.Fragment>
-          </Modal>
-          {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
-          {/* 投稿ボタン */}
-          <div className="postButton fixed bottom-0 right-0 z-10 m-12">
-            <button
-              onClick={() => postModalOpenHandler()}
-              className="transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer">
-              <Icon.PlusCircle size={50} />
-            </button>
+              </React.Fragment>
+            </Modal>
+            {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
+            {/* 投稿ボタン */}
+            <div className="postButton fixed bottom-0 right-0 z-10 m-12">
+              <button
+                onClick={() => postModalOpenHandler()}
+                className="transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer">
+                <Icon.PlusCircle size={50} />
+              </button>
+            </div>
+            {/* 投稿ボタン */}
+            {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
           </div>
-          {/* 投稿ボタン */}
-          {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
+          <Switch>
+            <Route path="/"></Route>
+          </Switch>
         </div>
-      </div>
+      </Router>
     </React.Fragment>
   );
 };

@@ -47208,6 +47208,8 @@ var React = _interopRequireWildcard(_react);
 
 var _FetchData = __webpack_require__(304);
 
+var _reactRouterDom = __webpack_require__(15);
+
 var _PostList = __webpack_require__(307);
 
 var _FormikPost = __webpack_require__(389);
@@ -47413,7 +47415,7 @@ var PostsApp = exports.PostsApp = function PostsApp() {
     React.Fragment,
     null,
     React.createElement(
-      'div',
+      _reactRouterDom.BrowserRouter,
       null,
       React.createElement(
         'div',
@@ -47422,132 +47424,141 @@ var PostsApp = exports.PostsApp = function PostsApp() {
           'div',
           null,
           React.createElement(
-            'form',
-            { action: '' },
-            React.createElement('input', { type: 'text', placeholder: 'search', onChange: filterList })
-          ),
-          React.createElement(_PostList.PostList, {
-            fetchPosts: fetchPosts,
-            likeList: likeList,
-            pushToLikeList: pushToLikeList,
-            removeFromLikeList: removeFromLikeList,
-            modalOpenHandler: modalOpenHandler,
-            filterList: filterList,
-            filterPosts: filterPosts
-          })
-        ),
-        React.createElement(
-          _react2.Modal,
-          { width: '35rem', open: modalOpen, onClose: closeHandler },
-          React.createElement(
-            React.Fragment,
+            'div',
             null,
             React.createElement(
-              _react2.Grid.Container,
-              { justify: 'center' },
+              'form',
+              { action: '' },
+              React.createElement('input', { type: 'text', placeholder: 'search', onChange: filterList })
+            ),
+            React.createElement(_PostList.PostList, {
+              fetchPosts: fetchPosts,
+              likeList: likeList,
+              pushToLikeList: pushToLikeList,
+              removeFromLikeList: removeFromLikeList,
+              modalOpenHandler: modalOpenHandler,
+              filterList: filterList,
+              filterPosts: filterPosts
+            })
+          ),
+          React.createElement(
+            _react2.Modal,
+            { width: '35rem', open: modalOpen, onClose: closeHandler },
+            React.createElement(
+              React.Fragment,
+              null,
               React.createElement(
-                _react2.Grid,
-                null,
+                _react2.Grid.Container,
+                { justify: 'center' },
                 React.createElement(
-                  _react2.Modal.Content,
+                  _react2.Grid,
                   null,
                   React.createElement(
-                    'div',
-                    { className: ' flex flex-col items-center' },
-                    React.createElement('img', { src: clickedPost.picture, className: 'rounded-lg' }),
-                    React.createElement(_react2.Divider, null),
+                    _react2.Modal.Content,
+                    null,
                     React.createElement(
                       'div',
-                      { className: 'flex-1  text-center' },
+                      { className: ' flex flex-col items-center' },
+                      React.createElement('img', { src: clickedPost.picture, className: 'rounded-lg' }),
+                      React.createElement(_react2.Divider, null),
                       React.createElement(
-                        _react2.Link,
-                        { to: '/profilepage/' + clickedPost.user_id },
+                        'div',
+                        { className: 'flex-1  text-center' },
                         React.createElement(
-                          'span',
-                          null,
-                          clickedPostUser.name
+                          _reactRouterDom.Link,
+                          { to: '/profilepage/' + clickedPost.user_id },
+                          React.createElement(
+                            'span',
+                            null,
+                            clickedPostUser.name
+                          )
+                        ),
+                        React.createElement(
+                          _reactRouterDom.Link,
+                          { to: '/profilepage/' + clickedPost.id },
+                          '\u2003 ',
+                          clickedPost.content,
+                          '\u2003'
+                        ),
+                        likeList.includes(clickedPost.id) ? React.createElement(
+                          _react2.Button,
+                          {
+                            type: 'warning',
+                            size: 'mini',
+                            auto: true,
+                            ghost: true,
+                            onClick: function onClick() {
+                              return onClickUnLike(clickedPost.id);
+                            }
+                          },
+                          React.createElement(Icon.HeartFill, { size: 12 }),
+                          'UnLike'
+                        ) : React.createElement(
+                          _react2.Button,
+                          {
+                            type: 'success',
+                            size: 'mini',
+                            auto: true,
+                            ghost: true,
+                            onClick: function onClick() {
+                              return onClickLike(clickedPost.id);
+                            }
+                          },
+                          React.createElement(Icon.Heart, { size: 8 }),
+                          'Like'
                         )
-                      ),
-                      React.createElement(
-                        _react2.Link,
-                        { to: '/profilepage/' + clickedPost.id },
-                        '\u2003 ',
-                        clickedPost.content,
-                        '\u2003'
-                      ),
-                      likeList.includes(clickedPost.id) ? React.createElement(
-                        _react2.Button,
-                        {
-                          type: 'warning',
-                          size: 'mini',
-                          auto: true,
-                          ghost: true,
-                          onClick: function onClick() {
-                            return onClickUnLike(clickedPost.id);
-                          }
-                        },
-                        React.createElement(Icon.HeartFill, { size: 12 }),
-                        'UnLike'
-                      ) : React.createElement(
-                        _react2.Button,
-                        {
-                          type: 'success',
-                          size: 'mini',
-                          auto: true,
-                          ghost: true,
-                          onClick: function onClick() {
-                            return onClickLike(clickedPost.id);
-                          }
-                        },
-                        React.createElement(Icon.Heart, { size: 8 }),
-                        'Like'
                       )
                     )
                   )
                 )
+              ),
+              React.createElement(
+                _react2.Modal.Action,
+                { passive: true, onClick: function onClick() {
+                    return setModalOpen(false);
+                  } },
+                'Cancel'
               )
-            ),
-            React.createElement(
-              _react2.Modal.Action,
-              { passive: true, onClick: function onClick() {
-                  return setModalOpen(false);
-                } },
-              'Cancel'
             )
-          )
-        ),
-        React.createElement(
-          _react2.Modal,
-          { width: '35rem', open: postModalOpen, onClose: postModalCloseHandler },
+          ),
           React.createElement(
-            React.Fragment,
-            null,
+            _react2.Modal,
+            { width: '35rem', open: postModalOpen, onClose: postModalCloseHandler },
             React.createElement(
-              _react2.Modal.Content,
+              React.Fragment,
               null,
-              React.createElement(_FormikPost.FormikPost, { postModalCloseHandler: postModalCloseHandler })
-            ),
+              React.createElement(
+                _react2.Modal.Content,
+                null,
+                React.createElement(_FormikPost.FormikPost, { postModalCloseHandler: postModalCloseHandler })
+              ),
+              React.createElement(
+                _react2.Modal.Action,
+                { passive: true, onClick: function onClick() {
+                    return setPostModalOpen(false);
+                  } },
+                'Cancel'
+              )
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'postButton fixed bottom-0 right-0 z-10 m-12' },
             React.createElement(
-              _react2.Modal.Action,
-              { passive: true, onClick: function onClick() {
-                  return setPostModalOpen(false);
-                } },
-              'Cancel'
+              'button',
+              {
+                onClick: function onClick() {
+                  return postModalOpenHandler();
+                },
+                className: 'transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer' },
+              React.createElement(Icon.PlusCircle, { size: 50 })
             )
           )
         ),
         React.createElement(
-          'div',
-          { className: 'postButton fixed bottom-0 right-0 z-10 m-12' },
-          React.createElement(
-            'button',
-            {
-              onClick: function onClick() {
-                return postModalOpenHandler();
-              },
-              className: 'transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer' },
-            React.createElement(Icon.PlusCircle, { size: 50 })
-          )
+          _reactRouterDom.Switch,
+          null,
+          React.createElement(_reactRouterDom.Route, { path: '/' })
         )
       )
     )
