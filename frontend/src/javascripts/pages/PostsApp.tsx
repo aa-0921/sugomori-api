@@ -240,8 +240,8 @@ export const PostsApp = () => {
             <Modal width="35rem" open={postModalOpen} onClose={postModalCloseHandler}>
               <React.Fragment>
                 <Modal.Content>
-                  {/* <FormikPost postModalCloseHandler={postModalCloseHandler} /> */}
-                  <FormikPost />
+                  <FormikPost postModalCloseHandler={postModalCloseHandler} />
+                  {/* <FormikPost /> */}
 
                 </Modal.Content>
                 <Modal.Action passive onClick={() => setPostModalOpen(false)}>

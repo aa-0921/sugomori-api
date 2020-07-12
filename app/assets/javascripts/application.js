@@ -47531,7 +47531,7 @@ var PostsApp = exports.PostsApp = function PostsApp() {
               React.createElement(
                 _react2.Modal.Content,
                 null,
-                React.createElement(_FormikPost.FormikPost, null)
+                React.createElement(_FormikPost.FormikPost, { postModalCloseHandler: postModalCloseHandler })
               ),
               React.createElement(
                 _react2.Modal.Action,
@@ -55308,8 +55308,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-// export const FormikPost = (props: any) => {
-var FormikPost = exports.FormikPost = function FormikPost() {
+var FormikPost = exports.FormikPost = function FormikPost(props) {
+  // export const FormikPost = () => {
   var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
       postFileName = _useState2[0],
@@ -55329,6 +55329,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
     var headers = { 'content-type': 'multipart/form-data' };
     var postUrl = '/picposts';
     await _axios2.default.post(postUrl, body, { headers: headers });
+    props.postModalCloseHandler();
   };
   var onFileChange = function onFileChange(e) {
     var files = e.target.files;
@@ -55381,20 +55382,51 @@ var FormikPost = exports.FormikPost = function FormikPost() {
           'div',
           null,
           postFilePreview != null ? React.createElement(
-            'div',
-            { className: 'flex flex-col items-center' },
+            React.Fragment,
+            null,
             React.createElement(
-              'label',
-              null,
-              '\u9078\u629E\u3055\u308C\u305F\u30D5\u30A1\u30A4\u30EB'
+              'div',
+              { className: 'flex flex-col items-center' },
+              React.createElement(
+                'label',
+                null,
+                '\u9078\u629E\u3055\u308C\u305F\u30D5\u30A1\u30A4\u30EB'
+              ),
+              React.createElement(_react2.Spacer, { y: 3 }),
+              React.createElement('img', { src: postFilePreview, className: 'object-scale-down h-48 w-full' }),
+              React.createElement(_react2.Spacer, { y: 1 }),
+              React.createElement(
+                'h5',
+                null,
+                postFileName
+              ),
+              React.createElement(_react2.Spacer, { y: 3 })
             ),
-            React.createElement(_react2.Spacer, { y: 3 }),
-            React.createElement('img', { src: postFilePreview, className: 'object-scale-down h-48 w-full' }),
+            React.createElement(
+              'div',
+              null,
+              React.createElement(
+                'label',
+                null,
+                '\u30B3\u30E1\u30F3\u30C8'
+              ),
+              React.createElement(_formik.Field, {
+                type: 'text',
+                name: 'content',
+                value: values.content,
+                onChange: handleChange,
+                className: 'shadow border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline'
+              })
+            ),
             React.createElement(_react2.Spacer, { y: 1 }),
             React.createElement(
-              'h5',
-              null,
-              postFileName
+              'div',
+              { className: 'flex flex-col items-center' },
+              React.createElement(
+                'button',
+                { type: 'submit', className: 'submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-300 transform hover:-translate-y-1 hover:scale-100 text-white hover:text-green font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-300 rounded-full cursor-pointer' },
+                '\u6295\u7A3F'
+              )
             )
           ) : React.createElement(
             'div',
@@ -55425,33 +55457,6 @@ var FormikPost = exports.FormikPost = function FormikPost() {
                 }
               })
             )
-          ),
-          React.createElement(_react2.Spacer, { y: 3 })
-        ),
-        React.createElement(
-          'div',
-          null,
-          React.createElement(
-            'label',
-            null,
-            '\u30B3\u30E1\u30F3\u30C8'
-          ),
-          React.createElement(_formik.Field, {
-            type: 'text',
-            name: 'content',
-            value: values.content,
-            onChange: handleChange,
-            className: 'shadow border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline'
-          })
-        ),
-        React.createElement(_react2.Spacer, { y: 1 }),
-        React.createElement(
-          'div',
-          { className: 'flex flex-col items-center' },
-          React.createElement(
-            'button',
-            { type: 'submit', className: 'submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-300 transform hover:-translate-y-1 hover:scale-100 text-white hover:text-green font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-300 rounded-full cursor-pointer' },
-            '\u6295\u7A3F'
           )
         ),
         React.createElement(_react2.Spacer, { y: 1 })
