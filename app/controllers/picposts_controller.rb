@@ -3,6 +3,15 @@
 class PicpostsController < ApplicationController
   before_action :set_picpost, only: %i(show update destroy)
 
+  def user_posts
+    json_request = JSON.parse(request.body.read)
+    page_user_id = json_request['page_user_id'].to_i
+    page_user = User.find_by(id: page_user_id)
+    @user_posts = page_user.picposts
+
+    render json: { status: 'SUCCESS', message: 'Loaded user_posts', data: @user_posts }
+  end
+
   def create
     p "current_userの内容"
     p current_user

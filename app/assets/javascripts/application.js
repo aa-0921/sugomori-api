@@ -47460,7 +47460,7 @@ var PostsApp = exports.PostsApp = function PostsApp() {
                       'div',
                       { className: 'flex-1  text-center' },
                       React.createElement(
-                        Link,
+                        _react2.Link,
                         { to: '/profilepage/' + clickedPost.user_id },
                         React.createElement(
                           'span',
@@ -47469,7 +47469,7 @@ var PostsApp = exports.PostsApp = function PostsApp() {
                         )
                       ),
                       React.createElement(
-                        Link,
+                        _react2.Link,
                         { to: '/profilepage/' + clickedPost.id },
                         '\u2003 ',
                         clickedPost.content,
@@ -66951,8 +66951,35 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
       filterPosts = _useState8[0],
       setFilterPosts = _useState8[1];
 
-  var getAllPostUrl = 'http://localhost:3000/picposts';
+  // このページのユーザーの投稿だけ取得
+  // const onClickFollow = async (userId: any) => {
+  //   const csrf = sessionStorage.getItem('X-CSRF-Token');
+  //   const obj = {
+  //     // 一時的にuser_idを1に
+  //     current_user_id: 1,
+  //     'X-CSRF-Token': csrf,
+  //   };
+  //   const body = JSON.stringify(obj);
+  //   const method = 'PUT';
+  //   const postUrl: string = '/users/follow/' + userId;
 
+  //   await fetch(postUrl, { method, body })
+  //     .then((response) => {
+  //       console.log(response.status);
+  //       // if (response.status == 204) {
+  //       if (response.status == 200) {
+  //         props.pushToFollowUsers(props.user.id);
+  //       } else {
+  //         throw new Error();
+  //       }
+  //     })
+  //     .catch((error) => { });
+  // };
+
+  // このページのユーザーの投稿だけ取得
+
+
+  var getAllPostUrl = 'http://localhost:3000/picposts';
   (0, _react.useEffect)(function () {
     (0, _FetchData.FetchData)(getAllPostUrl).then(function (res) {
       setFetchPosts(res.data);
@@ -67173,7 +67200,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
                     'div',
                     { className: 'flex-1  text-center' },
                     React.createElement(
-                      Link,
+                      _react2.Link,
                       { to: '/profilepage/' + clickedPost.user_id },
                       React.createElement(
                         'span',
@@ -67182,7 +67209,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
                       )
                     ),
                     React.createElement(
-                      Link,
+                      _react2.Link,
                       { to: '/profilepage/' + clickedPost.id },
                       '\u2003 ',
                       clickedPost.content,

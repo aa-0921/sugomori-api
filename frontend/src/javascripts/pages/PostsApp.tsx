@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { FetchData } from '../api/FetchData'
 import { PostList } from '../components/PostList';
 import { FormikPost } from '../components/FormikPost';
-import { Modal, Button, Grid, Divider } from '@zeit-ui/react';
+import { Modal, Button, Grid, Divider, Link } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
 
 export const PostsApp = () => {
@@ -193,7 +193,7 @@ export const PostsApp = () => {
                         </Link>
                         <Link to={'/profilepage/' + clickedPost.id}>
                           &emsp; {clickedPost.content}&emsp;
-                          </Link>
+                        </Link>
                         {likeList.includes(clickedPost.id) ? (
                           <Button
                             type="warning"

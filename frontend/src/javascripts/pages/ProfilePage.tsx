@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Card, Spacer, Modal, Button, Grid, Divider } from '@zeit-ui/react';
+import { Card, Spacer, Modal, Button, Grid, Divider, Link } from '@zeit-ui/react';
 import { FetchData } from '../api/FetchData'
 // 投稿一覧関連
 import { PostList } from '../components/PostList';
@@ -27,8 +27,46 @@ export const ProfilePage = (props) => {
   // 検索のfilter後の投稿の配列の定義
   const [filterPosts, setFilterPosts] = useState([]);
 
-  const getAllPostUrl: string = 'http://localhost:3000/picposts';
 
+
+  // このページのユーザーの投稿だけ取得
+  // const onClickFollow = async (userId: any) => {
+  //   const csrf = sessionStorage.getItem('X-CSRF-Token');
+  //   const obj = {
+  //     // 一時的にuser_idを1に
+  //     current_user_id: 1,
+  //     'X-CSRF-Token': csrf,
+  //   };
+  //   const body = JSON.stringify(obj);
+  //   const method = 'PUT';
+  //   const postUrl: string = '/users/follow/' + userId;
+
+  //   await fetch(postUrl, { method, body })
+  //     .then((response) => {
+  //       console.log(response.status);
+  //       // if (response.status == 204) {
+  //       if (response.status == 200) {
+  //         props.pushToFollowUsers(props.user.id);
+  //       } else {
+  //         throw new Error();
+  //       }
+  //     })
+  //     .catch((error) => { });
+  // };
+
+  // このページのユーザーの投稿だけ取得
+
+
+
+
+
+
+
+
+
+
+
+  const getAllPostUrl: string = 'http://localhost:3000/picposts';
   useEffect(() => {
     FetchData(getAllPostUrl).then((res) => {
       setFetchPosts(res.data);
