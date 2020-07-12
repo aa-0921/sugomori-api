@@ -55359,11 +55359,30 @@ var FormikPost = exports.FormikPost = function FormikPost() {
       postFileName = _useState2[0],
       setPostFileName = _useState2[1];
 
+  var _useState3 = (0, _react.useState)(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      postFilePreview = _useState4[0],
+      setPostFilePreview = _useState4[1];
+
   var createPicpost = async function createPicpost(body) {
 
     var headers = { 'content-type': 'multipart/form-data' };
     var postUrl = '/picposts';
     await _axios2.default.post(postUrl, body, { headers: headers });
+  };
+  var onFileChange = function onFileChange(e) {
+    var files = e.target.files;
+
+    if (files.length > 0) {
+      var file = files[0];
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        setPostFilePreview(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setPostFilePreview(null);
+    }
   };
 
   return React.createElement(_formik.Formik, {
@@ -55385,6 +55404,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
       submitData.append('content', '');
       submitData.append('user_id', '');
     },
+
     render: function render(_ref) {
       var values = _ref.values,
           handleSubmit = _ref.handleSubmit,
@@ -55402,10 +55422,11 @@ var FormikPost = exports.FormikPost = function FormikPost() {
             null,
             '\u6295\u7A3F\u753B\u50CF'
           ),
-          React.createElement('img', {
-            src: ''
-            // 選択した画像を一時表示したい。
-          }),
+          postFilePreview != null ? React.createElement(
+            'div',
+            null,
+            React.createElement('img', { src: postFilePreview })
+          ) : React.createElement('div', null),
           React.createElement(_react2.Spacer, { y: 20 }),
           React.createElement(
             'label',
@@ -55428,6 +55449,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
                 reader.readAsDataURL(file);
                 // setFieldValue("file", e.currentTarget.files[0])
                 setPostFileName(e.target.files[0].name);
+                onFileChange(e);
               }
             })
           ),
@@ -55446,7 +55468,7 @@ var FormikPost = exports.FormikPost = function FormikPost() {
           width: '64',
           height: '64'
         }),
-        React.createElement(_react2.Spacer, { y: 20 }),
+        React.createElement(_react2.Spacer, { y: 30 }),
         React.createElement(
           'div',
           null,
