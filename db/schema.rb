@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_085824) do
+ActiveRecord::Schema.define(version: 2020_07_13_171450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id"
+    t.bigint "picpost_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["picpost_id"], name: "index_comments_on_picpost_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "follows", force: :cascade do |t|
     t.string "followable_type", null: false
@@ -95,6 +105,8 @@ ActiveRecord::Schema.define(version: 2020_07_02_085824) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "comments", "picposts"
+  add_foreign_key "comments", "users"
   add_foreign_key "picposts", "users"
   add_foreign_key "social_profiles", "users"
 end
