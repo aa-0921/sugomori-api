@@ -96,8 +96,9 @@ export const PostsApp = (props: any) => {
 
   const removeFromLikeList = (picpost_id: number) => {
     const arr = Array.from(likeList);
-    const nextFollowUsers = arr.filter((el) => el !== picpost_id);
-    setLikeList(nextFollowUsers);
+    // 
+    const nextLikeUsers = arr.filter((el) => el !== picpost_id);
+    setLikeList(nextLikeUsers);
   };
 
   // clickLike,unlike

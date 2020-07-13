@@ -63,7 +63,6 @@ export const UserList = (props: any) => {
           <div className="flex-1  text-center">
             <li key={props.user.id} style={{ color: 'white' }} className="flex items-center m-auto">
               <Link to={'/profilepage/' + props.user.id}>{props.user.name}&emsp;</Link>
-
               <FollowButton
                 onClickFollow={onClickFollow}
                 onClickUnFollow={onClickUnFollow}

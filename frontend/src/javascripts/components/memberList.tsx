@@ -9,7 +9,6 @@ export const MemberList = (props: any): any => {
       <div>
         {props.fetchUsers.map((user: any, index: number) => (
           <div key={index} className="list">
-
             <UserList
               user={user}
               followUsersList={props.followUsers}

@@ -5,6 +5,8 @@ import { FetchData } from '../api/FetchData'
 // 投稿一覧関連
 import { PostList } from '../components/PostList';
 import * as Icon from '@zeit-ui/react-icons';
+import { FollowButton } from '../components/FollowButton';
+
 
 export const ProfilePage = (props) => {
   const [fetchUser, setFetchUser] = useState({
@@ -135,8 +137,8 @@ export const ProfilePage = (props) => {
 
   const removeFromLikeList = (picpost_id: number) => {
     const arr = Array.from(likeList);
-    const nextFollowUsers = arr.filter((el) => el !== picpost_id);
-    setLikeList(nextFollowUsers);
+    const nextLikeUsers = arr.filter((el) => el !== picpost_id);
+    setLikeList(nextLikeUsers);
   };
 
   // clickLike,unlike
@@ -191,8 +193,67 @@ export const ProfilePage = (props) => {
   };
   // clickLike,unlike
 
-  // 投稿一覧関連
+  // FollowButton関連
 
+
+  const pushToFollowUsers = (target: number) => {
+    console.log(target, 'ma');
+    const arr = Array.from(followUsers);
+    arr.push(target);
+    setFollowUsers(arr);
+  };
+
+  const removeFromFollowUsers = (target: number) => {
+    const arr = Array.from(followUsers);
+    const nextFollowUsers = arr.filter((el) => el !== target);
+    setFollowUsers(nextFollowUsers);
+  };
+  const onClickFollow = async (userId: any) => {
+    // 一時的にuser_idを1に
+    const obj = { current_user_id: 1 };
+    const body = JSON.stringify(obj);
+    const method = 'PUT';
+    const postUrl: string = '/users/follow/' + fetchUser.id;
+
+    await fetch(postUrl, { method, body })
+      .then((response) => {
+        if (response.status == 200) {
+          pushToFollowUsers(fetchUser.id);
+        } else {
+          throw new Error();
+        }
+      })
+      .catch((error) => { });
+  };
+  const onClickUnFollow = async (userId: any) => {
+    // 一時的にuser_idを1に
+    const obj = { current_user_id: 1 };
+    const body = JSON.stringify(obj);
+    const method = 'PUT';
+    const postUrl: string = '/users/unfollow/' + fetchUser.id;
+
+    await fetch(postUrl, { method, body })
+      .then((response) => {
+        if (response.status == 200) {
+          removeFromFollowUsers(fetchUser.id);
+        } else {
+          throw new Error();
+        }
+      })
+      .catch((error) => { });
+  };
+  const [followUsers, setFollowUsers] = useState([]);
+
+  // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
+
+  const getFollowListUrl: string = `/users/follow_list/${currentUserId}`;
+  useEffect(() => {
+    FetchData(getFollowListUrl).then((res) => {
+      setFollowUsers(res.data.map((el: any) => el.id));
+    });
+  }, []);
+  // FollowButton関連
+  console.log('followUsers', followUsers)
   return (
     <React.Fragment>
       < Spacer y={1} />
@@ -202,6 +263,13 @@ export const ProfilePage = (props) => {
         <h4>{fetchUser.name}</h4>
 
         <p>自己紹介</p>
+
+        <FollowButton
+          onClickFollow={onClickFollow}
+          onClickUnFollow={onClickUnFollow}
+          followUsersList={followUsers}
+          user={fetchUser}
+        />
       </Card>
       < Spacer y={1} />
       <div>

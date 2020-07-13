@@ -3,7 +3,7 @@
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { MemberList } from '../components/memberList';
+import { MemberList } from '../components/MemberList';
 import { FetchData } from '../api/FetchData';
 
 export const MemberListApp = () => {
@@ -32,17 +32,6 @@ export const MemberListApp = () => {
     setFollowUsers(nextFollowUsers);
   };
 
-  // const Show = ({ match }: { match: any }) => {
-  //   let params = match.params;
-  //   return (
-  //     <div>
-  //       UserName,Email is{' '}
-  //       <div>
-  //         <strong>{params.id}</strong>
-  //       </div>
-  //     </div>
-  //   );
-  // };
   const url: string = '/users';
 
   useEffect(() => {

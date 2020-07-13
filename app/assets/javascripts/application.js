@@ -47347,10 +47347,11 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
 
   var removeFromLikeList = function removeFromLikeList(picpost_id) {
     var arr = Array.from(likeList);
-    var nextFollowUsers = arr.filter(function (el) {
+    // 
+    var nextLikeUsers = arr.filter(function (el) {
       return el !== picpost_id;
     });
-    setLikeList(nextFollowUsers);
+    setLikeList(nextLikeUsers);
   };
 
   // clickLike,unlike
@@ -66935,6 +66936,8 @@ var _reactIcons = __webpack_require__(541);
 
 var Icon = _interopRequireWildcard(_reactIcons);
 
+var _FollowButton = __webpack_require__(868);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
@@ -67100,10 +67103,10 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
 
   var removeFromLikeList = function removeFromLikeList(picpost_id) {
     var arr = Array.from(likeList);
-    var nextFollowUsers = arr.filter(function (el) {
+    var nextLikeUsers = arr.filter(function (el) {
       return el !== picpost_id;
     });
-    setLikeList(nextFollowUsers);
+    setLikeList(nextLikeUsers);
   };
 
   // clickLike,unlike
@@ -67154,8 +67157,71 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
   };
   // clickLike,unlike
 
-  // 投稿一覧関連
+  // FollowButton関連
 
+
+  var pushToFollowUsers = function pushToFollowUsers(target) {
+    console.log(target, 'ma');
+    var arr = Array.from(followUsers);
+    arr.push(target);
+    setFollowUsers(arr);
+  };
+
+  var removeFromFollowUsers = function removeFromFollowUsers(target) {
+    var arr = Array.from(followUsers);
+    var nextFollowUsers = arr.filter(function (el) {
+      return el !== target;
+    });
+    setFollowUsers(nextFollowUsers);
+  };
+  var onClickFollow = async function onClickFollow(userId) {
+    // 一時的にuser_idを1に
+    var obj = { current_user_id: 1 };
+    var body = JSON.stringify(obj);
+    var method = 'PUT';
+    var postUrl = '/users/follow/' + fetchUser.id;
+
+    await fetch(postUrl, { method: method, body: body }).then(function (response) {
+      if (response.status == 200) {
+        pushToFollowUsers(fetchUser.id);
+      } else {
+        throw new Error();
+      }
+    }).catch(function (error) {});
+  };
+  var onClickUnFollow = async function onClickUnFollow(userId) {
+    // 一時的にuser_idを1に
+    var obj = { current_user_id: 1 };
+    var body = JSON.stringify(obj);
+    var method = 'PUT';
+    var postUrl = '/users/unfollow/' + fetchUser.id;
+
+    await fetch(postUrl, { method: method, body: body }).then(function (response) {
+      if (response.status == 200) {
+        removeFromFollowUsers(fetchUser.id);
+      } else {
+        throw new Error();
+      }
+    }).catch(function (error) {});
+  };
+
+  var _useState17 = (0, _react.useState)([]),
+      _useState18 = _slicedToArray(_useState17, 2),
+      followUsers = _useState18[0],
+      setFollowUsers = _useState18[1];
+
+  // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
+
+  var getFollowListUrl = '/users/follow_list/' + currentUserId;
+  (0, _react.useEffect)(function () {
+    (0, _FetchData.FetchData)(getFollowListUrl).then(function (res) {
+      setFollowUsers(res.data.map(function (el) {
+        return el.id;
+      }));
+    });
+  }, []);
+  // FollowButton関連
+  console.log('followUsers', followUsers);
   return React.createElement(
     React.Fragment,
     null,
@@ -67177,7 +67243,13 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
         'p',
         null,
         '\u81EA\u5DF1\u7D39\u4ECB'
-      )
+      ),
+      React.createElement(_FollowButton.FollowButton, {
+        onClickFollow: onClickFollow,
+        onClickUnFollow: onClickUnFollow,
+        followUsersList: followUsers,
+        user: fetchUser
+      })
     ),
     React.createElement(_react2.Spacer, { y: 1 }),
     React.createElement(
@@ -67305,7 +67377,7 @@ var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
 
-var _memberList = __webpack_require__(866);
+var _MemberList = __webpack_require__(866);
 
 var _FetchData = __webpack_require__(304);
 
@@ -67350,17 +67422,6 @@ var MemberListApp = exports.MemberListApp = function MemberListApp() {
     setFollowUsers(nextFollowUsers);
   };
 
-  // const Show = ({ match }: { match: any }) => {
-  //   let params = match.params;
-  //   return (
-  //     <div>
-  //       UserName,Email is{' '}
-  //       <div>
-  //         <strong>{params.id}</strong>
-  //       </div>
-  //     </div>
-  //   );
-  // };
   var url = '/users';
 
   (0, _react.useEffect)(function () {
@@ -67380,7 +67441,7 @@ var MemberListApp = exports.MemberListApp = function MemberListApp() {
         React.createElement(
           'span',
           null,
-          React.createElement(_memberList.MemberList, {
+          React.createElement(_MemberList.MemberList, {
             fetchUsers: fetchUsers,
             followUsers: followUsers,
             pushToFollowUsers: pushToFollowUsers,
