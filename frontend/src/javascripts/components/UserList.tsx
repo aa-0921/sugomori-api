@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 // import React, { useState, useEffect } from 'react';
-import { Grid, Row, Note, Button, Divider, Spacer } from '@zeit-ui/react';
+import { Grid, Row, Note, Button, Divider, Spacer, Card } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
 import { FollowButton } from './FollowButton';
 
@@ -57,23 +57,36 @@ export const UserList = (props: any) => {
 
   return (
     <React.Fragment>
-      <Row>
-        <div className="flex items-center ml-8">
-          <div className="flex-1  text-center">
-            <li key={props.user.id} style={{ color: 'white' }} className="flex items-center m-auto">
-              <Link to={'/profilepage/' + props.user.id}>{props.user.name}&emsp;</Link>
-              <FollowButton
-                onClickFollow={onClickFollow}
-                onClickUnFollow={onClickUnFollow}
-                followUsersList={props.followUsersList}
-                user={props.user}
-                buttonSize={buttonSize}
-              />
-            </li>
+      <Router>
+
+        {/* <Row> */}
+        <Card hoverable>
+          <div className="flex items-center ml-8">
+            <div className="flex-1  text-center">
+              <li key={props.user.id} style={{ color: 'white' }} className="flex items-center m-auto">
+                <div className="flex justify-between w-2/5">
+                  <div>
+                    <Link to={'/profilepage/' + props.user.id}>{props.user.name}&emsp;</Link>
+                  </div>
+                  <div>
+                    <FollowButton
+                      onClickFollow={onClickFollow}
+                      onClickUnFollow={onClickUnFollow}
+                      followUsersList={props.followUsersList}
+                      user={props.user}
+                      buttonSize={buttonSize}
+                    />
+                  </div>
+                </div>
+              </li>
+            </div>
           </div>
-        </div>
-      </Row>
-      <Divider />
+        </Card>
+        {/* </Row> */}
+        {/* <Divider /> */}
+        <Spacer y={0.4} />
+      </Router>
+
     </React.Fragment>
 
   );

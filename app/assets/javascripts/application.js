@@ -67601,35 +67601,51 @@ var UserList = exports.UserList = function UserList(props) {
     React.Fragment,
     null,
     React.createElement(
-      _react2.Row,
+      _reactRouterDom.BrowserRouter,
       null,
       React.createElement(
-        'div',
-        { className: 'flex items-center ml-8' },
+        _react2.Card,
+        { hoverable: true },
         React.createElement(
           'div',
-          { className: 'flex-1  text-center' },
+          { className: 'flex items-center ml-8' },
           React.createElement(
-            'li',
-            { key: props.user.id, style: { color: 'white' }, className: 'flex items-center m-auto' },
+            'div',
+            { className: 'flex-1  text-center' },
             React.createElement(
-              _reactRouterDom.Link,
-              { to: '/profilepage/' + props.user.id },
-              props.user.name,
-              '\u2003'
-            ),
-            React.createElement(_FollowButton.FollowButton, {
-              onClickFollow: onClickFollow,
-              onClickUnFollow: onClickUnFollow,
-              followUsersList: props.followUsersList,
-              user: props.user,
-              buttonSize: buttonSize
-            })
+              'li',
+              { key: props.user.id, style: { color: 'white' }, className: 'flex items-center m-auto' },
+              React.createElement(
+                'div',
+                { className: 'flex justify-between w-2/5' },
+                React.createElement(
+                  'div',
+                  null,
+                  React.createElement(
+                    _reactRouterDom.Link,
+                    { to: '/profilepage/' + props.user.id },
+                    props.user.name,
+                    '\u2003'
+                  )
+                ),
+                React.createElement(
+                  'div',
+                  null,
+                  React.createElement(_FollowButton.FollowButton, {
+                    onClickFollow: onClickFollow,
+                    onClickUnFollow: onClickUnFollow,
+                    followUsersList: props.followUsersList,
+                    user: props.user,
+                    buttonSize: buttonSize
+                  })
+                )
+              )
+            )
           )
         )
-      )
-    ),
-    React.createElement(_react2.Divider, null)
+      ),
+      React.createElement(_react2.Spacer, { y: 0.4 })
+    )
   );
 };
 // import React, { useState, useEffect } from 'react';
