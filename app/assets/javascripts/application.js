@@ -67420,6 +67420,24 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
                       React.createElement(Icon.Heart, { size: 8 }),
                       'Like'
                     )
+                  ),
+                  React.createElement(
+                    'div',
+                    null,
+                    React.createElement(
+                      _react2.Button,
+                      {
+                        type: 'error',
+                        size: 'mini',
+                        auto: true,
+                        ghost: true,
+                        onClick: function onClick() {
+                          return onClickDelete(clickedPost.id);
+                        }
+                      },
+                      React.createElement(Icon.Delete, { size: 8 }),
+                      'Delete'
+                    )
                   )
                 )
               )
