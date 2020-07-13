@@ -5,7 +5,7 @@ import { FetchData } from '../api/FetchData'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { PostList } from '../components/PostList';
 import { FormikPost } from '../components/FormikPost';
-import { Modal, Button, Grid, Divider, Row, Slider } from '@zeit-ui/react';
+import { Modal, Button, Grid, Divider, Row, Slider, Collapse, Popover, Text } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
 
 export const PostsApp = (props: any) => {
@@ -170,22 +170,46 @@ export const PostsApp = (props: any) => {
   }
   // Slider関連
 
+  // Popover関連
+  const popoverSlider = () => (
+    <div className="mr-auto ml-80 w-screen pl-200 flex justify-center items-center">
+      <span className="wr-10 pr-5 mr-50">横幅</span>
+      {/* <Row style={{ width: '75%' }}> */}
+      {/* <Row> */}
+      <Slider
+        value={columnWidthValue} onChange={columnWidthHandler}
+        step={20} max={450} min={60} initialValue={300}
+        className="ml-70 pl-100"
+      />
+      {/* </Row> */}
+    </div>
+  )
+  // Popover関連
+
   return (
     <React.Fragment>
       <Router>
         <div>
           <div>
             <div>
-              <div className="w-auto flex justify-center items-center">
-                <span className="wr-10 pr-5">横幅</span>
-                <Row style={{ width: '75%' }}>
-                  <Slider
-                    value={columnWidthValue} onChange={columnWidthHandler}
-                    step={20} max={500} min={100} initialValue={300}
-                  />
-                </Row>
+              <div className="ml-20">
+                <Popover content={popoverSlider} className="ml-80">
+                  横幅
+                </Popover>
               </div>
-
+              {/* <div>
+                <Collapse title="横幅" initialVisible className="w-1/5 text-base">
+                  <div className="w-auto flex justify-center items-center">
+                    <span className="wr-10 pr-5">横幅</span>
+                    <Row style={{ width: '75%' }}>
+                      <Slider
+                        value={columnWidthValue} onChange={columnWidthHandler}
+                        step={20} max={500} min={100} initialValue={300}
+                      />
+                    </Row>
+                  </div>
+                </Collapse>
+              </div> */}
               <div className="flex justify-end mr-5 mt-3">
                 <form action="">
                   <input type="text" placeholder="search" onChange={filterList} className="w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline" />

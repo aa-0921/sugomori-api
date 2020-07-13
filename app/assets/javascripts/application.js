@@ -47429,6 +47429,25 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
   };
   // Slider関連
 
+  // Popover関連
+  var popoverSlider = function popoverSlider() {
+    return React.createElement(
+      'div',
+      { className: 'mr-auto ml-80 w-screen pl-200 flex justify-center items-center' },
+      React.createElement(
+        'span',
+        { className: 'wr-10 pr-5 mr-50' },
+        '\u6A2A\u5E45'
+      ),
+      React.createElement(_react2.Slider, {
+        value: columnWidthValue, onChange: columnWidthHandler,
+        step: 20, max: 450, min: 60, initialValue: 300,
+        className: 'ml-70 pl-100'
+      })
+    );
+  };
+  // Popover関連
+
   return React.createElement(
     React.Fragment,
     null,
@@ -47446,19 +47465,11 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
             null,
             React.createElement(
               'div',
-              { className: 'w-auto flex justify-center items-center' },
+              { className: 'ml-20' },
               React.createElement(
-                'span',
-                { className: 'wr-10 pr-5' },
+                _react2.Popover,
+                { content: popoverSlider, className: 'ml-80' },
                 '\u6A2A\u5E45'
-              ),
-              React.createElement(
-                _react2.Row,
-                { style: { width: '75%' } },
-                React.createElement(_react2.Slider, {
-                  value: columnWidthValue, onChange: columnWidthHandler,
-                  step: 20, max: 500, min: 100, initialValue: 300
-                })
               )
             ),
             React.createElement(
