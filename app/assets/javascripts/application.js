@@ -66946,6 +66946,10 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
       fetchUser = _useState2[0],
       setFetchUser = _useState2[1];
 
+  // const paramsID = props.match.params.id;
+  // const [paramsUserID, setParamsUserID] = useState('');
+  // setParamsUserID(props.match.params.id);
+
   // URLパラメータからユーザー情報の取得
 
 
@@ -66957,7 +66961,9 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
 
       setFetchUser(res.data);
     });
-  }, []);
+  }, [getUserUrl]);
+  // }, [paramsUserID]);
+
 
   // 投稿一覧関連
   // 全投稿aの配列のState定義
@@ -66999,7 +67005,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
       console.log('userPostUrlのfetchUserPosts', fetchUserPosts);
       console.log('userPostUrlのinitialFetchPosts', initialFetchPosts);
     });
-  }, []);
+  }, [getUserUrl]);
 
   (0, _react.useEffect)(function () {
     (0, _FetchData.FetchData)(getLikeListUrl).then(function (res) {

@@ -12,6 +12,10 @@ export const ProfilePage = (props) => {
     name: '',
   });
 
+  // const paramsID = props.match.params.id;
+  // const [paramsUserID, setParamsUserID] = useState('');
+  // setParamsUserID(props.match.params.id);
+
   // URLパラメータからユーザー情報の取得
   const getUserUrl: string = `/users/${props.match.params.id}`;
   useEffect(() => {
@@ -21,7 +25,10 @@ export const ProfilePage = (props) => {
 
       setFetchUser(res.data);
     });
-  }, []);
+  }, [getUserUrl]);
+  // }, [paramsUserID]);
+
+
 
   // 投稿一覧関連
   // 全投稿aの配列のState定義
@@ -53,7 +60,7 @@ export const ProfilePage = (props) => {
       console.log('userPostUrlのfetchUserPosts', fetchUserPosts)
       console.log('userPostUrlのinitialFetchPosts', initialFetchPosts)
     });
-  }, []);
+  }, [getUserUrl]);
 
   useEffect(() => {
     FetchData(getLikeListUrl).then((res) => {
