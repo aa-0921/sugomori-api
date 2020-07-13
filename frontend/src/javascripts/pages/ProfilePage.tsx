@@ -200,12 +200,12 @@ export const ProfilePage = (props) => {
     arr.push(target);
     setFollowUsers(arr);
   };
-
   const removeFromFollowUsers = (target: number) => {
     const arr = Array.from(followUsers);
     const nextFollowUsers = arr.filter((el) => el !== target);
     setFollowUsers(nextFollowUsers);
   };
+
   const onClickFollow = async (userId: any) => {
     // 一時的にuser_idを1に
     const obj = { current_user_id: 1 };
@@ -324,64 +324,67 @@ export const ProfilePage = (props) => {
           filterPosts={filterPosts}
         />
         <Modal width="35rem" open={modalOpen} onClose={closeHandler}>
-          <React.Fragment>
+          {/* <React.Fragment>
             <Grid.Container justify="center">
-              <Grid>
-                <Modal.Content>
-                  <div className=" flex flex-col items-center">
-                    <img src={clickedPost.picture} className="rounded-lg" />
-                    <Divider />
-                    <div className="flex-1  text-center">
-                      <Link to={'/profilepage/' + clickedPost.user_id}>
-                        <span>{clickedPostUser.name}</span>
-                      </Link>
-                      <Link to={'/profilepage/' + clickedPost.id}>
-                        &emsp; {clickedPost.content}&emsp;
+              <Grid> */}
+          <Modal.Content>
+            <div className=" flex flex-col items-center">
+              <img src={clickedPost.picture} className="rounded-lg" />
+              <Divider />
+              <div className="flex-1  text-center">
+                <Link to={'/profilepage/' + clickedPost.user_id}>
+                  <span>{clickedPostUser.name}</span>
+                </Link>
+                <Link to={'/profilepage/' + clickedPost.id}>
+                  &emsp; {clickedPost.content}&emsp;
                           </Link>
-                      {likeList.includes(clickedPost.id) ? (
-                        <Button
-                          type="warning"
-                          size="mini"
-                          auto
-                          ghost
-                          onClick={() => onClickUnLike(clickedPost.id)}
-                        >
-                          <Icon.HeartFill size={12} />
+                {likeList.includes(clickedPost.id) ? (
+                  <Button
+                    type="warning"
+                    size="mini"
+                    auto
+                    ghost
+                    onClick={() => onClickUnLike(clickedPost.id)}
+                  >
+                    <Icon.HeartFill size={12} />
                               UnLike
-                        </Button>
-                      ) : (
-                          <Button
-                            type="success"
-                            size="mini"
-                            auto
-                            ghost
-                            onClick={() => onClickLike(clickedPost.id)}
-                          >
-                            <Icon.Heart size={8} />
+                  </Button>
+                ) : (
+                    <Button
+                      type="success"
+                      size="mini"
+                      auto
+                      ghost
+                      onClick={() => onClickLike(clickedPost.id)}
+                    >
+                      <Icon.Heart size={8} />
                               Like
-                          </Button>
-                        )}
-                    </div>
-                    <div>
-                      <Button
-                        type="error"
-                        size="mini"
-                        auto
-                        ghost
-                        onClick={() => onClickDelete(clickedPost.id)}
-                      >
-                        <Icon.Delete size={8} />
+                    </Button>
+                  )}
+              </div>
+
+            </div>
+          </Modal.Content>
+          {/* </Grid>
+            </Grid.Container> */}
+          <Modal.Action>
+            <div>
+              <Button
+                type="error"
+                size="mini"
+                auto
+                ghost
+                onClick={() => onClickDelete(clickedPost.id)}
+              >
+                <Icon.Delete size={8} />
                               Delete
                       </Button>
-                    </div>
-                  </div>
-                </Modal.Content>
-              </Grid>
-            </Grid.Container>
-            <Modal.Action passive onClick={() => setModalOpen(false)}>
-              Cancel
+            </div>
+          </Modal.Action>
+          <Modal.Action passive onClick={() => setModalOpen(false)}>
+            Cancel
                 </Modal.Action>
-          </React.Fragment>
+          {/* </React.Fragment> */}
         </Modal>
       </div>
     </React.Fragment>

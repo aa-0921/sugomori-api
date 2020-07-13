@@ -67225,7 +67225,6 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
     arr.push(target);
     setFollowUsers(arr);
   };
-
   var removeFromFollowUsers = function removeFromFollowUsers(target) {
     var arr = Array.from(followUsers);
     var nextFollowUsers = arr.filter(function (el) {
@@ -67233,6 +67232,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
     });
     setFollowUsers(nextFollowUsers);
   };
+
   var onClickFollow = async function onClickFollow(userId) {
     // 一時的にuser_idを1に
     var obj = { current_user_id: 1 };
@@ -67384,98 +67384,90 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
         _react2.Modal,
         { width: '35rem', open: modalOpen, onClose: closeHandler },
         React.createElement(
-          React.Fragment,
+          _react2.Modal.Content,
           null,
           React.createElement(
-            _react2.Grid.Container,
-            { justify: 'center' },
+            'div',
+            { className: ' flex flex-col items-center' },
+            React.createElement('img', { src: clickedPost.picture, className: 'rounded-lg' }),
+            React.createElement(_react2.Divider, null),
             React.createElement(
-              _react2.Grid,
-              null,
+              'div',
+              { className: 'flex-1  text-center' },
               React.createElement(
-                _react2.Modal.Content,
-                null,
+                _react2.Link,
+                { to: '/profilepage/' + clickedPost.user_id },
                 React.createElement(
-                  'div',
-                  { className: ' flex flex-col items-center' },
-                  React.createElement('img', { src: clickedPost.picture, className: 'rounded-lg' }),
-                  React.createElement(_react2.Divider, null),
-                  React.createElement(
-                    'div',
-                    { className: 'flex-1  text-center' },
-                    React.createElement(
-                      _react2.Link,
-                      { to: '/profilepage/' + clickedPost.user_id },
-                      React.createElement(
-                        'span',
-                        null,
-                        clickedPostUser.name
-                      )
-                    ),
-                    React.createElement(
-                      _react2.Link,
-                      { to: '/profilepage/' + clickedPost.id },
-                      '\u2003 ',
-                      clickedPost.content,
-                      '\u2003'
-                    ),
-                    likeList.includes(clickedPost.id) ? React.createElement(
-                      _react2.Button,
-                      {
-                        type: 'warning',
-                        size: 'mini',
-                        auto: true,
-                        ghost: true,
-                        onClick: function onClick() {
-                          return onClickUnLike(clickedPost.id);
-                        }
-                      },
-                      React.createElement(Icon.HeartFill, { size: 12 }),
-                      'UnLike'
-                    ) : React.createElement(
-                      _react2.Button,
-                      {
-                        type: 'success',
-                        size: 'mini',
-                        auto: true,
-                        ghost: true,
-                        onClick: function onClick() {
-                          return onClickLike(clickedPost.id);
-                        }
-                      },
-                      React.createElement(Icon.Heart, { size: 8 }),
-                      'Like'
-                    )
-                  ),
-                  React.createElement(
-                    'div',
-                    null,
-                    React.createElement(
-                      _react2.Button,
-                      {
-                        type: 'error',
-                        size: 'mini',
-                        auto: true,
-                        ghost: true,
-                        onClick: function onClick() {
-                          return onClickDelete(clickedPost.id);
-                        }
-                      },
-                      React.createElement(Icon.Delete, { size: 8 }),
-                      'Delete'
-                    )
-                  )
+                  'span',
+                  null,
+                  clickedPostUser.name
                 )
+              ),
+              React.createElement(
+                _react2.Link,
+                { to: '/profilepage/' + clickedPost.id },
+                '\u2003 ',
+                clickedPost.content,
+                '\u2003'
+              ),
+              likeList.includes(clickedPost.id) ? React.createElement(
+                _react2.Button,
+                {
+                  type: 'warning',
+                  size: 'mini',
+                  auto: true,
+                  ghost: true,
+                  onClick: function onClick() {
+                    return onClickUnLike(clickedPost.id);
+                  }
+                },
+                React.createElement(Icon.HeartFill, { size: 12 }),
+                'UnLike'
+              ) : React.createElement(
+                _react2.Button,
+                {
+                  type: 'success',
+                  size: 'mini',
+                  auto: true,
+                  ghost: true,
+                  onClick: function onClick() {
+                    return onClickLike(clickedPost.id);
+                  }
+                },
+                React.createElement(Icon.Heart, { size: 8 }),
+                'Like'
               )
             )
-          ),
-          React.createElement(
-            _react2.Modal.Action,
-            { passive: true, onClick: function onClick() {
-                return setModalOpen(false);
-              } },
-            'Cancel'
           )
+        ),
+        React.createElement(
+          _react2.Modal.Action,
+          null,
+          React.createElement(
+            'div',
+            null,
+            React.createElement(
+              _react2.Button,
+              {
+                type: 'error',
+                size: 'mini',
+                auto: true,
+                ghost: true,
+                onClick: function onClick() {
+                  return onClickDelete(clickedPost.id);
+                }
+              },
+              React.createElement(Icon.Delete, { size: 8 }),
+              'Delete'
+            )
+          )
+        ),
+        React.createElement(
+          _react2.Modal.Action,
+          { passive: true, onClick: function onClick() {
+              return setModalOpen(false);
+            } },
+          'Cancel'
         )
       )
     )
