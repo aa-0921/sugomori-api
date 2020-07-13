@@ -192,24 +192,28 @@ export const PostsApp = (props: any) => {
         <div>
           <div>
             <div>
-              <div className="ml-20">
+              {/* <div className="ml-20">
                 <Popover content={popoverSlider} className="ml-80">
                   横幅
                 </Popover>
-              </div>
-              {/* <div>
-                <Collapse title="横幅" initialVisible className="w-1/5 text-base">
-                  <div className="w-auto flex justify-center items-center">
-                    <span className="wr-10 pr-5">横幅</span>
-                    <Row style={{ width: '75%' }}>
-                      <Slider
-                        value={columnWidthValue} onChange={columnWidthHandler}
-                        step={20} max={500} min={100} initialValue={300}
-                      />
-                    </Row>
-                  </div>
-                </Collapse>
               </div> */}
+              <div>
+                {/* <Collapse initialVisible className="h-1 text-base"> */}
+                <Collapse.Group>
+                  <Collapse className="h-1 text-base">
+
+                    <div className="bg-white flex justify-center items-center">
+                      <span className="wr-10 pr-5">横幅</span>
+                      <Row style={{ width: '75%' }}>
+                        <Slider
+                          value={columnWidthValue} onChange={columnWidthHandler}
+                          step={20} max={500} min={100} initialValue={300}
+                        />
+                      </Row>
+                    </div>
+                  </Collapse>
+                </Collapse.Group>
+              </div>
               <div className="flex justify-end mr-5 mt-3">
                 <form action="">
                   <input type="text" placeholder="search" onChange={filterList} className="w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline" />

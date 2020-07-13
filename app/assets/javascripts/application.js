@@ -47465,11 +47465,31 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
             null,
             React.createElement(
               'div',
-              { className: 'ml-20' },
+              null,
               React.createElement(
-                _react2.Popover,
-                { content: popoverSlider, className: 'ml-80' },
-                '\u6A2A\u5E45'
+                _react2.Collapse.Group,
+                null,
+                React.createElement(
+                  _react2.Collapse,
+                  { className: 'h-1 text-base' },
+                  React.createElement(
+                    'div',
+                    { className: 'bg-white flex justify-center items-center' },
+                    React.createElement(
+                      'span',
+                      { className: 'wr-10 pr-5' },
+                      '\u6A2A\u5E45'
+                    ),
+                    React.createElement(
+                      _react2.Row,
+                      { style: { width: '75%' } },
+                      React.createElement(_react2.Slider, {
+                        value: columnWidthValue, onChange: columnWidthHandler,
+                        step: 20, max: 500, min: 100, initialValue: 300
+                      })
+                    )
+                  )
+                )
               )
             ),
             React.createElement(
