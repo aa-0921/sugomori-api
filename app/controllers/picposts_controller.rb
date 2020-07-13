@@ -2,6 +2,7 @@
 
 class PicpostsController < ApplicationController
   before_action :set_picpost, only: %i(show update destroy)
+  before_action :authenticate_user!, only: [:create]
 
   def user_posts
     page_user = User.find_by(id: params[:user_id])
