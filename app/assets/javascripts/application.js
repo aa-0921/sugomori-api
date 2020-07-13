@@ -67290,11 +67290,22 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
 
     await fetch(postDeleteUrl, { method: method }).then(function (response) {
       if (response.status == 200) {
-        // removeFromFollowUsers(fetchUser.id);
+        removeFromFetchUserPosts(clickedPost.id);
+        closeHandler();
       } else {
         throw new Error();
       }
     }).catch(function (error) {});
+    removeFromFetchUserPosts(clickedPost.id);
+  };
+
+  var removeFromFetchUserPosts = function removeFromFetchUserPosts(target) {
+    var arr = Array.from(fetchUserPosts);
+    var nextUserPosts = arr.filter(function (el) {
+      return el.id !== target;
+    });
+    console.info('nextUserPosts', nextUserPosts);
+    setFetchUserPosts(nextUserPosts);
   };
 
   //deleteButton関連

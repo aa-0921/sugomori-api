@@ -262,12 +262,22 @@ export const ProfilePage = (props) => {
     await fetch(postDeleteUrl, { method })
       .then((response) => {
         if (response.status == 200) {
-          // removeFromFollowUsers(fetchUser.id);
+          removeFromFetchUserPosts(clickedPost.id);
+          closeHandler();
         } else {
           throw new Error();
         }
       })
       .catch((error) => { });
+    removeFromFetchUserPosts(clickedPost.id);
+
+  };
+
+  const removeFromFetchUserPosts = (target: number) => {
+    const arr = Array.from(fetchUserPosts);
+    const nextUserPosts = arr.filter((el) => el.id !== target);
+    console.info('nextUserPosts', nextUserPosts)
+    setFetchUserPosts(nextUserPosts);
   };
 
   //deleteButton関連
