@@ -67524,7 +67524,7 @@ var UserList = exports.UserList = function UserList(props) {
       null,
       React.createElement(
         'div',
-        { className: 'flex items-center' },
+        { className: 'flex items-center ml-8' },
         React.createElement(
           'div',
           { className: 'flex-1  text-center' },

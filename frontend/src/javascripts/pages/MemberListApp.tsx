@@ -52,7 +52,6 @@ export const MemberListApp = () => {
     <React.Fragment>
       <Router>
         <div>
-          {/* <Show /> */}
           <span>
             <MemberList
               fetchUsers={fetchUsers}
@@ -63,7 +62,6 @@ export const MemberListApp = () => {
           </span>
 
           <Switch>
-            {/* <Route path="/post/:id" component={Show} /> */}
             <Route path="/"></Route>
           </Switch>
         </div>
