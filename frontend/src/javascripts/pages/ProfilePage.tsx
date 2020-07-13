@@ -194,8 +194,6 @@ export const ProfilePage = (props) => {
   // clickLike,unlike
 
   // FollowButton関連
-
-
   const pushToFollowUsers = (target: number) => {
     console.log(target, 'ma');
     const arr = Array.from(followUsers);
@@ -252,10 +250,29 @@ export const ProfilePage = (props) => {
       setFollowUsers(res.data.map((el: any) => el.id));
     });
   }, []);
+  // FollowButton関連
+
+  //deleteButton関連
+  const onClickDelete = async (clickedPostId: any) => {
+    // const obj = { current_user_id: 1 };
+    // const body = JSON.stringify(obj);
+    const method = 'DELETE';
+    const postDeleteUrl: string = '/picposts/' + clickedPostId;
+
+    await fetch(postDeleteUrl, { method })
+      .then((response) => {
+        if (response.status == 200) {
+          // removeFromFollowUsers(fetchUser.id);
+        } else {
+          throw new Error();
+        }
+      })
+      .catch((error) => { });
+  };
+
+  //deleteButton関連
 
   const buttonSize = "large"
-
-  // FollowButton関連
   console.log('followUsers', followUsers)
   return (
     <React.Fragment>

@@ -67219,8 +67219,6 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
   // clickLike,unlike
 
   // FollowButton関連
-
-
   var pushToFollowUsers = function pushToFollowUsers(target) {
     console.log(target, 'ma');
     var arr = Array.from(followUsers);
@@ -67281,10 +67279,27 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
       }));
     });
   }, []);
+  // FollowButton関連
+
+  //deleteButton関連
+  var onClickDelete = async function onClickDelete(clickedPostId) {
+    // const obj = { current_user_id: 1 };
+    // const body = JSON.stringify(obj);
+    var method = 'DELETE';
+    var postDeleteUrl = '/picposts/' + clickedPostId;
+
+    await fetch(postDeleteUrl, { method: method }).then(function (response) {
+      if (response.status == 200) {
+        // removeFromFollowUsers(fetchUser.id);
+      } else {
+        throw new Error();
+      }
+    }).catch(function (error) {});
+  };
+
+  //deleteButton関連
 
   var buttonSize = "large";
-
-  // FollowButton関連
   console.log('followUsers', followUsers);
   return React.createElement(
     React.Fragment,
