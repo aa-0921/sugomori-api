@@ -67467,9 +67467,10 @@ var _reactIcons = __webpack_require__(541);
 
 var Icon = _interopRequireWildcard(_reactIcons);
 
+var _FollowButton = __webpack_require__(868);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-// import React, { useState, useEffect } from 'react';
 var UserList = exports.UserList = function UserList(props) {
   var onClickFollow = async function onClickFollow(userId) {
     var csrf = sessionStorage.getItem('X-CSRF-Token');
@@ -67537,40 +67538,81 @@ var UserList = exports.UserList = function UserList(props) {
               props.user.name,
               '\u2003'
             ),
-            props.followUsersList.includes(props.user.id) ? React.createElement(
-              _react2.Button,
-              {
-                type: 'warning',
-                size: 'small',
-                auto: true,
-                ghost: true,
-                onClick: function onClick() {
-                  return onClickUnFollow(props.user.id);
-                },
-                className: 'm-auto'
-              },
-              React.createElement(Icon.EyeOff, { size: 16 }),
-              'UnFollow'
-            ) : React.createElement(
-              _react2.Button,
-              {
-                type: 'success',
-                size: 'small',
-                auto: true,
-                ghost: true,
-                onClick: function onClick() {
-                  return onClickFollow(props.user.id);
-                }
-              },
-              React.createElement(Icon.Eye, { size: 16 }),
-              'Follow'
-            )
-          ),
-          ' '
+            React.createElement(_FollowButton.FollowButton, {
+              onClickFollow: onClickFollow,
+              onClickUnFollow: onClickUnFollow,
+              followUsersList: props.followUsersList,
+              user: props.user
+            })
+          )
         )
       )
     ),
     React.createElement(_react2.Divider, null)
+  );
+};
+// import React, { useState, useEffect } from 'react';
+
+/***/ }),
+/* 868 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FollowButton = undefined;
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _react2 = __webpack_require__(35);
+
+var _reactIcons = __webpack_require__(541);
+
+var Icon = _interopRequireWildcard(_reactIcons);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+// import React, { useState, useEffect } from 'react';
+var FollowButton = exports.FollowButton = function FollowButton(props) {
+
+  return React.createElement(
+    'div',
+    null,
+    props.followUsersList.includes(props.user.id) ? React.createElement(
+      _react2.Button,
+      {
+        type: 'warning',
+        size: 'small',
+        auto: true,
+        ghost: true,
+        onClick: function onClick() {
+          return props.onClickUnFollow(props.user.id);
+        },
+        className: 'm-auto'
+      },
+      React.createElement(Icon.EyeOff, { size: 16 }),
+      'UnFollow'
+    ) : React.createElement(
+      _react2.Button,
+      {
+        type: 'success',
+        size: 'small',
+        auto: true,
+        ghost: true,
+        onClick: function onClick() {
+          return props.onClickFollow(props.user.id);
+        }
+      },
+      React.createElement(Icon.Eye, { size: 16 }),
+      'Follow'
+    )
   );
 };
 

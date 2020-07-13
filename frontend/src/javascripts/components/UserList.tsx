@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 // import React, { useState, useEffect } from 'react';
 import { Grid, Row, Note, Button, Divider, Spacer } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
+import { FollowButton } from './FollowButton';
 
 export const UserList = (props: any) => {
   const onClickFollow = async (userId: any) => {
@@ -62,31 +63,14 @@ export const UserList = (props: any) => {
           <div className="flex-1  text-center">
             <li key={props.user.id} style={{ color: 'white' }} className="flex items-center m-auto">
               <Link to={'/profilepage/' + props.user.id}>{props.user.name}&emsp;</Link>
-              {props.followUsersList.includes(props.user.id) ? (
-                <Button
-                  type="warning"
-                  size="small"
-                  auto
-                  ghost
-                  onClick={() => onClickUnFollow(props.user.id)}
-                  className="m-auto"
-                >
-                  <Icon.EyeOff size={16} />
-                  UnFollow
-                </Button>
-              ) : (
-                  <Button
-                    type="success"
-                    size="small"
-                    auto
-                    ghost
-                    onClick={() => onClickFollow(props.user.id)}
-                  >
-                    <Icon.Eye size={16} />
-                  Follow
-                  </Button>
-                )}
-            </li>{' '}
+
+              <FollowButton
+                onClickFollow={onClickFollow}
+                onClickUnFollow={onClickUnFollow}
+                followUsersList={props.followUsersList}
+                user={props.user}
+              />
+            </li>
           </div>
         </div>
       </Row>
