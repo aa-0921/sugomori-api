@@ -47416,6 +47416,18 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
   var postModalCloseHandler = function postModalCloseHandler() {
     setPostModalOpen(false);
   };
+  // Slider関連
+
+  var _useState17 = (0, _react.useState)(300),
+      _useState18 = _slicedToArray(_useState17, 2),
+      columnWidthValue = _useState18[0],
+      setColumnWidthValue = _useState18[1];
+
+  var columnWidthHandler = function columnWidthHandler(val) {
+    console.log(val);
+    setColumnWidthValue(val);
+  };
+  // Slider関連
 
   return React.createElement(
     React.Fragment,
@@ -47434,6 +47446,23 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
             null,
             React.createElement(
               'div',
+              { className: 'w-auto flex justify-center items-center' },
+              React.createElement(
+                'span',
+                { className: 'wr-10 pr-5' },
+                '\u6A2A\u5E45'
+              ),
+              React.createElement(
+                _react2.Row,
+                { style: { width: '75%' } },
+                React.createElement(_react2.Slider, {
+                  value: columnWidthValue, onChange: columnWidthHandler,
+                  step: 20, max: 500, min: 100, initialValue: 300
+                })
+              )
+            ),
+            React.createElement(
+              'div',
               { className: 'flex justify-end mr-5 mt-3' },
               React.createElement(
                 'form',
@@ -47448,7 +47477,8 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
               removeFromLikeList: removeFromLikeList,
               modalOpenHandler: modalOpenHandler,
               filterList: filterList,
-              filterPosts: filterPosts
+              filterPosts: filterPosts,
+              columnWidthValue: columnWidthValue
             })
           ),
           React.createElement(
@@ -47620,7 +47650,7 @@ var PostList = exports.PostList = function PostList(props) {
       React.createElement(
         _reactStackGrid2.default,
         {
-          columnWidth: 300,
+          columnWidth: props.columnWidthValue,
           gutterWidth: 20,
           gutterHeight: 40
           // duration={700}

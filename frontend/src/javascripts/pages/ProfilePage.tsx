@@ -344,9 +344,7 @@ export const ProfilePage = (props) => {
                 </Modal.Action>
           </React.Fragment>
         </Modal>
-        {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
       </div>
     </React.Fragment>
-
   );
 }

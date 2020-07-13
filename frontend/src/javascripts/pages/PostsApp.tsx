@@ -5,7 +5,7 @@ import { FetchData } from '../api/FetchData'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { PostList } from '../components/PostList';
 import { FormikPost } from '../components/FormikPost';
-import { Modal, Button, Grid, Divider } from '@zeit-ui/react';
+import { Modal, Button, Grid, Divider, Row, Slider } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
 
 export const PostsApp = (props: any) => {
@@ -162,6 +162,13 @@ export const PostsApp = (props: any) => {
   const postModalCloseHandler = () => {
     setPostModalOpen(false);
   };
+  // Slider関連
+  const [columnWidthValue, setColumnWidthValue] = useState(300)
+  const columnWidthHandler = (val: any) => {
+    console.log(val)
+    setColumnWidthValue(val)
+  }
+  // Slider関連
 
   return (
     <React.Fragment>
@@ -169,6 +176,16 @@ export const PostsApp = (props: any) => {
         <div>
           <div>
             <div>
+              <div className="w-auto flex justify-center items-center">
+                <span className="wr-10 pr-5">横幅</span>
+                <Row style={{ width: '75%' }}>
+                  <Slider
+                    value={columnWidthValue} onChange={columnWidthHandler}
+                    step={20} max={500} min={100} initialValue={300}
+                  />
+                </Row>
+              </div>
+
               <div className="flex justify-end mr-5 mt-3">
                 <form action="">
                   <input type="text" placeholder="search" onChange={filterList} className="w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline" />
@@ -183,6 +200,7 @@ export const PostsApp = (props: any) => {
                 modalOpenHandler={modalOpenHandler}
                 filterList={filterList}
                 filterPosts={filterPosts}
+                columnWidthValue={columnWidthValue}
               />
             </div>
             <Modal width="35rem" open={modalOpen} onClose={closeHandler}>
