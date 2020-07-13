@@ -252,24 +252,33 @@ export const ProfilePage = (props) => {
       setFollowUsers(res.data.map((el: any) => el.id));
     });
   }, []);
+
+  const buttonSize = "large"
+
   // FollowButton関連
   console.log('followUsers', followUsers)
   return (
     <React.Fragment>
       < Spacer y={1} />
       <Card shadow>
-        <h1>{props.match.params.id}</h1>
-
-        <h4>{fetchUser.name}</h4>
-
-        <p>自己紹介</p>
-
-        <FollowButton
-          onClickFollow={onClickFollow}
-          onClickUnFollow={onClickUnFollow}
-          followUsersList={followUsers}
-          user={fetchUser}
-        />
+        <div className="flex">
+          <div className="w-auto">
+            <h1>{props.match.params.id}</h1>
+            <h4>{fetchUser.name}</h4>
+            <p>自己紹介</p>
+          </div>
+          <div className="flex flex-col min-w-0 mt-auto ml-20">
+            <div>
+              <FollowButton
+                onClickFollow={onClickFollow}
+                onClickUnFollow={onClickUnFollow}
+                followUsersList={followUsers}
+                user={fetchUser}
+                buttonSize={buttonSize}
+              />
+            </div>
+          </div>
+        </div>
       </Card>
       < Spacer y={1} />
       <div>
@@ -278,7 +287,6 @@ export const ProfilePage = (props) => {
             <input type="text" placeholder="search" onChange={filterList} className="w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline" />
           </form>
         </div>
-        {/* {!waiting && ( */}
         <PostList
           fetchUserPosts={fetchUserPosts}
           likeList={likeList}

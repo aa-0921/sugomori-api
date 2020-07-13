@@ -67220,6 +67220,9 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
       }));
     });
   }, []);
+
+  var buttonSize = "large";
+
   // FollowButton関連
   console.log('followUsers', followUsers);
   return React.createElement(
@@ -67230,26 +67233,43 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
       _react2.Card,
       { shadow: true },
       React.createElement(
-        'h1',
-        null,
-        props.match.params.id
-      ),
-      React.createElement(
-        'h4',
-        null,
-        fetchUser.name
-      ),
-      React.createElement(
-        'p',
-        null,
-        '\u81EA\u5DF1\u7D39\u4ECB'
-      ),
-      React.createElement(_FollowButton.FollowButton, {
-        onClickFollow: onClickFollow,
-        onClickUnFollow: onClickUnFollow,
-        followUsersList: followUsers,
-        user: fetchUser
-      })
+        'div',
+        { className: 'flex' },
+        React.createElement(
+          'div',
+          { className: 'w-auto' },
+          React.createElement(
+            'h1',
+            null,
+            props.match.params.id
+          ),
+          React.createElement(
+            'h4',
+            null,
+            fetchUser.name
+          ),
+          React.createElement(
+            'p',
+            null,
+            '\u81EA\u5DF1\u7D39\u4ECB'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'flex flex-col min-w-0 mt-auto ml-20' },
+          React.createElement(
+            'div',
+            null,
+            React.createElement(_FollowButton.FollowButton, {
+              onClickFollow: onClickFollow,
+              onClickUnFollow: onClickUnFollow,
+              followUsersList: followUsers,
+              user: fetchUser,
+              buttonSize: buttonSize
+            })
+          )
+        )
+      )
     ),
     React.createElement(_react2.Spacer, { y: 1 }),
     React.createElement(
@@ -67575,9 +67595,8 @@ var UserList = exports.UserList = function UserList(props) {
       }
     }).catch(function (error) {});
   };
-  // var listyle = {
-  //   list-style-type: none;
-  // };
+  var buttonSize = "small";
+
   return React.createElement(
     React.Fragment,
     null,
@@ -67603,7 +67622,8 @@ var UserList = exports.UserList = function UserList(props) {
               onClickFollow: onClickFollow,
               onClickUnFollow: onClickUnFollow,
               followUsersList: props.followUsersList,
-              user: props.user
+              user: props.user,
+              buttonSize: buttonSize
             })
           )
         )
@@ -67642,7 +67662,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 // import React, { useState, useEffect } from 'react';
 var FollowButton = exports.FollowButton = function FollowButton(props) {
-
   return React.createElement(
     'div',
     null,
@@ -67650,7 +67669,7 @@ var FollowButton = exports.FollowButton = function FollowButton(props) {
       _react2.Button,
       {
         type: 'warning',
-        size: 'small',
+        size: props.buttonSize,
         auto: true,
         ghost: true,
         onClick: function onClick() {
@@ -67664,7 +67683,7 @@ var FollowButton = exports.FollowButton = function FollowButton(props) {
       _react2.Button,
       {
         type: 'success',
-        size: 'small',
+        size: props.buttonSize,
         auto: true,
         ghost: true,
         onClick: function onClick() {

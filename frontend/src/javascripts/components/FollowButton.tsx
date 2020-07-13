@@ -6,13 +6,12 @@ import { Grid, Row, Note, Button, Divider, Spacer } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
 
 export const FollowButton = (props: any) => {
-
   return (
     <div>
       {props.followUsersList.includes(props.user.id) ? (
         <Button
           type="warning"
-          size="small"
+          size={props.buttonSize}
           auto
           ghost
           onClick={() => props.onClickUnFollow(props.user.id)}
@@ -24,7 +23,7 @@ export const FollowButton = (props: any) => {
       ) : (
           <Button
             type="success"
-            size="small"
+            size={props.buttonSize}
             auto
             ghost
             onClick={() => props.onClickFollow(props.user.id)}

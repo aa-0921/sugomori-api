@@ -53,9 +53,8 @@ export const UserList = (props: any) => {
       })
       .catch((error) => { });
   };
-  // var listyle = {
-  //   list-style-type: none;
-  // };
+  const buttonSize = "small"
+
   return (
     <React.Fragment>
       <Row>
@@ -68,6 +67,7 @@ export const UserList = (props: any) => {
                 onClickUnFollow={onClickUnFollow}
                 followUsersList={props.followUsersList}
                 user={props.user}
+                buttonSize={buttonSize}
               />
             </li>
           </div>
