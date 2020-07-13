@@ -62,9 +62,9 @@ end
 all_users = User.all
 first_user  = all_users[0]
 
-following = all_users[25..50]
+followings = all_users[25..50]
 followers = all_users[2..24]
-following.each { |followed| first_user.follow(followed) }
+followings.each { |followed| first_user.follow(followed) }
 followers.each { |follower| follower.follow(first_user) }
 
 all_picposts = Picpost.all

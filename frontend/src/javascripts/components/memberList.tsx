@@ -7,13 +7,16 @@ export const MemberList = (props: any): any => {
     <React.Fragment>
       <Spacer y={1.5} />
       <div>
-        {props.fetchUsers.map((user: any) => (
-          <UserList
-            user={user}
-            followUsersList={props.followUsers}
-            pushToFollowUsers={props.pushToFollowUsers}
-            removeFromFollowUsers={props.removeFromFollowUsers}
-          />
+        {props.fetchUsers.map((user: any, index: number) => (
+          <div key={index} className="list">
+
+            <UserList
+              user={user}
+              followUsersList={props.followUsers}
+              pushToFollowUsers={props.pushToFollowUsers}
+              removeFromFollowUsers={props.removeFromFollowUsers}
+            />
+          </div>
         ))}
       </div>
     </React.Fragment>

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { MemberList } from '../components/memberList';
+import { FetchData } from '../api/FetchData';
 
 export const MemberListApp = () => {
   const [fetchUsers, setFetchUsers] = useState([]);
@@ -12,11 +13,11 @@ export const MemberListApp = () => {
   // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
   const currentUserId = 1;
   const getFollowListUrl: string = `/users/follow_list/${currentUserId}`;
-  // useEffect(() => {
-  //   FetchData(getFollowListUrl).then((res) => {
-  //     setFollowUsers(res.data.map((el: any) => el.id));
-  //   });
-  // }, []);
+  useEffect(() => {
+    FetchData(getFollowListUrl).then((res) => {
+      setFollowUsers(res.data.map((el: any) => el.id));
+    });
+  }, []);
 
   const pushToFollowUsers = (target: number) => {
     console.log(target, 'ma');
@@ -44,9 +45,9 @@ export const MemberListApp = () => {
   // };
   const url: string = '/users';
 
-  // useEffect(() => {
-  //   FetchData(url).then((res) => setFetchUsers(res.data));
-  // }, []);
+  useEffect(() => {
+    FetchData(url).then((res) => setFetchUsers(res.data));
+  }, []);
   return (
     <React.Fragment>
       <Router>

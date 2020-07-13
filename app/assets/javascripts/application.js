@@ -67307,6 +67307,8 @@ var React = _interopRequireWildcard(_react);
 
 var _memberList = __webpack_require__(866);
 
+var _FetchData = __webpack_require__(304);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var MemberListApp = exports.MemberListApp = function MemberListApp() {
@@ -67325,11 +67327,13 @@ var MemberListApp = exports.MemberListApp = function MemberListApp() {
 
   var currentUserId = 1;
   var getFollowListUrl = '/users/follow_list/' + currentUserId;
-  // useEffect(() => {
-  //   FetchData(getFollowListUrl).then((res) => {
-  //     setFollowUsers(res.data.map((el: any) => el.id));
-  //   });
-  // }, []);
+  (0, _react.useEffect)(function () {
+    (0, _FetchData.FetchData)(getFollowListUrl).then(function (res) {
+      setFollowUsers(res.data.map(function (el) {
+        return el.id;
+      }));
+    });
+  }, []);
 
   var pushToFollowUsers = function pushToFollowUsers(target) {
     console.log(target, 'ma');
@@ -67359,9 +67363,11 @@ var MemberListApp = exports.MemberListApp = function MemberListApp() {
   // };
   var url = '/users';
 
-  // useEffect(() => {
-  //   FetchData(url).then((res) => setFetchUsers(res.data));
-  // }, []);
+  (0, _react.useEffect)(function () {
+    (0, _FetchData.FetchData)(url).then(function (res) {
+      return setFetchUsers(res.data);
+    });
+  }, []);
   return React.createElement(
     React.Fragment,
     null,
@@ -67421,13 +67427,17 @@ var MemberList = exports.MemberList = function MemberList(props) {
     React.createElement(
       'div',
       null,
-      props.fetchUsers.map(function (user) {
-        return React.createElement(_UserList.UserList, {
-          user: user,
-          followUsersList: props.followUsers,
-          pushToFollowUsers: props.pushToFollowUsers,
-          removeFromFollowUsers: props.removeFromFollowUsers
-        });
+      props.fetchUsers.map(function (user, index) {
+        return React.createElement(
+          'div',
+          { key: index, className: 'list' },
+          React.createElement(_UserList.UserList, {
+            user: user,
+            followUsersList: props.followUsers,
+            pushToFollowUsers: props.pushToFollowUsers,
+            removeFromFollowUsers: props.removeFromFollowUsers
+          })
+        );
       })
     )
   );
