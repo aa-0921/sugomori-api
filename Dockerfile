@@ -8,8 +8,7 @@ COPY Gemfile /sugomori-api/Gemfile
 COPY Gemfile.lock /sugomori-api/Gemfile.lock
 RUN gem install bundler
 RUN bundle install
-RUN bundle exec rails assets:precompile
-
+RUN SECRET_KEY_BASE=placeholder bundle exec rails assets:precompile
 
 RUN apt-get -y update
 RUN apt-get install -y \
