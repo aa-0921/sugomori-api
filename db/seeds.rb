@@ -20,7 +20,8 @@ User.create!(name: 'Example User',
                email: email,
               #  uid: email,
                password: password,
-               password_confirmation: password)
+               password_confirmation: password,
+               confirmed_at:'Sun, 12 Jul 2020 07:33:13 UTC +00:00')
 end
 
 users = User.order(:created_at).take(50)
