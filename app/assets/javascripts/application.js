@@ -67487,7 +67487,7 @@ var Comment = exports.Comment = function Comment(props) {
             React.createElement(
               'p',
               { className: 'text-gray-500 font-thin' },
-              'UserName'
+              props.comment.user.name
             ),
             React.createElement(_react2.Spacer, { x: 6 }),
             React.createElement(
