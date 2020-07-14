@@ -32696,10 +32696,6 @@ function Header(props) {
     });
   }, []);
 
-  console.log('currentUserData', currentUserData);
-  console.log('currentUserData', currentUserData.id);
-  console.log('currentUserData', currentUserData.name);
-
   return React.createElement(
     'header',
     null,
@@ -47514,76 +47510,68 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
           ),
           React.createElement(
             _react2.Modal,
-            { width: '35rem', open: modalOpen, onClose: closeHandler },
+            { width: '100rem h-screen', open: modalOpen, onClose: closeHandler },
             React.createElement(
               React.Fragment,
               null,
               React.createElement(
-                _react2.Grid.Container,
-                { justify: 'center' },
+                _react2.Modal.Content,
+                { className: 'overflow-y-scroll h-screen' },
                 React.createElement(
-                  _react2.Grid,
-                  null,
+                  'div',
+                  { className: ' flex flex-col items-center' },
+                  React.createElement('img', { src: clickedPost.picture, className: 'rounded-lg max-w-full max-h-full w-screen h-100' }),
+                  React.createElement(_react2.Divider, null),
                   React.createElement(
-                    _react2.Modal.Content,
-                    null,
+                    'div',
+                    { className: 'flex-1  text-center' },
                     React.createElement(
-                      'div',
-                      { className: ' flex flex-col items-center' },
-                      React.createElement('img', { src: clickedPost.picture, className: 'rounded-lg' }),
-                      React.createElement(_react2.Divider, null),
+                      _reactRouterDom.Link,
+                      {
+                        to: '/profilepage/' + clickedPost.user_id,
+                        onClick: function onClick() {
+                          props.history.push('/profilepage/' + clickedPost.user_id);
+                        }
+                      },
                       React.createElement(
-                        'div',
-                        { className: 'flex-1  text-center' },
-                        React.createElement(
-                          _reactRouterDom.Link,
-                          {
-                            to: '/profilepage/' + clickedPost.user_id,
-                            onClick: function onClick() {
-                              props.history.push('/profilepage/' + clickedPost.user_id);
-                            }
-                          },
-                          React.createElement(
-                            'span',
-                            null,
-                            clickedPostUser.name
-                          )
-                        ),
-                        React.createElement(
-                          _reactRouterDom.Link,
-                          { to: '/profilepage/' + clickedPost.id },
-                          '\u2003 ',
-                          clickedPost.content,
-                          '\u2003'
-                        ),
-                        likeList.includes(clickedPost.id) ? React.createElement(
-                          _react2.Button,
-                          {
-                            type: 'warning',
-                            size: 'mini',
-                            auto: true,
-                            ghost: true,
-                            onClick: function onClick() {
-                              return onClickUnLike(clickedPost.id);
-                            }
-                          },
-                          React.createElement(Icon.HeartFill, { size: 12 }),
-                          'UnLike'
-                        ) : React.createElement(
-                          _react2.Button,
-                          {
-                            type: 'success',
-                            size: 'mini',
-                            auto: true,
-                            ghost: true,
-                            onClick: function onClick() {
-                              return onClickLike(clickedPost.id);
-                            }
-                          },
-                          React.createElement(Icon.Heart, { size: 8 }),
-                          'Like'
-                        )
+                        'span',
+                        null,
+                        clickedPostUser.name
                       )
+                    ),
+                    React.createElement(
+                      _reactRouterDom.Link,
+                      { to: '/profilepage/' + clickedPost.id },
+                      '\u2003 ',
+                      clickedPost.content,
+                      '\u2003'
+                    ),
+                    likeList.includes(clickedPost.id) ? React.createElement(
+                      _react2.Button,
+                      {
+                        type: 'warning',
+                        size: 'mini',
+                        auto: true,
+                        ghost: true,
+                        onClick: function onClick() {
+                          return onClickUnLike(clickedPost.id);
+                        }
+                      },
+                      React.createElement(Icon.HeartFill, { size: 12 }),
+                      'UnLike'
+                    ) : React.createElement(
+                      _react2.Button,
+                      {
+                        type: 'success',
+                        size: 'mini',
+                        auto: true,
+                        ghost: true,
+                        onClick: function onClick() {
+                          return onClickLike(clickedPost.id);
+                        }
+                      },
+                      React.createElement(Icon.Heart, { size: 8 }),
+                      'Like'
                     )
                   )
                 )

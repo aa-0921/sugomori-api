@@ -231,54 +231,54 @@ export const PostsApp = (props: any) => {
                 columnWidthValue={columnWidthValue}
               />
             </div>
-            <Modal width="35rem" open={modalOpen} onClose={closeHandler}>
+            <Modal width="100rem h-screen" open={modalOpen} onClose={closeHandler}>
               <React.Fragment>
-                <Grid.Container justify="center">
-                  <Grid>
-                    <Modal.Content>
-                      <div className=" flex flex-col items-center">
-                        <img src={clickedPost.picture} className="rounded-lg" />
-                        <Divider />
-                        <div className="flex-1  text-center">
-                          <Link
-                            to={'/profilepage/' + clickedPost.user_id}
-                            onClick={() => {
-                              props.history.push('/profilepage/' + clickedPost.user_id);
-                            }}
-                          >
-                            <span>{clickedPostUser.name}</span>
-                          </Link>
-                          <Link to={'/profilepage/' + clickedPost.id}>
-                            &emsp; {clickedPost.content}&emsp;
+                {/* <Grid.Container justify="center"> */}
+                {/* <Grid> */}
+                <Modal.Content className="overflow-y-scroll h-screen">
+                  <div className=" flex flex-col items-center">
+                    <img src={clickedPost.picture} className="rounded-lg max-w-full max-h-full w-screen h-100" />
+                    <Divider />
+                    <div className="flex-1  text-center">
+                      <Link
+                        to={'/profilepage/' + clickedPost.user_id}
+                        onClick={() => {
+                          props.history.push('/profilepage/' + clickedPost.user_id);
+                        }}
+                      >
+                        <span>{clickedPostUser.name}</span>
+                      </Link>
+                      <Link to={'/profilepage/' + clickedPost.id}>
+                        &emsp; {clickedPost.content}&emsp;
                         </Link>
-                          {likeList.includes(clickedPost.id) ? (
-                            <Button
-                              type="warning"
-                              size="mini"
-                              auto
-                              ghost
-                              onClick={() => onClickUnLike(clickedPost.id)}
-                            >
-                              <Icon.HeartFill size={12} />
+                      {likeList.includes(clickedPost.id) ? (
+                        <Button
+                          type="warning"
+                          size="mini"
+                          auto
+                          ghost
+                          onClick={() => onClickUnLike(clickedPost.id)}
+                        >
+                          <Icon.HeartFill size={12} />
                               UnLike
-                            </Button>
-                          ) : (
-                              <Button
-                                type="success"
-                                size="mini"
-                                auto
-                                ghost
-                                onClick={() => onClickLike(clickedPost.id)}
-                              >
-                                <Icon.Heart size={8} />
+                        </Button>
+                      ) : (
+                          <Button
+                            type="success"
+                            size="mini"
+                            auto
+                            ghost
+                            onClick={() => onClickLike(clickedPost.id)}
+                          >
+                            <Icon.Heart size={8} />
                               Like
-                              </Button>
-                            )}
-                        </div>
-                      </div>
-                    </Modal.Content>
-                  </Grid>
-                </Grid.Container>
+                          </Button>
+                        )}
+                    </div>
+                  </div>
+                </Modal.Content>
+                {/* </Grid> */}
+                {/* </Grid.Container> */}
                 <Modal.Action passive onClick={() => setModalOpen(false)}>
                   Cancel
                 </Modal.Action>

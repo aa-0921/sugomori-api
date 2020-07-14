@@ -25,10 +25,6 @@ export function Header(props: any) {
     });
   }, []);
 
-  console.log('currentUserData', currentUserData);
-  console.log('currentUserData', currentUserData.id);
-  console.log('currentUserData', currentUserData.name);
-
 
   return (
     <header>
