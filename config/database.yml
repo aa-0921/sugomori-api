@@ -33,3 +33,12 @@ development:
   password: password
   port: 5432
   host: db
+
+production:
+  <<: *default
+  # adapter: postgresql
+  database: sugomori_with_aws
+  username: postgres 
+  password: password
+  port: 5432
+  host: db

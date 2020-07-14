@@ -72,4 +72,6 @@ Rails.application.configure do
   # unless Rails.env.production?
     config.web_console.whitelisted_ips = %w[0.0.0.0/0 ::/0]
   # end
+    host = 'samplehost'
+  config.routes.default_url_options[:host] = host
 end
