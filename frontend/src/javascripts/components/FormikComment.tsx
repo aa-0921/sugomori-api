@@ -14,21 +14,25 @@ export const FormikComment = (props: any) => {
     // props.postModalCloseHandler
     // console.log('postModalCloseHandler後')
     const headers = { 'content-type': 'multipart/form-data' };
-    const postUrl: string = '/picposts/:picpost_id/comments';
+    const postUrl: string = `/picposts/${props.clickedPostId}/comments`;
+
     await axios.post(postUrl, body, { headers });
   };
 
   return (
     <Formik
-      initialValues={{ picture: '', content: '', user_id: 0 }}
+      initialValues={{ content: '', post_id: 0 }}
 
       onSubmit={(values) => {
-        values.user_id = 1;
+        // values.user_id = 1;
 
         const submitData = new FormData();
 
         submitData.append('content', values.content);
-        submitData.append('user_id', '1');
+        submitData.append('picpost_id', props.clickedPostId);
+
+        // submitData.append('user_id', '1');
+
 
         const body = submitData;
         createComment(body);
@@ -51,7 +55,7 @@ export const FormikComment = (props: any) => {
                 </div>
                 < Spacer y={1} />
                 <div className="flex flex-col items-center" >
-                  <button type="submit" className="submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-300 transform hover:-translate-y-1 hover:scale-100 text-white hover:text-green font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-300 rounded-full cursor-pointer">投稿</button>
+                  <button type="submit" className="submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-300 transform hover:-translate-y-1 hover:scale-100 text-white hover:text-green font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-300 rounded-full cursor-pointer">コメント投稿</button>
                 </div>
               </React.Fragment>
             </div>

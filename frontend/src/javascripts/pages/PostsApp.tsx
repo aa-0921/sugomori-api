@@ -277,18 +277,14 @@ export const PostsApp = (props: any) => {
                           </Button>
                         )}
                     </div>
+                    {/* コメント部分ーーーーーーーーーーーーー */}
                     <div>
                       <CommentApp
-                        fetchPosts={fetchPosts}
-                        likeList={likeList}
-                        pushToLikeList={pushToLikeList}
-                        removeFromLikeList={removeFromLikeList}
-                        modalOpenHandler={modalOpenHandler}
-                        filterList={filterList}
-                        filterPosts={filterPosts}
-                        columnWidthValue={columnWidthValue}
+                        clickedPostId={clickedPost.id}
                       />
                     </div>
+                    {/* コメント部分ーーーーーーーーーーーーー */}
+
                   </div>
                 </Modal.Content>
                 {/* </Grid> */}

@@ -28604,9 +28604,9 @@ var _About = __webpack_require__(305);
 
 var _PostsApp = __webpack_require__(306);
 
-var _ProfilePage = __webpack_require__(864);
+var _ProfilePage = __webpack_require__(866);
 
-var _MemberListApp = __webpack_require__(866);
+var _MemberListApp = __webpack_require__(868);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -47221,7 +47221,7 @@ var _reactIcons = __webpack_require__(541);
 
 var Icon = _interopRequireWildcard(_reactIcons);
 
-var _CommentApp = __webpack_require__(869);
+var _CommentApp = __webpack_require__(864);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -47580,14 +47580,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                     'div',
                     null,
                     React.createElement(_CommentApp.CommentApp, {
-                      fetchPosts: fetchPosts,
-                      likeList: likeList,
-                      pushToLikeList: pushToLikeList,
-                      removeFromLikeList: removeFromLikeList,
-                      modalOpenHandler: modalOpenHandler,
-                      filterList: filterList,
-                      filterPosts: filterPosts,
-                      columnWidthValue: columnWidthValue
+                      clickedPostId: clickedPost.id
                     })
                   )
                 )
@@ -66981,6 +66974,170 @@ var _interopRequireDefault=__webpack_require__(543);Object.defineProperty(export
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.CommentApp = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _FetchData = __webpack_require__(304);
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _PostList = __webpack_require__(307);
+
+var _react2 = __webpack_require__(35);
+
+var _reactIcons = __webpack_require__(541);
+
+var Icon = _interopRequireWildcard(_reactIcons);
+
+var _FormikComment = __webpack_require__(865);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var CommentApp = exports.CommentApp = function CommentApp(props) {
+  var _useState = (0, _react.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      fetchPosts = _useState2[0],
+      setFetchPosts = _useState2[1];
+
+  var getAllPostUrl = '/picposts';
+  (0, _react.useEffect)(function () {
+    (0, _FetchData.FetchData)(getAllPostUrl).then(function (res) {
+      setFetchPosts(res.data);
+    });
+  }, []);
+
+  var currentUserId = 1;
+
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(_FormikComment.FormikComment, { clickedPostId: props.clickedPostId })
+  );
+};
+
+/***/ }),
+/* 865 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FormikComment = undefined;
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _formik = __webpack_require__(390);
+
+var _axios = __webpack_require__(515);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _react2 = __webpack_require__(35);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var FormikComment = exports.FormikComment = function FormikComment(props) {
+
+  var createComment = async function createComment(body) {
+
+    // console.log('postModalCloseHandler前')
+    // props.postModalCloseHandler
+    // console.log('postModalCloseHandler後')
+    var headers = { 'content-type': 'multipart/form-data' };
+    var postUrl = '/picposts/' + props.clickedPostId + '/comments';
+
+    await _axios2.default.post(postUrl, body, { headers: headers });
+  };
+
+  return React.createElement(_formik.Formik, {
+    initialValues: { content: '', post_id: 0 },
+
+    onSubmit: function onSubmit(values) {
+      // values.user_id = 1;
+
+      var submitData = new FormData();
+
+      submitData.append('content', values.content);
+      submitData.append('picpost_id', props.clickedPostId);
+
+      // submitData.append('user_id', '1');
+
+
+      var body = submitData;
+      createComment(body);
+    },
+
+    render: function render(_ref) {
+      var values = _ref.values,
+          handleSubmit = _ref.handleSubmit,
+          handleChange = _ref.handleChange,
+          setFieldValue = _ref.setFieldValue;
+
+      return React.createElement(
+        _formik.Form,
+        { onSubmit: handleSubmit },
+        React.createElement(
+          'div',
+          null,
+          React.createElement(
+            React.Fragment,
+            null,
+            React.createElement(
+              'div',
+              null,
+              React.createElement(
+                'label',
+                null,
+                '\u30B3\u30E1\u30F3\u30C8'
+              ),
+              React.createElement(_formik.Field, {
+                type: 'text',
+                name: 'content',
+                value: values.content,
+                onChange: handleChange,
+                className: 'shadow border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline'
+              })
+            ),
+            React.createElement(_react2.Spacer, { y: 1 }),
+            React.createElement(
+              'div',
+              { className: 'flex flex-col items-center' },
+              React.createElement(
+                'button',
+                { type: 'submit', className: 'submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-300 transform hover:-translate-y-1 hover:scale-100 text-white hover:text-green font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-300 rounded-full cursor-pointer' },
+                '\u30B3\u30E1\u30F3\u30C8\u6295\u7A3F'
+              )
+            )
+          )
+        ),
+        React.createElement(_react2.Spacer, { y: 1 })
+      );
+    }
+  });
+};
+
+/***/ }),
+/* 866 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.ProfilePage = undefined;
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
@@ -67001,7 +67158,7 @@ var _reactIcons = __webpack_require__(541);
 
 var Icon = _interopRequireWildcard(_reactIcons);
 
-var _FollowButton = __webpack_require__(865);
+var _FollowButton = __webpack_require__(867);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -67479,7 +67636,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
 };
 
 /***/ }),
-/* 865 */
+/* 867 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67541,7 +67698,7 @@ var FollowButton = exports.FollowButton = function FollowButton(props) {
 };
 
 /***/ }),
-/* 866 */
+/* 868 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67560,7 +67717,7 @@ var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
 
-var _MemberList = __webpack_require__(867);
+var _MemberList = __webpack_require__(869);
 
 var _FetchData = __webpack_require__(304);
 
@@ -67642,7 +67799,7 @@ var MemberListApp = exports.MemberListApp = function MemberListApp() {
 };
 
 /***/ }),
-/* 867 */
+/* 869 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67657,7 +67814,7 @@ var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
 
-var _UserList = __webpack_require__(868);
+var _UserList = __webpack_require__(870);
 
 var _react2 = __webpack_require__(35);
 
@@ -67688,7 +67845,7 @@ var MemberList = exports.MemberList = function MemberList(props) {
 };
 
 /***/ }),
-/* 868 */
+/* 870 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67711,7 +67868,7 @@ var _reactIcons = __webpack_require__(541);
 
 var Icon = _interopRequireWildcard(_reactIcons);
 
-var _FollowButton = __webpack_require__(865);
+var _FollowButton = __webpack_require__(867);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -67812,166 +67969,6 @@ var UserList = exports.UserList = function UserList(props) {
   );
 };
 // import React, { useState, useEffect } from 'react';
-
-/***/ }),
-/* 869 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.CommentApp = undefined;
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _react = __webpack_require__(1);
-
-var React = _interopRequireWildcard(_react);
-
-var _FetchData = __webpack_require__(304);
-
-var _reactRouterDom = __webpack_require__(15);
-
-var _PostList = __webpack_require__(307);
-
-var _react2 = __webpack_require__(35);
-
-var _reactIcons = __webpack_require__(541);
-
-var Icon = _interopRequireWildcard(_reactIcons);
-
-var _FormikComment = __webpack_require__(870);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var CommentApp = exports.CommentApp = function CommentApp(props) {
-  var _useState = (0, _react.useState)([]),
-      _useState2 = _slicedToArray(_useState, 2),
-      fetchPosts = _useState2[0],
-      setFetchPosts = _useState2[1];
-
-  var getAllPostUrl = '/picposts';
-  (0, _react.useEffect)(function () {
-    (0, _FetchData.FetchData)(getAllPostUrl).then(function (res) {
-      setFetchPosts(res.data);
-    });
-  }, []);
-
-  var currentUserId = 1;
-
-  return React.createElement(
-    React.Fragment,
-    null,
-    React.createElement(_FormikComment.FormikComment, null)
-  );
-};
-
-/***/ }),
-/* 870 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.FormikComment = undefined;
-
-var _react = __webpack_require__(1);
-
-var React = _interopRequireWildcard(_react);
-
-var _formik = __webpack_require__(390);
-
-var _axios = __webpack_require__(515);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-var _react2 = __webpack_require__(35);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var FormikComment = exports.FormikComment = function FormikComment(props) {
-
-  var createComment = async function createComment(body) {
-
-    // console.log('postModalCloseHandler前')
-    // props.postModalCloseHandler
-    // console.log('postModalCloseHandler後')
-    var headers = { 'content-type': 'multipart/form-data' };
-    var postUrl = '/picposts/:picpost_id/comments';
-    await _axios2.default.post(postUrl, body, { headers: headers });
-  };
-
-  return React.createElement(_formik.Formik, {
-    initialValues: { picture: '', content: '', user_id: 0 },
-
-    onSubmit: function onSubmit(values) {
-      values.user_id = 1;
-
-      var submitData = new FormData();
-
-      submitData.append('content', values.content);
-      submitData.append('user_id', '1');
-
-      var body = submitData;
-      createComment(body);
-    },
-
-    render: function render(_ref) {
-      var values = _ref.values,
-          handleSubmit = _ref.handleSubmit,
-          handleChange = _ref.handleChange,
-          setFieldValue = _ref.setFieldValue;
-
-      return React.createElement(
-        _formik.Form,
-        { onSubmit: handleSubmit },
-        React.createElement(
-          'div',
-          null,
-          React.createElement(
-            React.Fragment,
-            null,
-            React.createElement(
-              'div',
-              null,
-              React.createElement(
-                'label',
-                null,
-                '\u30B3\u30E1\u30F3\u30C8'
-              ),
-              React.createElement(_formik.Field, {
-                type: 'text',
-                name: 'content',
-                value: values.content,
-                onChange: handleChange,
-                className: 'shadow border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline'
-              })
-            ),
-            React.createElement(_react2.Spacer, { y: 1 }),
-            React.createElement(
-              'div',
-              { className: 'flex flex-col items-center' },
-              React.createElement(
-                'button',
-                { type: 'submit', className: 'submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-300 transform hover:-translate-y-1 hover:scale-100 text-white hover:text-green font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-300 rounded-full cursor-pointer' },
-                '\u6295\u7A3F'
-              )
-            )
-          )
-        ),
-        React.createElement(_react2.Spacer, { y: 1 })
-      );
-    }
-  });
-};
 
 /***/ })
 /******/ ]);
