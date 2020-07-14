@@ -8,7 +8,7 @@ COPY Gemfile /sugomori-api/Gemfile
 COPY Gemfile.lock /sugomori-api/Gemfile.lock
 RUN gem install bundler
 RUN bundle install
-RUN rails assets:precompile
+RUN bundle exec rails assets:precompile
 
 
 RUN apt-get -y update
