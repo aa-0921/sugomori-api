@@ -78,3 +78,21 @@ like_users.each do |like_user|
     like_post.iine(like_user) 
   end
 end
+
+# コメント関連
+content = Faker::Lorem.sentence(word_count: 2)
+emoji = Faker::Lorem.multibyte
+
+# current_user.comments.create(comment_params)
+
+comment_users = all_users[0..9]
+commented_posts = all_picposts[47..50]
+
+comment_users.each do |comment_user|
+  commented_posts.each do |commented_post|
+    comment_user.comments.create!(content: "#{content}#{emoji}",
+                                  picpost_id: commented_post.id)
+  end
+end
+
+# コメント関連
