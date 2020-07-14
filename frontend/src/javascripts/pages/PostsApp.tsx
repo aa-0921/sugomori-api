@@ -7,6 +7,8 @@ import { PostList } from '../components/PostList';
 import { FormikPost } from '../components/FormikPost';
 import { Modal, Button, Grid, Divider, Row, Slider, Collapse, Popover, Text } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
+import { CommentApp } from '../components/CommentApp';
+
 
 export const PostsApp = (props: any) => {
   // 全投稿の配列のState定義
@@ -274,6 +276,18 @@ export const PostsApp = (props: any) => {
                               Like
                           </Button>
                         )}
+                    </div>
+                    <div>
+                      <CommentApp
+                        fetchPosts={fetchPosts}
+                        likeList={likeList}
+                        pushToLikeList={pushToLikeList}
+                        removeFromLikeList={removeFromLikeList}
+                        modalOpenHandler={modalOpenHandler}
+                        filterList={filterList}
+                        filterPosts={filterPosts}
+                        columnWidthValue={columnWidthValue}
+                      />
                     </div>
                   </div>
                 </Modal.Content>
