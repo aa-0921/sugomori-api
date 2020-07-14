@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   # post '/post', to: 'top#post'
 
   resources :picposts do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :index]
   end
   resources :users
   put 'users/follow/:user_id' => 'users#follow'

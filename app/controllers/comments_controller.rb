@@ -11,6 +11,12 @@ class CommentsController < ApplicationController
     end
   end
 
+  def index
+    post = Picpost.find(params[:picpost_id])
+    post_comments = post.comments
+    render json: { status: 'SUCCESS', data: post_comments }
+  end
+
   private
 
   def comment_params
