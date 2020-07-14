@@ -200,7 +200,7 @@ export const PostsApp = (props: any) => {
               <div>
                 {/* <Collapse initialVisible className="h-1 text-base"> */}
                 <Collapse.Group>
-                  <Collapse className="h-1 text-base">
+                  <Collapse title=" " className="h-1 text-base">
 
                     <div className="bg-white flex justify-center items-center">
                       <span className="wr-10 pr-5">横幅</span>
@@ -315,6 +315,6 @@ export const PostsApp = (props: any) => {
           </Switch>
         </div>
       </Router>
-    </React.Fragment>
+    </React.Fragment >
   );
 };
