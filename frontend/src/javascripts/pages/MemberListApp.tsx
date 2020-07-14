@@ -32,10 +32,10 @@ export const MemberListApp = () => {
     setFollowUsers(nextFollowUsers);
   };
 
-  const url: string = '/users';
+  const fetchUsersUrl: string = '/users';
 
   useEffect(() => {
-    FetchData(url).then((res) => setFetchUsers(res.data));
+    FetchData(fetchUsersUrl).then((res) => setFetchUsers(res.data));
   }, []);
   return (
     <React.Fragment>

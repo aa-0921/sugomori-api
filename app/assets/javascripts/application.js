@@ -66996,6 +66996,8 @@ var Icon = _interopRequireWildcard(_reactIcons);
 
 var _FormikComment = __webpack_require__(865);
 
+var _CommentList = __webpack_require__(871);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var CommentApp = exports.CommentApp = function CommentApp(props) {
@@ -67016,7 +67018,8 @@ var CommentApp = exports.CommentApp = function CommentApp(props) {
   return React.createElement(
     React.Fragment,
     null,
-    React.createElement(_FormikComment.FormikComment, { clickedPostId: props.clickedPostId })
+    React.createElement(_FormikComment.FormikComment, { clickedPostId: props.clickedPostId }),
+    React.createElement(_CommentList.CommentList, { clickedPostId: props.clickedPostId })
   );
 };
 
@@ -67762,10 +67765,10 @@ var MemberListApp = exports.MemberListApp = function MemberListApp() {
     setFollowUsers(nextFollowUsers);
   };
 
-  var url = '/users';
+  var fetchUsersUrl = '/users';
 
   (0, _react.useEffect)(function () {
-    (0, _FetchData.FetchData)(url).then(function (res) {
+    (0, _FetchData.FetchData)(fetchUsersUrl).then(function (res) {
       return setFetchUsers(res.data);
     });
   }, []);
@@ -67958,6 +67961,138 @@ var UserList = exports.UserList = function UserList(props) {
                     user: props.user,
                     buttonSize: buttonSize
                   })
+                )
+              )
+            )
+          )
+        )
+      ),
+      React.createElement(_react2.Spacer, { y: 0.4 })
+    )
+  );
+};
+// import React, { useState, useEffect } from 'react';
+
+/***/ }),
+/* 871 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.CommentList = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _UserList = __webpack_require__(870);
+
+var _react2 = __webpack_require__(35);
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _MemberList = __webpack_require__(869);
+
+var _FetchData = __webpack_require__(304);
+
+var _Comment = __webpack_require__(872);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var CommentList = exports.CommentList = function CommentList(props) {
+  var _useState = (0, _react.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      fetchCommens = _useState2[0],
+      setFetchCommens = _useState2[1];
+
+  var fetchCommentsUrl = '/picposts/' + props.clickedPostId + '/comments';
+  (0, _react.useEffect)(function () {
+    (0, _FetchData.FetchData)(fetchCommentsUrl).then(function (res) {
+      return setFetchCommens(res.data);
+    });
+  }, []);
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(_react2.Spacer, { y: 1.5 }),
+    React.createElement(
+      'div',
+      null,
+      fetchCommens.map(function (comment, index) {
+        return React.createElement(
+          'div',
+          { key: index, className: 'list' },
+          React.createElement(_Comment.Comment, {
+            comment: comment
+          })
+        );
+      })
+    )
+  );
+};
+
+/***/ }),
+/* 872 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Comment = undefined;
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _react2 = __webpack_require__(35);
+
+var _reactIcons = __webpack_require__(541);
+
+var Icon = _interopRequireWildcard(_reactIcons);
+
+var _FollowButton = __webpack_require__(867);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var Comment = exports.Comment = function Comment(props) {
+
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(
+      _reactRouterDom.BrowserRouter,
+      null,
+      React.createElement(
+        _react2.Card,
+        null,
+        React.createElement(
+          'div',
+          { className: 'flex items-center ml-8' },
+          React.createElement(
+            'div',
+            { className: 'flex-1  text-center' },
+            React.createElement(
+              'li',
+              { key: props.comment.id, className: 'flex items-center m-auto' },
+              React.createElement(
+                'div',
+                { className: 'flex justify-between w-2/5' },
+                React.createElement(
+                  'div',
+                  { className: 'bg-gray-100 w-40' },
+                  props.comment.content,
+                  props.comment.user_id
                 )
               )
             )

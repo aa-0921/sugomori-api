@@ -8,6 +8,8 @@ import { PostList } from './PostList';
 import { Modal, Button, Grid, Divider, Row, Slider, Collapse, Popover, Text } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
 import { FormikComment } from './FormikComment';
+import { CommentList } from './CommentList';
+
 
 export const CommentApp = (props: any) => {
 
@@ -26,7 +28,7 @@ export const CommentApp = (props: any) => {
 
 
       <FormikComment clickedPostId={props.clickedPostId} />
-
+      <CommentList clickedPostId={props.clickedPostId} />
 
     </React.Fragment >
   );
