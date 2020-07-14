@@ -51,7 +51,7 @@ export const ProfilePage = (props) => {
 
   // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
   const currentUserId = 1;
-  const getLikeListUrl: string = 'http://localhost:3000/picposts/like_list/' + currentUserId;
+  const getLikeListUrl: string = '/picposts/like_list/' + currentUserId;
 
   useEffect(() => {
     FetchData(userPostUrl).then((res) => {
@@ -109,7 +109,7 @@ export const ProfilePage = (props) => {
     setModalOpen(false);
   };
 
-  const getClickedPostUserUrl: string = 'http://localhost:3000/users/' + clickedPost.user_id;
+  const getClickedPostUserUrl: string = '/users/' + clickedPost.user_id;
   console.log('getClickedPostUserUrl', getClickedPostUserUrl);
 
   useEffect(() => {
@@ -152,7 +152,7 @@ export const ProfilePage = (props) => {
     const body = JSON.stringify(obj);
     const method = 'PUT';
     // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like/' + postId;
-    const postUrl: string = 'http://localhost:3000/picposts/like/' + postId;
+    const postUrl: string = '/picposts/like/' + postId;
 
     await fetch(postUrl, { method, body })
       .then((response) => {
@@ -177,7 +177,7 @@ export const ProfilePage = (props) => {
     const body = JSON.stringify(obj);
     const method = 'PUT';
 
-    const postUrl: string = 'http://localhost:3000/picposts/unlike/' + postId;
+    const postUrl: string = '/picposts/unlike/' + postId;
 
     await fetch(postUrl, { method, body })
       .then((response) => {

@@ -32684,7 +32684,7 @@ function Header(props) {
       currentUserData = _useState2[0],
       setCurrentUserData = _useState2[1];
 
-  var getInitialDataUrl = 'http://localhost:3000/initial_data/show';
+  var getInitialDataUrl = '/initial_data/show';
 
   (0, _react.useEffect)(function () {
     (0, _FetchData.FetchData)(getInitialDataUrl).then(function (res) {
@@ -47246,7 +47246,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
       filterPosts = _useState6[0],
       setFilterPosts = _useState6[1];
 
-  var getAllPostUrl = 'http://localhost:3000/picposts';
+  var getAllPostUrl = '/picposts';
 
   (0, _react.useEffect)(function () {
     (0, _FetchData.FetchData)(getAllPostUrl).then(function (res) {
@@ -47264,7 +47264,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
   // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
   var currentUserId = 1;
 
-  var getLikeListUrl = 'http://localhost:3000/picposts/like_list/' + currentUserId;
+  var getLikeListUrl = '/picposts/like_list/' + currentUserId;
 
   (0, _react.useEffect)(function () {
     setFilterPosts(fetchPosts);
@@ -47317,7 +47317,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
     setModalOpen(false);
   };
 
-  var getClickedPostUserUrl = 'http://localhost:3000/users/' + clickedPost.user_id;
+  var getClickedPostUserUrl = '/users/' + clickedPost.user_id;
   console.log('getClickedPostUserUrl', getClickedPostUserUrl);
 
   (0, _react.useEffect)(function () {
@@ -47365,7 +47365,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
     var body = JSON.stringify(obj);
     var method = 'PUT';
     // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like/' + postId;
-    var postUrl = 'http://localhost:3000/picposts/like/' + postId;
+    var postUrl = '/picposts/like/' + postId;
 
     await fetch(postUrl, { method: method, body: body }).then(function (response) {
       console.log(response.status);
@@ -47388,7 +47388,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
     var body = JSON.stringify(obj);
     var method = 'PUT';
 
-    var postUrl = 'http://localhost:3000/picposts/unlike/' + postId;
+    var postUrl = '/picposts/unlike/' + postId;
 
     await fetch(postUrl, { method: method, body: body }).then(function (response) {
       console.log(response.status);
@@ -67058,7 +67058,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
 
   // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
   var currentUserId = 1;
-  var getLikeListUrl = 'http://localhost:3000/picposts/like_list/' + currentUserId;
+  var getLikeListUrl = '/picposts/like_list/' + currentUserId;
 
   (0, _react.useEffect)(function () {
     (0, _FetchData.FetchData)(userPostUrl).then(function (res) {
@@ -67134,7 +67134,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
     setModalOpen(false);
   };
 
-  var getClickedPostUserUrl = 'http://localhost:3000/users/' + clickedPost.user_id;
+  var getClickedPostUserUrl = '/users/' + clickedPost.user_id;
   console.log('getClickedPostUserUrl', getClickedPostUserUrl);
 
   (0, _react.useEffect)(function () {
@@ -67181,7 +67181,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
     var body = JSON.stringify(obj);
     var method = 'PUT';
     // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like/' + postId;
-    var postUrl = 'http://localhost:3000/picposts/like/' + postId;
+    var postUrl = '/picposts/like/' + postId;
 
     await fetch(postUrl, { method: method, body: body }).then(function (response) {
       console.log(response.status);
@@ -67204,7 +67204,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
     var body = JSON.stringify(obj);
     var method = 'PUT';
 
-    var postUrl = 'http://localhost:3000/picposts/unlike/' + postId;
+    var postUrl = '/picposts/unlike/' + postId;
 
     await fetch(postUrl, { method: method, body: body }).then(function (response) {
       console.log(response.status);

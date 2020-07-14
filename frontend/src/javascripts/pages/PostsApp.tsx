@@ -15,7 +15,7 @@ export const PostsApp = (props: any) => {
   // 検索のfilter後の投稿の配列の定義
   const [filterPosts, setFilterPosts] = useState([]);
 
-  const getAllPostUrl: string = 'http://localhost:3000/picposts';
+  const getAllPostUrl: string = '/picposts';
 
   useEffect(() => {
     FetchData(getAllPostUrl).then((res) => {
@@ -31,7 +31,7 @@ export const PostsApp = (props: any) => {
   // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
   const currentUserId = 1;
 
-  const getLikeListUrl: string = 'http://localhost:3000/picposts/like_list/' + currentUserId;
+  const getLikeListUrl: string = '/picposts/like_list/' + currentUserId;
 
   useEffect(() => {
     setFilterPosts(fetchPosts);
@@ -68,7 +68,7 @@ export const PostsApp = (props: any) => {
     setModalOpen(false);
   };
 
-  const getClickedPostUserUrl: string = 'http://localhost:3000/users/' + clickedPost.user_id;
+  const getClickedPostUserUrl: string = '/users/' + clickedPost.user_id;
   console.log('getClickedPostUserUrl', getClickedPostUserUrl);
 
   useEffect(() => {
@@ -112,7 +112,7 @@ export const PostsApp = (props: any) => {
     const body = JSON.stringify(obj);
     const method = 'PUT';
     // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like/' + postId;
-    const postUrl: string = 'http://localhost:3000/picposts/like/' + postId;
+    const postUrl: string = '/picposts/like/' + postId;
 
     await fetch(postUrl, { method, body })
       .then((response) => {
@@ -137,7 +137,7 @@ export const PostsApp = (props: any) => {
     const body = JSON.stringify(obj);
     const method = 'PUT';
 
-    const postUrl: string = 'http://localhost:3000/picposts/unlike/' + postId;
+    const postUrl: string = '/picposts/unlike/' + postId;
 
     await fetch(postUrl, { method, body })
       .then((response) => {

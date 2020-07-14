@@ -13,7 +13,7 @@ export function Header(props: any) {
     name: '',
   })
 
-  const getInitialDataUrl: string = 'http://localhost:3000/initial_data/show';
+  const getInitialDataUrl: string = '/initial_data/show';
 
   useEffect(() => {
     FetchData(getInitialDataUrl).then((res) => {
