@@ -11,12 +11,32 @@ import { About } from '../pages/About';
 import { PostsApp } from '../pages/PostsApp';
 import { ProfilePage } from '../pages/ProfilePage';
 import { MemberListApp } from '../pages/MemberListApp';
+import { FetchData } from '../api/FetchData';
+import { useState, useEffect } from 'react';
 
 export const HomePage = () => {
+  const [currentUserData, setCurrentUserData] = useState({
+    id: 0,
+    email: '',
+    name: '',
+  })
+
+  const getInitialDataUrl: string = '/initial_data/show';
+
+  useEffect(() => {
+    FetchData(getInitialDataUrl).then((res) => {
+      setCurrentUserData(res.data);
+      console.log('getInitialDataUrl', getInitialDataUrl);
+      console.log('res.data', res.data);
+      console.log('currentUserData', currentUserData);
+      console.log('currentUserData');
+    });
+  }, []);
+
 
   return (
     <BrowserRouter>
-      <Header />
+      <Header currentUserData={currentUserData} />
 
       <Switch>
         <Route exact path="/" component={PostsApp} />
@@ -28,7 +48,10 @@ export const HomePage = () => {
 
         <Route exact path="/MemberListApp" component={MemberListApp} />
 
-        <Route exact path="/postsApp" component={PostsApp} />
+        <Route exact path="/postsApp"
+          component={PostsApp}
+          currentUserData={currentUserData}
+        />
       </Switch>
       {/* <Footer /> */}
     </BrowserRouter>

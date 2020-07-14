@@ -28588,6 +28588,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.HomePage = undefined;
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+// import React, { useState, useEffect } from 'react';
+
 var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
@@ -28608,16 +28612,36 @@ var _ProfilePage = __webpack_require__(871);
 
 var _MemberListApp = __webpack_require__(872);
 
+var _FetchData = __webpack_require__(304);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-// import React, { useState, useEffect } from 'react';
-
 var HomePage = exports.HomePage = function HomePage() {
+  var _useState = (0, _react.useState)({
+    id: 0,
+    email: '',
+    name: ''
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      currentUserData = _useState2[0],
+      setCurrentUserData = _useState2[1];
+
+  var getInitialDataUrl = '/initial_data/show';
+
+  (0, _react.useEffect)(function () {
+    (0, _FetchData.FetchData)(getInitialDataUrl).then(function (res) {
+      setCurrentUserData(res.data);
+      console.log('getInitialDataUrl', getInitialDataUrl);
+      console.log('res.data', res.data);
+      console.log('currentUserData', currentUserData);
+      console.log('currentUserData');
+    });
+  }, []);
 
   return React.createElement(
     _reactRouterDom.BrowserRouter,
     null,
-    React.createElement(_header.Header, null),
+    React.createElement(_header.Header, { currentUserData: currentUserData }),
     React.createElement(
       _reactRouterDom.Switch,
       null,
@@ -28626,7 +28650,10 @@ var HomePage = exports.HomePage = function HomePage() {
       React.createElement(_reactRouterDom.Route, { exact: true, path: '/about', component: _About.About }),
       React.createElement(_reactRouterDom.Route, { path: '/profilepage/:id', component: _ProfilePage.ProfilePage }),
       React.createElement(_reactRouterDom.Route, { exact: true, path: '/MemberListApp', component: _MemberListApp.MemberListApp }),
-      React.createElement(_reactRouterDom.Route, { exact: true, path: '/postsApp', component: _PostsApp.PostsApp })
+      React.createElement(_reactRouterDom.Route, { exact: true, path: '/postsApp',
+        component: _PostsApp.PostsApp,
+        currentUserData: currentUserData
+      })
     )
   );
 };
@@ -32654,9 +32681,6 @@ module.exports = hoistNonReactStatics;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
 exports.Header = Header;
 
 var _react = __webpack_require__(1);
@@ -32667,34 +32691,12 @@ var _reactRouterDom = __webpack_require__(15);
 
 var _react2 = __webpack_require__(35);
 
-var _FetchData = __webpack_require__(304);
-
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 // import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 
 function Header(props) {
-  var _useState = (0, _react.useState)({
-    id: 0,
-    email: '',
-    name: ''
-  }),
-      _useState2 = _slicedToArray(_useState, 2),
-      currentUserData = _useState2[0],
-      setCurrentUserData = _useState2[1];
-
-  var getInitialDataUrl = '/initial_data/show';
-
-  (0, _react.useEffect)(function () {
-    (0, _FetchData.FetchData)(getInitialDataUrl).then(function (res) {
-      setCurrentUserData(res.data);
-      console.log('getInitialDataUrl', getInitialDataUrl);
-      console.log('res.data', res.data);
-      console.log('currentUserData', currentUserData);
-      console.log('currentUserData');
-    });
-  }, []);
 
   return React.createElement(
     'header',
@@ -32735,7 +32737,7 @@ function Header(props) {
                     React.createElement(
                       'div',
                       { className: 'flex-auto' },
-                      currentUserData != null ? React.createElement(
+                      props.currentUserData != null ? React.createElement(
                         React.Fragment,
                         null,
                         React.createElement(
@@ -32757,7 +32759,7 @@ function Header(props) {
                         React.createElement(
                           _reactRouterDom.Link,
                           {
-                            to: '/profilepage/' + currentUserData.id,
+                            to: '/profilepage/' + props.currentUserData.id,
                             className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium  hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
                           },
                           'YourProfile'
@@ -32786,7 +32788,7 @@ function Header(props) {
                     React.createElement(
                       'div',
                       { className: 'flex-auto float-right' },
-                      currentUserData != null ? React.createElement(
+                      props.currentUserData != null ? React.createElement(
                         React.Fragment,
                         null,
                         React.createElement(
@@ -47586,7 +47588,8 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                     'div',
                     null,
                     React.createElement(_CommentApp.CommentApp, {
-                      clickedPostId: clickedPost.id
+                      clickedPostId: clickedPost.id,
+                      currentUserData: props.currentUserData
                     })
                   )
                 )
@@ -67028,12 +67031,13 @@ var CommentApp = exports.CommentApp = function CommentApp(props) {
     });
   }, []);
 
-  var currentUserId = 1;
-
   return React.createElement(
     React.Fragment,
     null,
-    React.createElement(_FormikComment.FormikComment, { clickedPostId: props.clickedPostId }),
+    React.createElement(_FormikComment.FormikComment, {
+      clickedPostId: props.clickedPostId,
+      currentUserData: props.currentUserData
+    }),
     React.createElement(_CommentList.CommentList, { clickedPostId: props.clickedPostId })
   );
 };
@@ -67087,6 +67091,7 @@ var FormikComment = exports.FormikComment = function FormikComment(props) {
 
       submitData.append('content', values.content);
       submitData.append('picpost_id', props.clickedPostId);
+      submitData.append('user_name', props.currentUserData.name);
 
       var body = submitData;
       createComment(body);
@@ -67487,7 +67492,7 @@ var Comment = exports.Comment = function Comment(props) {
             React.createElement(
               'p',
               { className: 'text-gray-500 font-thin' },
-              props.comment.user.name
+              props.comment.user_name
             ),
             React.createElement(_react2.Spacer, { x: 6 }),
             React.createElement(

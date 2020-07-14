@@ -285,6 +285,7 @@ export const PostsApp = (props: any) => {
                     <div>
                       <CommentApp
                         clickedPostId={clickedPost.id}
+                        currentUserData={props.currentUserData}
                       />
                     </div>
                     {/* コメント部分ーーーーーーーーーーーーー */}

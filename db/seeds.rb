@@ -92,7 +92,9 @@ comment_users.each do |comment_user|
     content = Faker::Lorem.sentence(word_count: 2)
     emoji = Faker::Lorem.multibyte
     comment_user.comments.create!(content: "#{content}#{emoji}",
-                                  picpost_id: commented_post.id)
+                                  picpost_id: commented_post.id,
+                                  user_name: comment_user.name
+                                )
   end
 end
 

@@ -21,13 +21,14 @@ export const CommentApp = (props: any) => {
     });
   }, []);
 
-  const currentUserId = 1;
-
   return (
     <React.Fragment>
 
 
-      <FormikComment clickedPostId={props.clickedPostId} />
+      <FormikComment
+        clickedPostId={props.clickedPostId}
+        currentUserData={props.currentUserData}
+      />
       <CommentList clickedPostId={props.clickedPostId} />
 
     </React.Fragment >

@@ -16,7 +16,7 @@ export const Comment = (props: any) => {
           <div className="m-5">
             <div className="flex justify-between">
               <p className="text-gray-500 font-thin">
-                {props.comment.user.name}
+                {props.comment.user_name}
               </p>
               <Spacer x={6} />
               <p className="flex text-gray-700">

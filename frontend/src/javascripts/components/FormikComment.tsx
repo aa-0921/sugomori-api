@@ -28,6 +28,7 @@ export const FormikComment = (props: any) => {
 
         submitData.append('content', values.content);
         submitData.append('picpost_id', props.clickedPostId);
+        submitData.append('user_name', props.currentUserData.name);
 
         const body = submitData;
         createComment(body);

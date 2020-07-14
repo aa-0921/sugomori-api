@@ -1,30 +1,10 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ButtonDropdown, Grid, Row, Input, Button } from '@zeit-ui/react';
-import { FetchData } from '../api/FetchData';
 // import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 
 export function Header(props: any) {
-  const [currentUserData, setCurrentUserData] = useState({
-    id: 0,
-    email: '',
-    name: '',
-  })
-
-  const getInitialDataUrl: string = '/initial_data/show';
-
-  useEffect(() => {
-    FetchData(getInitialDataUrl).then((res) => {
-      setCurrentUserData(res.data);
-      console.log('getInitialDataUrl', getInitialDataUrl);
-      console.log('res.data', res.data);
-      console.log('currentUserData', currentUserData);
-      console.log('currentUserData');
-    });
-  }, []);
-
 
   return (
     <header>
@@ -40,7 +20,7 @@ export function Header(props: any) {
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline w-auto">
                       <div className="flex-auto">
-                        {currentUserData != null ? (
+                        {props.currentUserData != null ? (
                           <React.Fragment>
                             <Link
                               to="/"
@@ -56,7 +36,7 @@ export function Header(props: any) {
                             </Link>
 
                             <Link
-                              to={'/profilepage/' + currentUserData.id}
+                              to={'/profilepage/' + props.currentUserData.id}
                               className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium  hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                             >
                               YourProfile
@@ -80,7 +60,7 @@ export function Header(props: any) {
                           )}
                       </div>
                       <div className="flex-auto float-right">
-                        {currentUserData != null ? (
+                        {props.currentUserData != null ? (
                           <React.Fragment>
                             <ButtonDropdown size="small">
                               <ButtonDropdown.Item main>
