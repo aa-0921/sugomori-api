@@ -12,26 +12,19 @@ export const Comment = (props: any) => {
   return (
     <React.Fragment>
       <Router>
-        <Card>
-          <div className="flex items-center ml-8">
-            <div className="flex-1  text-center">
-              <li key={props.comment.id} className="flex items-center m-auto">
-                <div className="flex justify-between w-2/5">
-                  {/* <div>
-                    <Link to={'/profilepage/' + props.user.id}>{props.user.name}&emsp;</Link>
-                  </div> */}
-                  <div className="bg-gray-100 w-40">
-                    {props.comment.content}
-                    {props.comment.user_id}
-
-                  </div>
-                </div>
-              </li>
+        <div className="rounded-lg overflow-hidden shadow-lg bg-white w-full">
+          <div className="m-5">
+            <div className="flex justify-between">
+              <p className="text-gray-500 font-thin">UserName</p>
+              <Spacer x={6} />
+              <p className="flex text-gray-700">
+                {props.comment.content}
+              </p>
             </div>
           </div>
-        </Card>
+        </div>
         <Spacer y={0.4} />
-      </Router>
+      </Router >
     </React.Fragment >
   );
 };

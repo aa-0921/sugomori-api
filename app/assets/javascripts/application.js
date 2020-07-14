@@ -68074,27 +68074,24 @@ var Comment = exports.Comment = function Comment(props) {
       _reactRouterDom.BrowserRouter,
       null,
       React.createElement(
-        _react2.Card,
-        null,
+        'div',
+        { className: 'rounded-lg overflow-hidden shadow-lg bg-white w-full' },
         React.createElement(
           'div',
-          { className: 'flex items-center ml-8' },
+          { className: 'm-5' },
           React.createElement(
             'div',
-            { className: 'flex-1  text-center' },
+            { className: 'flex justify-between' },
             React.createElement(
-              'li',
-              { key: props.comment.id, className: 'flex items-center m-auto' },
-              React.createElement(
-                'div',
-                { className: 'flex justify-between w-2/5' },
-                React.createElement(
-                  'div',
-                  { className: 'bg-gray-100 w-40' },
-                  props.comment.content,
-                  props.comment.user_id
-                )
-              )
+              'p',
+              { className: 'text-gray-500 font-thin' },
+              'UserName'
+            ),
+            React.createElement(_react2.Spacer, { x: 6 }),
+            React.createElement(
+              'p',
+              { className: 'flex text-gray-700' },
+              props.comment.content
             )
           )
         )
