@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 
-#zeit-ui-modal > div > div > div {
+div.modalWrap {
   max-height: 95vh !important;
 };
 

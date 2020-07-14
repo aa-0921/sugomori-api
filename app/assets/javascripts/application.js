@@ -47513,7 +47513,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
           ),
           React.createElement(
             _react2.Modal,
-            { width: '100vh', className: 'postModal',
+            { width: '100vh', wrapClassName: "modalWrap", className: 'postModal',
               open: modalOpen, onClose: closeHandler },
             React.createElement(
               React.Fragment,

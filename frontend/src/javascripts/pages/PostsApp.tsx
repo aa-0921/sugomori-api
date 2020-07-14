@@ -234,7 +234,7 @@ export const PostsApp = (props: any) => {
               />
             </div>
 
-            <Modal width="100vh" className="postModal"
+            <Modal width="100vh" wrapClassName={"modalWrap"} className="postModal"
               open={modalOpen} onClose={closeHandler}>
               <React.Fragment>
                 {/* <Grid.Container justify="center"> */}
