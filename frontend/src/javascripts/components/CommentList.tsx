@@ -9,18 +9,18 @@ import { Comment } from '../components/Comment';
 
 
 export const CommentList = (props: any): any => {
-  const [fetchCommens, setFetchCommens] = useState([]);
+  const [fetchComments, setFetchComments] = useState([]);
 
 
   const fetchCommentsUrl: string = `/picposts/${props.clickedPostId}/comments`;
   useEffect(() => {
-    FetchData(fetchCommentsUrl).then((res) => setFetchCommens(res.data));
+    FetchData(fetchCommentsUrl).then((res) => setFetchComments(res.data));
   }, []);
   return (
     <React.Fragment>
       <Spacer y={1.5} />
       <div>
-        {fetchCommens.map((comment: any, index: number) => (
+        {fetchComments.map((comment: any, index: number) => (
           <div key={index} className="list">
             <Comment
               comment={comment}

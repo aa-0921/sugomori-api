@@ -24,15 +24,10 @@ export const FormikComment = (props: any) => {
       initialValues={{ content: '', post_id: 0 }}
 
       onSubmit={(values) => {
-        // values.user_id = 1;
-
         const submitData = new FormData();
 
         submitData.append('content', values.content);
         submitData.append('picpost_id', props.clickedPostId);
-
-        // submitData.append('user_id', '1');
-
 
         const body = submitData;
         createComment(body);

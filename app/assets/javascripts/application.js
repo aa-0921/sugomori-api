@@ -67083,15 +67083,10 @@ var FormikComment = exports.FormikComment = function FormikComment(props) {
     initialValues: { content: '', post_id: 0 },
 
     onSubmit: function onSubmit(values) {
-      // values.user_id = 1;
-
       var submitData = new FormData();
 
       submitData.append('content', values.content);
       submitData.append('picpost_id', props.clickedPostId);
-
-      // submitData.append('user_id', '1');
-
 
       var body = submitData;
       createComment(body);
@@ -67181,13 +67176,13 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var CommentList = exports.CommentList = function CommentList(props) {
   var _useState = (0, _react.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
-      fetchCommens = _useState2[0],
-      setFetchCommens = _useState2[1];
+      fetchComments = _useState2[0],
+      setFetchComments = _useState2[1];
 
   var fetchCommentsUrl = '/picposts/' + props.clickedPostId + '/comments';
   (0, _react.useEffect)(function () {
     (0, _FetchData.FetchData)(fetchCommentsUrl).then(function (res) {
-      return setFetchCommens(res.data);
+      return setFetchComments(res.data);
     });
   }, []);
   return React.createElement(
@@ -67197,7 +67192,7 @@ var CommentList = exports.CommentList = function CommentList(props) {
     React.createElement(
       'div',
       null,
-      fetchCommens.map(function (comment, index) {
+      fetchComments.map(function (comment, index) {
         return React.createElement(
           'div',
           { key: index, className: 'list' },
