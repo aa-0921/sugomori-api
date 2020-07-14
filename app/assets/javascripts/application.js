@@ -47446,6 +47446,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
   };
   // Popover関連
 
+
   return React.createElement(
     React.Fragment,
     null,
@@ -47512,8 +47513,8 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
           ),
           React.createElement(
             _react2.Modal,
-            { width: '100vh', style: { 'max-height': '95vh' },
-              className: 'w-full h-full', open: modalOpen, onClose: closeHandler },
+            { width: '100vh', className: 'postModal',
+              open: modalOpen, onClose: closeHandler },
             React.createElement(
               React.Fragment,
               null,
@@ -47523,7 +47524,11 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                 React.createElement(
                   'div',
                   { className: 'flex flex-col items-center' },
-                  React.createElement('img', { src: clickedPost.picture, className: 'object-cover rounded-lg max-w-full max-h-full w-screen h-100' }),
+                  React.createElement(
+                    'div',
+                    { className: 'w-full h-300' },
+                    React.createElement('img', { src: clickedPost.picture, className: 'object-cover rounded-lg max-w-full max-h-full w-screen h-100' })
+                  ),
                   React.createElement(_react2.Divider, null),
                   React.createElement(
                     'div',

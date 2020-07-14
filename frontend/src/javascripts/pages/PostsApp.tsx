@@ -188,6 +188,7 @@ export const PostsApp = (props: any) => {
   )
   // Popover関連
 
+
   return (
     <React.Fragment>
       <Router>
@@ -232,14 +233,16 @@ export const PostsApp = (props: any) => {
                 columnWidthValue={columnWidthValue}
               />
             </div>
-            <Modal width="100vh" style={{ 'max-height': '95vh' }}
-              className="w-full h-full" open={modalOpen} onClose={closeHandler}>
+            <Modal width="100vh" className="postModal"
+              open={modalOpen} onClose={closeHandler}>
               <React.Fragment>
                 {/* <Grid.Container justify="center"> */}
                 {/* <Grid> */}
                 <Modal.Content className="overflow-y-scroll h-screen">
                   <div className="flex flex-col items-center">
-                    <img src={clickedPost.picture} className="object-cover rounded-lg max-w-full max-h-full w-screen h-100" />
+                    <div className="w-full h-300">
+                      <img src={clickedPost.picture} className="object-cover rounded-lg max-w-full max-h-full w-screen h-100" />
+                    </div>
                     <Divider />
                     <div className="flex-1  text-center">
                       <Link
