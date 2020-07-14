@@ -8,5 +8,6 @@ release:
   image: web
   command:
     - bundle exec rake db:migrate
+    - bundle exec rails db:seed
 run:
   web: bundle exec puma -C config/puma.rb
