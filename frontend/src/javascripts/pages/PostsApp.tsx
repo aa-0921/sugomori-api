@@ -233,18 +233,19 @@ export const PostsApp = (props: any) => {
                 columnWidthValue={columnWidthValue}
               />
             </div>
+
             <Modal width="100vh" className="postModal"
               open={modalOpen} onClose={closeHandler}>
               <React.Fragment>
                 {/* <Grid.Container justify="center"> */}
                 {/* <Grid> */}
                 <Modal.Content className="overflow-y-scroll h-screen">
-                  <div className="flex flex-col items-center">
-                    <div className="w-full h-300">
+                  <div className="imageDiv flex flex-col items-center">
+                    <div className="flex justify-center w-full h-300">
                       <img src={clickedPost.picture} className="object-cover rounded-lg max-w-full max-h-full w-screen h-100" />
                     </div>
                     <Divider />
-                    <div className="flex-1  text-center">
+                    <div className="flex-1 text-center">
                       <Link
                         to={'/profilepage/' + clickedPost.user_id}
                         onClick={() => {

@@ -14432,8 +14432,11 @@ video {
 .delay-1000 {
   transition-delay: 1000ms; }
 
-.jsx-3457077999 {
-  max-height: 96vh !important; }
+#zeit-ui-modal > div > div > div {
+  max-height: 95vh !important; }
+
+#zeit-ui-modal > div > div.jsx-2013759218.content > div > div.jsx-2527237944.content.overflow-y-scroll.h-screen > div > div.w-full.h-300 > img {
+  width: 45vh; }
 
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {

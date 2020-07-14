@@ -28604,9 +28604,9 @@ var _About = __webpack_require__(305);
 
 var _PostsApp = __webpack_require__(306);
 
-var _ProfilePage = __webpack_require__(866);
+var _ProfilePage = __webpack_require__(871);
 
-var _MemberListApp = __webpack_require__(868);
+var _MemberListApp = __webpack_require__(872);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -47523,16 +47523,16 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                 { className: 'overflow-y-scroll h-screen' },
                 React.createElement(
                   'div',
-                  { className: 'flex flex-col items-center' },
+                  { className: 'imageDiv flex flex-col items-center' },
                   React.createElement(
                     'div',
-                    { className: 'w-full h-300' },
+                    { className: 'flex justify-center w-full h-300' },
                     React.createElement('img', { src: clickedPost.picture, className: 'object-cover rounded-lg max-w-full max-h-full w-screen h-100' })
                   ),
                   React.createElement(_react2.Divider, null),
                   React.createElement(
                     'div',
-                    { className: 'flex-1  text-center' },
+                    { className: 'flex-1 text-center' },
                     React.createElement(
                       _reactRouterDom.Link,
                       {
@@ -67011,7 +67011,7 @@ var Icon = _interopRequireWildcard(_reactIcons);
 
 var _FormikComment = __webpack_require__(865);
 
-var _CommentList = __webpack_require__(871);
+var _CommentList = __webpack_require__(866);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -67156,6 +67156,369 @@ var FormikComment = exports.FormikComment = function FormikComment(props) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.CommentList = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _UserList = __webpack_require__(867);
+
+var _react2 = __webpack_require__(35);
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _MemberList = __webpack_require__(869);
+
+var _FetchData = __webpack_require__(304);
+
+var _Comment = __webpack_require__(870);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var CommentList = exports.CommentList = function CommentList(props) {
+  var _useState = (0, _react.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      fetchCommens = _useState2[0],
+      setFetchCommens = _useState2[1];
+
+  var fetchCommentsUrl = '/picposts/' + props.clickedPostId + '/comments';
+  (0, _react.useEffect)(function () {
+    (0, _FetchData.FetchData)(fetchCommentsUrl).then(function (res) {
+      return setFetchCommens(res.data);
+    });
+  }, []);
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(_react2.Spacer, { y: 1.5 }),
+    React.createElement(
+      'div',
+      null,
+      fetchCommens.map(function (comment, index) {
+        return React.createElement(
+          'div',
+          { key: index, className: 'list' },
+          React.createElement(_Comment.Comment, {
+            comment: comment
+          })
+        );
+      })
+    )
+  );
+};
+
+/***/ }),
+/* 867 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.UserList = undefined;
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _react2 = __webpack_require__(35);
+
+var _reactIcons = __webpack_require__(541);
+
+var Icon = _interopRequireWildcard(_reactIcons);
+
+var _FollowButton = __webpack_require__(868);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var UserList = exports.UserList = function UserList(props) {
+  var onClickFollow = async function onClickFollow(userId) {
+    var csrf = sessionStorage.getItem('X-CSRF-Token');
+    var obj = {
+      // 一時的にuser_idを1に
+      current_user_id: 1,
+      'X-CSRF-Token': csrf
+    };
+    var body = JSON.stringify(obj);
+    var method = 'PUT';
+    var postUrl = '/users/follow/' + userId;
+
+    await fetch(postUrl, { method: method, body: body }).then(function (response) {
+      console.log(response.status);
+      // if (response.status == 204) {
+      if (response.status == 200) {
+        props.pushToFollowUsers(props.user.id);
+      } else {
+        throw new Error();
+      }
+    }).catch(function (error) {});
+  };
+  var onClickUnFollow = async function onClickUnFollow(userId) {
+    var obj = {
+
+      // 一時的にuser_idを1に
+      current_user_id: 1
+    };
+
+    var body = JSON.stringify(obj);
+    var method = 'PUT';
+    var postUrl = '/users/unfollow/' + userId;
+
+    await fetch(postUrl, { method: method, body: body }).then(function (response) {
+      console.log(response.status);
+      // if (response.status == 204) {
+      if (response.status == 200) {
+        props.removeFromFollowUsers(props.user.id);
+      } else {
+        throw new Error();
+      }
+    }).catch(function (error) {});
+  };
+  var buttonSize = "small";
+
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(
+      _reactRouterDom.BrowserRouter,
+      null,
+      React.createElement(
+        _react2.Card,
+        { hoverable: true },
+        React.createElement(
+          'div',
+          { className: 'flex items-center ml-8' },
+          React.createElement(
+            'div',
+            { className: 'flex-1  text-center' },
+            React.createElement(
+              'li',
+              { key: props.user.id, style: { color: 'white' }, className: 'flex items-center m-auto' },
+              React.createElement(
+                'div',
+                { className: 'flex justify-between w-2/5' },
+                React.createElement(
+                  'div',
+                  null,
+                  React.createElement(
+                    _reactRouterDom.Link,
+                    { to: '/profilepage/' + props.user.id },
+                    props.user.name,
+                    '\u2003'
+                  )
+                ),
+                React.createElement(
+                  'div',
+                  null,
+                  React.createElement(_FollowButton.FollowButton, {
+                    onClickFollow: onClickFollow,
+                    onClickUnFollow: onClickUnFollow,
+                    followUsersList: props.followUsersList,
+                    user: props.user,
+                    buttonSize: buttonSize
+                  })
+                )
+              )
+            )
+          )
+        )
+      ),
+      React.createElement(_react2.Spacer, { y: 0.4 })
+    )
+  );
+};
+// import React, { useState, useEffect } from 'react';
+
+/***/ }),
+/* 868 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FollowButton = undefined;
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _react2 = __webpack_require__(35);
+
+var _reactIcons = __webpack_require__(541);
+
+var Icon = _interopRequireWildcard(_reactIcons);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+// import React, { useState, useEffect } from 'react';
+var FollowButton = exports.FollowButton = function FollowButton(props) {
+  return React.createElement(
+    'div',
+    null,
+    props.followUsersList.includes(props.user.id) ? React.createElement(
+      _react2.Button,
+      {
+        type: 'warning',
+        size: props.buttonSize,
+        auto: true,
+        ghost: true,
+        onClick: function onClick() {
+          return props.onClickUnFollow(props.user.id);
+        },
+        className: 'm-auto'
+      },
+      React.createElement(Icon.EyeOff, { size: 16 }),
+      'UnFollow'
+    ) : React.createElement(
+      _react2.Button,
+      {
+        type: 'success',
+        size: props.buttonSize,
+        auto: true,
+        ghost: true,
+        onClick: function onClick() {
+          return props.onClickFollow(props.user.id);
+        }
+      },
+      React.createElement(Icon.Eye, { size: 16 }),
+      'Follow'
+    )
+  );
+};
+
+/***/ }),
+/* 869 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MemberList = undefined;
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _UserList = __webpack_require__(867);
+
+var _react2 = __webpack_require__(35);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var MemberList = exports.MemberList = function MemberList(props) {
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(_react2.Spacer, { y: 1.5 }),
+    React.createElement(
+      'div',
+      null,
+      props.fetchUsers.map(function (user, index) {
+        return React.createElement(
+          'div',
+          { key: index, className: 'list' },
+          React.createElement(_UserList.UserList, {
+            user: user,
+            followUsersList: props.followUsers,
+            pushToFollowUsers: props.pushToFollowUsers,
+            removeFromFollowUsers: props.removeFromFollowUsers
+          })
+        );
+      })
+    )
+  );
+};
+
+/***/ }),
+/* 870 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Comment = undefined;
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _react2 = __webpack_require__(35);
+
+var _reactIcons = __webpack_require__(541);
+
+var Icon = _interopRequireWildcard(_reactIcons);
+
+var _FollowButton = __webpack_require__(868);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var Comment = exports.Comment = function Comment(props) {
+
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(
+      _reactRouterDom.BrowserRouter,
+      null,
+      React.createElement(
+        'div',
+        { className: 'rounded-lg overflow-hidden shadow-lg bg-white w-full' },
+        React.createElement(
+          'div',
+          { className: 'm-5' },
+          React.createElement(
+            'div',
+            { className: 'flex justify-between' },
+            React.createElement(
+              'p',
+              { className: 'text-gray-500 font-thin' },
+              'UserName'
+            ),
+            React.createElement(_react2.Spacer, { x: 6 }),
+            React.createElement(
+              'p',
+              { className: 'flex text-gray-700' },
+              props.comment.content
+            )
+          )
+        )
+      ),
+      React.createElement(_react2.Spacer, { y: 0.4 })
+    )
+  );
+};
+// import React, { useState, useEffect } from 'react';
+
+/***/ }),
+/* 871 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.ProfilePage = undefined;
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
@@ -67176,7 +67539,7 @@ var _reactIcons = __webpack_require__(541);
 
 var Icon = _interopRequireWildcard(_reactIcons);
 
-var _FollowButton = __webpack_require__(867);
+var _FollowButton = __webpack_require__(868);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -67654,69 +68017,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
 };
 
 /***/ }),
-/* 867 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.FollowButton = undefined;
-
-var _react = __webpack_require__(1);
-
-var React = _interopRequireWildcard(_react);
-
-var _reactRouterDom = __webpack_require__(15);
-
-var _react2 = __webpack_require__(35);
-
-var _reactIcons = __webpack_require__(541);
-
-var Icon = _interopRequireWildcard(_reactIcons);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-// import React, { useState, useEffect } from 'react';
-var FollowButton = exports.FollowButton = function FollowButton(props) {
-  return React.createElement(
-    'div',
-    null,
-    props.followUsersList.includes(props.user.id) ? React.createElement(
-      _react2.Button,
-      {
-        type: 'warning',
-        size: props.buttonSize,
-        auto: true,
-        ghost: true,
-        onClick: function onClick() {
-          return props.onClickUnFollow(props.user.id);
-        },
-        className: 'm-auto'
-      },
-      React.createElement(Icon.EyeOff, { size: 16 }),
-      'UnFollow'
-    ) : React.createElement(
-      _react2.Button,
-      {
-        type: 'success',
-        size: props.buttonSize,
-        auto: true,
-        ghost: true,
-        onClick: function onClick() {
-          return props.onClickFollow(props.user.id);
-        }
-      },
-      React.createElement(Icon.Eye, { size: 16 }),
-      'Follow'
-    )
-  );
-};
-
-/***/ }),
-/* 868 */
+/* 872 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67815,307 +68116,6 @@ var MemberListApp = exports.MemberListApp = function MemberListApp() {
     )
   );
 };
-
-/***/ }),
-/* 869 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MemberList = undefined;
-
-var _react = __webpack_require__(1);
-
-var React = _interopRequireWildcard(_react);
-
-var _UserList = __webpack_require__(870);
-
-var _react2 = __webpack_require__(35);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var MemberList = exports.MemberList = function MemberList(props) {
-  return React.createElement(
-    React.Fragment,
-    null,
-    React.createElement(_react2.Spacer, { y: 1.5 }),
-    React.createElement(
-      'div',
-      null,
-      props.fetchUsers.map(function (user, index) {
-        return React.createElement(
-          'div',
-          { key: index, className: 'list' },
-          React.createElement(_UserList.UserList, {
-            user: user,
-            followUsersList: props.followUsers,
-            pushToFollowUsers: props.pushToFollowUsers,
-            removeFromFollowUsers: props.removeFromFollowUsers
-          })
-        );
-      })
-    )
-  );
-};
-
-/***/ }),
-/* 870 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.UserList = undefined;
-
-var _react = __webpack_require__(1);
-
-var React = _interopRequireWildcard(_react);
-
-var _reactRouterDom = __webpack_require__(15);
-
-var _react2 = __webpack_require__(35);
-
-var _reactIcons = __webpack_require__(541);
-
-var Icon = _interopRequireWildcard(_reactIcons);
-
-var _FollowButton = __webpack_require__(867);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var UserList = exports.UserList = function UserList(props) {
-  var onClickFollow = async function onClickFollow(userId) {
-    var csrf = sessionStorage.getItem('X-CSRF-Token');
-    var obj = {
-      // 一時的にuser_idを1に
-      current_user_id: 1,
-      'X-CSRF-Token': csrf
-    };
-    var body = JSON.stringify(obj);
-    var method = 'PUT';
-    var postUrl = '/users/follow/' + userId;
-
-    await fetch(postUrl, { method: method, body: body }).then(function (response) {
-      console.log(response.status);
-      // if (response.status == 204) {
-      if (response.status == 200) {
-        props.pushToFollowUsers(props.user.id);
-      } else {
-        throw new Error();
-      }
-    }).catch(function (error) {});
-  };
-  var onClickUnFollow = async function onClickUnFollow(userId) {
-    var obj = {
-
-      // 一時的にuser_idを1に
-      current_user_id: 1
-    };
-
-    var body = JSON.stringify(obj);
-    var method = 'PUT';
-    var postUrl = '/users/unfollow/' + userId;
-
-    await fetch(postUrl, { method: method, body: body }).then(function (response) {
-      console.log(response.status);
-      // if (response.status == 204) {
-      if (response.status == 200) {
-        props.removeFromFollowUsers(props.user.id);
-      } else {
-        throw new Error();
-      }
-    }).catch(function (error) {});
-  };
-  var buttonSize = "small";
-
-  return React.createElement(
-    React.Fragment,
-    null,
-    React.createElement(
-      _reactRouterDom.BrowserRouter,
-      null,
-      React.createElement(
-        _react2.Card,
-        { hoverable: true },
-        React.createElement(
-          'div',
-          { className: 'flex items-center ml-8' },
-          React.createElement(
-            'div',
-            { className: 'flex-1  text-center' },
-            React.createElement(
-              'li',
-              { key: props.user.id, style: { color: 'white' }, className: 'flex items-center m-auto' },
-              React.createElement(
-                'div',
-                { className: 'flex justify-between w-2/5' },
-                React.createElement(
-                  'div',
-                  null,
-                  React.createElement(
-                    _reactRouterDom.Link,
-                    { to: '/profilepage/' + props.user.id },
-                    props.user.name,
-                    '\u2003'
-                  )
-                ),
-                React.createElement(
-                  'div',
-                  null,
-                  React.createElement(_FollowButton.FollowButton, {
-                    onClickFollow: onClickFollow,
-                    onClickUnFollow: onClickUnFollow,
-                    followUsersList: props.followUsersList,
-                    user: props.user,
-                    buttonSize: buttonSize
-                  })
-                )
-              )
-            )
-          )
-        )
-      ),
-      React.createElement(_react2.Spacer, { y: 0.4 })
-    )
-  );
-};
-// import React, { useState, useEffect } from 'react';
-
-/***/ }),
-/* 871 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.CommentList = undefined;
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _react = __webpack_require__(1);
-
-var React = _interopRequireWildcard(_react);
-
-var _UserList = __webpack_require__(870);
-
-var _react2 = __webpack_require__(35);
-
-var _reactRouterDom = __webpack_require__(15);
-
-var _MemberList = __webpack_require__(869);
-
-var _FetchData = __webpack_require__(304);
-
-var _Comment = __webpack_require__(872);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var CommentList = exports.CommentList = function CommentList(props) {
-  var _useState = (0, _react.useState)([]),
-      _useState2 = _slicedToArray(_useState, 2),
-      fetchCommens = _useState2[0],
-      setFetchCommens = _useState2[1];
-
-  var fetchCommentsUrl = '/picposts/' + props.clickedPostId + '/comments';
-  (0, _react.useEffect)(function () {
-    (0, _FetchData.FetchData)(fetchCommentsUrl).then(function (res) {
-      return setFetchCommens(res.data);
-    });
-  }, []);
-  return React.createElement(
-    React.Fragment,
-    null,
-    React.createElement(_react2.Spacer, { y: 1.5 }),
-    React.createElement(
-      'div',
-      null,
-      fetchCommens.map(function (comment, index) {
-        return React.createElement(
-          'div',
-          { key: index, className: 'list' },
-          React.createElement(_Comment.Comment, {
-            comment: comment
-          })
-        );
-      })
-    )
-  );
-};
-
-/***/ }),
-/* 872 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Comment = undefined;
-
-var _react = __webpack_require__(1);
-
-var React = _interopRequireWildcard(_react);
-
-var _reactRouterDom = __webpack_require__(15);
-
-var _react2 = __webpack_require__(35);
-
-var _reactIcons = __webpack_require__(541);
-
-var Icon = _interopRequireWildcard(_reactIcons);
-
-var _FollowButton = __webpack_require__(867);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var Comment = exports.Comment = function Comment(props) {
-
-  return React.createElement(
-    React.Fragment,
-    null,
-    React.createElement(
-      _reactRouterDom.BrowserRouter,
-      null,
-      React.createElement(
-        'div',
-        { className: 'rounded-lg overflow-hidden shadow-lg bg-white w-full' },
-        React.createElement(
-          'div',
-          { className: 'm-5' },
-          React.createElement(
-            'div',
-            { className: 'flex justify-between' },
-            React.createElement(
-              'p',
-              { className: 'text-gray-500 font-thin' },
-              'UserName'
-            ),
-            React.createElement(_react2.Spacer, { x: 6 }),
-            React.createElement(
-              'p',
-              { className: 'flex text-gray-700' },
-              props.comment.content
-            )
-          )
-        )
-      ),
-      React.createElement(_react2.Spacer, { y: 0.4 })
-    )
-  );
-};
-// import React, { useState, useEffect } from 'react';
 
 /***/ })
 /******/ ]);
