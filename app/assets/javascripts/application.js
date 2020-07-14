@@ -47512,7 +47512,8 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
           ),
           React.createElement(
             _react2.Modal,
-            { width: '100rem h-screen', open: modalOpen, onClose: closeHandler },
+            { width: '100vh', style: { 'max-height': '95vh' },
+              className: 'w-full h-full', open: modalOpen, onClose: closeHandler },
             React.createElement(
               React.Fragment,
               null,
@@ -47521,8 +47522,8 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                 { className: 'overflow-y-scroll h-screen' },
                 React.createElement(
                   'div',
-                  { className: ' flex flex-col items-center' },
-                  React.createElement('img', { src: clickedPost.picture, className: 'rounded-lg max-w-full max-h-full w-screen h-100' }),
+                  { className: 'flex flex-col items-center' },
+                  React.createElement('img', { src: clickedPost.picture, className: 'object-cover rounded-lg max-w-full max-h-full w-screen h-100' }),
                   React.createElement(_react2.Divider, null),
                   React.createElement(
                     'div',
@@ -47585,11 +47586,13 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                   )
                 )
               ),
+              React.createElement(_react2.Divider, { className: 'm-6' }),
               React.createElement(
                 _react2.Modal.Action,
                 { passive: true, onClick: function onClick() {
                     return setModalOpen(false);
-                  } },
+                  },
+                  className: 'h-5' },
                 'Cancel'
               )
             )
@@ -47607,10 +47610,17 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
               ),
               React.createElement(
                 _react2.Modal.Action,
-                { passive: true, onClick: function onClick() {
+                {
+                  passive: true, onClick: function onClick() {
                     return setPostModalOpen(false);
-                  } },
-                'Cancel'
+                  },
+                  className: 'bg-gray-100'
+                },
+                React.createElement(
+                  'div',
+                  null,
+                  'Cancel'
+                )
               )
             )
           ),

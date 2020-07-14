@@ -203,7 +203,6 @@ export const PostsApp = (props: any) => {
                 {/* <Collapse initialVisible className="h-1 text-base"> */}
                 <Collapse.Group>
                   <Collapse title=" " className="h-1 text-base">
-
                     <div className="bg-white flex justify-center items-center">
                       <span className="wr-10 pr-5">横幅</span>
                       <Row style={{ width: '75%' }}>
@@ -233,13 +232,14 @@ export const PostsApp = (props: any) => {
                 columnWidthValue={columnWidthValue}
               />
             </div>
-            <Modal width="100rem h-screen" open={modalOpen} onClose={closeHandler}>
+            <Modal width="100vh" style={{ 'max-height': '95vh' }}
+              className="w-full h-full" open={modalOpen} onClose={closeHandler}>
               <React.Fragment>
                 {/* <Grid.Container justify="center"> */}
                 {/* <Grid> */}
                 <Modal.Content className="overflow-y-scroll h-screen">
-                  <div className=" flex flex-col items-center">
-                    <img src={clickedPost.picture} className="rounded-lg max-w-full max-h-full w-screen h-100" />
+                  <div className="flex flex-col items-center">
+                    <img src={clickedPost.picture} className="object-cover rounded-lg max-w-full max-h-full w-screen h-100" />
                     <Divider />
                     <div className="flex-1  text-center">
                       <Link
@@ -289,7 +289,9 @@ export const PostsApp = (props: any) => {
                 </Modal.Content>
                 {/* </Grid> */}
                 {/* </Grid.Container> */}
-                <Modal.Action passive onClick={() => setModalOpen(false)}>
+                <Divider className="m-6" />
+                <Modal.Action passive onClick={() => setModalOpen(false)}
+                  className="h-5">
                   Cancel
                 </Modal.Action>
               </React.Fragment>
@@ -303,9 +305,17 @@ export const PostsApp = (props: any) => {
                   {/* <FormikPost /> */}
 
                 </Modal.Content>
-                <Modal.Action passive onClick={() => setPostModalOpen(false)}>
-                  Cancel
+                {/* <div className="bg-gray-100"> */}
+                <Modal.Action
+                  passive onClick={() => setPostModalOpen(false)}
+                  className="bg-gray-100"
+                >
+                  <div>
+                    Cancel
+
+                  </div>
                 </Modal.Action>
+                {/* </div> */}
               </React.Fragment>
             </Modal>
             {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
