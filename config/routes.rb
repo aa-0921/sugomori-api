@@ -34,7 +34,9 @@ Rails.application.routes.draw do
   # get '/get', to: 'top#get'
   # post '/post', to: 'top#post'
 
-  resources :picposts
+  resources :picposts do
+    resources :comments, only: [:create]
+  end
   resources :users
   put 'users/follow/:user_id' => 'users#follow'
   put 'users/unfollow/:user_id' => 'users#unfollow'
