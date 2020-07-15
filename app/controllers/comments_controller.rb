@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
 
   def index
     post = Picpost.find(params[:picpost_id])
-    post_comments = post.comments
+    post_comments = post.comments.order(created_at: :desc)
     render json: { status: 'SUCCESS', data: post_comments }
   end
 
