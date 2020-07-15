@@ -55452,16 +55452,13 @@ var FormikPost = exports.FormikPost = function FormikPost(props) {
       setPostFilePreview(null);
     }
   };
-  // できれば投稿画像のリセットを実装
-  // const resetInput = () => {
-  //   fileInput.current.value = ''
-  //   setPostFilePreview(null)
-  // }
 
   return React.createElement(_formik.Formik, {
     initialValues: { picture: '', content: '', user_id: 0 },
 
-    onSubmit: function onSubmit(values) {
+    onSubmit: function onSubmit(values, _ref) {
+      var resetForm = _ref.resetForm;
+
       values.user_id = 1;
 
       var submitData = new FormData();
@@ -55473,14 +55470,14 @@ var FormikPost = exports.FormikPost = function FormikPost(props) {
       var body = submitData;
       createPicpost(body);
       // 投稿後に入力欄を全て初期化したい。
-
+      resetForm({});
     },
 
-    render: function render(_ref) {
-      var values = _ref.values,
-          handleSubmit = _ref.handleSubmit,
-          handleChange = _ref.handleChange,
-          setFieldValue = _ref.setFieldValue;
+    render: function render(_ref2) {
+      var values = _ref2.values,
+          handleSubmit = _ref2.handleSubmit,
+          handleChange = _ref2.handleChange,
+          setFieldValue = _ref2.setFieldValue;
 
       return React.createElement(
         _formik.Form,

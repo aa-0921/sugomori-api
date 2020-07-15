@@ -36,17 +36,13 @@ export const FormikPost = (props: any) => {
       setPostFilePreview(null)
     }
   }
-  // できれば投稿画像のリセットを実装
-  // const resetInput = () => {
-  //   fileInput.current.value = ''
-  //   setPostFilePreview(null)
-  // }
+
 
   return (
     <Formik
       initialValues={{ picture: '', content: '', user_id: 0 }}
 
-      onSubmit={(values) => {
+      onSubmit={(values, { resetForm }) => {
         values.user_id = 1;
 
         const submitData = new FormData();
@@ -58,8 +54,7 @@ export const FormikPost = (props: any) => {
         const body = submitData;
         createPicpost(body);
         // 投稿後に入力欄を全て初期化したい。
-
-
+        resetForm({});
       }}
 
       render={({ values, handleSubmit, handleChange, setFieldValue }) => {
