@@ -28,30 +28,25 @@ export const HomePage = () => {
       setCurrentUserData(res.data);
       console.log('getInitialDataUrl', getInitialDataUrl);
       console.log('res.data', res.data);
-      console.log('currentUserData', currentUserData);
+      console.log('HomePageのcurrentUserData', currentUserData);
       console.log('currentUserData');
     });
   }, []);
 
+  console.log('HomePageのcurrentUserData', currentUserData);
 
   return (
     <BrowserRouter>
       <Header currentUserData={currentUserData} />
 
       <Switch>
-        <Route exact path="/" component={PostsApp} />
+        <Route exact path="/"
+          render={() => <PostsApp currentUserData={currentUserData} />}
+        />
         <Route exact path="/pickup" component={Pickup} />
-        {/* <Route exact path="/zeit-sample" component={ZeitSample} /> */}
         <Route exact path="/about" component={About} />
         <Route path="/profilepage/:id" component={ProfilePage} />
-        {/* <Route path="/profilepage" component={ProfilePage} /> */}
-
         <Route exact path="/MemberListApp" component={MemberListApp} />
-
-        <Route exact path="/postsApp"
-          component={PostsApp}
-          currentUserData={currentUserData}
-        />
       </Switch>
       {/* <Footer /> */}
     </BrowserRouter>

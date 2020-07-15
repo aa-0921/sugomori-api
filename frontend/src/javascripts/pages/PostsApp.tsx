@@ -188,6 +188,8 @@ export const PostsApp = (props: any) => {
   )
   // Popover関連
 
+  console.log('PostAppのcurrentUserData', props.currentUserData);
+
 
   return (
     <React.Fragment>

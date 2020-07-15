@@ -12,18 +12,10 @@ import { CommentList } from './CommentList';
 
 
 export const CommentApp = (props: any) => {
-
-  const [fetchPosts, setFetchPosts] = useState([]);
-  const getAllPostUrl: string = '/picposts';
-  useEffect(() => {
-    FetchData(getAllPostUrl).then((res) => {
-      setFetchPosts(res.data);
-    });
-  }, []);
+  console.log('CommentAppのcurrentUserData', props.currentUserData);
 
   return (
     <React.Fragment>
-
 
       <FormikComment
         clickedPostId={props.clickedPostId}

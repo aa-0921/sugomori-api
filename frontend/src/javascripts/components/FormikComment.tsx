@@ -7,6 +7,7 @@ import { Input, Spacer } from '@zeit-ui/react';
 import { Modal, Button, Grid, Divider } from '@zeit-ui/react';
 
 export const FormikComment = (props: any) => {
+  console.log('props.currentUserData', props.currentUserData)
 
   const createComment = async (body: any) => {
 
@@ -18,6 +19,7 @@ export const FormikComment = (props: any) => {
     console.log('POST直前')
     await axios.post(postUrl, body, { headers });
   };
+  console.log('FormikCommentのcurrentUserData', props.currentUserData);
 
   return (
     <Formik
@@ -26,10 +28,16 @@ export const FormikComment = (props: any) => {
       onSubmit={(values) => {
         const submitData = new FormData();
         console.log('FormikのonSubmit直後')
+        console.log('props.clickedPostId', props.clickedPostId)
+        console.log('props.currentUserData', props.currentUserData)
+
+        console.log('props.currentUserData.name', props.currentUserData.name)
 
         submitData.append('content', values.content);
         submitData.append('picpost_id', props.clickedPostId);
+
         submitData.append('user_name', props.currentUserData.name);
+        console.log('createComment直前')
 
         const body = submitData;
         console.log('createComment直前')
