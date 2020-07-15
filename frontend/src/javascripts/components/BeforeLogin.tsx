@@ -15,25 +15,8 @@ import { FetchData } from '../api/FetchData';
 import { useState, useEffect } from 'react';
 
 export const BeforeLogin = () => {
-  const [currentUserData, setCurrentUserData] = useState({
-    id: 0,
-    email: '',
-    name: '',
-  })
 
-  const getInitialDataUrl: string = '/initial_data/show';
-
-  useEffect(() => {
-    FetchData(getInitialDataUrl).then((res) => {
-      setCurrentUserData(res.data);
-      console.log('getInitialDataUrl', getInitialDataUrl);
-      console.log('res.data', res.data);
-      console.log('currentUserData', currentUserData);
-      console.log('currentUserData');
-    });
-  }, []);
-
-
+  const currentUserData = null;
   return (
     <BrowserRouter>
       <Header currentUserData={currentUserData} />

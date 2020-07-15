@@ -7,8 +7,6 @@ import { Input, Spacer } from '@zeit-ui/react';
 import { Modal, Button, Grid, Divider } from '@zeit-ui/react';
 
 export const FormikComment = (props: any) => {
-  console.log('props.currentUserData', props.currentUserData)
-
   const createComment = async (body: any) => {
 
     // console.log('postModalCloseHandler前')
@@ -20,7 +18,7 @@ export const FormikComment = (props: any) => {
     await axios.post(postUrl, body, { headers })
       .then(function (res) {
         console.log('res.data.data', res.data.data);
-        // pushToCommentList(res.data.data);
+        pushToCommentList(res.data.data);
       });
     // pushToCommentList(res.data.data);
   };
@@ -28,7 +26,7 @@ export const FormikComment = (props: any) => {
   const pushToCommentList = (postedComment: any) => {
     console.log('postedComment', postedComment);
     const arr = Array.from(props.fetchComments);
-    arr.push(postedComment);
+    arr.unshift(postedComment);
     props.setFetchComments(arr);
   };
 
@@ -36,7 +34,7 @@ export const FormikComment = (props: any) => {
     <Formik
       initialValues={{ content: '', post_id: 0 }}
 
-      onSubmit={(values) => {
+      onSubmit={(values, { resetForm }) => {
         const submitData = new FormData();
         console.log('FormikのonSubmit直後')
         console.log('props.clickedPostId', props.clickedPostId)
@@ -53,6 +51,8 @@ export const FormikComment = (props: any) => {
         console.log('createComment直前')
 
         createComment(body);
+        // resetForm();
+        resetForm({});
       }}
 
       render={({ values, handleSubmit, handleChange, setFieldValue }) => {
@@ -67,7 +67,7 @@ export const FormikComment = (props: any) => {
                     name="content"
                     value={values.content}
                     onChange={handleChange}
-                    className="shadow border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                    className="commentForm shadow border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
                   />
                 </div>
                 < Spacer y={1} />

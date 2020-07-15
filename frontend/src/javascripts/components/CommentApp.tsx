@@ -27,28 +27,28 @@ export const CommentApp = (props: any) => {
   console.log('CommentAppのcurrentUserData', props.currentUserData);
 
   // FormikComment.tsxの関数
-  const createComment = async (body: any) => {
+  // const createComment = async (body: any) => {
 
-    // console.log('postModalCloseHandler前')
-    // props.postModalCloseHandler
-    // console.log('postModalCloseHandler後')
-    const headers = { 'content-type': 'multipart/form-data' };
-    const postUrl: string = `/picposts/${props.clickedPostId}/comments`;
-    console.log('POST直前')
-    await axios.post(postUrl, body, { headers })
-      .then(function (res) {
-        console.log('res.data.data', res.data.data);
-        pushToCommentList(res.data.data);
-      });
-    // pushToCommentList(res.data.data);
-  };
+  //   // console.log('postModalCloseHandler前')
+  //   // props.postModalCloseHandler
+  //   // console.log('postModalCloseHandler後')
+  //   const headers = { 'content-type': 'multipart/form-data' };
+  //   const postUrl: string = `/picposts/${props.clickedPostId}/comments`;
+  //   console.log('POST直前')
+  //   await axios.post(postUrl, body, { headers })
+  //     .then(function (res) {
+  //       console.log('res.data.data', res.data.data);
+  //       pushToCommentList(res.data.data);
+  //     });
+  //   // pushToCommentList(res.data.data);
+  // };
 
-  const pushToCommentList = (postedComment: any) => {
-    console.log('postedComment', postedComment);
-    const arr = Array.from(fetchComments);
-    arr.unshift(postedComment);
-    setFetchComments(arr);
-  };
+  // const pushToCommentList = (postedComment: any) => {
+  //   console.log('postedComment', postedComment);
+  //   const arr = Array.from(fetchComments);
+  //   arr.unshift(postedComment);
+  //   setFetchComments(arr);
+  // };
 
   // FormikComment.tsxの関数
 
@@ -58,7 +58,7 @@ export const CommentApp = (props: any) => {
 
   return (
     <React.Fragment>
-      <Formik
+      {/* <Formik
         initialValues={{ content: '', post_id: 0 }}
 
         onSubmit={(values) => {
@@ -106,13 +106,13 @@ export const CommentApp = (props: any) => {
             </Form>
           );
         }}
-      />
-      {/* <FormikComment
+      /> */}
+      <FormikComment
         clickedPostId={props.clickedPostId}
         currentUserData={props.currentUserData}
         fetchComments={fetchComments}
         setFetchComments={setFetchComments}
-      /> */}
+      />
       <CommentList
         clickedPostId={props.clickedPostId}
         fetchComments={fetchComments}

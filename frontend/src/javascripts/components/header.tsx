@@ -5,7 +5,7 @@ import { ButtonDropdown, Grid, Row, Input, Button } from '@zeit-ui/react';
 
 
 export function Header(props: any) {
-
+  console.log('headerのprops.currentUserData', props.currentUserData)
   return (
     <header>
       <div>
