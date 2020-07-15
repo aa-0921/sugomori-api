@@ -13,13 +13,7 @@
 <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-
- <% if logged_in? %>
-    <div id="js_logged_in_component">
-  <% else %>
-    <div id="js_not_logged_in_component">
-  <% end %>
-  </div>
+  <%= yield %>
 </body>
 
 </html>

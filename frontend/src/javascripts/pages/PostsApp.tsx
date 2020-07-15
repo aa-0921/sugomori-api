@@ -11,9 +11,6 @@ import { CommentApp } from '../components/CommentApp';
 
 
 export const PostsApp = (props: any) => {
-
-  console.log('currentUserDataの内容', props.currentUserData)
-
   // 全投稿の配列のState定義
   const [fetchPosts, setFetchPosts] = useState([]);
   const [initialFetchPosts, setInitialFetchPosts] = useState([]);
@@ -190,8 +187,6 @@ export const PostsApp = (props: any) => {
     </div>
   )
   // Popover関連
-
-  console.log('currentUserDataの内容', props.currentUserData)
 
 
   return (
