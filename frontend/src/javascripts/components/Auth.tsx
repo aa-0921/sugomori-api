@@ -1,12 +1,13 @@
-// import React from 'react';
-// import { Redirect } from 'react-router-dom';
-// import User from './User';
+import * as React from 'react';
+import { Redirect } from 'react-router-dom';
 
-// interface AuthProps {
-//   children: JSX.Element;
-// }
 
-// export const Auth = (props: AuthProps) => {
-//   return User.isLoggedIn() ? props.children : <Redirect to={'/login'} />;
-//   // return User.isLoggedIn() ? props.children : <Redirect to={'/app'} />;
-// };
+interface AuthProps {
+  children: JSX.Element;
+  current_user: any;
+}
+
+export const Auth = (props: AuthProps) => {
+  return props.current_user ? props.children : <Redirect to={'/users/sign_in'} />;
+  // return User.isLoggedIn() ? props.children : <Redirect to={'/app'} />;
+};

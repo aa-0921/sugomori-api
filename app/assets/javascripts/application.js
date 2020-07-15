@@ -103,17 +103,31 @@ var _HomePage = __webpack_require__(12);
 
 var _react2 = __webpack_require__(35);
 
+var _LoginApp = __webpack_require__(873);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 document.addEventListener('DOMContentLoaded', function () {
-  _reactDom2.default.render(React.createElement(
-    _react2.ZeitProvider,
-    null,
-    React.createElement(_react2.CssBaseline, null),
-    React.createElement(_HomePage.HomePage, null)
-  ), document.body.appendChild(document.createElement('div')));
+  var jsLoggedIn = document.getElementById('js_logged_in_component');
+  var jsNotLoggedIn = document.getElementById('js_not_logged_in_component');
+  if (jsLoggedIn != null) {
+    _reactDom2.default.render(React.createElement(
+      _react2.ZeitProvider,
+      null,
+      React.createElement(_react2.CssBaseline, null),
+      React.createElement(_HomePage.HomePage, null)
+    ), document.body.appendChild(jsLoggedIn));
+  }
+  if (jsNotLoggedIn != null) {
+    _reactDom2.default.render(React.createElement(
+      _react2.ZeitProvider,
+      null,
+      React.createElement(_react2.CssBaseline, null),
+      React.createElement('beforeLogin', null)
+    ), document.body.appendChild(jsNotLoggedIn));
+  }
 });
 
 /***/ }),
@@ -28588,10 +28602,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.HomePage = undefined;
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-// import React, { useState, useEffect } from 'react';
-
 var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
@@ -28604,56 +28614,34 @@ var _reactRouterDom = __webpack_require__(15);
 
 var _header = __webpack_require__(34);
 
-var _About = __webpack_require__(305);
+var _About = __webpack_require__(304);
 
-var _PostsApp = __webpack_require__(306);
+var _PostsApp = __webpack_require__(305);
 
 var _ProfilePage = __webpack_require__(871);
 
 var _MemberListApp = __webpack_require__(872);
 
-var _FetchData = __webpack_require__(304);
+var _FetchData = __webpack_require__(306);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-var HomePage = exports.HomePage = function HomePage() {
-  var _useState = (0, _react.useState)({
-    id: 0,
-    email: '',
-    name: ''
-  }),
-      _useState2 = _slicedToArray(_useState, 2),
-      currentUserData = _useState2[0],
-      setCurrentUserData = _useState2[1];
+// import React, { useState, useEffect } from 'react';
 
-  var getInitialDataUrl = '/initial_data/show';
-
-  (0, _react.useEffect)(function () {
-    (0, _FetchData.FetchData)(getInitialDataUrl).then(function (res) {
-      setCurrentUserData(res.data);
-      console.log('getInitialDataUrl', getInitialDataUrl);
-      console.log('res.data', res.data);
-      console.log('currentUserData', currentUserData);
-      console.log('currentUserData');
-    });
-  }, []);
+var HomePage = exports.HomePage = function HomePage(props) {
 
   return React.createElement(
     _reactRouterDom.BrowserRouter,
     null,
-    React.createElement(_header.Header, { currentUserData: currentUserData }),
+    React.createElement(_header.Header, { currentUserData: props.currentUserData }),
     React.createElement(
       _reactRouterDom.Switch,
       null,
-      React.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _PostsApp.PostsApp }),
+      React.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _PostsApp.PostsApp, currentUserData: props.currentUserData }),
       React.createElement(_reactRouterDom.Route, { exact: true, path: '/pickup', component: _Pickup.Pickup }),
       React.createElement(_reactRouterDom.Route, { exact: true, path: '/about', component: _About.About }),
       React.createElement(_reactRouterDom.Route, { path: '/profilepage/:id', component: _ProfilePage.ProfilePage }),
-      React.createElement(_reactRouterDom.Route, { exact: true, path: '/MemberListApp', component: _MemberListApp.MemberListApp }),
-      React.createElement(_reactRouterDom.Route, { exact: true, path: '/postsApp',
-        component: _PostsApp.PostsApp,
-        currentUserData: currentUserData
-      })
+      React.createElement(_reactRouterDom.Route, { exact: true, path: '/MemberListApp', component: _MemberListApp.MemberListApp })
     )
   );
 };
@@ -47101,39 +47089,6 @@ var PaginationEllipsis = function PaginationEllipsis(_ref) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.FetchData = FetchData;
-async function FetchData(url) {
-  // const csrf = sessionStorage.getItem('X-CSRF-Token');
-  // const headers = {
-  //   'X-CSRF-Token': csrf,
-  //   // };
-  // } as headersType;
-  var headers = {
-    'Content-Type': 'application/json'
-  };
-  // type headersType = {
-  //   'X-CSRF-Token': any;
-  // };
-  // const headers = new Headers();
-  // if (csrf) {
-  //   headers.append('X-CSRF-Token', csrf);
-  // }
-
-  var res = await fetch(url, { headers: headers });
-
-  return await res.json();
-}
-
-/***/ }),
-/* 305 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 exports.About = About;
 
 var _react = __webpack_require__(1);
@@ -47192,7 +47147,7 @@ function About() {
 }
 
 /***/ }),
-/* 306 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47209,7 +47164,7 @@ var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
 
-var _FetchData = __webpack_require__(304);
+var _FetchData = __webpack_require__(306);
 
 var _reactRouterDom = __webpack_require__(15);
 
@@ -47228,7 +47183,11 @@ var _CommentApp = __webpack_require__(864);
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var PostsApp = exports.PostsApp = function PostsApp(props) {
+
+  console.log('currentUserDataの内容', props.currentUserData);
+
   // 全投稿の配列のState定義
+
   var _useState = (0, _react.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       fetchPosts = _useState2[0],
@@ -47448,6 +47407,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
   };
   // Popover関連
 
+  console.log('currentUserDataの内容', props.currentUserData);
 
   return React.createElement(
     React.Fragment,
@@ -47655,6 +47615,39 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
     )
   );
 };
+
+/***/ }),
+/* 306 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FetchData = FetchData;
+async function FetchData(url) {
+  // const csrf = sessionStorage.getItem('X-CSRF-Token');
+  // const headers = {
+  //   'X-CSRF-Token': csrf,
+  //   // };
+  // } as headersType;
+  var headers = {
+    'Content-Type': 'application/json'
+  };
+  // type headersType = {
+  //   'X-CSRF-Token': any;
+  // };
+  // const headers = new Headers();
+  // if (csrf) {
+  //   headers.append('X-CSRF-Token', csrf);
+  // }
+
+  var res = await fetch(url, { headers: headers });
+
+  return await res.json();
+}
 
 /***/ }),
 /* 307 */
@@ -67000,7 +66993,7 @@ var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
 
-var _FetchData = __webpack_require__(304);
+var _FetchData = __webpack_require__(306);
 
 var _reactRouterDom = __webpack_require__(15);
 
@@ -67088,6 +67081,7 @@ var FormikComment = exports.FormikComment = function FormikComment(props) {
 
     onSubmit: function onSubmit(values) {
       var submitData = new FormData();
+      console.log('FormikのonSubmit直後');
 
       submitData.append('content', values.content);
       submitData.append('picpost_id', props.clickedPostId);
@@ -67174,7 +67168,7 @@ var _reactRouterDom = __webpack_require__(15);
 
 var _MemberList = __webpack_require__(869);
 
-var _FetchData = __webpack_require__(304);
+var _FetchData = __webpack_require__(306);
 
 var _Comment = __webpack_require__(870);
 
@@ -67533,7 +67527,7 @@ var React = _interopRequireWildcard(_react);
 
 var _react2 = __webpack_require__(35);
 
-var _FetchData = __webpack_require__(304);
+var _FetchData = __webpack_require__(306);
 
 var _PostList = __webpack_require__(307);
 
@@ -68040,7 +68034,7 @@ var React = _interopRequireWildcard(_react);
 
 var _MemberList = __webpack_require__(869);
 
-var _FetchData = __webpack_require__(304);
+var _FetchData = __webpack_require__(306);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -68117,6 +68111,232 @@ var MemberListApp = exports.MemberListApp = function MemberListApp() {
       )
     )
   );
+};
+
+/***/ }),
+/* 873 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.LoginApp = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+// import { Logout } from '../pages/Logout';
+// import { Signup } from '../pages/Signup';
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _Login = __webpack_require__(874);
+
+var _HomePage = __webpack_require__(12);
+
+var _Auth = __webpack_require__(875);
+
+var _PostsApp = __webpack_require__(305);
+
+var _FetchData = __webpack_require__(306);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var LoginApp = exports.LoginApp = function LoginApp() {
+  var _useState = (0, _react.useState)({
+    id: 0,
+    email: '',
+    name: ''
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      currentUserData = _useState2[0],
+      setCurrentUserData = _useState2[1];
+
+  var getInitialDataUrl = '/initial_data/show';
+
+  (0, _react.useEffect)(function () {
+    (0, _FetchData.FetchData)(getInitialDataUrl).then(function (res) {
+      setCurrentUserData(res.data);
+      console.log('getInitialDataUrl', getInitialDataUrl);
+      console.log('res.data', res.data);
+      console.log('currentUserData', currentUserData);
+      console.log('currentUserData');
+    });
+  }, []);
+
+  return React.createElement(
+    _reactRouterDom.BrowserRouter,
+    null,
+    React.createElement(
+      _reactRouterDom.Switch,
+      null,
+      React.createElement(_reactRouterDom.Route, { exact: true, path: '/users/sign_in', component: _Login.Login }),
+      React.createElement(
+        _Auth.Auth,
+        { current_user: currentUserData },
+        React.createElement(
+          _reactRouterDom.Switch,
+          null,
+          React.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _HomePage.HomePage }),
+          React.createElement(_reactRouterDom.Redirect, { from: '/', to: '/' })
+        )
+      )
+    )
+  );
+};
+
+/***/ }),
+/* 874 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Login = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+// export const Login = () => {
+//   return <h1>hoge</h1>;
+// };
+
+// import React, { Component } from 'react';
+// import { Form } from 'react-bootstrap';
+
+
+// import { Button } from '@zeit-ui/react'
+
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _history = __webpack_require__(22);
+
+var H = _interopRequireWildcard(_history);
+
+var _react2 = __webpack_require__(35);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var Login = exports.Login = function Login(props) {
+  var _useState = (0, _react.useState)(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      email = _useState2[0],
+      setEmail = _useState2[1];
+
+  var _useState3 = (0, _react.useState)(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      password = _useState4[0],
+      setPassword = _useState4[1];
+
+  var _useState5 = (0, _react.useState)(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      errMessage = _useState6[0],
+      setErrMessage = _useState6[1];
+
+  (0, _react.useEffect)(function () {
+    // User.set('isLoggedIn', false.toString());
+
+  }, []);
+  var onClickLogin = async function onClickLogin() {
+
+    try {
+      // await User.login(email, password);
+
+      props.history.push('/');
+    } catch (e) {
+      setErrMessage('メールアドレスかパスワードが違います');
+    }
+  };
+
+  // const onClickFacebook = async () => {
+  //   try {
+  //     await facebookLogin;
+  //     if (process.env.NODE_ENV !== 'production') {
+  //       console.log(User.isLoggedIn());
+  //     }
+  //     props.history.push('/');
+  //   } catch (e) {
+  //     setErrMessage('SNSログインに失敗しました。');
+  //   }
+  // };
+  var handleChangeEmail = function handleChangeEmail(e) {
+    setEmail(e.target.value);
+  };
+  var handleChangePassword = function handleChangePassword(e) {
+    setPassword(e.target.value);
+  };
+  // const facebookUrl: string = process.env.REACT_APP_API_URL_SNS_LOGIN + '/facebook';
+  // const githubUrl: string = process.env.REACT_APP_API_URL_SNS_LOGIN + '/github';
+  // const twitterUrl: string = process.env.REACT_APP_API_URL_SNS_LOGIN + '/twitter';
+
+
+  return React.createElement(
+    _react2.Grid.Container,
+    { gap: -10, justify: 'center' },
+    React.createElement(
+      _react2.Row,
+      { className: 'justify-content-md-center' },
+      React.createElement(
+        'h3',
+        null,
+        '\u672A\u30ED\u30B0\u30A4\u30F3\u72B6\u614B\u3067\u3059'
+      ),
+      React.createElement(
+        'a',
+        {
+          href: '/users/sign_in',
+          className: 'block px-4 py-2 sm:test-sm text-gray-700 hover:bg-gray-100',
+          role: 'menuitem'
+        },
+        '\u30ED\u30B0\u30A4\u30F3\u3059\u308B'
+      ),
+      React.createElement(
+        _reactRouterDom.Link,
+        {
+          to: '/',
+          className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:sm:test-sm font-medium hover:text-white bg-blue-700 hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
+        },
+        '\u30ED\u30B0\u30A4\u30F3\u305B\u305A\u306B\u898B\u308B\u3002'
+      )
+    )
+  );
+};
+
+/***/ }),
+/* 875 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Auth = undefined;
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _reactRouterDom = __webpack_require__(15);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var Auth = exports.Auth = function Auth(props) {
+  return props.current_user ? props.children : React.createElement(_reactRouterDom.Redirect, { to: '/users/sign_in' });
+  // return User.isLoggedIn() ? props.children : <Redirect to={'/app'} />;
 };
 
 /***/ })
