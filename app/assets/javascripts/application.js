@@ -67079,7 +67079,7 @@ var FormikComment = exports.FormikComment = function FormikComment(props) {
     // console.log('postModalCloseHandler後')
     var headers = { 'content-type': 'multipart/form-data' };
     var postUrl = '/picposts/' + props.clickedPostId + '/comments';
-
+    console.log('POST直前');
     await _axios2.default.post(postUrl, body, { headers: headers });
   };
 
@@ -67094,6 +67094,8 @@ var FormikComment = exports.FormikComment = function FormikComment(props) {
       submitData.append('user_name', props.currentUserData.name);
 
       var body = submitData;
+      console.log('createComment直前');
+
       createComment(body);
     },
 

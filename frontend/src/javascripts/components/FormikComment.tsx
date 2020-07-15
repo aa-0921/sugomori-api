@@ -15,7 +15,7 @@ export const FormikComment = (props: any) => {
     // console.log('postModalCloseHandler後')
     const headers = { 'content-type': 'multipart/form-data' };
     const postUrl: string = `/picposts/${props.clickedPostId}/comments`;
-
+    console.log('POST直前')
     await axios.post(postUrl, body, { headers });
   };
 
@@ -25,12 +25,15 @@ export const FormikComment = (props: any) => {
 
       onSubmit={(values) => {
         const submitData = new FormData();
+        console.log('FormikのonSubmit直後')
 
         submitData.append('content', values.content);
         submitData.append('picpost_id', props.clickedPostId);
         submitData.append('user_name', props.currentUserData.name);
 
         const body = submitData;
+        console.log('createComment直前')
+
         createComment(body);
       }}
 
