@@ -67061,33 +67061,6 @@ var CommentApp = exports.CommentApp = function CommentApp(props) {
   }, []);
   console.log('CommentAppのcurrentUserData', props.currentUserData);
 
-  // FormikComment.tsxの関数
-  // const createComment = async (body: any) => {
-
-  //   // console.log('postModalCloseHandler前')
-  //   // props.postModalCloseHandler
-  //   // console.log('postModalCloseHandler後')
-  //   const headers = { 'content-type': 'multipart/form-data' };
-  //   const postUrl: string = `/picposts/${props.clickedPostId}/comments`;
-  //   console.log('POST直前')
-  //   await axios.post(postUrl, body, { headers })
-  //     .then(function (res) {
-  //       console.log('res.data.data', res.data.data);
-  //       pushToCommentList(res.data.data);
-  //     });
-  //   // pushToCommentList(res.data.data);
-  // };
-
-  // const pushToCommentList = (postedComment: any) => {
-  //   console.log('postedComment', postedComment);
-  //   const arr = Array.from(fetchComments);
-  //   arr.unshift(postedComment);
-  //   setFetchComments(arr);
-  // };
-
-  // FormikComment.tsxの関数
-
-
   return React.createElement(
     React.Fragment,
     null,
