@@ -108,12 +108,24 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 document.addEventListener('DOMContentLoaded', function () {
-  _reactDom2.default.render(React.createElement(
-    _react2.ZeitProvider,
-    null,
-    React.createElement(_react2.CssBaseline, null),
-    React.createElement(_HomePage.HomePage, null)
-  ), document.body.appendChild(document.createElement('div')));
+  var jsLoggedIn = document.getElementById('js_logged_in_component');
+  var jsNotLoggedIn = document.getElementById('js_not_logged_in_component');
+  if (jsLoggedIn != null) {
+    _reactDom2.default.render(React.createElement(
+      _react2.ZeitProvider,
+      null,
+      React.createElement(_react2.CssBaseline, null),
+      React.createElement(_HomePage.HomePage, null)
+    ), document.body.appendChild(jsLoggedIn));
+  }
+  if (jsNotLoggedIn != null) {
+    _reactDom2.default.render(React.createElement(
+      _react2.ZeitProvider,
+      null,
+      React.createElement(_react2.CssBaseline, null),
+      React.createElement('beforeLogin', null)
+    ), document.body.appendChild(jsNotLoggedIn));
+  }
 });
 
 /***/ }),
@@ -28604,15 +28616,15 @@ var _reactRouterDom = __webpack_require__(15);
 
 var _header = __webpack_require__(34);
 
-var _About = __webpack_require__(305);
+var _About = __webpack_require__(304);
 
-var _PostsApp = __webpack_require__(306);
+var _PostsApp = __webpack_require__(305);
 
 var _ProfilePage = __webpack_require__(871);
 
 var _MemberListApp = __webpack_require__(872);
 
-var _FetchData = __webpack_require__(304);
+var _FetchData = __webpack_require__(306);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -47101,39 +47113,6 @@ var PaginationEllipsis = function PaginationEllipsis(_ref) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.FetchData = FetchData;
-async function FetchData(url) {
-  // const csrf = sessionStorage.getItem('X-CSRF-Token');
-  // const headers = {
-  //   'X-CSRF-Token': csrf,
-  //   // };
-  // } as headersType;
-  var headers = {
-    'Content-Type': 'application/json'
-  };
-  // type headersType = {
-  //   'X-CSRF-Token': any;
-  // };
-  // const headers = new Headers();
-  // if (csrf) {
-  //   headers.append('X-CSRF-Token', csrf);
-  // }
-
-  var res = await fetch(url, { headers: headers });
-
-  return await res.json();
-}
-
-/***/ }),
-/* 305 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 exports.About = About;
 
 var _react = __webpack_require__(1);
@@ -47192,7 +47171,7 @@ function About() {
 }
 
 /***/ }),
-/* 306 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47209,7 +47188,7 @@ var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
 
-var _FetchData = __webpack_require__(304);
+var _FetchData = __webpack_require__(306);
 
 var _reactRouterDom = __webpack_require__(15);
 
@@ -47655,6 +47634,39 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
     )
   );
 };
+
+/***/ }),
+/* 306 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FetchData = FetchData;
+async function FetchData(url) {
+  // const csrf = sessionStorage.getItem('X-CSRF-Token');
+  // const headers = {
+  //   'X-CSRF-Token': csrf,
+  //   // };
+  // } as headersType;
+  var headers = {
+    'Content-Type': 'application/json'
+  };
+  // type headersType = {
+  //   'X-CSRF-Token': any;
+  // };
+  // const headers = new Headers();
+  // if (csrf) {
+  //   headers.append('X-CSRF-Token', csrf);
+  // }
+
+  var res = await fetch(url, { headers: headers });
+
+  return await res.json();
+}
 
 /***/ }),
 /* 307 */
@@ -67000,7 +67012,7 @@ var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
 
-var _FetchData = __webpack_require__(304);
+var _FetchData = __webpack_require__(306);
 
 var _reactRouterDom = __webpack_require__(15);
 
@@ -67088,6 +67100,7 @@ var FormikComment = exports.FormikComment = function FormikComment(props) {
 
     onSubmit: function onSubmit(values) {
       var submitData = new FormData();
+      console.log('FormikのonSubmit直後');
 
       submitData.append('content', values.content);
       submitData.append('picpost_id', props.clickedPostId);
@@ -67174,7 +67187,7 @@ var _reactRouterDom = __webpack_require__(15);
 
 var _MemberList = __webpack_require__(869);
 
-var _FetchData = __webpack_require__(304);
+var _FetchData = __webpack_require__(306);
 
 var _Comment = __webpack_require__(870);
 
@@ -67533,7 +67546,7 @@ var React = _interopRequireWildcard(_react);
 
 var _react2 = __webpack_require__(35);
 
-var _FetchData = __webpack_require__(304);
+var _FetchData = __webpack_require__(306);
 
 var _PostList = __webpack_require__(307);
 
@@ -68040,7 +68053,7 @@ var React = _interopRequireWildcard(_react);
 
 var _MemberList = __webpack_require__(869);
 
-var _FetchData = __webpack_require__(304);
+var _FetchData = __webpack_require__(306);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
