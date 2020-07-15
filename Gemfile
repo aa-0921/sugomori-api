@@ -54,6 +54,7 @@ group :development, :test do
   gem 'rubocop', '0.76.0'
   gem 'rubocop-airbnb'
   # gem 'rubocop-rails', '2.3.2'
+  gem "rspec-rails"
 end
 
 group :development do
@@ -68,3 +69,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i(mingw mswin x64_mingw jruby)
+
+group :test do
+  gem "shoulda-matchers"
+end
