@@ -47598,7 +47598,11 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
               React.createElement(
                 _react2.Modal.Content,
                 null,
-                React.createElement(_FormikPost.FormikPost, { postModalCloseHandler: postModalCloseHandler })
+                React.createElement(_FormikPost.FormikPost, {
+                  postModalCloseHandler: postModalCloseHandler,
+                  setFilterPosts: setFilterPosts,
+                  filterPosts: filterPosts
+                })
               ),
               React.createElement(
                 _react2.Modal.Action,
@@ -55435,11 +55439,25 @@ var FormikPost = exports.FormikPost = function FormikPost(props) {
     // console.log('postModalCloseHandler後')
     var headers = { 'content-type': 'multipart/form-data' };
     var postUrl = '/picposts';
-    await _axios2.default.post(postUrl, body, { headers: headers });
+    await _axios2.default.post(postUrl, body, { headers: headers }).then(function (res) {
+      console.log('res.data.data', res.data.data);
+      res.data.data.picture = postFilePreview;
+      pushToPostList(res.data.data);
+    });
+
     props.postModalCloseHandler();
   };
+
+  var pushToPostList = function pushToPostList(post) {
+
+    var arr = Array.from(props.filterPosts);
+    arr.unshift(post);
+    props.setFilterPosts(arr);
+  };
+
   var onFileChange = function onFileChange(e) {
     var files = e.target.files;
+    console.log('onFileChangeのfiles', files);
 
     if (files.length > 0) {
       var file = files[0];
@@ -55451,7 +55469,10 @@ var FormikPost = exports.FormikPost = function FormikPost(props) {
     } else {
       setPostFilePreview(null);
     }
+    console.log('postFilePreview', postFilePreview);
   };
+
+  console.log('postFilePreview', postFilePreview);
 
   return React.createElement(_formik.Formik, {
     initialValues: { picture: '', content: '', user_id: 0 },

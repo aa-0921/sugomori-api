@@ -19,11 +19,28 @@ export const FormikPost = (props: any) => {
     // console.log('postModalCloseHandler後')
     const headers = { 'content-type': 'multipart/form-data' };
     const postUrl: string = '/picposts';
-    await axios.post(postUrl, body, { headers });
+    await axios.post(postUrl, body, { headers })
+      .then(function (res) {
+        console.log('res.data.data', res.data.data);
+        res.data.data.picture = postFilePreview
+        pushToPostList(res.data.data);
+      });
+
     props.postModalCloseHandler()
   };
+
+
+  const pushToPostList = (post: any) => {
+
+    const arr = Array.from(props.filterPosts);
+    arr.unshift(post);
+    props.setFilterPosts(arr);
+  };
+
+
   const onFileChange = (e: any) => {
     const files = e.target.files
+    console.log('onFileChangeのfiles', files)
 
     if (files.length > 0) {
       var file = files[0]
@@ -35,8 +52,10 @@ export const FormikPost = (props: any) => {
     } else {
       setPostFilePreview(null)
     }
+    console.log('postFilePreview', postFilePreview)
   }
 
+  console.log('postFilePreview', postFilePreview)
 
   return (
     <Formik

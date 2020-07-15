@@ -308,9 +308,11 @@ export const PostsApp = (props: any) => {
             <Modal width="35rem" open={postModalOpen} onClose={postModalCloseHandler}>
               <React.Fragment>
                 <Modal.Content>
-                  <FormikPost postModalCloseHandler={postModalCloseHandler} />
-                  {/* <FormikPost /> */}
-
+                  <FormikPost
+                    postModalCloseHandler={postModalCloseHandler}
+                    setFilterPosts={setFilterPosts}
+                    filterPosts={filterPosts}
+                  />
                 </Modal.Content>
                 {/* <div className="bg-gray-100"> */}
                 <Modal.Action
