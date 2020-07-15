@@ -46,7 +46,7 @@ export const CommentApp = (props: any) => {
   const pushToCommentList = (postedComment: any) => {
     console.log('postedComment', postedComment);
     const arr = Array.from(fetchComments);
-    arr.push(postedComment);
+    arr.unshift(postedComment);
     setFetchComments(arr);
   };
 

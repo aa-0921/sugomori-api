@@ -67080,7 +67080,7 @@ var CommentApp = exports.CommentApp = function CommentApp(props) {
   var pushToCommentList = function pushToCommentList(postedComment) {
     console.log('postedComment', postedComment);
     var arr = Array.from(fetchComments);
-    arr.push(postedComment);
+    arr.unshift(postedComment);
     setFetchComments(arr);
   };
 
