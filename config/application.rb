@@ -42,5 +42,14 @@ module SugomoriApi
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
     config.middleware.use ActionDispatch::Flash
+
+    config.generators do |g|
+      g.test_framework :rspec, 
+                        view_specs: false, 
+                        helper_specs: false, 
+                        controller_specs: false, 
+                        routing_specs: false,
+                        request_spec: false
+    end
   end
 end
