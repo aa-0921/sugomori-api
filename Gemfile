@@ -55,6 +55,8 @@ group :development, :test do
   gem 'rubocop-airbnb'
   # gem 'rubocop-rails', '2.3.2'
   gem "rspec-rails"
+  gem "shoulda-matchers"
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -72,4 +74,5 @@ gem 'tzinfo-data', platforms: %i(mingw mswin x64_mingw jruby)
 
 group :test do
   gem "shoulda-matchers"
+  gem 'factory_bot_rails'
 end
