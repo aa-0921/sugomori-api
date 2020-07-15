@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 
 interface Props {
@@ -37,7 +36,6 @@ export const getPostList = (props: Props) => {
           setApiResponse(error);
           throw new Error('error');
         },
-        // .catch(error => console.error('Error:', error));
       );
     return () => {
       <React.Fragment>getPostList: {apiResponse}</React.Fragment>;

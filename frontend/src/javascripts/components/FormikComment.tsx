@@ -17,9 +17,20 @@ export const FormikComment = (props: any) => {
     const headers = { 'content-type': 'multipart/form-data' };
     const postUrl: string = `/picposts/${props.clickedPostId}/comments`;
     console.log('POST直前')
-    await axios.post(postUrl, body, { headers });
+    await axios.post(postUrl, body, { headers })
+      .then(function (res) {
+        console.log('res.data.data', res.data.data);
+        // pushToCommentList(res.data.data);
+      });
+    // pushToCommentList(res.data.data);
   };
-  console.log('FormikCommentのcurrentUserData', props.currentUserData);
+
+  const pushToCommentList = (postedComment: any) => {
+    console.log('postedComment', postedComment);
+    const arr = Array.from(props.fetchComments);
+    arr.push(postedComment);
+    props.setFetchComments(arr);
+  };
 
   return (
     <Formik
@@ -30,7 +41,6 @@ export const FormikComment = (props: any) => {
         console.log('FormikのonSubmit直後')
         console.log('props.clickedPostId', props.clickedPostId)
         console.log('props.currentUserData', props.currentUserData)
-
         console.log('props.currentUserData.name', props.currentUserData.name)
 
         submitData.append('content', values.content);

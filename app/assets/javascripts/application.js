@@ -67011,6 +67011,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.CommentApp = undefined;
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+// /FormikComment.tsx関連
+
+
 var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
@@ -67031,19 +67035,134 @@ var _FormikComment = __webpack_require__(865);
 
 var _CommentList = __webpack_require__(866);
 
+var _axios = __webpack_require__(515);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _formik = __webpack_require__(390);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var CommentApp = exports.CommentApp = function CommentApp(props) {
+
+  // コメントの一覧取得
+  var _useState = (0, _react.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      fetchComments = _useState2[0],
+      setFetchComments = _useState2[1];
+
+  var fetchCommentsUrl = '/picposts/' + props.clickedPostId + '/comments';
+  (0, _react.useEffect)(function () {
+    (0, _FetchData.FetchData)(fetchCommentsUrl).then(function (res) {
+      return setFetchComments(res.data);
+    });
+  }, []);
   console.log('CommentAppのcurrentUserData', props.currentUserData);
+
+  // FormikComment.tsxの関数
+  var createComment = async function createComment(body) {
+
+    // console.log('postModalCloseHandler前')
+    // props.postModalCloseHandler
+    // console.log('postModalCloseHandler後')
+    var headers = { 'content-type': 'multipart/form-data' };
+    var postUrl = '/picposts/' + props.clickedPostId + '/comments';
+    console.log('POST直前');
+    await _axios2.default.post(postUrl, body, { headers: headers }).then(function (res) {
+      console.log('res.data.data', res.data.data);
+      pushToCommentList(res.data.data);
+    });
+    // pushToCommentList(res.data.data);
+  };
+
+  var pushToCommentList = function pushToCommentList(postedComment) {
+    console.log('postedComment', postedComment);
+    var arr = Array.from(fetchComments);
+    arr.push(postedComment);
+    setFetchComments(arr);
+  };
+
+  // FormikComment.tsxの関数
+
 
   return React.createElement(
     React.Fragment,
     null,
-    React.createElement(_FormikComment.FormikComment, {
-      clickedPostId: props.clickedPostId,
-      currentUserData: props.currentUserData
+    React.createElement(_formik.Formik, {
+      initialValues: { content: '', post_id: 0 },
+
+      onSubmit: function onSubmit(values) {
+        var submitData = new FormData();
+        console.log('FormikのonSubmit直後');
+        console.log('props.clickedPostId', props.clickedPostId);
+        console.log('props.currentUserData', props.currentUserData);
+        console.log('props.currentUserData.name', props.currentUserData.name);
+
+        submitData.append('content', values.content);
+        submitData.append('picpost_id', props.clickedPostId);
+
+        submitData.append('user_name', props.currentUserData.name);
+        console.log('createComment直前');
+
+        var body = submitData;
+        console.log('createComment直前');
+
+        createComment(body);
+      },
+
+      render: function render(_ref) {
+        var values = _ref.values,
+            handleSubmit = _ref.handleSubmit,
+            handleChange = _ref.handleChange,
+            setFieldValue = _ref.setFieldValue;
+
+        return React.createElement(
+          _formik.Form,
+          { onSubmit: handleSubmit },
+          React.createElement(
+            'div',
+            null,
+            React.createElement(
+              React.Fragment,
+              null,
+              React.createElement(
+                'div',
+                null,
+                React.createElement(
+                  'label',
+                  null,
+                  '\u30B3\u30E1\u30F3\u30C8'
+                ),
+                React.createElement(_formik.Field, {
+                  type: 'text',
+                  name: 'content',
+                  value: values.content,
+                  onChange: handleChange,
+                  className: 'shadow border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline'
+                })
+              ),
+              React.createElement(_react2.Spacer, { y: 1 }),
+              React.createElement(
+                'div',
+                { className: 'flex flex-col items-center' },
+                React.createElement(
+                  'button',
+                  { type: 'submit', className: 'submit-button transition duration-500 ease-in-out bg-blue-900 hover:bg-red-300 transform hover:-translate-y-1 hover:scale-100 text-white hover:text-green font-bold py-3 px-20 border-b-4 border-blue-800 hover:border-red-300 rounded-full cursor-pointer' },
+                  '\u30B3\u30E1\u30F3\u30C8\u6295\u7A3F'
+                )
+              )
+            )
+          ),
+          React.createElement(_react2.Spacer, { y: 1 })
+        );
+      }
     }),
-    React.createElement(_CommentList.CommentList, { clickedPostId: props.clickedPostId })
+    React.createElement(_CommentList.CommentList, {
+      clickedPostId: props.clickedPostId,
+      fetchComments: fetchComments
+    })
   );
 };
 
@@ -67086,9 +67205,19 @@ var FormikComment = exports.FormikComment = function FormikComment(props) {
     var headers = { 'content-type': 'multipart/form-data' };
     var postUrl = '/picposts/' + props.clickedPostId + '/comments';
     console.log('POST直前');
-    await _axios2.default.post(postUrl, body, { headers: headers });
+    await _axios2.default.post(postUrl, body, { headers: headers }).then(function (res) {
+      console.log('res.data.data', res.data.data);
+      // pushToCommentList(res.data.data);
+    });
+    // pushToCommentList(res.data.data);
   };
-  console.log('FormikCommentのcurrentUserData', props.currentUserData);
+
+  var pushToCommentList = function pushToCommentList(postedComment) {
+    console.log('postedComment', postedComment);
+    var arr = Array.from(props.fetchComments);
+    arr.push(postedComment);
+    props.setFetchComments(arr);
+  };
 
   return React.createElement(_formik.Formik, {
     initialValues: { content: '', post_id: 0 },
@@ -67098,7 +67227,6 @@ var FormikComment = exports.FormikComment = function FormikComment(props) {
       console.log('FormikのonSubmit直後');
       console.log('props.clickedPostId', props.clickedPostId);
       console.log('props.currentUserData', props.currentUserData);
-
       console.log('props.currentUserData.name', props.currentUserData.name);
 
       submitData.append('content', values.content);
@@ -67174,8 +67302,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.CommentList = undefined;
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
 var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
@@ -67195,17 +67321,7 @@ var _Comment = __webpack_require__(870);
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var CommentList = exports.CommentList = function CommentList(props) {
-  var _useState = (0, _react.useState)([]),
-      _useState2 = _slicedToArray(_useState, 2),
-      fetchComments = _useState2[0],
-      setFetchComments = _useState2[1];
 
-  var fetchCommentsUrl = '/picposts/' + props.clickedPostId + '/comments';
-  (0, _react.useEffect)(function () {
-    (0, _FetchData.FetchData)(fetchCommentsUrl).then(function (res) {
-      return setFetchComments(res.data);
-    });
-  }, []);
   return React.createElement(
     React.Fragment,
     null,
@@ -67213,7 +67329,7 @@ var CommentList = exports.CommentList = function CommentList(props) {
     React.createElement(
       'div',
       null,
-      fetchComments.map(function (comment, index) {
+      props.fetchComments.map(function (comment, index) {
         return React.createElement(
           'div',
           { key: index, className: 'list' },
