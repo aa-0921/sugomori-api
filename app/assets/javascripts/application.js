@@ -101,6 +101,8 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _HomePage = __webpack_require__(12);
 
+var _BeforeLogin = __webpack_require__(873);
+
 var _react2 = __webpack_require__(35);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -123,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
       _react2.ZeitProvider,
       null,
       React.createElement(_react2.CssBaseline, null),
-      React.createElement('beforeLogin', null)
+      React.createElement(_BeforeLogin.BeforeLogin, null)
     ), document.body.appendChild(jsNotLoggedIn));
   }
 });
@@ -68128,6 +68130,80 @@ var MemberListApp = exports.MemberListApp = function MemberListApp() {
           React.createElement(_reactRouterDom.Route, { path: '/' })
         )
       )
+    )
+  );
+};
+
+/***/ }),
+/* 873 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.BeforeLogin = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+// import React, { useState, useEffect } from 'react';
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _Home = __webpack_require__(13);
+
+var _Pickup = __webpack_require__(14);
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _header = __webpack_require__(34);
+
+var _About = __webpack_require__(304);
+
+var _PostsApp = __webpack_require__(305);
+
+var _ProfilePage = __webpack_require__(871);
+
+var _MemberListApp = __webpack_require__(872);
+
+var _FetchData = __webpack_require__(306);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var BeforeLogin = exports.BeforeLogin = function BeforeLogin() {
+  var _useState = (0, _react.useState)({
+    id: 0,
+    email: '',
+    name: ''
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      currentUserData = _useState2[0],
+      setCurrentUserData = _useState2[1];
+
+  var getInitialDataUrl = '/initial_data/show';
+
+  (0, _react.useEffect)(function () {
+    (0, _FetchData.FetchData)(getInitialDataUrl).then(function (res) {
+      setCurrentUserData(res.data);
+      console.log('getInitialDataUrl', getInitialDataUrl);
+      console.log('res.data', res.data);
+      console.log('currentUserData', currentUserData);
+      console.log('currentUserData');
+    });
+  }, []);
+
+  return React.createElement(
+    _reactRouterDom.BrowserRouter,
+    null,
+    React.createElement(_header.Header, { currentUserData: currentUserData }),
+    React.createElement(
+      _reactRouterDom.Switch,
+      null,
+      React.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _PostsApp.PostsApp, currentUserData: currentUserData })
     )
   );
 };

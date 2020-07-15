@@ -2,6 +2,8 @@ import * as React from 'react';
 import ReactDOM from 'react-dom';
 
 import { HomePage } from './components/HomePage';
+import { BeforeLogin } from './components/BeforeLogin';
+
 
 import { ZeitProvider, CssBaseline } from '@zeit-ui/react';
 
@@ -21,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
       <ZeitProvider>
         <CssBaseline />
-        <beforeLogin />
+        <BeforeLogin />
       </ZeitProvider>,
       document.body.appendChild(jsNotLoggedIn),
     );
