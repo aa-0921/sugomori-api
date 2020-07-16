@@ -244,7 +244,7 @@ export const PostsApp = (props: any) => {
                 <Modal.Content className="overflow-y-scroll h-screen">
                   <div className="imageDiv flex flex-col items-center">
                     <div className="flex justify-center w-full h-300">
-                      <img src={clickedPost.picture} className="object-cover rounded-lg max-w-full max-h-full w-screen h-100" />
+                      <img src={clickedPost.picture} className="rounded-lg max-w-full max-h-full w-screen h-100" />
                     </div>
                     <Divider />
                     <div className="flex-1 text-center">

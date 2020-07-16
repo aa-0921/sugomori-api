@@ -54,6 +54,10 @@ group :development, :test do
   gem 'rubocop', '0.76.0'
   gem 'rubocop-airbnb'
   # gem 'rubocop-rails', '2.3.2'
+  gem "rspec-rails"
+  gem "shoulda-matchers"
+  gem 'factory_bot_rails'
+  gem 'spring-commands-rspec'
 end
 
 group :development do

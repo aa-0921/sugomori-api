@@ -8,6 +8,7 @@ class Picpost < ApplicationRecord
 
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
+
   # 投稿にいいねする
   def iine(current_user)
     likes.create(user_id: current_user.id)
