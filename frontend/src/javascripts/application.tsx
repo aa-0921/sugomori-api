@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import { HomePage } from './components/HomePage';
 import { BeforeLogin } from './components/BeforeLogin';
 
-
 import { ZeitProvider, CssBaseline } from '@zeit-ui/react';
 
 document.addEventListener('DOMContentLoaded', () => {
