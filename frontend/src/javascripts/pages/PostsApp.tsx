@@ -8,6 +8,7 @@ import { FormikPost } from '../components/FormikPost';
 import { Modal, Button, Grid, Divider, Row, Slider, Collapse, Popover, Text } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
 import { CommentApp } from '../components/CommentApp';
+import { LikeButton } from '../components/LikeButton';
 
 
 export const PostsApp = (props: any) => {
@@ -103,58 +104,6 @@ export const PostsApp = (props: any) => {
     setLikeList(nextLikeUsers);
   };
 
-  // clickLike,unlike
-  const onClickLike = async (postId: any) => {
-    const csrf = sessionStorage.getItem('X-CSRF-Token');
-    const obj = {
-      // 一旦user_id 1で固定
-      current_user_id: 1,
-      'X-CSRF-Token': csrf,
-    };
-    const body = JSON.stringify(obj);
-    const method = 'PUT';
-    // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like/' + postId;
-    const postUrl: string = '/picposts/like/' + postId;
-
-    await fetch(postUrl, { method, body })
-      .then((response) => {
-        console.log(response.status);
-        if (response.status == 200) {
-          console.log('response.status:200???: ', response.status);
-
-          pushToLikeList(clickedPost.id);
-        } else {
-          throw new Error();
-        }
-      })
-      .catch((error) => { });
-  };
-  const onClickUnLike = async (postId: any) => {
-    const csrf = sessionStorage.getItem('X-CSRF-Token');
-    const obj = {
-      // 一旦user_id 1で固定
-      current_user_id: 1,
-      'X-CSRF-Token': csrf,
-    };
-    const body = JSON.stringify(obj);
-    const method = 'PUT';
-
-    const postUrl: string = '/picposts/unlike/' + postId;
-
-    await fetch(postUrl, { method, body })
-      .then((response) => {
-        console.log(response.status);
-        // if (response.status == 204) {
-        if (response.status == 200) {
-          removeFromLikeList(clickedPost.id);
-        } else {
-          throw new Error();
-        }
-      })
-      .catch((error) => { });
-  };
-  // clickLike,unlike
-
 
   // 投稿フォームmodal,open,close
   const [postModalOpen, setPostModalOpen] = useState(false);
@@ -173,19 +122,19 @@ export const PostsApp = (props: any) => {
   // Slider関連
 
   // Popover関連
-  const popoverSlider = () => (
-    <div className="mr-auto ml-80 w-screen pl-200 flex justify-center items-center">
-      <span className="wr-10 pr-5 mr-50">横幅</span>
-      {/* <Row style={{ width: '75%' }}> */}
-      {/* <Row> */}
-      <Slider
-        value={columnWidthValue} onChange={columnWidthHandler}
-        step={20} max={450} min={60} initialValue={300}
-        className="ml-70 pl-100"
-      />
-      {/* </Row> */}
-    </div>
-  )
+  // const popoverSlider = () => (
+  //   <div className="mr-auto ml-80 w-screen pl-200 flex justify-center items-center">
+  //     <span className="wr-10 pr-5 mr-50">横幅</span>
+  //     {/* <Row style={{ width: '75%' }}> */}
+  //     {/* <Row> */}
+  //     <Slider
+  //       value={columnWidthValue} onChange={columnWidthHandler}
+  //       step={20} max={450} min={60} initialValue={300}
+  //       className="ml-70 pl-100"
+  //     />
+  //     {/* </Row> */}
+  //   </div>
+  // )
   // Popover関連
 
   console.log('PostAppのcurrentUserData', props.currentUserData);
@@ -242,12 +191,11 @@ export const PostsApp = (props: any) => {
                 {/* <Grid.Container justify="center"> */}
                 {/* <Grid> */}
                 <Modal.Content className="overflow-y-scroll h-screen">
-                  <div className="flex flex-col items-center">
-                    <div className="imageDiv flex justify-stretch">
+                  <div className="flex flex-col items-center h-auto">
+                    <div className="imageDiv flex flex-col h-auto">
                       <img src={clickedPost.picture} className="modalImage object-contain rounded-lg" />
                     </div>
-                    <Divider />
-                    <div className="flex-1 text-center">
+                    <div className="flex text-center mt-4">
                       <Link
                         to={'/profilepage/' + clickedPost.user_id}
                         onClick={() => {
@@ -259,39 +207,21 @@ export const PostsApp = (props: any) => {
                       <Link to={'/profilepage/' + clickedPost.id}>
                         &emsp; {clickedPost.content}&emsp;
                         </Link>
-                      {likeList.includes(clickedPost.id) ? (
-                        <Button
-                          type="warning"
-                          size="mini"
-                          auto
-                          ghost
-                          onClick={() => onClickUnLike(clickedPost.id)}
-                        >
-                          <Icon.HeartFill size={12} />
-                              UnLike
-                        </Button>
-                      ) : (
-                          <Button
-                            type="success"
-                            size="mini"
-                            auto
-                            ghost
-                            onClick={() => onClickLike(clickedPost.id)}
-                          >
-                            <Icon.Heart size={8} />
-                              Like
-                          </Button>
-                        )}
+                      <LikeButton
+                        likeList={likeList}
+                        clickedPost={clickedPost}
+                        pushToLikeList={pushToLikeList}
+                        removeFromLikeList={removeFromLikeList}
+                      />
                     </div>
                     {/* コメント部分ーーーーーーーーーーーーー */}
-                    <div>
+                    <div className="block">
                       <CommentApp
                         clickedPostId={clickedPost.id}
                         currentUserData={props.currentUserData}
                       />
                     </div>
                     {/* コメント部分ーーーーーーーーーーーーー */}
-
                   </div>
                 </Modal.Content>
                 {/* </Grid> */}

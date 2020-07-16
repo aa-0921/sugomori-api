@@ -17,6 +17,7 @@ import { Input, Spacer } from '@zeit-ui/react';
 
 export const CommentApp = (props: any) => {
 
+
   // コメントの一覧取得
   const [fetchComments, setFetchComments] = useState([]);
   const fetchCommentsUrl: string = `/picposts/${props.clickedPostId}/comments`;

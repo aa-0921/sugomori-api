@@ -47208,6 +47208,8 @@ var Icon = _interopRequireWildcard(_reactIcons);
 
 var _CommentApp = __webpack_require__(864);
 
+var _LikeButton = __webpack_require__(874);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var PostsApp = exports.PostsApp = function PostsApp(props) {
@@ -47337,55 +47339,6 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
     setLikeList(nextLikeUsers);
   };
 
-  // clickLike,unlike
-  var onClickLike = async function onClickLike(postId) {
-    var csrf = sessionStorage.getItem('X-CSRF-Token');
-    var obj = {
-      // 一旦user_id 1で固定
-      current_user_id: 1,
-      'X-CSRF-Token': csrf
-    };
-    var body = JSON.stringify(obj);
-    var method = 'PUT';
-    // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like/' + postId;
-    var postUrl = '/picposts/like/' + postId;
-
-    await fetch(postUrl, { method: method, body: body }).then(function (response) {
-      console.log(response.status);
-      if (response.status == 200) {
-        console.log('response.status:200???: ', response.status);
-
-        pushToLikeList(clickedPost.id);
-      } else {
-        throw new Error();
-      }
-    }).catch(function (error) {});
-  };
-  var onClickUnLike = async function onClickUnLike(postId) {
-    var csrf = sessionStorage.getItem('X-CSRF-Token');
-    var obj = {
-      // 一旦user_id 1で固定
-      current_user_id: 1,
-      'X-CSRF-Token': csrf
-    };
-    var body = JSON.stringify(obj);
-    var method = 'PUT';
-
-    var postUrl = '/picposts/unlike/' + postId;
-
-    await fetch(postUrl, { method: method, body: body }).then(function (response) {
-      console.log(response.status);
-      // if (response.status == 204) {
-      if (response.status == 200) {
-        removeFromLikeList(clickedPost.id);
-      } else {
-        throw new Error();
-      }
-    }).catch(function (error) {});
-  };
-  // clickLike,unlike
-
-
   // 投稿フォームmodal,open,close
 
   var _useState15 = (0, _react.useState)(false),
@@ -47413,22 +47366,19 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
   // Slider関連
 
   // Popover関連
-  var popoverSlider = function popoverSlider() {
-    return React.createElement(
-      'div',
-      { className: 'mr-auto ml-80 w-screen pl-200 flex justify-center items-center' },
-      React.createElement(
-        'span',
-        { className: 'wr-10 pr-5 mr-50' },
-        '\u6A2A\u5E45'
-      ),
-      React.createElement(_react2.Slider, {
-        value: columnWidthValue, onChange: columnWidthHandler,
-        step: 20, max: 450, min: 60, initialValue: 300,
-        className: 'ml-70 pl-100'
-      })
-    );
-  };
+  // const popoverSlider = () => (
+  //   <div className="mr-auto ml-80 w-screen pl-200 flex justify-center items-center">
+  //     <span className="wr-10 pr-5 mr-50">横幅</span>
+  //     {/* <Row style={{ width: '75%' }}> */}
+  //     {/* <Row> */}
+  //     <Slider
+  //       value={columnWidthValue} onChange={columnWidthHandler}
+  //       step={20} max={450} min={60} initialValue={300}
+  //       className="ml-70 pl-100"
+  //     />
+  //     {/* </Row> */}
+  //   </div>
+  // )
   // Popover関連
 
   console.log('PostAppのcurrentUserData', props.currentUserData);
@@ -47509,16 +47459,15 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                 { className: 'overflow-y-scroll h-screen' },
                 React.createElement(
                   'div',
-                  { className: 'flex flex-col items-center' },
+                  { className: 'flex flex-col items-center h-auto' },
                   React.createElement(
                     'div',
-                    { className: 'imageDiv flex justify-stretch' },
+                    { className: 'imageDiv flex flex-col h-auto' },
                     React.createElement('img', { src: clickedPost.picture, className: 'modalImage object-contain rounded-lg' })
                   ),
-                  React.createElement(_react2.Divider, null),
                   React.createElement(
                     'div',
-                    { className: 'flex-1 text-center' },
+                    { className: 'flex text-center mt-4' },
                     React.createElement(
                       _reactRouterDom.Link,
                       {
@@ -47540,37 +47489,16 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                       clickedPost.content,
                       '\u2003'
                     ),
-                    likeList.includes(clickedPost.id) ? React.createElement(
-                      _react2.Button,
-                      {
-                        type: 'warning',
-                        size: 'mini',
-                        auto: true,
-                        ghost: true,
-                        onClick: function onClick() {
-                          return onClickUnLike(clickedPost.id);
-                        }
-                      },
-                      React.createElement(Icon.HeartFill, { size: 12 }),
-                      'UnLike'
-                    ) : React.createElement(
-                      _react2.Button,
-                      {
-                        type: 'success',
-                        size: 'mini',
-                        auto: true,
-                        ghost: true,
-                        onClick: function onClick() {
-                          return onClickLike(clickedPost.id);
-                        }
-                      },
-                      React.createElement(Icon.Heart, { size: 8 }),
-                      'Like'
-                    )
+                    React.createElement(_LikeButton.LikeButton, {
+                      likeList: likeList,
+                      clickedPost: clickedPost,
+                      pushToLikeList: pushToLikeList,
+                      removeFromLikeList: removeFromLikeList
+                    })
                   ),
                   React.createElement(
                     'div',
-                    null,
+                    { className: 'block' },
                     React.createElement(_CommentApp.CommentApp, {
                       clickedPostId: clickedPost.id,
                       currentUserData: props.currentUserData
@@ -68229,6 +68157,121 @@ var BeforeLogin = exports.BeforeLogin = function BeforeLogin() {
       _reactRouterDom.Switch,
       null,
       React.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _PostsApp.PostsApp, currentUserData: currentUserData })
+    )
+  );
+};
+
+/***/ }),
+/* 874 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.LikeButton = undefined;
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _FetchData = __webpack_require__(306);
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _PostList = __webpack_require__(307);
+
+var _FormikPost = __webpack_require__(389);
+
+var _react2 = __webpack_require__(35);
+
+var _reactIcons = __webpack_require__(541);
+
+var Icon = _interopRequireWildcard(_reactIcons);
+
+var _CommentApp = __webpack_require__(864);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var LikeButton = exports.LikeButton = function LikeButton(props) {
+
+  // clickLike,unlike
+  var onClickLike = async function onClickLike(postId) {
+    var csrf = sessionStorage.getItem('X-CSRF-Token');
+    var obj = {
+      // 一旦user_id 1で固定
+      current_user_id: 1,
+      'X-CSRF-Token': csrf
+    };
+    var body = JSON.stringify(obj);
+    var method = 'PUT';
+    // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like/' + postId;
+    var postUrl = '/picposts/like/' + postId;
+
+    await fetch(postUrl, { method: method, body: body }).then(function (response) {
+      console.log(response.status);
+      if (response.status == 200) {
+        console.log('response.status:200???: ', response.status);
+
+        props.pushToLikeList(props.clickedPost.id);
+      } else {
+        throw new Error();
+      }
+    }).catch(function (error) {});
+  };
+  var onClickUnLike = async function onClickUnLike(postId) {
+    var csrf = sessionStorage.getItem('X-CSRF-Token');
+    var obj = {
+      // 一旦user_id 1で固定
+      current_user_id: 1,
+      'X-CSRF-Token': csrf
+    };
+    var body = JSON.stringify(obj);
+    var method = 'PUT';
+
+    var postUrl = '/picposts/unlike/' + postId;
+
+    await fetch(postUrl, { method: method, body: body }).then(function (response) {
+      console.log(response.status);
+      // if (response.status == 204) {
+      if (response.status == 200) {
+        props.removeFromLikeList(props.clickedPost.id);
+      } else {
+        throw new Error();
+      }
+    }).catch(function (error) {});
+  };
+  return React.createElement(
+    React.Fragment,
+    null,
+    props.likeList.includes(props.clickedPost.id) ? React.createElement(
+      _react2.Button,
+      {
+        type: 'warning',
+        size: 'mini',
+        auto: true,
+        ghost: true,
+        onClick: function onClick() {
+          return onClickUnLike(props.clickedPost.id);
+        }
+      },
+      React.createElement(Icon.HeartFill, { size: 12 }),
+      'UnLike'
+    ) : React.createElement(
+      _react2.Button,
+      {
+        type: 'success',
+        size: 'mini',
+        auto: true,
+        ghost: true,
+        onClick: function onClick() {
+          return onClickLike(props.clickedPost.id);
+        }
+      },
+      React.createElement(Icon.Heart, { size: 8 }),
+      'Like'
     )
   );
 };

@@ -14436,7 +14436,7 @@ div.modalWrap {
   max-height: 95vh !important; }
 
 div.imageDiv {
-  height: 600px; }
+  height: auto; }
 
 img.modalImage {
   width: 900px;
