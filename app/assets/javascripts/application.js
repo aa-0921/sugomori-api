@@ -47512,8 +47512,8 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                   { className: 'imageDiv flex flex-col items-center' },
                   React.createElement(
                     'div',
-                    { className: 'flex justify-center w-full h-900' },
-                    React.createElement('img', { src: clickedPost.picture, className: 'object-contain rounded-lg max-w-full max-h-full w-screen h-100' })
+                    { className: 'flex justify-center' },
+                    React.createElement('img', { src: clickedPost.picture, className: 'object-contain rounded-lg' })
                   ),
                   React.createElement(_react2.Divider, null),
                   React.createElement(

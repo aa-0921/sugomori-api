@@ -223,7 +223,7 @@ export const PostsApp = (props: any) => {
                   <input type="text" placeholder="search" onChange={filterList} className="w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline" />
                 </form>
               </div>
-              {/* {!waiting && ( */}
+
               <PostList
                 fetchPosts={fetchPosts}
                 likeList={likeList}
@@ -243,8 +243,8 @@ export const PostsApp = (props: any) => {
                 {/* <Grid> */}
                 <Modal.Content className="overflow-y-scroll h-screen">
                   <div className="imageDiv flex flex-col items-center">
-                    <div className="flex justify-center w-full h-900">
-                      <img src={clickedPost.picture} className="object-contain rounded-lg max-w-full max-h-full w-screen h-100" />
+                    <div className="flex justify-stretch">
+                      <img src={clickedPost.picture} className="object-contain rounded-lg" />
                     </div>
                     <Divider />
                     <div className="flex-1 text-center">
