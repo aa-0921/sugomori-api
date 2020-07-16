@@ -27,5 +27,6 @@ div.modalWrap {
   > div
   > div.flex.justify-center.w-full.h-900
   > img {
-  height: 900px;
+  height: auto;
+  max-height: 900px;
 }

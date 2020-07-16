@@ -14453,7 +14453,8 @@ div.modalWrap {
 > div
 > div.flex.justify-center.w-full.h-900
 > img {
-  height: 900px; }
+  height: auto;
+  max-height: 900px; }
 
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
