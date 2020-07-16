@@ -6,6 +6,7 @@
 
 div.modalWrap {
   max-height: 95vh !important;
+  max-width: 900px !important;
 }
 
 div.imageDiv {
@@ -15,4 +16,5 @@ div.imageDiv {
 img.modalImage {
   width: 900px;
   height: auto;
+  max-height: 80vh !important;
 }
