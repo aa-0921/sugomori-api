@@ -47490,7 +47490,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
               fetchPosts: fetchPosts,
               likeList: likeList,
               pushToLikeList: pushToLikeList,
-              removeFromLikeList: removeFromLikeList,
+              removeFromLikeLisft: removeFromLikeList,
               modalOpenHandler: modalOpenHandler,
               filterList: filterList,
               filterPosts: filterPosts,
@@ -47499,7 +47499,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
           ),
           React.createElement(
             _react2.Modal,
-            { width: '100vh', wrapClassName: "modalWrap", className: 'postModal',
+            { width: '100vh', wrapClassName: "modalWrap",
               open: modalOpen, onClose: closeHandler },
             React.createElement(
               React.Fragment,
@@ -47509,11 +47509,11 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                 { className: 'overflow-y-scroll h-screen' },
                 React.createElement(
                   'div',
-                  { className: 'imageDiv flex flex-col items-center' },
+                  { className: 'flex flex-col items-center' },
                   React.createElement(
                     'div',
-                    { className: 'flex justify-center' },
-                    React.createElement('img', { src: clickedPost.picture, className: 'object-contain rounded-lg' })
+                    { className: 'imageDiv flex justify-stretch' },
+                    React.createElement('img', { src: clickedPost.picture, className: 'modalImage object-contain rounded-lg' })
                   ),
                   React.createElement(_react2.Divider, null),
                   React.createElement(

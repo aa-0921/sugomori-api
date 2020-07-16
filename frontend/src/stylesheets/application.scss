@@ -8,15 +8,11 @@ div.modalWrap {
   max-height: 95vh !important;
 }
 
-#zeit-ui-modal
-  > div
-  > div.jsx-2013759218.content
-  > div
-  > div.jsx-2527237944.content.overflow-y-scroll.h-screen
-  > div
-  > div.w-full.h-300
-  > img {
+div.imageDiv {
+  height: 600px;
+}
+
+img.modalImage {
   width: 900px;
-  height: 900px;
-  background-color: red($color: #000000);
+  height: auto;
 }

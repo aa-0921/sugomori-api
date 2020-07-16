@@ -228,7 +228,7 @@ export const PostsApp = (props: any) => {
                 fetchPosts={fetchPosts}
                 likeList={likeList}
                 pushToLikeList={pushToLikeList}
-                removeFromLikeList={removeFromLikeList}
+                removeFromLikeLisft={removeFromLikeList}
                 modalOpenHandler={modalOpenHandler}
                 filterList={filterList}
                 filterPosts={filterPosts}
@@ -236,15 +236,15 @@ export const PostsApp = (props: any) => {
               />
             </div>
 
-            <Modal width="100vh" wrapClassName={"modalWrap"} className="postModal"
+            <Modal width="100vh" wrapClassName={"modalWrap"}
               open={modalOpen} onClose={closeHandler}>
               <React.Fragment>
                 {/* <Grid.Container justify="center"> */}
                 {/* <Grid> */}
                 <Modal.Content className="overflow-y-scroll h-screen">
-                  <div className="imageDiv flex flex-col items-center">
-                    <div className="flex justify-stretch">
-                      <img src={clickedPost.picture} className="object-contain rounded-lg" />
+                  <div className="flex flex-col items-center">
+                    <div className="imageDiv flex justify-stretch">
+                      <img src={clickedPost.picture} className="modalImage object-contain rounded-lg" />
                     </div>
                     <Divider />
                     <div className="flex-1 text-center">
