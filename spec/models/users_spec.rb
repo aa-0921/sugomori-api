@@ -5,6 +5,7 @@ RSpec.describe User, type: :model do
   # @user = build(:user)
   # end
   let(:user) { FactoryBot.build(:user) }
+  # let(:another_user) { FactoryBot.build(:user) }
 
   describe 'バリデーション' do
     it 'name,email,passwordに値が設定されている' do
