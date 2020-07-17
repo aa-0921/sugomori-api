@@ -11,7 +11,8 @@ RSpec.describe Picpost, type: :model do
   it { is_expected.to have_many(:comments) }
   it { is_expected.to have_many(:likes) }
 
-  it { should belong_to(:user)}
+  it { should belong_to(:user) }
+
   # いいね関連
   it 'userが良いねすると、Likeテーブルにレコードが一つ追加される' do
     expect { picpost.iine(user) }.to change(Like, :count).by(1)

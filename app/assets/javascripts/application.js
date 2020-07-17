@@ -101,7 +101,7 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _HomePage = __webpack_require__(12);
 
-var _BeforeLogin = __webpack_require__(873);
+var _BeforeLogin = __webpack_require__(875);
 
 var _react2 = __webpack_require__(35);
 
@@ -28622,9 +28622,9 @@ var _About = __webpack_require__(304);
 
 var _PostsApp = __webpack_require__(305);
 
-var _ProfilePage = __webpack_require__(871);
+var _ProfilePage = __webpack_require__(873);
 
-var _MemberListApp = __webpack_require__(872);
+var _MemberListApp = __webpack_require__(874);
 
 var _FetchData = __webpack_require__(306);
 
@@ -32813,11 +32813,7 @@ function Header(props) {
                           React.createElement(
                             _react2.ButtonDropdown.Item,
                             { main: true },
-                            React.createElement(
-                              'a',
-                              { href: '/pages/index' },
-                              'Settings'
-                            )
+                            'Settings'
                           ),
                           React.createElement(
                             _react2.ButtonDropdown.Item,
@@ -47208,9 +47204,9 @@ var Icon = _interopRequireWildcard(_reactIcons);
 
 var _CommentApp = __webpack_require__(864);
 
-var _LikeButton = __webpack_require__(874);
+var _LikeButton = __webpack_require__(871);
 
-var _PostModal = __webpack_require__(875);
+var _PostModal = __webpack_require__(872);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -67490,6 +67486,188 @@ var Comment = exports.Comment = function Comment(props) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.LikeButton = undefined;
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _FetchData = __webpack_require__(306);
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _PostList = __webpack_require__(307);
+
+var _FormikPost = __webpack_require__(389);
+
+var _react2 = __webpack_require__(35);
+
+var _reactIcons = __webpack_require__(541);
+
+var Icon = _interopRequireWildcard(_reactIcons);
+
+var _CommentApp = __webpack_require__(864);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var LikeButton = exports.LikeButton = function LikeButton(props) {
+
+  // clickLike,unlike
+  var onClickLike = async function onClickLike(postId) {
+    var csrf = sessionStorage.getItem('X-CSRF-Token');
+    var obj = {
+      // 一旦user_id 1で固定
+      current_user_id: 1,
+      'X-CSRF-Token': csrf
+    };
+    var body = JSON.stringify(obj);
+    var method = 'PUT';
+    // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like/' + postId;
+    var postUrl = '/picposts/like/' + postId;
+
+    await fetch(postUrl, { method: method, body: body }).then(function (response) {
+      console.log(response.status);
+      if (response.status == 200) {
+        console.log('response.status:200???: ', response.status);
+
+        props.pushToLikeList(props.clickedPost.id);
+      } else {
+        throw new Error();
+      }
+    }).catch(function (error) {});
+  };
+  var onClickUnLike = async function onClickUnLike(postId) {
+    var csrf = sessionStorage.getItem('X-CSRF-Token');
+    var obj = {
+      // 一旦user_id 1で固定
+      current_user_id: 1,
+      'X-CSRF-Token': csrf
+    };
+    var body = JSON.stringify(obj);
+    var method = 'PUT';
+
+    var postUrl = '/picposts/unlike/' + postId;
+
+    await fetch(postUrl, { method: method, body: body }).then(function (response) {
+      console.log(response.status);
+      // if (response.status == 204) {
+      if (response.status == 200) {
+        props.removeFromLikeList(props.clickedPost.id);
+      } else {
+        throw new Error();
+      }
+    }).catch(function (error) {});
+  };
+  return React.createElement(
+    React.Fragment,
+    null,
+    props.likeList.includes(props.clickedPost.id) ? React.createElement(
+      _react2.Button,
+      {
+        type: 'warning',
+        size: 'mini',
+        auto: true,
+        ghost: true,
+        onClick: function onClick() {
+          return onClickUnLike(props.clickedPost.id);
+        }
+      },
+      React.createElement(Icon.HeartFill, { size: 12 }),
+      'UnLike'
+    ) : React.createElement(
+      _react2.Button,
+      {
+        type: 'success',
+        size: 'mini',
+        auto: true,
+        ghost: true,
+        onClick: function onClick() {
+          return onClickLike(props.clickedPost.id);
+        }
+      },
+      React.createElement(Icon.Heart, { size: 8 }),
+      'Like'
+    )
+  );
+};
+
+/***/ }),
+/* 872 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.PostModal = undefined;
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _FetchData = __webpack_require__(306);
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _PostList = __webpack_require__(307);
+
+var _FormikPost = __webpack_require__(389);
+
+var _react2 = __webpack_require__(35);
+
+var _reactIcons = __webpack_require__(541);
+
+var Icon = _interopRequireWildcard(_reactIcons);
+
+var _CommentApp = __webpack_require__(864);
+
+var _LikeButton = __webpack_require__(871);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var PostModal = exports.PostModal = function PostModal(props) {
+
+  return React.createElement(
+    _react2.Modal,
+    { width: '35rem', open: props.postModalOpen, onClose: props.postModalCloseHandler },
+    React.createElement(
+      _react2.Modal.Content,
+      null,
+      React.createElement(_FormikPost.FormikPost, {
+        postModalCloseHandler: props.postModalCloseHandler,
+        setFilterPosts: props.setFilterPosts,
+        filterPosts: props.filterPosts
+      })
+    ),
+    React.createElement(
+      _react2.Modal.Action,
+      {
+        passive: true, onClick: function onClick() {
+          return props.setPostModalOpen(false);
+        },
+        className: 'bg-gray-100'
+      },
+      React.createElement(
+        'div',
+        null,
+        'Cancel'
+      )
+    )
+  );
+};
+
+/***/ }),
+/* 873 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.ProfilePage = undefined;
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
@@ -67988,7 +68166,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
 };
 
 /***/ }),
-/* 872 */
+/* 874 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68089,7 +68267,7 @@ var MemberListApp = exports.MemberListApp = function MemberListApp() {
 };
 
 /***/ }),
-/* 873 */
+/* 875 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68116,9 +68294,9 @@ var _About = __webpack_require__(304);
 
 var _PostsApp = __webpack_require__(305);
 
-var _ProfilePage = __webpack_require__(871);
+var _ProfilePage = __webpack_require__(873);
 
-var _MemberListApp = __webpack_require__(872);
+var _MemberListApp = __webpack_require__(874);
 
 var _FetchData = __webpack_require__(306);
 
@@ -68137,188 +68315,6 @@ var BeforeLogin = exports.BeforeLogin = function BeforeLogin() {
       _reactRouterDom.Switch,
       null,
       React.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _PostsApp.PostsApp, currentUserData: currentUserData })
-    )
-  );
-};
-
-/***/ }),
-/* 874 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.LikeButton = undefined;
-
-var _react = __webpack_require__(1);
-
-var React = _interopRequireWildcard(_react);
-
-var _FetchData = __webpack_require__(306);
-
-var _reactRouterDom = __webpack_require__(15);
-
-var _PostList = __webpack_require__(307);
-
-var _FormikPost = __webpack_require__(389);
-
-var _react2 = __webpack_require__(35);
-
-var _reactIcons = __webpack_require__(541);
-
-var Icon = _interopRequireWildcard(_reactIcons);
-
-var _CommentApp = __webpack_require__(864);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var LikeButton = exports.LikeButton = function LikeButton(props) {
-
-  // clickLike,unlike
-  var onClickLike = async function onClickLike(postId) {
-    var csrf = sessionStorage.getItem('X-CSRF-Token');
-    var obj = {
-      // 一旦user_id 1で固定
-      current_user_id: 1,
-      'X-CSRF-Token': csrf
-    };
-    var body = JSON.stringify(obj);
-    var method = 'PUT';
-    // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like/' + postId;
-    var postUrl = '/picposts/like/' + postId;
-
-    await fetch(postUrl, { method: method, body: body }).then(function (response) {
-      console.log(response.status);
-      if (response.status == 200) {
-        console.log('response.status:200???: ', response.status);
-
-        props.pushToLikeList(props.clickedPost.id);
-      } else {
-        throw new Error();
-      }
-    }).catch(function (error) {});
-  };
-  var onClickUnLike = async function onClickUnLike(postId) {
-    var csrf = sessionStorage.getItem('X-CSRF-Token');
-    var obj = {
-      // 一旦user_id 1で固定
-      current_user_id: 1,
-      'X-CSRF-Token': csrf
-    };
-    var body = JSON.stringify(obj);
-    var method = 'PUT';
-
-    var postUrl = '/picposts/unlike/' + postId;
-
-    await fetch(postUrl, { method: method, body: body }).then(function (response) {
-      console.log(response.status);
-      // if (response.status == 204) {
-      if (response.status == 200) {
-        props.removeFromLikeList(props.clickedPost.id);
-      } else {
-        throw new Error();
-      }
-    }).catch(function (error) {});
-  };
-  return React.createElement(
-    React.Fragment,
-    null,
-    props.likeList.includes(props.clickedPost.id) ? React.createElement(
-      _react2.Button,
-      {
-        type: 'warning',
-        size: 'mini',
-        auto: true,
-        ghost: true,
-        onClick: function onClick() {
-          return onClickUnLike(props.clickedPost.id);
-        }
-      },
-      React.createElement(Icon.HeartFill, { size: 12 }),
-      'UnLike'
-    ) : React.createElement(
-      _react2.Button,
-      {
-        type: 'success',
-        size: 'mini',
-        auto: true,
-        ghost: true,
-        onClick: function onClick() {
-          return onClickLike(props.clickedPost.id);
-        }
-      },
-      React.createElement(Icon.Heart, { size: 8 }),
-      'Like'
-    )
-  );
-};
-
-/***/ }),
-/* 875 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.PostModal = undefined;
-
-var _react = __webpack_require__(1);
-
-var React = _interopRequireWildcard(_react);
-
-var _FetchData = __webpack_require__(306);
-
-var _reactRouterDom = __webpack_require__(15);
-
-var _PostList = __webpack_require__(307);
-
-var _FormikPost = __webpack_require__(389);
-
-var _react2 = __webpack_require__(35);
-
-var _reactIcons = __webpack_require__(541);
-
-var Icon = _interopRequireWildcard(_reactIcons);
-
-var _CommentApp = __webpack_require__(864);
-
-var _LikeButton = __webpack_require__(874);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var PostModal = exports.PostModal = function PostModal(props) {
-
-  return React.createElement(
-    _react2.Modal,
-    { width: '35rem', open: props.postModalOpen, onClose: props.postModalCloseHandler },
-    React.createElement(
-      _react2.Modal.Content,
-      null,
-      React.createElement(_FormikPost.FormikPost, {
-        postModalCloseHandler: props.postModalCloseHandler,
-        setFilterPosts: props.setFilterPosts,
-        filterPosts: props.filterPosts
-      })
-    ),
-    React.createElement(
-      _react2.Modal.Action,
-      {
-        passive: true, onClick: function onClick() {
-          return props.setPostModalOpen(false);
-        },
-        className: 'bg-gray-100'
-      },
-      React.createElement(
-        'div',
-        null,
-        'Cancel'
-      )
     )
   );
 };
