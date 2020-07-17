@@ -62,6 +62,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # アカウント編集後のリダイレクト先
   def after_update_path_for(resource)
-    pages_show_path
+    # pages_show_path
+    new_user_session_path
   end
 end
