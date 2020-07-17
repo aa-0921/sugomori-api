@@ -7,28 +7,14 @@ RSpec.describe User, type: :model do
   let(:user) { build(:user) }
   # let(:another_user) { FactoryBot.build(:user) }
 
-  describe 'バリデーション' do
-    it 'name,email,passwordに値が設定されている' do
-      expect(user.valid?).to eq(true)
-    end
+  # preset等のバリデーション関連
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_presence_of(:email) }
+  it { is_expected.to validate_presence_of(:password) }
 
-    it 'nameが空の場合失敗' do
-      user.name = ''
-      expect(user.valid?).to eq(false)
-    end
+  it { should validate_length_of(:email).is_at_most(255) }
 
-    it 'emailが空の場合失敗' do
-      user.email = ''
-      expect(user.valid?).to eq(false)
-    end
-
-    it 'passwordが空の場合失敗' do
-      user.password = ''
-      expect(user.valid?).to eq(false)
-    end
-
-    it { is_expected.to have_many(:picposts) }
-    it { is_expected.to have_many(:comments) }
-    it { is_expected.to have_many(:likes) }
-  end
+  it { is_expected.to have_many(:picposts) }
+  it { is_expected.to have_many(:comments) }
+  it { is_expected.to have_many(:likes) }
 end
