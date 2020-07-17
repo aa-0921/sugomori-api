@@ -22,7 +22,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
 
   has_many :picposts, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   has_many :likes, dependent: :destroy
 
