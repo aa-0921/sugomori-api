@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   # before do
   # @user = build(:user)
   # end
-  let(:user) { FactoryBot.build(:user) }
+  let(:user) { build(:user) }
   # let(:another_user) { FactoryBot.build(:user) }
 
   describe 'バリデーション' do
@@ -26,5 +26,9 @@ RSpec.describe User, type: :model do
       user.password = ''
       expect(user.valid?).to eq(false)
     end
+
+    it { is_expected.to have_many(:picposts) }
+    it { is_expected.to have_many(:comments) }
+    it { is_expected.to have_many(:likes) }
   end
 end

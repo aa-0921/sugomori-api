@@ -55,7 +55,7 @@ group :development, :test do
   gem 'rubocop-airbnb'
   # gem 'rubocop-rails', '2.3.2'
   gem "rspec-rails"
-  gem "shoulda-matchers"
+  gem 'shoulda-matchers', '~> 4.0'
   gem 'factory_bot_rails'
   gem 'spring-commands-rspec'
 end
