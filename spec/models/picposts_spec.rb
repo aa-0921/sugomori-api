@@ -11,16 +11,12 @@ RSpec.describe Picpost, type: :model, focus: true do
   it { is_expected.to have_many(:comments) }
   it { is_expected.to have_many(:likes) }
 
-  it 'userが投稿すると、Likeテーブルにレコードが一つ追加される' do
-    # user.save
-    # picpost.save
-    # user = User.create(name: 'like_test', email: 'tom@example.com')
-    # user = User.create(id: 1)
-    # user.save
-
-    # picpost = Picpost.create(user_id: 1, picture: 'test_picture')
-    # picpost.save
-
+  it 'userが良いねすると、Likeテーブルにレコードが一つ追加される' do
     expect { picpost.iine(user) }.to change(Like, :count).by(1)
+  end
+
+  it 'userが良いねを解除するとLikeテーブルからレコードが一つ消える' do
+    picpost.iine(user)
+    expect { picpost.uniine(user) }.to change(Like, :count).by(-1)
   end
 end
