@@ -9,6 +9,7 @@ import { Modal, Button, Grid, Divider, Row, Slider, Collapse, Popover, Text } fr
 import * as Icon from '@zeit-ui/react-icons';
 import { CommentApp } from '../components/CommentApp';
 import { LikeButton } from '../components/LikeButton';
+import { PostModal } from '../components/PostModal';
 
 
 export const PostsApp = (props: any) => {
@@ -235,7 +236,7 @@ export const PostsApp = (props: any) => {
             </Modal>
             {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
             {/* 投稿フォームモーダル */}
-            <Modal width="35rem" open={postModalOpen} onClose={postModalCloseHandler}>
+            {/* <Modal width="35rem" open={postModalOpen} onClose={postModalCloseHandler}>
               <React.Fragment>
                 <Modal.Content>
                   <FormikPost
@@ -244,7 +245,6 @@ export const PostsApp = (props: any) => {
                     filterPosts={filterPosts}
                   />
                 </Modal.Content>
-                {/* <div className="bg-gray-100"> */}
                 <Modal.Action
                   passive onClick={() => setPostModalOpen(false)}
                   className="bg-gray-100"
@@ -254,9 +254,18 @@ export const PostsApp = (props: any) => {
 
                   </div>
                 </Modal.Action>
-                {/* </div> */}
               </React.Fragment>
-            </Modal>
+            </Modal> */}
+
+            <PostModal
+              postModalOpen={postModalOpen}
+              filterPosts={filterPosts}
+              setFilterPosts={setFilterPosts}
+              setPostModalOpen={setPostModalOpen}
+              postModalOpenHandler={postModalOpenHandler}
+              postModalCloseHandler={postModalCloseHandler}
+
+            />
             {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
             {/* 投稿ボタン */}
             <div className="postButton fixed bottom-0 right-0 z-10 m-12">

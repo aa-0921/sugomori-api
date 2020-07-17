@@ -47210,6 +47210,8 @@ var _CommentApp = __webpack_require__(864);
 
 var _LikeButton = __webpack_require__(874);
 
+var _PostModal = __webpack_require__(875);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var PostsApp = exports.PostsApp = function PostsApp(props) {
@@ -47517,37 +47519,15 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
               )
             )
           ),
-          React.createElement(
-            _react2.Modal,
-            { width: '35rem', open: postModalOpen, onClose: postModalCloseHandler },
-            React.createElement(
-              React.Fragment,
-              null,
-              React.createElement(
-                _react2.Modal.Content,
-                null,
-                React.createElement(_FormikPost.FormikPost, {
-                  postModalCloseHandler: postModalCloseHandler,
-                  setFilterPosts: setFilterPosts,
-                  filterPosts: filterPosts
-                })
-              ),
-              React.createElement(
-                _react2.Modal.Action,
-                {
-                  passive: true, onClick: function onClick() {
-                    return setPostModalOpen(false);
-                  },
-                  className: 'bg-gray-100'
-                },
-                React.createElement(
-                  'div',
-                  null,
-                  'Cancel'
-                )
-              )
-            )
-          ),
+          React.createElement(_PostModal.PostModal, {
+            postModalOpen: postModalOpen,
+            filterPosts: filterPosts,
+            setFilterPosts: setFilterPosts,
+            setPostModalOpen: setPostModalOpen,
+            postModalOpenHandler: postModalOpenHandler,
+            postModalCloseHandler: postModalCloseHandler
+
+          }),
           React.createElement(
             'div',
             { className: 'postButton fixed bottom-0 right-0 z-10 m-12' },
@@ -68272,6 +68252,73 @@ var LikeButton = exports.LikeButton = function LikeButton(props) {
       },
       React.createElement(Icon.Heart, { size: 8 }),
       'Like'
+    )
+  );
+};
+
+/***/ }),
+/* 875 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.PostModal = undefined;
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _FetchData = __webpack_require__(306);
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _PostList = __webpack_require__(307);
+
+var _FormikPost = __webpack_require__(389);
+
+var _react2 = __webpack_require__(35);
+
+var _reactIcons = __webpack_require__(541);
+
+var Icon = _interopRequireWildcard(_reactIcons);
+
+var _CommentApp = __webpack_require__(864);
+
+var _LikeButton = __webpack_require__(874);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var PostModal = exports.PostModal = function PostModal(props) {
+
+  return React.createElement(
+    _react2.Modal,
+    { width: '35rem', open: props.postModalOpen, onClose: props.postModalCloseHandler },
+    React.createElement(
+      _react2.Modal.Content,
+      null,
+      React.createElement(_FormikPost.FormikPost, {
+        postModalCloseHandler: props.postModalCloseHandler,
+        setFilterPosts: props.setFilterPosts,
+        filterPosts: props.filterPosts
+      })
+    ),
+    React.createElement(
+      _react2.Modal.Action,
+      {
+        passive: true, onClick: function onClick() {
+          return props.setPostModalOpen(false);
+        },
+        className: 'bg-gray-100'
+      },
+      React.createElement(
+        'div',
+        null,
+        'Cancel'
+      )
     )
   );
 };
