@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   # コンポーネント表示用
   root 'top#index'
 
-  get 'pages/index'
-  get 'pages/show'
+  # get 'pages/index'
+  # get 'pages/show'
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 

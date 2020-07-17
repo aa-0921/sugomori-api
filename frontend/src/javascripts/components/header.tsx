@@ -64,7 +64,7 @@ export function Header(props: any) {
                           <React.Fragment>
                             <ButtonDropdown size="small">
                               <ButtonDropdown.Item main>
-                                <a href="/pages/index">Settings</a>
+                                Settings
                               </ButtonDropdown.Item>
                               <ButtonDropdown.Item>
                                 <a

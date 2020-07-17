@@ -7,8 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
 
-  validates :name, presence: true, length: { maximum: 30 }
-
   acts_as_followable
   acts_as_follower
 
@@ -18,15 +16,14 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-
+  validates :name, presence: true, length: { maximum: 30 }
   validates :password, presence: true, length: { minimum: 6 }
 
   has_many :picposts, dependent: :destroy
   has_many :comments, dependent: :destroy
-
   has_many :likes, dependent: :destroy
-
   has_many :social_profiles, dependent: :destroy
+
   def social_profile(provider)
     social_profiles.select { |sp| sp.provider == provider.to_s }.first
   end
