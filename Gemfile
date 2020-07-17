@@ -58,6 +58,8 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 4.0'
   gem 'factory_bot_rails'
   gem 'spring-commands-rspec'
+  gem 'database_cleaner-active_record'
+  gem 'database_cleaner-sequel'
 end
 
 group :development do

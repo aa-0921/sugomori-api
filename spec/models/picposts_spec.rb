@@ -1,6 +1,6 @@
 RSpec.describe Picpost, type: :model, focus: true do
   let(:user) { create(:user) }
-  let(:picpost) { create(:picpost) }
+  let(:picpost) { create(:picpost, user_id: user.id) }
 
   # preset等のバリデーション関連
   it { is_expected.to validate_presence_of(:picture) }
@@ -15,9 +15,11 @@ RSpec.describe Picpost, type: :model, focus: true do
     # user.save
     # picpost.save
     # user = User.create(name: 'like_test', email: 'tom@example.com')
-    user = User.create
-    picpost = Picpost.create
-    picpost.save
+    # user = User.create(id: 1)
+    # user.save
+
+    # picpost = Picpost.create(user_id: 1, picture: 'test_picture')
+    # picpost.save
 
     expect { picpost.iine(user) }.to change(Like, :count).by(1)
   end
