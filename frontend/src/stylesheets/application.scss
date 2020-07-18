@@ -19,20 +19,17 @@ img.modalImage {
   max-height: 80vh !important;
 }
 
-.header {
+#header {
+  background: #fff;
+  box-shadow: 0 4px 8px -3px rgba(17, 17, 17, 0.06);
+  height: 100px;
   position: fixed;
   top: 0;
-  left: 0;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
-  -webkit-transition: -webkit-transform 0.4s ease;
-  transition: -webkit-transform 0.4s ease;
-  transition: transform 0.4s ease;
-  transition: transform 0.4s ease, -webkit-transform 0.4s ease;
+  z-index: 199999;
 }
 
-.header--unpinned {
-  -webkit-transform: translateY(-150%);
-  transform: translateY(-150%);
+.head-animation {
+  transform: translateY(-100%);
 }

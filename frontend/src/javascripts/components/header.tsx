@@ -5,36 +5,37 @@ import { useState, useEffect } from 'react';
 
 
 export function Header(props: any) {
-  console.log('headerのprops.currentUserData', props.currentUserData)
+  // console.log('headerのprops.currentUserData', props.currentUserData)
 
-
-  const [header, setHeader] = useState<HTMLElement>(null);
-  useEffect(() => {
-    setHeader(document.getElementById("header"));
-  }, [setHeader]);
-
-  // ヘッダーを取得
-  // const header = document.getElementById("header");
-  console.log('header', header)
-  // ヘッダーの高さを取得
-  const hH = header.clientHeight;
-
-  // 現在地を示す変数を定義
-  let pos = 0;
-  const onScroll = () => {
-    // スクロール位置がヘッダーの高さ分より大きい場合にclass名を追加し、そうでない場合にclass名を削除
-    if (pos > hH) {
-      header.classList.add('header--unpinned');
-    } else {
-      header.classList.remove('header--unpinned');
+  (function () {
+    const target = document.getElementById('header'),
+      height = 55;
+    let offset = 0,
+      lastPosition = 0,
+      ticking = false;
+    function onScroll(lastPosition: any) {
+      if (lastPosition > height) {
+        if (lastPosition > offset) {
+          target.classList.add('head-animation');
+        } else {
+          target.classList.remove('head-animation');
+        }
+        offset = lastPosition;
+      }
     }
-  };
 
-  window.addEventListener("scroll", () => {
-    // スクロールするごとにpos（現在地）の値を更新
-    pos = window.scrollY;
-    onScroll();
-  });
+    window.addEventListener('scroll', function (e) {
+      lastPosition = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          onScroll(lastPosition);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  })();
+
   return (
     <header id="header" className="header">
       <div>
