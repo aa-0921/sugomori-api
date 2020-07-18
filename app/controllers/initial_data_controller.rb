@@ -1,6 +1,6 @@
 class InitialDataController < ApplicationController
   # before_action :authenticate_user!, except: [:show]
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def show
     p "current_userの内容"

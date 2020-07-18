@@ -21,7 +21,7 @@ export const BeforeLogin = () => {
     <BrowserRouter>
       <Header currentUserData={currentUserData} />
       <Switch>
-        <Route exact path="/" component={PostsApp} currentUserData={currentUserData} />
+        <Route exact path="/" component={BeforeLoginPosts} />
       </Switch>
     </BrowserRouter>
   );
