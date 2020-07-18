@@ -14447,7 +14447,6 @@ img.modalImage {
 #header {
   background: #fff;
   box-shadow: 0 4px 8px -3px rgba(17, 17, 17, 0.06);
-  height: 100px;
   position: fixed;
   top: 0;
   transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);

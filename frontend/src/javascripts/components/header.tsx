@@ -9,7 +9,7 @@ export function Header(props: any) {
 
   (function () {
     const target = document.getElementById('header'),
-      height = 55;
+      height = 56;
     let offset = 0,
       lastPosition = 0,
       ticking = false;

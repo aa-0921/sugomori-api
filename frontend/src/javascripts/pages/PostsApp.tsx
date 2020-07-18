@@ -152,7 +152,7 @@ export const PostsApp = (props: any) => {
                   横幅
                 </Popover>
               </div> */}
-              <div>
+              <div className="bg-gray-900">
                 {/* <Collapse initialVisible className="h-1 text-base"> */}
                 <Collapse.Group>
                   <Collapse title=" " className="h-1 text-base">
@@ -234,28 +234,6 @@ export const PostsApp = (props: any) => {
                 </Modal.Action>
               </React.Fragment>
             </Modal>
-            {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
-            {/* 投稿フォームモーダル */}
-            {/* <Modal width="35rem" open={postModalOpen} onClose={postModalCloseHandler}>
-              <React.Fragment>
-                <Modal.Content>
-                  <FormikPost
-                    postModalCloseHandler={postModalCloseHandler}
-                    setFilterPosts={setFilterPosts}
-                    filterPosts={filterPosts}
-                  />
-                </Modal.Content>
-                <Modal.Action
-                  passive onClick={() => setPostModalOpen(false)}
-                  className="bg-gray-100"
-                >
-                  <div>
-                    Cancel
-
-                  </div>
-                </Modal.Action>
-              </React.Fragment>
-            </Modal> */}
 
             <PostModal
               postModalOpen={postModalOpen}

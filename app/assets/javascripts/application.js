@@ -32714,7 +32714,7 @@ function Header(props) {
 
   (function () {
     var target = document.getElementById('header'),
-        height = 55;
+        height = 56;
     var offset = 0,
         lastPosition = 0,
         ticking = false;
@@ -47417,7 +47417,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
             null,
             React.createElement(
               'div',
-              null,
+              { className: 'bg-gray-900' },
               React.createElement(
                 _react2.Collapse.Group,
                 null,
@@ -68327,8 +68327,6 @@ var BeforeLogin = exports.BeforeLogin = function BeforeLogin() {
     )
   );
 };
-
-// import React, { useState, useEffect } from 'react';
 
 /***/ }),
 /* 876 */
