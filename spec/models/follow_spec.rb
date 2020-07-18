@@ -1,8 +1,8 @@
 RSpec.describe Follow, type: :model, focus: true do
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
-  # let(:follow) { create(:follow) }
-  # let!(:follow) { create(:follow, follower_id: user.id, followable_id: another_user.id) }
+  let(:follow) { build(:follow) }
+  # let(:follow) { create(:follow, follower_id: user.id, followable_id: another_user.id) }
 
   # before do
   #   user.follow(another_user)
@@ -14,14 +14,9 @@ RSpec.describe Follow, type: :model, focus: true do
 
   it 'test' do
     # f = Follow.new(another_user)
-    # p user.follow(another_user)
-    # p follow
+    user.follow(another_user)
+
     # f.save
-    user
-    another_user
-    p "another_userの内容"
-    p another_user
-    p Follow.create({ follower_id: user.id, followable_id: another_user.id })
   end
 
   # preset等のバリデーション関連
@@ -33,12 +28,11 @@ RSpec.describe Follow, type: :model, focus: true do
 
   # いいね関連
   it 'userがフォローすると、Followテーブルにレコードが一つ追加される' do
-    user.follow(another_user)
-    expect { user.follow(another_user) }.to change(follow, :count).by(1)
+    expect { user.follow(another_user) }.to change(Follow, :count).by(1)
   end
 
   it 'userがフォローを解除するとFollowテーブルからレコードが一つ消える' do
     user.follow(another_user)
-    expect { user.unfollow(another_user) }.to change(follow, :count).by(-1)
+    expect { user.unfollow(another_user) }.to change(Follow, :count).by(-1)
   end
 end
