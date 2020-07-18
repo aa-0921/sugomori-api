@@ -7,16 +7,12 @@ import { Pickup } from '../pages/Pickup';
 
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import { Header } from './header';
-import { About } from '../pages/About';
-import { PostsApp } from '../pages/PostsApp';
-import { ProfilePage } from '../pages/ProfilePage';
-import { MemberListApp } from '../pages/MemberListApp';
-import { FetchData } from '../api/FetchData';
-import { useState, useEffect } from 'react';
+import { BeforeLoginPosts } from '../pages/BeforeLoginPosts';
+
 
 export const BeforeLogin = () => {
-
   const currentUserData = null;
+  console.log('BeforeLoginのcurrent_user')
   return (
     <BrowserRouter>
       <Header currentUserData={currentUserData} />

@@ -17,10 +17,10 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   p "DELETE /resource/sign_out,destroy"
-  #   super
-  # end
+  def destroy
+    p "DELETE /resource/sign_out,destroy"
+    super
+  end
 
   # protected
 
@@ -59,7 +59,7 @@ class Users::SessionsController < Devise::SessionsController
   # def after_sign_out_path_for(scope)
   #   root_path
   # end
-  private
+  # private
 
   # def after_sign_out_path_for(resource_or_scope)
   #   p "after_sign_out_path_for"

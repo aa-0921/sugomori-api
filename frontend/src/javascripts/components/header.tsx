@@ -14,7 +14,7 @@ export function Header(props: any) {
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <img className="w-30 h-30 z-20" src="../../../../app/assets/images/LOGO.svg" alt="" />
+                  {/* <img className="w-30 h-30 z-20" src="../../../../app/assets/images/LOGO.svg" alt="" /> */}
                   <span className="font-semibold text-xl tracking-tight text-white">SUGOMORI</span>
                 </div>
                 <div>
