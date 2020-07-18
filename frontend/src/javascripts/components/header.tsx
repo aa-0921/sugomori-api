@@ -1,11 +1,40 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { ButtonDropdown, Grid, Row, Input, Button } from '@zeit-ui/react';
-// import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 
 export function Header(props: any) {
   console.log('headerのprops.currentUserData', props.currentUserData)
+
+
+  const [header, setHeader] = useState<HTMLElement>(null);
+  useEffect(() => {
+    setHeader(document.getElementById("header"));
+  }, [setHeader]);
+
+  // ヘッダーを取得
+  // const header = document.getElementById("header");
+  console.log('header', header)
+  // ヘッダーの高さを取得
+  const hH = header.clientHeight;
+
+  // 現在地を示す変数を定義
+  let pos = 0;
+  const onScroll = () => {
+    // スクロール位置がヘッダーの高さ分より大きい場合にclass名を追加し、そうでない場合にclass名を削除
+    if (pos > hH) {
+      header.classList.add('header--unpinned');
+    } else {
+      header.classList.remove('header--unpinned');
+    }
+  };
+
+  window.addEventListener("scroll", () => {
+    // スクロールするごとにpos（現在地）の値を更新
+    pos = window.scrollY;
+    onScroll();
+  });
   return (
     <header id="header" className="header">
       <div>

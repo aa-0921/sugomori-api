@@ -32697,6 +32697,9 @@ module.exports = hoistNonReactStatics;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 exports.Header = Header;
 
 var _react = __webpack_require__(1);
@@ -32709,11 +32712,40 @@ var _react2 = __webpack_require__(35);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-// import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-
-
 function Header(props) {
   console.log('headerのprops.currentUserData', props.currentUserData);
+
+  var _ref = _react.useState < HTMLElement > null,
+      _ref2 = _slicedToArray(_ref, 2),
+      header = _ref2[0],
+      setHeader = _ref2[1];
+
+  (0, _react.useEffect)(function () {
+    setHeader(document.getElementById("header"));
+  }, [setHeader]);
+
+  // ヘッダーを取得
+  // const header = document.getElementById("header");
+  console.log('header', header);
+  // ヘッダーの高さを取得
+  var hH = header.clientHeight;
+
+  // 現在地を示す変数を定義
+  var pos = 0;
+  var onScroll = function onScroll() {
+    // スクロール位置がヘッダーの高さ分より大きい場合にclass名を追加し、そうでない場合にclass名を削除
+    if (pos > hH) {
+      header.classList.add('header--unpinned');
+    } else {
+      header.classList.remove('header--unpinned');
+    }
+  };
+
+  window.addEventListener("scroll", function () {
+    // スクロールするごとにpos（現在地）の値を更新
+    pos = window.scrollY;
+    onScroll();
+  });
   return React.createElement(
     'header',
     { id: 'header', className: 'header' },

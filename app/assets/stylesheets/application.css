@@ -14444,6 +14444,17 @@ img.modalImage {
   height: auto;
   max-height: 80vh !important; }
 
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(0);
+  transition: transform 0.4s ease; }
+
+.header--unpinned {
+  transform: translateY(-150%); }
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
