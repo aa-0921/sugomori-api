@@ -1,4 +1,4 @@
-RSpec.describe Follow, type: :model, focus: true do
+RSpec.describe Follow, type: :model do
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
   let(:follow) { build(:follow) }
