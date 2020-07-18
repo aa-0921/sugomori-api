@@ -32735,6 +32735,7 @@ function Header(props) {
               React.createElement(
                 'div',
                 { className: 'flex-shrink-0' },
+                React.createElement('img', { className: 'w-30 h-30 z-20', src: '../../../../app/assets/images/LOGO.svg', alt: '' }),
                 React.createElement(
                   'span',
                   { className: 'font-semibold text-xl tracking-tight text-white' },
