@@ -42,4 +42,6 @@ yarn-debug.log*
 /frontend/node_modules/
 
 /app/assets/javascripts/application.js
-/app/assets/stylesheets/application.scss
+/app/assets/stylesgheets/application.scss
+
+/vendor/ruby/
