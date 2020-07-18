@@ -1,4 +1,8 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+
+Rails.logger = Logger.new(STDOUT)
+# ActiveRecord::Base.logger = Logger.new(STDOUT)
+
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 
