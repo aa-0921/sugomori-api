@@ -7,7 +7,7 @@ import { ButtonDropdown, Grid, Row, Input, Button } from '@zeit-ui/react';
 export function Header(props: any) {
   console.log('headerのprops.currentUserData', props.currentUserData)
   return (
-    <header>
+    <header id="header" className="header">
       <div>
         <nav className="bg-indigo-300">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

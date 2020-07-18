@@ -32716,7 +32716,7 @@ function Header(props) {
   console.log('headerのprops.currentUserData', props.currentUserData);
   return React.createElement(
     'header',
-    null,
+    { id: 'header', className: 'header' },
     React.createElement(
       'div',
       null,

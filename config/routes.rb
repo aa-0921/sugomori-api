@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   get 'initial_data/show'
   # コンポーネント表示用
-  root 'top#index'
 
   # get 'pages/index'
   # get 'pages/show'
@@ -60,5 +59,6 @@ Rails.application.routes.draw do
 
   get 'users/picposts/:user_id' => 'picposts#user_posts'
 
+  root 'top#index'
   get '*unmatched_route' => 'top#index'
 end
