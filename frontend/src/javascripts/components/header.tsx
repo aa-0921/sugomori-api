@@ -11,95 +11,89 @@ export function Header(props: any) {
       <div>
         <nav className="bg-indigo-300">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16">
-              <div className="flex items-center">
-                <div className="flex-shrink-0">
-                  {/* <img className="w-30 h-30 z-20" src="../../../../app/assets/images/LOGO.svg" alt="" /> */}
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                {/* <img className="w-30 h-30 z-20" src="../../../../app/assets/images/LOGO.svg" alt="" /> */}
+                <Link to="/">
                   <span className="font-semibold text-xl tracking-tight text-white">SUGOMORI</span>
-                </div>
-                <div>
-                  <div className="hidden md:block">
-                    <div className="ml-10 flex items-baseline w-auto">
-                      <div className="flex-auto">
-                        {props.currentUserData != null ? (
+                </Link>
+              </div>
+              <div>
+                <div className="hidden md:block">
+                  <div className="ml-10 flex items-baseline w-auto">
+                    <div className="flex">
+                      {props.currentUserData != null ? (
+                        <React.Fragment>
+                          <Link
+                            to="/"
+                            className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                          >
+                            Feed
+                            </Link>
+
+                          <Link
+                            to={'/profilepage/' + props.currentUserData.id}
+                            className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium  hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                          >
+                            YourProfile
+                            </Link>
+                          <Link
+                            to="/MemberListApp"
+                            className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                          >
+                            MemberInfo
+                            </Link>
+                        </React.Fragment>
+                      ) : (
                           <React.Fragment>
                             <Link
                               to="/"
-                              className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                            >
-                              Home
-                            </Link>
-                            <Link
-                              to="/"
                               className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                             >
-                              Feed
-                            </Link>
-
-                            <Link
-                              to={'/profilepage/' + props.currentUserData.id}
-                              className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium  hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                            >
-                              YourProfile
-                            </Link>
-                            <Link
-                              to="/MemberListApp"
-                              className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                            >
-                              MemberInfo
-                            </Link>
+                              About
+                              </Link>
                           </React.Fragment>
-                        ) : (
-                            <React.Fragment>
-                              <Link
-                                to="/"
-                                className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                        )}
+                    </div>
+                    <div className="ml-auto">
+                      {props.currentUserData != null ? (
+                        <React.Fragment>
+                          <ButtonDropdown size="small">
+                            <ButtonDropdown.Item main>
+                              Settings
+                              </ButtonDropdown.Item>
+                            <ButtonDropdown.Item>
+                              <a
+                                href="/users/edit"
+                                className="block px-4 py-2 sm:test-sm text-gray-700 hover:bg-gray-100"
+                                role="menuitem"
                               >
-                                Home
-                            </Link>
-                            </React.Fragment>
-                          )}
-                      </div>
-                      <div className="flex-auto float-right">
-                        {props.currentUserData != null ? (
+                                プロフィール変更
+                                </a>
+                            </ButtonDropdown.Item>
+                            <ButtonDropdown.Item>
+                              <a
+                                href="/users/sign_out"
+                                className="block px-4 py-2 sm:test-sm text-gray-700 hover:bg-gray-100"
+                                role="menuitem"
+                              >
+                                ログアウト
+                                </a>
+                            </ButtonDropdown.Item>
+                          </ButtonDropdown>
+                        </React.Fragment>
+                      ) : (
                           <React.Fragment>
                             <ButtonDropdown size="small">
                               <ButtonDropdown.Item main>
-                                Settings
+                                <a href="/users/sign_in">ログイン</a>
                               </ButtonDropdown.Item>
                               <ButtonDropdown.Item>
-                                <a
-                                  href="/users/edit"
-                                  className="block px-4 py-2 sm:test-sm text-gray-700 hover:bg-gray-100"
-                                  role="menuitem"
-                                >
-                                  プロフィール変更
-                                </a>
-                              </ButtonDropdown.Item>
-                              <ButtonDropdown.Item>
-                                <a
-                                  href="/users/sign_out"
-                                  className="block px-4 py-2 sm:test-sm text-gray-700 hover:bg-gray-100"
-                                  role="menuitem"
-                                >
-                                  ログアウト
-                                </a>
+                                <a href="/users/sign_up">新規登録</a>
                               </ButtonDropdown.Item>
                             </ButtonDropdown>
                           </React.Fragment>
-                        ) : (
-                            <React.Fragment>
-                              <ButtonDropdown size="small">
-                                <ButtonDropdown.Item main>
-                                  <a href="/users/sign_in">ログイン</a>
-                                </ButtonDropdown.Item>
-                                <ButtonDropdown.Item>
-                                  <a href="/users/sign_up">新規登録</a>
-                                </ButtonDropdown.Item>
-                              </ButtonDropdown>
-                            </React.Fragment>
-                          )}
-                      </div>
+                        )}
                     </div>
                   </div>
                 </div>
@@ -108,6 +102,6 @@ export function Header(props: any) {
           </div>
         </nav>
       </div>
-    </header>
+    </header >
   );
 }

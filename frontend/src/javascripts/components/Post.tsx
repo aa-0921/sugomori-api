@@ -6,7 +6,7 @@ export const Post = (props: any) => {
       <img
         key={props.post.id}
         src={props.post.picture}
-        className="rounded-lg"
+        className="rounded-lg cursor-pointer"
         onClick={() => props.modalOpenHandler(props.post)}
       />
     </React.Fragment>

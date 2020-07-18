@@ -271,7 +271,7 @@ export const PostsApp = (props: any) => {
             <div className="postButton fixed bottom-0 right-0 z-10 m-12">
               <button
                 onClick={() => postModalOpenHandler()}
-                className="transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer">
+                className="transition duration-500 ease-in-out bg-indigo-300 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer">
                 <Icon.PlusCircle size={50} />
               </button>
             </div>

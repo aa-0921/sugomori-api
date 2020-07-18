@@ -32728,143 +32728,135 @@ function Header(props) {
           { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' },
           React.createElement(
             'div',
-            { className: 'flex items-center justify-between h-16' },
+            { className: 'flex items-center' },
             React.createElement(
               'div',
-              { className: 'flex items-center' },
+              { className: 'flex-shrink-0' },
               React.createElement(
-                'div',
-                { className: 'flex-shrink-0' },
+                _reactRouterDom.Link,
+                { to: '/' },
                 React.createElement(
                   'span',
                   { className: 'font-semibold text-xl tracking-tight text-white' },
                   'SUGOMORI'
                 )
-              ),
+              )
+            ),
+            React.createElement(
+              'div',
+              null,
               React.createElement(
                 'div',
-                null,
+                { className: 'hidden md:block' },
                 React.createElement(
                   'div',
-                  { className: 'hidden md:block' },
+                  { className: 'ml-10 flex items-baseline w-auto' },
                   React.createElement(
                     'div',
-                    { className: 'ml-10 flex items-baseline w-auto' },
-                    React.createElement(
-                      'div',
-                      { className: 'flex-auto' },
-                      props.currentUserData != null ? React.createElement(
-                        React.Fragment,
-                        null,
-                        React.createElement(
-                          _reactRouterDom.Link,
-                          {
-                            to: '/',
-                            className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
-                          },
-                          'Home'
-                        ),
-                        React.createElement(
-                          _reactRouterDom.Link,
-                          {
-                            to: '/',
-                            className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
-                          },
-                          'Feed'
-                        ),
-                        React.createElement(
-                          _reactRouterDom.Link,
-                          {
-                            to: '/profilepage/' + props.currentUserData.id,
-                            className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium  hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
-                          },
-                          'YourProfile'
-                        ),
-                        React.createElement(
-                          _reactRouterDom.Link,
-                          {
-                            to: '/MemberListApp',
-                            className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
-                          },
-                          'MemberInfo'
-                        )
-                      ) : React.createElement(
-                        React.Fragment,
-                        null,
-                        React.createElement(
-                          _reactRouterDom.Link,
-                          {
-                            to: '/',
-                            className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
-                          },
-                          'Home'
-                        )
+                    { className: 'flex' },
+                    props.currentUserData != null ? React.createElement(
+                      React.Fragment,
+                      null,
+                      React.createElement(
+                        _reactRouterDom.Link,
+                        {
+                          to: '/',
+                          className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
+                        },
+                        'Feed'
+                      ),
+                      React.createElement(
+                        _reactRouterDom.Link,
+                        {
+                          to: '/profilepage/' + props.currentUserData.id,
+                          className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium  hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
+                        },
+                        'YourProfile'
+                      ),
+                      React.createElement(
+                        _reactRouterDom.Link,
+                        {
+                          to: '/MemberListApp',
+                          className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
+                        },
+                        'MemberInfo'
                       )
-                    ),
-                    React.createElement(
-                      'div',
-                      { className: 'flex-auto float-right' },
-                      props.currentUserData != null ? React.createElement(
-                        React.Fragment,
-                        null,
+                    ) : React.createElement(
+                      React.Fragment,
+                      null,
+                      React.createElement(
+                        _reactRouterDom.Link,
+                        {
+                          to: '/',
+                          className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
+                        },
+                        'About'
+                      )
+                    )
+                  ),
+                  React.createElement(
+                    'div',
+                    { className: 'ml-auto' },
+                    props.currentUserData != null ? React.createElement(
+                      React.Fragment,
+                      null,
+                      React.createElement(
+                        _react2.ButtonDropdown,
+                        { size: 'small' },
                         React.createElement(
-                          _react2.ButtonDropdown,
-                          { size: 'small' },
+                          _react2.ButtonDropdown.Item,
+                          { main: true },
+                          'Settings'
+                        ),
+                        React.createElement(
+                          _react2.ButtonDropdown.Item,
+                          null,
                           React.createElement(
-                            _react2.ButtonDropdown.Item,
-                            { main: true },
-                            'Settings'
-                          ),
+                            'a',
+                            {
+                              href: '/users/edit',
+                              className: 'block px-4 py-2 sm:test-sm text-gray-700 hover:bg-gray-100',
+                              role: 'menuitem'
+                            },
+                            '\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u5909\u66F4'
+                          )
+                        ),
+                        React.createElement(
+                          _react2.ButtonDropdown.Item,
+                          null,
                           React.createElement(
-                            _react2.ButtonDropdown.Item,
-                            null,
-                            React.createElement(
-                              'a',
-                              {
-                                href: '/users/edit',
-                                className: 'block px-4 py-2 sm:test-sm text-gray-700 hover:bg-gray-100',
-                                role: 'menuitem'
-                              },
-                              '\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u5909\u66F4'
-                            )
-                          ),
-                          React.createElement(
-                            _react2.ButtonDropdown.Item,
-                            null,
-                            React.createElement(
-                              'a',
-                              {
-                                href: '/users/sign_out',
-                                className: 'block px-4 py-2 sm:test-sm text-gray-700 hover:bg-gray-100',
-                                role: 'menuitem'
-                              },
-                              '\u30ED\u30B0\u30A2\u30A6\u30C8'
-                            )
+                            'a',
+                            {
+                              href: '/users/sign_out',
+                              className: 'block px-4 py-2 sm:test-sm text-gray-700 hover:bg-gray-100',
+                              role: 'menuitem'
+                            },
+                            '\u30ED\u30B0\u30A2\u30A6\u30C8'
                           )
                         )
-                      ) : React.createElement(
-                        React.Fragment,
-                        null,
+                      )
+                    ) : React.createElement(
+                      React.Fragment,
+                      null,
+                      React.createElement(
+                        _react2.ButtonDropdown,
+                        { size: 'small' },
                         React.createElement(
-                          _react2.ButtonDropdown,
-                          { size: 'small' },
+                          _react2.ButtonDropdown.Item,
+                          { main: true },
                           React.createElement(
-                            _react2.ButtonDropdown.Item,
-                            { main: true },
-                            React.createElement(
-                              'a',
-                              { href: '/users/sign_in' },
-                              '\u30ED\u30B0\u30A4\u30F3'
-                            )
-                          ),
+                            'a',
+                            { href: '/users/sign_in' },
+                            '\u30ED\u30B0\u30A4\u30F3'
+                          )
+                        ),
+                        React.createElement(
+                          _react2.ButtonDropdown.Item,
+                          null,
                           React.createElement(
-                            _react2.ButtonDropdown.Item,
-                            null,
-                            React.createElement(
-                              'a',
-                              { href: '/users/sign_up' },
-                              '\u65B0\u898F\u767B\u9332'
-                            )
+                            'a',
+                            { href: '/users/sign_up' },
+                            '\u65B0\u898F\u767B\u9332'
                           )
                         )
                       )
@@ -47533,7 +47525,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                 onClick: function onClick() {
                   return postModalOpenHandler();
                 },
-                className: 'transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer' },
+                className: 'transition duration-500 ease-in-out bg-indigo-300 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer' },
               React.createElement(Icon.PlusCircle, { size: 50 })
             )
           )
@@ -47679,7 +47671,7 @@ var Post = exports.Post = function Post(props) {
     React.createElement("img", {
       key: props.post.id,
       src: props.post.picture,
-      className: "rounded-lg",
+      className: "rounded-lg cursor-pointer",
       onClick: function onClick() {
         return props.modalOpenHandler(props.post);
       }
