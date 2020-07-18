@@ -14456,6 +14456,35 @@ img.modalImage {
 .head-animation {
   transform: translateY(-100%); }
 
+div.tooltipDiv {
+  z-index: -2; }
+
+#js_logged_in_component
+> div
+> div
+> div:nth-child(1)
+> div.mt-10.relative
+> div.jsx-418573366.tooltip
+> div {
+  width: 100vw; }
+
+#js_logged_in_component
+> div
+> div
+> div:nth-child(1)
+> div.mt-10.relative
+> div.jsx-418573366.tooltip
+> div
+> div
+> div.jsx-1393326764.view
+> div
+> svg {
+  margin-right: 10px; }
+
+#zeit-ui-tooltip {
+  margin-right: 120rem;
+  margin-bottom: 60rem; }
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;

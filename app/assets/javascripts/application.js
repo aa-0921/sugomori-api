@@ -32755,135 +32755,139 @@ function Header(props) {
           { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' },
           React.createElement(
             'div',
-            { className: 'flex items-center' },
+            { className: 'flex items-center justify-between h-16' },
             React.createElement(
               'div',
-              { className: 'flex-shrink-0' },
-              React.createElement(
-                _reactRouterDom.Link,
-                { to: '/' },
-                React.createElement(
-                  'span',
-                  { className: 'font-semibold text-xl tracking-tight text-white' },
-                  'SUGOMORI'
-                )
-              )
-            ),
-            React.createElement(
-              'div',
-              null,
+              { className: 'flex items-center' },
               React.createElement(
                 'div',
-                { className: 'hidden md:block' },
+                { className: 'flex-shrink-0' },
+                React.createElement(
+                  _reactRouterDom.Link,
+                  { to: '/' },
+                  React.createElement(
+                    'span',
+                    { className: 'font-semibold text-xl tracking-tight text-white' },
+                    'SUGOMORI'
+                  )
+                )
+              ),
+              React.createElement(
+                'div',
+                null,
                 React.createElement(
                   'div',
-                  { className: 'ml-10 flex items-baseline w-auto' },
+                  { className: 'hidden md:block' },
                   React.createElement(
                     'div',
-                    { className: 'flex' },
-                    props.currentUserData != null ? React.createElement(
-                      React.Fragment,
-                      null,
-                      React.createElement(
-                        _reactRouterDom.Link,
-                        {
-                          to: '/',
-                          className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
-                        },
-                        'Feed'
-                      ),
-                      React.createElement(
-                        _reactRouterDom.Link,
-                        {
-                          to: '/profilepage/' + props.currentUserData.id,
-                          className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium  hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
-                        },
-                        'YourProfile'
-                      ),
-                      React.createElement(
-                        _reactRouterDom.Link,
-                        {
-                          to: '/MemberListApp',
-                          className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
-                        },
-                        'MemberInfo'
-                      )
-                    ) : React.createElement(
-                      React.Fragment,
-                      null,
-                      React.createElement(
-                        _reactRouterDom.Link,
-                        {
-                          to: '/',
-                          className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
-                        },
-                        'About'
-                      )
-                    )
-                  ),
-                  React.createElement(
-                    'div',
-                    { className: 'ml-auto' },
-                    props.currentUserData != null ? React.createElement(
-                      React.Fragment,
-                      null,
-                      React.createElement(
-                        _react2.ButtonDropdown,
-                        { size: 'small' },
+                    { className: 'ml-10 flex items-baseline w-auto' },
+                    React.createElement(
+                      'div',
+                      { className: 'flex' },
+                      props.currentUserData != null ? React.createElement(
+                        React.Fragment,
+                        null,
                         React.createElement(
-                          _react2.ButtonDropdown.Item,
-                          { main: true },
-                          'Settings'
+                          _reactRouterDom.Link,
+                          {
+                            to: '/',
+                            className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
+                          },
+                          'Feed'
                         ),
                         React.createElement(
-                          _react2.ButtonDropdown.Item,
-                          null,
-                          React.createElement(
-                            'a',
-                            {
-                              href: '/users/edit',
-                              className: 'block px-4 py-2 sm:test-sm text-gray-700 hover:bg-gray-100',
-                              role: 'menuitem'
-                            },
-                            '\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u5909\u66F4'
-                          )
+                          _reactRouterDom.Link,
+                          {
+                            to: '/profilepage/' + props.currentUserData.id,
+                            className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium  hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
+                          },
+                          'YourProfile'
                         ),
                         React.createElement(
-                          _react2.ButtonDropdown.Item,
-                          null,
-                          React.createElement(
-                            'a',
-                            {
-                              href: '/users/sign_out',
-                              className: 'block px-4 py-2 sm:test-sm text-gray-700 hover:bg-gray-100',
-                              role: 'menuitem'
-                            },
-                            '\u30ED\u30B0\u30A2\u30A6\u30C8'
-                          )
+                          _reactRouterDom.Link,
+                          {
+                            to: '/MemberListApp',
+                            className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
+                          },
+                          'MemberInfo'
+                        )
+                      ) : React.createElement(
+                        React.Fragment,
+                        null,
+                        React.createElement(
+                          _reactRouterDom.Link,
+                          {
+                            to: '/',
+                            className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
+                          },
+                          'About'
                         )
                       )
-                    ) : React.createElement(
-                      React.Fragment,
-                      null,
-                      React.createElement(
-                        _react2.ButtonDropdown,
-                        { size: 'small' },
+                    ),
+                    React.createElement(
+                      'div',
+                      { className: 'ml-auto' },
+                      props.currentUserData != null ? React.createElement(
+                        React.Fragment,
+                        null,
                         React.createElement(
-                          _react2.ButtonDropdown.Item,
-                          { main: true },
+                          _react2.ButtonDropdown,
+                          { size: 'small' },
                           React.createElement(
-                            'a',
-                            { href: '/users/sign_in' },
-                            '\u30ED\u30B0\u30A4\u30F3'
+                            _react2.ButtonDropdown.Item,
+                            { main: true },
+                            'Settings'
+                          ),
+                          React.createElement(
+                            _react2.ButtonDropdown.Item,
+                            null,
+                            React.createElement(
+                              'a',
+                              {
+                                href: '/users/edit',
+                                className: 'block px-4 py-2 sm:test-sm text-gray-700 hover:bg-gray-100',
+                                role: 'menuitem'
+                              },
+                              '\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u5909\u66F4'
+                            )
+                          ),
+                          React.createElement(
+                            _react2.ButtonDropdown.Item,
+                            null,
+                            React.createElement(
+                              'a',
+                              {
+                                href: '/users/sign_out',
+                                className: 'block px-4 py-2 sm:test-sm text-gray-700 hover:bg-gray-100',
+                                role: 'menuitem'
+                              },
+                              '\u30ED\u30B0\u30A2\u30A6\u30C8'
+                            )
                           )
-                        ),
+                        )
+                      ) : React.createElement(
+                        React.Fragment,
+                        null,
                         React.createElement(
-                          _react2.ButtonDropdown.Item,
-                          null,
+                          _react2.ButtonDropdown,
+                          { size: 'small' },
                           React.createElement(
-                            'a',
-                            { href: '/users/sign_up' },
-                            '\u65B0\u898F\u767B\u9332'
+                            _react2.ButtonDropdown.Item,
+                            { main: true },
+                            React.createElement(
+                              'a',
+                              { href: '/users/sign_in' },
+                              '\u30ED\u30B0\u30A4\u30F3'
+                            )
+                          ),
+                          React.createElement(
+                            _react2.ButtonDropdown.Item,
+                            null,
+                            React.createElement(
+                              'a',
+                              { href: '/users/sign_up' },
+                              '\u65B0\u898F\u767B\u9332'
+                            )
                           )
                         )
                       )
@@ -47417,30 +47421,47 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
             null,
             React.createElement(
               'div',
-              { className: 'bg-gray-900' },
+              { className: 'mt-10 relative' },
               React.createElement(
-                _react2.Collapse.Group,
-                null,
+                _react2.Tooltip,
+                { text: '\u5199\u771F\u306E\u6A2A\u5E45\u3092\u8ABF\u6574\u3067\u304D\u307E\u3059', placement: 'bottom', type: 'success', offset: '0' },
                 React.createElement(
-                  _react2.Collapse,
-                  { title: ' ', className: 'h-1 text-base' },
+                  _react2.Collapse.Group,
+                  { className: 'z-20 mr-5' },
                   React.createElement(
-                    'div',
-                    { className: 'bg-white flex justify-center items-center' },
+                    _react2.Collapse,
+                    { title: ' ', className: 'h-1 text-base' },
                     React.createElement(
-                      'span',
-                      { className: 'wr-10 pr-5' },
-                      '\u6A2A\u5E45'
-                    ),
-                    React.createElement(
-                      _react2.Row,
-                      { style: { width: '75%' } },
-                      React.createElement(_react2.Slider, {
-                        value: columnWidthValue, onChange: columnWidthHandler,
-                        step: 20, max: 500, min: 100, initialValue: 300
-                      })
+                      _react2.Text,
+                      null,
+                      React.createElement(
+                        'div',
+                        { className: 'bg-white flex justify-center items-center' },
+                        React.createElement(
+                          'span',
+                          { className: 'wr-10 pr-5' },
+                          '\u6A2A\u5E45'
+                        ),
+                        React.createElement(
+                          _react2.Row,
+                          { style: { width: '75%' } },
+                          React.createElement(_react2.Slider, {
+                            value: columnWidthValue, onChange: columnWidthHandler,
+                            step: 20, max: 500, min: 100, initialValue: 300
+                          })
+                        )
+                      )
                     )
                   )
+                )
+              ),
+              React.createElement(
+                'div',
+                { className: 'tooltipDiv flex justify-end absolute w-full bottom-0' },
+                React.createElement(
+                  'div',
+                  null,
+                  '\u2003\u2003\u2003'
                 )
               )
             ),
