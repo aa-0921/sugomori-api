@@ -109,22 +109,6 @@ export const PostsApp = (props: any) => {
     setLikeList(nextLikeUsers);
   };
 
-  // openModal時のheaderを隠す
-
-
-  // const headerHidden = () => {
-  //   const target = document.getElementById('header')
-  //   console.log('headerHidden')
-  //   if (postModalOpen == true) {
-  //     target.classList.add('head-animation');
-  //   } else {
-  //     target.classList.remove('head-animation');
-  //   }
-  // }
-  // openModal時のheaderを隠す
-
-
-
 
   // 投稿フォームmodal,open,close
   const [postModalOpen, setPostModalOpen] = useState(false);
@@ -152,19 +136,19 @@ export const PostsApp = (props: any) => {
   // Slider関連
 
   // Popover関連
-  // const popoverSlider = () => (
-  //   <div className="mr-auto ml-80 w-screen pl-200 flex justify-center items-center">
-  //     <span className="wr-10 pr-5 mr-50">横幅</span>
-  //     {/* <Row style={{ width: '75%' }}> */}
-  //     {/* <Row> */}
-  //     <Slider
-  //       value={columnWidthValue} onChange={columnWidthHandler}
-  //       step={20} max={450} min={60} initialValue={300}
-  //       className="ml-70 pl-100"
-  //     />
-  //     {/* </Row> */}
-  //   </div>
-  // )
+  const popoverSlider = () => (
+    <div className="mr-auto ml-80 w-screen pl-200 flex justify-center items-center">
+      <span className="wr-10 pr-5 mr-50">横幅</span>
+      {/* <Row style={{ width: '75%' }}> */}
+      {/* <Row> */}
+      <Slider
+        value={columnWidthValue} onChange={columnWidthHandler}
+        step={20} max={450} min={60} initialValue={300}
+        className="ml-70 pl-100"
+      />
+      {/* </Row> */}
+    </div>
+  )
   // Popover関連
 
   console.log('PostAppのcurrentUserData', props.currentUserData);
@@ -176,11 +160,13 @@ export const PostsApp = (props: any) => {
         <div>
           <div>
             <div>
-              {/* <div className="ml-20">
+              {/* // Popover関連 */}
+
+              <div className="ml-20">
                 <Popover content={popoverSlider} className="ml-80">
                   横幅
                 </Popover>
-              </div> */}
+              </div>
               <div className="mt-10 relative">
                 {/* <Collapse initialVisible className="h-1 text-base"> */}
 

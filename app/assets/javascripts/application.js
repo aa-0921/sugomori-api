@@ -32715,10 +32715,14 @@ function Header(props) {
   (function () {
     var target = document.getElementById('header'),
         height = 56;
+    console.log('target', target);
+
     var offset = 0,
         lastPosition = 0,
         ticking = false;
     function onScroll(lastPosition) {
+      console.log('lastPosition', lastPosition);
+
       if (lastPosition > height) {
         if (lastPosition > offset) {
           target.classList.add('head-animation');
@@ -47364,21 +47368,6 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
     setLikeList(nextLikeUsers);
   };
 
-  // openModal時のheaderを隠す
-
-
-  // const headerHidden = () => {
-  //   const target = document.getElementById('header')
-  //   console.log('headerHidden')
-  //   if (postModalOpen == true) {
-  //     target.classList.add('head-animation');
-  //   } else {
-  //     target.classList.remove('head-animation');
-  //   }
-  // }
-  // openModal時のheaderを隠す
-
-
   // 投稿フォームmodal,open,close
 
   var _useState15 = (0, _react.useState)(false),
@@ -47411,19 +47400,22 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
   // Slider関連
 
   // Popover関連
-  // const popoverSlider = () => (
-  //   <div className="mr-auto ml-80 w-screen pl-200 flex justify-center items-center">
-  //     <span className="wr-10 pr-5 mr-50">横幅</span>
-  //     {/* <Row style={{ width: '75%' }}> */}
-  //     {/* <Row> */}
-  //     <Slider
-  //       value={columnWidthValue} onChange={columnWidthHandler}
-  //       step={20} max={450} min={60} initialValue={300}
-  //       className="ml-70 pl-100"
-  //     />
-  //     {/* </Row> */}
-  //   </div>
-  // )
+  var popoverSlider = function popoverSlider() {
+    return React.createElement(
+      'div',
+      { className: 'mr-auto ml-80 w-screen pl-200 flex justify-center items-center' },
+      React.createElement(
+        'span',
+        { className: 'wr-10 pr-5 mr-50' },
+        '\u6A2A\u5E45'
+      ),
+      React.createElement(_react2.Slider, {
+        value: columnWidthValue, onChange: columnWidthHandler,
+        step: 20, max: 450, min: 60, initialValue: 300,
+        className: 'ml-70 pl-100'
+      })
+    );
+  };
   // Popover関連
 
   console.log('PostAppのcurrentUserData', props.currentUserData);
@@ -47443,6 +47435,15 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
           React.createElement(
             'div',
             null,
+            React.createElement(
+              'div',
+              { className: 'ml-20' },
+              React.createElement(
+                _react2.Popover,
+                { content: popoverSlider, className: 'ml-80' },
+                '\u6A2A\u5E45'
+              )
+            ),
             React.createElement(
               'div',
               { className: 'mt-10 relative' },
@@ -68472,9 +68473,13 @@ var BeforeLoginPosts = exports.BeforeLoginPosts = function BeforeLoginPosts(prop
   var modalOpenHandler = function modalOpenHandler(post) {
     setClickedPost(post);
     setModalOpen(true);
+    var target = document.getElementById('header');
+    target.classList.add('head-animation');
   };
   var closeHandler = function closeHandler() {
     setModalOpen(false);
+    var target = document.getElementById('header');
+    target.classList.remove('head-animation');
   };
 
   var getClickedPostUserUrl = '/users/' + clickedPost.user_id;
@@ -68498,14 +68503,14 @@ var BeforeLoginPosts = exports.BeforeLoginPosts = function BeforeLoginPosts(prop
       _useState14 = _slicedToArray(_useState13, 2),
       postModalOpen = _useState14[0],
       setPostModalOpen = _useState14[1];
-
-  var postModalOpenHandler = function postModalOpenHandler() {
-    setPostModalOpen(true);
-  };
-  var postModalCloseHandler = function postModalCloseHandler() {
-    setPostModalOpen(false);
-  };
+  // const postModalOpenHandler = () => {
+  //   setPostModalOpen(true);
+  // };
+  // const postModalCloseHandler = () => {
+  //   setPostModalOpen(false);
+  // };
   // Slider関連
+
 
   var _useState15 = (0, _react.useState)(300),
       _useState16 = _slicedToArray(_useState15, 2),

@@ -62,9 +62,13 @@ export const BeforeLoginPosts = (props: any) => {
   const modalOpenHandler = (post: any) => {
     setClickedPost(post);
     setModalOpen(true);
+    const target = document.getElementById('header')
+    target.classList.add('head-animation');
   };
   const closeHandler = () => {
     setModalOpen(false);
+    const target = document.getElementById('header')
+    target.classList.remove('head-animation');
   };
 
   const getClickedPostUserUrl: string = '/users/' + clickedPost.user_id;
@@ -84,12 +88,12 @@ export const BeforeLoginPosts = (props: any) => {
 
   // 投稿フォームmodal,open,close
   const [postModalOpen, setPostModalOpen] = useState(false);
-  const postModalOpenHandler = () => {
-    setPostModalOpen(true);
-  };
-  const postModalCloseHandler = () => {
-    setPostModalOpen(false);
-  };
+  // const postModalOpenHandler = () => {
+  //   setPostModalOpen(true);
+  // };
+  // const postModalCloseHandler = () => {
+  //   setPostModalOpen(false);
+  // };
   // Slider関連
   const [columnWidthValue, setColumnWidthValue] = useState(300)
   const columnWidthHandler = (val: any) => {
