@@ -101,6 +101,40 @@ export const BeforeLoginPosts = (props: any) => {
     setColumnWidthValue(val)
   }
 
+  // headerHidden
+  (function () {
+    const target = document.getElementById('header'),
+      height = 56;
+    console.log('target', target)
+
+    let offset = 0,
+      lastPosition = 0,
+      ticking = false;
+    function onScroll(lastPosition: any) {
+      console.log('lastPosition', lastPosition)
+
+      if (lastPosition > height) {
+        if (lastPosition > offset) {
+          target.classList.add('head-animation');
+        } else {
+          target.classList.remove('head-animation');
+        }
+        offset = lastPosition;
+      }
+    }
+
+    window.addEventListener('scroll', function (e) {
+      lastPosition = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          onScroll(lastPosition);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  })();
+
 
   return (
     <React.Fragment>
