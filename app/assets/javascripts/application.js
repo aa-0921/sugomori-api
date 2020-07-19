@@ -47360,6 +47360,21 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
     setLikeList(nextLikeUsers);
   };
 
+  // openModal時のheaderを隠す
+
+
+  var headerHidden = function headerHidden() {
+    var target = document.getElementById('header');
+    console.log('headerHidden');
+    if (postModalOpen == true) {
+      target.classList.add('head-animation');
+    } else {
+      target.classList.remove('head-animation');
+    }
+  };
+  // openModal時のheaderを隠す
+
+
   // 投稿フォームmodal,open,close
 
   var _useState15 = (0, _react.useState)(false),
@@ -47368,6 +47383,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
       setPostModalOpen = _useState16[1];
 
   var postModalOpenHandler = function postModalOpenHandler() {
+    headerHidden();
     setPostModalOpen(true);
   };
   var postModalCloseHandler = function postModalCloseHandler() {

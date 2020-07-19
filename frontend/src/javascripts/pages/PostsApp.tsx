@@ -105,10 +105,27 @@ export const PostsApp = (props: any) => {
     setLikeList(nextLikeUsers);
   };
 
+  // openModal時のheaderを隠す
+
+
+  const headerHidden = () => {
+    const target = document.getElementById('header')
+    console.log('headerHidden')
+    if (postModalOpen == true) {
+      target.classList.add('head-animation');
+    } else {
+      target.classList.remove('head-animation');
+    }
+  }
+  // openModal時のheaderを隠す
+
+
+
 
   // 投稿フォームmodal,open,close
   const [postModalOpen, setPostModalOpen] = useState(false);
   const postModalOpenHandler = () => {
+    headerHidden();
     setPostModalOpen(true);
   };
   const postModalCloseHandler = () => {
