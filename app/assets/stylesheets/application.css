@@ -14459,6 +14459,23 @@ img.modalImage {
 #js_logged_in_component > div > div > div:nth-child(1) > div.mt-10.relative > div > div {
   border-bottom: 0px !important; }
 
+#js_logged_in_component
+> div
+> div
+> div:nth-child(1)
+> div.mt-10.relative
+> div
+> div
+> div.jsx-529403286.container.expanded
+> div
+> div
+> p
+> div
+> div
+> div
+> div {
+  color: #0070f3; }
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;

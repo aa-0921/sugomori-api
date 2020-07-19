@@ -47397,24 +47397,6 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
   };
   // Slider関連
 
-  // Popover関連
-  var popoverSlider = function popoverSlider() {
-    return React.createElement(
-      'div',
-      { className: 'mr-auto ml-80 w-screen pl-200 flex justify-center items-center' },
-      React.createElement(
-        'span',
-        { className: 'wr-10 pr-5 mr-50 mr-5' },
-        React.createElement(Icon.Maximize2, { size: 16 })
-      ),
-      React.createElement(_react2.Slider, {
-        value: columnWidthValue, onChange: columnWidthHandler,
-        step: 20, max: 450, min: 60, initialValue: 300,
-        className: 'ml-70 pl-100'
-      })
-    );
-  };
-  // Popover関連
 
   console.log('PostAppのcurrentUserData', props.currentUserData);
 
@@ -47438,7 +47420,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
               { className: 'mt-10 relative' },
               React.createElement(
                 _react2.Collapse.Group,
-                { className: 'z-20 mr-5' },
+                { className: 'z-20 mr-5 mt-5' },
                 React.createElement(
                   _react2.Collapse,
                   { title: ' ', className: 'h-1 text-base' },
@@ -47451,7 +47433,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                       React.createElement(
                         'span',
                         { className: 'wr-10 pr-5' },
-                        '\u6A2A\u5E45'
+                        React.createElement(Icon.Maximize2, { size: 25 })
                       ),
                       React.createElement(
                         _react2.Row,
@@ -47463,19 +47445,6 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                       )
                     )
                   )
-                )
-              )
-            ),
-            React.createElement(
-              'div',
-              { className: 'flex justify-end ml-20 mt-10' },
-              React.createElement(
-                'div',
-                { className: 'mr-5' },
-                React.createElement(
-                  _react2.Popover,
-                  { content: popoverSlider, className: 'ml-80' },
-                  React.createElement(Icon.Maximize2, { size: 16 })
                 )
               )
             ),
