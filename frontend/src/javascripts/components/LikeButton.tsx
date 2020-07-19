@@ -17,7 +17,7 @@ export const LikeButton = (props: any) => {
     const csrf = sessionStorage.getItem('X-CSRF-Token');
     const obj = {
       // 一旦user_id 1で固定
-      current_user_id: 1,
+      current_user_id: props.currentUserData.id,
       'X-CSRF-Token': csrf,
     };
     const body = JSON.stringify(obj);
@@ -42,7 +42,7 @@ export const LikeButton = (props: any) => {
     const csrf = sessionStorage.getItem('X-CSRF-Token');
     const obj = {
       // 一旦user_id 1で固定
-      current_user_id: 1,
+      current_user_id: props.currentUserData.id,
       'X-CSRF-Token': csrf,
     };
     const body = JSON.stringify(obj);

@@ -217,6 +217,7 @@ export const PostsApp = (props: any) => {
                         clickedPost={clickedPost}
                         pushToLikeList={pushToLikeList}
                         removeFromLikeList={removeFromLikeList}
+                        currentUserData={props.currentUserData}
                       />
                     </div>
                     {/* コメント部分ーーーーーーーーーーーーー */}

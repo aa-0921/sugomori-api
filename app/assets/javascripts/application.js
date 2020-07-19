@@ -47555,7 +47555,8 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                       likeList: likeList,
                       clickedPost: clickedPost,
                       pushToLikeList: pushToLikeList,
-                      removeFromLikeList: removeFromLikeList
+                      removeFromLikeList: removeFromLikeList,
+                      currentUserData: props.currentUserData
                     })
                   ),
                   React.createElement(
@@ -67581,7 +67582,7 @@ var LikeButton = exports.LikeButton = function LikeButton(props) {
     var csrf = sessionStorage.getItem('X-CSRF-Token');
     var obj = {
       // 一旦user_id 1で固定
-      current_user_id: 1,
+      current_user_id: props.currentUserData.id,
       'X-CSRF-Token': csrf
     };
     var body = JSON.stringify(obj);
@@ -67604,7 +67605,7 @@ var LikeButton = exports.LikeButton = function LikeButton(props) {
     var csrf = sessionStorage.getItem('X-CSRF-Token');
     var obj = {
       // 一旦user_id 1で固定
-      current_user_id: 1,
+      current_user_id: props.currentUserData.id,
       'X-CSRF-Token': csrf
     };
     var body = JSON.stringify(obj);
