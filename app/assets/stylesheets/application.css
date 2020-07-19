@@ -14459,6 +14459,24 @@ img.modalImage {
 div > div > div:nth-child(1) > div.mt-10.relative > div > div {
   border-bottom: 0px !important; }
 
+#header > div > nav > div > div > div > div.w-full > div > div > div.ml-auto > div > button {
+  background-color: #a3bffa !important; }
+
+#header
+> div
+> nav
+> div
+> div
+> div
+> div.w-full
+> div
+> div
+> div.ml-auto
+> div
+> details
+> summary {
+  background-color: #a3bffa !important; }
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;

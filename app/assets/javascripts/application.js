@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var jsLoggedIn = document.getElementById('js_logged_in_component');
   var jsNotLoggedIn = document.getElementById('js_not_logged_in_component');
   if (jsLoggedIn != null) {
+    console.log('jsLoggedInコンポーネント');
     _reactDom2.default.render(React.createElement(
       _react2.ZeitProvider,
       null,
@@ -121,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
     ), document.body.appendChild(jsLoggedIn));
   }
   if (jsNotLoggedIn != null) {
+    console.log('jsNotLoggedInコンポーネント');
     _reactDom2.default.render(React.createElement(
       _react2.ZeitProvider,
       null,
@@ -32760,7 +32762,7 @@ function Header(props) {
             { className: 'flex items-center justify-between h-16 w-full' },
             React.createElement(
               'div',
-              { className: 'flex items-center' },
+              { className: 'flex items-center w-full' },
               React.createElement(
                 'div',
                 { className: 'flex-shrink-0' },
@@ -32776,7 +32778,7 @@ function Header(props) {
               ),
               React.createElement(
                 'div',
-                null,
+                { className: 'w-full' },
                 React.createElement(
                   'div',
                   { className: 'hidden md:block' },
@@ -32834,7 +32836,7 @@ function Header(props) {
                         null,
                         React.createElement(
                           _react2.ButtonDropdown,
-                          { size: 'small' },
+                          { size: 'small', className: 'bg-indigo-300' },
                           React.createElement(
                             _react2.ButtonDropdown.Item,
                             { main: true },

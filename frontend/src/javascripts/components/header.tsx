@@ -44,14 +44,14 @@ export function Header(props: any) {
         <nav className="bg-indigo-300">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16 w-full">
-              <div className="flex items-center">
+              <div className="flex items-center w-full">
                 <div className="flex-shrink-0">
                   {/* <img className="w-30 h-30 z-20" src="../../../../app/assets/images/LOGO.svg" alt="" /> */}
                   <Link to="/">
                     <span className="font-semibold text-xl tracking-tight text-white">SUGOMORI</span>
                   </Link>
                 </div>
-                <div>
+                <div className="w-full">
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline w-auto">
                       <div className="flex">
@@ -91,7 +91,7 @@ export function Header(props: any) {
                       <div className="ml-auto">
                         {props.currentUserData != null ? (
                           <React.Fragment>
-                            <ButtonDropdown size="small">
+                            <ButtonDropdown size="small" className="bg-indigo-300">
                               <ButtonDropdown.Item main>
                                 Settings
                               </ButtonDropdown.Item>
