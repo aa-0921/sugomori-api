@@ -15,12 +15,15 @@ export const BeforeLogin = () => {
 
   // toast関連
 
-  const [toasts, setToast] = useToasts()
+  const [, setToast] = useToasts()
   useEffect(() => {
     var notice = document.getElementById("notice");
-
+    const displayToast = type => setToast({
+      text: notice.innerHTML,
+      type,
+    })
     if (notice.innerHTML) {
-      setToast({ text: notice.innerHTML })
+      displayToast('success')
     }
   }, []);
   // toast関連

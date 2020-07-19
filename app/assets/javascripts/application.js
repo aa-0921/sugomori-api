@@ -28660,14 +28660,18 @@ var HomePage = exports.HomePage = function HomePage() {
 
   var _useToasts = (0, _react2.useToasts)(),
       _useToasts2 = _slicedToArray(_useToasts, 2),
-      toasts = _useToasts2[0],
       setToast = _useToasts2[1];
 
   (0, _react.useEffect)(function () {
     var notice = document.getElementById("notice");
-
+    var displayToast = function displayToast(type) {
+      return setToast({
+        text: notice.innerHTML,
+        type: type
+      });
+    };
     if (notice.innerHTML) {
-      setToast({ text: notice.innerHTML });
+      displayToast('success');
     }
   }, []);
   // toast関連
@@ -68347,14 +68351,18 @@ var BeforeLogin = exports.BeforeLogin = function BeforeLogin() {
 
   var _useToasts = (0, _react2.useToasts)(),
       _useToasts2 = _slicedToArray(_useToasts, 2),
-      toasts = _useToasts2[0],
       setToast = _useToasts2[1];
 
   (0, _react.useEffect)(function () {
     var notice = document.getElementById("notice");
-
+    var displayToast = function displayToast(type) {
+      return setToast({
+        text: notice.innerHTML,
+        type: type
+      });
+    };
     if (notice.innerHTML) {
-      setToast({ text: notice.innerHTML });
+      displayToast('success');
     }
   }, []);
   // toast関連
