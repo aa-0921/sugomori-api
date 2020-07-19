@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { MemberList } from '../components/MemberList';
 import { FetchData } from '../api/FetchData';
 
-export const MemberListApp = () => {
+export const MemberListApp = (props: any) => {
   const [fetchUsers, setFetchUsers] = useState([]);
   const [followUsers, setFollowUsers] = useState([]);
 
@@ -47,6 +47,7 @@ export const MemberListApp = () => {
               followUsers={followUsers}
               pushToFollowUsers={pushToFollowUsers}
               removeFromFollowUsers={removeFromFollowUsers}
+              currentUserData={props.currentUserData}
             />
           </span>
 

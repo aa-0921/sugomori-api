@@ -207,7 +207,6 @@ export const ProfilePage = (props) => {
   };
 
   const onClickFollow = async (userId: any) => {
-    // 一時的にuser_idを1に
     const obj = { current_user_id: props.currentUserData.id };
     const body = JSON.stringify(obj);
     const method = 'PUT';
@@ -224,7 +223,6 @@ export const ProfilePage = (props) => {
       .catch((error) => { });
   };
   const onClickUnFollow = async (userId: any) => {
-    // 一時的にuser_idを1に
     const obj = { current_user_id: props.currentUserData.id };
     const body = JSON.stringify(obj);
     const method = 'PUT';

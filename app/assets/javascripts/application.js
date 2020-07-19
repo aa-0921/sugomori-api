@@ -28696,10 +28696,19 @@ var HomePage = exports.HomePage = function HomePage() {
       React.createElement(_reactRouterDom.Route, { exact: true, path: '/about', component: _About.About }),
       React.createElement(_reactRouterDom.Route, { path: '/profilepage/:id',
         render: function render(props) {
-          return React.createElement(_ProfilePage.ProfilePage, _extends({}, props, { currentUserData: currentUserData }));
+          return React.createElement(_ProfilePage.ProfilePage, _extends({}, props, {
+            currentUserData: currentUserData
+          }));
         }
       }),
-      React.createElement(_reactRouterDom.Route, { exact: true, path: '/MemberListApp', component: _MemberListApp.MemberListApp })
+      React.createElement(_reactRouterDom.Route, { exact: true, path: '/MemberListApp',
+        render: function render(props) {
+          return React.createElement(_MemberListApp.MemberListApp, _extends({}, props, {
+            currentUserData: currentUserData,
+            component: _MemberListApp.MemberListApp
+          }));
+        }
+      })
     )
   );
 };
@@ -67274,8 +67283,7 @@ var UserList = exports.UserList = function UserList(props) {
   var onClickFollow = async function onClickFollow(userId) {
     var csrf = sessionStorage.getItem('X-CSRF-Token');
     var obj = {
-      // 一時的にuser_idを1に
-      current_user_id: 1,
+      current_user_id: props.currentUserData.id,
       'X-CSRF-Token': csrf
     };
     var body = JSON.stringify(obj);
@@ -67294,9 +67302,7 @@ var UserList = exports.UserList = function UserList(props) {
   };
   var onClickUnFollow = async function onClickUnFollow(userId) {
     var obj = {
-
-      // 一時的にuser_idを1に
-      current_user_id: 1
+      current_user_id: props.currentUserData.id
     };
 
     var body = JSON.stringify(obj);
@@ -67468,7 +67474,8 @@ var MemberList = exports.MemberList = function MemberList(props) {
             user: user,
             followUsersList: props.followUsers,
             pushToFollowUsers: props.pushToFollowUsers,
-            removeFromFollowUsers: props.removeFromFollowUsers
+            removeFromFollowUsers: props.removeFromFollowUsers,
+            currentUserData: props.currentUserData
           })
         );
       })
@@ -67990,7 +67997,6 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
   };
 
   var onClickFollow = async function onClickFollow(userId) {
-    // 一時的にuser_idを1に
     var obj = { current_user_id: props.currentUserData.id };
     var body = JSON.stringify(obj);
     var method = 'PUT';
@@ -68005,7 +68011,6 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
     }).catch(function (error) {});
   };
   var onClickUnFollow = async function onClickUnFollow(userId) {
-    // 一時的にuser_idを1に
     var obj = { current_user_id: props.currentUserData.id };
     var body = JSON.stringify(obj);
     var method = 'PUT';
@@ -68254,7 +68259,7 @@ var _FetchData = __webpack_require__(306);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-var MemberListApp = exports.MemberListApp = function MemberListApp() {
+var MemberListApp = exports.MemberListApp = function MemberListApp(props) {
   var _useState = (0, _react.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       fetchUsers = _useState2[0],
@@ -68316,7 +68321,8 @@ var MemberListApp = exports.MemberListApp = function MemberListApp() {
             fetchUsers: fetchUsers,
             followUsers: followUsers,
             pushToFollowUsers: pushToFollowUsers,
-            removeFromFollowUsers: removeFromFollowUsers
+            removeFromFollowUsers: removeFromFollowUsers,
+            currentUserData: props.currentUserData
           })
         ),
         React.createElement(

@@ -14,6 +14,7 @@ export const MemberList = (props: any): any => {
               followUsersList={props.followUsers}
               pushToFollowUsers={props.pushToFollowUsers}
               removeFromFollowUsers={props.removeFromFollowUsers}
+              currentUserData={props.currentUserData}
             />
           </div>
         ))}

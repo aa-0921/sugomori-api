@@ -10,8 +10,7 @@ export const UserList = (props: any) => {
   const onClickFollow = async (userId: any) => {
     const csrf = sessionStorage.getItem('X-CSRF-Token');
     const obj = {
-      // 一時的にuser_idを1に
-      current_user_id: 1,
+      current_user_id: props.currentUserData.id,
       'X-CSRF-Token': csrf,
     };
     const body = JSON.stringify(obj);
@@ -32,9 +31,7 @@ export const UserList = (props: any) => {
   };
   const onClickUnFollow = async (userId: any) => {
     const obj = {
-
-      // 一時的にuser_idを1に
-      current_user_id: 1,
+      current_user_id: props.currentUserData.id,
     };
 
     const body = JSON.stringify(obj);
