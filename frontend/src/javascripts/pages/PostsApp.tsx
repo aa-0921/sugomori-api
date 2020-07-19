@@ -162,7 +162,7 @@ export const PostsApp = (props: any) => {
             <div>
               {/* // Popover関連 */}
 
-              <div className="ml-20">
+              <div className="flex justify-end ml-20">
                 <Popover content={popoverSlider} className="ml-80">
                   横幅
                 </Popover>

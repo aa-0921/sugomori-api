@@ -47437,7 +47437,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
             null,
             React.createElement(
               'div',
-              { className: 'ml-20' },
+              { className: 'flex justify-end ml-20' },
               React.createElement(
                 _react2.Popover,
                 { content: popoverSlider, className: 'ml-80' },
