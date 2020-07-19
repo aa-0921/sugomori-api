@@ -47350,13 +47350,26 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
   var modalOpenHandler = function modalOpenHandler(post) {
     setClickedPost(post);
     setModalOpen(true);
-    var target = document.getElementById('header');
-    target.classList.add('head-animation');
+    removeHeader();
   };
   var closeHandler = function closeHandler() {
     setModalOpen(false);
+    addHeader();
+  };
+
+  var removeHeader = function removeHeader() {
+    var target = document.getElementById('header');
+    target.classList.add('head-animation');
+  };
+
+  var addHeader = function addHeader() {
     var target = document.getElementById('header');
     target.classList.remove('head-animation');
+  };
+
+  var goProfile = function goProfile() {
+    addHeader();
+    props.history.push('/profilepage/' + clickedPost.user_id);
   };
 
   var getClickedPostUserUrl = '/users/' + clickedPost.user_id;
@@ -47405,13 +47418,11 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
 
   var postModalOpenHandler = function postModalOpenHandler() {
     setPostModalOpen(true);
-    var target = document.getElementById('header');
-    target.classList.add('head-animation');
+    removeHeader();
   };
   var postModalCloseHandler = function postModalCloseHandler() {
     setPostModalOpen(false);
-    var target = document.getElementById('header');
-    target.classList.remove('head-animation');
+    addHeader();
   };
 
   // Slider関連
@@ -47524,7 +47535,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                       {
                         to: '/profilepage/' + clickedPost.user_id,
                         onClick: function onClick() {
-                          props.history.push('/profilepage/' + clickedPost.user_id);
+                          return goProfile();
                         }
                       },
                       React.createElement(

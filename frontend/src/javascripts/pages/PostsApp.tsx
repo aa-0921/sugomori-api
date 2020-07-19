@@ -68,13 +68,26 @@ export const PostsApp = (props: any) => {
   const modalOpenHandler = (post: any) => {
     setClickedPost(post);
     setModalOpen(true);
-    const target = document.getElementById('header')
-    target.classList.add('head-animation');
+    removeHeader();
   };
   const closeHandler = () => {
     setModalOpen(false);
+    addHeader();
+  };
+
+  const removeHeader = () => {
+    const target = document.getElementById('header')
+    target.classList.add('head-animation');
+  };
+
+  const addHeader = () => {
     const target = document.getElementById('header')
     target.classList.remove('head-animation');
+  };
+
+  const goProfile = () => {
+    addHeader();
+    props.history.push('/profilepage/' + clickedPost.user_id);
   };
 
   const getClickedPostUserUrl: string = '/users/' + clickedPost.user_id;
@@ -115,17 +128,11 @@ export const PostsApp = (props: any) => {
   const [postModalOpen, setPostModalOpen] = useState(false);
   const postModalOpenHandler = () => {
     setPostModalOpen(true);
-    const target = document.getElementById('header')
-    target.classList.add('head-animation');
-
-
+    removeHeader();
   };
   const postModalCloseHandler = () => {
     setPostModalOpen(false);
-    const target = document.getElementById('header')
-    target.classList.remove('head-animation');
-
-
+    addHeader();
   };
 
   // Slider関連
@@ -198,9 +205,7 @@ export const PostsApp = (props: any) => {
                     <div className="flex text-center mt-4">
                       <Link
                         to={'/profilepage/' + clickedPost.user_id}
-                        onClick={() => {
-                          props.history.push('/profilepage/' + clickedPost.user_id);
-                        }}
+                        onClick={() => goProfile()}
                       >
                         <span>{clickedPostUser.name}</span>
                       </Link>
