@@ -42,6 +42,8 @@ div > div > div:nth-child(1) > div.mt-10.relative > div > div {
 
 #header > div > nav > div > div > div > div.w-full > div > div > div.ml-auto > div > button {
   background-color: #a3bffa !important;
+  color: white;
+  font-weight: bold;
 }
 #header
   > div
@@ -57,4 +59,5 @@ div > div > div:nth-child(1) > div.mt-10.relative > div > div {
   > details
   > summary {
   background-color: #a3bffa !important;
+  color: white;
 }

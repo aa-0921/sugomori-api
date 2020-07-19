@@ -13,6 +13,7 @@ import { ProfilePage } from '../pages/ProfilePage';
 import { MemberListApp } from '../pages/MemberListApp';
 import { FetchData } from '../api/FetchData';
 import { useState, useEffect } from 'react';
+import { useToasts } from '@zeit-ui/react';
 
 export const HomePage = () => {
   const [currentUserData, setCurrentUserData] = useState({
@@ -20,6 +21,7 @@ export const HomePage = () => {
     email: '',
     name: '',
   })
+
 
   const getInitialDataUrl: string = '/initial_data/show';
 
@@ -32,6 +34,19 @@ export const HomePage = () => {
       console.log('currentUserData');
     });
   }, []);
+
+
+  // toast関連
+
+  const [toasts, setToast] = useToasts()
+  useEffect(() => {
+    var notice = document.getElementById("notice");
+
+    if (notice.innerHTML) {
+      setToast({ text: notice.innerHTML })
+    }
+  }, []);
+  // toast関連
 
   console.log('HomePageのcurrentUserData', currentUserData);
 

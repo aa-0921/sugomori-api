@@ -28630,6 +28630,8 @@ var _MemberListApp = __webpack_require__(874);
 
 var _FetchData = __webpack_require__(306);
 
+var _react2 = __webpack_require__(35);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var HomePage = exports.HomePage = function HomePage() {
@@ -28653,6 +28655,22 @@ var HomePage = exports.HomePage = function HomePage() {
       console.log('currentUserData');
     });
   }, []);
+
+  // toast関連
+
+  var _useToasts = (0, _react2.useToasts)(),
+      _useToasts2 = _slicedToArray(_useToasts, 2),
+      toasts = _useToasts2[0],
+      setToast = _useToasts2[1];
+
+  (0, _react.useEffect)(function () {
+    var notice = document.getElementById("notice");
+
+    if (notice.innerHTML) {
+      setToast({ text: notice.innerHTML });
+    }
+  }, []);
+  // toast関連
 
   console.log('HomePageのcurrentUserData', currentUserData);
 
@@ -68303,6 +68321,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.BeforeLogin = undefined;
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
@@ -68317,9 +68337,29 @@ var _header = __webpack_require__(34);
 
 var _BeforeLoginPosts = __webpack_require__(876);
 
+var _react2 = __webpack_require__(35);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var BeforeLogin = exports.BeforeLogin = function BeforeLogin() {
+
+  // toast関連
+
+  var _useToasts = (0, _react2.useToasts)(),
+      _useToasts2 = _slicedToArray(_useToasts, 2),
+      toasts = _useToasts2[0],
+      setToast = _useToasts2[1];
+
+  (0, _react.useEffect)(function () {
+    var notice = document.getElementById("notice");
+
+    if (notice.innerHTML) {
+      setToast({ text: notice.innerHTML });
+    }
+  }, []);
+  // toast関連
+
+
   var currentUserData = null;
   console.log('BeforeLoginのcurrent_user');
   return React.createElement(
