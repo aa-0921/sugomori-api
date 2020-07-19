@@ -32757,7 +32757,7 @@ function Header(props) {
           { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' },
           React.createElement(
             'div',
-            { className: 'flex items-center justify-between h-16' },
+            { className: 'flex items-center justify-between h-16 w-full' },
             React.createElement(
               'div',
               { className: 'flex items-center' },
@@ -68542,28 +68542,32 @@ var BeforeLoginPosts = exports.BeforeLoginPosts = function BeforeLoginPosts(prop
             null,
             React.createElement(
               'div',
-              null,
+              { className: 'mt-10 relative' },
               React.createElement(
                 _react2.Collapse.Group,
-                null,
+                { className: 'z-20 mr-5 mt-5' },
                 React.createElement(
                   _react2.Collapse,
                   { title: ' ', className: 'h-1 text-base' },
                   React.createElement(
-                    'div',
-                    { className: 'bg-white flex justify-center items-center' },
+                    _react2.Text,
+                    null,
                     React.createElement(
-                      'span',
-                      { className: 'wr-10 pr-5' },
-                      '\u6A2A\u5E45'
-                    ),
-                    React.createElement(
-                      _react2.Row,
-                      { style: { width: '75%' } },
-                      React.createElement(_react2.Slider, {
-                        value: columnWidthValue, onChange: columnWidthHandler,
-                        step: 20, max: 500, min: 100, initialValue: 300
-                      })
+                      'div',
+                      { className: 'bg-white flex justify-center items-center' },
+                      React.createElement(
+                        'span',
+                        { className: 'wr-10 pr-5' },
+                        React.createElement(Icon.Maximize2, { size: 25 })
+                      ),
+                      React.createElement(
+                        _react2.Row,
+                        { style: { width: '75%' } },
+                        React.createElement(_react2.Slider, {
+                          value: columnWidthValue, onChange: columnWidthHandler,
+                          step: 20, max: 500, min: 100, initialValue: 300
+                        })
+                      )
                     )
                   )
                 )

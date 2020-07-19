@@ -43,7 +43,7 @@ export function Header(props: any) {
       <div>
         <nav className="bg-indigo-300">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16">
+            <div className="flex items-center justify-between h-16 w-full">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
                   {/* <img className="w-30 h-30 z-20" src="../../../../app/assets/images/LOGO.svg" alt="" /> */}
