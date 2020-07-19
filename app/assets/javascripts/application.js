@@ -32852,7 +32852,7 @@ function Header(props) {
                     ),
                     React.createElement(
                       'div',
-                      { className: 'ml-auto mr-5' },
+                      { className: 'buttonDropdownWrap ml-auto mr-5' },
                       props.currentUserData != null ? React.createElement(
                         React.Fragment,
                         null,
@@ -68582,7 +68582,7 @@ var BeforeLoginPosts = exports.BeforeLoginPosts = function BeforeLoginPosts(prop
               { className: 'collapseWrap mt-18 pt-5' },
               React.createElement(
                 _react2.Collapse.Group,
-                { className: 'z-20 mr-5 mt-5' },
+                { className: 'z-20 mr-5 mt-10' },
                 React.createElement(
                   _react2.Collapse,
                   { title: ' ', className: 'h-1 text-base' },

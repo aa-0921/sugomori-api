@@ -133,7 +133,7 @@ export const BeforeLoginPosts = (props: any) => {
           <div>
             <div>
               <div className="collapseWrap mt-18 pt-5">
-                <Collapse.Group className="z-20 mr-5 mt-5">
+                <Collapse.Group className="z-20 mr-5 mt-10">
                   <Collapse title=" " className="h-1 text-base">
                     <Text>
                       <div className="bg-white flex justify-center items-center">

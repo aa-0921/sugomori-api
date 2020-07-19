@@ -14460,24 +14460,12 @@ div.collapseWrap > div > div {
   border-bottom: 0px !important;
   border-top: 0px !important; }
 
-#header > div > nav > div > div > div > div.w-full > div > div > div.ml-auto > div > button {
+div.buttonDropdownWrap > div > button {
   background-color: #a3bffa !important;
   color: white;
   font-weight: bold; }
 
-#header
-> div
-> nav
-> div
-> div
-> div
-> div.w-full
-> div
-> div
-> div.ml-auto
-> div
-> details
-> summary {
+details > summary {
   background-color: #a3bffa !important;
   color: white; }
 
