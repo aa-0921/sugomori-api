@@ -67,9 +67,13 @@ export const PostsApp = (props: any) => {
   const modalOpenHandler = (post: any) => {
     setClickedPost(post);
     setModalOpen(true);
+    const target = document.getElementById('header')
+    target.classList.add('head-animation');
   };
   const closeHandler = () => {
     setModalOpen(false);
+    const target = document.getElementById('header')
+    target.classList.remove('head-animation');
   };
 
   const getClickedPostUserUrl: string = '/users/' + clickedPost.user_id;
@@ -108,15 +112,15 @@ export const PostsApp = (props: any) => {
   // openModal時のheaderを隠す
 
 
-  const headerHidden = () => {
-    const target = document.getElementById('header')
-    console.log('headerHidden')
-    if (postModalOpen == true) {
-      target.classList.add('head-animation');
-    } else {
-      target.classList.remove('head-animation');
-    }
-  }
+  // const headerHidden = () => {
+  //   const target = document.getElementById('header')
+  //   console.log('headerHidden')
+  //   if (postModalOpen == true) {
+  //     target.classList.add('head-animation');
+  //   } else {
+  //     target.classList.remove('head-animation');
+  //   }
+  // }
   // openModal時のheaderを隠す
 
 
@@ -125,12 +129,20 @@ export const PostsApp = (props: any) => {
   // 投稿フォームmodal,open,close
   const [postModalOpen, setPostModalOpen] = useState(false);
   const postModalOpenHandler = () => {
-    headerHidden();
     setPostModalOpen(true);
+    const target = document.getElementById('header')
+    target.classList.add('head-animation');
+
+
   };
   const postModalCloseHandler = () => {
     setPostModalOpen(false);
+    const target = document.getElementById('header')
+    target.classList.remove('head-animation');
+
+
   };
+
   // Slider関連
   const [columnWidthValue, setColumnWidthValue] = useState(300)
   const columnWidthHandler = (val: any) => {

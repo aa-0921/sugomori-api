@@ -47318,9 +47318,13 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
   var modalOpenHandler = function modalOpenHandler(post) {
     setClickedPost(post);
     setModalOpen(true);
+    var target = document.getElementById('header');
+    target.classList.add('head-animation');
   };
   var closeHandler = function closeHandler() {
     setModalOpen(false);
+    var target = document.getElementById('header');
+    target.classList.remove('head-animation');
   };
 
   var getClickedPostUserUrl = '/users/' + clickedPost.user_id;
@@ -47363,15 +47367,15 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
   // openModal時のheaderを隠す
 
 
-  var headerHidden = function headerHidden() {
-    var target = document.getElementById('header');
-    console.log('headerHidden');
-    if (postModalOpen == true) {
-      target.classList.add('head-animation');
-    } else {
-      target.classList.remove('head-animation');
-    }
-  };
+  // const headerHidden = () => {
+  //   const target = document.getElementById('header')
+  //   console.log('headerHidden')
+  //   if (postModalOpen == true) {
+  //     target.classList.add('head-animation');
+  //   } else {
+  //     target.classList.remove('head-animation');
+  //   }
+  // }
   // openModal時のheaderを隠す
 
 
@@ -47383,12 +47387,16 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
       setPostModalOpen = _useState16[1];
 
   var postModalOpenHandler = function postModalOpenHandler() {
-    headerHidden();
     setPostModalOpen(true);
+    var target = document.getElementById('header');
+    target.classList.add('head-animation');
   };
   var postModalCloseHandler = function postModalCloseHandler() {
     setPostModalOpen(false);
+    var target = document.getElementById('header');
+    target.classList.remove('head-animation');
   };
+
   // Slider関連
 
   var _useState17 = (0, _react.useState)(300),
