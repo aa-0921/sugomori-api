@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :picposts do
     resources :comments, only: [:create, :index]
   end
-  resources :users, except: [:destroy]
+  resources :users, except: [:destroy, :update]
   put 'users/follow/:user_id' => 'users#follow'
   put 'users/unfollow/:user_id' => 'users#unfollow'
   # フォローとフォローを外すアクション

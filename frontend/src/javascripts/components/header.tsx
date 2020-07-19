@@ -10,13 +10,11 @@ export function Header(props: any) {
   (function () {
     const target = document.getElementById('header'),
       height = 56;
-    console.log('target', target)
 
     let offset = 0,
       lastPosition = 0,
       ticking = false;
     function onScroll(lastPosition: any) {
-      console.log('lastPosition', lastPosition)
 
       if (lastPosition > height) {
         if (lastPosition > offset) {
