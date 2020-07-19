@@ -28604,6 +28604,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.HomePage = undefined;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 // import React, { useState, useEffect } from 'react';
@@ -28686,13 +28688,17 @@ var HomePage = exports.HomePage = function HomePage() {
       _reactRouterDom.Switch,
       null,
       React.createElement(_reactRouterDom.Route, { exact: true, path: '/',
-        render: function render() {
-          return React.createElement(_PostsApp.PostsApp, { currentUserData: currentUserData });
+        render: function render(props) {
+          return React.createElement(_PostsApp.PostsApp, _extends({}, props, { currentUserData: currentUserData }));
         }
       }),
       React.createElement(_reactRouterDom.Route, { exact: true, path: '/pickup', component: _Pickup.Pickup }),
       React.createElement(_reactRouterDom.Route, { exact: true, path: '/about', component: _About.About }),
-      React.createElement(_reactRouterDom.Route, { path: '/profilepage/:id', component: _ProfilePage.ProfilePage }),
+      React.createElement(_reactRouterDom.Route, { path: '/profilepage/:id',
+        render: function render(props) {
+          return React.createElement(_ProfilePage.ProfilePage, _extends({}, props, { currentUserData: currentUserData }));
+        }
+      }),
       React.createElement(_reactRouterDom.Route, { exact: true, path: '/MemberListApp', component: _MemberListApp.MemberListApp })
     )
   );
@@ -67913,7 +67919,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
     var csrf = sessionStorage.getItem('X-CSRF-Token');
     var obj = {
       // 一旦user_id 1で固定
-      current_user_id: 1,
+      current_user_id: props.currentUserData.id,
       'X-CSRF-Token': csrf
     };
     var body = JSON.stringify(obj);
@@ -67936,7 +67942,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
     var csrf = sessionStorage.getItem('X-CSRF-Token');
     var obj = {
       // 一旦user_id 1で固定
-      current_user_id: 1,
+      current_user_id: props.currentUserData.id,
       'X-CSRF-Token': csrf
     };
     var body = JSON.stringify(obj);
@@ -67973,7 +67979,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
 
   var onClickFollow = async function onClickFollow(userId) {
     // 一時的にuser_idを1に
-    var obj = { current_user_id: 1 };
+    var obj = { current_user_id: props.currentUserData.id };
     var body = JSON.stringify(obj);
     var method = 'PUT';
     var postUrl = '/users/follow/' + fetchUser.id;
@@ -67988,7 +67994,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
   };
   var onClickUnFollow = async function onClickUnFollow(userId) {
     // 一時的にuser_idを1に
-    var obj = { current_user_id: 1 };
+    var obj = { current_user_id: props.currentUserData.id };
     var body = JSON.stringify(obj);
     var method = 'PUT';
     var postUrl = '/users/unfollow/' + fetchUser.id;
@@ -68021,8 +68027,6 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
 
   //deleteButton関連
   var onClickDelete = async function onClickDelete(clickedPostId) {
-    // const obj = { current_user_id: 1 };
-    // const body = JSON.stringify(obj);
     var method = 'DELETE';
     var postDeleteUrl = '/picposts/' + clickedPostId;
 
@@ -68053,7 +68057,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
   return React.createElement(
     React.Fragment,
     null,
-    React.createElement(_react2.Spacer, { y: 1 }),
+    React.createElement(_react2.Spacer, { y: 3 }),
     React.createElement(
       _react2.Card,
       { shadow: true },

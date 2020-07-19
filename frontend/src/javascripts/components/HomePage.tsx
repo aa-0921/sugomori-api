@@ -59,11 +59,13 @@ export const HomePage = () => {
 
       <Switch>
         <Route exact path="/"
-          render={() => <PostsApp currentUserData={currentUserData} />}
+          render={(props) => <PostsApp {...props} currentUserData={currentUserData} />}
         />
         <Route exact path="/pickup" component={Pickup} />
         <Route exact path="/about" component={About} />
-        <Route path="/profilepage/:id" component={ProfilePage} />
+        <Route path="/profilepage/:id"
+          render={(props) => <ProfilePage  {...props} currentUserData={currentUserData} />}
+        />
         <Route exact path="/MemberListApp" component={MemberListApp} />
       </Switch>
       {/* <Footer /> */}

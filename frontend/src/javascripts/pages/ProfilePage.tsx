@@ -146,7 +146,7 @@ export const ProfilePage = (props) => {
     const csrf = sessionStorage.getItem('X-CSRF-Token');
     const obj = {
       // 一旦user_id 1で固定
-      current_user_id: 1,
+      current_user_id: props.currentUserData.id,
       'X-CSRF-Token': csrf,
     };
     const body = JSON.stringify(obj);
@@ -171,7 +171,7 @@ export const ProfilePage = (props) => {
     const csrf = sessionStorage.getItem('X-CSRF-Token');
     const obj = {
       // 一旦user_id 1で固定
-      current_user_id: 1,
+      current_user_id: props.currentUserData.id,
       'X-CSRF-Token': csrf,
     };
     const body = JSON.stringify(obj);
@@ -208,7 +208,7 @@ export const ProfilePage = (props) => {
 
   const onClickFollow = async (userId: any) => {
     // 一時的にuser_idを1に
-    const obj = { current_user_id: 1 };
+    const obj = { current_user_id: props.currentUserData.id };
     const body = JSON.stringify(obj);
     const method = 'PUT';
     const postUrl: string = '/users/follow/' + fetchUser.id;
@@ -225,7 +225,7 @@ export const ProfilePage = (props) => {
   };
   const onClickUnFollow = async (userId: any) => {
     // 一時的にuser_idを1に
-    const obj = { current_user_id: 1 };
+    const obj = { current_user_id: props.currentUserData.id };
     const body = JSON.stringify(obj);
     const method = 'PUT';
     const postUrl: string = '/users/unfollow/' + fetchUser.id;
@@ -254,8 +254,6 @@ export const ProfilePage = (props) => {
 
   //deleteButton関連
   const onClickDelete = async (clickedPostId: any) => {
-    // const obj = { current_user_id: 1 };
-    // const body = JSON.stringify(obj);
     const method = 'DELETE';
     const postDeleteUrl: string = '/picposts/' + clickedPostId;
 
@@ -286,7 +284,7 @@ export const ProfilePage = (props) => {
   console.log('followUsers', followUsers)
   return (
     <React.Fragment>
-      < Spacer y={1} />
+      < Spacer y={3} />
       <Card shadow>
         <div className="flex">
           <div className="w-auto">
