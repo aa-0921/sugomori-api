@@ -47573,7 +47573,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                 onClick: function onClick() {
                   return postModalOpenHandler();
                 },
-                className: 'transition duration-500 ease-in-out bg-indigo-300 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer' },
+                className: 'transition duration-500 ease-in-out bg-indigo-300 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-indigo-500 hover:border-red-600 rounded-full cursor-pointer' },
               React.createElement(Icon.PlusCircle, { size: 50 })
             )
           )
