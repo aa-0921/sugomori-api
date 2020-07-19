@@ -88,7 +88,7 @@ export function Header(props: any) {
                             </React.Fragment>
                           )}
                       </div>
-                      <div className="ml-auto">
+                      <div className="ml-auto mr-5">
                         {props.currentUserData != null ? (
                           <React.Fragment>
                             <ButtonDropdown size="small" className="bg-indigo-300">

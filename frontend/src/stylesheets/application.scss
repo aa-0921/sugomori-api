@@ -36,7 +36,7 @@ img.modalImage {
 
 // collupsのborder-bottom
 
-div > div > div:nth-child(1) > div.mt-10.relative > div > div {
+div.collapseWrap > div > div {
   border-bottom: 0px !important;
   border-top: 0px !important;
 }

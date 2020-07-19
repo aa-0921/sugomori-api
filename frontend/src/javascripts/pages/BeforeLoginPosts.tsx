@@ -86,14 +86,6 @@ export const BeforeLoginPosts = (props: any) => {
 
 
 
-  // 投稿フォームmodal,open,close
-  const [postModalOpen, setPostModalOpen] = useState(false);
-  // const postModalOpenHandler = () => {
-  //   setPostModalOpen(true);
-  // };
-  // const postModalCloseHandler = () => {
-  //   setPostModalOpen(false);
-  // };
   // Slider関連
   const [columnWidthValue, setColumnWidthValue] = useState(300)
   const columnWidthHandler = (val: any) => {
@@ -140,7 +132,7 @@ export const BeforeLoginPosts = (props: any) => {
         <div>
           <div>
             <div>
-              <div className="mt-10 relative">
+              <div className="collapseWrap mt-18 pt-5">
                 <Collapse.Group className="z-20 mr-5 mt-5">
                   <Collapse title=" " className="h-1 text-base">
                     <Text>

@@ -32852,7 +32852,7 @@ function Header(props) {
                     ),
                     React.createElement(
                       'div',
-                      { className: 'ml-auto' },
+                      { className: 'ml-auto mr-5' },
                       props.currentUserData != null ? React.createElement(
                         React.Fragment,
                         null,
@@ -47441,10 +47441,10 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
             null,
             React.createElement(
               'div',
-              { className: 'mt-10 relative' },
+              { className: 'collapseWrap mt-18 pt-5' },
               React.createElement(
                 _react2.Collapse.Group,
-                { className: 'z-20 mr-5 mt-5' },
+                { className: 'z-20 mr-5 mt-10' },
                 React.createElement(
                   _react2.Collapse,
                   { title: ' ', className: 'h-1 text-base' },
@@ -68518,25 +68518,12 @@ var BeforeLoginPosts = exports.BeforeLoginPosts = function BeforeLoginPosts(prop
     }
   }, [clickedPost]);
 
-  // 投稿フォームmodal,open,close
-
-  var _useState13 = (0, _react.useState)(false),
-      _useState14 = _slicedToArray(_useState13, 2),
-      postModalOpen = _useState14[0],
-      setPostModalOpen = _useState14[1];
-  // const postModalOpenHandler = () => {
-  //   setPostModalOpen(true);
-  // };
-  // const postModalCloseHandler = () => {
-  //   setPostModalOpen(false);
-  // };
   // Slider関連
 
-
-  var _useState15 = (0, _react.useState)(300),
-      _useState16 = _slicedToArray(_useState15, 2),
-      columnWidthValue = _useState16[0],
-      setColumnWidthValue = _useState16[1];
+  var _useState13 = (0, _react.useState)(300),
+      _useState14 = _slicedToArray(_useState13, 2),
+      columnWidthValue = _useState14[0],
+      setColumnWidthValue = _useState14[1];
 
   var columnWidthHandler = function columnWidthHandler(val) {
     console.log(val);
@@ -68592,7 +68579,7 @@ var BeforeLoginPosts = exports.BeforeLoginPosts = function BeforeLoginPosts(prop
             null,
             React.createElement(
               'div',
-              { className: 'mt-10 relative' },
+              { className: 'collapseWrap mt-18 pt-5' },
               React.createElement(
                 _react2.Collapse.Group,
                 { className: 'z-20 mr-5 mt-5' },
