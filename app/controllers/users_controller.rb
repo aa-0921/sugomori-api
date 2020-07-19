@@ -25,11 +25,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    p "アクションshow"
-    p "current_userの内容"
-
-    p current_user
-
     render json: { status: 'SUCCESS', message: 'Loaded the user', data: @user }
   end
 
