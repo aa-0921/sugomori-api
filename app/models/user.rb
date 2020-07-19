@@ -10,7 +10,7 @@ class User < ApplicationRecord
   acts_as_followable
   acts_as_follower
 
-  # before_save -> { skip_confirmation! }
+  before_save -> { skip_confirmation! }
   before_save { self.email = email.downcase }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   validates :email, presence: true, length: { maximum: 255 },
