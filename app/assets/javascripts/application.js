@@ -47423,45 +47423,32 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
               'div',
               { className: 'mt-10 relative' },
               React.createElement(
-                _react2.Tooltip,
-                { text: '\u5199\u771F\u306E\u6A2A\u5E45\u3092\u8ABF\u6574\u3067\u304D\u307E\u3059', placement: 'bottom', type: 'success', offset: '0' },
+                _react2.Collapse.Group,
+                { className: 'z-20 mr-5' },
                 React.createElement(
-                  _react2.Collapse.Group,
-                  { className: 'z-20 mr-5' },
+                  _react2.Collapse,
+                  { title: ' ', className: 'h-1 text-base' },
                   React.createElement(
-                    _react2.Collapse,
-                    { title: ' ', className: 'h-1 text-base' },
+                    _react2.Text,
+                    null,
                     React.createElement(
-                      _react2.Text,
-                      null,
+                      'div',
+                      { className: 'bg-white flex justify-center items-center' },
                       React.createElement(
-                        'div',
-                        { className: 'bg-white flex justify-center items-center' },
-                        React.createElement(
-                          'span',
-                          { className: 'wr-10 pr-5' },
-                          '\u6A2A\u5E45'
-                        ),
-                        React.createElement(
-                          _react2.Row,
-                          { style: { width: '75%' } },
-                          React.createElement(_react2.Slider, {
-                            value: columnWidthValue, onChange: columnWidthHandler,
-                            step: 20, max: 500, min: 100, initialValue: 300
-                          })
-                        )
+                        'span',
+                        { className: 'wr-10 pr-5' },
+                        '\u6A2A\u5E45'
+                      ),
+                      React.createElement(
+                        _react2.Row,
+                        { style: { width: '75%' } },
+                        React.createElement(_react2.Slider, {
+                          value: columnWidthValue, onChange: columnWidthHandler,
+                          step: 20, max: 500, min: 100, initialValue: 300
+                        })
                       )
                     )
                   )
-                )
-              ),
-              React.createElement(
-                'div',
-                { className: 'tooltipDiv flex justify-end absolute w-full bottom-0' },
-                React.createElement(
-                  'div',
-                  null,
-                  '\u2003\u2003\u2003'
                 )
               )
             ),
@@ -47494,7 +47481,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
               null,
               React.createElement(
                 _react2.Modal.Content,
-                { className: 'overflow-y-scroll h-screen' },
+                { className: 'overflow-y-scroll h-screen z-10' },
                 React.createElement(
                   'div',
                   { className: 'flex flex-col items-center h-auto' },

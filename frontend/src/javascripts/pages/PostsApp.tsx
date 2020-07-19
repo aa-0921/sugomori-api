@@ -154,32 +154,25 @@ export const PostsApp = (props: any) => {
               </div> */}
               <div className="mt-10 relative">
                 {/* <Collapse initialVisible className="h-1 text-base"> */}
-                <Tooltip text="写真の横幅を調整できます" placement="bottom" type="success" offset="0">
 
-                  <Collapse.Group className="z-20 mr-5">
+                <Collapse.Group className="z-20 mr-5">
 
-                    <Collapse title=" " className="h-1 text-base">
-                      <Text>
-                        <div className="bg-white flex justify-center items-center">
-                          <span className="wr-10 pr-5">横幅</span>
-                          <Row style={{ width: '75%' }}>
-                            <Slider
-                              value={columnWidthValue} onChange={columnWidthHandler}
-                              step={20} max={500} min={100} initialValue={300}
-                            />
-                          </Row>
-                        </div>
-                      </Text>
-                    </Collapse>
+                  <Collapse title=" " className="h-1 text-base">
+                    <Text>
+                      <div className="bg-white flex justify-center items-center">
+                        <span className="wr-10 pr-5">横幅</span>
+                        <Row style={{ width: '75%' }}>
+                          <Slider
+                            value={columnWidthValue} onChange={columnWidthHandler}
+                            step={20} max={500} min={100} initialValue={300}
+                          />
+                        </Row>
+                      </div>
+                    </Text>
+                  </Collapse>
 
-                  </Collapse.Group>
-                </Tooltip>
+                </Collapse.Group>
 
-                <div className="tooltipDiv flex justify-end absolute w-full bottom-0">
-                  <div>
-                    &emsp;&emsp;&emsp;
-                    </div>
-                </div>
 
               </div>
 
@@ -206,7 +199,7 @@ export const PostsApp = (props: any) => {
               <React.Fragment>
                 {/* <Grid.Container justify="center"> */}
                 {/* <Grid> */}
-                <Modal.Content className="overflow-y-scroll h-screen">
+                <Modal.Content className="overflow-y-scroll h-screen z-10">
                   <div className="flex flex-col items-center h-auto">
                     <div className="imageDiv flex flex-col h-auto">
                       <img src={clickedPost.picture} className="modalImage object-contain rounded-lg" />

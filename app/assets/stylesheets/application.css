@@ -14456,9 +14456,6 @@ img.modalImage {
 .head-animation {
   transform: translateY(-100%); }
 
-div.tooltipDiv {
-  z-index: -2; }
-
 #js_logged_in_component
 > div
 > div
