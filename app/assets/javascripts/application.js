@@ -47404,8 +47404,8 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
       { className: 'mr-auto ml-80 w-screen pl-200 flex justify-center items-center' },
       React.createElement(
         'span',
-        { className: 'wr-10 pr-5 mr-50' },
-        '\u6A2A\u5E45'
+        { className: 'wr-10 pr-5 mr-50 mr-5' },
+        React.createElement(Icon.Maximize2, { size: 16 })
       ),
       React.createElement(_react2.Slider, {
         value: columnWidthValue, onChange: columnWidthHandler,
@@ -47433,15 +47433,6 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
           React.createElement(
             'div',
             null,
-            React.createElement(
-              'div',
-              { className: 'flex justify-end ml-20' },
-              React.createElement(
-                _react2.Popover,
-                { content: popoverSlider, className: 'ml-80' },
-                '\u6A2A\u5E45'
-              )
-            ),
             React.createElement(
               'div',
               { className: 'mt-10 relative' },
@@ -47472,6 +47463,19 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                       )
                     )
                   )
+                )
+              )
+            ),
+            React.createElement(
+              'div',
+              { className: 'flex justify-end ml-20 mt-10' },
+              React.createElement(
+                'div',
+                { className: 'mr-5' },
+                React.createElement(
+                  _react2.Popover,
+                  { content: popoverSlider, className: 'ml-80' },
+                  React.createElement(Icon.Maximize2, { size: 16 })
                 )
               )
             ),

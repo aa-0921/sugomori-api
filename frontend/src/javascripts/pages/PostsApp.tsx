@@ -12,6 +12,7 @@ import { LikeButton } from '../components/LikeButton';
 import { PostModal } from '../components/PostModal';
 
 
+
 export const PostsApp = (props: any) => {
   // 全投稿の配列のState定義
   const [fetchPosts, setFetchPosts] = useState([]);
@@ -138,7 +139,9 @@ export const PostsApp = (props: any) => {
   // Popover関連
   const popoverSlider = () => (
     <div className="mr-auto ml-80 w-screen pl-200 flex justify-center items-center">
-      <span className="wr-10 pr-5 mr-50">横幅</span>
+      <span className="wr-10 pr-5 mr-50 mr-5">
+        <Icon.Maximize2 size={16} />
+      </span>
       {/* <Row style={{ width: '75%' }}> */}
       {/* <Row> */}
       <Slider
@@ -162,11 +165,7 @@ export const PostsApp = (props: any) => {
             <div>
               {/* // Popover関連 */}
 
-              <div className="flex justify-end ml-20">
-                <Popover content={popoverSlider} className="ml-80">
-                  横幅
-                </Popover>
-              </div>
+
               <div className="mt-10 relative">
                 {/* <Collapse initialVisible className="h-1 text-base"> */}
 
@@ -185,10 +184,15 @@ export const PostsApp = (props: any) => {
                       </div>
                     </Text>
                   </Collapse>
-
                 </Collapse.Group>
+              </div>
 
-
+              <div className="flex justify-end ml-20 mt-10">
+                <div className="mr-5">
+                  <Popover content={popoverSlider} className="ml-80">
+                    <Icon.Maximize2 size={16} />
+                  </Popover>
+                </div>
               </div>
 
               <div className="flex justify-end mr-5 mt-3">

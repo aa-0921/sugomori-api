@@ -14456,6 +14456,9 @@ img.modalImage {
 .head-animation {
   transform: translateY(-100%); }
 
+#js_logged_in_component > div > div > div:nth-child(1) > div.mt-10.relative > div > div {
+  border-bottom: 0px !important; }
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
