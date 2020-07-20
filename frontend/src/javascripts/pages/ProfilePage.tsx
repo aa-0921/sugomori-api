@@ -48,7 +48,7 @@ export const ProfilePage = (props: any) => {
 
   const userPostUrl: string = `/users/picposts/${props.match.params.id}`;
 
-  const currentUserId = props.currentUserData.id;
+
   console.log('props.currentUserData.id', props.currentUserData.id)
 
   // getLikeListUrlの定義
@@ -139,7 +139,7 @@ export const ProfilePage = (props: any) => {
   const onClickLike = async (postId: any) => {
     const csrf = sessionStorage.getItem('X-CSRF-Token');
     const obj = {
-      current_user_id: current_user_id,
+      current_user_id: currentUserId,
       'X-CSRF-Token': csrf,
     };
     const body = JSON.stringify(obj);
@@ -199,7 +199,7 @@ export const ProfilePage = (props: any) => {
   };
 
   const onClickFollow = async (userId: any) => {
-    const obj = { current_user_id: current_user_id };
+    const obj = { current_user_id: currentUserId };
     const body = JSON.stringify(obj);
     const method = 'PUT';
     const postUrl: string = '/users/follow/' + fetchUser.id;
@@ -215,7 +215,7 @@ export const ProfilePage = (props: any) => {
       .catch((error) => { });
   };
   const onClickUnFollow = async (userId: any) => {
-    const obj = { current_user_id: current_user_id };
+    const obj = { current_user_id: currentUserId };
     const body = JSON.stringify(obj);
     const method = 'PUT';
     const postUrl: string = '/users/unfollow/' + fetchUser.id;
@@ -265,7 +265,8 @@ export const ProfilePage = (props: any) => {
 
   const buttonSize = "large"
   console.log('followUsers', followUsers)
-  const current_user_id = props.currentUserData.id;
+  const currentUserId = props.currentUserData.id;
+
   // const getLikeListUrl: string = `/picposts/like_list/${current_user_id}`;
   const getLikeListUrl: string = `/picposts/like_list/${currentUserId}`;
 
@@ -273,27 +274,29 @@ export const ProfilePage = (props: any) => {
   console.log('props.currentUserData.id', props.currentUserData.id)
   console.log('props.currentUserData.id.class', props.currentUserData.id.class)
 
-  const getFollowListUrl: string = `/picposts/follow_list/${currentUserId}`;
+  const getFollowListUrl: string = `/users/follow_list/${currentUserId}`;
   console.log('getFollowListUrl: ', getFollowListUrl);
 
 
+  useEffect(() => {
+    if (currentUserId != 0) {
+      FetchData(getLikeListUrl).then((res) => {
+        console.log('getLikeListUrlのres', res)
+        console.log('getLikeListUrlのres.data', res.data)
+        console.log('getLikeListUrl: ', getLikeListUrl);
 
+        setLikeList(res.data.map((like: any) => like.id));
+      });
+    }
+  }, [currentUserId]);
 
   useEffect(() => {
-    console.log('getLikeListUrl: ', getLikeListUrl);
-
-    FetchData(getLikeListUrl).then((res) => {
-      console.log('getLikeListUrlのres', res)
-      console.log('getLikeListUrlのres.data', res.data)
-      console.log('getLikeListUrl: ', getLikeListUrl);
-
-      setLikeList(res.data.map((like: any) => like.id));
-    });
-
-    FetchData(getFollowListUrl).then((res) => {
-      setFollowUsers(res.data.map((el: any) => el.id));
-    });
-  }, [props.currentUserData]);
+    if (currentUserId != 0) {
+      FetchData(getFollowListUrl).then((res) => {
+        setFollowUsers(res.data.map((el: any) => el.id));
+      });
+    }
+  }, [currentUserId]);
 
   return (
     <React.Fragment>
