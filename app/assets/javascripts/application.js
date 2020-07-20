@@ -47300,18 +47300,26 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
       setFetchPosts(res.data);
       setInitialFetchPosts(res.data);
     });
+  }, []);
+  // const currentUserId = props.currentUserData.id;
+  // console.info('currentUserId', currentUserId)
 
+  (0, _react.useEffect)(function () {
+    // if (props.currentUserData) {
+    // const currentUserId = Number(props.currentUserData.id);
+    var currentUserId = props.currentUserData.id;
+
+    console.info('currentUserId', currentUserId);
+    var getLikeListUrl = '/picposts/like_list/' + currentUserId;
     (0, _FetchData.FetchData)(getLikeListUrl).then(function (res) {
       setLikeList(res.data.map(function (like) {
         return like.id;
       }));
     });
-  }, []);
-
-  // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
-  var currentUserId = 1;
-
-  var getLikeListUrl = '/picposts/like_list/' + currentUserId;
+    console.info('実行後のcurrentUserId', currentUserId);
+    console.info('実行後のgetLikeListUrl', getLikeListUrl);
+    // }
+  }, [props.currentUserData]);
 
   (0, _react.useEffect)(function () {
     setFilterPosts(fetchPosts);
@@ -47429,6 +47437,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
     setPostModalOpen(true);
     removeHeader();
   };
+
   var postModalCloseHandler = function postModalCloseHandler() {
     setPostModalOpen(false);
     addHeader();
@@ -47553,13 +47562,9 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                         clickedPostUser.name
                       )
                     ),
-                    React.createElement(
-                      _reactRouterDom.Link,
-                      { to: '/profilepage/' + clickedPost.id },
-                      '\u2003 ',
-                      clickedPost.content,
-                      '\u2003'
-                    ),
+                    '\u2003 ',
+                    clickedPost.content,
+                    '\u2003',
                     React.createElement(_LikeButton.LikeButton, {
                       likeList: likeList,
                       clickedPost: clickedPost,
@@ -67321,6 +67326,15 @@ var UserList = exports.UserList = function UserList(props) {
   };
   var buttonSize = "small";
 
+  var goProfile = function goProfile() {
+    props.history.push('/profilepage/' + props.user.id);
+    addHeader();
+  };
+  var addHeader = function addHeader() {
+    var target = document.getElementById('header');
+    target.classList.remove('head-animation');
+  };
+
   return React.createElement(
     React.Fragment,
     null,
@@ -67347,7 +67361,12 @@ var UserList = exports.UserList = function UserList(props) {
                   null,
                   React.createElement(
                     _reactRouterDom.Link,
-                    { to: '/profilepage/' + props.user.id },
+                    {
+                      to: '/profilepage/' + props.user.id,
+                      onClick: function onClick() {
+                        return goProfile();
+                      }
+                    },
                     props.user.name,
                     '\u2003'
                   )
@@ -67448,6 +67467,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MemberList = undefined;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
@@ -67470,13 +67491,13 @@ var MemberList = exports.MemberList = function MemberList(props) {
         return React.createElement(
           'div',
           { key: index, className: 'list' },
-          React.createElement(_UserList.UserList, {
+          React.createElement(_UserList.UserList, _extends({}, props, {
             user: user,
             followUsersList: props.followUsers,
             pushToFollowUsers: props.pushToFollowUsers,
             removeFromFollowUsers: props.removeFromFollowUsers,
             currentUserData: props.currentUserData
-          })
+          }))
         );
       })
     )
@@ -67679,23 +67700,9 @@ var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
 
-var _FetchData = __webpack_require__(306);
-
-var _reactRouterDom = __webpack_require__(15);
-
-var _PostList = __webpack_require__(307);
-
 var _FormikPost = __webpack_require__(389);
 
 var _react2 = __webpack_require__(35);
-
-var _reactIcons = __webpack_require__(541);
-
-var Icon = _interopRequireWildcard(_reactIcons);
-
-var _CommentApp = __webpack_require__(864);
-
-var _LikeButton = __webpack_require__(871);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -67817,11 +67824,11 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
   // このページのユーザーの投稿だけ取得
 
   var userPostUrl = '/users/picposts/' + props.match.params.id;
-  console.log('userPostUrl', userPostUrl);
 
-  // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
-  var currentUserId = 1;
-  var getLikeListUrl = '/picposts/like_list/' + currentUserId;
+  var currentUserId = props.currentUserData.id;
+  console.log('props.currentUserData.id', props.currentUserData.id);
+
+  // getLikeListUrlの定義
 
   (0, _react.useEffect)(function () {
     (0, _FetchData.FetchData)(userPostUrl).then(function (res) {
@@ -67833,16 +67840,6 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
       console.log('userPostUrlのinitialFetchPosts', initialFetchPosts);
     });
   }, [getUserUrl]);
-
-  (0, _react.useEffect)(function () {
-    (0, _FetchData.FetchData)(getLikeListUrl).then(function (res) {
-      console.log('getLikeListUrlのres', res);
-      console.log('getLikeListUrlのres.data', res.data);
-      setLikeList(res.data.map(function (like) {
-        return like.id;
-      }));
-    });
-  }, []);
 
   // このページのユーザーの投稿だけ取得
 
@@ -67937,8 +67934,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
   var onClickLike = async function onClickLike(postId) {
     var csrf = sessionStorage.getItem('X-CSRF-Token');
     var obj = {
-      // 一旦user_id 1で固定
-      current_user_id: props.currentUserData.id,
+      current_user_id: current_user_id,
       'X-CSRF-Token': csrf
     };
     var body = JSON.stringify(obj);
@@ -67960,7 +67956,6 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
   var onClickUnLike = async function onClickUnLike(postId) {
     var csrf = sessionStorage.getItem('X-CSRF-Token');
     var obj = {
-      // 一旦user_id 1で固定
       current_user_id: props.currentUserData.id,
       'X-CSRF-Token': csrf
     };
@@ -67997,7 +67992,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
   };
 
   var onClickFollow = async function onClickFollow(userId) {
-    var obj = { current_user_id: props.currentUserData.id };
+    var obj = { current_user_id: current_user_id };
     var body = JSON.stringify(obj);
     var method = 'PUT';
     var postUrl = '/users/follow/' + fetchUser.id;
@@ -68011,7 +68006,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
     }).catch(function (error) {});
   };
   var onClickUnFollow = async function onClickUnFollow(userId) {
-    var obj = { current_user_id: props.currentUserData.id };
+    var obj = { current_user_id: current_user_id };
     var body = JSON.stringify(obj);
     var method = 'PUT';
     var postUrl = '/users/unfollow/' + fetchUser.id;
@@ -68030,19 +68025,9 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
       followUsers = _useState18[0],
       setFollowUsers = _useState18[1];
 
-  // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
-
-  var getFollowListUrl = '/users/follow_list/' + currentUserId;
-  (0, _react.useEffect)(function () {
-    (0, _FetchData.FetchData)(getFollowListUrl).then(function (res) {
-      setFollowUsers(res.data.map(function (el) {
-        return el.id;
-      }));
-    });
-  }, []);
-  // FollowButton関連
-
   //deleteButton関連
+
+
   var onClickDelete = async function onClickDelete(clickedPostId) {
     var method = 'DELETE';
     var postDeleteUrl = '/picposts/' + clickedPostId;
@@ -68071,6 +68056,37 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
 
   var buttonSize = "large";
   console.log('followUsers', followUsers);
+  var current_user_id = props.currentUserData.id;
+  // const getLikeListUrl: string = `/picposts/like_list/${current_user_id}`;
+  var getLikeListUrl = '/picposts/like_list/1';
+
+  console.log('getLikeListUrl', getLikeListUrl);
+  console.log('props.currentUserData.id', props.currentUserData.id);
+  console.log('props.currentUserData.id.class', props.currentUserData.id.class);
+
+  var getFollowListUrl = "/picposts/follow_list/" + currentUserId;
+  console.log('getFollowListUrl: ', getFollowListUrl);
+
+  (0, _react.useEffect)(function () {
+    console.log('getLikeListUrl: ', getLikeListUrl);
+
+    (0, _FetchData.FetchData)(getLikeListUrl).then(function (res) {
+      console.log('getLikeListUrlのres', res);
+      console.log('getLikeListUrlのres.data', res.data);
+      console.log('getLikeListUrl: ', getLikeListUrl);
+
+      setLikeList(res.data.map(function (like) {
+        return like.id;
+      }));
+    });
+
+    (0, _FetchData.FetchData)(getFollowListUrl).then(function (res) {
+      setFollowUsers(res.data.map(function (el) {
+        return el.id;
+      }));
+    });
+  }, [props.currentUserData]);
+
   return React.createElement(
     React.Fragment,
     null,
@@ -68245,6 +68261,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MemberListApp = undefined;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 var _reactRouterDom = __webpack_require__(15);
@@ -68273,7 +68291,7 @@ var MemberListApp = exports.MemberListApp = function MemberListApp(props) {
   // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
 
 
-  var currentUserId = 1;
+  var currentUserId = props.currentUserData.id;
   var getFollowListUrl = '/users/follow_list/' + currentUserId;
   (0, _react.useEffect)(function () {
     (0, _FetchData.FetchData)(getFollowListUrl).then(function (res) {
@@ -68281,7 +68299,7 @@ var MemberListApp = exports.MemberListApp = function MemberListApp(props) {
         return el.id;
       }));
     });
-  }, []);
+  }, [props.currentUserData]);
 
   var pushToFollowUsers = function pushToFollowUsers(target) {
     console.log(target, 'ma');
@@ -68317,13 +68335,13 @@ var MemberListApp = exports.MemberListApp = function MemberListApp(props) {
         React.createElement(
           'span',
           null,
-          React.createElement(_MemberList.MemberList, {
+          React.createElement(_MemberList.MemberList, _extends({}, props, {
             fetchUsers: fetchUsers,
             followUsers: followUsers,
             pushToFollowUsers: pushToFollowUsers,
             removeFromFollowUsers: removeFromFollowUsers,
             currentUserData: props.currentUserData
-          })
+          }))
         ),
         React.createElement(
           _reactRouterDom.Switch,

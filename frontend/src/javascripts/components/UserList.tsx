@@ -52,6 +52,15 @@ export const UserList = (props: any) => {
   };
   const buttonSize = "small"
 
+  const goProfile = () => {
+    props.history.push('/profilepage/' + props.user.id);
+    addHeader();
+  };
+  const addHeader = () => {
+    const target = document.getElementById('header')
+    target.classList.remove('head-animation');
+  };
+
   return (
     <React.Fragment>
       <Router>
@@ -63,7 +72,10 @@ export const UserList = (props: any) => {
               <li key={props.user.id} style={{ color: 'white' }} className="flex items-center m-auto">
                 <div className="flex justify-between w-2/5">
                   <div>
-                    <Link to={'/profilepage/' + props.user.id}>{props.user.name}&emsp;</Link>
+                    <Link
+                      to={'/profilepage/' + props.user.id}
+                      onClick={() => goProfile()}
+                    >{props.user.name}&emsp;</Link>
                   </div>
                   <div>
                     <FollowButton

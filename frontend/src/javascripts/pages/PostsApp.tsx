@@ -27,16 +27,25 @@ export const PostsApp = (props: any) => {
       setFetchPosts(res.data);
       setInitialFetchPosts(res.data);
     });
+  }, []);
+  // const currentUserId = props.currentUserData.id;
+  // console.info('currentUserId', currentUserId)
 
+  useEffect(() => {
+    // if (props.currentUserData) {
+    // const currentUserId = Number(props.currentUserData.id);
+    const currentUserId = props.currentUserData.id;
+
+    console.info('currentUserId', currentUserId)
+    const getLikeListUrl: string = '/picposts/like_list/' + currentUserId;
     FetchData(getLikeListUrl).then((res) => {
       setLikeList(res.data.map((like: any) => like.id));
     });
-  }, []);
+    console.info('実行後のcurrentUserId', currentUserId)
+    console.info('実行後のgetLikeListUrl', getLikeListUrl)
+    // }
+  }, [props.currentUserData]);
 
-  // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
-  const currentUserId = 1;
-
-  const getLikeListUrl: string = '/picposts/like_list/' + currentUserId;
 
   useEffect(() => {
     setFilterPosts(fetchPosts);
@@ -123,13 +132,13 @@ export const PostsApp = (props: any) => {
     setLikeList(nextLikeUsers);
   };
 
-
   // 投稿フォームmodal,open,close
   const [postModalOpen, setPostModalOpen] = useState(false);
   const postModalOpenHandler = () => {
     setPostModalOpen(true);
     removeHeader();
   };
+
   const postModalCloseHandler = () => {
     setPostModalOpen(false);
     addHeader();
@@ -145,7 +154,6 @@ export const PostsApp = (props: any) => {
 
 
   console.log('PostAppのcurrentUserData', props.currentUserData);
-
 
   return (
     <React.Fragment>
@@ -209,9 +217,7 @@ export const PostsApp = (props: any) => {
                       >
                         <span>{clickedPostUser.name}</span>
                       </Link>
-                      <Link to={'/profilepage/' + clickedPost.id}>
                         &emsp; {clickedPost.content}&emsp;
-                        </Link>
                       <LikeButton
                         likeList={likeList}
                         clickedPost={clickedPost}

@@ -8,7 +8,7 @@ import * as Icon from '@zeit-ui/react-icons';
 import { FollowButton } from '../components/FollowButton';
 
 
-export const ProfilePage = (props) => {
+export const ProfilePage = (props: any) => {
   const [fetchUser, setFetchUser] = useState({
     id: 0,
     name: '',
@@ -47,11 +47,11 @@ export const ProfilePage = (props) => {
   // このページのユーザーの投稿だけ取得
 
   const userPostUrl: string = `/users/picposts/${props.match.params.id}`;
-  console.log('userPostUrl', userPostUrl)
 
-  // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
-  const currentUserId = 1;
-  const getLikeListUrl: string = '/picposts/like_list/' + currentUserId;
+  const currentUserId = props.currentUserData.id;
+  console.log('props.currentUserData.id', props.currentUserData.id)
+
+  // getLikeListUrlの定義
 
   useEffect(() => {
     FetchData(userPostUrl).then((res) => {
@@ -64,13 +64,7 @@ export const ProfilePage = (props) => {
     });
   }, [getUserUrl]);
 
-  useEffect(() => {
-    FetchData(getLikeListUrl).then((res) => {
-      console.log('getLikeListUrlのres', res)
-      console.log('getLikeListUrlのres.data', res.data)
-      setLikeList(res.data.map((like: any) => like.id));
-    });
-  }, []);
+
 
   // このページのユーザーの投稿だけ取得
 
@@ -145,8 +139,7 @@ export const ProfilePage = (props) => {
   const onClickLike = async (postId: any) => {
     const csrf = sessionStorage.getItem('X-CSRF-Token');
     const obj = {
-      // 一旦user_id 1で固定
-      current_user_id: props.currentUserData.id,
+      current_user_id: current_user_id,
       'X-CSRF-Token': csrf,
     };
     const body = JSON.stringify(obj);
@@ -170,7 +163,6 @@ export const ProfilePage = (props) => {
   const onClickUnLike = async (postId: any) => {
     const csrf = sessionStorage.getItem('X-CSRF-Token');
     const obj = {
-      // 一旦user_id 1で固定
       current_user_id: props.currentUserData.id,
       'X-CSRF-Token': csrf,
     };
@@ -207,7 +199,7 @@ export const ProfilePage = (props) => {
   };
 
   const onClickFollow = async (userId: any) => {
-    const obj = { current_user_id: props.currentUserData.id };
+    const obj = { current_user_id: current_user_id };
     const body = JSON.stringify(obj);
     const method = 'PUT';
     const postUrl: string = '/users/follow/' + fetchUser.id;
@@ -223,7 +215,7 @@ export const ProfilePage = (props) => {
       .catch((error) => { });
   };
   const onClickUnFollow = async (userId: any) => {
-    const obj = { current_user_id: props.currentUserData.id };
+    const obj = { current_user_id: current_user_id };
     const body = JSON.stringify(obj);
     const method = 'PUT';
     const postUrl: string = '/users/unfollow/' + fetchUser.id;
@@ -240,15 +232,8 @@ export const ProfilePage = (props) => {
   };
   const [followUsers, setFollowUsers] = useState([]);
 
-  // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
 
-  const getFollowListUrl: string = `/users/follow_list/${currentUserId}`;
-  useEffect(() => {
-    FetchData(getFollowListUrl).then((res) => {
-      setFollowUsers(res.data.map((el: any) => el.id));
-    });
-  }, []);
-  // FollowButton関連
+
 
   //deleteButton関連
   const onClickDelete = async (clickedPostId: any) => {
@@ -280,6 +265,36 @@ export const ProfilePage = (props) => {
 
   const buttonSize = "large"
   console.log('followUsers', followUsers)
+  const current_user_id = props.currentUserData.id;
+  // const getLikeListUrl: string = `/picposts/like_list/${current_user_id}`;
+  const getLikeListUrl: string = `/picposts/like_list/1`;
+
+  console.log('getLikeListUrl', getLikeListUrl)
+  console.log('props.currentUserData.id', props.currentUserData.id)
+  console.log('props.currentUserData.id.class', props.currentUserData.id.class)
+
+  const getFollowListUrl: string = "/picposts/follow_list/" + currentUserId;
+  console.log('getFollowListUrl: ', getFollowListUrl);
+
+
+
+
+  useEffect(() => {
+    console.log('getLikeListUrl: ', getLikeListUrl);
+
+    FetchData(getLikeListUrl).then((res) => {
+      console.log('getLikeListUrlのres', res)
+      console.log('getLikeListUrlのres.data', res.data)
+      console.log('getLikeListUrl: ', getLikeListUrl);
+
+      setLikeList(res.data.map((like: any) => like.id));
+    });
+
+    FetchData(getFollowListUrl).then((res) => {
+      setFollowUsers(res.data.map((el: any) => el.id));
+    });
+  }, [props.currentUserData]);
+
   return (
     <React.Fragment>
       < Spacer y={3} />

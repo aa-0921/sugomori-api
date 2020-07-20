@@ -11,13 +11,13 @@ export const MemberListApp = (props: any) => {
   const [followUsers, setFollowUsers] = useState([]);
 
   // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
-  const currentUserId = 1;
+  const currentUserId = props.currentUserData.id;
   const getFollowListUrl: string = `/users/follow_list/${currentUserId}`;
   useEffect(() => {
     FetchData(getFollowListUrl).then((res) => {
       setFollowUsers(res.data.map((el: any) => el.id));
     });
-  }, []);
+  }, [props.currentUserData]);
 
   const pushToFollowUsers = (target: number) => {
     console.log(target, 'ma');
@@ -43,6 +43,7 @@ export const MemberListApp = (props: any) => {
         <div>
           <span>
             <MemberList
+              {...props}
               fetchUsers={fetchUsers}
               followUsers={followUsers}
               pushToFollowUsers={pushToFollowUsers}

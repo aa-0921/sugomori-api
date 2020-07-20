@@ -10,6 +10,7 @@ export const MemberList = (props: any): any => {
         {props.fetchUsers.map((user: any, index: number) => (
           <div key={index} className="list">
             <UserList
+              {...props}
               user={user}
               followUsersList={props.followUsers}
               pushToFollowUsers={props.pushToFollowUsers}
