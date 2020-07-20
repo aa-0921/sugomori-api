@@ -28646,11 +28646,18 @@ var HomePage = exports.HomePage = function HomePage() {
       currentUserData = _useState2[0],
       setCurrentUserData = _useState2[1];
 
+  var _useState3 = (0, _react.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      currentUserLoading = _useState4[0],
+      setCurrentUserLoading = _useState4[1];
+
   var getInitialDataUrl = '/initial_data/show';
 
   (0, _react.useEffect)(function () {
+    setCurrentUserLoading(true);
     (0, _FetchData.FetchData)(getInitialDataUrl).then(function (res) {
       setCurrentUserData(res.data);
+      setCurrentUserLoading(false);
       console.log('getInitialDataUrl', getInitialDataUrl);
       console.log('res.data', res.data);
       console.log('HomePageのcurrentUserData', currentUserData);
@@ -28681,34 +28688,46 @@ var HomePage = exports.HomePage = function HomePage() {
   console.log('HomePageのcurrentUserData', currentUserData);
 
   return React.createElement(
-    _reactRouterDom.BrowserRouter,
+    React.Fragment,
     null,
-    React.createElement(_header.Header, { currentUserData: currentUserData }),
-    React.createElement(
-      _reactRouterDom.Switch,
+    currentUserLoading ? React.createElement(
+      'div',
+      { className: 'h-screen w-screen flex justify-center flex-col items-center' },
+      React.createElement(
+        _react2.Loading,
+        null,
+        'Loading'
+      )
+    ) : React.createElement(
+      _reactRouterDom.BrowserRouter,
       null,
-      React.createElement(_reactRouterDom.Route, { exact: true, path: '/',
-        render: function render(props) {
-          return React.createElement(_PostsApp.PostsApp, _extends({}, props, { currentUserData: currentUserData }));
-        }
-      }),
-      React.createElement(_reactRouterDom.Route, { exact: true, path: '/pickup', component: _Pickup.Pickup }),
-      React.createElement(_reactRouterDom.Route, { exact: true, path: '/about', component: _About.About }),
-      React.createElement(_reactRouterDom.Route, { path: '/profilepage/:id',
-        render: function render(props) {
-          return React.createElement(_ProfilePage.ProfilePage, _extends({}, props, {
-            currentUserData: currentUserData
-          }));
-        }
-      }),
-      React.createElement(_reactRouterDom.Route, { exact: true, path: '/MemberListApp',
-        render: function render(props) {
-          return React.createElement(_MemberListApp.MemberListApp, _extends({}, props, {
-            currentUserData: currentUserData,
-            component: _MemberListApp.MemberListApp
-          }));
-        }
-      })
+      React.createElement(_header.Header, { currentUserData: currentUserData }),
+      React.createElement(
+        _reactRouterDom.Switch,
+        null,
+        React.createElement(_reactRouterDom.Route, { exact: true, path: '/',
+          render: function render(props) {
+            return React.createElement(_PostsApp.PostsApp, _extends({}, props, { currentUserData: currentUserData }));
+          }
+        }),
+        React.createElement(_reactRouterDom.Route, { exact: true, path: '/pickup', component: _Pickup.Pickup }),
+        React.createElement(_reactRouterDom.Route, { exact: true, path: '/about', component: _About.About }),
+        React.createElement(_reactRouterDom.Route, { path: '/profilepage/:id',
+          render: function render(props) {
+            return React.createElement(_ProfilePage.ProfilePage, _extends({}, props, {
+              currentUserData: currentUserData
+            }));
+          }
+        }),
+        React.createElement(_reactRouterDom.Route, { exact: true, path: '/MemberListApp',
+          render: function render(props) {
+            return React.createElement(_MemberListApp.MemberListApp, _extends({}, props, {
+              currentUserData: currentUserData,
+              component: _MemberListApp.MemberListApp
+            }));
+          }
+        })
+      )
     )
   );
 };
