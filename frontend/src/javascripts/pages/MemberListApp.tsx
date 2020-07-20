@@ -13,11 +13,19 @@ export const MemberListApp = (props: any) => {
   // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
   const currentUserId = props.currentUserData.id;
   const getFollowListUrl: string = `/users/follow_list/${currentUserId}`;
+  console.log('getFollowListUrl', getFollowListUrl);
   useEffect(() => {
-    FetchData(getFollowListUrl).then((res) => {
-      setFollowUsers(res.data.map((el: any) => el.id));
-    });
-  }, [props.currentUserData]);
+    if (currentUserId != 0) {
+
+      FetchData(getFollowListUrl).then((res) => {
+        console.log(res.data)
+        setFollowUsers(res.data.map((el: any) => el.id));
+      });
+    }
+    // }, [props.currentUserData]);
+  }, [currentUserId]);
+  console.log('followUsers', followUsers);
+
 
   const pushToFollowUsers = (target: number) => {
     console.log(target, 'ma');

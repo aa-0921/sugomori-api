@@ -267,13 +267,13 @@ export const ProfilePage = (props: any) => {
   console.log('followUsers', followUsers)
   const current_user_id = props.currentUserData.id;
   // const getLikeListUrl: string = `/picposts/like_list/${current_user_id}`;
-  const getLikeListUrl: string = `/picposts/like_list/1`;
+  const getLikeListUrl: string = `/picposts/like_list/${currentUserId}`;
 
   console.log('getLikeListUrl', getLikeListUrl)
   console.log('props.currentUserData.id', props.currentUserData.id)
   console.log('props.currentUserData.id.class', props.currentUserData.id.class)
 
-  const getFollowListUrl: string = "/picposts/follow_list/" + currentUserId;
+  const getFollowListUrl: string = `/picposts/follow_list/${currentUserId}`;
   console.log('getFollowListUrl: ', getFollowListUrl);
 
 

@@ -37,14 +37,16 @@ export const PostsApp = (props: any) => {
     const currentUserId = props.currentUserData.id;
 
     console.info('currentUserId', currentUserId)
-    const getLikeListUrl: string = '/picposts/like_list/' + currentUserId;
+    const getLikeListUrl: string = `/picposts/like_list/${currentUserId}`;
     FetchData(getLikeListUrl).then((res) => {
       setLikeList(res.data.map((like: any) => like.id));
     });
     console.info('実行後のcurrentUserId', currentUserId)
     console.info('実行後のgetLikeListUrl', getLikeListUrl)
     // }
-  }, [props.currentUserData]);
+  }, []);
+  // }, [props.currentUserData]);
+
 
 
   useEffect(() => {

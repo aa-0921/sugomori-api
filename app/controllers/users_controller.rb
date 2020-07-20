@@ -95,6 +95,8 @@ class UsersController < ApplicationController
 
   def follow_list
     @user = User.find(params[:user_id])
+    p "@user.all_following"
+    p @user.all_following
     render json: { status: 'SUCCESS', data: @user.all_following }
   end
   # フォローしてる人の一覧ページ

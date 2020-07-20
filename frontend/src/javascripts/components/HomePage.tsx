@@ -29,12 +29,13 @@ export const HomePage = () => {
     setCurrentUserLoading(true);
     FetchData(getInitialDataUrl).then((res) => {
       setCurrentUserData(res.data);
-      setCurrentUserLoading(false);
+      // setCurrentUserLoading(false);
       console.log('getInitialDataUrl', getInitialDataUrl);
       console.log('res.data', res.data);
       console.log('HomePageのcurrentUserData', currentUserData);
       console.log('currentUserData');
     });
+    setCurrentUserLoading(false);
   }, []);
 
 

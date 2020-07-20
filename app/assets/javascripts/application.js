@@ -28657,12 +28657,13 @@ var HomePage = exports.HomePage = function HomePage() {
     setCurrentUserLoading(true);
     (0, _FetchData.FetchData)(getInitialDataUrl).then(function (res) {
       setCurrentUserData(res.data);
-      setCurrentUserLoading(false);
+      // setCurrentUserLoading(false);
       console.log('getInitialDataUrl', getInitialDataUrl);
       console.log('res.data', res.data);
       console.log('HomePageのcurrentUserData', currentUserData);
       console.log('currentUserData');
     });
+    setCurrentUserLoading(false);
   }, []);
 
   // toast関連
@@ -47338,7 +47339,9 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
     console.info('実行後のcurrentUserId', currentUserId);
     console.info('実行後のgetLikeListUrl', getLikeListUrl);
     // }
-  }, [props.currentUserData]);
+  }, []);
+  // }, [props.currentUserData]);
+
 
   (0, _react.useEffect)(function () {
     setFilterPosts(fetchPosts);
@@ -68077,13 +68080,13 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
   console.log('followUsers', followUsers);
   var current_user_id = props.currentUserData.id;
   // const getLikeListUrl: string = `/picposts/like_list/${current_user_id}`;
-  var getLikeListUrl = '/picposts/like_list/1';
+  var getLikeListUrl = '/picposts/like_list/' + currentUserId;
 
   console.log('getLikeListUrl', getLikeListUrl);
   console.log('props.currentUserData.id', props.currentUserData.id);
   console.log('props.currentUserData.id.class', props.currentUserData.id.class);
 
-  var getFollowListUrl = "/picposts/follow_list/" + currentUserId;
+  var getFollowListUrl = '/picposts/follow_list/' + currentUserId;
   console.log('getFollowListUrl: ', getFollowListUrl);
 
   (0, _react.useEffect)(function () {
@@ -68312,13 +68315,20 @@ var MemberListApp = exports.MemberListApp = function MemberListApp(props) {
 
   var currentUserId = props.currentUserData.id;
   var getFollowListUrl = '/users/follow_list/' + currentUserId;
+  console.log('getFollowListUrl', getFollowListUrl);
   (0, _react.useEffect)(function () {
-    (0, _FetchData.FetchData)(getFollowListUrl).then(function (res) {
-      setFollowUsers(res.data.map(function (el) {
-        return el.id;
-      }));
-    });
-  }, [props.currentUserData]);
+    if (currentUserId != 0) {
+
+      (0, _FetchData.FetchData)(getFollowListUrl).then(function (res) {
+        console.log(res.data);
+        setFollowUsers(res.data.map(function (el) {
+          return el.id;
+        }));
+      });
+    }
+    // }, [props.currentUserData]);
+  }, [currentUserId]);
+  console.log('followUsers', followUsers);
 
   var pushToFollowUsers = function pushToFollowUsers(target) {
     console.log(target, 'ma');
