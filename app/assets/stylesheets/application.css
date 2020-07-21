@@ -14644,7 +14644,15 @@ div.loadingDiv {
   z-index: 1; }
 
 summary > svg {
-  width: 30px !important; }
+  width: 35px !important; }
+
+div.collapseWrap > div > div > div.jsx-529403286.container.expanded {
+  width: 100%;
+  background-color: white !important; }
+
+div.collapseWrap > div > div > div > div > div > div {
+  display: block !important;
+  line-height: 3rem !important; }
 
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {

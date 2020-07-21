@@ -47512,24 +47512,20 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                   _react2.Collapse,
                   { title: ' ', className: 'h-1 text-base', initialVisible: true },
                   React.createElement(
-                    _react2.Text,
-                    null,
+                    'div',
+                    { className: 'bg-white flex justify-center items-center' },
                     React.createElement(
-                      'div',
-                      { className: 'bg-white flex justify-center items-center' },
-                      React.createElement(
-                        'span',
-                        { className: 'wr-10 pr-5' },
-                        React.createElement(Icon.Maximize2, { size: 25 })
-                      ),
-                      React.createElement(
-                        _react2.Row,
-                        { style: { width: '75%' } },
-                        React.createElement(_react2.Slider, {
-                          value: columnWidthValue, onChange: columnWidthHandler,
-                          step: 20, max: 500, min: 100, initialValue: 300
-                        })
-                      )
+                      'span',
+                      { className: 'wr-10 pr-5' },
+                      React.createElement(Icon.Maximize2, { size: 25 })
+                    ),
+                    React.createElement(
+                      _react2.Row,
+                      { style: { width: '75%' } },
+                      React.createElement(_react2.Slider, {
+                        value: columnWidthValue, onChange: columnWidthHandler,
+                        step: 20, max: 500, min: 100, initialValue: 300
+                      })
                     )
                   )
                 )
@@ -47537,7 +47533,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
             ),
             React.createElement(
               'div',
-              { className: 'flex justify-end mr-5 mt-3' },
+              { className: 'flex justify-end mr-5 mt-3 bg-white' },
               React.createElement(
                 'form',
                 { action: '' },

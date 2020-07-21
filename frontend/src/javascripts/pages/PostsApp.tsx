@@ -160,24 +160,22 @@ export const PostsApp = (props: any) => {
               <div className="collapseWrap mt-18 pt-5">
                 <Collapse.Group className="z-20 mr-5 mt-10">
                   <Collapse title=" " className="h-1 text-base" initialVisible>
-                    <Text>
-                      <div className="bg-white flex justify-center items-center">
-                        <span className="wr-10 pr-5">
-                          <Icon.Maximize2 size={25} />
-                        </span>
-                        <Row style={{ width: '75%' }}>
-                          <Slider
-                            value={columnWidthValue} onChange={columnWidthHandler}
-                            step={20} max={500} min={100} initialValue={300}
-                          />
-                        </Row>
-                      </div>
-                    </Text>
+                    <div className="bg-white flex justify-center items-center">
+                      <span className="wr-10 pr-5">
+                        <Icon.Maximize2 size={25} />
+                      </span>
+                      <Row style={{ width: '75%' }}>
+                        <Slider
+                          value={columnWidthValue} onChange={columnWidthHandler}
+                          step={20} max={500} min={100} initialValue={300}
+                        />
+                      </Row>
+                    </div>
                   </Collapse>
                 </Collapse.Group>
               </div>
 
-              <div className="flex justify-end mr-5 mt-3">
+              <div className="flex justify-end mr-5 mt-3 bg-white">
                 <form action="">
                   <input type="text" placeholder="search" onChange={filterList} className="w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline" />
                 </form>
