@@ -27,7 +27,7 @@ img.modalImage {
   top: 0;
   transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
-  z-index: 199999;
+  z-index: 2000;
 }
 
 .head-animation {
@@ -50,4 +50,8 @@ div.buttonDropdownWrap > div > button {
 details > summary {
   background-color: #a3bffa !important;
   color: white;
+}
+
+div.loadingDiv {
+  z-index: 2001;
 }

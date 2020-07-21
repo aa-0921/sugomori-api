@@ -28648,22 +28648,21 @@ var HomePage = exports.HomePage = function HomePage() {
 
   var _useState3 = (0, _react.useState)(false),
       _useState4 = _slicedToArray(_useState3, 2),
-      currentUserLoading = _useState4[0],
-      setCurrentUserLoading = _useState4[1];
+      nowLoading = _useState4[0],
+      setNowLoading = _useState4[1];
 
   var getInitialDataUrl = '/initial_data/show';
 
   (0, _react.useEffect)(function () {
-    setCurrentUserLoading(true);
+    setNowLoading(true);
     (0, _FetchData.FetchData)(getInitialDataUrl).then(function (res) {
       setCurrentUserData(res.data);
-      // setCurrentUserLoading(false);
       console.log('getInitialDataUrl', getInitialDataUrl);
       console.log('res.data', res.data);
       console.log('HomePageのcurrentUserData', currentUserData);
       console.log('currentUserData');
     });
-    setCurrentUserLoading(false);
+    setNowLoading(false);
   }, []);
 
   // toast関連
@@ -28691,43 +28690,52 @@ var HomePage = exports.HomePage = function HomePage() {
   return React.createElement(
     React.Fragment,
     null,
-    currentUserLoading ? React.createElement(
+    nowLoading ? React.createElement(
       'div',
-      { className: 'h-screen w-screen flex justify-center flex-col items-center' },
+      { className: 'loadingDiv z-50  bg-black absolute opacity-50 h-screen w-screen flex justify-center flex-col items-center' },
       React.createElement(
         _react2.Loading,
         null,
         'Loading'
       )
-    ) : React.createElement(
-      _reactRouterDom.BrowserRouter,
+    ) : React.createElement('div', null),
+    React.createElement(
+      React.Fragment,
       null,
-      React.createElement(_header.Header, { currentUserData: currentUserData }),
       React.createElement(
-        _reactRouterDom.Switch,
+        _reactRouterDom.BrowserRouter,
         null,
-        React.createElement(_reactRouterDom.Route, { exact: true, path: '/',
-          render: function render(props) {
-            return React.createElement(_PostsApp.PostsApp, _extends({}, props, { currentUserData: currentUserData }));
-          }
-        }),
-        React.createElement(_reactRouterDom.Route, { exact: true, path: '/pickup', component: _Pickup.Pickup }),
-        React.createElement(_reactRouterDom.Route, { exact: true, path: '/about', component: _About.About }),
-        React.createElement(_reactRouterDom.Route, { path: '/profilepage/:id',
-          render: function render(props) {
-            return React.createElement(_ProfilePage.ProfilePage, _extends({}, props, {
-              currentUserData: currentUserData
-            }));
-          }
-        }),
-        React.createElement(_reactRouterDom.Route, { exact: true, path: '/MemberListApp',
-          render: function render(props) {
-            return React.createElement(_MemberListApp.MemberListApp, _extends({}, props, {
-              currentUserData: currentUserData,
-              component: _MemberListApp.MemberListApp
-            }));
-          }
-        })
+        React.createElement(_header.Header, { currentUserData: currentUserData }),
+        React.createElement(
+          _reactRouterDom.Switch,
+          null,
+          React.createElement(_reactRouterDom.Route, { exact: true, path: '/',
+            render: function render(props) {
+              return React.createElement(_PostsApp.PostsApp, _extends({}, props, {
+                currentUserData: currentUserData,
+                setNowLoading: setNowLoading,
+                nowLoading: nowLoading
+              }));
+            }
+          }),
+          React.createElement(_reactRouterDom.Route, { exact: true, path: '/pickup', component: _Pickup.Pickup }),
+          React.createElement(_reactRouterDom.Route, { exact: true, path: '/about', component: _About.About }),
+          React.createElement(_reactRouterDom.Route, { path: '/profilepage/:id',
+            render: function render(props) {
+              return React.createElement(_ProfilePage.ProfilePage, _extends({}, props, {
+                currentUserData: currentUserData
+              }));
+            }
+          }),
+          React.createElement(_reactRouterDom.Route, { exact: true, path: '/MemberListApp',
+            render: function render(props) {
+              return React.createElement(_MemberListApp.MemberListApp, _extends({}, props, {
+                currentUserData: currentUserData,
+                component: _MemberListApp.MemberListApp
+              }));
+            }
+          })
+        )
       )
     )
   );
@@ -47612,8 +47620,9 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
             setFilterPosts: setFilterPosts,
             setPostModalOpen: setPostModalOpen,
             postModalOpenHandler: postModalOpenHandler,
-            postModalCloseHandler: postModalCloseHandler
-
+            postModalCloseHandler: postModalCloseHandler,
+            setNowLoading: props.setNowLoading,
+            nowLoading: props.nowLoading
           }),
           React.createElement(
             'div',
@@ -55436,7 +55445,7 @@ var FormikPost = exports.FormikPost = function FormikPost(props) {
       res.data.data.picture = postFilePreview;
       pushToPostList(res.data.data);
     });
-
+    props.setNowLoading(false);
     props.postModalCloseHandler();
   };
 
@@ -55471,6 +55480,8 @@ var FormikPost = exports.FormikPost = function FormikPost(props) {
 
     onSubmit: function onSubmit(values, _ref) {
       var resetForm = _ref.resetForm;
+
+      props.setNowLoading(true);
 
       values.user_id = 1;
 
@@ -67708,7 +67719,9 @@ var PostModal = exports.PostModal = function PostModal(props) {
       React.createElement(_FormikPost.FormikPost, {
         postModalCloseHandler: props.postModalCloseHandler,
         setFilterPosts: props.setFilterPosts,
-        filterPosts: props.filterPosts
+        filterPosts: props.filterPosts,
+        setNowLoading: props.setNowLoading,
+        nowLoading: props.nowLoading
       })
     ),
     React.createElement(

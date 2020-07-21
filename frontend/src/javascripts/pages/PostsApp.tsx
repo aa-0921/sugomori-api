@@ -244,7 +244,8 @@ export const PostsApp = (props: any) => {
               setPostModalOpen={setPostModalOpen}
               postModalOpenHandler={postModalOpenHandler}
               postModalCloseHandler={postModalCloseHandler}
-
+              setNowLoading={props.setNowLoading}
+              nowLoading={props.nowLoading}
             />
             {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
             {/* 投稿ボタン */}

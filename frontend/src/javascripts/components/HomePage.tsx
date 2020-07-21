@@ -21,21 +21,20 @@ export const HomePage = () => {
     email: '',
     name: '',
   })
-  const [currentUserLoading, setCurrentUserLoading] = useState(false)
+  const [nowLoading, setNowLoading] = useState(false)
 
   const getInitialDataUrl: string = '/initial_data/show';
 
   useEffect(() => {
-    setCurrentUserLoading(true);
+    setNowLoading(true);
     FetchData(getInitialDataUrl).then((res) => {
       setCurrentUserData(res.data);
-      // setCurrentUserLoading(false);
       console.log('getInitialDataUrl', getInitialDataUrl);
       console.log('res.data', res.data);
       console.log('HomePageのcurrentUserData', currentUserData);
       console.log('currentUserData');
     });
-    setCurrentUserLoading(false);
+    setNowLoading(false);
   }, []);
 
 
@@ -58,40 +57,49 @@ export const HomePage = () => {
 
   return (
     <React.Fragment>
-      {currentUserLoading ? (
-        <div className="h-screen w-screen flex justify-center flex-col items-center">
+      {nowLoading ? (
+        <div className="loadingDiv z-50  bg-black absolute opacity-50 h-screen w-screen flex justify-center flex-col items-center">
           <Loading>Loading</Loading>
         </div>
-
       ) : (
-          <BrowserRouter>
-            <Header currentUserData={currentUserData} />
-
-            <Switch>
-              <Route exact path="/"
-                render={(props) => <PostsApp {...props} currentUserData={currentUserData} />}
-              />
-              <Route exact path="/pickup" component={Pickup} />
-              <Route exact path="/about" component={About} />
-              <Route path="/profilepage/:id"
-                render={(props) =>
-                  <ProfilePage
-                    {...props}
-                    currentUserData={currentUserData}
-                  />}
-              />
-              <Route exact path="/MemberListApp"
-                render={(props) =>
-                  <MemberListApp
-                    {...props}
-                    currentUserData={currentUserData}
-                    component={MemberListApp}
-                  />}
-              />
-            </Switch>
-            {/* <Footer /> */}
-          </BrowserRouter >
+          <div></div>
         )}
+      <React.Fragment>
+        <BrowserRouter>
+          <Header currentUserData={currentUserData} />
+
+          <Switch>
+            <Route exact path="/"
+              render={(props) =>
+                <PostsApp
+                  {...props}
+                  currentUserData={currentUserData}
+                  setNowLoading={setNowLoading}
+                  nowLoading={nowLoading}
+                />}
+            />
+            <Route exact path="/pickup" component={Pickup} />
+            <Route exact path="/about" component={About} />
+            <Route path="/profilepage/:id"
+              render={(props) =>
+                <ProfilePage
+                  {...props}
+                  currentUserData={currentUserData}
+                />}
+            />
+            <Route exact path="/MemberListApp"
+              render={(props) =>
+                <MemberListApp
+                  {...props}
+                  currentUserData={currentUserData}
+                  component={MemberListApp}
+                />}
+            />
+          </Switch>
+          {/* <Footer /> */}
+        </BrowserRouter >
+      </React.Fragment>
+
     </React.Fragment>
   );
 };

@@ -22,7 +22,7 @@ export const FormikPost = (props: any) => {
         res.data.data.picture = postFilePreview
         pushToPostList(res.data.data);
       });
-
+    props.setNowLoading(false);
     props.postModalCloseHandler()
   };
 
@@ -59,6 +59,8 @@ export const FormikPost = (props: any) => {
       initialValues={{ picture: '', content: '', user_id: 0 }}
 
       onSubmit={(values, { resetForm }) => {
+        props.setNowLoading(true);
+
         values.user_id = 1;
 
         const submitData = new FormData();

@@ -15,6 +15,8 @@ export const PostModal = (props: any) => {
           postModalCloseHandler={props.postModalCloseHandler}
           setFilterPosts={props.setFilterPosts}
           filterPosts={props.filterPosts}
+          setNowLoading={props.setNowLoading}
+          nowLoading={props.nowLoading}
         />
       </Modal.Content>
       <Modal.Action
