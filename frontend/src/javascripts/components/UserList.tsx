@@ -77,15 +77,19 @@ export const UserList = (props: any) => {
                       onClick={() => goProfile()}
                     >{props.user.name}&emsp;</Link>
                   </div>
-                  <div>
-                    <FollowButton
-                      onClickFollow={onClickFollow}
-                      onClickUnFollow={onClickUnFollow}
-                      followUsersList={props.followUsersList}
-                      user={props.user}
-                      buttonSize={buttonSize}
-                    />
-                  </div>
+                  {props.currentUserData.id != props.user.id ? (
+                    <div>
+                      <FollowButton
+                        onClickFollow={onClickFollow}
+                        onClickUnFollow={onClickUnFollow}
+                        followUsersList={props.followUsersList}
+                        user={props.user}
+                        buttonSize={buttonSize}
+                      />
+                    </div>
+                  ) : (
+                      <div></div>
+                    )}
                 </div>
               </li>
             </div>

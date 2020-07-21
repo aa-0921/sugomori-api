@@ -67383,7 +67383,7 @@ var UserList = exports.UserList = function UserList(props) {
                     '\u2003'
                   )
                 ),
-                React.createElement(
+                props.currentUserData.id != props.user.id ? React.createElement(
                   'div',
                   null,
                   React.createElement(_FollowButton.FollowButton, {
@@ -67393,7 +67393,7 @@ var UserList = exports.UserList = function UserList(props) {
                     user: props.user,
                     buttonSize: buttonSize
                   })
-                )
+                ) : React.createElement('div', null)
               )
             )
           )
