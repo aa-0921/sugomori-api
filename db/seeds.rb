@@ -52,7 +52,6 @@ users.each do |user|
   content = Faker::Lorem.sentence(word_count: 3)
   emoji = Faker::Lorem.multibyte
   user.picposts.create!(content: "#{content}#{emoji}",
-                        # picture: "#{count}-test-picture",
                         user_id: "#{count}-test-user_id",
                         picture: img_srcs.sample)
   count += 1
@@ -70,14 +69,14 @@ followers.each { |follower| follower.follow(first_user) }
 
 all_picposts = Picpost.all
 
-like_users = all_users[0..9]
-like_posts = all_picposts[0..9]
+# like_users = all_users[0..9]
+# like_posts = all_picposts[0..9]
 
-like_users.each do |like_user|
-  like_posts.each do |like_post|
-    like_post.iine(like_user) 
-  end
-end
+# like_users.each do |like_user|
+#   like_posts.each do |like_post|
+#     like_post.iine(like_user) 
+#   end
+# end
 
 # コメント関連
 

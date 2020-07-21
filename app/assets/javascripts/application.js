@@ -32779,14 +32779,15 @@ function Header(props) {
         lastPosition = 0,
         ticking = false;
     function onScroll(lastPosition) {
-
-      if (lastPosition > height) {
-        if (lastPosition > offset) {
-          target.classList.add('head-animation');
-        } else {
-          target.classList.remove('head-animation');
+      if (target != null) {
+        if (lastPosition > height) {
+          if (lastPosition > offset) {
+            target.classList.add('head-animation');
+          } else {
+            target.classList.remove('head-animation');
+          }
+          offset = lastPosition;
         }
-        offset = lastPosition;
       }
     }
 
@@ -47295,6 +47296,7 @@ var _PostModal = __webpack_require__(872);
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var PostsApp = exports.PostsApp = function PostsApp(props) {
+
   // 全投稿の配列のState定義
   var _useState = (0, _react.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -47313,35 +47315,53 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
       filterPosts = _useState6[0],
       setFilterPosts = _useState6[1];
 
-  var getAllPostUrl = '/picposts';
+  var _useState7 = (0, _react.useState)([]),
+      _useState8 = _slicedToArray(_useState7, 2),
+      likeList = _useState8[0],
+      setLikeList = _useState8[1];
 
+  var _useState9 = (0, _react.useState)(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      modalOpen = _useState10[0],
+      setModalOpen = _useState10[1];
+
+  var _useState11 = (0, _react.useState)({
+    id: 0,
+    name: ''
+  }),
+      _useState12 = _slicedToArray(_useState11, 2),
+      clickedPostUser = _useState12[0],
+      setClickedPostUser = _useState12[1];
+
+  var _useState13 = (0, _react.useState)({
+    id: 0,
+    picture: '',
+    content: '',
+    user_id: 0
+  }),
+      _useState14 = _slicedToArray(_useState13, 2),
+      clickedPost = _useState14[0],
+      setClickedPost = _useState14[1];
+
+  var getAllPostUrl = '/picposts';
   (0, _react.useEffect)(function () {
     (0, _FetchData.FetchData)(getAllPostUrl).then(function (res) {
       setFetchPosts(res.data);
       setInitialFetchPosts(res.data);
     });
   }, []);
-  // const currentUserId = props.currentUserData.id;
-  // console.info('currentUserId', currentUserId)
+  var currentUserId = props.currentUserData.id;
+  var getLikeListUrl = '/picposts/like_list/' + currentUserId;
+  console.log('likeList', likeList);
 
   (0, _react.useEffect)(function () {
-    // if (props.currentUserData) {
-    // const currentUserId = Number(props.currentUserData.id);
-    var currentUserId = props.currentUserData.id;
-
-    console.info('currentUserId', currentUserId);
-    var getLikeListUrl = '/picposts/like_list/' + currentUserId;
-    (0, _FetchData.FetchData)(getLikeListUrl).then(function (res) {
-      setLikeList(res.data.map(function (like) {
-        return like.id;
-      }));
-    });
-    console.info('実行後のcurrentUserId', currentUserId);
-    console.info('実行後のgetLikeListUrl', getLikeListUrl);
-    // }
-  }, []);
-  // }, [props.currentUserData]);
-
+    if (currentUserId != 0) {
+      (0, _FetchData.FetchData)(getLikeListUrl).then(function (res) {
+        setLikeList(res.data);
+        // setLikeList(res.data.map((like: any) => like.id));
+      });
+    };
+  }, [currentUserId]);
 
   (0, _react.useEffect)(function () {
     setFilterPosts(fetchPosts);
@@ -47353,39 +47373,10 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
     });
     setFetchPosts(updateList);
   };
-  console.log('fetchPosts', fetchPosts);
 
-  var _useState7 = (0, _react.useState)([]),
-      _useState8 = _slicedToArray(_useState7, 2),
-      likeList = _useState8[0],
-      setLikeList = _useState8[1];
-
-  var _useState9 = (0, _react.useState)({
-    id: 0,
-    name: ''
-  }),
-      _useState10 = _slicedToArray(_useState9, 2),
-      clickedPostUser = _useState10[0],
-      setClickedPostUser = _useState10[1];
-
-  var _useState11 = (0, _react.useState)({
-    id: 0,
-    picture: '',
-    content: '',
-    user_id: 0
-  }),
-      _useState12 = _slicedToArray(_useState11, 2),
-      clickedPost = _useState12[0],
-      setClickedPost = _useState12[1];
+  console.log('likeList', likeList);
 
   // modal,open,close
-
-
-  var _useState13 = (0, _react.useState)(false),
-      _useState14 = _slicedToArray(_useState13, 2),
-      modalOpen = _useState14[0],
-      setModalOpen = _useState14[1];
-
   var modalOpenHandler = function modalOpenHandler(post) {
     setClickedPost(post);
     setModalOpen(true);
@@ -47412,12 +47403,10 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
   };
 
   var getClickedPostUserUrl = '/users/' + clickedPost.user_id;
-  console.log('getClickedPostUserUrl', getClickedPostUserUrl);
 
   (0, _react.useEffect)(function () {
     if (clickedPost.user_id != 0) {
       console.log('clickedPost.user_id', clickedPost.user_id);
-      console.log('getClickedPostUserUrl', getClickedPostUserUrl);
 
       (0, _FetchData.FetchData)(getClickedPostUserUrl).then(function (res) {
         return setClickedPostUser(res.data);
@@ -47426,18 +47415,21 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
     }
   }, [clickedPost]);
 
-  console.log('post: ', clickedPost.id);
-  console.log('getClickedPostUserUrl', getClickedPostUserUrl);
-
-  console.log('clickedPostUser.name: ', clickedPostUser.name);
+  console.log('clickedPost.id: ', clickedPost.id);
   console.log('clickedPostUser.id: ', clickedPostUser.id);
 
   var pushToLikeList = function pushToLikeList(picpost_id) {
-    console.log(picpost_id, 'ma');
+    console.log('ma', picpost_id);
     var arr = Array.from(likeList);
     arr.push(picpost_id);
     setLikeList(arr);
+    console.log('picpost_id', picpost_id);
+    console.log('trueorfailse', likeList.includes(clickedPost.id));
+    console.log('likeList', likeList);
   };
+  console.info('likeList', likeList);
+
+  console.log('trueorfailse', likeList.includes(clickedPost.id));
 
   var removeFromLikeList = function removeFromLikeList(picpost_id) {
     var arr = Array.from(likeList);
@@ -47477,9 +47469,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
     setColumnWidthValue(val);
   };
   // Slider関連
-
-
-  console.log('PostAppのcurrentUserData', props.currentUserData);
+  console.log('likeList', likeList);
 
   return React.createElement(
     React.Fragment,
@@ -47504,7 +47494,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                 { className: 'z-20 mr-5 mt-10' },
                 React.createElement(
                   _react2.Collapse,
-                  { title: ' ', className: 'h-1 text-base' },
+                  { title: ' ', className: 'h-1 text-base', initialVisible: true },
                   React.createElement(
                     _react2.Text,
                     null,
@@ -67044,16 +67034,6 @@ var React = _interopRequireWildcard(_react);
 
 var _FetchData = __webpack_require__(306);
 
-var _reactRouterDom = __webpack_require__(15);
-
-var _PostList = __webpack_require__(307);
-
-var _react2 = __webpack_require__(35);
-
-var _reactIcons = __webpack_require__(541);
-
-var Icon = _interopRequireWildcard(_reactIcons);
-
 var _FormikComment = __webpack_require__(865);
 
 var _CommentList = __webpack_require__(866);
@@ -67063,6 +67043,8 @@ var _axios = __webpack_require__(515);
 var _axios2 = _interopRequireDefault(_axios);
 
 var _formik = __webpack_require__(390);
+
+var _react2 = __webpack_require__(35);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -67631,13 +67613,11 @@ var LikeButton = exports.LikeButton = function LikeButton(props) {
   var onClickLike = async function onClickLike(postId) {
     var csrf = sessionStorage.getItem('X-CSRF-Token');
     var obj = {
-      // 一旦user_id 1で固定
       current_user_id: props.currentUserData.id,
       'X-CSRF-Token': csrf
     };
     var body = JSON.stringify(obj);
     var method = 'PUT';
-    // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like/' + postId;
     var postUrl = '/picposts/like/' + postId;
 
     await fetch(postUrl, { method: method, body: body }).then(function (response) {
@@ -67791,6 +67771,8 @@ var Icon = _interopRequireWildcard(_reactIcons);
 
 var _FollowButton = __webpack_require__(868);
 
+var _LikeButton = __webpack_require__(871);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
@@ -67909,11 +67891,13 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
 
   var modalOpenHandler = function modalOpenHandler(post) {
     setClickedPost(post);
+    console.log('clickedPost.id', clickedPost.id);
     setModalOpen(true);
   };
   var closeHandler = function closeHandler() {
     setModalOpen(false);
   };
+  console.log('clickedPost.id', clickedPost.id);
 
   var getClickedPostUserUrl = '/users/' + clickedPost.user_id;
   console.log('getClickedPostUserUrl', getClickedPostUserUrl);
@@ -67950,52 +67934,6 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
     });
     setLikeList(nextLikeUsers);
   };
-
-  // clickLike,unlike
-  var onClickLike = async function onClickLike(postId) {
-    var csrf = sessionStorage.getItem('X-CSRF-Token');
-    var obj = {
-      current_user_id: currentUserId,
-      'X-CSRF-Token': csrf
-    };
-    var body = JSON.stringify(obj);
-    var method = 'PUT';
-    // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like/' + postId;
-    var postUrl = '/picposts/like/' + postId;
-
-    await fetch(postUrl, { method: method, body: body }).then(function (response) {
-      console.log(response.status);
-      if (response.status == 200) {
-        console.log('response.status:200???: ', response.status);
-
-        pushToLikeList(clickedPost.id);
-      } else {
-        throw new Error();
-      }
-    }).catch(function (error) {});
-  };
-  var onClickUnLike = async function onClickUnLike(postId) {
-    var csrf = sessionStorage.getItem('X-CSRF-Token');
-    var obj = {
-      current_user_id: props.currentUserData.id,
-      'X-CSRF-Token': csrf
-    };
-    var body = JSON.stringify(obj);
-    var method = 'PUT';
-
-    var postUrl = '/picposts/unlike/' + postId;
-
-    await fetch(postUrl, { method: method, body: body }).then(function (response) {
-      console.log(response.status);
-      // if (response.status == 204) {
-      if (response.status == 200) {
-        removeFromLikeList(clickedPost.id);
-      } else {
-        throw new Error();
-      }
-    }).catch(function (error) {});
-  };
-  // clickLike,unlike
 
   // FollowButton関連
   var pushToFollowUsers = function pushToFollowUsers(target) {
@@ -68092,16 +68030,13 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
   (0, _react.useEffect)(function () {
     if (currentUserId != 0) {
       (0, _FetchData.FetchData)(getLikeListUrl).then(function (res) {
-        console.log('getLikeListUrlのres', res);
-        console.log('getLikeListUrlのres.data', res.data);
-        console.log('getLikeListUrl: ', getLikeListUrl);
-
-        setLikeList(res.data.map(function (like) {
-          return like.id;
-        }));
+        setLikeList(res.data);
       });
-    }
+      console.log('likeList', likeList);
+    };
   }, [currentUserId]);
+
+  console.log('likeList', likeList);
 
   (0, _react.useEffect)(function () {
     if (currentUserId != 0) {
@@ -68204,40 +68139,16 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
                   clickedPostUser.name
                 )
               ),
-              React.createElement(
-                _react2.Link,
-                { to: '/profilepage/' + clickedPost.id },
-                '\u2003 ',
-                clickedPost.content,
-                '\u2003'
-              ),
-              likeList.includes(clickedPost.id) ? React.createElement(
-                _react2.Button,
-                {
-                  type: 'warning',
-                  size: 'mini',
-                  auto: true,
-                  ghost: true,
-                  onClick: function onClick() {
-                    return onClickUnLike(clickedPost.id);
-                  }
-                },
-                React.createElement(Icon.HeartFill, { size: 12 }),
-                'UnLike'
-              ) : React.createElement(
-                _react2.Button,
-                {
-                  type: 'success',
-                  size: 'mini',
-                  auto: true,
-                  ghost: true,
-                  onClick: function onClick() {
-                    return onClickLike(clickedPost.id);
-                  }
-                },
-                React.createElement(Icon.Heart, { size: 8 }),
-                'Like'
-              )
+              '\u2003 ',
+              clickedPost.content,
+              '\u2003',
+              React.createElement(_LikeButton.LikeButton, {
+                likeList: likeList,
+                clickedPost: clickedPost,
+                pushToLikeList: pushToLikeList,
+                removeFromLikeList: removeFromLikeList,
+                currentUserData: props.currentUserData
+              })
             )
           )
         ),

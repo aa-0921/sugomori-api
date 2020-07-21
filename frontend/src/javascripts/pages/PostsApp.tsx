@@ -14,39 +14,46 @@ import { PostModal } from '../components/PostModal';
 
 
 export const PostsApp = (props: any) => {
+
   // 全投稿の配列のState定義
   const [fetchPosts, setFetchPosts] = useState([]);
   const [initialFetchPosts, setInitialFetchPosts] = useState([]);
   // 検索のfilter後の投稿の配列の定義
   const [filterPosts, setFilterPosts] = useState([]);
+  const [likeList, setLikeList] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const [clickedPostUser, setClickedPostUser] = useState({
+    id: 0,
+    name: '',
+  });
+  const [clickedPost, setClickedPost] = useState({
+    id: 0,
+    picture: '',
+    content: '',
+    user_id: 0,
+  });
 
   const getAllPostUrl: string = '/picposts';
-
   useEffect(() => {
     FetchData(getAllPostUrl).then((res) => {
       setFetchPosts(res.data);
       setInitialFetchPosts(res.data);
     });
   }, []);
-  // const currentUserId = props.currentUserData.id;
-  // console.info('currentUserId', currentUserId)
+  const currentUserId = props.currentUserData.id;
+  const getLikeListUrl: string = `/picposts/like_list/${currentUserId}`;
+  console.log('likeList', likeList);
 
   useEffect(() => {
-    // if (props.currentUserData) {
-    // const currentUserId = Number(props.currentUserData.id);
-    const currentUserId = props.currentUserData.id;
+    if (currentUserId != 0) {
+      FetchData(getLikeListUrl).then((res) => {
+        setLikeList(res.data);
+        // setLikeList(res.data.map((like: any) => like.id));
 
-    console.info('currentUserId', currentUserId)
-    const getLikeListUrl: string = `/picposts/like_list/${currentUserId}`;
-    FetchData(getLikeListUrl).then((res) => {
-      setLikeList(res.data.map((like: any) => like.id));
-    });
-    console.info('実行後のcurrentUserId', currentUserId)
-    console.info('実行後のgetLikeListUrl', getLikeListUrl)
-    // }
-  }, []);
-  // }, [props.currentUserData]);
-
+      });
+    };
+  }, [currentUserId]);
 
 
   useEffect(() => {
@@ -59,23 +66,10 @@ export const PostsApp = (props: any) => {
     });
     setFetchPosts(updateList);
   };
-  console.log('fetchPosts', fetchPosts);
 
-  const [likeList, setLikeList] = useState([]);
-  const [clickedPostUser, setClickedPostUser] = useState({
-    id: 0,
-    name: '',
-  });
-
-  const [clickedPost, setClickedPost] = useState({
-    id: 0,
-    picture: '',
-    content: '',
-    user_id: 0,
-  });
+  console.log('likeList', likeList);
 
   // modal,open,close
-  const [modalOpen, setModalOpen] = useState(false);
   const modalOpenHandler = (post: any) => {
     setClickedPost(post);
     setModalOpen(true);
@@ -102,30 +96,31 @@ export const PostsApp = (props: any) => {
   };
 
   const getClickedPostUserUrl: string = '/users/' + clickedPost.user_id;
-  console.log('getClickedPostUserUrl', getClickedPostUserUrl);
 
   useEffect(() => {
     if (clickedPost.user_id != 0) {
       console.log('clickedPost.user_id', clickedPost.user_id);
-      console.log('getClickedPostUserUrl', getClickedPostUserUrl);
 
       FetchData(getClickedPostUserUrl).then((res) => setClickedPostUser(res.data));
       console.log('clickedPostUser', clickedPostUser);
     }
   }, [clickedPost]);
 
-  console.log('post: ', clickedPost.id);
-  console.log('getClickedPostUserUrl', getClickedPostUserUrl);
-
-  console.log('clickedPostUser.name: ', clickedPostUser.name);
+  console.log('clickedPost.id: ', clickedPost.id);
   console.log('clickedPostUser.id: ', clickedPostUser.id);
 
   const pushToLikeList = (picpost_id: number) => {
-    console.log(picpost_id, 'ma');
+    console.log('ma', picpost_id);
     const arr = Array.from(likeList);
     arr.push(picpost_id);
     setLikeList(arr);
+    console.log('picpost_id', picpost_id);
+    console.log('trueorfailse', likeList.includes(clickedPost.id));
+    console.log('likeList', likeList);
   };
+  console.info('likeList', likeList);
+
+  console.log('trueorfailse', likeList.includes(clickedPost.id));
 
   const removeFromLikeList = (picpost_id: number) => {
     const arr = Array.from(likeList);
@@ -153,9 +148,7 @@ export const PostsApp = (props: any) => {
     setColumnWidthValue(val)
   }
   // Slider関連
-
-
-  console.log('PostAppのcurrentUserData', props.currentUserData);
+  console.log('likeList', likeList);
 
   return (
     <React.Fragment>
@@ -166,7 +159,7 @@ export const PostsApp = (props: any) => {
               {/* // Collapse関連 */}
               <div className="collapseWrap mt-18 pt-5">
                 <Collapse.Group className="z-20 mr-5 mt-10">
-                  <Collapse title=" " className="h-1 text-base">
+                  <Collapse title=" " className="h-1 text-base" initialVisible>
                     <Text>
                       <div className="bg-white flex justify-center items-center">
                         <span className="wr-10 pr-5">

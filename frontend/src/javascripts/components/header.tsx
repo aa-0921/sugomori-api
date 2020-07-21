@@ -15,14 +15,15 @@ export function Header(props: any) {
       lastPosition = 0,
       ticking = false;
     function onScroll(lastPosition: any) {
-
-      if (lastPosition > height) {
-        if (lastPosition > offset) {
-          target.classList.add('head-animation');
-        } else {
-          target.classList.remove('head-animation');
+      if (target != null) {
+        if (lastPosition > height) {
+          if (lastPosition > offset) {
+            target.classList.add('head-animation');
+          } else {
+            target.classList.remove('head-animation');
+          }
+          offset = lastPosition;
         }
-        offset = lastPosition;
       }
     }
 

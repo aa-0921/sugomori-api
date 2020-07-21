@@ -16,13 +16,11 @@ export const LikeButton = (props: any) => {
   const onClickLike = async (postId: any) => {
     const csrf = sessionStorage.getItem('X-CSRF-Token');
     const obj = {
-      // 一旦user_id 1で固定
       current_user_id: props.currentUserData.id,
       'X-CSRF-Token': csrf,
     };
     const body = JSON.stringify(obj);
     const method = 'PUT';
-    // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like/' + postId;
     const postUrl: string = '/picposts/like/' + postId;
 
     await fetch(postUrl, { method, body })

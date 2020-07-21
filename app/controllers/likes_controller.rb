@@ -5,12 +5,19 @@ class LikesController < ApplicationController
     current_user_id = json_request['current_user_id'].to_i
     current_user = User.find_by(id: current_user_id)
     @picpost = Picpost.find(params[:picpost_id])
+    @picpost.iine(current_user)
+    # iine.save
+    p "like_create_current_user"
+    p current_user.likes.all
+    p current_user.likes.pluck(:picpost_id)
 
-    if @picpost.iine(current_user)
-      render json: { status: 'SUCCESS' }
-    else
-      render json: { status: 'ERROR' }
-    end
+    render json: { status: 'SUCCESS' }
+
+    # if @picpost.iine(current_user)
+    #   render json: { status: 'SUCCESS' }
+    # else
+    #   render json: { status: 'ERROR' }
+    # end
   end
 
   # 指定の投稿から自分のいいねを削除
@@ -31,7 +38,9 @@ class LikesController < ApplicationController
 
   def like_list
     @user = User.find(params[:user_id])
-    current_user_likes = @user.likes.all
+    current_user_likes = @user.likes.all.pluck(:picpost_id)
+    p "current_user_likes"
+    p current_user_likes
     render json: { status: 'SUCCESS', data: current_user_likes }
   end
   # フォローしてる人の一覧ページ

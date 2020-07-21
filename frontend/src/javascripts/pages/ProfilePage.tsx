@@ -6,6 +6,7 @@ import { FetchData } from '../api/FetchData'
 import { PostList } from '../components/PostList';
 import * as Icon from '@zeit-ui/react-icons';
 import { FollowButton } from '../components/FollowButton';
+import { LikeButton } from '../components/LikeButton';
 
 
 export const ProfilePage = (props: any) => {
@@ -97,11 +98,13 @@ export const ProfilePage = (props: any) => {
   const [modalOpen, setModalOpen] = useState(false);
   const modalOpenHandler = (post: any) => {
     setClickedPost(post);
+    console.log('clickedPost.id', clickedPost.id)
     setModalOpen(true);
   };
   const closeHandler = () => {
     setModalOpen(false);
   };
+  console.log('clickedPost.id', clickedPost.id)
 
   const getClickedPostUserUrl: string = '/users/' + clickedPost.user_id;
   console.log('getClickedPostUserUrl', getClickedPostUserUrl);
@@ -135,55 +138,6 @@ export const ProfilePage = (props: any) => {
     setLikeList(nextLikeUsers);
   };
 
-  // clickLike,unlike
-  const onClickLike = async (postId: any) => {
-    const csrf = sessionStorage.getItem('X-CSRF-Token');
-    const obj = {
-      current_user_id: currentUserId,
-      'X-CSRF-Token': csrf,
-    };
-    const body = JSON.stringify(obj);
-    const method = 'PUT';
-    // const postUrl: string = process.env.REACT_APP_API_URL_POSTS + '/like/' + postId;
-    const postUrl: string = '/picposts/like/' + postId;
-
-    await fetch(postUrl, { method, body })
-      .then((response) => {
-        console.log(response.status);
-        if (response.status == 200) {
-          console.log('response.status:200???: ', response.status);
-
-          pushToLikeList(clickedPost.id);
-        } else {
-          throw new Error();
-        }
-      })
-      .catch((error) => { });
-  };
-  const onClickUnLike = async (postId: any) => {
-    const csrf = sessionStorage.getItem('X-CSRF-Token');
-    const obj = {
-      current_user_id: props.currentUserData.id,
-      'X-CSRF-Token': csrf,
-    };
-    const body = JSON.stringify(obj);
-    const method = 'PUT';
-
-    const postUrl: string = '/picposts/unlike/' + postId;
-
-    await fetch(postUrl, { method, body })
-      .then((response) => {
-        console.log(response.status);
-        // if (response.status == 204) {
-        if (response.status == 200) {
-          removeFromLikeList(clickedPost.id);
-        } else {
-          throw new Error();
-        }
-      })
-      .catch((error) => { });
-  };
-  // clickLike,unlike
 
   // FollowButton関連
   const pushToFollowUsers = (target: number) => {
@@ -278,17 +232,19 @@ export const ProfilePage = (props: any) => {
   console.log('getFollowListUrl: ', getFollowListUrl);
 
 
+
   useEffect(() => {
     if (currentUserId != 0) {
       FetchData(getLikeListUrl).then((res) => {
-        console.log('getLikeListUrlのres', res)
-        console.log('getLikeListUrlのres.data', res.data)
-        console.log('getLikeListUrl: ', getLikeListUrl);
-
-        setLikeList(res.data.map((like: any) => like.id));
+        setLikeList(res.data);
       });
-    }
+      console.log('likeList', likeList)
+
+    };
   }, [currentUserId]);
+
+  console.log('likeList', likeList)
+
 
   useEffect(() => {
     if (currentUserId != 0) {
@@ -349,32 +305,16 @@ export const ProfilePage = (props: any) => {
                 <Link to={'/profilepage/' + clickedPost.user_id}>
                   <span>{clickedPostUser.name}</span>
                 </Link>
-                <Link to={'/profilepage/' + clickedPost.id}>
+
                   &emsp; {clickedPost.content}&emsp;
-                          </Link>
-                {likeList.includes(clickedPost.id) ? (
-                  <Button
-                    type="warning"
-                    size="mini"
-                    auto
-                    ghost
-                    onClick={() => onClickUnLike(clickedPost.id)}
-                  >
-                    <Icon.HeartFill size={12} />
-                              UnLike
-                  </Button>
-                ) : (
-                    <Button
-                      type="success"
-                      size="mini"
-                      auto
-                      ghost
-                      onClick={() => onClickLike(clickedPost.id)}
-                    >
-                      <Icon.Heart size={8} />
-                              Like
-                    </Button>
-                  )}
+
+                <LikeButton
+                  likeList={likeList}
+                  clickedPost={clickedPost}
+                  pushToLikeList={pushToLikeList}
+                  removeFromLikeList={removeFromLikeList}
+                  currentUserData={props.currentUserData}
+                />
               </div>
 
             </div>
