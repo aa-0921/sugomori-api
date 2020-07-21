@@ -7,9 +7,10 @@ class Users::SessionsController < Devise::SessionsController
   # before_action :authenticate_user!, except: :new
 
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  def new
+    session.delete('devise.omniauth_data')
+    super
+  end
 
   # POST /resource/sign_in
   # def create
