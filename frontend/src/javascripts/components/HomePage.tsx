@@ -58,16 +58,18 @@ export const HomePage = () => {
   return (
     <React.Fragment>
       {nowLoading ? (
+
         <div className="loadingDiv z-50  bg-black absolute opacity-50 h-screen w-screen flex justify-center flex-col items-center">
-          <Loading>Loading</Loading>
+          <div className="loader"></div>
+          <div className="loadingShadow"></div>
         </div>
       ) : (
-          <div></div>
+          <React.Fragment></React.Fragment>
         )}
       <React.Fragment>
+
         <BrowserRouter>
           <Header currentUserData={currentUserData} />
-
           <Switch>
             <Route exact path="/"
               render={(props) =>

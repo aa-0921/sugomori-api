@@ -28693,12 +28693,9 @@ var HomePage = exports.HomePage = function HomePage() {
     nowLoading ? React.createElement(
       'div',
       { className: 'loadingDiv z-50  bg-black absolute opacity-50 h-screen w-screen flex justify-center flex-col items-center' },
-      React.createElement(
-        _react2.Loading,
-        null,
-        'Loading'
-      )
-    ) : React.createElement('div', null),
+      React.createElement('div', { className: 'loader' }),
+      React.createElement('div', { className: 'loadingShadow' })
+    ) : React.createElement(React.Fragment, null),
     React.createElement(
       React.Fragment,
       null,
