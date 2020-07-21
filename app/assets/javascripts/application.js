@@ -68148,7 +68148,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
             )
           )
         ),
-        React.createElement(
+        props.currentUserData.id == props.match.params.id ? React.createElement(
           _react2.Modal.Action,
           null,
           React.createElement(
@@ -68169,7 +68169,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
               'Delete'
             )
           )
-        ),
+        ) : React.createElement('div', null),
         React.createElement(
           _react2.Modal.Action,
           { passive: true, onClick: function onClick() {

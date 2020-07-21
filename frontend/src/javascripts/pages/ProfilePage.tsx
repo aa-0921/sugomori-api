@@ -294,9 +294,6 @@ export const ProfilePage = (props: any) => {
           filterPosts={filterPosts}
         />
         <Modal width="35rem" open={modalOpen} onClose={closeHandler}>
-          {/* <React.Fragment>
-            <Grid.Container justify="center">
-              <Grid> */}
           <Modal.Content>
             <div className=" flex flex-col items-center">
               <img src={clickedPost.picture} className="rounded-lg" />
@@ -319,26 +316,27 @@ export const ProfilePage = (props: any) => {
 
             </div>
           </Modal.Content>
-          {/* </Grid>
-            </Grid.Container> */}
-          <Modal.Action>
-            <div>
-              <Button
-                type="error"
-                size="mini"
-                auto
-                ghost
-                onClick={() => onClickDelete(clickedPost.id)}
-              >
-                <Icon.Delete size={8} />
+          {props.currentUserData.id == props.match.params.id ? (
+            <Modal.Action>
+              <div>
+                <Button
+                  type="error"
+                  size="mini"
+                  auto
+                  ghost
+                  onClick={() => onClickDelete(clickedPost.id)}
+                >
+                  <Icon.Delete size={8} />
                               Delete
                       </Button>
-            </div>
-          </Modal.Action>
+              </div>
+            </Modal.Action>
+          ) : (
+              <div></div>
+            )}
           <Modal.Action passive onClick={() => setModalOpen(false)}>
             Cancel
-                </Modal.Action>
-          {/* </React.Fragment> */}
+          </Modal.Action>
         </Modal>
       </div>
     </React.Fragment>
