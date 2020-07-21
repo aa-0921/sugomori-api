@@ -198,8 +198,6 @@ export const PostsApp = (props: any) => {
             <Modal width="100vh" wrapClassName={"modalWrap"}
               open={modalOpen} onClose={closeHandler}>
               <React.Fragment>
-                {/* <Grid.Container justify="center"> */}
-                {/* <Grid> */}
                 <Modal.Content className="overflow-y-scroll h-screen z-10">
                   <div className="flex flex-col items-center h-auto">
                     <div className="imageDiv flex flex-col h-auto">
@@ -231,8 +229,6 @@ export const PostsApp = (props: any) => {
                     {/* コメント部分ーーーーーーーーーーーーー */}
                   </div>
                 </Modal.Content>
-                {/* </Grid> */}
-                {/* </Grid.Container> */}
                 <Divider className="m-6" />
                 <Modal.Action passive onClick={() => setModalOpen(false)}
                   className="h-5">

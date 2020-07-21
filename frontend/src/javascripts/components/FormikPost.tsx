@@ -14,9 +14,6 @@ export const FormikPost = (props: any) => {
 
   const createPicpost = async (body: any) => {
 
-    // console.log('postModalCloseHandler前')
-    // props.postModalCloseHandler
-    // console.log('postModalCloseHandler後')
     const headers = { 'content-type': 'multipart/form-data' };
     const postUrl: string = '/picposts';
     await axios.post(postUrl, body, { headers })
@@ -72,7 +69,7 @@ export const FormikPost = (props: any) => {
 
         const body = submitData;
         createPicpost(body);
-        // 投稿後に入力欄を全て初期化したい。
+
         resetForm({});
       }}
 
@@ -119,7 +116,6 @@ export const FormikPost = (props: any) => {
                         id="file"
                         name="file"
                         type="file"
-                        // ref={fileInput}
                         onChange={(e: any) => {
                           console.log('postFileName', postFileName)
 
@@ -137,15 +133,10 @@ export const FormikPost = (props: any) => {
                       />
                     </label>
                   </div>
-
                 )}
-
             </div>
-
             < Spacer y={1} />
           </Form>
-          // </Grid>
-          // </Grid.Container>
         );
       }}
     />

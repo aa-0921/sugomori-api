@@ -55429,9 +55429,6 @@ var FormikPost = exports.FormikPost = function FormikPost(props) {
 
   var createPicpost = async function createPicpost(body) {
 
-    // console.log('postModalCloseHandler前')
-    // props.postModalCloseHandler
-    // console.log('postModalCloseHandler後')
     var headers = { 'content-type': 'multipart/form-data' };
     var postUrl = '/picposts';
     await _axios2.default.post(postUrl, body, { headers: headers }).then(function (res) {
@@ -55485,7 +55482,7 @@ var FormikPost = exports.FormikPost = function FormikPost(props) {
 
       var body = submitData;
       createPicpost(body);
-      // 投稿後に入力欄を全て初期化したい。
+
       resetForm({});
     },
 
@@ -55559,9 +55556,8 @@ var FormikPost = exports.FormikPost = function FormikPost(props) {
                 className: 'hidden',
                 id: 'file',
                 name: 'file',
-                type: 'file'
-                // ref={fileInput}
-                , onChange: function onChange(e) {
+                type: 'file',
+                onChange: function onChange(e) {
                   console.log('postFileName', postFileName);
 
                   var file = e.target.files[0];
@@ -55580,10 +55576,7 @@ var FormikPost = exports.FormikPost = function FormikPost(props) {
           )
         ),
         React.createElement(_react2.Spacer, { y: 1 })
-      )
-      // </Grid>
-      // </Grid.Container>
-      ;
+      );
     }
   });
 };
