@@ -111,23 +111,23 @@
 //               Signup
 //             </Button>
 //           </Link>
-//           <ul className="follow-button">
-//             <li className="fbpagebtn">
-//               <a href={facebookUrl} title="Facebookページ">
-//                 <i className="fa fa-facebook-square fa-4x"></i>
-//               </a>
-//             </li>
-//             <li className="gpbtn">
-//               <a href={githubUrl} title="Google+">
-//                 <i className="fa fa-github-square fa-4x"></i>
-//               </a>
-//             </li>
-//             <li className="twbtn">
-//               <a href={twitterUrl} title="Twitter">
-//                 <i className="fa fa-twitter-square fa-4x"></i>
-//               </a>
-//             </li>
-//           </ul>
+          // <ul className="follow-button">
+          //   <li className="fbpagebtn">
+          //     <a href={facebookUrl} title="Facebookページ">
+          //       <i className="fa fa-facebook-square fa-4x"></i>
+          //     </a>
+          //   </li>
+          //   <li className="gpbtn">
+          //     <a href={githubUrl} title="Google+">
+          //       <i className="fa fa-github-square fa-4x"></i>
+          //     </a>
+          //   </li>
+          //   <li className="twbtn">
+          //     <a href={twitterUrl} title="Twitter">
+          //       <i className="fa fa-twitter-square fa-4x"></i>
+          //     </a>
+          //   </li>
+          // </ul>
 //         </form>
 //       </Row>
 //     </Grid.Container>

@@ -15,8 +15,33 @@
           <div class="px-4 py-3">
 
           </div>
-          <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">Sign in with Twitter</h1>
+          <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">
+          Sign in with Twitter
+          </h1>
         </a>
+
+<%# SNSログイン %>
+          <ul className="follow-button">
+            <li className="fbpagebtn">
+              <a href="/omniauth/facebook" title="Facebook">
+                <i className="fa fa-facebook-square fa-4x">Facebook</i>
+              </a>
+            </li>
+            <li className="gpbtn">
+              <a href="/omniauth/github" title="github">
+                <i className="fa fa-github-square fa-4x">github</i>
+              </a>
+            </li>
+            <li className="twbtn">
+              <a href=/omniauth/twitter" title="Twitter">
+                <i className="fa fa-twitter-square fa-4x">Twitter</i>
+              </a>
+            </li>
+          </ul>
+
+
+
+
         <div class="mt-4 flex items-center justify-between">
           <span class="border-b w-1/5 lg:w-1/4"></span>
           <a href="#" class="text-xs text-center text-gray-500 uppercase">or login with email</a>
