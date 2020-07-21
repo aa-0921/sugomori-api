@@ -68073,7 +68073,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
             '\u81EA\u5DF1\u7D39\u4ECB'
           )
         ),
-        React.createElement(
+        props.currentUserData.id != props.match.params.id ? React.createElement(
           'div',
           { className: 'flex flex-col min-w-0 mt-auto ml-20' },
           React.createElement(
@@ -68087,7 +68087,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
               buttonSize: buttonSize
             })
           )
-        )
+        ) : React.createElement('div', null)
       )
     ),
     React.createElement(_react2.Spacer, { y: 1 }),

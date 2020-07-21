@@ -264,17 +264,21 @@ export const ProfilePage = (props: any) => {
             <h4>{fetchUser.name}</h4>
             <p>自己紹介</p>
           </div>
-          <div className="flex flex-col min-w-0 mt-auto ml-20">
-            <div>
-              <FollowButton
-                onClickFollow={onClickFollow}
-                onClickUnFollow={onClickUnFollow}
-                followUsersList={followUsers}
-                user={fetchUser}
-                buttonSize={buttonSize}
-              />
+          {props.currentUserData.id != props.match.params.id ? (
+            <div className="flex flex-col min-w-0 mt-auto ml-20">
+              <div>
+                <FollowButton
+                  onClickFollow={onClickFollow}
+                  onClickUnFollow={onClickUnFollow}
+                  followUsersList={followUsers}
+                  user={fetchUser}
+                  buttonSize={buttonSize}
+                />
+              </div>
             </div>
-          </div>
+          ) : (
+              <div></div>
+            )}
         </div>
       </Card>
       < Spacer y={1} />
