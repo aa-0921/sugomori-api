@@ -28634,6 +28634,8 @@ var _FetchData = __webpack_require__(306);
 
 var _react2 = __webpack_require__(35);
 
+var _FeedApp = __webpack_require__(877);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var HomePage = exports.HomePage = function HomePage() {
@@ -28709,6 +28711,15 @@ var HomePage = exports.HomePage = function HomePage() {
           React.createElement(_reactRouterDom.Route, { exact: true, path: '/',
             render: function render(props) {
               return React.createElement(_PostsApp.PostsApp, _extends({}, props, {
+                currentUserData: currentUserData,
+                setNowLoading: setNowLoading,
+                nowLoading: nowLoading
+              }));
+            }
+          }),
+          React.createElement(_reactRouterDom.Route, { exact: true, path: '/feedapp',
+            render: function render(props) {
+              return React.createElement(_FeedApp.FeedApp, _extends({}, props, {
                 currentUserData: currentUserData,
                 setNowLoading: setNowLoading,
                 nowLoading: nowLoading
@@ -32857,7 +32868,7 @@ function Header(props) {
                         React.createElement(
                           _reactRouterDom.Link,
                           {
-                            to: '/',
+                            to: '/feedapp',
                             className: 'text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700'
                           },
                           'Feed'
@@ -68651,6 +68662,396 @@ var BeforeLoginPosts = exports.BeforeLoginPosts = function BeforeLoginPosts(prop
                   className: 'h-5' },
                 'Cancel'
               )
+            )
+          )
+        ),
+        React.createElement(
+          _reactRouterDom.Switch,
+          null,
+          React.createElement(_reactRouterDom.Route, { path: '/' })
+        )
+      )
+    )
+  );
+};
+
+/***/ }),
+/* 877 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FeedApp = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _FetchData = __webpack_require__(306);
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _PostList = __webpack_require__(307);
+
+var _FormikPost = __webpack_require__(389);
+
+var _react2 = __webpack_require__(35);
+
+var _reactIcons = __webpack_require__(541);
+
+var Icon = _interopRequireWildcard(_reactIcons);
+
+var _CommentApp = __webpack_require__(864);
+
+var _LikeButton = __webpack_require__(871);
+
+var _PostModal = __webpack_require__(872);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var FeedApp = exports.FeedApp = function FeedApp(props) {
+
+  // 全投稿の配列のState定義
+  var _useState = (0, _react.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      fetchPosts = _useState2[0],
+      setFetchPosts = _useState2[1];
+
+  var _useState3 = (0, _react.useState)([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      initialFetchPosts = _useState4[0],
+      setInitialFetchPosts = _useState4[1];
+  // 検索のfilter後の投稿の配列の定義
+
+
+  var _useState5 = (0, _react.useState)([]),
+      _useState6 = _slicedToArray(_useState5, 2),
+      filterPosts = _useState6[0],
+      setFilterPosts = _useState6[1];
+
+  var _useState7 = (0, _react.useState)([]),
+      _useState8 = _slicedToArray(_useState7, 2),
+      likeList = _useState8[0],
+      setLikeList = _useState8[1];
+
+  var _useState9 = (0, _react.useState)(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      modalOpen = _useState10[0],
+      setModalOpen = _useState10[1];
+
+  var _useState11 = (0, _react.useState)({
+    id: 0,
+    name: ''
+  }),
+      _useState12 = _slicedToArray(_useState11, 2),
+      clickedPostUser = _useState12[0],
+      setClickedPostUser = _useState12[1];
+
+  var _useState13 = (0, _react.useState)({
+    id: 0,
+    picture: '',
+    content: '',
+    user_id: 0
+  }),
+      _useState14 = _slicedToArray(_useState13, 2),
+      clickedPost = _useState14[0],
+      setClickedPost = _useState14[1];
+
+  var getAllPostUrl = '/picposts';
+  (0, _react.useEffect)(function () {
+    (0, _FetchData.FetchData)(getAllPostUrl).then(function (res) {
+      setFetchPosts(res.data);
+      setInitialFetchPosts(res.data);
+    });
+  }, []);
+  var currentUserId = props.currentUserData.id;
+  var getLikeListUrl = '/picposts/like_list/' + currentUserId;
+  console.log('likeList', likeList);
+
+  (0, _react.useEffect)(function () {
+    if (currentUserId != 0) {
+      (0, _FetchData.FetchData)(getLikeListUrl).then(function (res) {
+        setLikeList(res.data);
+        // setLikeList(res.data.map((like: any) => like.id));
+      });
+    };
+  }, [currentUserId]);
+
+  (0, _react.useEffect)(function () {
+    setFilterPosts(fetchPosts);
+  }, [fetchPosts]);
+
+  var filterList = function filterList(e) {
+    var updateList = initialFetchPosts.filter(function (post) {
+      return post.content.search(e.target.value) !== -1;
+    });
+    setFetchPosts(updateList);
+  };
+
+  console.log('likeList', likeList);
+
+  // modal,open,close
+  var modalOpenHandler = function modalOpenHandler(post) {
+    setClickedPost(post);
+    setModalOpen(true);
+    removeHeader();
+  };
+  var closeHandler = function closeHandler() {
+    setModalOpen(false);
+    addHeader();
+  };
+
+  var removeHeader = function removeHeader() {
+    var target = document.getElementById('header');
+    target.classList.add('head-animation');
+  };
+
+  var addHeader = function addHeader() {
+    var target = document.getElementById('header');
+    target.classList.remove('head-animation');
+  };
+
+  var goProfile = function goProfile() {
+    addHeader();
+    props.history.push('/profilepage/' + clickedPost.user_id);
+  };
+
+  var getClickedPostUserUrl = '/users/' + clickedPost.user_id;
+
+  (0, _react.useEffect)(function () {
+    if (clickedPost.user_id != 0) {
+      console.log('clickedPost.user_id', clickedPost.user_id);
+
+      (0, _FetchData.FetchData)(getClickedPostUserUrl).then(function (res) {
+        return setClickedPostUser(res.data);
+      });
+      console.log('clickedPostUser', clickedPostUser);
+    }
+  }, [clickedPost]);
+
+  console.log('clickedPost.id: ', clickedPost.id);
+  console.log('clickedPostUser.id: ', clickedPostUser.id);
+
+  var pushToLikeList = function pushToLikeList(picpost_id) {
+    console.log('ma', picpost_id);
+    var arr = Array.from(likeList);
+    arr.push(picpost_id);
+    setLikeList(arr);
+    console.log('picpost_id', picpost_id);
+    console.log('trueorfailse', likeList.includes(clickedPost.id));
+    console.log('likeList', likeList);
+  };
+  console.info('likeList', likeList);
+
+  console.log('trueorfailse', likeList.includes(clickedPost.id));
+
+  var removeFromLikeList = function removeFromLikeList(picpost_id) {
+    var arr = Array.from(likeList);
+    // 
+    var nextLikeUsers = arr.filter(function (el) {
+      return el !== picpost_id;
+    });
+    setLikeList(nextLikeUsers);
+  };
+
+  // 投稿フォームmodal,open,close
+
+  var _useState15 = (0, _react.useState)(false),
+      _useState16 = _slicedToArray(_useState15, 2),
+      postModalOpen = _useState16[0],
+      setPostModalOpen = _useState16[1];
+
+  var postModalOpenHandler = function postModalOpenHandler() {
+    setPostModalOpen(true);
+    removeHeader();
+  };
+
+  var postModalCloseHandler = function postModalCloseHandler() {
+    setPostModalOpen(false);
+    addHeader();
+  };
+
+  // Slider関連
+
+  var _useState17 = (0, _react.useState)(300),
+      _useState18 = _slicedToArray(_useState17, 2),
+      columnWidthValue = _useState18[0],
+      setColumnWidthValue = _useState18[1];
+
+  var columnWidthHandler = function columnWidthHandler(val) {
+    console.log(val);
+    setColumnWidthValue(val);
+  };
+  // Slider関連
+  console.log('likeList', likeList);
+
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(
+      'h1',
+      { className: 'pt-30 bg-blue-300' },
+      'feedapp'
+    ),
+    React.createElement(
+      _reactRouterDom.BrowserRouter,
+      null,
+      React.createElement(
+        'div',
+        null,
+        React.createElement(
+          'div',
+          null,
+          React.createElement(
+            'div',
+            null,
+            React.createElement(
+              'div',
+              { className: 'collapseWrap mt-18 pt-5' },
+              React.createElement(
+                _react2.Collapse.Group,
+                { className: 'z-20 mr-5 mt-10' },
+                React.createElement(
+                  _react2.Collapse,
+                  { title: ' ', className: 'h-1 text-base', initialVisible: true },
+                  React.createElement(
+                    _react2.Text,
+                    null,
+                    React.createElement(
+                      'div',
+                      { className: 'bg-white flex justify-center items-center' },
+                      React.createElement(
+                        'span',
+                        { className: 'wr-10 pr-5' },
+                        React.createElement(Icon.Maximize2, { size: 25 })
+                      ),
+                      React.createElement(
+                        _react2.Row,
+                        { style: { width: '75%' } },
+                        React.createElement(_react2.Slider, {
+                          value: columnWidthValue, onChange: columnWidthHandler,
+                          step: 20, max: 500, min: 100, initialValue: 300
+                        })
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+            React.createElement(
+              'div',
+              { className: 'flex justify-end mr-5 mt-3' },
+              React.createElement(
+                'form',
+                { action: '' },
+                React.createElement('input', { type: 'text', placeholder: 'search', onChange: filterList, className: 'w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline' })
+              )
+            ),
+            React.createElement(_PostList.PostList, {
+              fetchPosts: fetchPosts,
+              likeList: likeList,
+              pushToLikeList: pushToLikeList,
+              removeFromLikeLisft: removeFromLikeList,
+              modalOpenHandler: modalOpenHandler,
+              filterList: filterList,
+              filterPosts: filterPosts,
+              columnWidthValue: columnWidthValue
+            })
+          ),
+          React.createElement(
+            _react2.Modal,
+            { width: '100vh', wrapClassName: "modalWrap",
+              open: modalOpen, onClose: closeHandler },
+            React.createElement(
+              React.Fragment,
+              null,
+              React.createElement(
+                _react2.Modal.Content,
+                { className: 'overflow-y-scroll h-screen z-10' },
+                React.createElement(
+                  'div',
+                  { className: 'flex flex-col items-center h-auto' },
+                  React.createElement(
+                    'div',
+                    { className: 'imageDiv flex flex-col h-auto' },
+                    React.createElement('img', { src: clickedPost.picture, className: 'modalImage object-contain rounded-lg' })
+                  ),
+                  React.createElement(
+                    'div',
+                    { className: 'flex text-center mt-4' },
+                    React.createElement(
+                      _reactRouterDom.Link,
+                      {
+                        to: '/profilepage/' + clickedPost.user_id,
+                        onClick: function onClick() {
+                          return goProfile();
+                        }
+                      },
+                      React.createElement(
+                        'span',
+                        null,
+                        clickedPostUser.name
+                      )
+                    ),
+                    '\u2003 ',
+                    clickedPost.content,
+                    '\u2003',
+                    React.createElement(_LikeButton.LikeButton, {
+                      likeList: likeList,
+                      clickedPost: clickedPost,
+                      pushToLikeList: pushToLikeList,
+                      removeFromLikeList: removeFromLikeList,
+                      currentUserData: props.currentUserData
+                    })
+                  ),
+                  React.createElement(
+                    'div',
+                    { className: 'block' },
+                    React.createElement(_CommentApp.CommentApp, {
+                      clickedPostId: clickedPost.id,
+                      currentUserData: props.currentUserData
+                    })
+                  )
+                )
+              ),
+              React.createElement(_react2.Divider, { className: 'm-6' }),
+              React.createElement(
+                _react2.Modal.Action,
+                { passive: true, onClick: function onClick() {
+                    return setModalOpen(false);
+                  },
+                  className: 'h-5' },
+                'Cancel'
+              )
+            )
+          ),
+          React.createElement(_PostModal.PostModal, {
+            postModalOpen: postModalOpen,
+            filterPosts: filterPosts,
+            setFilterPosts: setFilterPosts,
+            setPostModalOpen: setPostModalOpen,
+            postModalOpenHandler: postModalOpenHandler,
+            postModalCloseHandler: postModalCloseHandler,
+            setNowLoading: props.setNowLoading,
+            nowLoading: props.nowLoading
+          }),
+          React.createElement(
+            'div',
+            { className: 'postButton fixed bottom-0 right-0 z-10 m-12' },
+            React.createElement(
+              'button',
+              {
+                onClick: function onClick() {
+                  return postModalOpenHandler();
+                },
+                className: 'transition duration-500 ease-in-out bg-indigo-300 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-indigo-500 hover:border-red-600 rounded-full cursor-pointer' },
+              React.createElement(Icon.PlusCircle, { size: 50 })
             )
           )
         ),

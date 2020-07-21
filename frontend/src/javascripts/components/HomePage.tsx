@@ -14,6 +14,7 @@ import { MemberListApp } from '../pages/MemberListApp';
 import { FetchData } from '../api/FetchData';
 import { useState, useEffect } from 'react';
 import { useToasts, Loading, Row } from '@zeit-ui/react';
+import { FeedApp } from '../pages/FeedApp';
 
 export const HomePage = () => {
   const [currentUserData, setCurrentUserData] = useState({
@@ -74,6 +75,15 @@ export const HomePage = () => {
             <Route exact path="/"
               render={(props) =>
                 <PostsApp
+                  {...props}
+                  currentUserData={currentUserData}
+                  setNowLoading={setNowLoading}
+                  nowLoading={nowLoading}
+                />}
+            />
+            <Route exact path="/feedapp"
+              render={(props) =>
+                <FeedApp
                   {...props}
                   currentUserData={currentUserData}
                   setNowLoading={setNowLoading}
