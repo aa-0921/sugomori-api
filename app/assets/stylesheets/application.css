@@ -14643,6 +14643,9 @@ div.loadingDiv {
   filter: blur(5px);
   z-index: 1; }
 
+summary > svg {
+  width: 30px !important; }
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;

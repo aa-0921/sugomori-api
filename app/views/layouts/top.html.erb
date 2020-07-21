@@ -11,8 +11,8 @@
 </head>
 <%# Reactコンポーネント表示用のレイアウト %>
 <body>
-  <p id="notice" class="hidden"><%= notice %></p>
-  <p id="alert"  class="hidden"><%= alert %></p>
+  <div id="notice" class="hidden"><%= notice %></div>
+  <div id="alert"  class="hidden"><%= alert %></div>
 
   <% if current_user.present? %>
     <div id="js_logged_in_component">

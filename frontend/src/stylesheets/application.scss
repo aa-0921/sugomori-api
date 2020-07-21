@@ -52,6 +52,8 @@ details > summary {
   color: white;
 }
 
+// loading関連
+
 div.loadingDiv {
   z-index: 2001;
   position: absolute;
@@ -190,4 +192,9 @@ $terchiary: #99d2e4;
     float 5s ease-in-out 0s infinite forwards;
   filter: blur(5px);
   z-index: 1;
+}
+
+// loading関連
+summary > svg {
+  width: 30px !important;
 }
