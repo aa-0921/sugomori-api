@@ -334,16 +334,16 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   config.omniauth :facebook,
-                  Settings.facebook[:facebook_api_key],
-                  Settings.facebook[:facebook_api_secret],
+                  Settings.facebook[:key],
+                  Settings.facebook[:secret],
                   scope: 'email',
                   info_fields: 'email,name'
 
   config.omniauth :twitter,
-                  Settings.twitter[:twitter_api_key],
-                  Settings.twitter[:twitter_api_secret]
-                  
+                  Settings.twitter[:key],
+                  Settings.twitter[:secret]
+
   config.omniauth :github,
-                  Settings.github[:twitter_api_key],
-                  Settings.github[:twitter_api_secret]
+                  Settings.github[:key],
+                  Settings.github[:secret]
 end
