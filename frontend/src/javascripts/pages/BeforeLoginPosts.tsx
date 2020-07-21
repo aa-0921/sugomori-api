@@ -27,10 +27,6 @@ export const BeforeLoginPosts = (props: any) => {
     });
   }, []);
 
-  // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
-  const currentUserId = 1;
-
-
 
   useEffect(() => {
     setFilterPosts(fetchPosts);
@@ -134,7 +130,7 @@ export const BeforeLoginPosts = (props: any) => {
             <div>
               <div className="collapseWrap mt-18 pt-5">
                 <Collapse.Group className="z-20 mr-5 mt-10">
-                  <Collapse title=" " className="h-1 text-base">
+                  <Collapse title=" " className="h-1 text-base initialVisible">
                     <Text>
                       <div className="bg-white flex justify-center items-center">
                         <span className="wr-10 pr-5">
@@ -170,7 +166,7 @@ export const BeforeLoginPosts = (props: any) => {
               <React.Fragment>
                 {/* <Grid.Container justify="center"> */}
                 {/* <Grid> */}
-                <Modal.Content className="overflow-y-scroll h-screen">
+                <Modal.Content className="overflow-y-scroll h-screen z-10">
                   <div className="flex flex-col items-center h-auto">
                     <div className="imageDiv flex flex-col h-auto">
                       <img src={clickedPost.picture} className="modalImage object-contain rounded-lg" />

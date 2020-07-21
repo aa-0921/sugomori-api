@@ -72,6 +72,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
 
     if current_user.follow(@user)
+      # p current_user.all_following.pluck(:id)
+      p current_user.all_following.map(&:id)
+
       render json: { status: 'SUCCESS' }
     else
       render json: { status: 'ERROR' }

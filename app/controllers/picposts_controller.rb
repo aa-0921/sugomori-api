@@ -2,7 +2,7 @@
 
 class PicpostsController < ApplicationController
   before_action :set_picpost, only: %i(show update destroy)
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, only: [:create, :destroy]
 
   def user_posts
     page_user = User.find_by(id: params[:user_id])
@@ -43,6 +43,15 @@ class PicpostsController < ApplicationController
   def index
     picposts = Picpost.order(created_at: :desc)
     render json: { status: 'SUCCESS', message: 'Loaded posts', data: picposts }
+  end
+
+  def feed
+    p "picpostのfeed"
+    p current_user
+    p "picpostのuser_following_ids"
+    p user_following_ids = current_user.all_following.pluck(:id)
+    feed_posts = Picpost.where("user_id IN (?) OR user_id = ?", user_following_ids, current_user.id)
+    render json: { status: 'SUCCESS', data: feed_posts }
   end
 
   def show

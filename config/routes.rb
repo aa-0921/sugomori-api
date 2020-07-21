@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'initial_data/show'
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+  get 'picposts/following/feed' => 'picposts#feed'
 
   resources :picposts do
     resources :comments, only: [:create, :index]
@@ -26,7 +27,6 @@ Rails.application.routes.draw do
 
   put 'picposts/like/:picpost_id' => 'likes#create'
   put 'picposts/unlike/:picpost_id' => 'likes#destroy'
-
   get 'picposts/like_list/:user_id' => 'likes#like_list'
 
   get 'likes' => 'likes#index'

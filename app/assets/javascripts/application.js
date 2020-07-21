@@ -101,7 +101,7 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _HomePage = __webpack_require__(12);
 
-var _BeforeLogin = __webpack_require__(875);
+var _BeforeLogin = __webpack_require__(876);
 
 var _react2 = __webpack_require__(35);
 
@@ -28626,15 +28626,15 @@ var _About = __webpack_require__(304);
 
 var _PostsApp = __webpack_require__(305);
 
-var _ProfilePage = __webpack_require__(873);
+var _ProfilePage = __webpack_require__(872);
 
-var _MemberListApp = __webpack_require__(874);
+var _MemberListApp = __webpack_require__(873);
 
 var _FetchData = __webpack_require__(306);
 
 var _react2 = __webpack_require__(35);
 
-var _FeedApp = __webpack_require__(877);
+var _FeedApp = __webpack_require__(875);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -47305,9 +47305,9 @@ var Icon = _interopRequireWildcard(_reactIcons);
 
 var _CommentApp = __webpack_require__(864);
 
-var _LikeButton = __webpack_require__(871);
+var _LikeButton = __webpack_require__(870);
 
-var _PostModal = __webpack_require__(872);
+var _PostModal = __webpack_require__(871);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -67242,7 +67242,7 @@ var _react2 = __webpack_require__(35);
 
 var _reactRouterDom = __webpack_require__(15);
 
-var _Comment = __webpack_require__(870);
+var _Comment = __webpack_require__(869);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -67477,55 +67477,6 @@ var FollowButton = exports.FollowButton = function FollowButton(props) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.MemberList = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _react = __webpack_require__(1);
-
-var React = _interopRequireWildcard(_react);
-
-var _UserList = __webpack_require__(867);
-
-var _react2 = __webpack_require__(35);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var MemberList = exports.MemberList = function MemberList(props) {
-  return React.createElement(
-    React.Fragment,
-    null,
-    React.createElement(_react2.Spacer, { y: 1.5 }),
-    React.createElement(
-      'div',
-      null,
-      props.fetchUsers.map(function (user, index) {
-        return React.createElement(
-          'div',
-          { key: index, className: 'list' },
-          React.createElement(_UserList.UserList, _extends({}, props, {
-            user: user,
-            followUsersList: props.followUsers,
-            pushToFollowUsers: props.pushToFollowUsers,
-            removeFromFollowUsers: props.removeFromFollowUsers,
-            currentUserData: props.currentUserData
-          }))
-        );
-      })
-    )
-  );
-};
-
-/***/ }),
-/* 870 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 exports.Comment = undefined;
 
 var _react = __webpack_require__(1);
@@ -67582,7 +67533,7 @@ var Comment = exports.Comment = function Comment(props) {
 // import React, { useState, useEffect } from 'react';
 
 /***/ }),
-/* 871 */
+/* 870 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67695,7 +67646,7 @@ var LikeButton = exports.LikeButton = function LikeButton(props) {
 };
 
 /***/ }),
-/* 872 */
+/* 871 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67750,7 +67701,7 @@ var PostModal = exports.PostModal = function PostModal(props) {
 };
 
 /***/ }),
-/* 873 */
+/* 872 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67781,7 +67732,7 @@ var Icon = _interopRequireWildcard(_reactIcons);
 
 var _FollowButton = __webpack_require__(868);
 
-var _LikeButton = __webpack_require__(871);
+var _LikeButton = __webpack_require__(870);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -68197,7 +68148,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
 };
 
 /***/ }),
-/* 874 */
+/* 873 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68218,7 +68169,7 @@ var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
 
-var _MemberList = __webpack_require__(869);
+var _MemberList = __webpack_require__(874);
 
 var _FetchData = __webpack_require__(306);
 
@@ -68308,7 +68259,7 @@ var MemberListApp = exports.MemberListApp = function MemberListApp(props) {
 };
 
 /***/ }),
-/* 875 */
+/* 874 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68317,366 +68268,47 @@ var MemberListApp = exports.MemberListApp = function MemberListApp(props) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.BeforeLogin = undefined;
+exports.MemberList = undefined;
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _react = __webpack_require__(1);
-
-var React = _interopRequireWildcard(_react);
-
-var _Home = __webpack_require__(13);
-
-var _Pickup = __webpack_require__(14);
-
-var _reactRouterDom = __webpack_require__(15);
-
-var _header = __webpack_require__(34);
-
-var _BeforeLoginPosts = __webpack_require__(876);
-
-var _react2 = __webpack_require__(35);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var BeforeLogin = exports.BeforeLogin = function BeforeLogin() {
-
-  // toast関連
-
-  var _useToasts = (0, _react2.useToasts)(),
-      _useToasts2 = _slicedToArray(_useToasts, 2),
-      setToast = _useToasts2[1];
-
-  (0, _react.useEffect)(function () {
-    var notice = document.getElementById("notice");
-    var displayToast = function displayToast(type) {
-      return setToast({
-        text: notice.innerHTML,
-        type: type
-      });
-    };
-    if (notice.innerHTML) {
-      displayToast('success');
-    }
-  }, []);
-  // toast関連
-
-
-  var currentUserData = null;
-  console.log('BeforeLoginのcurrent_user');
-  return React.createElement(
-    _reactRouterDom.BrowserRouter,
-    null,
-    React.createElement(_header.Header, { currentUserData: currentUserData }),
-    React.createElement(
-      _reactRouterDom.Switch,
-      null,
-      React.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _BeforeLoginPosts.BeforeLoginPosts })
-    )
-  );
-};
-
-/***/ }),
-/* 876 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.BeforeLoginPosts = undefined;
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
 
-var _FetchData = __webpack_require__(306);
-
-var _reactRouterDom = __webpack_require__(15);
-
-var _PostList = __webpack_require__(307);
-
-var _FormikPost = __webpack_require__(389);
+var _UserList = __webpack_require__(867);
 
 var _react2 = __webpack_require__(35);
 
-var _reactIcons = __webpack_require__(541);
-
-var Icon = _interopRequireWildcard(_reactIcons);
-
-var _CommentApp = __webpack_require__(864);
-
-var _LikeButton = __webpack_require__(871);
-
-var _PostModal = __webpack_require__(872);
-
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-var BeforeLoginPosts = exports.BeforeLoginPosts = function BeforeLoginPosts(props) {
-  // 全投稿の配列のState定義
-  var _useState = (0, _react.useState)([]),
-      _useState2 = _slicedToArray(_useState, 2),
-      fetchPosts = _useState2[0],
-      setFetchPosts = _useState2[1];
-
-  var _useState3 = (0, _react.useState)([]),
-      _useState4 = _slicedToArray(_useState3, 2),
-      initialFetchPosts = _useState4[0],
-      setInitialFetchPosts = _useState4[1];
-  // 検索のfilter後の投稿の配列の定義
-
-
-  var _useState5 = (0, _react.useState)([]),
-      _useState6 = _slicedToArray(_useState5, 2),
-      filterPosts = _useState6[0],
-      setFilterPosts = _useState6[1];
-
-  var getAllPostUrl = '/picposts';
-
-  (0, _react.useEffect)(function () {
-    (0, _FetchData.FetchData)(getAllPostUrl).then(function (res) {
-      setFetchPosts(res.data);
-      setInitialFetchPosts(res.data);
-    });
-  }, []);
-
-  // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
-  var currentUserId = 1;
-
-  (0, _react.useEffect)(function () {
-    setFilterPosts(fetchPosts);
-  }, [fetchPosts]);
-
-  var filterList = function filterList(e) {
-    var updateList = initialFetchPosts.filter(function (post) {
-      return post.content.search(e.target.value) !== -1;
-    });
-    setFetchPosts(updateList);
-  };
-  console.log('fetchPosts', fetchPosts);
-
-  var _useState7 = (0, _react.useState)({
-    id: 0,
-    name: ''
-  }),
-      _useState8 = _slicedToArray(_useState7, 2),
-      clickedPostUser = _useState8[0],
-      setClickedPostUser = _useState8[1];
-
-  var _useState9 = (0, _react.useState)({
-    id: 0,
-    picture: '',
-    content: '',
-    user_id: 0
-  }),
-      _useState10 = _slicedToArray(_useState9, 2),
-      clickedPost = _useState10[0],
-      setClickedPost = _useState10[1];
-
-  // modal,open,close
-
-
-  var _useState11 = (0, _react.useState)(false),
-      _useState12 = _slicedToArray(_useState11, 2),
-      modalOpen = _useState12[0],
-      setModalOpen = _useState12[1];
-
-  var modalOpenHandler = function modalOpenHandler(post) {
-    setClickedPost(post);
-    setModalOpen(true);
-    var target = document.getElementById('header');
-    target.classList.add('head-animation');
-  };
-  var closeHandler = function closeHandler() {
-    setModalOpen(false);
-    var target = document.getElementById('header');
-    target.classList.remove('head-animation');
-  };
-
-  var getClickedPostUserUrl = '/users/' + clickedPost.user_id;
-  console.log('getClickedPostUserUrl', getClickedPostUserUrl);
-
-  (0, _react.useEffect)(function () {
-    if (clickedPost.user_id != 0) {
-      console.log('clickedPost.user_id', clickedPost.user_id);
-      console.log('getClickedPostUserUrl', getClickedPostUserUrl);
-
-      (0, _FetchData.FetchData)(getClickedPostUserUrl).then(function (res) {
-        return setClickedPostUser(res.data);
-      });
-      console.log('clickedPostUser', clickedPostUser);
-    }
-  }, [clickedPost]);
-
-  // Slider関連
-
-  var _useState13 = (0, _react.useState)(300),
-      _useState14 = _slicedToArray(_useState13, 2),
-      columnWidthValue = _useState14[0],
-      setColumnWidthValue = _useState14[1];
-
-  var columnWidthHandler = function columnWidthHandler(val) {
-    console.log(val);
-    setColumnWidthValue(val);
-  };
-
-  // headerHidden
-  (function () {
-    var target = document.getElementById('header'),
-        height = 56;
-
-    var offset = 0,
-        lastPosition = 0,
-        ticking = false;
-    function onScroll(lastPosition) {
-
-      if (lastPosition > height) {
-        if (lastPosition > offset) {
-          target.classList.add('head-animation');
-        } else {
-          target.classList.remove('head-animation');
-        }
-        offset = lastPosition;
-      }
-    }
-
-    window.addEventListener('scroll', function (e) {
-      lastPosition = window.scrollY;
-      if (!ticking) {
-        window.requestAnimationFrame(function () {
-          onScroll(lastPosition);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    });
-  })();
-
+var MemberList = exports.MemberList = function MemberList(props) {
   return React.createElement(
     React.Fragment,
     null,
+    React.createElement(_react2.Spacer, { y: 1.5 }),
     React.createElement(
-      _reactRouterDom.BrowserRouter,
+      'div',
       null,
-      React.createElement(
-        'div',
-        null,
-        React.createElement(
+      props.fetchUsers.map(function (user, index) {
+        return React.createElement(
           'div',
-          null,
-          React.createElement(
-            'div',
-            null,
-            React.createElement(
-              'div',
-              { className: 'collapseWrap mt-18 pt-5' },
-              React.createElement(
-                _react2.Collapse.Group,
-                { className: 'z-20 mr-5 mt-10' },
-                React.createElement(
-                  _react2.Collapse,
-                  { title: ' ', className: 'h-1 text-base' },
-                  React.createElement(
-                    _react2.Text,
-                    null,
-                    React.createElement(
-                      'div',
-                      { className: 'bg-white flex justify-center items-center' },
-                      React.createElement(
-                        'span',
-                        { className: 'wr-10 pr-5' },
-                        React.createElement(Icon.Maximize2, { size: 25 })
-                      ),
-                      React.createElement(
-                        _react2.Row,
-                        { style: { width: '75%' } },
-                        React.createElement(_react2.Slider, {
-                          value: columnWidthValue, onChange: columnWidthHandler,
-                          step: 20, max: 500, min: 100, initialValue: 300
-                        })
-                      )
-                    )
-                  )
-                )
-              )
-            ),
-            React.createElement(
-              'div',
-              { className: 'flex justify-end mr-5 mt-3' },
-              React.createElement(
-                'form',
-                { action: '' },
-                React.createElement('input', { type: 'text', placeholder: 'search', onChange: filterList, className: 'w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline' })
-              )
-            ),
-            React.createElement(_PostList.PostList, {
-              fetchPosts: fetchPosts,
-              modalOpenHandler: modalOpenHandler,
-              filterList: filterList,
-              filterPosts: filterPosts,
-              columnWidthValue: columnWidthValue
-            })
-          ),
-          React.createElement(
-            _react2.Modal,
-            { width: '100vh', wrapClassName: "modalWrap",
-              open: modalOpen, onClose: closeHandler },
-            React.createElement(
-              React.Fragment,
-              null,
-              React.createElement(
-                _react2.Modal.Content,
-                { className: 'overflow-y-scroll h-screen' },
-                React.createElement(
-                  'div',
-                  { className: 'flex flex-col items-center h-auto' },
-                  React.createElement(
-                    'div',
-                    { className: 'imageDiv flex flex-col h-auto' },
-                    React.createElement('img', { src: clickedPost.picture, className: 'modalImage object-contain rounded-lg' })
-                  ),
-                  React.createElement(
-                    'div',
-                    { className: 'flex text-center mt-4' },
-                    React.createElement(
-                      'span',
-                      null,
-                      clickedPostUser.name
-                    ),
-                    '\u2003 ',
-                    clickedPost.content,
-                    '\u2003'
-                  )
-                )
-              ),
-              React.createElement(_react2.Divider, { className: 'm-6' }),
-              React.createElement(
-                _react2.Modal.Action,
-                { passive: true, onClick: function onClick() {
-                    return setModalOpen(false);
-                  },
-                  className: 'h-5' },
-                'Cancel'
-              )
-            )
-          )
-        ),
-        React.createElement(
-          _reactRouterDom.Switch,
-          null,
-          React.createElement(_reactRouterDom.Route, { path: '/' })
-        )
-      )
+          { key: index, className: 'list' },
+          React.createElement(_UserList.UserList, _extends({}, props, {
+            user: user,
+            followUsersList: props.followUsers,
+            pushToFollowUsers: props.pushToFollowUsers,
+            removeFromFollowUsers: props.removeFromFollowUsers,
+            currentUserData: props.currentUserData
+          }))
+        );
+      })
     )
   );
 };
 
 /***/ }),
-/* 877 */
+/* 875 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68709,9 +68341,9 @@ var Icon = _interopRequireWildcard(_reactIcons);
 
 var _CommentApp = __webpack_require__(864);
 
-var _LikeButton = __webpack_require__(871);
+var _LikeButton = __webpack_require__(870);
 
-var _PostModal = __webpack_require__(872);
+var _PostModal = __webpack_require__(871);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -68763,11 +68395,12 @@ var FeedApp = exports.FeedApp = function FeedApp(props) {
       clickedPost = _useState14[0],
       setClickedPost = _useState14[1];
 
-  var getAllPostUrl = '/picposts';
+  var getFeedPostUrl = 'picposts/following/feed';
   (0, _react.useEffect)(function () {
-    (0, _FetchData.FetchData)(getAllPostUrl).then(function (res) {
+    (0, _FetchData.FetchData)(getFeedPostUrl).then(function (res) {
       setFetchPosts(res.data);
       setInitialFetchPosts(res.data);
+      console.log('res.data', res.data);
     });
   }, []);
   var currentUserId = props.currentUserData.id;
@@ -69052,6 +68685,371 @@ var FeedApp = exports.FeedApp = function FeedApp(props) {
                 },
                 className: 'transition duration-500 ease-in-out bg-indigo-300 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-indigo-500 hover:border-red-600 rounded-full cursor-pointer' },
               React.createElement(Icon.PlusCircle, { size: 50 })
+            )
+          )
+        ),
+        React.createElement(
+          _reactRouterDom.Switch,
+          null,
+          React.createElement(_reactRouterDom.Route, { path: '/' })
+        )
+      )
+    )
+  );
+};
+
+/***/ }),
+/* 876 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.BeforeLogin = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _Home = __webpack_require__(13);
+
+var _Pickup = __webpack_require__(14);
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _header = __webpack_require__(34);
+
+var _BeforeLoginPosts = __webpack_require__(877);
+
+var _react2 = __webpack_require__(35);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var BeforeLogin = exports.BeforeLogin = function BeforeLogin() {
+
+  // toast関連
+
+  var _useToasts = (0, _react2.useToasts)(),
+      _useToasts2 = _slicedToArray(_useToasts, 2),
+      setToast = _useToasts2[1];
+
+  (0, _react.useEffect)(function () {
+    var notice = document.getElementById("notice");
+    var displayToast = function displayToast(type) {
+      return setToast({
+        text: notice.innerHTML,
+        type: type
+      });
+    };
+    if (notice.innerHTML) {
+      displayToast('success');
+    }
+  }, []);
+  // toast関連
+
+
+  var currentUserData = null;
+  console.log('BeforeLoginのcurrent_user');
+  return React.createElement(
+    _reactRouterDom.BrowserRouter,
+    null,
+    React.createElement(_header.Header, { currentUserData: currentUserData }),
+    React.createElement(
+      _reactRouterDom.Switch,
+      null,
+      React.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _BeforeLoginPosts.BeforeLoginPosts })
+    )
+  );
+};
+
+/***/ }),
+/* 877 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.BeforeLoginPosts = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _FetchData = __webpack_require__(306);
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _PostList = __webpack_require__(307);
+
+var _FormikPost = __webpack_require__(389);
+
+var _react2 = __webpack_require__(35);
+
+var _reactIcons = __webpack_require__(541);
+
+var Icon = _interopRequireWildcard(_reactIcons);
+
+var _CommentApp = __webpack_require__(864);
+
+var _LikeButton = __webpack_require__(870);
+
+var _PostModal = __webpack_require__(871);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var BeforeLoginPosts = exports.BeforeLoginPosts = function BeforeLoginPosts(props) {
+  // 全投稿の配列のState定義
+  var _useState = (0, _react.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      fetchPosts = _useState2[0],
+      setFetchPosts = _useState2[1];
+
+  var _useState3 = (0, _react.useState)([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      initialFetchPosts = _useState4[0],
+      setInitialFetchPosts = _useState4[1];
+  // 検索のfilter後の投稿の配列の定義
+
+
+  var _useState5 = (0, _react.useState)([]),
+      _useState6 = _slicedToArray(_useState5, 2),
+      filterPosts = _useState6[0],
+      setFilterPosts = _useState6[1];
+
+  var getAllPostUrl = '/picposts';
+
+  (0, _react.useEffect)(function () {
+    (0, _FetchData.FetchData)(getAllPostUrl).then(function (res) {
+      setFetchPosts(res.data);
+      setInitialFetchPosts(res.data);
+    });
+  }, []);
+
+  (0, _react.useEffect)(function () {
+    setFilterPosts(fetchPosts);
+  }, [fetchPosts]);
+
+  var filterList = function filterList(e) {
+    var updateList = initialFetchPosts.filter(function (post) {
+      return post.content.search(e.target.value) !== -1;
+    });
+    setFetchPosts(updateList);
+  };
+  console.log('fetchPosts', fetchPosts);
+
+  var _useState7 = (0, _react.useState)({
+    id: 0,
+    name: ''
+  }),
+      _useState8 = _slicedToArray(_useState7, 2),
+      clickedPostUser = _useState8[0],
+      setClickedPostUser = _useState8[1];
+
+  var _useState9 = (0, _react.useState)({
+    id: 0,
+    picture: '',
+    content: '',
+    user_id: 0
+  }),
+      _useState10 = _slicedToArray(_useState9, 2),
+      clickedPost = _useState10[0],
+      setClickedPost = _useState10[1];
+
+  // modal,open,close
+
+
+  var _useState11 = (0, _react.useState)(false),
+      _useState12 = _slicedToArray(_useState11, 2),
+      modalOpen = _useState12[0],
+      setModalOpen = _useState12[1];
+
+  var modalOpenHandler = function modalOpenHandler(post) {
+    setClickedPost(post);
+    setModalOpen(true);
+    var target = document.getElementById('header');
+    target.classList.add('head-animation');
+  };
+  var closeHandler = function closeHandler() {
+    setModalOpen(false);
+    var target = document.getElementById('header');
+    target.classList.remove('head-animation');
+  };
+
+  var getClickedPostUserUrl = '/users/' + clickedPost.user_id;
+  console.log('getClickedPostUserUrl', getClickedPostUserUrl);
+
+  (0, _react.useEffect)(function () {
+    if (clickedPost.user_id != 0) {
+      console.log('clickedPost.user_id', clickedPost.user_id);
+      console.log('getClickedPostUserUrl', getClickedPostUserUrl);
+
+      (0, _FetchData.FetchData)(getClickedPostUserUrl).then(function (res) {
+        return setClickedPostUser(res.data);
+      });
+      console.log('clickedPostUser', clickedPostUser);
+    }
+  }, [clickedPost]);
+
+  // Slider関連
+
+  var _useState13 = (0, _react.useState)(300),
+      _useState14 = _slicedToArray(_useState13, 2),
+      columnWidthValue = _useState14[0],
+      setColumnWidthValue = _useState14[1];
+
+  var columnWidthHandler = function columnWidthHandler(val) {
+    console.log(val);
+    setColumnWidthValue(val);
+  };
+
+  // headerHidden
+  (function () {
+    var target = document.getElementById('header'),
+        height = 56;
+
+    var offset = 0,
+        lastPosition = 0,
+        ticking = false;
+    function onScroll(lastPosition) {
+
+      if (lastPosition > height) {
+        if (lastPosition > offset) {
+          target.classList.add('head-animation');
+        } else {
+          target.classList.remove('head-animation');
+        }
+        offset = lastPosition;
+      }
+    }
+
+    window.addEventListener('scroll', function (e) {
+      lastPosition = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          onScroll(lastPosition);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  })();
+
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(
+      _reactRouterDom.BrowserRouter,
+      null,
+      React.createElement(
+        'div',
+        null,
+        React.createElement(
+          'div',
+          null,
+          React.createElement(
+            'div',
+            null,
+            React.createElement(
+              'div',
+              { className: 'collapseWrap mt-18 pt-5' },
+              React.createElement(
+                _react2.Collapse.Group,
+                { className: 'z-20 mr-5 mt-10' },
+                React.createElement(
+                  _react2.Collapse,
+                  { title: ' ', className: 'h-1 text-base initialVisible' },
+                  React.createElement(
+                    _react2.Text,
+                    null,
+                    React.createElement(
+                      'div',
+                      { className: 'bg-white flex justify-center items-center' },
+                      React.createElement(
+                        'span',
+                        { className: 'wr-10 pr-5' },
+                        React.createElement(Icon.Maximize2, { size: 25 })
+                      ),
+                      React.createElement(
+                        _react2.Row,
+                        { style: { width: '75%' } },
+                        React.createElement(_react2.Slider, {
+                          value: columnWidthValue, onChange: columnWidthHandler,
+                          step: 20, max: 500, min: 100, initialValue: 300
+                        })
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+            React.createElement(
+              'div',
+              { className: 'flex justify-end mr-5 mt-3' },
+              React.createElement(
+                'form',
+                { action: '' },
+                React.createElement('input', { type: 'text', placeholder: 'search', onChange: filterList, className: 'w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline' })
+              )
+            ),
+            React.createElement(_PostList.PostList, {
+              fetchPosts: fetchPosts,
+              modalOpenHandler: modalOpenHandler,
+              filterList: filterList,
+              filterPosts: filterPosts,
+              columnWidthValue: columnWidthValue
+            })
+          ),
+          React.createElement(
+            _react2.Modal,
+            { width: '100vh', wrapClassName: "modalWrap",
+              open: modalOpen, onClose: closeHandler },
+            React.createElement(
+              React.Fragment,
+              null,
+              React.createElement(
+                _react2.Modal.Content,
+                { className: 'overflow-y-scroll h-screen z-10' },
+                React.createElement(
+                  'div',
+                  { className: 'flex flex-col items-center h-auto' },
+                  React.createElement(
+                    'div',
+                    { className: 'imageDiv flex flex-col h-auto' },
+                    React.createElement('img', { src: clickedPost.picture, className: 'modalImage object-contain rounded-lg' })
+                  ),
+                  React.createElement(
+                    'div',
+                    { className: 'flex text-center mt-4' },
+                    React.createElement(
+                      'span',
+                      null,
+                      clickedPostUser.name
+                    ),
+                    '\u2003 ',
+                    clickedPost.content,
+                    '\u2003'
+                  )
+                )
+              ),
+              React.createElement(_react2.Divider, { className: 'm-6' }),
+              React.createElement(
+                _react2.Modal.Action,
+                { passive: true, onClick: function onClick() {
+                    return setModalOpen(false);
+                  },
+                  className: 'h-5' },
+                'Cancel'
+              )
             )
           )
         ),

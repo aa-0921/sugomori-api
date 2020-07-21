@@ -34,12 +34,15 @@ export const FeedApp = (props: any) => {
     user_id: 0,
   });
 
-  const getAllPostUrl: string = '/picposts';
+  const getFeedPostUrl: string = 'picposts/following/feed';
   useEffect(() => {
-    FetchData(getAllPostUrl).then((res) => {
+    FetchData(getFeedPostUrl).then((res) => {
       setFetchPosts(res.data);
       setInitialFetchPosts(res.data);
+      console.log('res.data', res.data);
+
     });
+
   }, []);
   const currentUserId = props.currentUserData.id;
   const getLikeListUrl: string = `/picposts/like_list/${currentUserId}`;

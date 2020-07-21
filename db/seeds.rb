@@ -60,12 +60,12 @@ end
 
 
 all_users = User.all
-first_user  = all_users[0]
+# first_user  = all_users[0]
 
-followings = all_users[25..50]
-followers = all_users[2..24]
-followings.each { |followed| first_user.follow(followed) }
-followers.each { |follower| follower.follow(first_user) }
+# followings = all_users[25..50]
+# followers = all_users[2..24]
+# followings.each { |followed| first_user.follow(followed) }
+# followers.each { |follower| follower.follow(first_user) }
 
 all_picposts = Picpost.all
 
