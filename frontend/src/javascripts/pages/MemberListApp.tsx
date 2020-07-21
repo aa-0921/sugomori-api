@@ -5,6 +5,7 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { MemberList } from '../components/MemberList';
 import { FetchData } from '../api/FetchData';
+import { Spacer } from '@zeit-ui/react';
 
 export const MemberListApp = (props: any) => {
   const [fetchUsers, setFetchUsers] = useState([]);
@@ -48,6 +49,7 @@ export const MemberListApp = (props: any) => {
   return (
     <React.Fragment>
       <Router>
+        <Spacer y={3} />
         <div>
           <span>
             <MemberList

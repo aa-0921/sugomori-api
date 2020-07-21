@@ -68173,6 +68173,8 @@ var _MemberList = __webpack_require__(874);
 
 var _FetchData = __webpack_require__(306);
 
+var _react2 = __webpack_require__(35);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var MemberListApp = exports.MemberListApp = function MemberListApp(props) {
@@ -68234,6 +68236,7 @@ var MemberListApp = exports.MemberListApp = function MemberListApp(props) {
     React.createElement(
       _reactRouterDom.BrowserRouter,
       null,
+      React.createElement(_react2.Spacer, { y: 3 }),
       React.createElement(
         'div',
         null,
@@ -68527,11 +68530,6 @@ var FeedApp = exports.FeedApp = function FeedApp(props) {
   return React.createElement(
     React.Fragment,
     null,
-    React.createElement(
-      'h1',
-      { className: 'pt-30 bg-blue-300' },
-      'feedapp'
-    ),
     React.createElement(
       _reactRouterDom.BrowserRouter,
       null,

@@ -155,7 +155,6 @@ export const FeedApp = (props: any) => {
 
   return (
     <React.Fragment>
-      <h1 className="pt-30 bg-blue-300">feedapp</h1>
       <Router>
         <div>
           <div>
