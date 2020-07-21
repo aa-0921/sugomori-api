@@ -3,8 +3,7 @@ import { UserList } from './UserList';
 import { Spacer } from '@zeit-ui/react';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import { MemberList } from '../components/MemberList';
-import { FetchData } from '../api/FetchData';
+
 import { Comment } from '../components/Comment';
 
 
