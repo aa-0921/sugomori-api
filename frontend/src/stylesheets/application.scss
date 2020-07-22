@@ -19,6 +19,7 @@ img.modalImage {
   max-height: 80vh !important;
 }
 
+// header関連
 #header {
   background: #fff;
   box-shadow: 0 4px 8px -3px rgba(17, 17, 17, 0.06);
@@ -32,6 +33,16 @@ img.modalImage {
 
 .head-animation {
   transform: translateY(-100%);
+}
+// 投稿ボタン関連
+#postButton {
+  box-shadow: 0 4px 8px -3px rgba(17, 17, 17, 0.06);
+  transition: 2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2000;
+}
+
+.postButton-animation {
+  transform: translateX(200%);
 }
 
 // collupsのborder-bottom

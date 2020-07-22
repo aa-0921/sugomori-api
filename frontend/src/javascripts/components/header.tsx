@@ -8,19 +8,25 @@ export function Header(props: any) {
   // console.log('headerのprops.currentUserData', props.currentUserData)
 
   (function () {
-    const target = document.getElementById('header'),
+    const headerTarget = document.getElementById('header');
+    const postButtonTarget = document.getElementById('postButton'),
+
       height = 56;
 
     let offset = 0,
       lastPosition = 0,
       ticking = false;
     function onScroll(lastPosition: any) {
-      if (target != null) {
+      if (headerTarget != null) {
         if (lastPosition > height) {
           if (lastPosition > offset) {
-            target.classList.add('head-animation');
+            headerTarget.classList.add('head-animation');
+            postButtonTarget.classList.add('postButton-animation');
+
           } else {
-            target.classList.remove('head-animation');
+            headerTarget.classList.remove('head-animation');
+            postButtonTarget.classList.remove('postButton-animation');
+
           }
           offset = lastPosition;
         }

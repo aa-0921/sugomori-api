@@ -32788,19 +32788,22 @@ function Header(props) {
   // console.log('headerのprops.currentUserData', props.currentUserData)
 
   (function () {
-    var target = document.getElementById('header'),
+    var headerTarget = document.getElementById('header');
+    var postButtonTarget = document.getElementById('postButton'),
         height = 56;
 
     var offset = 0,
         lastPosition = 0,
         ticking = false;
     function onScroll(lastPosition) {
-      if (target != null) {
+      if (headerTarget != null) {
         if (lastPosition > height) {
           if (lastPosition > offset) {
-            target.classList.add('head-animation');
+            headerTarget.classList.add('head-animation');
+            postButtonTarget.classList.add('postButton-animation');
           } else {
-            target.classList.remove('head-animation');
+            headerTarget.classList.remove('head-animation');
+            postButtonTarget.classList.remove('postButton-animation');
           }
           offset = lastPosition;
         }
@@ -47487,6 +47490,39 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
   // Slider関連
   console.log('likeList', likeList);
 
+  // 投稿ボタン関連
+  (function () {
+    var postButtonTarget = document.getElementById('postButton'),
+        height = 56;
+
+    var offset = 0,
+        lastPosition = 0,
+        ticking = false;
+    function onScroll(lastPosition) {
+      if (postButtonTarget != null) {
+        if (lastPosition > height) {
+          if (lastPosition > offset) {
+            postButtonTarget.classList.add('postButton-animation');
+          } else {
+            postButtonTarget.classList.remove('postButton-animation');
+          }
+          offset = lastPosition;
+        }
+      }
+    }
+
+    window.addEventListener('scroll', function (e) {
+      lastPosition = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          onScroll(lastPosition);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  })();
+
   return React.createElement(
     React.Fragment,
     null,
@@ -47630,7 +47666,10 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
           }),
           React.createElement(
             'div',
-            { className: 'postButton fixed bottom-0 right-0 z-10 m-12' },
+            {
+              className: 'fixed bottom-0 right-0 z-10 m-12',
+              id: 'postButton'
+            },
             React.createElement(
               'button',
               {
@@ -68670,7 +68709,10 @@ var FeedApp = exports.FeedApp = function FeedApp(props) {
           }),
           React.createElement(
             'div',
-            { className: 'postButton fixed bottom-0 right-0 z-10 m-12' },
+            {
+              className: 'postButton fixed bottom-0 right-0 z-10 m-12',
+              id: 'postButton'
+            },
             React.createElement(
               'button',
               {

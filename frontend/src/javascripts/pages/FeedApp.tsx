@@ -252,7 +252,10 @@ export const FeedApp = (props: any) => {
             />
             {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
             {/* 投稿ボタン */}
-            <div className="postButton fixed bottom-0 right-0 z-10 m-12">
+            <div
+              className="postButton fixed bottom-0 right-0 z-10 m-12"
+              id="postButton"
+            >
               <button
                 onClick={() => postModalOpenHandler()}
                 className="transition duration-500 ease-in-out bg-indigo-300 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-indigo-500 hover:border-red-600 rounded-full cursor-pointer">

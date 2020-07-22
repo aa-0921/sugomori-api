@@ -150,6 +150,43 @@ export const PostsApp = (props: any) => {
   // Slider関連
   console.log('likeList', likeList);
 
+  // 投稿ボタン関連
+  (function () {
+    const postButtonTarget = document.getElementById('postButton'),
+
+      height = 56;
+
+    let offset = 0,
+      lastPosition = 0,
+      ticking = false;
+    function onScroll(lastPosition: any) {
+      if (postButtonTarget != null) {
+        if (lastPosition > height) {
+          if (lastPosition > offset) {
+            postButtonTarget.classList.add('postButton-animation');
+          } else {
+            postButtonTarget.classList.remove('postButton-animation');
+          }
+          offset = lastPosition;
+        }
+      }
+    }
+
+    window.addEventListener('scroll', function (e) {
+      lastPosition = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          onScroll(lastPosition);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  })();
+
+
+
+
   return (
     <React.Fragment>
       <Router>
@@ -247,7 +284,10 @@ export const PostsApp = (props: any) => {
             />
             {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
             {/* 投稿ボタン */}
-            <div className="postButton fixed bottom-0 right-0 z-10 m-12">
+            <div
+              className="fixed bottom-0 right-0 z-10 m-12"
+              id="postButton"
+            >
               <button
                 onClick={() => postModalOpenHandler()}
                 className="transition duration-500 ease-in-out bg-indigo-300 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-indigo-500 hover:border-red-600 rounded-full cursor-pointer">
