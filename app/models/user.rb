@@ -19,6 +19,8 @@ class User < ApplicationRecord
         user.email = data['email'] if user.email.blank?
         user.provider = data['provider'] if data['provider'] && user.provider.blank?
         user.uid = data['uid'] if data['uid'] && user.uid.blank?
+        # user.password = Devise.friendly_token[0, 20] if user.password.blank?
+
         user.skip_confirmation!
       end
     end

@@ -23,10 +23,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           provider: data['provider'],
           uid: data['uid'],
         }
-        end
+      end
       redirect_to new_user_registration_url
+      # set_flash_message(:notice, 'SNSログインのため、空欄を入力して下さい')
+      # set_flash_message(:notice, :need_input)
+      flash.now[:notice] = 'SNSログインのため、空欄を入力して下さい'
     end
- end
+  end
 
   def failure
     redirect_to root_path
@@ -46,6 +49,29 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         }
       end
       redirect_to new_user_registration_url
+      flash.now[:notice] = 'SNSログインのため、空欄を入力して下さい'
+      # set_flash_message(:notice, :need_input)
+
+    end
+  end
+
+  def github
+    user = User.from_omniauth(request.env['omniauth.auth'])
+    if user
+      sign_in_and_redirect user, event: :authentication
+      set_flash_message(:notice, :success, kind: "GitHub") if is_navigational_format?
+    else
+      if (data = request.env['omniauth.auth'])
+        session['devise.omniauth_data'] = {
+          email: data['info']['email'],
+          provider: data['provider'],
+          uid: data['uid'],
+        }
+      end
+      redirect_to new_user_registration_url
+      flash.now[:notice] = 'SNSログインのため、空欄を入力して下さい'
+      # set_flash_message(:notice, :need_input)
+
     end
   end
 end

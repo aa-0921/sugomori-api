@@ -9,9 +9,6 @@ class Users::SessionsController < Devise::SessionsController
   # GET /resource/sign_in
   def new
     session.delete('devise.omniauth_data')
-    p current_user
-    p "sessions_controllerのcurrent_user"
-
     super
   end
 
