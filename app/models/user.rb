@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :lockable, :confirmable,
-         :omniauthable, omniauth_providers: [:facebook, :twitter]
+         :omniauthable, omniauth_providers: [:facebook, :twitter, :github]
   #  :timeoutable,
 
   def self.from_omniauth(auth)

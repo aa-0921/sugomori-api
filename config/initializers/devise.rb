@@ -337,13 +337,17 @@ Devise.setup do |config|
                   Settings.facebook[:key],
                   Settings.facebook[:secret],
                   scope: 'email',
-                  info_fields: 'email,name'
+                  info_fields: 'email,name',
+                  callback_url: "http://localhost:3000/users/omniauth_callbacks"
+
 
   config.omniauth :twitter,
                   Settings.twitter[:key],
-                  Settings.twitter[:secret]
+                  Settings.twitter[:secret],
+                  callback_url: "http://localhost:3000/users/omniauth_callbacks"
 
   config.omniauth :github,
                   Settings.github[:key],
-                  Settings.github[:secret]
+                  Settings.github[:secret],
+                  callback_url: "http://localhost:3000/users/omniauth_callbacks"
 end

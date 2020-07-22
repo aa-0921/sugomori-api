@@ -21,23 +21,34 @@
         </a>
 
 <%# SNSログイン %>
-          <ul className="follow-button">
+
+          <%= link_to user_facebook_omniauth_authorize_path, method: :post do %>
+            Facebook
+          <% end %>
+          <%= link_to user_twitter_omniauth_authorize_path, method: :post do %>
+            Twitter
+          <% end %>
+          <%= link_to user_github_omniauth_authorize_path, method: :post do %>
+            Github
+          <% end %>
+
+          <%# <ul className="follow-button">
             <li className="fbpagebtn">
-              <a href="/omniauth/facebook" title="Facebook">
+              <a href="/users/auth/facebook" title="Facebook">
                 <i className="fa fa-facebook-square fa-4x">Facebook</i>
               </a>
             </li>
             <li className="gpbtn">
-              <a href="/omniauth/github" title="github">
+              <a href="/users/auth/github" title="github">
                 <i className="fa fa-github-square fa-4x">github</i>
               </a>
             </li>
             <li className="twbtn">
-              <a href=/omniauth/twitter" title="Twitter">
+              <a href="/users/auth/twitter" title="Twitter">
                 <i className="fa fa-twitter-square fa-4x">Twitter</i>
               </a>
             </li>
-          </ul>
+          </ul> %>
 
 
 
