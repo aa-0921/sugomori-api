@@ -334,20 +334,20 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   config.omniauth :facebook,
-                  Settings.facebook[:key],
-                  Settings.facebook[:secret],
+                  ENV['facebook_key'],
+                  ENV['facebook_secret'],
                   scope: 'email',
                   info_fields: 'email,name',
                   callback_url: "http://localhost:3000/users/omniauth_callbacks"
 
 
   config.omniauth :twitter,
-                  Settings.twitter[:key],
-                  Settings.twitter[:secret],
+                  ENV['github_key'],
+                  ENV['github_secret'],
                   callback_url: "http://localhost:3000/users/omniauth_callbacks"
 
   config.omniauth :github,
-                  Settings.github[:key],
-                  Settings.github[:secret],
+                  ENV['twitter_key'],
+                  ENV['twitter_secret'],
                   callback_url: "http://localhost:3000/users/omniauth_callbacks"
 end
