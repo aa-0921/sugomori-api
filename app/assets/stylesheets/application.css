@@ -14477,9 +14477,8 @@ details > summary {
   background-color: #a3bffa !important;
   color: white; }
 
-.example {
-  position: absolute !important;
-  z-index: 2005; }
+#tsparticles {
+  height: 100%; }
 
 div.loadingDiv {
   z-index: 2001;

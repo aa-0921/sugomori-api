@@ -6,106 +6,117 @@ import Particles from "react-tsparticles";
 export const BackGround = () => {
 
   return (
-    // <Particles />
-    // <div className="App">
 
-    //   <Particles
-    //     canvasClassName="example"
-    //     params={{
-    //       particles: {
-    //         number: {
-    //           value: 200,
-    //           density: {
-    //             enable: true,
-    //             value_area: 1000,
-    //           }
-    //         },
-    //       },
-    //     }}
-    //   />
+    <div className="h-screen">
+      <Particles
+        className="h-screen"
+        id="tsparticles"
+        options={{
+          background: {
+            color: {
+              // value: "#6C8AC1",
+              value: "#E2F1FF",
+            },
+          },
+          fpsLimit: 60,
+          interactivity: {
+            detectsOn: "canvas",
+            events: {
+              onClick: {
+                enable: true,
+                mode: "push",
+              },
+              onHover: {
+                enable: true,
+                mode: "repulse",
+              },
+              resize: true,
+            },
+            modes: {
+              bubble: {
+                distance: 400,
+                duration: 2,
+                opacity: 0.8,
+                size: 40,
+              },
+              push: {
+                quantity: 4,
+              },
+              repulse: {
+                distance: 200,
+                duration: 0.4,
+              },
+            },
+          },
+          particles: {
+            color: {
+              value: "#ffffff",
+            },
+            links: {
+              color: "#ffffff",
+              distance: 150,
+              // enable: true,
+              enable: false,
+              opacity: 0.5,
+              width: 1,
+            },
+            collisions: {
+              enable: true,
+            },
+            move: {
+              // direction: "none",
+              direction: "top",
 
-    // </div>
-    <Particles
-      id="tsparticles"
-      options={{
-        background: {
-          color: {
-            value: "#0d47a1",
-          },
-        },
-        fpsLimit: 60,
-        interactivity: {
-          detectsOn: "canvas",
-          events: {
-            onClick: {
               enable: true,
-              mode: "push",
+              outMode: "bounce",
+              random: false,
+              speed: 6,
+              straight: false,
             },
-            onHover: {
-              enable: true,
-              mode: "repulse",
+            number: {
+              density: {
+                enable: true,
+                value_area: 800,
+              },
+              value: 80,
             },
-            resize: true,
-          },
-          modes: {
-            bubble: {
-              distance: 400,
-              duration: 2,
-              opacity: 0.8,
-              size: 40,
+            opacity: {
+              value: 0.5,
             },
-            push: {
-              quantity: 4,
+            shape: {
+              type: "circle",
             },
-            repulse: {
-              distance: 200,
-              duration: 0.4,
-            },
+            // shape: {
+            //   type: 'images',
+            //   image: [
+            //     { src: 'https://icooon-mono.com/i/icon_15173/icon_151731_64.png', height: 500, width: 500 },
+            //     { src: 'https://icooon-mono.com/i/icon_14421/icon_144211_64.png', height: 500, width: 500 },
+            //     { src: 'https://icooon-mono.com/i/icon_12767/icon_127671_64.png', height: 500, width: 500 },
+            //     { src: 'https://icooon-mono.com/i/icon_13120/icon_131201_64.png', height: 500, width: 500 },
+            //     { src: 'https://icooon-mono.com/i/icon_13330/icon_133301_64.png', height: 500, width: 500 },
+            //   ]
+            // },
+            // size: {
+            //   random: true,
+            //   value: 5,
+            // },
+            "size": {
+              "value": 30,
+              "random": false,
+              "anim": {
+                "enable": true,
+                "speed": 4,
+                "size_min": 20,
+                "sync": false
+              }
+            }
           },
-        },
-        particles: {
-          color: {
-            value: "#ffffff",
-          },
-          links: {
-            color: "#ffffff",
-            distance: 150,
-            enable: true,
-            opacity: 0.5,
-            width: 1,
-          },
-          collisions: {
-            enable: true,
-          },
-          move: {
-            direction: "none",
-            enable: true,
-            outMode: "bounce",
-            random: false,
-            speed: 6,
-            straight: false,
-          },
-          number: {
-            density: {
-              enable: true,
-              value_area: 800,
-            },
-            value: 80,
-          },
-          opacity: {
-            value: 0.5,
-          },
-          shape: {
-            type: "circle",
-          },
-          size: {
-            random: true,
-            value: 5,
-          },
-        },
-        detectRetina: true,
-      }}
-    />
+          detectRetina: true,
+        }}
+      />
+
+    </div>
+
   );
 
 }
