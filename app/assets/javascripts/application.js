@@ -47509,9 +47509,9 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
       setColumnWidthValue = _useState18[1];
 
   var columnWidthHandler = function columnWidthHandler(val) {
-    console.log(val);
     setColumnWidthValue(val);
   };
+
   // Slider関連
   console.log('likeList', likeList);
 
@@ -47593,7 +47593,8 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                       _react2.Row,
                       { style: { width: '75%' } },
                       React.createElement(_react2.Slider, {
-                        value: columnWidthValue, onChange: columnWidthHandler,
+                        value: columnWidthValue,
+                        onChange: columnWidthHandler,
                         step: 20, max: 500, min: 100, initialValue: 300
                       })
                     ),
@@ -47620,6 +47621,9 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
               filterList: filterList,
               filterPosts: filterPosts,
               columnWidthValue: columnWidthValue
+              // gutterWidth={gutterWidth}
+              // gutterHeight={gutterHeight}
+
             })
           ),
           React.createElement(
@@ -47668,7 +47672,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                       currentUserData: props.currentUserData
                     })
                   ),
-                  React.createElement(_react2.Spacer, { y: 0.4 }),
+                  React.createElement(_react2.Spacer, { y: 2 }),
                   React.createElement(
                     'div',
                     { className: 'block' },
@@ -47772,6 +47776,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.PostList = undefined;
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+// import sizeMe from 'react-sizeme';
+// @ts-ignore
+
+
 var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
@@ -47790,6 +47799,23 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 // const { scaleDown } = transitions;
 var PostList = exports.PostList = function PostList(props) {
+  var _useState = (0, _react.useState)(20),
+      _useState2 = _slicedToArray(_useState, 2),
+      gutterWidth = _useState2[0],
+      setGutterWidth = _useState2[1];
+
+  var _useState3 = (0, _react.useState)(40),
+      _useState4 = _slicedToArray(_useState3, 2),
+      gutterHeight = _useState4[0],
+      setGutterHeight = _useState4[1];
+
+  (0, _react.useEffect)(function () {
+    if (props.columnWidthValue <= 300) {
+      setGutterWidth(props.columnWidthValue / 15);
+      setGutterHeight(props.columnWidthValue / 7);
+    }
+  }, [props.columnWidthValue]);
+
   return React.createElement(
     React.Fragment,
     null,
@@ -47801,8 +47827,8 @@ var PostList = exports.PostList = function PostList(props) {
         _reactStackGrid2.default,
         {
           columnWidth: props.columnWidthValue,
-          gutterWidth: 20,
-          gutterHeight: 40
+          gutterWidth: gutterWidth,
+          gutterHeight: gutterHeight
           // duration={700}
           , monitorImagesLoaded: true
           // appearDelay={30}
@@ -47830,8 +47856,6 @@ var PostList = exports.PostList = function PostList(props) {
     )
   );
 };
-// import sizeMe from 'react-sizeme';
-// @ts-ignore
 
 /***/ }),
 /* 308 */

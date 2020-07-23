@@ -149,9 +149,10 @@ export const PostsApp = (props: any) => {
   // Slider関連
   const [columnWidthValue, setColumnWidthValue] = useState(300)
   const columnWidthHandler = (val: any) => {
-    console.log(val)
     setColumnWidthValue(val)
   }
+
+
   // Slider関連
   console.log('likeList', likeList);
 
@@ -217,7 +218,8 @@ export const PostsApp = (props: any) => {
                       </span>
                       <Row style={{ width: '75%' }}>
                         <Slider
-                          value={columnWidthValue} onChange={columnWidthHandler}
+                          value={columnWidthValue}
+                          onChange={columnWidthHandler}
                           step={20} max={500} min={100} initialValue={300}
                         />
                       </Row>
@@ -241,6 +243,9 @@ export const PostsApp = (props: any) => {
                 filterList={filterList}
                 filterPosts={filterPosts}
                 columnWidthValue={columnWidthValue}
+              // gutterWidth={gutterWidth}
+              // gutterHeight={gutterHeight}
+
               />
             </div>
 
@@ -268,7 +273,7 @@ export const PostsApp = (props: any) => {
                         currentUserData={props.currentUserData}
                       />
                     </div>
-                    <Spacer y={0.4} />
+                    <Spacer y={2} />
 
                     {/* コメント部分ーーーーーーーーーーーーー */}
                     <div className="block">
