@@ -338,16 +338,18 @@ Devise.setup do |config|
                   ENV['facebook_secret'],
                   scope: 'email',
                   info_fields: 'email,name',
-                  callback_url: "http://localhost:3000/users/omniauth_callbacks"
+                  callback_url: "https://sugomori.herokuapp.com/users/auth/facebook/callback"
+
 
 
   config.omniauth :twitter,
                   ENV['github_key'],
                   ENV['github_secret'],
-                  callback_url: "http://localhost:3000/users/omniauth_callbacks"
+                  callback_url: "https://sugomori.herokuapp.com/users/auth/twitter/callback"
 
   config.omniauth :github,
                   ENV['twitter_key'],
                   ENV['twitter_secret'],
-                  callback_url: "http://localhost:3000/users/omniauth_callbacks"
+                  callback_url: "https://sugomori.herokuapp.com/users/auth/github/callback"
+
 end
