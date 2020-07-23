@@ -338,22 +338,37 @@ Devise.setup do |config|
                   ENV['facebook_secret'],
                   scope: 'email',
                   info_fields: 'email,name',
-                  callback_url: "https://sugomori.herokuapp.com/users/auth/facebook/callback"
-
+                  callback_url:
+                    if Rails.env.production?
+                      "https://sugomori.herokuapp.com/users/auth/facebook/callback"
+                    else
+                      "http://localhost:3000/users/auth/facebook/callback"
+                    end
 
 
   config.omniauth :twitter,
-                  ENV['github_key'],
-                  ENV['github_secret'],
-                  scope: 'email',
-                  info_fields: 'email,name',
-                  callback_url: "https://sugomori.herokuapp.com/users/auth/twitter/callback"
-
-  config.omniauth :github,
                   ENV['twitter_key'],
                   ENV['twitter_secret'],
                   scope: 'email',
                   info_fields: 'email,name',
-                  callback_url: "https://sugomori.herokuapp.com/users/auth/github/callback"
+                  callback_url:
+                    if Rails.env.production?
+                      "https://sugomori.herokuapp.com/users/auth/twitter/callback"
+                    else
+                      "http://localhost:3000/users/auth/twitter/callback"
+                    end
+
+
+  config.omniauth :github,
+                  ENV['github_key'],
+                  ENV['github_secret'],
+                  scope: 'email',
+                  info_fields: 'email,name',
+                  callback_url:
+                    if Rails.env.production?
+                      "https://sugomori.herokuapp.com/users/auth/github/callback"
+                    else
+                      "http://localhost:3000/users/auth/github/callback"
+                    end
 
 end

@@ -14659,7 +14659,8 @@ summary > svg {
 
 div.collapseWrap > div > div > div.jsx-529403286.container.expanded {
   width: 100%;
-  background-color: white !important; }
+  background-color: white !important;
+  height: 70px; }
 
 div.collapseWrap > div > div > div > div > div > div {
   line-height: 3rem !important; }

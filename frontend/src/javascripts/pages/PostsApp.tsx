@@ -189,6 +189,11 @@ export const PostsApp = (props: any) => {
     });
   })();
 
+  // const [collapseOpen, setCollapseOpen] = useState(true);
+
+  // const toggleCollapse = () => {
+  //   setCollapseOpen(!collapseOpen)
+  // }
 
 
 
@@ -199,10 +204,14 @@ export const PostsApp = (props: any) => {
           <div>
             <div>
               {/* // Collapse関連 */}
-              <div className="collapseWrap mt-18 pt-5">
-                <Collapse.Group className="z-20 mr-5 mt-10">
-                  <Collapse title=" " className="h-1 text-base" initialVisible>
-                    <div className="bg-white flex justify-center items-center">
+              <Spacer y={2} />
+
+              <div className="collapseWrap mt-50 pt-5 h-30">
+                <Collapse.Group>
+                  <Collapse title="" initialVisible>
+                    <Text></Text>
+
+                    <div className="bg-white flex justify-center items-center h-10">
                       <span className="wr-10 pr-5">
                         <Icon.Maximize2 size={25} />
                       </span>
@@ -212,12 +221,12 @@ export const PostsApp = (props: any) => {
                           step={20} max={500} min={100} initialValue={300}
                         />
                       </Row>
+                      <Text></Text>
                     </div>
                   </Collapse>
                 </Collapse.Group>
               </div>
-
-              <div className="flex justify-end mr-5 mt-3 bg-white">
+              <div className="flex justify-end mr-5 bg-white">
                 <form action="">
                   <input type="text" placeholder="search" onChange={filterList} className="w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline" />
                 </form>
