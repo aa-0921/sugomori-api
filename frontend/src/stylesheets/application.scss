@@ -63,8 +63,13 @@ details > summary {
   color: white;
 }
 
-// loading関連
+// background関連
+.example {
+  position: absolute !important;
+  z-index: 2005;
+}
 
+// loading関連
 div.loadingDiv {
   z-index: 2001;
   position: absolute;

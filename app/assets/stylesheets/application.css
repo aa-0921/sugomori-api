@@ -14477,6 +14477,10 @@ details > summary {
   background-color: #a3bffa !important;
   color: white; }
 
+.example {
+  position: absolute !important;
+  z-index: 2005; }
+
 div.loadingDiv {
   z-index: 2001;
   position: absolute; }

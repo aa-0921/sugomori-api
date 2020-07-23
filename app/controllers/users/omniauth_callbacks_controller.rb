@@ -24,6 +24,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           uid: data['uid'],
         }
       end
+      p data['info']['email']
       redirect_to new_user_registration_url
       # set_flash_message(:notice, 'SNSログインのため、空欄を入力して下さい')
       # set_flash_message(:notice, :need_input)

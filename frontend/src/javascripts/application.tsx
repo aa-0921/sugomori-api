@@ -6,6 +6,7 @@ import { BeforeLogin } from './components/BeforeLogin';
 
 import { ZeitProvider, CssBaseline } from '@zeit-ui/react';
 
+
 document.addEventListener('DOMContentLoaded', () => {
   const jsLoggedIn = document.getElementById('js_logged_in_component')
   const jsNotLoggedIn = document.getElementById('js_not_logged_in_component')

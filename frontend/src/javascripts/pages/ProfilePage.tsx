@@ -7,6 +7,8 @@ import { PostList } from '../components/PostList';
 import * as Icon from '@zeit-ui/react-icons';
 import { FollowButton } from '../components/FollowButton';
 import { LikeButton } from '../components/LikeButton';
+import { BackGround } from '../pages/BackGround';
+
 
 
 export const ProfilePage = (props: any) => {
@@ -256,6 +258,7 @@ export const ProfilePage = (props: any) => {
 
   return (
     <React.Fragment>
+      {/* <BackGround /> */}
       < Spacer y={3} />
       <Card shadow>
         <div className="flex">

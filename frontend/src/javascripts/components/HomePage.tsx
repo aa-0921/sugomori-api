@@ -15,8 +15,12 @@ import { FetchData } from '../api/FetchData';
 import { useState, useEffect } from 'react';
 import { useToasts, Loading, Row } from '@zeit-ui/react';
 import { FeedApp } from '../pages/FeedApp';
+import { BackGround } from '../pages/BackGround';
+// import Particles from 'react-particles-js';
+// import ParticlesBg from "particles-bg";
+import Particles from "react-tsparticles";
 
-export const HomePage = () => {
+export const HomePage = (props: any) => {
   const [currentUserData, setCurrentUserData] = useState({
     id: 0,
     email: '',
@@ -71,6 +75,90 @@ export const HomePage = () => {
 
         <BrowserRouter>
           <Header currentUserData={currentUserData} />
+          {/* <Particles /> */}
+
+          <Particles
+            id="tsparticles"
+            options={{
+              background: {
+                color: {
+                  value: "#0d47a1",
+                },
+              },
+              fpsLimit: 60,
+              interactivity: {
+                detectsOn: "canvas",
+                events: {
+                  onClick: {
+                    enable: true,
+                    mode: "push",
+                  },
+                  onHover: {
+                    enable: true,
+                    mode: "repulse",
+                  },
+                  resize: true,
+                },
+                modes: {
+                  bubble: {
+                    distance: 400,
+                    duration: 2,
+                    opacity: 0.8,
+                    size: 40,
+                  },
+                  push: {
+                    quantity: 4,
+                  },
+                  repulse: {
+                    distance: 200,
+                    duration: 0.4,
+                  },
+                },
+              },
+              particles: {
+                color: {
+                  value: "#ffffff",
+                },
+                links: {
+                  color: "#ffffff",
+                  distance: 150,
+                  enable: true,
+                  opacity: 0.5,
+                  width: 1,
+                },
+                collisions: {
+                  enable: true,
+                },
+                move: {
+                  direction: "none",
+                  enable: true,
+                  outMode: "bounce",
+                  random: false,
+                  speed: 6,
+                  straight: false,
+                },
+                number: {
+                  density: {
+                    enable: true,
+                    value_area: 800,
+                  },
+                  value: 80,
+                },
+                opacity: {
+                  value: 0.5,
+                },
+                shape: {
+                  type: "circle",
+                },
+                size: {
+                  random: true,
+                  value: 5,
+                },
+              },
+              detectRetina: true,
+            }}
+          />
+          {/* <ParticlesBg type="random" bg={true} /> */}
           <Switch>
             <Route exact path="/"
               render={(props) =>
@@ -107,6 +195,8 @@ export const HomePage = () => {
                   component={MemberListApp}
                 />}
             />
+            <Route exact path="/background" component={BackGround} />
+
           </Switch>
           {/* <Footer /> */}
         </BrowserRouter >
