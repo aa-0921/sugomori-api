@@ -5,7 +5,7 @@ import { FetchData } from '../api/FetchData'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { PostList } from '../components/PostList';
 import { FormikPost } from '../components/FormikPost';
-import { Modal, Button, Grid, Divider, Row, Slider, Collapse, Tooltip, Popover, Text } from '@zeit-ui/react';
+import { Modal, Spacer, Divider, Row, Slider, Collapse, Tooltip, Popover, Text } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
 import { CommentApp } from '../components/CommentApp';
 import { LikeButton } from '../components/LikeButton';
@@ -83,11 +83,16 @@ export const PostsApp = (props: any) => {
   const removeHeader = () => {
     const target = document.getElementById('header')
     target.classList.add('head-animation');
+    const postButtonTarget = document.getElementById('postButton');
+    postButtonTarget.classList.add('postButton-animation');
+
   };
 
   const addHeader = () => {
     const target = document.getElementById('header')
     target.classList.remove('head-animation');
+    const postButtonTarget = document.getElementById('postButton');
+    postButtonTarget.classList.remove('postButton-animation');
   };
 
   const goProfile = () => {
@@ -254,6 +259,8 @@ export const PostsApp = (props: any) => {
                         currentUserData={props.currentUserData}
                       />
                     </div>
+                    <Spacer y={0.4} />
+
                     {/* コメント部分ーーーーーーーーーーーーー */}
                     <div className="block">
                       <CommentApp

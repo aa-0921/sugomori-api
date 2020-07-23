@@ -14458,7 +14458,7 @@ img.modalImage {
 
 #postButton {
   box-shadow: 0 4px 8px -3px rgba(17, 17, 17, 0.06);
-  transition: 2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2000; }
 
 .postButton-animation {

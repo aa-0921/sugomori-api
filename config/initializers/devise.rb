@@ -345,11 +345,15 @@ Devise.setup do |config|
   config.omniauth :twitter,
                   ENV['github_key'],
                   ENV['github_secret'],
+                  scope: 'email',
+                  info_fields: 'email,name',
                   callback_url: "https://sugomori.herokuapp.com/users/auth/twitter/callback"
 
   config.omniauth :github,
                   ENV['twitter_key'],
                   ENV['twitter_secret'],
+                  scope: 'email',
+                  info_fields: 'email,name',
                   callback_url: "https://sugomori.herokuapp.com/users/auth/github/callback"
 
 end

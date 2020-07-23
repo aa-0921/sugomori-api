@@ -47409,11 +47409,15 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
   var removeHeader = function removeHeader() {
     var target = document.getElementById('header');
     target.classList.add('head-animation');
+    var postButtonTarget = document.getElementById('postButton');
+    postButtonTarget.classList.add('postButton-animation');
   };
 
   var addHeader = function addHeader() {
     var target = document.getElementById('header');
     target.classList.remove('head-animation');
+    var postButtonTarget = document.getElementById('postButton');
+    postButtonTarget.classList.remove('postButton-animation');
   };
 
   var goProfile = function goProfile() {
@@ -47633,6 +47637,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                       currentUserData: props.currentUserData
                     })
                   ),
+                  React.createElement(_react2.Spacer, { y: 0.4 }),
                   React.createElement(
                     'div',
                     { className: 'block' },
