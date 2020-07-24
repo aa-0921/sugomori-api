@@ -10,6 +10,7 @@ import * as Icon from '@zeit-ui/react-icons';
 import { CommentApp } from '../components/CommentApp';
 import { LikeButton } from '../components/LikeButton';
 import { PostModal } from '../components/PostModal';
+import { ClarifaiApp } from '../api/ClarifaiApp'
 
 
 
@@ -196,7 +197,7 @@ export const PostsApp = (props: any) => {
   //   setCollapseOpen(!collapseOpen)
   // }
 
-
+  ClarifaiApp();
 
   return (
     <React.Fragment>
