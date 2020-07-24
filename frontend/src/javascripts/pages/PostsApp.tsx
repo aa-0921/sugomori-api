@@ -221,7 +221,7 @@ export const PostsApp = (props: any) => {
                         <Slider
                           value={columnWidthValue}
                           onChange={columnWidthHandler}
-                          step={20} max={500} min={100} initialValue={300}
+                          step={20} max={400} min={100} initialValue={300}
                         />
                       </Row>
                       <Text></Text>

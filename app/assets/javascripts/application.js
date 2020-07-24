@@ -101,7 +101,7 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _HomePage = __webpack_require__(12);
 
-var _BeforeLogin = __webpack_require__(1037);
+var _BeforeLogin = __webpack_require__(1068);
 
 var _react2 = __webpack_require__(35);
 
@@ -28630,19 +28630,19 @@ var _About = __webpack_require__(304);
 
 var _PostsApp = __webpack_require__(305);
 
-var _ProfilePage = __webpack_require__(872);
+var _ProfilePage = __webpack_require__(904);
 
-var _MemberListApp = __webpack_require__(1034);
+var _MemberListApp = __webpack_require__(1065);
 
 var _FetchData = __webpack_require__(306);
 
 var _react2 = __webpack_require__(35);
 
-var _FeedApp = __webpack_require__(1036);
+var _FeedApp = __webpack_require__(1067);
 
-var _BackGround = __webpack_require__(873);
+var _BackGround = __webpack_require__(905);
 
-var _reactTsparticles = __webpack_require__(874);
+var _reactTsparticles = __webpack_require__(906);
 
 var _reactTsparticles2 = _interopRequireDefault(_reactTsparticles);
 
@@ -47333,7 +47333,7 @@ var _LikeButton = __webpack_require__(870);
 
 var _PostModal = __webpack_require__(871);
 
-var _ClarifaiApp = __webpack_require__(1039);
+var _ClarifaiApp = __webpack_require__(872);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -47598,7 +47598,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                       React.createElement(_react2.Slider, {
                         value: columnWidthValue,
                         onChange: columnWidthHandler,
-                        step: 20, max: 500, min: 100, initialValue: 300
+                        step: 20, max: 400, min: 100, initialValue: 300
                       })
                     ),
                     React.createElement(_react2.Text, null)
@@ -67808,6 +67808,4081 @@ var PostModal = exports.PostModal = function PostModal(props) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.ClarifaiApp = ClarifaiApp;
+async function ClarifaiApp() {
+  var Clarifai = __webpack_require__(873);
+
+  var app = new Clarifai.App({ apiKey: 'f8b4214227f34f958228b93cd7db08f1' });
+
+  app.models.predict(Clarifai.GENERAL_MODEL, 'https://media-01.creema.net/user/162879/exhibits/4244606/0_3c81efa116f1945288a4cb3e5d7f7cfe_583x585.jpg').then(function (response) {
+    console.log('Clarifai', response);
+  }).catch(function (err) {
+    console.log(err);
+  });
+}
+
+/***/ }),
+/* 873 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {
+
+var App = __webpack_require__(874);
+
+var _require = __webpack_require__(893),
+    version = _require.version;
+
+module.exports = global.Clarifai = {
+  version: version,
+  App: App,
+  GENERAL_MODEL: 'aaa03c23b3724a16a56b629203edc62c',
+  FOOD_MODEL: 'bd367be194cf45149e75f01d59f77ba7',
+  TRAVEL_MODEL: 'eee28c313d69466f836ab83287a54ed9',
+  NSFW_MODEL: 'e9576d86d2004ed1a38ba0cf39ecb4b1',
+  WEDDINGS_MODEL: 'c386b7a870114f4a87477c0824499348',
+  WEDDING_MODEL: 'c386b7a870114f4a87477c0824499348',
+  COLOR_MODEL: 'eeed0b6733a644cea07cf4c60f87ebb7',
+  CLUSTER_MODEL: 'cccbe437d6e54e2bb911c6aa292fb072',
+  FACE_DETECT_MODEL: 'a403429f2ddf4b49b307e318f00e528b',
+  FOCUS_MODEL: 'c2cf7cecd8a6427da375b9f35fcd2381',
+  LOGO_MODEL: 'c443119bf2ed4da98487520d01a0b1e3',
+  DEMOGRAPHICS_MODEL: 'c0c0ac362b03416da06ab3fa36fb58e3',
+  GENERAL_EMBED_MODEL: 'bbb5f41425b8468d9b7a554ff10f8581',
+  FACE_EMBED_MODEL: 'd02b4508df58432fbb84e800597b8959',
+  APPAREL_MODEL: 'e0be3b9d6a454f0493ac3a30784001ff',
+  MODERATION_MODEL: 'd16f390eb32cad478c7ae150069bd2c6',
+  TEXTURES_AND_PATTERNS: 'fbefb47f9fdb410e8ce14f24f54b47ff',
+  LANDSCAPE_QUALITY: 'bec14810deb94c40a05f1f0eb3c91403',
+  PORTRAIT_QUALITY: 'de9bd05cfdbf4534af151beb2a5d0953',
+  CELEBRITY_MODEL: 'e466caa0619f444ab97497640cefc4dc'
+};
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(29)))
+
+/***/ }),
+/* 874 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global, process) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var axios = __webpack_require__(515);
+
+var _require = __webpack_require__(875),
+    checkType = _require.checkType;
+
+var Models = __webpack_require__(876);
+var Inputs = __webpack_require__(896);
+var Concepts = __webpack_require__(894);
+var Workflow = __webpack_require__(900);
+var Workflows = __webpack_require__(901);
+var Solutions = __webpack_require__(902);
+
+var _require2 = __webpack_require__(889),
+    API = _require2.API,
+    ERRORS = _require2.ERRORS,
+    getBasePath = _require2.getBasePath;
+
+var TOKEN_PATH = API.TOKEN_PATH;
+
+
+if (typeof window !== 'undefined' && !('Promise' in window)) {
+  window.Promise = __webpack_require__(877);
+}
+
+if (typeof global !== 'undefined' && !('Promise' in global)) {
+  global.Promise = __webpack_require__(877);
+}
+
+/**
+ * top-level class that allows access to models, inputs and concepts
+ * @class
+ */
+
+var App = function () {
+  function App(arg1, arg2, arg3) {
+    _classCallCheck(this, App);
+
+    var optionsObj = arg1;
+    if ((typeof arg1 === 'undefined' ? 'undefined' : _typeof(arg1)) !== 'object' || arg1 === null) {
+      optionsObj = arg3 || {};
+      optionsObj.clientId = arg1;
+      optionsObj.clientSecret = arg2;
+    }
+    this._validate(optionsObj);
+    this._init(optionsObj);
+  }
+
+  /**
+   * Gets a token from the API using client credentials
+   * @return {Promise(token, error)} A Promise that is fulfilled with the token string or rejected with an error
+   *
+   * @deprecated Please switch to using the API key.
+   */
+
+
+  _createClass(App, [{
+    key: 'getToken',
+    value: function getToken() {
+      return this._config.token();
+    }
+
+    /**
+     * Sets the token to use for the API
+     * @param {String}         _token    The token you are setting
+     * @return {Boolean}                 true if token has valid fields, false if not
+     *
+     * @deprecated Please switch to using the API key.
+     */
+
+  }, {
+    key: 'setToken',
+    value: function setToken(_token) {
+      var token = _token;
+      var now = new Date().getTime();
+      if (typeof _token === 'string') {
+        token = {
+          accessToken: _token,
+          expiresIn: 176400
+        };
+      } else {
+        token = {
+          accessToken: _token.access_token || _token.accessToken,
+          expiresIn: _token.expires_in || _token.expiresIn
+        };
+      }
+      if (token.accessToken && token.expiresIn || token.access_token && token.expires_in) {
+        if (!token.expireTime) {
+          token.expireTime = now + token.expiresIn * 1000;
+        }
+        this._config._token = token;
+        return true;
+      }
+      return false;
+    }
+  }, {
+    key: '_validate',
+    value: function _validate(_ref) {
+      var clientId = _ref.clientId,
+          clientSecret = _ref.clientSecret,
+          token = _ref.token,
+          apiKey = _ref.apiKey,
+          sessionToken = _ref.sessionToken;
+
+      if (clientId || clientSecret) {
+        console.warn('Client ID/secret has been deprecated. Please switch to using the API key. See here how to do ' + 'the switch: https://blog.clarifai.com/introducing-api-keys-a-safer-way-to-authenticate-your-applications');
+      }
+      if ((!clientId || !clientSecret) && !token && !apiKey && !sessionToken) {
+        throw ERRORS.paramsRequired(['apiKey']);
+      }
+    }
+  }, {
+    key: '_init',
+    value: function _init(options) {
+      var _this = this;
+
+      var apiEndpoint = options.apiEndpoint || process && process.env && process.env.API_ENDPOINT || 'https://api.clarifai.com';
+      this._config = {
+        apiEndpoint: apiEndpoint,
+        clientId: options.clientId,
+        clientSecret: options.clientSecret,
+        apiKey: options.apiKey,
+        sessionToken: options.sessionToken,
+        basePath: getBasePath(apiEndpoint, options.userId, options.appId),
+        token: function token() {
+          return new Promise(function (resolve, reject) {
+            var now = new Date().getTime();
+            if (checkType(/Object/, _this._config._token) && _this._config._token.expireTime > now) {
+              resolve(_this._config._token);
+            } else {
+              _this._getToken(resolve, reject);
+            }
+          });
+        }
+      };
+      if (options.token) {
+        this.setToken(options.token);
+      }
+      this.models = new Models(this._config);
+      this.inputs = new Inputs(this._config);
+      this.concepts = new Concepts(this._config);
+      this.workflow = new Workflow(this._config);
+      this.workflows = new Workflows(this._config);
+      this.solutions = new Solutions(this._config);
+    }
+
+    /**
+     * @deprecated Please switch to using the API key.
+     */
+
+  }, {
+    key: '_getToken',
+    value: function _getToken(resolve, reject) {
+      var _this2 = this;
+
+      this._requestToken().then(function (response) {
+        if (response.status === 200) {
+          _this2.setToken(response.data);
+          resolve(_this2._config._token);
+        } else {
+          reject(response);
+        }
+      }, reject);
+    }
+
+    /**
+     * @deprecated Please switch to using the API key.
+     */
+
+  }, {
+    key: '_requestToken',
+    value: function _requestToken() {
+      var url = '' + this._config.basePath + TOKEN_PATH;
+      var clientId = this._config.clientId;
+      var clientSecret = this._config.clientSecret;
+      return axios({
+        'url': url,
+        'method': 'POST',
+        'auth': {
+          'username': clientId,
+          'password': clientSecret
+        }
+      });
+    }
+  }]);
+
+  return App;
+}();
+
+module.exports = App;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(29), __webpack_require__(65)))
+
+/***/ }),
+/* 875 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var SUCCESS_CODES = [200, 201];
+
+module.exports = {
+  isSuccess: function isSuccess(response) {
+    return SUCCESS_CODES.indexOf(response.status) > -1;
+  },
+  deleteEmpty: function deleteEmpty(obj) {
+    var strict = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+    Object.keys(obj).forEach(function (key) {
+      if (obj[key] === null || obj[key] === undefined || strict === true && (obj[key] === '' || obj[key].length === 0 || Object.keys(obj[key]).length === 0)) {
+        delete obj[key];
+      }
+    });
+  },
+  clone: function clone(obj) {
+    var keys = Object.keys(obj);
+    var copy = {};
+    keys.forEach(function (k) {
+      copy[k] = obj[k];
+    });
+    return copy;
+  },
+  checkType: function checkType(regex, val) {
+    if (regex instanceof RegExp === false) {
+      regex = new RegExp(regex);
+    }
+    return regex.test(Object.prototype.toString.call(val));
+  }
+};
+
+/***/ }),
+/* 876 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var axios = __webpack_require__(515);
+var Promise = __webpack_require__(877);
+var Model = __webpack_require__(887);
+var Concepts = __webpack_require__(894);
+
+var _require = __webpack_require__(889),
+    API = _require.API,
+    ERRORS = _require.ERRORS,
+    replaceVars = _require.replaceVars;
+
+var _require2 = __webpack_require__(875),
+    isSuccess = _require2.isSuccess,
+    checkType = _require2.checkType,
+    clone = _require2.clone;
+
+var _require3 = __webpack_require__(890),
+    wrapToken = _require3.wrapToken,
+    formatModel = _require3.formatModel;
+
+var MODELS_PATH = API.MODELS_PATH,
+    MODEL_PATH = API.MODEL_PATH,
+    MODEL_SEARCH_PATH = API.MODEL_SEARCH_PATH,
+    MODEL_VERSION_PATH = API.MODEL_VERSION_PATH;
+
+/**
+ * class representing a collection of models
+ * @class
+ */
+
+var Models = function () {
+  function Models(_config) {
+    var _this = this;
+
+    var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+
+    _classCallCheck(this, Models);
+
+    this._config = _config;
+    this.rawData = rawData;
+    rawData.forEach(function (modelData, index) {
+      _this[index] = new Model(_this._config, modelData);
+    });
+    this.length = rawData.length;
+  }
+
+  /**
+   * Returns a Model instance given model id or name. It will call search if name is given.
+   * @param {string|object}    model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
+   *   @param {string}           model.id          Model id
+   *   @param {string}           model.name        Model name
+   *   @param {string}           model.version     Model version
+   *   @param {string}           model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
+   * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
+   */
+
+
+  _createClass(Models, [{
+    key: 'initModel',
+    value: function initModel(model) {
+      var _this2 = this;
+
+      var data = {};
+      var fn = void 0;
+      if (checkType(/String/, model)) {
+        data.id = model;
+      } else {
+        data = model;
+      }
+      if (data.id) {
+        fn = function fn(resolve, reject) {
+          resolve(new Model(_this2._config, data));
+        };
+      } else {
+        fn = function fn(resolve, reject) {
+          _this2.search(data.name, data.type).then(function (models) {
+            if (data.version) {
+              resolve(models.rawData.filter(function (model) {
+                return model.modelVersion.id === data.version;
+              }));
+            } else {
+              resolve(models[0]);
+            }
+          }, reject).catch(reject);
+        };
+      }
+      return new Promise(fn);
+    }
+
+    /**
+     * Calls predict given model info and inputs to predict on
+     * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
+     *   @param {string}                   model.id          Model id
+     *   @param {string}                   model.name        Model name
+     *   @param {string}                   model.version     Model version
+     *   @param {string}                   model.language    Model language (only for Clarifai's public models)
+     *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
+     * @param {object[]|object|string}   inputs    An array of objects/object/string pointing to an image resource. A string can either be a url or base64 image bytes. Object keys explained below:
+     *    @param {object}                  inputs[].image     Object with keys explained below:
+     *       @param {string}                 inputs[].image.(url|base64)  Can be a publicly accessibly url or base64 string representing image bytes (required)
+     * @param {boolean} isVideo  indicates if the input should be processed as a video (default false)
+     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+     */
+
+  }, {
+    key: 'predict',
+    value: function predict(model, inputs) {
+      var _this3 = this;
+
+      var config = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+      if (checkType(/Boolean/, config)) {
+        console.warn('"isVideo" argument is deprecated, consider using the configuration object instead');
+        config = {
+          video: config
+        };
+      }
+      if (model.language) {
+        config.language = model.language;
+      }
+      return new Promise(function (resolve, reject) {
+        _this3.initModel(model).then(function (modelObj) {
+          modelObj.predict(inputs, config).then(resolve, reject).catch(reject);
+        }, reject);
+      });
+    }
+
+    /**
+     * Calls train on a model and creates a new model version given model info
+     * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
+     *   @param {string}                   model.id          Model id
+     *   @param {string}                   model.name        Model name
+     *   @param {string}                   model.version     Model version
+     *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
+     * @param {boolean}                  sync        If true, this returns after model has completely trained. If false, this immediately returns default api response.
+     * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
+     */
+
+  }, {
+    key: 'train',
+    value: function train(model) {
+      var _this4 = this;
+
+      var sync = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+      return new Promise(function (resolve, reject) {
+        _this4.initModel(model).then(function (model) {
+          model.train(sync).then(resolve, reject).catch(reject);
+        }, reject);
+      });
+    }
+
+    /**
+     *
+     * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
+     *   @param {string}                   model.id          Model id
+     *   @param {string}                   model.name        Model name
+     *   @param {string}                   model.version     Model version
+     *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
+     * @param {string} input A string pointing to an image resource. A string must be a url
+     * @param {object} config A configuration object consisting of the following required keys
+     *   @param {string} config.id The id of the feedback request
+     *   @param {object} config.data The feedback data to be sent
+     *   @param {object} config.info Meta data related to the feedback request
+     */
+
+  }, {
+    key: 'feedback',
+    value: function feedback(model, input, config) {
+      var _this5 = this;
+
+      return new Promise(function (resolve, reject) {
+        _this5.initModel(model).then(function (model) {
+          return model.feedback(input, config);
+        }).then(function (d) {
+          return resolve(d);
+        }).catch(function (e) {
+          return reject(e);
+        });
+      });
+    }
+
+    /**
+     * Returns a version of the model specified by its id
+     * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
+     *   @param {string}                   model.id          Model id
+     *   @param {string}                   model.name        Model name
+     *   @param {string}                   model.version     Model version
+     *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
+     * @param {string}     versionId   The model's id
+     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+     */
+
+  }, {
+    key: 'getVersion',
+    value: function getVersion(model, versionId) {
+      var _this6 = this;
+
+      return new Promise(function (resolve, reject) {
+        _this6.initModel(model).then(function (model) {
+          model.getVersion(versionId).then(resolve, reject).catch(reject);
+        }, reject);
+      });
+    }
+
+    /**
+     * Returns a list of versions of the model
+     * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
+     *   @param {string}                   model.id          Model id
+     *   @param {string}                   model.name        Model name
+     *   @param {string}                   model.version     Model version
+     *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
+     * @param {object}                   options     Object with keys explained below: (optional)
+     *   @param {number}                   options.page        The page number (optional, default: 1)
+     *   @param {number}                   options.perPage     Number of images to return per page (optional, default: 20)
+     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+     */
+
+  }, {
+    key: 'getVersions',
+    value: function getVersions(model) {
+      var _this7 = this;
+
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : { page: 1, perPage: 20 };
+
+      return new Promise(function (resolve, reject) {
+        _this7.initModel(model).then(function (model) {
+          model.getVersions(options).then(resolve, reject).catch(reject);
+        }, reject);
+      });
+    }
+
+    /**
+     * Returns all the model's output info
+     * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
+     *   @param {string}                   model.id          Model id
+     *   @param {string}                   model.name        Model name
+     *   @param {string}                   model.version     Model version
+     *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
+     * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
+     */
+
+  }, {
+    key: 'getOutputInfo',
+    value: function getOutputInfo(model) {
+      var _this8 = this;
+
+      return new Promise(function (resolve, reject) {
+        _this8.initModel(model).then(function (model) {
+          model.getOutputInfo().then(resolve, reject).catch(reject);
+        }, reject);
+      });
+    }
+
+    /**
+     * Returns all the models
+     * @param {Object}     options     Object with keys explained below: (optional)
+     *   @param {Number}     options.page        The page number (optional, default: 1)
+     *   @param {Number}     options.perPage     Number of images to return per page (optional, default: 20)
+     * @return {Promise(Models, error)} A Promise that is fulfilled with an instance of Models or rejected with an error
+     */
+
+  }, {
+    key: 'list',
+    value: function list() {
+      var _this9 = this;
+
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { page: 1, perPage: 20 };
+
+      var url = '' + this._config.basePath + MODELS_PATH;
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.get(url, {
+            params: { 'per_page': options.perPage, 'page': options.page },
+            headers: headers
+          }).then(function (response) {
+            if (isSuccess(response)) {
+              resolve(new Models(_this9._config, response.data.models));
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Create a model
+     * @param {string|object}                  model                                  If string, it is assumed to be the model id. Otherwise, if object is given, it can have any of the following keys:
+     *   @param {string}                         model.id                               Model id
+     *   @param {string}                         model.name                             Model name
+     * @param {object[]|string[]|Concepts[]}   conceptsData                           List of objects with ids, concept id strings or an instance of Concepts object
+     * @param {Object}                         options                                Object with keys explained below:
+     *   @param {boolean}                        options.conceptsMutuallyExclusive      Do you expect to see more than one of the concepts in this model in the SAME image? Set to false (default) if so. Otherwise, set to true.
+     *   @param {boolean}                        options.closedEnvironment              Do you expect to run the trained model on images that do not contain ANY of the concepts in the model? Set to false (default) if so. Otherwise, set to true.
+     * @return {Promise(Model, error)} A Promise that is fulfilled with an instance of Model or rejected with an error
+     */
+
+  }, {
+    key: 'create',
+    value: function create(model) {
+      var _this10 = this;
+
+      var conceptsData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+      var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+      var concepts = conceptsData instanceof Concepts ? conceptsData.toObject('id') : conceptsData.map(function (concept) {
+        var val = concept;
+        if (checkType(/String/, concept)) {
+          val = { 'id': concept };
+        }
+        return val;
+      });
+      var modelObj = model;
+      if (checkType(/String/, model)) {
+        modelObj = { id: model, name: model };
+      }
+      if (modelObj.id === undefined) {
+        throw ERRORS.paramsRequired('Model ID');
+      }
+      var url = '' + this._config.basePath + MODELS_PATH;
+      var data = { model: modelObj };
+      data['model']['output_info'] = {
+        'data': {
+          concepts: concepts
+        },
+        'output_config': {
+          'concepts_mutually_exclusive': !!options.conceptsMutuallyExclusive,
+          'closed_environment': !!options.closedEnvironment
+        }
+      };
+
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.post(url, data, { headers: headers }).then(function (response) {
+            if (isSuccess(response)) {
+              resolve(new Model(_this10._config, response.data.model));
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Returns a model specified by ID
+     * @param {String}     id          The model's id
+     * @return {Promise(Model, error)} A Promise that is fulfilled with an instance of Model or rejected with an error
+     */
+
+  }, {
+    key: 'get',
+    value: function get(id) {
+      var _this11 = this;
+
+      var url = '' + this._config.basePath + replaceVars(MODEL_PATH, [id]);
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.get(url, { headers: headers }).then(function (response) {
+            if (isSuccess(response)) {
+              resolve(new Model(_this11._config, response.data.model));
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Update a model's or a list of models' output config or concepts
+     * @param {object|object[]}      models                                 Can be a single model object or list of model objects with the following attrs:
+     *   @param {string}               models.id                                    The id of the model to apply changes to (Required)
+     *   @param {string}               models.name                                  The new name of the model to update with
+     *   @param {boolean}              models.conceptsMutuallyExclusive             Do you expect to see more than one of the concepts in this model in the SAME image? Set to false (default) if so. Otherwise, set to true.
+     *   @param {boolean}              models.closedEnvironment                     Do you expect to run the trained model on images that do not contain ANY of the concepts in the model? Set to false (default) if so. Otherwise, set to true.
+     *   @param {object[]}             models.concepts                              An array of concept objects or string
+     *     @param {object|string}        models.concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
+     *       @param {string}             models.concepts[].concept.id                   The id of the concept to attach to the model
+     *   @param {object[]}             models.action                                The action to perform on the given concepts. Possible values are 'merge', 'remove', or 'overwrite'. Default: 'merge'
+     * @return {Promise(Models, error)} A Promise that is fulfilled with an instance of Models or rejected with an error
+     */
+
+  }, {
+    key: 'update',
+    value: function update(models) {
+      var _this12 = this;
+
+      var url = '' + this._config.basePath + MODELS_PATH;
+      var modelsList = Array.isArray(models) ? models : [models];
+      var data = { models: modelsList.map(formatModel) };
+      data['action'] = models.action || 'merge';
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.patch(url, data, { headers: headers }).then(function (response) {
+            if (isSuccess(response)) {
+              resolve(new Models(_this12._config, response.data.models));
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Update model by merging concepts
+     * @param {object|object[]}      model                                 Can be a single model object or list of model objects with the following attrs:
+     *   @param {string}               model.id                                    The id of the model to apply changes to (Required)
+     *   @param {object[]}             model.concepts                              An array of concept objects or string
+     *     @param {object|string}        model.concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
+     *       @param {string}             model.concepts[].concept.id                   The id of the concept to attach to the model
+     */
+
+  }, {
+    key: 'mergeConcepts',
+    value: function mergeConcepts() {
+      var model = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      model.action = 'merge';
+      return this.update(model);
+    }
+
+    /**
+     * Update model by removing concepts
+     * @param {object|object[]}      model                                 Can be a single model object or list of model objects with the following attrs:
+     *   @param {string}               model.id                                    The id of the model to apply changes to (Required)
+     *   @param {object[]}             model.concepts                              An array of concept objects or string
+     *     @param {object|string}        model.concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
+     *       @param {string}             model.concepts[].concept.id                   The id of the concept to attach to the model
+     */
+
+  }, {
+    key: 'deleteConcepts',
+    value: function deleteConcepts() {
+      var model = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      model.action = 'remove';
+      return this.update(model);
+    }
+
+    /**
+     * Update model by overwriting concepts
+     * @param {object|object[]}      model                                 Can be a single model object or list of model objects with the following attrs:
+     *   @param {string}               model.id                                    The id of the model to apply changes to (Required)
+     *   @param {object[]}             model.concepts                              An array of concept objects or string
+     *     @param {object|string}        model.concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
+     *       @param {string}             model.concepts[].concept.id                   The id of the concept to attach to the model
+     */
+
+  }, {
+    key: 'overwriteConcepts',
+    value: function overwriteConcepts() {
+      var model = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      model.action = 'overwrite';
+      return this.update(model);
+    }
+
+    /**
+     * Deletes all models (if no ids and versionId given) or a model (if given id) or a model version (if given id and verion id)
+     * @param {String|String[]}      ids         Can be a single string or an array of strings representing the model ids
+     * @param {String}               versionId   The model's version id
+     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+     */
+
+  }, {
+    key: 'delete',
+    value: function _delete(ids) {
+      var versionId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      var request = void 0,
+          url = void 0,
+          data = void 0;
+      var id = ids;
+
+      if (checkType(/String/, ids) || checkType(/Array/, ids) && ids.length === 1) {
+        if (versionId) {
+          url = '' + this._config.basePath + replaceVars(MODEL_VERSION_PATH, [id, versionId]);
+        } else {
+          url = '' + this._config.basePath + replaceVars(MODEL_PATH, [id]);
+        }
+        request = wrapToken(this._config, function (headers) {
+          return new Promise(function (resolve, reject) {
+            axios.delete(url, { headers: headers }).then(function (response) {
+              var data = clone(response.data);
+              data.rawData = clone(response.data);
+              resolve(data);
+            }, reject);
+          });
+        });
+      } else {
+        if (!ids && !versionId) {
+          url = '' + this._config.basePath + MODELS_PATH;
+          data = { 'delete_all': true };
+        } else if (!versionId && ids.length > 1) {
+          url = '' + this._config.basePath + MODELS_PATH;
+          data = { ids: ids };
+        } else {
+          throw ERRORS.INVALID_DELETE_ARGS;
+        }
+        request = wrapToken(this._config, function (headers) {
+          return new Promise(function (resolve, reject) {
+            axios({
+              method: 'delete',
+              url: url,
+              data: data,
+              headers: headers
+            }).then(function (response) {
+              var data = clone(response.data);
+              data.rawData = clone(response.data);
+              resolve(data);
+            }, reject);
+          });
+        });
+      }
+
+      return request;
+    }
+
+    /**
+     * Search for models by name or type
+     * @param {String}     name        The model name
+     * @param {String}     type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
+     * @return {Promise(models, error)} A Promise that is fulfilled with an instance of Models or rejected with an error
+     */
+
+  }, {
+    key: 'search',
+    value: function search(name) {
+      var _this13 = this;
+
+      var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      var url = '' + this._config.basePath + MODEL_SEARCH_PATH;
+      return wrapToken(this._config, function (headers) {
+        var params = {
+          'model_query': {
+            name: name,
+            type: type
+          }
+        };
+        return new Promise(function (resolve, reject) {
+          axios.post(url, params, { headers: headers }).then(function (response) {
+            if (isSuccess(response)) {
+              resolve(new Models(_this13._config, response.data.models));
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+  }]);
+
+  return Models;
+}();
+
+module.exports = Models;
+
+/***/ }),
+/* 877 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = __webpack_require__(878)
+
+
+/***/ }),
+/* 878 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = __webpack_require__(879);
+__webpack_require__(881);
+__webpack_require__(882);
+__webpack_require__(883);
+__webpack_require__(884);
+__webpack_require__(886);
+
+
+/***/ }),
+/* 879 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var asap = __webpack_require__(880);
+
+function noop() {}
+
+// States:
+//
+// 0 - pending
+// 1 - fulfilled with _value
+// 2 - rejected with _value
+// 3 - adopted the state of another promise, _value
+//
+// once the state is no longer pending (0) it is immutable
+
+// All `_` prefixed properties will be reduced to `_{random number}`
+// at build time to obfuscate them and discourage their use.
+// We don't use symbols or Object.defineProperty to fully hide them
+// because the performance isn't good enough.
+
+
+// to avoid using try/catch inside critical functions, we
+// extract them to here.
+var LAST_ERROR = null;
+var IS_ERROR = {};
+function getThen(obj) {
+  try {
+    return obj.then;
+  } catch (ex) {
+    LAST_ERROR = ex;
+    return IS_ERROR;
+  }
+}
+
+function tryCallOne(fn, a) {
+  try {
+    return fn(a);
+  } catch (ex) {
+    LAST_ERROR = ex;
+    return IS_ERROR;
+  }
+}
+function tryCallTwo(fn, a, b) {
+  try {
+    fn(a, b);
+  } catch (ex) {
+    LAST_ERROR = ex;
+    return IS_ERROR;
+  }
+}
+
+module.exports = Promise;
+
+function Promise(fn) {
+  if (typeof this !== 'object') {
+    throw new TypeError('Promises must be constructed via new');
+  }
+  if (typeof fn !== 'function') {
+    throw new TypeError('Promise constructor\'s argument is not a function');
+  }
+  this._40 = 0;
+  this._65 = 0;
+  this._55 = null;
+  this._72 = null;
+  if (fn === noop) return;
+  doResolve(fn, this);
+}
+Promise._37 = null;
+Promise._87 = null;
+Promise._61 = noop;
+
+Promise.prototype.then = function(onFulfilled, onRejected) {
+  if (this.constructor !== Promise) {
+    return safeThen(this, onFulfilled, onRejected);
+  }
+  var res = new Promise(noop);
+  handle(this, new Handler(onFulfilled, onRejected, res));
+  return res;
+};
+
+function safeThen(self, onFulfilled, onRejected) {
+  return new self.constructor(function (resolve, reject) {
+    var res = new Promise(noop);
+    res.then(resolve, reject);
+    handle(self, new Handler(onFulfilled, onRejected, res));
+  });
+}
+function handle(self, deferred) {
+  while (self._65 === 3) {
+    self = self._55;
+  }
+  if (Promise._37) {
+    Promise._37(self);
+  }
+  if (self._65 === 0) {
+    if (self._40 === 0) {
+      self._40 = 1;
+      self._72 = deferred;
+      return;
+    }
+    if (self._40 === 1) {
+      self._40 = 2;
+      self._72 = [self._72, deferred];
+      return;
+    }
+    self._72.push(deferred);
+    return;
+  }
+  handleResolved(self, deferred);
+}
+
+function handleResolved(self, deferred) {
+  asap(function() {
+    var cb = self._65 === 1 ? deferred.onFulfilled : deferred.onRejected;
+    if (cb === null) {
+      if (self._65 === 1) {
+        resolve(deferred.promise, self._55);
+      } else {
+        reject(deferred.promise, self._55);
+      }
+      return;
+    }
+    var ret = tryCallOne(cb, self._55);
+    if (ret === IS_ERROR) {
+      reject(deferred.promise, LAST_ERROR);
+    } else {
+      resolve(deferred.promise, ret);
+    }
+  });
+}
+function resolve(self, newValue) {
+  // Promise Resolution Procedure: https://github.com/promises-aplus/promises-spec#the-promise-resolution-procedure
+  if (newValue === self) {
+    return reject(
+      self,
+      new TypeError('A promise cannot be resolved with itself.')
+    );
+  }
+  if (
+    newValue &&
+    (typeof newValue === 'object' || typeof newValue === 'function')
+  ) {
+    var then = getThen(newValue);
+    if (then === IS_ERROR) {
+      return reject(self, LAST_ERROR);
+    }
+    if (
+      then === self.then &&
+      newValue instanceof Promise
+    ) {
+      self._65 = 3;
+      self._55 = newValue;
+      finale(self);
+      return;
+    } else if (typeof then === 'function') {
+      doResolve(then.bind(newValue), self);
+      return;
+    }
+  }
+  self._65 = 1;
+  self._55 = newValue;
+  finale(self);
+}
+
+function reject(self, newValue) {
+  self._65 = 2;
+  self._55 = newValue;
+  if (Promise._87) {
+    Promise._87(self, newValue);
+  }
+  finale(self);
+}
+function finale(self) {
+  if (self._40 === 1) {
+    handle(self, self._72);
+    self._72 = null;
+  }
+  if (self._40 === 2) {
+    for (var i = 0; i < self._72.length; i++) {
+      handle(self, self._72[i]);
+    }
+    self._72 = null;
+  }
+}
+
+function Handler(onFulfilled, onRejected, promise){
+  this.onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : null;
+  this.onRejected = typeof onRejected === 'function' ? onRejected : null;
+  this.promise = promise;
+}
+
+/**
+ * Take a potentially misbehaving resolver function and make sure
+ * onFulfilled and onRejected are only called once.
+ *
+ * Makes no guarantees about asynchrony.
+ */
+function doResolve(fn, promise) {
+  var done = false;
+  var res = tryCallTwo(fn, function (value) {
+    if (done) return;
+    done = true;
+    resolve(promise, value);
+  }, function (reason) {
+    if (done) return;
+    done = true;
+    reject(promise, reason);
+  });
+  if (!done && res === IS_ERROR) {
+    done = true;
+    reject(promise, LAST_ERROR);
+  }
+}
+
+
+/***/ }),
+/* 880 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {
+
+// Use the fastest means possible to execute a task in its own turn, with
+// priority over other events including IO, animation, reflow, and redraw
+// events in browsers.
+//
+// An exception thrown by a task will permanently interrupt the processing of
+// subsequent tasks. The higher level `asap` function ensures that if an
+// exception is thrown by a task, that the task queue will continue flushing as
+// soon as possible, but if you use `rawAsap` directly, you are responsible to
+// either ensure that no exceptions are thrown from your task, or to manually
+// call `rawAsap.requestFlush` if an exception is thrown.
+module.exports = rawAsap;
+function rawAsap(task) {
+    if (!queue.length) {
+        requestFlush();
+        flushing = true;
+    }
+    // Equivalent to push, but avoids a function call.
+    queue[queue.length] = task;
+}
+
+var queue = [];
+// Once a flush has been requested, no further calls to `requestFlush` are
+// necessary until the next `flush` completes.
+var flushing = false;
+// `requestFlush` is an implementation-specific method that attempts to kick
+// off a `flush` event as quickly as possible. `flush` will attempt to exhaust
+// the event queue before yielding to the browser's own event loop.
+var requestFlush;
+// The position of the next task to execute in the task queue. This is
+// preserved between calls to `flush` so that it can be resumed if
+// a task throws an exception.
+var index = 0;
+// If a task schedules additional tasks recursively, the task queue can grow
+// unbounded. To prevent memory exhaustion, the task queue will periodically
+// truncate already-completed tasks.
+var capacity = 1024;
+
+// The flush function processes all tasks that have been scheduled with
+// `rawAsap` unless and until one of those tasks throws an exception.
+// If a task throws an exception, `flush` ensures that its state will remain
+// consistent and will resume where it left off when called again.
+// However, `flush` does not make any arrangements to be called again if an
+// exception is thrown.
+function flush() {
+    while (index < queue.length) {
+        var currentIndex = index;
+        // Advance the index before calling the task. This ensures that we will
+        // begin flushing on the next task the task throws an error.
+        index = index + 1;
+        queue[currentIndex].call();
+        // Prevent leaking memory for long chains of recursive calls to `asap`.
+        // If we call `asap` within tasks scheduled by `asap`, the queue will
+        // grow, but to avoid an O(n) walk for every task we execute, we don't
+        // shift tasks off the queue after they have been executed.
+        // Instead, we periodically shift 1024 tasks off the queue.
+        if (index > capacity) {
+            // Manually shift all values starting at the index back to the
+            // beginning of the queue.
+            for (var scan = 0, newLength = queue.length - index; scan < newLength; scan++) {
+                queue[scan] = queue[scan + index];
+            }
+            queue.length -= index;
+            index = 0;
+        }
+    }
+    queue.length = 0;
+    index = 0;
+    flushing = false;
+}
+
+// `requestFlush` is implemented using a strategy based on data collected from
+// every available SauceLabs Selenium web driver worker at time of writing.
+// https://docs.google.com/spreadsheets/d/1mG-5UYGup5qxGdEMWkhP6BWCz053NUb2E1QoUTU16uA/edit#gid=783724593
+
+// Safari 6 and 6.1 for desktop, iPad, and iPhone are the only browsers that
+// have WebKitMutationObserver but not un-prefixed MutationObserver.
+// Must use `global` or `self` instead of `window` to work in both frames and web
+// workers. `global` is a provision of Browserify, Mr, Mrs, or Mop.
+
+/* globals self */
+var scope = typeof global !== "undefined" ? global : self;
+var BrowserMutationObserver = scope.MutationObserver || scope.WebKitMutationObserver;
+
+// MutationObservers are desirable because they have high priority and work
+// reliably everywhere they are implemented.
+// They are implemented in all modern browsers.
+//
+// - Android 4-4.3
+// - Chrome 26-34
+// - Firefox 14-29
+// - Internet Explorer 11
+// - iPad Safari 6-7.1
+// - iPhone Safari 7-7.1
+// - Safari 6-7
+if (typeof BrowserMutationObserver === "function") {
+    requestFlush = makeRequestCallFromMutationObserver(flush);
+
+// MessageChannels are desirable because they give direct access to the HTML
+// task queue, are implemented in Internet Explorer 10, Safari 5.0-1, and Opera
+// 11-12, and in web workers in many engines.
+// Although message channels yield to any queued rendering and IO tasks, they
+// would be better than imposing the 4ms delay of timers.
+// However, they do not work reliably in Internet Explorer or Safari.
+
+// Internet Explorer 10 is the only browser that has setImmediate but does
+// not have MutationObservers.
+// Although setImmediate yields to the browser's renderer, it would be
+// preferrable to falling back to setTimeout since it does not have
+// the minimum 4ms penalty.
+// Unfortunately there appears to be a bug in Internet Explorer 10 Mobile (and
+// Desktop to a lesser extent) that renders both setImmediate and
+// MessageChannel useless for the purposes of ASAP.
+// https://github.com/kriskowal/q/issues/396
+
+// Timers are implemented universally.
+// We fall back to timers in workers in most engines, and in foreground
+// contexts in the following browsers.
+// However, note that even this simple case requires nuances to operate in a
+// broad spectrum of browsers.
+//
+// - Firefox 3-13
+// - Internet Explorer 6-9
+// - iPad Safari 4.3
+// - Lynx 2.8.7
+} else {
+    requestFlush = makeRequestCallFromTimer(flush);
+}
+
+// `requestFlush` requests that the high priority event queue be flushed as
+// soon as possible.
+// This is useful to prevent an error thrown in a task from stalling the event
+// queue if the exception handled by Node.js’s
+// `process.on("uncaughtException")` or by a domain.
+rawAsap.requestFlush = requestFlush;
+
+// To request a high priority event, we induce a mutation observer by toggling
+// the text of a text node between "1" and "-1".
+function makeRequestCallFromMutationObserver(callback) {
+    var toggle = 1;
+    var observer = new BrowserMutationObserver(callback);
+    var node = document.createTextNode("");
+    observer.observe(node, {characterData: true});
+    return function requestCall() {
+        toggle = -toggle;
+        node.data = toggle;
+    };
+}
+
+// The message channel technique was discovered by Malte Ubl and was the
+// original foundation for this library.
+// http://www.nonblocking.io/2011/06/windownexttick.html
+
+// Safari 6.0.5 (at least) intermittently fails to create message ports on a
+// page's first load. Thankfully, this version of Safari supports
+// MutationObservers, so we don't need to fall back in that case.
+
+// function makeRequestCallFromMessageChannel(callback) {
+//     var channel = new MessageChannel();
+//     channel.port1.onmessage = callback;
+//     return function requestCall() {
+//         channel.port2.postMessage(0);
+//     };
+// }
+
+// For reasons explained above, we are also unable to use `setImmediate`
+// under any circumstances.
+// Even if we were, there is another bug in Internet Explorer 10.
+// It is not sufficient to assign `setImmediate` to `requestFlush` because
+// `setImmediate` must be called *by name* and therefore must be wrapped in a
+// closure.
+// Never forget.
+
+// function makeRequestCallFromSetImmediate(callback) {
+//     return function requestCall() {
+//         setImmediate(callback);
+//     };
+// }
+
+// Safari 6.0 has a problem where timers will get lost while the user is
+// scrolling. This problem does not impact ASAP because Safari 6.0 supports
+// mutation observers, so that implementation is used instead.
+// However, if we ever elect to use timers in Safari, the prevalent work-around
+// is to add a scroll event listener that calls for a flush.
+
+// `setTimeout` does not call the passed callback if the delay is less than
+// approximately 7 in web workers in Firefox 8 through 18, and sometimes not
+// even then.
+
+function makeRequestCallFromTimer(callback) {
+    return function requestCall() {
+        // We dispatch a timeout with a specified delay of 0 for engines that
+        // can reliably accommodate that request. This will usually be snapped
+        // to a 4 milisecond delay, but once we're flushing, there's no delay
+        // between events.
+        var timeoutHandle = setTimeout(handleTimer, 0);
+        // However, since this timer gets frequently dropped in Firefox
+        // workers, we enlist an interval handle that will try to fire
+        // an event 20 times per second until it succeeds.
+        var intervalHandle = setInterval(handleTimer, 50);
+
+        function handleTimer() {
+            // Whichever timer succeeds will cancel both timers and
+            // execute the callback.
+            clearTimeout(timeoutHandle);
+            clearInterval(intervalHandle);
+            callback();
+        }
+    };
+}
+
+// This is for `asap.js` only.
+// Its name will be periodically randomized to break any code that depends on
+// its existence.
+rawAsap.makeRequestCallFromTimer = makeRequestCallFromTimer;
+
+// ASAP was originally a nextTick shim included in Q. This was factored out
+// into this ASAP package. It was later adapted to RSVP which made further
+// amendments. These decisions, particularly to marginalize MessageChannel and
+// to capture the MutationObserver implementation in a closure, were integrated
+// back into ASAP proper.
+// https://github.com/tildeio/rsvp.js/blob/cddf7232546a9cf858524b75cde6f9edf72620a7/lib/rsvp/asap.js
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(29)))
+
+/***/ }),
+/* 881 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var Promise = __webpack_require__(879);
+
+module.exports = Promise;
+Promise.prototype.done = function (onFulfilled, onRejected) {
+  var self = arguments.length ? this.then.apply(this, arguments) : this;
+  self.then(null, function (err) {
+    setTimeout(function () {
+      throw err;
+    }, 0);
+  });
+};
+
+
+/***/ }),
+/* 882 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var Promise = __webpack_require__(879);
+
+module.exports = Promise;
+Promise.prototype['finally'] = function (f) {
+  return this.then(function (value) {
+    return Promise.resolve(f()).then(function () {
+      return value;
+    });
+  }, function (err) {
+    return Promise.resolve(f()).then(function () {
+      throw err;
+    });
+  });
+};
+
+
+/***/ }),
+/* 883 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+//This file contains the ES6 extensions to the core Promises/A+ API
+
+var Promise = __webpack_require__(879);
+
+module.exports = Promise;
+
+/* Static Functions */
+
+var TRUE = valuePromise(true);
+var FALSE = valuePromise(false);
+var NULL = valuePromise(null);
+var UNDEFINED = valuePromise(undefined);
+var ZERO = valuePromise(0);
+var EMPTYSTRING = valuePromise('');
+
+function valuePromise(value) {
+  var p = new Promise(Promise._61);
+  p._65 = 1;
+  p._55 = value;
+  return p;
+}
+Promise.resolve = function (value) {
+  if (value instanceof Promise) return value;
+
+  if (value === null) return NULL;
+  if (value === undefined) return UNDEFINED;
+  if (value === true) return TRUE;
+  if (value === false) return FALSE;
+  if (value === 0) return ZERO;
+  if (value === '') return EMPTYSTRING;
+
+  if (typeof value === 'object' || typeof value === 'function') {
+    try {
+      var then = value.then;
+      if (typeof then === 'function') {
+        return new Promise(then.bind(value));
+      }
+    } catch (ex) {
+      return new Promise(function (resolve, reject) {
+        reject(ex);
+      });
+    }
+  }
+  return valuePromise(value);
+};
+
+Promise.all = function (arr) {
+  var args = Array.prototype.slice.call(arr);
+
+  return new Promise(function (resolve, reject) {
+    if (args.length === 0) return resolve([]);
+    var remaining = args.length;
+    function res(i, val) {
+      if (val && (typeof val === 'object' || typeof val === 'function')) {
+        if (val instanceof Promise && val.then === Promise.prototype.then) {
+          while (val._65 === 3) {
+            val = val._55;
+          }
+          if (val._65 === 1) return res(i, val._55);
+          if (val._65 === 2) reject(val._55);
+          val.then(function (val) {
+            res(i, val);
+          }, reject);
+          return;
+        } else {
+          var then = val.then;
+          if (typeof then === 'function') {
+            var p = new Promise(then.bind(val));
+            p.then(function (val) {
+              res(i, val);
+            }, reject);
+            return;
+          }
+        }
+      }
+      args[i] = val;
+      if (--remaining === 0) {
+        resolve(args);
+      }
+    }
+    for (var i = 0; i < args.length; i++) {
+      res(i, args[i]);
+    }
+  });
+};
+
+Promise.reject = function (value) {
+  return new Promise(function (resolve, reject) {
+    reject(value);
+  });
+};
+
+Promise.race = function (values) {
+  return new Promise(function (resolve, reject) {
+    values.forEach(function(value){
+      Promise.resolve(value).then(resolve, reject);
+    });
+  });
+};
+
+/* Prototype Methods */
+
+Promise.prototype['catch'] = function (onRejected) {
+  return this.then(null, onRejected);
+};
+
+
+/***/ }),
+/* 884 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// This file contains then/promise specific extensions that are only useful
+// for node.js interop
+
+var Promise = __webpack_require__(879);
+var asap = __webpack_require__(885);
+
+module.exports = Promise;
+
+/* Static Functions */
+
+Promise.denodeify = function (fn, argumentCount) {
+  if (
+    typeof argumentCount === 'number' && argumentCount !== Infinity
+  ) {
+    return denodeifyWithCount(fn, argumentCount);
+  } else {
+    return denodeifyWithoutCount(fn);
+  }
+};
+
+var callbackFn = (
+  'function (err, res) {' +
+  'if (err) { rj(err); } else { rs(res); }' +
+  '}'
+);
+function denodeifyWithCount(fn, argumentCount) {
+  var args = [];
+  for (var i = 0; i < argumentCount; i++) {
+    args.push('a' + i);
+  }
+  var body = [
+    'return function (' + args.join(',') + ') {',
+    'var self = this;',
+    'return new Promise(function (rs, rj) {',
+    'var res = fn.call(',
+    ['self'].concat(args).concat([callbackFn]).join(','),
+    ');',
+    'if (res &&',
+    '(typeof res === "object" || typeof res === "function") &&',
+    'typeof res.then === "function"',
+    ') {rs(res);}',
+    '});',
+    '};'
+  ].join('');
+  return Function(['Promise', 'fn'], body)(Promise, fn);
+}
+function denodeifyWithoutCount(fn) {
+  var fnLength = Math.max(fn.length - 1, 3);
+  var args = [];
+  for (var i = 0; i < fnLength; i++) {
+    args.push('a' + i);
+  }
+  var body = [
+    'return function (' + args.join(',') + ') {',
+    'var self = this;',
+    'var args;',
+    'var argLength = arguments.length;',
+    'if (arguments.length > ' + fnLength + ') {',
+    'args = new Array(arguments.length + 1);',
+    'for (var i = 0; i < arguments.length; i++) {',
+    'args[i] = arguments[i];',
+    '}',
+    '}',
+    'return new Promise(function (rs, rj) {',
+    'var cb = ' + callbackFn + ';',
+    'var res;',
+    'switch (argLength) {',
+    args.concat(['extra']).map(function (_, index) {
+      return (
+        'case ' + (index) + ':' +
+        'res = fn.call(' + ['self'].concat(args.slice(0, index)).concat('cb').join(',') + ');' +
+        'break;'
+      );
+    }).join(''),
+    'default:',
+    'args[argLength] = cb;',
+    'res = fn.apply(self, args);',
+    '}',
+    
+    'if (res &&',
+    '(typeof res === "object" || typeof res === "function") &&',
+    'typeof res.then === "function"',
+    ') {rs(res);}',
+    '});',
+    '};'
+  ].join('');
+
+  return Function(
+    ['Promise', 'fn'],
+    body
+  )(Promise, fn);
+}
+
+Promise.nodeify = function (fn) {
+  return function () {
+    var args = Array.prototype.slice.call(arguments);
+    var callback =
+      typeof args[args.length - 1] === 'function' ? args.pop() : null;
+    var ctx = this;
+    try {
+      return fn.apply(this, arguments).nodeify(callback, ctx);
+    } catch (ex) {
+      if (callback === null || typeof callback == 'undefined') {
+        return new Promise(function (resolve, reject) {
+          reject(ex);
+        });
+      } else {
+        asap(function () {
+          callback.call(ctx, ex);
+        })
+      }
+    }
+  }
+};
+
+Promise.prototype.nodeify = function (callback, ctx) {
+  if (typeof callback != 'function') return this;
+
+  this.then(function (value) {
+    asap(function () {
+      callback.call(ctx, null, value);
+    });
+  }, function (err) {
+    asap(function () {
+      callback.call(ctx, err);
+    });
+  });
+};
+
+
+/***/ }),
+/* 885 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// rawAsap provides everything we need except exception management.
+var rawAsap = __webpack_require__(880);
+// RawTasks are recycled to reduce GC churn.
+var freeTasks = [];
+// We queue errors to ensure they are thrown in right order (FIFO).
+// Array-as-queue is good enough here, since we are just dealing with exceptions.
+var pendingErrors = [];
+var requestErrorThrow = rawAsap.makeRequestCallFromTimer(throwFirstError);
+
+function throwFirstError() {
+    if (pendingErrors.length) {
+        throw pendingErrors.shift();
+    }
+}
+
+/**
+ * Calls a task as soon as possible after returning, in its own event, with priority
+ * over other events like animation, reflow, and repaint. An error thrown from an
+ * event will not interrupt, nor even substantially slow down the processing of
+ * other events, but will be rather postponed to a lower priority event.
+ * @param {{call}} task A callable object, typically a function that takes no
+ * arguments.
+ */
+module.exports = asap;
+function asap(task) {
+    var rawTask;
+    if (freeTasks.length) {
+        rawTask = freeTasks.pop();
+    } else {
+        rawTask = new RawTask();
+    }
+    rawTask.task = task;
+    rawAsap(rawTask);
+}
+
+// We wrap tasks with recyclable task objects.  A task object implements
+// `call`, just like a function.
+function RawTask() {
+    this.task = null;
+}
+
+// The sole purpose of wrapping the task is to catch the exception and recycle
+// the task object after its single use.
+RawTask.prototype.call = function () {
+    try {
+        this.task.call();
+    } catch (error) {
+        if (asap.onerror) {
+            // This hook exists purely for testing purposes.
+            // Its name will be periodically randomized to break any code that
+            // depends on its existence.
+            asap.onerror(error);
+        } else {
+            // In a web browser, exceptions are not fatal. However, to avoid
+            // slowing down the queue of pending tasks, we rethrow the error in a
+            // lower priority turn.
+            pendingErrors.push(error);
+            requestErrorThrow();
+        }
+    } finally {
+        this.task = null;
+        freeTasks[freeTasks.length] = this;
+    }
+};
+
+
+/***/ }),
+/* 886 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var Promise = __webpack_require__(879);
+
+module.exports = Promise;
+Promise.enableSynchronous = function () {
+  Promise.prototype.isPending = function() {
+    return this.getState() == 0;
+  };
+
+  Promise.prototype.isFulfilled = function() {
+    return this.getState() == 1;
+  };
+
+  Promise.prototype.isRejected = function() {
+    return this.getState() == 2;
+  };
+
+  Promise.prototype.getValue = function () {
+    if (this._65 === 3) {
+      return this._55.getValue();
+    }
+
+    if (!this.isFulfilled()) {
+      throw new Error('Cannot get a value of an unfulfilled promise.');
+    }
+
+    return this._55;
+  };
+
+  Promise.prototype.getReason = function () {
+    if (this._65 === 3) {
+      return this._55.getReason();
+    }
+
+    if (!this.isRejected()) {
+      throw new Error('Cannot get a rejection reason of a non-rejected promise.');
+    }
+
+    return this._55;
+  };
+
+  Promise.prototype.getState = function () {
+    if (this._65 === 3) {
+      return this._55.getState();
+    }
+    if (this._65 === -1 || this._65 === -2) {
+      return 0;
+    }
+
+    return this._65;
+  };
+};
+
+Promise.disableSynchronous = function() {
+  Promise.prototype.isPending = undefined;
+  Promise.prototype.isFulfilled = undefined;
+  Promise.prototype.isRejected = undefined;
+  Promise.prototype.getValue = undefined;
+  Promise.prototype.getReason = undefined;
+  Promise.prototype.getState = undefined;
+};
+
+
+/***/ }),
+/* 887 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var axios = __webpack_require__(515);
+var ModelVersion = __webpack_require__(888);
+
+var _require = __webpack_require__(875),
+    isSuccess = _require.isSuccess,
+    checkType = _require.checkType,
+    clone = _require.clone;
+
+var _require2 = __webpack_require__(889),
+    API = _require2.API,
+    SYNC_TIMEOUT = _require2.SYNC_TIMEOUT,
+    replaceVars = _require2.replaceVars,
+    STATUS = _require2.STATUS,
+    POLLTIME = _require2.POLLTIME;
+
+var MODEL_QUEUED_FOR_TRAINING = STATUS.MODEL_QUEUED_FOR_TRAINING,
+    MODEL_TRAINING = STATUS.MODEL_TRAINING;
+
+var _require3 = __webpack_require__(890),
+    wrapToken = _require3.wrapToken,
+    formatMediaPredict = _require3.formatMediaPredict,
+    formatModel = _require3.formatModel,
+    formatObjectForSnakeCase = _require3.formatObjectForSnakeCase;
+
+var MODEL_VERSIONS_PATH = API.MODEL_VERSIONS_PATH,
+    MODEL_VERSION_PATH = API.MODEL_VERSION_PATH,
+    MODELS_PATH = API.MODELS_PATH,
+    MODEL_FEEDBACK_PATH = API.MODEL_FEEDBACK_PATH,
+    MODEL_VERSION_FEEDBACK_PATH = API.MODEL_VERSION_FEEDBACK_PATH,
+    PREDICT_PATH = API.PREDICT_PATH,
+    VERSION_PREDICT_PATH = API.VERSION_PREDICT_PATH,
+    MODEL_INPUTS_PATH = API.MODEL_INPUTS_PATH,
+    MODEL_VERSION_OUTPUT_PATH = API.MODEL_VERSION_OUTPUT_PATH,
+    MODEL_OUTPUT_PATH = API.MODEL_OUTPUT_PATH,
+    MODEL_VERSION_INPUTS_PATH = API.MODEL_VERSION_INPUTS_PATH,
+    MODEL_VERSION_METRICS_PATH = API.MODEL_VERSION_METRICS_PATH;
+
+/**
+ * class representing a model
+ * @class
+ */
+
+var Model = function () {
+  function Model(_config, data) {
+    _classCallCheck(this, Model);
+
+    this._config = _config;
+    this.name = data.name;
+    this.id = data.id;
+    this.createdAt = data.created_at || data.createdAt;
+    this.appId = data.app_id || data.appId;
+    this.outputInfo = data.output_info || data.outputInfo;
+    if (checkType(/(String)/, data.version)) {
+      this.modelVersion = {};
+      this.versionId = data.version;
+    } else {
+      if (data.model_version || data.modelVersion || data.version) {
+        this.modelVersion = new ModelVersion(this._config, data.model_version || data.modelVersion || data.version);
+      }
+      this.versionId = (this.modelVersion || {}).id;
+    }
+    this.rawData = data;
+  }
+
+  /**
+   * Merge concepts to a model
+   * @param {object[]}      concepts    List of concept objects with id
+   * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
+   */
+
+
+  _createClass(Model, [{
+    key: 'mergeConcepts',
+    value: function mergeConcepts() {
+      var concepts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      var conceptsArr = Array.isArray(concepts) ? concepts : [concepts];
+      return this.update({ action: 'merge', concepts: conceptsArr });
+    }
+
+    /**
+     * Remove concepts from a model
+     * @param {object[]}      concepts    List of concept objects with id
+     * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
+     */
+
+  }, {
+    key: 'deleteConcepts',
+    value: function deleteConcepts() {
+      var concepts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      var conceptsArr = Array.isArray(concepts) ? concepts : [concepts];
+      return this.update({ action: 'remove', concepts: conceptsArr });
+    }
+
+    /**
+     * Overwrite concepts in a model
+     * @param {object[]}      concepts    List of concept objects with id
+     * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
+     */
+
+  }, {
+    key: 'overwriteConcepts',
+    value: function overwriteConcepts() {
+      var concepts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      var conceptsArr = Array.isArray(concepts) ? concepts : [concepts];
+      return this.update({ action: 'overwrite', concepts: conceptsArr });
+    }
+
+    /**
+     * Start a model evaluation job
+     * @return {Promise(ModelVersion, error)} A Promise that is fulfilled with a ModelVersion instance or rejected with an error
+     */
+
+  }, {
+    key: 'runModelEval',
+    value: function runModelEval() {
+      var _this = this;
+
+      var url = '' + this._config.basePath + replaceVars(MODEL_VERSION_METRICS_PATH, [this.id, this.versionId]);
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.post(url, {}, { headers: headers }).then(function (response) {
+            if (isSuccess(response)) {
+              resolve(new ModelVersion(_this._config, response.data.model_version));
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Update a model's output config or concepts
+     * @param {object}               model                                 An object with any of the following attrs:
+     *   @param {string}               name                                  The new name of the model to update with
+     *   @param {boolean}              conceptsMutuallyExclusive             Do you expect to see more than one of the concepts in this model in the SAME image? Set to false (default) if so. Otherwise, set to true.
+     *   @param {boolean}              closedEnvironment                     Do you expect to run the trained model on images that do not contain ANY of the concepts in the model? Set to false (default) if so. Otherwise, set to true.
+     *   @param {object[]}             concepts                              An array of concept objects or string
+     *     @param {object|string}        concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
+     *       @param {string}             concepts[].concept.id                   The id of the concept to attach to the model
+     *   @param {object[]}             action                                The action to perform on the given concepts. Possible values are 'merge', 'remove', or 'overwrite'. Default: 'merge'
+     * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
+     */
+
+  }, {
+    key: 'update',
+    value: function update(obj) {
+      var _this2 = this;
+
+      var url = '' + this._config.basePath + MODELS_PATH;
+      var modelData = [obj];
+      var data = { models: modelData.map(function (m) {
+          return formatModel(Object.assign(m, { id: _this2.id }));
+        }) };
+      if (Array.isArray(obj.concepts)) {
+        data['action'] = obj.action || 'merge';
+      }
+
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.patch(url, data, { headers: headers }).then(function (response) {
+            if (isSuccess(response)) {
+              resolve(new Model(_this2._config, response.data.models[0]));
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Create a new model version
+     * @param {boolean}       sync     If true, this returns after model has completely trained. If false, this immediately returns default api response.
+     * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
+     */
+
+  }, {
+    key: 'train',
+    value: function train(sync) {
+      var _this3 = this;
+
+      var url = '' + this._config.basePath + replaceVars(MODEL_VERSIONS_PATH, [this.id]);
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.post(url, null, { headers: headers }).then(function (response) {
+            if (isSuccess(response)) {
+              // Training produces a new model version ID.
+              _this3.versionId = response.data.model.model_version.id;
+
+              if (sync) {
+                var timeStart = Date.now();
+                _this3._pollTrain.bind(_this3)(timeStart, resolve, reject);
+              } else {
+                resolve(new Model(_this3._config, response.data.model));
+              }
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+  }, {
+    key: '_pollTrain',
+    value: function _pollTrain(timeStart, resolve, reject) {
+      var _this4 = this;
+
+      clearTimeout(this.pollTimeout);
+      if (Date.now() - timeStart >= SYNC_TIMEOUT) {
+        return reject({
+          status: 'Error',
+          message: 'Sync call timed out'
+        });
+      }
+      this.getOutputInfo().then(function (model) {
+        var modelStatusCode = model.modelVersion.status.code.toString();
+        if (modelStatusCode === MODEL_QUEUED_FOR_TRAINING || modelStatusCode === MODEL_TRAINING) {
+          _this4.pollTimeout = setTimeout(function () {
+            return _this4._pollTrain(timeStart, resolve, reject);
+          }, POLLTIME);
+        } else {
+          resolve(model);
+        }
+      }, reject).catch(reject);
+    }
+
+    /**
+     * Returns model ouputs according to inputs
+     * @param {object[]|object|string}       inputs    An array of objects/object/string pointing to an image resource. A string can either be a url or base64 image bytes. Object keys explained below:
+     *    @param {object}                      inputs[].image     Object with keys explained below:
+     *       @param {string}                     inputs[].image.(url|base64)   Can be a publicly accessibly url or base64 string representing image bytes (required)
+     *       @param {number[]}                   inputs[].image.crop           An array containing the percent to be cropped from top, left, bottom and right (optional)
+     * @param {object|string} config An object with keys explained below. If a string is passed instead, it will be treated as the language (backwards compatibility)
+     *   @param {string} config.language A string code representing the language to return results in (example: 'zh' for simplified Chinese, 'ru' for Russian, 'ja' for Japanese)
+     *   @param {boolean} config.video indicates if the input should be processed as a video
+     *   @param {object[]} config.selectConcepts An array of concepts to return. Each object in the array will have a form of {name: <CONCEPT_NAME>} or {id: CONCEPT_ID}
+     *   @param {float} config.minValue The minimum confidence threshold that a result must meet. From 0.0 to 1.0
+     *   @param {number} config.maxConcepts The maximum number of concepts to return
+     * @param {boolean} isVideo  Deprecated: indicates if the input should be processed as a video (default false). Deprecated in favor of using config object
+     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+     */
+
+  }, {
+    key: 'predict',
+    value: function predict(inputs) {
+      var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var isVideo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+      if (checkType(/String/, config)) {
+        console.warn('passing the language as a string is deprecated, consider using the configuration object instead');
+        config = {
+          language: config
+        };
+      }
+
+      if (isVideo) {
+        console.warn('"isVideo" argument is deprecated, consider using the configuration object instead');
+        config.video = isVideo;
+      }
+      var video = config.video || false;
+      delete config.video;
+      if (checkType(/(Object|String)/, inputs)) {
+        inputs = [inputs];
+      }
+      var url = '' + this._config.basePath + (this.versionId ? replaceVars(VERSION_PREDICT_PATH, [this.id, this.versionId]) : replaceVars(PREDICT_PATH, [this.id]));
+      return wrapToken(this._config, function (headers) {
+        var params = { inputs: inputs.map(function (input) {
+            return formatMediaPredict(input, video ? 'video' : 'image');
+          }) };
+        if (config && Object.getOwnPropertyNames(config).length > 0) {
+          params['model'] = {
+            output_info: {
+              output_config: formatObjectForSnakeCase(config)
+            }
+          };
+        }
+        return new Promise(function (resolve, reject) {
+          axios.post(url, params, { headers: headers }).then(function (response) {
+            var data = clone(response.data);
+            data.rawData = clone(response.data);
+            resolve(data);
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Returns a version of the model specified by its id
+     * @param {string}     versionId   The model's id
+     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+     */
+
+  }, {
+    key: 'getVersion',
+    value: function getVersion(versionId) {
+      // TODO(Rok) MEDIUM: The version ID isn't URI encoded, as opposed to the model ID. This should probably be
+      //  consistent - i.e. the same in both cases.
+      var url = '' + this._config.basePath + replaceVars(MODEL_VERSION_PATH, [this.id, versionId]);
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.get(url, { headers: headers }).then(function (response) {
+            var data = clone(response.data);
+            data.rawData = clone(response.data);
+            resolve(data);
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Returns a list of versions of the model
+     * @param {object}     options     Object with keys explained below: (optional)
+     *   @param {number}     options.page        The page number (optional, default: 1)
+     *   @param {number}     options.perPage     Number of images to return per page (optional, default: 20)
+     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+     */
+
+  }, {
+    key: 'getVersions',
+    value: function getVersions() {
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { page: 1, perPage: 20 };
+
+      var url = '' + this._config.basePath + replaceVars(MODEL_VERSIONS_PATH, [this.id]);
+      return wrapToken(this._config, function (headers) {
+        var data = {
+          headers: headers,
+          params: { 'per_page': options.perPage, 'page': options.page }
+        };
+        return new Promise(function (resolve, reject) {
+          axios.get(url, data).then(function (response) {
+            var data = clone(response.data);
+            data.rawData = clone(response.data);
+            resolve(data);
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Returns all the model's output info
+     * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
+     */
+
+  }, {
+    key: 'getOutputInfo',
+    value: function getOutputInfo() {
+      var _this5 = this;
+
+      var url = '' + this._config.basePath + (this.versionId ? replaceVars(MODEL_VERSION_OUTPUT_PATH, [this.id, this.versionId]) : replaceVars(MODEL_OUTPUT_PATH, [this.id]));
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.get(url, { headers: headers }).then(function (response) {
+            resolve(new Model(_this5._config, response.data.model));
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Returns all the model's inputs
+     * @param {object}     options     Object with keys explained below: (optional)
+     *   @param {number}     options.page        The page number (optional, default: 1)
+     *   @param {number}     options.perPage     Number of images to return per page (optional, default: 20)
+     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+     */
+
+  }, {
+    key: 'getInputs',
+    value: function getInputs() {
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { page: 1, perPage: 20 };
+
+      var url = '' + this._config.basePath + (this.versionId ? replaceVars(MODEL_VERSION_INPUTS_PATH, [this.id, this.versionId]) : replaceVars(MODEL_INPUTS_PATH, [this.id]));
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.get(url, {
+            params: { 'per_page': options.perPage, 'page': options.page },
+            headers: headers
+          }).then(function (response) {
+            var data = clone(response.data);
+            data.rawData = clone(response.data);
+            resolve(data);
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     *
+     * @param {string} input A string pointing to an image resource. A string must be a url
+     * @param {object} config A configuration object consisting of the following required keys
+     *   @param {string} config.id The id of the feedback request
+     *   @param {object} config.data The feedback data to be sent
+     *   @param {object} config.info Meta data related to the feedback request
+     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+     */
+
+  }, {
+    key: 'feedback',
+    value: function feedback(input, _ref) {
+      var id = _ref.id,
+          data = _ref.data,
+          info = _ref.info;
+
+      var url = '' + this._config.basePath + (this.versionId ? replaceVars(MODEL_VERSION_FEEDBACK_PATH, [this.id, this.versionId]) : replaceVars(MODEL_FEEDBACK_PATH, [this.id]));
+      var media = formatMediaPredict(input).data;
+      info.eventType = 'annotation';
+      var body = {
+        input: {
+          id: id,
+          data: Object.assign(media, data),
+          'feedback_info': formatObjectForSnakeCase(info)
+        }
+      };
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.post(url, body, {
+            headers: headers
+          }).then(function (_ref2) {
+            var data = _ref2.data;
+
+            var d = clone(data);
+            d.rawData = clone(data);
+            resolve(d);
+          }, reject);
+        });
+      });
+    }
+  }]);
+
+  return Model;
+}();
+
+module.exports = Model;
+
+/***/ }),
+/* 888 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * class representing a version of a model
+ * @class
+ */
+var ModelVersion = function ModelVersion(_config, data) {
+  _classCallCheck(this, ModelVersion);
+
+  this.id = data.id;
+  this.created_at = this.createdAt = data.created_at || data.createdAt;
+  this.status = data.status;
+  this.active_concept_count = data.active_concept_count;
+  this.metrics = data.metrics;
+  this._config = _config;
+  this.rawData = data;
+};
+
+;
+
+module.exports = ModelVersion;
+
+/***/ }),
+/* 889 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var MAX_BATCH_SIZE = 128;
+var GEO_LIMIT_TYPES = ['withinMiles', 'withinKilometers', 'withinRadians', 'withinDegrees'];
+var SYNC_TIMEOUT = 360000; // 6 minutes
+var MODEL_QUEUED_FOR_TRAINING = '21103';
+var MODEL_TRAINING = '21101';
+var POLLTIME = 2000;
+
+module.exports = {
+  API: {
+    TOKEN_PATH: '/token',
+    MODELS_PATH: '/models',
+    MODEL_PATH: '/models/$0',
+    MODEL_VERSIONS_PATH: '/models/$0/versions',
+    MODEL_VERSION_PATH: '/models/$0/versions/$1',
+    MODEL_PATCH_PATH: '/models/$0/output_info/data/concepts',
+    MODEL_OUTPUT_PATH: '/models/$0/output_info',
+    MODEL_VERSION_OUTPUT_PATH: '/models/$0/versions/$1/output_info',
+    MODEL_SEARCH_PATH: '/models/searches',
+    MODEL_FEEDBACK_PATH: '/models/$0/feedback',
+    MODEL_VERSION_FEEDBACK_PATH: '/models/$0/versions/$1/feedback',
+    PREDICT_PATH: '/models/$0/outputs',
+    VERSION_PREDICT_PATH: '/models/$0/versions/$1/outputs',
+    CONCEPTS_PATH: '/concepts',
+    CONCEPT_PATH: '/concepts/$0',
+    CONCEPT_SEARCH_PATH: '/concepts/searches',
+    MODEL_INPUTS_PATH: '/models/$0/inputs',
+    MODEL_VERSION_INPUTS_PATH: '/models/$0/versions/$1/inputs',
+    MODEL_VERSION_METRICS_PATH: '/models/$0/versions/$1/metrics',
+    INPUTS_PATH: '/inputs',
+    INPUT_PATH: '/inputs/$0',
+    INPUTS_STATUS_PATH: '/inputs/status',
+    SEARCH_PATH: '/searches',
+    SEARCH_FEEDBACK_PATH: '/searches/feedback',
+    WORKFLOWS_PATH: '/workflows',
+    WORKFLOW_PATH: '/workflows/$0',
+    WORKFLOW_RESULTS_PATH: '/workflows/$0/results'
+  },
+  ERRORS: {
+    paramsRequired: function paramsRequired(param) {
+      var paramList = Array.isArray(param) ? param : [param];
+      return new Error('The following ' + (paramList.length > 1 ? 'params are' : 'param is') + ' required: ' + paramList.join(', '));
+    },
+    MAX_INPUTS: new Error('Number of inputs passed exceeded max of ' + MAX_BATCH_SIZE),
+    INVALID_GEOLIMIT_TYPE: new Error('Incorrect geo_limit type. Value must be any of the following: ' + GEO_LIMIT_TYPES.join(', ')),
+    INVALID_DELETE_ARGS: new Error('Wrong arguments passed. You can only delete all models (provide no arguments), delete select models (provide list of ids),\n    delete a single model (providing a single id) or delete a model version (provide a single id and version id)')
+  },
+  STATUS: {
+    MODEL_QUEUED_FOR_TRAINING: MODEL_QUEUED_FOR_TRAINING,
+    MODEL_TRAINING: MODEL_TRAINING
+  },
+  // var replacement must be given in order
+  replaceVars: function replaceVars(path) {
+    var vars = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+
+    var newPath = path;
+    vars.forEach(function (val, index) {
+      if (index === 0) {
+        val = encodeURIComponent(val);
+      }
+      newPath = newPath.replace(new RegExp('\\$' + index, 'g'), val);
+    });
+    return newPath;
+  },
+  getBasePath: function getBasePath() {
+    var apiEndpoint = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'https://api.clarifai.com';
+    var userId = arguments[1];
+    var appId = arguments[2];
+
+    if (!userId || !appId) {
+      return apiEndpoint + '/v2';
+    }
+    return apiEndpoint + '/v2/users/' + userId + '/apps/' + appId;
+  },
+  GEO_LIMIT_TYPES: GEO_LIMIT_TYPES,
+  MAX_BATCH_SIZE: MAX_BATCH_SIZE,
+  SYNC_TIMEOUT: SYNC_TIMEOUT,
+  POLLTIME: POLLTIME
+};
+
+/***/ }),
+/* 890 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Promise = __webpack_require__(877);
+var validUrl = __webpack_require__(891);
+
+var _require = __webpack_require__(889),
+    GEO_LIMIT_TYPES = _require.GEO_LIMIT_TYPES,
+    ERRORS = _require.ERRORS;
+
+var _require2 = __webpack_require__(875),
+    checkType = _require2.checkType,
+    clone = _require2.clone;
+
+var _require3 = __webpack_require__(893),
+    VERSION = _require3.version;
+
+module.exports = {
+  wrapToken: function wrapToken(_config, requestFn) {
+    return new Promise(function (resolve, reject) {
+      if (_config.apiKey) {
+        var headers = {
+          Authorization: 'Key ' + _config.apiKey,
+          'X-Clarifai-Client': 'js:' + VERSION
+        };
+        return requestFn(headers).then(resolve, reject);
+      }
+      if (_config.sessionToken) {
+        var _headers = {
+          'X-Clarifai-Session-Token': _config.sessionToken,
+          'X-Clarifai-Client': 'js:' + VERSION
+        };
+        return requestFn(_headers).then(resolve, reject);
+      }
+      _config.token().then(function (token) {
+        var headers = {
+          Authorization: 'Bearer ' + token.accessToken,
+          'X-Clarifai-Client': 'js:' + VERSION
+        };
+        requestFn(headers).then(resolve, reject);
+      }, reject);
+    });
+  },
+  formatModel: function formatModel() {
+    var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    var formatted = {};
+    if (data.id === null || data.id === undefined) {
+      throw ERRORS.paramsRequired('Model ID');
+    }
+    formatted.id = data.id;
+    if (data.name) {
+      formatted.name = data.name;
+    }
+    formatted.output_info = {};
+    if (data.conceptsMutuallyExclusive !== undefined) {
+      formatted.output_info.output_config = formatted.output_info.output_config || {};
+      formatted.output_info.output_config.concepts_mutually_exclusive = !!data.conceptsMutuallyExclusive;
+    }
+    if (data.closedEnvironment !== undefined) {
+      formatted.output_info.output_config = formatted.output_info.output_config || {};
+      formatted.output_info.output_config.closed_environment = !!data.closedEnvironment;
+    }
+    if (data.concepts) {
+      formatted.output_info.data = {
+        concepts: data.concepts.map(module.exports.formatConcept)
+      };
+    }
+    return formatted;
+  },
+  formatInput: function formatInput(data, includeImage) {
+    var input = checkType(/String/, data) ? { url: data } : data;
+    var formatted = {
+      id: input.id || null,
+      data: {}
+    };
+    if (input.concepts) {
+      formatted.data.concepts = input.concepts;
+    }
+    if (input.metadata) {
+      formatted.data.metadata = input.metadata;
+    }
+    if (input.geo) {
+      formatted.data.geo = { geo_point: input.geo };
+    }
+    if (input.regions) {
+      formatted.data.regions = input.regions;
+    }
+    if (includeImage !== false) {
+      formatted.data.image = {
+        url: input.url,
+        base64: input.base64,
+        crop: input.crop
+      };
+      if (data.allowDuplicateUrl) {
+        formatted.data.image.allow_duplicate_url = true;
+      }
+    }
+    return formatted;
+  },
+  formatMediaPredict: function formatMediaPredict(data) {
+    var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'image';
+
+    var media = void 0;
+    if (checkType(/String/, data)) {
+      if (validUrl.isWebUri(data)) {
+        media = {
+          url: data
+        };
+      } else {
+        media = {
+          base64: data
+        };
+      }
+    } else {
+      media = Object.assign({}, data);
+    }
+
+    // Users can specify their own id to distinguish batch results
+    var id = void 0;
+    if (media.id) {
+      id = media.id;
+      delete media.id;
+    }
+
+    var object = {
+      data: _defineProperty({}, type, media)
+    };
+
+    if (id) {
+      object.id = id;
+    }
+
+    return object;
+  },
+  formatImagesSearch: function formatImagesSearch(image) {
+    var imageQuery = void 0;
+    var input = { input: { data: {} } };
+    var formatted = [];
+    if (checkType(/String/, image)) {
+      imageQuery = { url: image };
+    } else {
+      imageQuery = image.url || image.base64 ? {
+        image: {
+          url: image.url,
+          base64: image.base64,
+          crop: image.crop
+        }
+      } : {};
+    }
+
+    input.input.data = imageQuery;
+    if (image.id) {
+      input.input.id = image.id;
+      input.input.data = { image: {} };
+      if (image.crop) {
+        input.input.data.image.crop = image.crop;
+      }
+    }
+    if (image.metadata !== undefined) {
+      input.input.data.metadata = image.metadata;
+    }
+    if (image.geo !== undefined) {
+      if (checkType(/Array/, image.geo)) {
+        input.input.data.geo = {
+          geo_box: image.geo.map(function (p) {
+            return { geo_point: p };
+          })
+        };
+      } else if (checkType(/Object/, image.geo)) {
+        if (GEO_LIMIT_TYPES.indexOf(image.geo.type) === -1) {
+          throw ERRORS.INVALID_GEOLIMIT_TYPE;
+        }
+        input.input.data.geo = {
+          geo_point: {
+            latitude: image.geo.latitude,
+            longitude: image.geo.longitude
+          },
+          geo_limit: {
+            type: image.geo.type,
+            value: image.geo.value
+          }
+        };
+      }
+    }
+    if (image.type !== 'input' && input.input.data.image) {
+      if (input.input.data.metadata || input.input.data.geo) {
+        var dataCopy = { input: { data: clone(input.input.data) } };
+        var imageCopy = { input: { data: clone(input.input.data) } };
+        delete dataCopy.input.data.image;
+        delete imageCopy.input.data.metadata;
+        delete imageCopy.input.data.geo;
+        input = [{ output: imageCopy }, dataCopy];
+      } else {
+        input = [{ output: input }];
+      }
+    }
+    formatted = formatted.concat(input);
+    return formatted;
+  },
+  formatConcept: function formatConcept(concept) {
+    var formatted = concept;
+    if (checkType(/String/, concept)) {
+      formatted = {
+        id: concept
+      };
+    }
+    return formatted;
+  },
+  formatConceptsSearch: function formatConceptsSearch(query) {
+    if (checkType(/String/, query)) {
+      query = { id: query };
+    }
+    var v = {};
+    var type = query.type === 'input' ? 'input' : 'output';
+    delete query.type;
+    v[type] = {
+      data: {
+        concepts: [query]
+      }
+    };
+    return v;
+  },
+  formatObjectForSnakeCase: function formatObjectForSnakeCase(obj) {
+    return Object.keys(obj).reduce(function (o, k) {
+      o[k.replace(/([A-Z])/g, function (r) {
+        return '_' + r.toLowerCase();
+      })] = obj[k];
+      return o;
+    }, {});
+  }
+};
+
+/***/ }),
+/* 891 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(module) {(function(module) {
+    'use strict';
+
+    module.exports.is_uri = is_iri;
+    module.exports.is_http_uri = is_http_iri;
+    module.exports.is_https_uri = is_https_iri;
+    module.exports.is_web_uri = is_web_iri;
+    // Create aliases
+    module.exports.isUri = is_iri;
+    module.exports.isHttpUri = is_http_iri;
+    module.exports.isHttpsUri = is_https_iri;
+    module.exports.isWebUri = is_web_iri;
+
+
+    // private function
+    // internal URI spitter method - direct from RFC 3986
+    var splitUri = function(uri) {
+        var splitted = uri.match(/(?:([^:\/?#]+):)?(?:\/\/([^\/?#]*))?([^?#]*)(?:\?([^#]*))?(?:#(.*))?/);
+        return splitted;
+    };
+
+    function is_iri(value) {
+        if (!value) {
+            return;
+        }
+
+        // check for illegal characters
+        if (/[^a-z0-9\:\/\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=\.\-\_\~\%]/i.test(value)) return;
+
+        // check for hex escapes that aren't complete
+        if (/%[^0-9a-f]/i.test(value)) return;
+        if (/%[0-9a-f](:?[^0-9a-f]|$)/i.test(value)) return;
+
+        var splitted = [];
+        var scheme = '';
+        var authority = '';
+        var path = '';
+        var query = '';
+        var fragment = '';
+        var out = '';
+
+        // from RFC 3986
+        splitted = splitUri(value);
+        scheme = splitted[1]; 
+        authority = splitted[2];
+        path = splitted[3];
+        query = splitted[4];
+        fragment = splitted[5];
+
+        // scheme and path are required, though the path can be empty
+        if (!(scheme && scheme.length && path.length >= 0)) return;
+
+        // if authority is present, the path must be empty or begin with a /
+        if (authority && authority.length) {
+            if (!(path.length === 0 || /^\//.test(path))) return;
+        } else {
+            // if authority is not present, the path must not start with //
+            if (/^\/\//.test(path)) return;
+        }
+
+        // scheme must begin with a letter, then consist of letters, digits, +, ., or -
+        if (!/^[a-z][a-z0-9\+\-\.]*$/.test(scheme.toLowerCase()))  return;
+
+        // re-assemble the URL per section 5.3 in RFC 3986
+        out += scheme + ':';
+        if (authority && authority.length) {
+            out += '//' + authority;
+        }
+
+        out += path;
+
+        if (query && query.length) {
+            out += '?' + query;
+        }
+
+        if (fragment && fragment.length) {
+            out += '#' + fragment;
+        }
+
+        return out;
+    }
+
+    function is_http_iri(value, allowHttps) {
+        if (!is_iri(value)) {
+            return;
+        }
+
+        var splitted = [];
+        var scheme = '';
+        var authority = '';
+        var path = '';
+        var port = '';
+        var query = '';
+        var fragment = '';
+        var out = '';
+
+        // from RFC 3986
+        splitted = splitUri(value);
+        scheme = splitted[1]; 
+        authority = splitted[2];
+        path = splitted[3];
+        query = splitted[4];
+        fragment = splitted[5];
+
+        if (!scheme)  return;
+
+        if(allowHttps) {
+            if (scheme.toLowerCase() != 'https') return;
+        } else {
+            if (scheme.toLowerCase() != 'http') return;
+        }
+
+        // fully-qualified URIs must have an authority section that is
+        // a valid host
+        if (!authority) {
+            return;
+        }
+
+        // enable port component
+        if (/:(\d+)$/.test(authority)) {
+            port = authority.match(/:(\d+)$/)[0];
+            authority = authority.replace(/:\d+$/, '');
+        }
+
+        out += scheme + ':';
+        out += '//' + authority;
+        
+        if (port) {
+            out += port;
+        }
+        
+        out += path;
+        
+        if(query && query.length){
+            out += '?' + query;
+        }
+
+        if(fragment && fragment.length){
+            out += '#' + fragment;
+        }
+        
+        return out;
+    }
+
+    function is_https_iri(value) {
+        return is_http_iri(value, true);
+    }
+
+    function is_web_iri(value) {
+        return (is_http_iri(value) || is_https_iri(value));
+    }
+
+})(module);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(892)(module)))
+
+/***/ }),
+/* 892 */
+/***/ (function(module, exports) {
+
+module.exports = function(module) {
+	if (!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if (!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+/* 893 */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"_from\":\"clarifai\",\"_id\":\"clarifai@2.9.1\",\"_inBundle\":false,\"_integrity\":\"sha512-xUxl0bNhBTRn93BBjzYG3nQ/BRZI5VcAZOn1hsukTEFgE31grtegztMT26AbFdmWkCJin1dM6TaC4APSHYs/Ug==\",\"_location\":\"/clarifai\",\"_phantomChildren\":{},\"_requested\":{\"type\":\"tag\",\"registry\":true,\"raw\":\"clarifai\",\"name\":\"clarifai\",\"escapedName\":\"clarifai\",\"rawSpec\":\"\",\"saveSpec\":null,\"fetchSpec\":\"latest\"},\"_requiredBy\":[\"#USER\",\"/\"],\"_resolved\":\"https://registry.npmjs.org/clarifai/-/clarifai-2.9.1.tgz\",\"_shasum\":\"7dd21c3265de34b557ee3a216cb31e2908c6944c\",\"_spec\":\"clarifai\",\"_where\":\"/sugomori-api/frontend\",\"author\":{\"name\":\"Clarifai Inc.\"},\"bugs\":{\"url\":\"https://github.com/Clarifai/clarifai-javascript/issues\"},\"bundleDependencies\":false,\"dependencies\":{\"axios\":\">=0.11.1 <2\",\"promise\":\"^7.1.1\",\"valid-url\":\"^1.0.9\"},\"deprecated\":false,\"description\":\"Official Clarifai Javascript SDK\",\"devDependencies\":{\"axios-mock-adapter\":\"^1.16.0\",\"babel-eslint\":\"^6.1.2\",\"babel-preset-es2015\":\"^6.14.0\",\"babel-register\":\"^6.14.0\",\"babelify\":\"^7.3.0\",\"del\":\"^2.0.2\",\"envify\":\"^3.4.0\",\"gulp\":\"^3.9.1\",\"gulp-babel\":\"^6.1.2\",\"gulp-browserify\":\"^0.5.1\",\"gulp-eslint\":\"^2.0.0\",\"gulp-insert\":\"^0.5.0\",\"gulp-jasmine\":\"^4.0.0\",\"gulp-notify\":\"2.2.0\",\"gulp-rename\":\"^1.2.2\",\"gulp-replace-task\":\"^0.11.0\",\"gulp-uglify\":\"^1.4.1\",\"gulp-util\":\"^3.0.6\",\"jsdoc\":\"^3.4.1\",\"minami\":\"^1.1.1\",\"release-it\":\"^2.9.0\"},\"homepage\":\"https://github.com/Clarifai/clarifai-javascript#readme\",\"license\":\"Apache-2.0\",\"main\":\"dist/index.js\",\"name\":\"clarifai\",\"repository\":{\"type\":\"git\",\"url\":\"git+https://github.com/Clarifai/clarifai-javascript.git\"},\"scripts\":{\"build\":\"npm run clean && gulp build && npm run jsdoc\",\"clean\":\"gulp cleanbuild\",\"jsdoc\":\"jsdoc src/* -t node_modules/minami -d docs/$npm_package_version && jsdoc src/* -t node_modules/minami -d docs/latest\",\"release\":\"release-it\",\"test\":\"gulp test\",\"unittest\":\"gulp unittest\",\"watch\":\"gulp watch\"},\"version\":\"2.9.1\"}");
+
+/***/ }),
+/* 894 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var axios = __webpack_require__(515);
+var Concept = __webpack_require__(895);
+
+var _require = __webpack_require__(889),
+    API = _require.API,
+    replaceVars = _require.replaceVars;
+
+var CONCEPTS_PATH = API.CONCEPTS_PATH,
+    CONCEPT_PATH = API.CONCEPT_PATH,
+    CONCEPT_SEARCH_PATH = API.CONCEPT_SEARCH_PATH;
+
+var _require2 = __webpack_require__(890),
+    wrapToken = _require2.wrapToken,
+    formatConcept = _require2.formatConcept;
+
+var _require3 = __webpack_require__(875),
+    isSuccess = _require3.isSuccess,
+    checkType = _require3.checkType;
+
+/**
+ * class representing a collection of concepts
+ * @class
+ */
+
+
+var Concepts = function () {
+  function Concepts(_config) {
+    var _this = this;
+
+    var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+
+    _classCallCheck(this, Concepts);
+
+    this._config = _config;
+    this.rawData = rawData;
+    rawData.forEach(function (conceptData, index) {
+      _this[index] = new Concept(_this._config, conceptData);
+    });
+    this.length = rawData.length;
+  }
+
+  /**
+   * List all the concepts
+   * @param {object}     options     Object with keys explained below: (optional)
+   *    @param {number}    options.page        The page number (optional, default: 1)
+   *    @param {number}    options.perPage     Number of images to return per page (optional, default: 20)
+   * @return {Promise(Concepts, error)} A Promise that is fulfilled with a Concepts instance or rejected with an error
+   */
+
+
+  _createClass(Concepts, [{
+    key: 'list',
+    value: function list() {
+      var _this2 = this;
+
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { page: 1, perPage: 20 };
+
+      var url = '' + this._config.basePath + CONCEPTS_PATH;
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.get(url, {
+            headers: headers,
+            params: {
+              'page': options.page,
+              'per_page': options.perPage
+            }
+          }).then(function (response) {
+            if (isSuccess(response)) {
+              resolve(new Concepts(_this2._config, response.data.concepts));
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * List a single concept given an id
+     * @param {String}     id          The concept's id
+     * @return {Promise(Concept, error)} A Promise that is fulfilled with a Concept instance or rejected with an error
+     */
+
+  }, {
+    key: 'get',
+    value: function get(id) {
+      var _this3 = this;
+
+      var url = '' + this._config.basePath + replaceVars(CONCEPT_PATH, [id]);
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.get(url, { headers: headers }).then(function (response) {
+            if (isSuccess(response)) {
+              resolve(new Concept(_this3._config, response.data.concept));
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Add a list of concepts given an id and name
+     * @param {object|object[]}   concepts       Can be a single media object or an array of media objects
+     *   @param  {object|string}    concepts[].concept         If string, this is assumed to be the concept id. Otherwise, an object with the following attributes
+     *     @param  {object}           concepts[].concept.id      The new concept's id (Required)
+     *     @param  {object}           concepts[].concept.name    The new concept's name
+     * @return {Promise(Concepts, error)}             A Promise that is fulfilled with a Concepts instance or rejected with an error
+     */
+
+  }, {
+    key: 'create',
+    value: function create() {
+      var _this4 = this;
+
+      var concepts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      if (checkType(/(Object|String)/, concepts)) {
+        concepts = [concepts];
+      }
+      var data = {
+        'concepts': concepts.map(formatConcept)
+      };
+      var url = '' + this._config.basePath + CONCEPTS_PATH;
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.post(url, data, { headers: headers }).then(function (response) {
+            if (isSuccess(response)) {
+              resolve(new Concepts(_this4._config, response.data.concepts));
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Search for a concept given a name. A wildcard can be given (example: The name "bo*" will match with "boat" and "bow" given those concepts exist
+     * @param  {string}   name  The name of the concept to search for
+     * @return {Promise(Concepts, error)} A Promise that is fulfilled with a Concepts instance or rejected with an error
+     */
+
+  }, {
+    key: 'search',
+    value: function search(name) {
+      var _this5 = this;
+
+      var language = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      var url = '' + this._config.basePath + CONCEPT_SEARCH_PATH;
+      return wrapToken(this._config, function (headers) {
+        var params = {
+          'concept_query': { name: name, language: language }
+        };
+        return new Promise(function (resolve, reject) {
+          axios.post(url, params, { headers: headers }).then(function (response) {
+            if (isSuccess(response)) {
+              resolve(new Concepts(_this5._config, response.data.concepts));
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Update a concepts
+     * @param {object|object[]}   concepts       Can be a single concept object or an array of concept objects
+     *   @param  {object}           concepts[].concept         A concept object with the following attributes
+     *     @param  {object}           concepts[].concept.id      The concept's id (Required)
+     *     @param  {object}           concepts[].concept.name    The concept's new name
+     * @param {string}            [action=overwrite]  The action to use for the PATCH
+     * @return {Promise(Concepts, error)}             A Promise that is fulfilled with a Concepts instance or rejected with an error
+     */
+
+  }, {
+    key: 'update',
+    value: function update() {
+      var _this6 = this;
+
+      var concepts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'overwrite';
+
+      if (!checkType(/Array/, concepts)) {
+        concepts = [concepts];
+      }
+      var data = {
+        concepts: concepts,
+        action: action
+      };
+      var url = '' + this._config.basePath + CONCEPTS_PATH;
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.patch(url, data, { headers: headers }).then(function (response) {
+            if (isSuccess(response)) {
+              resolve(new Concepts(_this6._config, response.data.concepts));
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+  }]);
+
+  return Concepts;
+}();
+
+;
+
+module.exports = Concepts;
+
+/***/ }),
+/* 895 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * class representing a concept and its info
+ * @class
+ */
+var Concept = function Concept(_config, data) {
+  _classCallCheck(this, Concept);
+
+  this.id = data.id;
+  this.name = data.name;
+  this.createdAt = data.created_at || data.createdAt;
+  this.appId = data.app_id || data.appId;
+  this.value = data.value || null;
+  this._config = _config;
+  this.rawData = data;
+};
+
+;
+
+module.exports = Concept;
+
+/***/ }),
+/* 896 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var axios = __webpack_require__(515);
+var Input = __webpack_require__(897);
+
+var _require = __webpack_require__(889),
+    API = _require.API,
+    ERRORS = _require.ERRORS,
+    MAX_BATCH_SIZE = _require.MAX_BATCH_SIZE,
+    replaceVars = _require.replaceVars;
+
+var INPUT_PATH = API.INPUT_PATH,
+    INPUTS_PATH = API.INPUTS_PATH,
+    INPUTS_STATUS_PATH = API.INPUTS_STATUS_PATH,
+    SEARCH_PATH = API.SEARCH_PATH,
+    SEARCH_FEEDBACK_PATH = API.SEARCH_FEEDBACK_PATH;
+
+var _require2 = __webpack_require__(890),
+    wrapToken = _require2.wrapToken,
+    formatInput = _require2.formatInput,
+    formatImagesSearch = _require2.formatImagesSearch,
+    formatConceptsSearch = _require2.formatConceptsSearch;
+
+var _require3 = __webpack_require__(875),
+    isSuccess = _require3.isSuccess,
+    checkType = _require3.checkType,
+    clone = _require3.clone;
+
+/**
+ * class representing a collection of inputs
+ * @class
+ */
+
+
+var Inputs = function () {
+  function Inputs(_config) {
+    var _this = this;
+
+    var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+
+    _classCallCheck(this, Inputs);
+
+    this.rawData = rawData;
+    rawData.forEach(function (inputData, index) {
+      if (inputData.input && inputData.score) {
+        inputData.input.score = inputData.score;
+        inputData = inputData.input;
+      }
+      _this[index] = new Input(_this._config, inputData);
+    });
+    this.length = rawData.length;
+    this._config = _config;
+  }
+
+  /**
+   * Get all inputs in app
+   * @param {Object}    options  Object with keys explained below: (optional)
+   *   @param {Number}    options.page  The page number (optional, default: 1)
+   *   @param {Number}    options.perPage  Number of images to return per page (optional, default: 20)
+   * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
+   */
+
+
+  _createClass(Inputs, [{
+    key: 'list',
+    value: function list() {
+      var _this2 = this;
+
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { page: 1, perPage: 20 };
+
+      var url = '' + this._config.basePath + INPUTS_PATH;
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.get(url, {
+            headers: headers,
+            params: {
+              page: options.page,
+              per_page: options.perPage
+            }
+          }).then(function (response) {
+            if (isSuccess(response)) {
+              resolve(new Inputs(_this2._config, response.data.inputs));
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Adds an input or multiple inputs
+     * @param {object|object[]}        inputs                                Can be a single media object or an array of media objects (max of 128 inputs/call; passing > 128 will throw an exception)
+     *   @param {object|string}          inputs[].input                        If string, is given, this is assumed to be an image url
+     *     @param {string}                 inputs[].input.(url|base64)           Can be a publicly accessibly url or base64 string representing image bytes (required)
+     *     @param {string}                 inputs[].input.id                     ID of input (optional)
+     *     @param {number[]}               inputs[].input.crop                   An array containing the percent to be cropped from top, left, bottom and right (optional)
+     *     @param {boolean}               inputs[].input.allowDuplicateUrl       Whether to allow duplicate URL
+     *     @param {object[]}               inputs[].input.metadata               Object with key and values pair (value can be string, array or other objects) to attach to the input (optional)
+     *     @param {object}                 inputs[].input.geo                    Object with latitude and longitude coordinates to associate with an input. Can be used in search query as the proximity of an input to a reference point (optional)
+     *       @param {number}                 inputs[].input.geo.latitude           +/- latitude val of geodata
+     *       @param {number}                 inputs[].input.geo.longitude          +/- longitude val of geodata
+     *     @param {object[]}               inputs[].input.concepts               An array of concepts to attach to media object (optional)
+     *       @param {object|string}          inputs[].input.concepts[].concept     If string, is given, this is assumed to be concept id with value equals true
+     *         @param {string}                 inputs[].input.concepts[].concept.id          The concept id (required)
+     *         @param {boolean}                inputs[].input.concepts[].concept.value       Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
+     * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
+     */
+
+  }, {
+    key: 'create',
+    value: function create(inputs) {
+      var _this3 = this;
+
+      if (checkType(/(String|Object)/, inputs)) {
+        inputs = [inputs];
+      }
+      var url = '' + this._config.basePath + INPUTS_PATH;
+      if (inputs.length > MAX_BATCH_SIZE) {
+        throw ERRORS.MAX_INPUTS;
+      }
+      return wrapToken(this._config, function (headers) {
+        var data = {
+          inputs: inputs.map(formatInput)
+        };
+        return new Promise(function (resolve, reject) {
+          axios.post(url, data, { headers: headers }).then(function (response) {
+            if (isSuccess(response)) {
+              resolve(new Inputs(_this3._config, response.data.inputs));
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Get input by id
+     * @param {String}    id  The input id
+     * @return {Promise(Input, error)} A Promise that is fulfilled with an instance of Input or rejected with an error
+     */
+
+  }, {
+    key: 'get',
+    value: function get(id) {
+      var _this4 = this;
+
+      var url = '' + this._config.basePath + replaceVars(INPUT_PATH, [id]);
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.get(url, { headers: headers }).then(function (response) {
+            if (isSuccess(response)) {
+              resolve(new Input(_this4._config, response.data.input));
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Delete an input or a list of inputs by id or all inputs if no id is passed
+     * @param {string|string[]}    id           The id of input to delete (optional)
+     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+     */
+
+  }, {
+    key: 'delete',
+    value: function _delete() {
+      var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+      var val = void 0;
+      // delete an input
+      if (checkType(/String/, id)) {
+        var url = '' + this._config.basePath + replaceVars(INPUT_PATH, [id]);
+        val = wrapToken(this._config, function (headers) {
+          return axios.delete(url, { headers: headers });
+        });
+      } else {
+        val = this._deleteInputs(id);
+      }
+      return val;
+    }
+  }, {
+    key: '_deleteInputs',
+    value: function _deleteInputs() {
+      var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+      var url = '' + this._config.basePath + INPUTS_PATH;
+      return wrapToken(this._config, function (headers) {
+        var data = id === null ? { delete_all: true } : { ids: id };
+        return axios({
+          url: url,
+          method: 'delete',
+          headers: headers,
+          data: data
+        });
+      });
+    }
+
+    /**
+     * Merge concepts to inputs in bulk
+     * @param {object[]}         inputs    List of concepts to update (max of 128 inputs/call; passing > 128 will throw an exception)
+     *   @param {object}           inputs[].input
+     *     @param {string}           inputs[].input.id        The id of the input to update
+     *     @param {string}           inputs[].input.concepts  Object with keys explained below:
+     *       @param {object}           inputs[].input.concepts[].concept
+     *         @param {string}           inputs[].input.concepts[].concept.id        The concept id (required)
+     *         @param {boolean}          inputs[].input.concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
+     * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
+     */
+
+  }, {
+    key: 'mergeConcepts',
+    value: function mergeConcepts(inputs) {
+      inputs.action = 'merge';
+      return this.update(inputs);
+    }
+
+    /**
+     * Delete concepts to inputs in bulk
+     * @param {object[]}         inputs    List of concepts to update (max of 128 inputs/call; passing > 128 will throw an exception)
+     *   @param {object}           inputs[].input
+     *     @param {string}           inputs[].input.id                           The id of the input to update
+     *     @param {string}           inputs[].input.concepts                     Object with keys explained below:
+     *       @param {object}           inputs[].input.concepts[].concept
+     *         @param {string}           inputs[].input.concepts[].concept.id        The concept id (required)
+     *         @param {boolean}          inputs[].input.concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
+     * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
+     */
+
+  }, {
+    key: 'deleteConcepts',
+    value: function deleteConcepts(inputs) {
+      inputs.action = 'remove';
+      return this.update(inputs);
+    }
+
+    /**
+     * Overwrite inputs in bulk
+     * @param {object[]}         inputs    List of concepts to update (max of 128 inputs/call; passing > 128 will throw an exception)
+     *   @param {object}           inputs[].input
+     *     @param {string}           inputs[].input.id                           The id of the input to update
+     *     @param {string}           inputs[].input.concepts                     Object with keys explained below:
+     *       @param {object}           inputs[].input.concepts[].concept
+     *         @param {string}           inputs[].input.concepts[].concept.id        The concept id (required)
+     *         @param {boolean}          inputs[].input.concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
+     * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
+     */
+
+  }, {
+    key: 'overwriteConcepts',
+    value: function overwriteConcepts(inputs) {
+      inputs.action = 'overwrite';
+      return this.update(inputs);
+    }
+
+    /**
+     * @param {object[]}         inputs    List of inputs to update (max of 128 inputs/call; passing > 128 will throw an exception)
+     *   @param {object}           inputs[].input
+     *     @param {string}           inputs[].input.id                           The id of the input to update
+     *     @param {object}           inputs[].input.metadata                     Object with key values to attach to the input (optional)
+     *     @param {object}           inputs[].input.geo                          Object with latitude and longitude coordinates to associate with an input. Can be used in search query as the proximity of an input to a reference point (optional)
+     *       @param {number}           inputs[].input.geo.latitude                 +/- latitude val of geodata
+     *       @param {number}           inputs[].input.geo.longitude                +/- longitude val of geodata
+     *     @param {string}           inputs[].input.concepts                     Object with keys explained below (optional):
+     *       @param {object}           inputs[].input.concepts[].concept
+     *         @param {string}           inputs[].input.concepts[].concept.id        The concept id (required)
+     *         @param {boolean}          inputs[].input.concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
+     * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
+     */
+
+  }, {
+    key: 'update',
+    value: function update(inputs) {
+      var _this5 = this;
+
+      var url = '' + this._config.basePath + INPUTS_PATH;
+      var inputsList = Array.isArray(inputs) ? inputs : [inputs];
+      if (inputsList.length > MAX_BATCH_SIZE) {
+        throw ERRORS.MAX_INPUTS;
+      }
+      var data = {
+        action: inputs.action,
+        inputs: inputsList.map(function (input) {
+          return formatInput(input, false);
+        })
+      };
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.patch(url, data, { headers: headers }).then(function (response) {
+            if (isSuccess(response)) {
+              resolve(new Inputs(_this5._config, response.data.inputs));
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Search for inputs or outputs based on concepts or images
+     *   @param {object[]}               queries          List of all predictions to match with
+     *     @param {object}                 queries[].concept            An object with the following keys:
+     *       @param {string}                 queries[].concept.id          The concept id
+     *       @param {string}                 queries[].concept.type        Search over 'input' to get input matches to criteria or 'output' to get inputs that are visually similar to the criteria (default: 'output')
+     *       @param {string}                 queries[].concept.name        The concept name
+     *       @param {boolean}                queries[].concept.value       Indicates whether or not the term should match with the prediction returned (default: true)
+     *     @param {object}                 queries[].input              An image object that contains the following keys:
+     *       @param {string}                 queries[].input.id            The input id
+     *       @param {string}                 queries[].input.type          Search over 'input' to get input matches to criteria or 'output' to get inputs that are visually similar to the criteria (default: 'output')
+     *       @param {string}                 queries[].input.(base64|url)  Can be a publicly accessibly url or base64 string representing image bytes (required)
+     *       @param {number[]}               queries[].input.crop          An array containing the percent to be cropped from top, left, bottom and right (optional)
+     *       @param {object}                 queries[].input.metadata      An object with key and value specified by user to refine search with (optional)
+     * @param {Object}                   options       Object with keys explained below: (optional)
+     *    @param {Number}                  options.page          The page number (optional, default: 1)
+     *    @param {Number}                  options.perPage       Number of images to return per page (optional, default: 20)
+     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+     */
+
+  }, {
+    key: 'search',
+    value: function search() {
+      var queries = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : { page: 1, perPage: 20 };
+
+      var formattedAnds = [];
+      var url = '' + this._config.basePath + SEARCH_PATH;
+      var data = {
+        query: {
+          ands: []
+        },
+        pagination: {
+          page: options.page,
+          per_page: options.perPage
+        }
+      };
+
+      if (!Array.isArray(queries)) {
+        queries = [queries];
+      }
+      if (queries.length > 0) {
+        queries.forEach(function (query) {
+          if (query.input) {
+            formattedAnds = formattedAnds.concat(formatImagesSearch(query.input));
+          } else if (query.concept) {
+            formattedAnds = formattedAnds.concat(formatConceptsSearch(query.concept));
+          }
+        });
+        data.query.ands = formattedAnds;
+      }
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.post(url, data, { headers: headers }).then(function (response) {
+            if (isSuccess(response)) {
+              var _data = clone(response.data);
+              _data.rawData = clone(response.data);
+              resolve(_data);
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+  }, {
+    key: 'searchFeedback',
+    value: function searchFeedback(inputID, searchID, endUserID, sessionID) {
+      var url = '' + this._config.basePath + SEARCH_FEEDBACK_PATH;
+      var body = {
+        input: {
+          id: inputID,
+          feedback_info: {
+            event_type: 'search_click',
+            search_id: searchID,
+            end_user_id: endUserID,
+            session_id: sessionID
+          }
+        }
+      };
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.post(url, body, {
+            headers: headers
+          }).then(function (_ref) {
+            var data = _ref.data;
+
+            var d = clone(data);
+            d.rawData = clone(data);
+            resolve(d);
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Get inputs status (number of uploaded, in process or failed inputs)
+     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+     */
+
+  }, {
+    key: 'getStatus',
+    value: function getStatus() {
+      var url = '' + this._config.basePath + INPUTS_STATUS_PATH;
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.get(url, { headers: headers }).then(function (response) {
+            if (isSuccess(response)) {
+              var data = clone(response.data);
+              data.rawData = clone(response.data);
+              resolve(data);
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+  }]);
+
+  return Inputs;
+}();
+
+;
+
+module.exports = Inputs;
+
+/***/ }),
+/* 897 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var axios = __webpack_require__(515);
+var Concepts = __webpack_require__(894);
+var Regions = __webpack_require__(898);
+
+var _require = __webpack_require__(889),
+    API = _require.API;
+
+var INPUTS_PATH = API.INPUTS_PATH;
+
+/**
+ * class representing an input
+ * @class
+ */
+
+var Input = function () {
+  function Input(_config, data) {
+    _classCallCheck(this, Input);
+
+    this.id = data.id;
+    this.createdAt = data.created_at || data.createdAt;
+    this.imageUrl = data.data.image.url;
+    this.concepts = new Concepts(_config, data.data.concepts);
+    this.regions = new Regions(_config, data.data.regions || []);
+    this.score = data.score;
+    this.metadata = data.data.metadata;
+    if (data.data.geo && data.data.geo['geo_point']) {
+      this.geo = { geoPoint: data.data.geo['geo_point'] };
+    }
+    this.rawData = data;
+    this._config = _config;
+  }
+
+  /**
+   * Merge concepts to an input
+   * @param {object[]}         concepts    Object with keys explained below:
+   *   @param {object}           concepts[].concept
+   *     @param {string}           concepts[].concept.id        The concept id (required)
+   *     @param {boolean}          concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
+   * @param {object}           metadata                      Object with key values to attach to the input (optional)
+   * @return {Promise(Input, error)} A Promise that is fulfilled with an instance of Input or rejected with an error
+   */
+
+
+  _createClass(Input, [{
+    key: 'mergeConcepts',
+    value: function mergeConcepts(concepts, metadata) {
+      return this._update('merge', concepts, metadata);
+    }
+
+    /**
+     * Delete concept from an input
+     * @param {object[]}         concepts    Object with keys explained below:
+     *   @param {object}           concepts[].concept
+     *     @param {string}           concepts[].concept.id        The concept id (required)
+     *     @param {boolean}          concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
+     * @param {object}           metadata                      Object with key values to attach to the input (optional)
+     * @return {Promise(Input, error)} A Promise that is fulfilled with an instance of Input or rejected with an error
+     */
+
+  }, {
+    key: 'deleteConcepts',
+    value: function deleteConcepts(concepts, metadata) {
+      return this._update('remove', concepts, metadata);
+    }
+
+    /**
+     * Overwrite inputs
+     * @param {object[]}         concepts                      Array of object with keys explained below:
+     *   @param {object}           concepts[].concept
+     *     @param {string}           concepts[].concept.id         The concept id (required)
+     *     @param {boolean}          concepts[].concept.value      Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
+     * @param {object}           metadata                      Object with key values to attach to the input (optional)
+     * @return {Promise(Input, error)} A Promise that is fulfilled with an instance of Input or rejected with an error
+     */
+
+  }, {
+    key: 'overwriteConcepts',
+    value: function overwriteConcepts(concepts, metadata) {
+      return this._update('overwrite', concepts, metadata);
+    }
+  }, {
+    key: '_update',
+    value: function _update(action) {
+      var concepts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+      var metadata = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+
+      var url = '' + this._config.basePath + INPUTS_PATH;
+      var inputData = {};
+      if (concepts.length) {
+        inputData.concepts = concepts;
+      }
+      if (metadata !== null) {
+        inputData.metadata = metadata;
+      }
+      var data = {
+        action: action,
+        inputs: [{
+          id: this.id,
+          data: inputData
+        }]
+      };
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          return axios.patch(url, data, { headers: headers }).then(function (response) {
+            if (isSuccess(response)) {
+              resolve(new Input(response.data.input));
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+  }]);
+
+  return Input;
+}();
+
+;
+
+module.exports = Input;
+
+/***/ }),
+/* 898 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Region = __webpack_require__(899);
+
+/**
+ * A collection of regions.
+ * @class
+ */
+
+var Regions = function () {
+  function Regions(_config) {
+    var _this = this;
+
+    var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+
+    _classCallCheck(this, Regions);
+
+    this._config = _config;
+    this.rawData = rawData;
+    rawData.forEach(function (regionData, index) {
+      _this[index] = new Region(_this._config, regionData);
+    });
+    this.length = rawData.length;
+  }
+
+  _createClass(Regions, [{
+    key: Symbol.iterator,
+    value: function value() {
+      var _this2 = this;
+
+      var index = -1;
+      return {
+        next: function next() {
+          return { value: _this2[++index], done: index >= _this2.length };
+        }
+      };
+    }
+  }]);
+
+  return Regions;
+}();
+
+module.exports = Regions;
+
+/***/ }),
+/* 899 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Region / bounding box. Region points are percentages from the edge.
+ * E.g. top of 0.2 means the cropped input will start 20% down from the original edge.
+ * @class
+ */
+var Region = function Region(_config, data) {
+  _classCallCheck(this, Region);
+
+  this.id = data.id;
+  this.top = data.region_info.bounding_box.top_row;
+  this.left = data.region_info.bounding_box.left_col;
+  this.bottom = data.region_info.bounding_box.bottom_row;
+  this.right = data.region_info.bounding_box.right_col;
+};
+
+module.exports = Region;
+
+/***/ }),
+/* 900 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _utils = __webpack_require__(890);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var axios = __webpack_require__(515);
+
+var _require = __webpack_require__(889),
+    API = _require.API,
+    replaceVars = _require.replaceVars;
+
+var WORKFLOWS_PATH = API.WORKFLOWS_PATH,
+    WORKFLOW_PATH = API.WORKFLOW_PATH,
+    WORKFLOW_RESULTS_PATH = API.WORKFLOW_RESULTS_PATH;
+
+var _require2 = __webpack_require__(890),
+    wrapToken = _require2.wrapToken,
+    formatInput = _require2.formatInput;
+
+var _require3 = __webpack_require__(875),
+    checkType = _require3.checkType;
+
+/**
+ * class representing a workflow
+ * @class
+ */
+
+
+var Workflow = function () {
+  function Workflow(_config) {
+    var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+
+    _classCallCheck(this, Workflow);
+
+    this._config = _config;
+    this.rawData = rawData;
+    this.id = rawData.id;
+    this.createdAt = rawData.created_at || rawData.createdAt;
+    this.appId = rawData.app_id || rawData.appId;
+  }
+
+  /**
+   * @deprecated
+   */
+
+
+  _createClass(Workflow, [{
+    key: 'create',
+    value: function create(workflowId, config) {
+      var url = '' + this._config.basePath + WORKFLOWS_PATH;
+      var modelId = config.modelId;
+      var modelVersionId = config.modelVersionId;
+      var body = {
+        workflows: [{
+          id: workflowId,
+          nodes: [{
+            id: 'concepts',
+            model: {
+              id: modelId,
+              model_version: {
+                id: modelVersionId
+              }
+            }
+          }]
+        }]
+      };
+
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.post(url, body, {
+            headers: headers
+          }).then(function (response) {
+            var workflowId = response.data.workflows[0].id;
+            resolve(workflowId);
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * @deprecated
+     */
+
+  }, {
+    key: 'delete',
+    value: function _delete(workflowId, config) {
+      var url = '' + this._config.basePath + replaceVars(WORKFLOW_PATH, [workflowId]);
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.delete(url, {
+            headers: headers
+          }).then(function (response) {
+            var data = response.data;
+            resolve(data);
+          }, reject);
+        });
+      });
+    }
+
+    /**
+     * Returns workflow output according to inputs
+     * @param {string}                   workflowId    Workflow id
+     * @param {object[]|object|string}   inputs    An array of objects/object/string pointing to an image resource. A string can either be a url or base64 image bytes. Object keys explained below:
+     *    @param {object}                  inputs[].image     Object with keys explained below:
+     *       @param {string}                 inputs[].image.(url|base64)  Can be a publicly accessibly url or base64 string representing image bytes (required)
+     * @param {object} config An object with keys explained below.
+     *   @param {float} config.minValue The minimum confidence threshold that a result must meet. From 0.0 to 1.0
+     *   @param {number} config.maxConcepts The maximum number of concepts to return
+     */
+
+  }, {
+    key: 'predict',
+    value: function predict(workflowId, inputs) {
+      var config = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+      var url = '' + this._config.basePath + replaceVars(WORKFLOW_RESULTS_PATH, [workflowId]);
+      if (checkType(/(Object|String)/, inputs)) {
+        inputs = [inputs];
+      }
+      return wrapToken(this._config, function (headers) {
+        var params = {
+          inputs: inputs.map(formatInput)
+        };
+        if (config && Object.getOwnPropertyNames(config).length > 0) {
+          params['output_config'] = (0, _utils.formatObjectForSnakeCase)(config);
+        }
+        return new Promise(function (resolve, reject) {
+          axios.post(url, params, {
+            headers: headers
+          }).then(function (response) {
+            var data = response.data;
+            resolve(data);
+          }, reject);
+        });
+      });
+    }
+  }]);
+
+  return Workflow;
+}();
+
+module.exports = Workflow;
+
+/***/ }),
+/* 901 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var axios = __webpack_require__(515);
+var Workflow = __webpack_require__(900);
+
+var _require = __webpack_require__(889),
+    API = _require.API,
+    replaceVars = _require.replaceVars;
+
+var WORKFLOWS_PATH = API.WORKFLOWS_PATH,
+    WORKFLOW_PATH = API.WORKFLOW_PATH;
+
+var _require2 = __webpack_require__(890),
+    wrapToken = _require2.wrapToken;
+
+var _require3 = __webpack_require__(875),
+    isSuccess = _require3.isSuccess;
+
+/**
+ * class representing a collection of workflows
+ * @class
+ */
+
+
+var Workflows = function () {
+  function Workflows(_config) {
+    var _this = this;
+
+    var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+
+    _classCallCheck(this, Workflows);
+
+    this._config = _config;
+    this.rawData = rawData;
+    rawData.forEach(function (workflowData, index) {
+      _this[index] = new Workflow(_this._config, workflowData);
+    });
+    this.length = rawData.length;
+  }
+
+  /**
+   * Get all workflows in app
+   * @param {Object}    options  Object with keys explained below: (optional)
+   *   @param {Number}    options.page  The page number (optional, default: 1)
+   *   @param {Number}    options.perPage  Number of images to return per page (optional, default: 20)
+   * @return {Promise(Workflows, error)} A Promise that is fulfilled with an instance of Workflows or rejected with an error
+   */
+
+
+  _createClass(Workflows, [{
+    key: 'list',
+    value: function list() {
+      var _this2 = this;
+
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { page: 1, perPage: 20 };
+
+      var url = '' + this._config.basePath + WORKFLOWS_PATH;
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.get(url, {
+            headers: headers,
+            params: {
+              page: options.page,
+              per_page: options.perPage
+            }
+          }).then(function (response) {
+            if (isSuccess(response)) {
+              resolve(new Workflows(_this2._config, response.data.workflows));
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+  }, {
+    key: 'create',
+    value: function create(workflowId, config) {
+      var url = '' + this._config.basePath + WORKFLOWS_PATH;
+      var modelId = config.modelId;
+      var modelVersionId = config.modelVersionId;
+      var body = {
+        workflows: [{
+          id: workflowId,
+          nodes: [{
+            id: 'concepts',
+            model: {
+              id: modelId,
+              model_version: {
+                id: modelVersionId
+              }
+            }
+          }]
+        }]
+      };
+
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.post(url, body, {
+            headers: headers
+          }).then(function (response) {
+            var workflowId = response.data.workflows[0].id;
+            resolve(workflowId);
+          }, reject);
+        });
+      });
+    }
+  }, {
+    key: 'delete',
+    value: function _delete(workflowId) {
+      var url = '' + this._config.basePath + replaceVars(WORKFLOW_PATH, [workflowId]);
+      return wrapToken(this._config, function (headers) {
+        return new Promise(function (resolve, reject) {
+          axios.delete(url, {
+            headers: headers
+          }).then(function (response) {
+            var data = response.data;
+            resolve(data);
+          }, reject);
+        });
+      });
+    }
+  }]);
+
+  return Workflows;
+}();
+
+;
+
+module.exports = Workflows;
+
+/***/ }),
+/* 902 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Moderation = __webpack_require__(903);
+
+var Solutions = function Solutions(_config) {
+  _classCallCheck(this, Solutions);
+
+  this.moderation = new Moderation(_config);
+};
+
+module.exports = Solutions;
+
+/***/ }),
+/* 903 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var axios = __webpack_require__(515);
+
+var _require = __webpack_require__(890),
+    wrapToken = _require.wrapToken;
+
+var _require2 = __webpack_require__(875),
+    isSuccess = _require2.isSuccess,
+    clone = _require2.clone;
+
+var BASE_URL = 'https://api.clarifai-moderation.com';
+
+var Moderation = function () {
+  function Moderation(_config) {
+    _classCallCheck(this, Moderation);
+
+    this._config = _config;
+  }
+
+  _createClass(Moderation, [{
+    key: 'predict',
+    value: function predict(modelID, imageURL) {
+      return wrapToken(this._config, function (headers) {
+        var url = BASE_URL + '/v2/models/' + modelID + '/outputs';
+        var params = {
+          inputs: [{
+            data: {
+              image: {
+                url: imageURL
+              }
+            }
+          }]
+        };
+
+        return new Promise(function (resolve, reject) {
+          return axios.post(url, params, { headers: headers }).then(function (response) {
+            if (isSuccess(response)) {
+              var data = clone(response.data);
+              resolve(data);
+            } else {
+              reject(response);
+            }
+          }, reject);
+        });
+      });
+    }
+  }, {
+    key: 'getModerationStatus',
+    value: function getModerationStatus(imageID) {
+      return wrapToken(this._config, function (headers) {
+        var url = BASE_URL + '/v2/inputs/' + imageID + '/outputs';
+        return new Promise(function (resolve, reject) {
+          return axios.get(url, { headers: headers }).then(function (response) {
+            var data = clone(response.data);
+            resolve(data);
+          }, reject);
+        });
+      });
+    }
+  }]);
+
+  return Moderation;
+}();
+
+module.exports = Moderation;
+
+/***/ }),
+/* 904 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.ProfilePage = undefined;
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
@@ -67832,7 +71907,7 @@ var _FollowButton = __webpack_require__(868);
 
 var _LikeButton = __webpack_require__(870);
 
-var _BackGround = __webpack_require__(873);
+var _BackGround = __webpack_require__(905);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -68248,7 +72323,7 @@ var ProfilePage = exports.ProfilePage = function ProfilePage(props) {
 };
 
 /***/ }),
-/* 873 */
+/* 905 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68263,7 +72338,7 @@ var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
 
-var _reactTsparticles = __webpack_require__(874);
+var _reactTsparticles = __webpack_require__(906);
 
 var _reactTsparticles2 = _interopRequireDefault(_reactTsparticles);
 
@@ -68401,10 +72476,10 @@ var BackGround = exports.BackGround = function BackGround() {
 // import Particles from 'react-particles-js';
 
 /***/ }),
-/* 874 */
+/* 906 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const ReactParticles = __webpack_require__(875);
+const ReactParticles = __webpack_require__(907);
 
 for (let key in ReactParticles) {
     ReactParticles.default[key] = ReactParticles[key];
@@ -68413,26 +72488,26 @@ for (let key in ReactParticles) {
 module.exports = ReactParticles.default;
 
 /***/ }),
-/* 875 */
+/* 907 */
 /***/ (function(module, exports, __webpack_require__) {
 
-!function(t,e){for(var r in e)t[r]=e[r]}(exports,function(t){var e={};function r(n){if(e[n])return e[n].exports;var o=e[n]={i:n,l:!1,exports:{}};return t[n].call(o.exports,o,o.exports,r),o.l=!0,o.exports}return r.m=t,r.c=e,r.d=function(t,e,n){r.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:n})},r.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},r.t=function(t,e){if(1&e&&(t=r(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var n=Object.create(null);if(r.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var o in t)r.d(n,o,function(e){return t[e]}.bind(null,o));return n},r.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return r.d(e,"a",e),e},r.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},r.p="",r(r.s=1)}([function(t,e){t.exports=__webpack_require__(1)},function(t,e,r){"use strict";var n=this&&this.__createBinding||(Object.create?function(t,e,r,n){void 0===n&&(n=r),Object.defineProperty(t,n,{enumerable:!0,get:function(){return e[r]}})}:function(t,e,r,n){void 0===n&&(n=r),t[n]=e[r]}),o=this&&this.__exportStar||function(t,e){for(var r in t)"default"===r||e.hasOwnProperty(r)||n(e,t,r)},i=this&&this.__importDefault||function(t){return t&&t.__esModule?t:{default:t}};Object.defineProperty(e,"__esModule",{value:!0}),e.Particles=void 0;var a=i(r(2));e.Particles=a.default,o(r(6),e),e.default=a.default},function(t,e,r){"use strict";function n(t){return(n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t})(t)}function o(t,e){for(var r=0;r<e.length;r++){var n=e[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(t,n.key,n)}}function i(t,e,r){return(i="undefined"!=typeof Reflect&&Reflect.get?Reflect.get:function(t,e,r){var n=function(t,e){for(;!Object.prototype.hasOwnProperty.call(t,e)&&null!==(t=l(t)););return t}(t,e);if(n){var o=Object.getOwnPropertyDescriptor(n,e);return o.get?o.get.call(r):o.value}})(t,e,r||t)}function a(t,e){return(a=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t})(t,e)}function u(t){var e=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Date.prototype.toString.call(Reflect.construct(Date,[],(function(){}))),!0}catch(t){return!1}}();return function(){var r,n=l(t);if(e){var o=l(this).constructor;r=Reflect.construct(n,arguments,o)}else r=n.apply(this,arguments);return s(this,r)}}function s(t,e){return!e||"object"!==n(e)&&"function"!=typeof e?c(t):e}function c(t){if(void 0===t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return t}function l(t){return(l=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)})(t)}var f=this&&this.__createBinding||(Object.create?function(t,e,r,n){void 0===n&&(n=r),Object.defineProperty(t,n,{enumerable:!0,get:function(){return e[r]}})}:function(t,e,r,n){void 0===n&&(n=r),t[n]=e[r]}),p=this&&this.__setModuleDefault||(Object.create?function(t,e){Object.defineProperty(t,"default",{enumerable:!0,value:e})}:function(t,e){t.default=e}),d=this&&this.__importStar||function(t){if(t&&t.__esModule)return t;var e={};if(null!=t)for(var r in t)"default"!==r&&Object.hasOwnProperty.call(t,r)&&f(e,t,r);return p(e,t),e};Object.defineProperty(e,"__esModule",{value:!0});var y=d(r(0)),h=r(0),v=r(3),b=r(4),m=r(5),O=function(t){!function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),e&&a(t,e)}(f,t);var e,r,n,s=u(f);function f(t){var e;return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,f),(e=s.call(this,t)).state={canvas:void 0,library:void 0},e.loadCanvas=e.loadCanvas.bind(c(e)),e}return e=f,(r=[{key:"buildParticlesLibrary",value:function(t,e){try{if(void 0===window)return null}catch(t){return null}b.tsParticles.init();var r=new v.Container(t,e);return this.props.container&&(this.props.container.current=r),r}},{key:"refresh",value:function(t){var e,r=this,n=this.state.canvas;n&&(this.destroy(),this.setState({library:this.buildParticlesLibrary(t.id,null!==(e=t.params)&&void 0!==e?e:t.options)},(function(){r.loadCanvas(n)})))}},{key:"destroy",value:function(){this.state.library&&(this.state.library.destroy(),this.setState({library:void 0}))}},{key:"loadCanvas",value:function(t){var e=this;t&&this.setState({canvas:t},(function(){var r=e.state.library;r&&(r.canvas.loadCanvas(t),r.start())}))}},{key:"shouldComponentUpdate",value:function(t){return!m.isEqual(t,this.props)}},{key:"componentDidUpdate",value:function(){this.refresh(this.props)}},{key:"forceUpdate",value:function(){this.refresh(this.props),i(l(f.prototype),"forceUpdate",this).call(this)}},{key:"componentDidMount",value:function(){var t;this.setState({library:this.buildParticlesLibrary(this.props.id,null!==(t=this.props.params)&&void 0!==t?t:this.props.options)})}},{key:"componentWillUnmount",value:function(){this.destroy()}},{key:"render",value:function(){var t=this.props,e=t.width,r=t.height,n=t.className,o=t.canvasClassName,i=t.id;return y.createElement("div",{className:n,id:i},y.createElement("canvas",{ref:this.loadCanvas,className:o,style:Object.assign(Object.assign({},this.props.style),{width:e,height:r})}))}}])&&o(e.prototype,r),n&&o(e,n),f}(h.Component);e.default=O,O.defaultProps={width:"100%",height:"100%",options:{},style:{},id:"tsparticles"}},function(t,e){t.exports=__webpack_require__(876)},function(t,e){t.exports=__webpack_require__(989)},function(t,e){t.exports=__webpack_require__(1032)},function(t,e){t.exports=__webpack_require__(883)}]));
+!function(t,e){for(var r in e)t[r]=e[r]}(exports,function(t){var e={};function r(n){if(e[n])return e[n].exports;var o=e[n]={i:n,l:!1,exports:{}};return t[n].call(o.exports,o,o.exports,r),o.l=!0,o.exports}return r.m=t,r.c=e,r.d=function(t,e,n){r.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:n})},r.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},r.t=function(t,e){if(1&e&&(t=r(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var n=Object.create(null);if(r.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var o in t)r.d(n,o,function(e){return t[e]}.bind(null,o));return n},r.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return r.d(e,"a",e),e},r.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},r.p="",r(r.s=1)}([function(t,e){t.exports=__webpack_require__(1)},function(t,e,r){"use strict";var n=this&&this.__createBinding||(Object.create?function(t,e,r,n){void 0===n&&(n=r),Object.defineProperty(t,n,{enumerable:!0,get:function(){return e[r]}})}:function(t,e,r,n){void 0===n&&(n=r),t[n]=e[r]}),o=this&&this.__exportStar||function(t,e){for(var r in t)"default"===r||e.hasOwnProperty(r)||n(e,t,r)},i=this&&this.__importDefault||function(t){return t&&t.__esModule?t:{default:t}};Object.defineProperty(e,"__esModule",{value:!0}),e.Particles=void 0;var a=i(r(2));e.Particles=a.default,o(r(6),e),e.default=a.default},function(t,e,r){"use strict";function n(t){return(n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t})(t)}function o(t,e){for(var r=0;r<e.length;r++){var n=e[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(t,n.key,n)}}function i(t,e,r){return(i="undefined"!=typeof Reflect&&Reflect.get?Reflect.get:function(t,e,r){var n=function(t,e){for(;!Object.prototype.hasOwnProperty.call(t,e)&&null!==(t=l(t)););return t}(t,e);if(n){var o=Object.getOwnPropertyDescriptor(n,e);return o.get?o.get.call(r):o.value}})(t,e,r||t)}function a(t,e){return(a=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t})(t,e)}function u(t){var e=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Date.prototype.toString.call(Reflect.construct(Date,[],(function(){}))),!0}catch(t){return!1}}();return function(){var r,n=l(t);if(e){var o=l(this).constructor;r=Reflect.construct(n,arguments,o)}else r=n.apply(this,arguments);return s(this,r)}}function s(t,e){return!e||"object"!==n(e)&&"function"!=typeof e?c(t):e}function c(t){if(void 0===t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return t}function l(t){return(l=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)})(t)}var f=this&&this.__createBinding||(Object.create?function(t,e,r,n){void 0===n&&(n=r),Object.defineProperty(t,n,{enumerable:!0,get:function(){return e[r]}})}:function(t,e,r,n){void 0===n&&(n=r),t[n]=e[r]}),p=this&&this.__setModuleDefault||(Object.create?function(t,e){Object.defineProperty(t,"default",{enumerable:!0,value:e})}:function(t,e){t.default=e}),d=this&&this.__importStar||function(t){if(t&&t.__esModule)return t;var e={};if(null!=t)for(var r in t)"default"!==r&&Object.hasOwnProperty.call(t,r)&&f(e,t,r);return p(e,t),e};Object.defineProperty(e,"__esModule",{value:!0});var y=d(r(0)),h=r(0),v=r(3),b=r(4),m=r(5),O=function(t){!function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),e&&a(t,e)}(f,t);var e,r,n,s=u(f);function f(t){var e;return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,f),(e=s.call(this,t)).state={canvas:void 0,library:void 0},e.loadCanvas=e.loadCanvas.bind(c(e)),e}return e=f,(r=[{key:"buildParticlesLibrary",value:function(t,e){try{if(void 0===window)return null}catch(t){return null}b.tsParticles.init();var r=new v.Container(t,e);return this.props.container&&(this.props.container.current=r),r}},{key:"refresh",value:function(t){var e,r=this,n=this.state.canvas;n&&(this.destroy(),this.setState({library:this.buildParticlesLibrary(t.id,null!==(e=t.params)&&void 0!==e?e:t.options)},(function(){r.loadCanvas(n)})))}},{key:"destroy",value:function(){this.state.library&&(this.state.library.destroy(),this.setState({library:void 0}))}},{key:"loadCanvas",value:function(t){var e=this;t&&this.setState({canvas:t},(function(){var r=e.state.library;r&&(r.canvas.loadCanvas(t),r.start())}))}},{key:"shouldComponentUpdate",value:function(t){return!m.isEqual(t,this.props)}},{key:"componentDidUpdate",value:function(){this.refresh(this.props)}},{key:"forceUpdate",value:function(){this.refresh(this.props),i(l(f.prototype),"forceUpdate",this).call(this)}},{key:"componentDidMount",value:function(){var t;this.setState({library:this.buildParticlesLibrary(this.props.id,null!==(t=this.props.params)&&void 0!==t?t:this.props.options)})}},{key:"componentWillUnmount",value:function(){this.destroy()}},{key:"render",value:function(){var t=this.props,e=t.width,r=t.height,n=t.className,o=t.canvasClassName,i=t.id;return y.createElement("div",{className:n,id:i},y.createElement("canvas",{ref:this.loadCanvas,className:o,style:Object.assign(Object.assign({},this.props.style),{width:e,height:r})}))}}])&&o(e.prototype,r),n&&o(e,n),f}(h.Component);e.default=O,O.defaultProps={width:"100%",height:"100%",options:{},style:{},id:"tsparticles"}},function(t,e){t.exports=__webpack_require__(908)},function(t,e){t.exports=__webpack_require__(1021)},function(t,e){t.exports=__webpack_require__(1064)},function(t,e){t.exports=__webpack_require__(915)}]));
 
 /***/ }),
-/* 876 */
+/* 908 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Container = void 0;
-const tslib_1 = __webpack_require__(877);
-const Canvas_1 = __webpack_require__(878);
-const Particles_1 = __webpack_require__(913);
-const Retina_1 = __webpack_require__(959);
-const FrameManager_1 = __webpack_require__(960);
-const Options_1 = __webpack_require__(961);
-const Utils_1 = __webpack_require__(879);
+const tslib_1 = __webpack_require__(909);
+const Canvas_1 = __webpack_require__(910);
+const Particles_1 = __webpack_require__(945);
+const Retina_1 = __webpack_require__(991);
+const FrameManager_1 = __webpack_require__(992);
+const Options_1 = __webpack_require__(993);
+const Utils_1 = __webpack_require__(911);
 class Container {
     constructor(id, sourceOptions, ...presets) {
         this.id = id;
@@ -68676,7 +72751,7 @@ exports.Container = Container;
 
 
 /***/ }),
-/* 877 */
+/* 909 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -68934,14 +73009,14 @@ function __classPrivateFieldSet(receiver, privateMap, value) {
 
 
 /***/ }),
-/* 878 */
+/* 910 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Canvas = void 0;
-const Utils_1 = __webpack_require__(879);
+const Utils_1 = __webpack_require__(911);
 class Canvas {
     constructor(container) {
         this.container = container;
@@ -69239,37 +73314,37 @@ exports.Canvas = Canvas;
 
 
 /***/ }),
-/* 879 */
+/* 911 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(877);
-tslib_1.__exportStar(__webpack_require__(880), exports);
-tslib_1.__exportStar(__webpack_require__(905), exports);
-tslib_1.__exportStar(__webpack_require__(907), exports);
-tslib_1.__exportStar(__webpack_require__(881), exports);
-tslib_1.__exportStar(__webpack_require__(904), exports);
-tslib_1.__exportStar(__webpack_require__(909), exports);
-tslib_1.__exportStar(__webpack_require__(910), exports);
-tslib_1.__exportStar(__webpack_require__(911), exports);
+const tslib_1 = __webpack_require__(909);
 tslib_1.__exportStar(__webpack_require__(912), exports);
-tslib_1.__exportStar(__webpack_require__(906), exports);
-tslib_1.__exportStar(__webpack_require__(908), exports);
-tslib_1.__exportStar(__webpack_require__(882), exports);
+tslib_1.__exportStar(__webpack_require__(937), exports);
+tslib_1.__exportStar(__webpack_require__(939), exports);
+tslib_1.__exportStar(__webpack_require__(913), exports);
+tslib_1.__exportStar(__webpack_require__(936), exports);
+tslib_1.__exportStar(__webpack_require__(941), exports);
+tslib_1.__exportStar(__webpack_require__(942), exports);
+tslib_1.__exportStar(__webpack_require__(943), exports);
+tslib_1.__exportStar(__webpack_require__(944), exports);
+tslib_1.__exportStar(__webpack_require__(938), exports);
+tslib_1.__exportStar(__webpack_require__(940), exports);
+tslib_1.__exportStar(__webpack_require__(914), exports);
 
 
 /***/ }),
-/* 880 */
+/* 912 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CanvasUtils = void 0;
-const ColorUtils_1 = __webpack_require__(881);
-const Utils_1 = __webpack_require__(882);
+const ColorUtils_1 = __webpack_require__(913);
+const Utils_1 = __webpack_require__(914);
 class CanvasUtils {
     static paintBase(context, dimension, baseColor) {
         context.save();
@@ -69483,15 +73558,15 @@ exports.CanvasUtils = CanvasUtils;
 
 
 /***/ }),
-/* 881 */
+/* 913 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ColorUtils = void 0;
-const Utils_1 = __webpack_require__(882);
-const Constants_1 = __webpack_require__(904);
+const Utils_1 = __webpack_require__(914);
+const Constants_1 = __webpack_require__(936);
 class ColorUtils {
     static colorToRgb(input) {
         var _a, _b;
@@ -69704,15 +73779,15 @@ exports.ColorUtils = ColorUtils;
 
 
 /***/ }),
-/* 882 */
+/* 914 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Utils = void 0;
-const tslib_1 = __webpack_require__(877);
-const Enums_1 = __webpack_require__(883);
+const tslib_1 = __webpack_require__(909);
+const Enums_1 = __webpack_require__(915);
 class Utils {
     static isSsr() {
         return typeof window === "undefined" || !window;
@@ -69939,34 +74014,34 @@ exports.Utils = Utils;
 
 
 /***/ }),
-/* 883 */
+/* 915 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(877);
-tslib_1.__exportStar(__webpack_require__(884), exports);
-tslib_1.__exportStar(__webpack_require__(887), exports);
-tslib_1.__exportStar(__webpack_require__(894), exports);
-tslib_1.__exportStar(__webpack_require__(897), exports);
-tslib_1.__exportStar(__webpack_require__(903), exports);
+const tslib_1 = __webpack_require__(909);
+tslib_1.__exportStar(__webpack_require__(916), exports);
+tslib_1.__exportStar(__webpack_require__(919), exports);
+tslib_1.__exportStar(__webpack_require__(926), exports);
+tslib_1.__exportStar(__webpack_require__(929), exports);
+tslib_1.__exportStar(__webpack_require__(935), exports);
 
 
 /***/ }),
-/* 884 */
+/* 916 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(877);
-tslib_1.__exportStar(__webpack_require__(885), exports);
-tslib_1.__exportStar(__webpack_require__(886), exports);
+const tslib_1 = __webpack_require__(909);
+tslib_1.__exportStar(__webpack_require__(917), exports);
+tslib_1.__exportStar(__webpack_require__(918), exports);
 
 
 /***/ }),
-/* 885 */
+/* 917 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69988,7 +74063,7 @@ var MoveDirection;
 
 
 /***/ }),
-/* 886 */
+/* 918 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70004,23 +74079,23 @@ var RotateDirection;
 
 
 /***/ }),
-/* 887 */
+/* 919 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(877);
-tslib_1.__exportStar(__webpack_require__(888), exports);
-tslib_1.__exportStar(__webpack_require__(889), exports);
-tslib_1.__exportStar(__webpack_require__(890), exports);
-tslib_1.__exportStar(__webpack_require__(891), exports);
-tslib_1.__exportStar(__webpack_require__(892), exports);
-tslib_1.__exportStar(__webpack_require__(893), exports);
+const tslib_1 = __webpack_require__(909);
+tslib_1.__exportStar(__webpack_require__(920), exports);
+tslib_1.__exportStar(__webpack_require__(921), exports);
+tslib_1.__exportStar(__webpack_require__(922), exports);
+tslib_1.__exportStar(__webpack_require__(923), exports);
+tslib_1.__exportStar(__webpack_require__(924), exports);
+tslib_1.__exportStar(__webpack_require__(925), exports);
 
 
 /***/ }),
-/* 888 */
+/* 920 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70040,7 +74115,7 @@ var ClickMode;
 
 
 /***/ }),
-/* 889 */
+/* 921 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70055,7 +74130,7 @@ var DivMode;
 
 
 /***/ }),
-/* 890 */
+/* 922 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70075,7 +74150,7 @@ var HoverMode;
 
 
 /***/ }),
-/* 891 */
+/* 923 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70091,7 +74166,7 @@ var CollisionMode;
 
 
 /***/ }),
-/* 892 */
+/* 924 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70109,7 +74184,7 @@ var OutMode;
 
 
 /***/ }),
-/* 893 */
+/* 925 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70124,19 +74199,19 @@ var SizeMode;
 
 
 /***/ }),
-/* 894 */
+/* 926 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(877);
-tslib_1.__exportStar(__webpack_require__(895), exports);
-tslib_1.__exportStar(__webpack_require__(896), exports);
+const tslib_1 = __webpack_require__(909);
+tslib_1.__exportStar(__webpack_require__(927), exports);
+tslib_1.__exportStar(__webpack_require__(928), exports);
 
 
 /***/ }),
-/* 895 */
+/* 927 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70151,7 +74226,7 @@ var SizeAnimationStatus;
 
 
 /***/ }),
-/* 896 */
+/* 928 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70166,22 +74241,22 @@ var OpacityAnimationStatus;
 
 
 /***/ }),
-/* 897 */
+/* 929 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(877);
-tslib_1.__exportStar(__webpack_require__(898), exports);
-tslib_1.__exportStar(__webpack_require__(899), exports);
-tslib_1.__exportStar(__webpack_require__(900), exports);
-tslib_1.__exportStar(__webpack_require__(901), exports);
-tslib_1.__exportStar(__webpack_require__(902), exports);
+const tslib_1 = __webpack_require__(909);
+tslib_1.__exportStar(__webpack_require__(930), exports);
+tslib_1.__exportStar(__webpack_require__(931), exports);
+tslib_1.__exportStar(__webpack_require__(932), exports);
+tslib_1.__exportStar(__webpack_require__(933), exports);
+tslib_1.__exportStar(__webpack_require__(934), exports);
 
 
 /***/ }),
-/* 898 */
+/* 930 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70197,7 +74272,7 @@ var DestroyType;
 
 
 /***/ }),
-/* 899 */
+/* 931 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70213,7 +74288,7 @@ var ProcessBubbleType;
 
 
 /***/ }),
-/* 900 */
+/* 932 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70237,7 +74312,7 @@ var ShapeType;
 
 
 /***/ }),
-/* 901 */
+/* 933 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70252,7 +74327,7 @@ var StartValueType;
 
 
 /***/ }),
-/* 902 */
+/* 934 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70267,7 +74342,7 @@ var DivType;
 
 
 /***/ }),
-/* 903 */
+/* 935 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70283,7 +74358,7 @@ var InteractivityDetect;
 
 
 /***/ }),
-/* 904 */
+/* 936 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70312,14 +74387,14 @@ Constants.noPolygonFound = "No polygon found, you need to specify SVG url in con
 
 
 /***/ }),
-/* 905 */
+/* 937 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Circle = void 0;
-const Range_1 = __webpack_require__(906);
+const Range_1 = __webpack_require__(938);
 class Circle extends Range_1.Range {
     constructor(x, y, radius) {
         super(x, y);
@@ -70361,7 +74436,7 @@ exports.Circle = Circle;
 
 
 /***/ }),
-/* 906 */
+/* 938 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70380,15 +74455,15 @@ exports.Range = Range;
 
 
 /***/ }),
-/* 907 */
+/* 939 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CircleWarp = void 0;
-const Rectangle_1 = __webpack_require__(908);
-const Circle_1 = __webpack_require__(905);
+const Rectangle_1 = __webpack_require__(940);
+const Circle_1 = __webpack_require__(937);
 class CircleWarp extends Circle_1.Circle {
     constructor(x, y, radius, canvasSize) {
         super(x, y, radius);
@@ -70447,14 +74522,14 @@ exports.CircleWarp = CircleWarp;
 
 
 /***/ }),
-/* 908 */
+/* 940 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Rectangle = void 0;
-const Range_1 = __webpack_require__(906);
+const Range_1 = __webpack_require__(938);
 class Rectangle extends Range_1.Range {
     constructor(x, y, width, height) {
         super(x, y);
@@ -70492,15 +74567,15 @@ exports.Rectangle = Rectangle;
 
 
 /***/ }),
-/* 909 */
+/* 941 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EventListeners = void 0;
-const Enums_1 = __webpack_require__(883);
-const Constants_1 = __webpack_require__(904);
+const Enums_1 = __webpack_require__(915);
+const Constants_1 = __webpack_require__(936);
 class EventListeners {
     constructor(container) {
         this.container = container;
@@ -70837,7 +74912,7 @@ exports.EventListeners = EventListeners;
 
 
 /***/ }),
-/* 910 */
+/* 942 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70893,7 +74968,7 @@ Plugins.drawers = new Map();
 
 
 /***/ }),
-/* 911 */
+/* 943 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70910,14 +74985,14 @@ exports.Point = Point;
 
 
 /***/ }),
-/* 912 */
+/* 944 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.QuadTree = void 0;
-const Rectangle_1 = __webpack_require__(908);
+const Rectangle_1 = __webpack_require__(940);
 class QuadTree {
     constructor(rectangle, capacity) {
         this.rectangle = rectangle;
@@ -70975,16 +75050,16 @@ exports.QuadTree = QuadTree;
 
 
 /***/ }),
-/* 913 */
+/* 945 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Particles = void 0;
-const Particle_1 = __webpack_require__(914);
-const Utils_1 = __webpack_require__(879);
-const InteractionManager_1 = __webpack_require__(948);
+const Particle_1 = __webpack_require__(946);
+const Utils_1 = __webpack_require__(911);
+const InteractionManager_1 = __webpack_require__(980);
 class Particles {
     constructor(container) {
         this.container = container;
@@ -71118,20 +75193,20 @@ exports.Particles = Particles;
 
 
 /***/ }),
-/* 914 */
+/* 946 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Particle = void 0;
-const Updater_1 = __webpack_require__(915);
-const Particles_1 = __webpack_require__(916);
-const Shape_1 = __webpack_require__(933);
-const Enums_1 = __webpack_require__(883);
-const Utils_1 = __webpack_require__(879);
-const Infecter_1 = __webpack_require__(946);
-const Mover_1 = __webpack_require__(947);
+const Updater_1 = __webpack_require__(947);
+const Particles_1 = __webpack_require__(948);
+const Shape_1 = __webpack_require__(965);
+const Enums_1 = __webpack_require__(915);
+const Utils_1 = __webpack_require__(911);
+const Infecter_1 = __webpack_require__(978);
+const Mover_1 = __webpack_require__(979);
 class Particle {
     constructor(container, position, overrideOptions) {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j;
@@ -71495,15 +75570,15 @@ exports.Particle = Particle;
 
 
 /***/ }),
-/* 915 */
+/* 947 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Updater = void 0;
-const Utils_1 = __webpack_require__(879);
-const Enums_1 = __webpack_require__(883);
+const Utils_1 = __webpack_require__(911);
+const Enums_1 = __webpack_require__(915);
 class Updater {
     constructor(container, particle) {
         this.container = container;
@@ -71752,25 +75827,25 @@ exports.Updater = Updater;
 
 
 /***/ }),
-/* 916 */
+/* 948 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Particles = void 0;
-const Links_1 = __webpack_require__(917);
-const Move_1 = __webpack_require__(921);
-const ParticlesNumber_1 = __webpack_require__(928);
-const Opacity_1 = __webpack_require__(930);
-const Shape_1 = __webpack_require__(933);
-const Size_1 = __webpack_require__(934);
-const Rotate_1 = __webpack_require__(937);
-const Shadow_1 = __webpack_require__(939);
-const Stroke_1 = __webpack_require__(940);
-const Collisions_1 = __webpack_require__(943);
-const Twinkle_1 = __webpack_require__(944);
-const AnimatableColor_1 = __webpack_require__(941);
+const Links_1 = __webpack_require__(949);
+const Move_1 = __webpack_require__(953);
+const ParticlesNumber_1 = __webpack_require__(960);
+const Opacity_1 = __webpack_require__(962);
+const Shape_1 = __webpack_require__(965);
+const Size_1 = __webpack_require__(966);
+const Rotate_1 = __webpack_require__(969);
+const Shadow_1 = __webpack_require__(971);
+const Stroke_1 = __webpack_require__(972);
+const Collisions_1 = __webpack_require__(975);
+const Twinkle_1 = __webpack_require__(976);
+const AnimatableColor_1 = __webpack_require__(973);
 class Particles {
     constructor() {
         this.collisions = new Collisions_1.Collisions();
@@ -71846,16 +75921,16 @@ exports.Particles = Particles;
 
 
 /***/ }),
-/* 917 */
+/* 949 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Links = void 0;
-const LinksShadow_1 = __webpack_require__(918);
-const LinksTriangle_1 = __webpack_require__(920);
-const OptionsColor_1 = __webpack_require__(919);
+const LinksShadow_1 = __webpack_require__(950);
+const LinksTriangle_1 = __webpack_require__(952);
+const OptionsColor_1 = __webpack_require__(951);
 class Links {
     constructor() {
         this.blink = false;
@@ -71906,14 +75981,14 @@ exports.Links = Links;
 
 
 /***/ }),
-/* 918 */
+/* 950 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LinksShadow = void 0;
-const OptionsColor_1 = __webpack_require__(919);
+const OptionsColor_1 = __webpack_require__(951);
 class LinksShadow {
     constructor() {
         this.blur = 5;
@@ -71938,7 +76013,7 @@ exports.LinksShadow = LinksShadow;
 
 
 /***/ }),
-/* 919 */
+/* 951 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71967,14 +76042,14 @@ exports.OptionsColor = OptionsColor;
 
 
 /***/ }),
-/* 920 */
+/* 952 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LinksTriangle = void 0;
-const OptionsColor_1 = __webpack_require__(919);
+const OptionsColor_1 = __webpack_require__(951);
 class LinksTriangle {
     constructor() {
         this.enable = false;
@@ -71998,18 +76073,18 @@ exports.LinksTriangle = LinksTriangle;
 
 
 /***/ }),
-/* 921 */
+/* 953 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Move = void 0;
-const Attract_1 = __webpack_require__(922);
-const Enums_1 = __webpack_require__(883);
-const Trail_1 = __webpack_require__(923);
-const Noise_1 = __webpack_require__(924);
-const MoveAngle_1 = __webpack_require__(927);
+const Attract_1 = __webpack_require__(954);
+const Enums_1 = __webpack_require__(915);
+const Trail_1 = __webpack_require__(955);
+const Noise_1 = __webpack_require__(956);
+const MoveAngle_1 = __webpack_require__(959);
 class Move {
     constructor() {
         this.angle = new MoveAngle_1.MoveAngle();
@@ -72089,7 +76164,7 @@ exports.Move = Move;
 
 
 /***/ }),
-/* 922 */
+/* 954 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72138,14 +76213,14 @@ exports.Attract = Attract;
 
 
 /***/ }),
-/* 923 */
+/* 955 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Trail = void 0;
-const OptionsColor_1 = __webpack_require__(919);
+const OptionsColor_1 = __webpack_require__(951);
 class Trail {
     constructor() {
         this.enable = false;
@@ -72170,14 +76245,14 @@ exports.Trail = Trail;
 
 
 /***/ }),
-/* 924 */
+/* 956 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Noise = void 0;
-const NoiseDelay_1 = __webpack_require__(925);
+const NoiseDelay_1 = __webpack_require__(957);
 class Noise {
     constructor() {
         this.delay = new NoiseDelay_1.NoiseDelay();
@@ -72197,14 +76272,14 @@ exports.Noise = Noise;
 
 
 /***/ }),
-/* 925 */
+/* 957 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NoiseDelay = void 0;
-const NoiseRandom_1 = __webpack_require__(926);
+const NoiseRandom_1 = __webpack_require__(958);
 class NoiseDelay {
     constructor() {
         this.random = new NoiseRandom_1.NoiseRandom();
@@ -72225,7 +76300,7 @@ exports.NoiseDelay = NoiseDelay;
 
 
 /***/ }),
-/* 926 */
+/* 958 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72253,7 +76328,7 @@ exports.NoiseRandom = NoiseRandom;
 
 
 /***/ }),
-/* 927 */
+/* 959 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72281,14 +76356,14 @@ exports.MoveAngle = MoveAngle;
 
 
 /***/ }),
-/* 928 */
+/* 960 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ParticlesNumber = void 0;
-const Density_1 = __webpack_require__(929);
+const Density_1 = __webpack_require__(961);
 class ParticlesNumber {
     constructor() {
         this.density = new Density_1.Density();
@@ -72320,7 +76395,7 @@ exports.ParticlesNumber = ParticlesNumber;
 
 
 /***/ }),
-/* 929 */
+/* 961 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72360,15 +76435,15 @@ exports.Density = Density;
 
 
 /***/ }),
-/* 930 */
+/* 962 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Opacity = void 0;
-const OpacityAnimation_1 = __webpack_require__(931);
-const OpacityRandom_1 = __webpack_require__(932);
+const OpacityAnimation_1 = __webpack_require__(963);
+const OpacityRandom_1 = __webpack_require__(964);
 class Opacity {
     constructor() {
         this.animation = new OpacityAnimation_1.OpacityAnimation();
@@ -72404,7 +76479,7 @@ exports.Opacity = Opacity;
 
 
 /***/ }),
-/* 931 */
+/* 963 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72448,7 +76523,7 @@ exports.OpacityAnimation = OpacityAnimation;
 
 
 /***/ }),
-/* 932 */
+/* 964 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72476,15 +76551,15 @@ exports.OpacityRandom = OpacityRandom;
 
 
 /***/ }),
-/* 933 */
+/* 965 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Shape = void 0;
-const Enums_1 = __webpack_require__(883);
-const Utils_1 = __webpack_require__(879);
+const Enums_1 = __webpack_require__(915);
+const Utils_1 = __webpack_require__(911);
 class Shape {
     constructor() {
         this.options = {};
@@ -72587,15 +76662,15 @@ exports.Shape = Shape;
 
 
 /***/ }),
-/* 934 */
+/* 966 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Size = void 0;
-const SizeAnimation_1 = __webpack_require__(935);
-const SizeRandom_1 = __webpack_require__(936);
+const SizeAnimation_1 = __webpack_require__(967);
+const SizeRandom_1 = __webpack_require__(968);
 class Size {
     constructor() {
         this.animation = new SizeAnimation_1.SizeAnimation();
@@ -72634,14 +76709,14 @@ exports.Size = Size;
 
 
 /***/ }),
-/* 935 */
+/* 967 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SizeAnimation = void 0;
-const Enums_1 = __webpack_require__(883);
+const Enums_1 = __webpack_require__(915);
 class SizeAnimation {
     constructor() {
         this.destroy = Enums_1.DestroyType.none;
@@ -72687,7 +76762,7 @@ exports.SizeAnimation = SizeAnimation;
 
 
 /***/ }),
-/* 936 */
+/* 968 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72715,15 +76790,15 @@ exports.SizeRandom = SizeRandom;
 
 
 /***/ }),
-/* 937 */
+/* 969 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Rotate = void 0;
-const RotateAnimation_1 = __webpack_require__(938);
-const Enums_1 = __webpack_require__(883);
+const RotateAnimation_1 = __webpack_require__(970);
+const Enums_1 = __webpack_require__(915);
 class Rotate {
     constructor() {
         this.animation = new RotateAnimation_1.RotateAnimation();
@@ -72755,7 +76830,7 @@ exports.Rotate = Rotate;
 
 
 /***/ }),
-/* 938 */
+/* 970 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72787,14 +76862,14 @@ exports.RotateAnimation = RotateAnimation;
 
 
 /***/ }),
-/* 939 */
+/* 971 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Shadow = void 0;
-const OptionsColor_1 = __webpack_require__(919);
+const OptionsColor_1 = __webpack_require__(951);
 class Shadow {
     constructor() {
         this.blur = 0;
@@ -72832,14 +76907,14 @@ exports.Shadow = Shadow;
 
 
 /***/ }),
-/* 940 */
+/* 972 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Stroke = void 0;
-const AnimatableColor_1 = __webpack_require__(941);
+const AnimatableColor_1 = __webpack_require__(973);
 class Stroke {
     constructor() {
         this.width = 0;
@@ -72863,15 +76938,15 @@ exports.Stroke = Stroke;
 
 
 /***/ }),
-/* 941 */
+/* 973 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnimatableColor = void 0;
-const OptionsColor_1 = __webpack_require__(919);
-const ColorAnimation_1 = __webpack_require__(942);
+const OptionsColor_1 = __webpack_require__(951);
+const ColorAnimation_1 = __webpack_require__(974);
 class AnimatableColor extends OptionsColor_1.OptionsColor {
     constructor() {
         super();
@@ -72893,7 +76968,7 @@ exports.AnimatableColor = AnimatableColor;
 
 
 /***/ }),
-/* 942 */
+/* 974 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72925,14 +77000,14 @@ exports.ColorAnimation = ColorAnimation;
 
 
 /***/ }),
-/* 943 */
+/* 975 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Collisions = void 0;
-const Enums_1 = __webpack_require__(883);
+const Enums_1 = __webpack_require__(915);
 class Collisions {
     constructor() {
         this.enable = false;
@@ -72954,14 +77029,14 @@ exports.Collisions = Collisions;
 
 
 /***/ }),
-/* 944 */
+/* 976 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Twinkle = void 0;
-const TwinkleValues_1 = __webpack_require__(945);
+const TwinkleValues_1 = __webpack_require__(977);
 class Twinkle {
     constructor() {
         this.lines = new TwinkleValues_1.TwinkleValues();
@@ -72979,14 +77054,14 @@ exports.Twinkle = Twinkle;
 
 
 /***/ }),
-/* 945 */
+/* 977 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TwinkleValues = void 0;
-const OptionsColor_1 = __webpack_require__(919);
+const OptionsColor_1 = __webpack_require__(951);
 class TwinkleValues {
     constructor() {
         this.enable = false;
@@ -73015,7 +77090,7 @@ exports.TwinkleValues = TwinkleValues;
 
 
 /***/ }),
-/* 946 */
+/* 978 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73115,15 +77190,15 @@ exports.Infecter = Infecter;
 
 
 /***/ }),
-/* 947 */
+/* 979 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Mover = void 0;
-const Utils_1 = __webpack_require__(879);
-const Enums_1 = __webpack_require__(883);
+const Utils_1 = __webpack_require__(911);
+const Enums_1 = __webpack_require__(915);
 class Mover {
     constructor(container, particle) {
         this.container = container;
@@ -73236,23 +77311,23 @@ exports.Mover = Mover;
 
 
 /***/ }),
-/* 948 */
+/* 980 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InteractionManager = void 0;
-const Grabber_1 = __webpack_require__(949);
-const Repulser_1 = __webpack_require__(950);
-const Bubbler_1 = __webpack_require__(951);
-const Connector_1 = __webpack_require__(952);
-const Linker_1 = __webpack_require__(953);
-const Attractor_1 = __webpack_require__(954);
-const Collider_1 = __webpack_require__(955);
-const Infecter_1 = __webpack_require__(956);
-const TrailMaker_1 = __webpack_require__(957);
-const Attractor_2 = __webpack_require__(958);
+const Grabber_1 = __webpack_require__(981);
+const Repulser_1 = __webpack_require__(982);
+const Bubbler_1 = __webpack_require__(983);
+const Connector_1 = __webpack_require__(984);
+const Linker_1 = __webpack_require__(985);
+const Attractor_1 = __webpack_require__(986);
+const Collider_1 = __webpack_require__(987);
+const Infecter_1 = __webpack_require__(988);
+const TrailMaker_1 = __webpack_require__(989);
+const Attractor_2 = __webpack_require__(990);
 class InteractionManager {
     constructor(container) {
         this.container = container;
@@ -73295,15 +77370,15 @@ exports.InteractionManager = InteractionManager;
 
 
 /***/ }),
-/* 949 */
+/* 981 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Grabber = void 0;
-const Utils_1 = __webpack_require__(879);
-const Modes_1 = __webpack_require__(887);
+const Utils_1 = __webpack_require__(911);
+const Modes_1 = __webpack_require__(919);
 class Grabber {
     constructor(container) {
         this.container = container;
@@ -73370,15 +77445,15 @@ exports.Grabber = Grabber;
 
 
 /***/ }),
-/* 950 */
+/* 982 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Repulser = void 0;
-const Enums_1 = __webpack_require__(883);
-const Utils_1 = __webpack_require__(879);
+const Enums_1 = __webpack_require__(915);
+const Utils_1 = __webpack_require__(911);
 class Repulser {
     constructor(container) {
         this.container = container;
@@ -73509,15 +77584,15 @@ exports.Repulser = Repulser;
 
 
 /***/ }),
-/* 951 */
+/* 983 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Bubbler = void 0;
-const Utils_1 = __webpack_require__(879);
-const Enums_1 = __webpack_require__(883);
+const Utils_1 = __webpack_require__(911);
+const Enums_1 = __webpack_require__(915);
 class Bubbler {
     constructor(container) {
         this.container = container;
@@ -73784,15 +77859,15 @@ exports.Bubbler = Bubbler;
 
 
 /***/ }),
-/* 952 */
+/* 984 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Connector = void 0;
-const Utils_1 = __webpack_require__(879);
-const Modes_1 = __webpack_require__(887);
+const Utils_1 = __webpack_require__(911);
+const Modes_1 = __webpack_require__(919);
 class Connector {
     constructor(container) {
         this.container = container;
@@ -73840,14 +77915,14 @@ exports.Connector = Connector;
 
 
 /***/ }),
-/* 953 */
+/* 985 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Linker = void 0;
-const Utils_1 = __webpack_require__(879);
+const Utils_1 = __webpack_require__(911);
 class Linker {
     constructor(container) {
         this.container = container;
@@ -73952,14 +78027,14 @@ exports.Linker = Linker;
 
 
 /***/ }),
-/* 954 */
+/* 986 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Attractor = void 0;
-const Utils_1 = __webpack_require__(879);
+const Utils_1 = __webpack_require__(911);
 class Attractor {
     constructor(container) {
         this.container = container;
@@ -73996,15 +78071,15 @@ exports.Attractor = Attractor;
 
 
 /***/ }),
-/* 955 */
+/* 987 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Collider = void 0;
-const Utils_1 = __webpack_require__(879);
-const Enums_1 = __webpack_require__(883);
+const Utils_1 = __webpack_require__(911);
+const Enums_1 = __webpack_require__(915);
 class Collider {
     constructor(container) {
         this.container = container;
@@ -74140,14 +78215,14 @@ exports.Collider = Collider;
 
 
 /***/ }),
-/* 956 */
+/* 988 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Infecter = void 0;
-const Utils_1 = __webpack_require__(879);
+const Utils_1 = __webpack_require__(911);
 class Infecter {
     constructor(container) {
         this.container = container;
@@ -74202,15 +78277,15 @@ exports.Infecter = Infecter;
 
 
 /***/ }),
-/* 957 */
+/* 989 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TrailMaker = void 0;
-const Utils_1 = __webpack_require__(879);
-const Modes_1 = __webpack_require__(887);
+const Utils_1 = __webpack_require__(911);
+const Modes_1 = __webpack_require__(919);
 class TrailMaker {
     constructor(container) {
         this.container = container;
@@ -74247,15 +78322,15 @@ exports.TrailMaker = TrailMaker;
 
 
 /***/ }),
-/* 958 */
+/* 990 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Attractor = void 0;
-const Enums_1 = __webpack_require__(883);
-const Utils_1 = __webpack_require__(879);
+const Enums_1 = __webpack_require__(915);
+const Utils_1 = __webpack_require__(911);
 class Attractor {
     constructor(container) {
         this.container = container;
@@ -74343,14 +78418,14 @@ exports.Attractor = Attractor;
 
 
 /***/ }),
-/* 959 */
+/* 991 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Retina = void 0;
-const Utils_1 = __webpack_require__(879);
+const Utils_1 = __webpack_require__(911);
 class Retina {
     constructor(container) {
         this.container = container;
@@ -74405,7 +78480,7 @@ exports.Retina = Retina;
 
 
 /***/ }),
-/* 960 */
+/* 992 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74440,19 +78515,19 @@ exports.FrameManager = FrameManager;
 
 
 /***/ }),
-/* 961 */
+/* 993 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Options = void 0;
-const Interactivity_1 = __webpack_require__(962);
-const Particles_1 = __webpack_require__(916);
-const BackgroundMask_1 = __webpack_require__(984);
-const Background_1 = __webpack_require__(986);
-const Infection_1 = __webpack_require__(987);
-const Utils_1 = __webpack_require__(879);
+const Interactivity_1 = __webpack_require__(994);
+const Particles_1 = __webpack_require__(948);
+const BackgroundMask_1 = __webpack_require__(1016);
+const Background_1 = __webpack_require__(1018);
+const Infection_1 = __webpack_require__(1019);
+const Utils_1 = __webpack_require__(911);
 class Options {
     constructor() {
         this.background = new Background_1.Background();
@@ -74517,16 +78592,16 @@ exports.Options = Options;
 
 
 /***/ }),
-/* 962 */
+/* 994 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Interactivity = void 0;
-const Enums_1 = __webpack_require__(883);
-const Events_1 = __webpack_require__(963);
-const Modes_1 = __webpack_require__(968);
+const Enums_1 = __webpack_require__(915);
+const Events_1 = __webpack_require__(995);
+const Modes_1 = __webpack_require__(1000);
 class Interactivity {
     constructor() {
         this.detectsOn = Enums_1.InteractivityDetect.canvas;
@@ -74566,16 +78641,16 @@ exports.Interactivity = Interactivity;
 
 
 /***/ }),
-/* 963 */
+/* 995 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Events = void 0;
-const ClickEvent_1 = __webpack_require__(964);
-const DivEvent_1 = __webpack_require__(965);
-const HoverEvent_1 = __webpack_require__(966);
+const ClickEvent_1 = __webpack_require__(996);
+const DivEvent_1 = __webpack_require__(997);
+const HoverEvent_1 = __webpack_require__(998);
 class Events {
     constructor() {
         this.onClick = new ClickEvent_1.ClickEvent();
@@ -74631,7 +78706,7 @@ exports.Events = Events;
 
 
 /***/ }),
-/* 964 */
+/* 996 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74659,14 +78734,14 @@ exports.ClickEvent = ClickEvent;
 
 
 /***/ }),
-/* 965 */
+/* 997 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DivEvent = void 0;
-const Enums_1 = __webpack_require__(883);
+const Enums_1 = __webpack_require__(915);
 class DivEvent {
     constructor() {
         this.ids = [];
@@ -74710,14 +78785,14 @@ exports.DivEvent = DivEvent;
 
 
 /***/ }),
-/* 966 */
+/* 998 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HoverEvent = void 0;
-const Parallax_1 = __webpack_require__(967);
+const Parallax_1 = __webpack_require__(999);
 class HoverEvent {
     constructor() {
         this.enable = false;
@@ -74741,7 +78816,7 @@ exports.HoverEvent = HoverEvent;
 
 
 /***/ }),
-/* 967 */
+/* 999 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74773,22 +78848,22 @@ exports.Parallax = Parallax;
 
 
 /***/ }),
-/* 968 */
+/* 1000 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Modes = void 0;
-const Bubble_1 = __webpack_require__(969);
-const Connect_1 = __webpack_require__(972);
-const Grab_1 = __webpack_require__(974);
-const Remove_1 = __webpack_require__(976);
-const Push_1 = __webpack_require__(977);
-const Repulse_1 = __webpack_require__(978);
-const Slow_1 = __webpack_require__(981);
-const Trail_1 = __webpack_require__(982);
-const Attract_1 = __webpack_require__(983);
+const Bubble_1 = __webpack_require__(1001);
+const Connect_1 = __webpack_require__(1004);
+const Grab_1 = __webpack_require__(1006);
+const Remove_1 = __webpack_require__(1008);
+const Push_1 = __webpack_require__(1009);
+const Repulse_1 = __webpack_require__(1010);
+const Slow_1 = __webpack_require__(1013);
+const Trail_1 = __webpack_require__(1014);
+const Attract_1 = __webpack_require__(1015);
 class Modes {
     constructor() {
         this.attract = new Attract_1.Attract();
@@ -74820,15 +78895,15 @@ exports.Modes = Modes;
 
 
 /***/ }),
-/* 969 */
+/* 1001 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Bubble = void 0;
-const BubbleDiv_1 = __webpack_require__(970);
-const BubbleBase_1 = __webpack_require__(971);
+const BubbleDiv_1 = __webpack_require__(1002);
+const BubbleBase_1 = __webpack_require__(1003);
 class Bubble extends BubbleBase_1.BubbleBase {
     load(data) {
         super.load(data);
@@ -74854,14 +78929,14 @@ exports.Bubble = Bubble;
 
 
 /***/ }),
-/* 970 */
+/* 1002 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BubbleDiv = void 0;
-const BubbleBase_1 = __webpack_require__(971);
+const BubbleBase_1 = __webpack_require__(1003);
 class BubbleDiv extends BubbleBase_1.BubbleBase {
     constructor() {
         super();
@@ -74879,14 +78954,14 @@ exports.BubbleDiv = BubbleDiv;
 
 
 /***/ }),
-/* 971 */
+/* 1003 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BubbleBase = void 0;
-const OptionsColor_1 = __webpack_require__(919);
+const OptionsColor_1 = __webpack_require__(951);
 class BubbleBase {
     constructor() {
         this.distance = 200;
@@ -74925,14 +79000,14 @@ exports.BubbleBase = BubbleBase;
 
 
 /***/ }),
-/* 972 */
+/* 1004 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Connect = void 0;
-const ConnectLinks_1 = __webpack_require__(973);
+const ConnectLinks_1 = __webpack_require__(1005);
 class Connect {
     constructor() {
         this.distance = 80;
@@ -74969,7 +79044,7 @@ exports.Connect = Connect;
 
 
 /***/ }),
-/* 973 */
+/* 1005 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74991,14 +79066,14 @@ exports.ConnectLinks = ConnectLinks;
 
 
 /***/ }),
-/* 974 */
+/* 1006 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Grab = void 0;
-const GrabLinks_1 = __webpack_require__(975);
+const GrabLinks_1 = __webpack_require__(1007);
 class Grab {
     constructor() {
         this.distance = 100;
@@ -75031,14 +79106,14 @@ exports.Grab = Grab;
 
 
 /***/ }),
-/* 975 */
+/* 1007 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GrabLinks = void 0;
-const OptionsColor_1 = __webpack_require__(919);
+const OptionsColor_1 = __webpack_require__(951);
 class GrabLinks {
     constructor() {
         this.opacity = 1;
@@ -75059,7 +79134,7 @@ exports.GrabLinks = GrabLinks;
 
 
 /***/ }),
-/* 976 */
+/* 1008 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75091,7 +79166,7 @@ exports.Remove = Remove;
 
 
 /***/ }),
-/* 977 */
+/* 1009 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75123,15 +79198,15 @@ exports.Push = Push;
 
 
 /***/ }),
-/* 978 */
+/* 1010 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Repulse = void 0;
-const RepulseDiv_1 = __webpack_require__(979);
-const RepulseBase_1 = __webpack_require__(980);
+const RepulseDiv_1 = __webpack_require__(1011);
+const RepulseBase_1 = __webpack_require__(1012);
 class Repulse extends RepulseBase_1.RepulseBase {
     load(data) {
         super.load(data);
@@ -75157,14 +79232,14 @@ exports.Repulse = Repulse;
 
 
 /***/ }),
-/* 979 */
+/* 1011 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RepulseDiv = void 0;
-const RepulseBase_1 = __webpack_require__(980);
+const RepulseBase_1 = __webpack_require__(1012);
 class RepulseDiv extends RepulseBase_1.RepulseBase {
     constructor() {
         super();
@@ -75185,7 +79260,7 @@ exports.RepulseDiv = RepulseDiv;
 
 
 /***/ }),
-/* 980 */
+/* 1012 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75217,7 +79292,7 @@ exports.RepulseBase = RepulseBase;
 
 
 /***/ }),
-/* 981 */
+/* 1013 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75250,14 +79325,14 @@ exports.Slow = Slow;
 
 
 /***/ }),
-/* 982 */
+/* 1014 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Trail = void 0;
-const Utils_1 = __webpack_require__(879);
+const Utils_1 = __webpack_require__(911);
 class Trail {
     constructor() {
         this.delay = 1;
@@ -75282,7 +79357,7 @@ exports.Trail = Trail;
 
 
 /***/ }),
-/* 983 */
+/* 1015 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75314,14 +79389,14 @@ exports.Attract = Attract;
 
 
 /***/ }),
-/* 984 */
+/* 1016 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BackgroundMask = void 0;
-const BackgroundMaskCover_1 = __webpack_require__(985);
+const BackgroundMaskCover_1 = __webpack_require__(1017);
 class BackgroundMask {
     constructor() {
         this.cover = new BackgroundMaskCover_1.BackgroundMaskCover();
@@ -75345,14 +79420,14 @@ exports.BackgroundMask = BackgroundMask;
 
 
 /***/ }),
-/* 985 */
+/* 1017 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BackgroundMaskCover = void 0;
-const OptionsColor_1 = __webpack_require__(919);
+const OptionsColor_1 = __webpack_require__(951);
 class BackgroundMaskCover {
     constructor() {
         this.color = new OptionsColor_1.OptionsColor();
@@ -75374,14 +79449,14 @@ exports.BackgroundMaskCover = BackgroundMaskCover;
 
 
 /***/ }),
-/* 986 */
+/* 1018 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Background = void 0;
-const OptionsColor_1 = __webpack_require__(919);
+const OptionsColor_1 = __webpack_require__(951);
 class Background {
     constructor() {
         this.color = new OptionsColor_1.OptionsColor();
@@ -75420,14 +79495,14 @@ exports.Background = Background;
 
 
 /***/ }),
-/* 987 */
+/* 1019 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Infection = void 0;
-const InfectionStage_1 = __webpack_require__(988);
+const InfectionStage_1 = __webpack_require__(1020);
 class Infection {
     constructor() {
         this.cure = false;
@@ -75466,14 +79541,14 @@ exports.Infection = Infection;
 
 
 /***/ }),
-/* 988 */
+/* 1020 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InfectionStage = void 0;
-const OptionsColor_1 = __webpack_require__(919);
+const OptionsColor_1 = __webpack_require__(951);
 class InfectionStage {
     constructor() {
         this.color = new OptionsColor_1.OptionsColor();
@@ -75502,27 +79577,27 @@ exports.InfectionStage = InfectionStage;
 
 
 /***/ }),
-/* 989 */
+/* 1021 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.tsParticles = exports.pJSDom = exports.particlesJS = void 0;
-const tslib_1 = __webpack_require__(877);
-const pjs_1 = __webpack_require__(990);
-const main_1 = __webpack_require__(991);
+const tslib_1 = __webpack_require__(909);
+const pjs_1 = __webpack_require__(1022);
+const main_1 = __webpack_require__(1023);
 const tsParticles = new main_1.Main();
 exports.tsParticles = tsParticles;
 tsParticles.init();
 const { particlesJS, pJSDom } = pjs_1.initPjs(tsParticles);
 exports.particlesJS = particlesJS;
 exports.pJSDom = pJSDom;
-tslib_1.__exportStar(__webpack_require__(883), exports);
+tslib_1.__exportStar(__webpack_require__(915), exports);
 
 
 /***/ }),
-/* 990 */
+/* 1022 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75550,17 +79625,17 @@ exports.initPjs = initPjs;
 
 
 /***/ }),
-/* 991 */
+/* 1023 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Main = void 0;
-const main_slim_1 = __webpack_require__(992);
-const AbsorbersPlugin_1 = __webpack_require__(1003);
-const EmittersPlugin_1 = __webpack_require__(1011);
-const PolygonMaskPlugin_1 = __webpack_require__(1020);
+const main_slim_1 = __webpack_require__(1024);
+const AbsorbersPlugin_1 = __webpack_require__(1035);
+const EmittersPlugin_1 = __webpack_require__(1043);
+const PolygonMaskPlugin_1 = __webpack_require__(1052);
 class Main extends main_slim_1.MainSlim {
     constructor() {
         super();
@@ -75573,25 +79648,25 @@ exports.Main = Main;
 
 
 /***/ }),
-/* 992 */
+/* 1024 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MainSlim = void 0;
-const tslib_1 = __webpack_require__(877);
-const SquareDrawer_1 = __webpack_require__(993);
-const TextDrawer_1 = __webpack_require__(994);
-const ImageDrawer_1 = __webpack_require__(995);
-const Utils_1 = __webpack_require__(879);
-const Types_1 = __webpack_require__(897);
-const LineDrawer_1 = __webpack_require__(996);
-const CircleDrawer_1 = __webpack_require__(997);
-const TriangleDrawer_1 = __webpack_require__(998);
-const StarDrawer_1 = __webpack_require__(1000);
-const PolygonDrawer_1 = __webpack_require__(1001);
-const Loader_1 = __webpack_require__(1002);
+const tslib_1 = __webpack_require__(909);
+const SquareDrawer_1 = __webpack_require__(1025);
+const TextDrawer_1 = __webpack_require__(1026);
+const ImageDrawer_1 = __webpack_require__(1027);
+const Utils_1 = __webpack_require__(911);
+const Types_1 = __webpack_require__(929);
+const LineDrawer_1 = __webpack_require__(1028);
+const CircleDrawer_1 = __webpack_require__(1029);
+const TriangleDrawer_1 = __webpack_require__(1030);
+const StarDrawer_1 = __webpack_require__(1032);
+const PolygonDrawer_1 = __webpack_require__(1033);
+const Loader_1 = __webpack_require__(1034);
 class MainSlim {
     constructor() {
         this.initialized = false;
@@ -75668,7 +79743,7 @@ exports.MainSlim = MainSlim;
 
 
 /***/ }),
-/* 993 */
+/* 1025 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75684,16 +79759,16 @@ exports.SquareDrawer = SquareDrawer;
 
 
 /***/ }),
-/* 994 */
+/* 1026 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TextDrawer = void 0;
-const tslib_1 = __webpack_require__(877);
-const Utils_1 = __webpack_require__(879);
-const Enums_1 = __webpack_require__(883);
+const tslib_1 = __webpack_require__(909);
+const Utils_1 = __webpack_require__(911);
+const Enums_1 = __webpack_require__(915);
 class TextDrawer {
     init(container) {
         var _a;
@@ -75753,16 +79828,16 @@ exports.TextDrawer = TextDrawer;
 
 
 /***/ }),
-/* 995 */
+/* 1027 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ImageDrawer = void 0;
-const tslib_1 = __webpack_require__(877);
-const Utils_1 = __webpack_require__(879);
-const Enums_1 = __webpack_require__(883);
+const tslib_1 = __webpack_require__(909);
+const Utils_1 = __webpack_require__(911);
+const Enums_1 = __webpack_require__(915);
 class ImageDrawer {
     constructor() {
         this.images = [];
@@ -75848,7 +79923,7 @@ exports.ImageDrawer = ImageDrawer;
 
 
 /***/ }),
-/* 996 */
+/* 1028 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75865,7 +79940,7 @@ exports.LineDrawer = LineDrawer;
 
 
 /***/ }),
-/* 997 */
+/* 1029 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75881,14 +79956,14 @@ exports.CircleDrawer = CircleDrawer;
 
 
 /***/ }),
-/* 998 */
+/* 1030 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TriangleDrawer = void 0;
-const PolygonDrawerBase_1 = __webpack_require__(999);
+const PolygonDrawerBase_1 = __webpack_require__(1031);
 class TriangleDrawer extends PolygonDrawerBase_1.PolygonDrawerBase {
     getSidesData(particle, radius) {
         return {
@@ -75910,7 +79985,7 @@ exports.TriangleDrawer = TriangleDrawer;
 
 
 /***/ }),
-/* 999 */
+/* 1031 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75942,7 +80017,7 @@ exports.PolygonDrawerBase = PolygonDrawerBase;
 
 
 /***/ }),
-/* 1000 */
+/* 1032 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75968,14 +80043,14 @@ exports.StarDrawer = StarDrawer;
 
 
 /***/ }),
-/* 1001 */
+/* 1033 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PolygonDrawer = void 0;
-const PolygonDrawerBase_1 = __webpack_require__(999);
+const PolygonDrawerBase_1 = __webpack_require__(1031);
 class PolygonDrawer extends PolygonDrawerBase_1.PolygonDrawerBase {
     getSidesData(particle, radius) {
         var _a, _b;
@@ -76003,16 +80078,16 @@ exports.PolygonDrawer = PolygonDrawer;
 
 
 /***/ }),
-/* 1002 */
+/* 1034 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Loader = void 0;
-const tslib_1 = __webpack_require__(877);
-const Container_1 = __webpack_require__(876);
-const Utils_1 = __webpack_require__(879);
+const tslib_1 = __webpack_require__(909);
+const Container_1 = __webpack_require__(908);
+const Utils_1 = __webpack_require__(911);
 const tsParticlesDom = [];
 class Loader {
     static dom() {
@@ -76211,18 +80286,18 @@ exports.Loader = Loader;
 
 
 /***/ }),
-/* 1003 */
+/* 1035 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AbsorbersPlugin = void 0;
-const tslib_1 = __webpack_require__(877);
-const Absorbers_1 = __webpack_require__(1004);
-const Utils_1 = __webpack_require__(879);
-const Enums_1 = __webpack_require__(1009);
-const Absorber_1 = __webpack_require__(1006);
+const tslib_1 = __webpack_require__(909);
+const Absorbers_1 = __webpack_require__(1036);
+const Utils_1 = __webpack_require__(911);
+const Enums_1 = __webpack_require__(1041);
+const Absorber_1 = __webpack_require__(1038);
 class AbsorbersPlugin {
     constructor() {
         this.id = "absorbers";
@@ -76294,21 +80369,21 @@ class AbsorbersPlugin {
 }
 const plugin = new AbsorbersPlugin();
 exports.AbsorbersPlugin = plugin;
-tslib_1.__exportStar(__webpack_require__(1009), exports);
+tslib_1.__exportStar(__webpack_require__(1041), exports);
 
 
 /***/ }),
-/* 1004 */
+/* 1036 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Absorbers = void 0;
-const AbsorberInstance_1 = __webpack_require__(1005);
-const Utils_1 = __webpack_require__(879);
-const Absorber_1 = __webpack_require__(1006);
-const Enums_1 = __webpack_require__(1009);
+const AbsorberInstance_1 = __webpack_require__(1037);
+const Utils_1 = __webpack_require__(911);
+const Absorber_1 = __webpack_require__(1038);
+const Enums_1 = __webpack_require__(1041);
 class Absorbers {
     constructor(container) {
         this.container = container;
@@ -76421,14 +80496,14 @@ exports.Absorbers = Absorbers;
 
 
 /***/ }),
-/* 1005 */
+/* 1037 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AbsorberInstance = void 0;
-const Utils_1 = __webpack_require__(879);
+const Utils_1 = __webpack_require__(911);
 class AbsorberInstance {
     constructor(absorbers, container, options, position) {
         var _a, _b;
@@ -76572,15 +80647,15 @@ exports.AbsorberInstance = AbsorberInstance;
 
 
 /***/ }),
-/* 1006 */
+/* 1038 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Absorber = void 0;
-const AbsorberSize_1 = __webpack_require__(1007);
-const OptionsColor_1 = __webpack_require__(919);
+const AbsorberSize_1 = __webpack_require__(1039);
+const OptionsColor_1 = __webpack_require__(951);
 class Absorber {
     constructor() {
         this.color = new OptionsColor_1.OptionsColor();
@@ -76624,14 +80699,14 @@ exports.Absorber = Absorber;
 
 
 /***/ }),
-/* 1007 */
+/* 1039 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AbsorberSize = void 0;
-const AbsorberRandomSize_1 = __webpack_require__(1008);
+const AbsorberRandomSize_1 = __webpack_require__(1040);
 class AbsorberSize {
     constructor() {
         this.density = 5;
@@ -76664,7 +80739,7 @@ exports.AbsorberSize = AbsorberSize;
 
 
 /***/ }),
-/* 1008 */
+/* 1040 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -76691,18 +80766,18 @@ exports.AbsorberRandomSize = AbsorberRandomSize;
 
 
 /***/ }),
-/* 1009 */
+/* 1041 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(877);
-tslib_1.__exportStar(__webpack_require__(1010), exports);
+const tslib_1 = __webpack_require__(909);
+tslib_1.__exportStar(__webpack_require__(1042), exports);
 
 
 /***/ }),
-/* 1010 */
+/* 1042 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -76716,18 +80791,18 @@ var AbsorberClickMode;
 
 
 /***/ }),
-/* 1011 */
+/* 1043 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmittersPlugin = void 0;
-const tslib_1 = __webpack_require__(877);
-const Utils_1 = __webpack_require__(879);
-const Emitters_1 = __webpack_require__(1012);
-const Enums_1 = __webpack_require__(1018);
-const Emitter_1 = __webpack_require__(1015);
+const tslib_1 = __webpack_require__(909);
+const Utils_1 = __webpack_require__(911);
+const Emitters_1 = __webpack_require__(1044);
+const Enums_1 = __webpack_require__(1050);
+const Emitter_1 = __webpack_require__(1047);
 class EmittersPlugin {
     constructor() {
         this.id = "emitters";
@@ -76799,21 +80874,21 @@ class EmittersPlugin {
 }
 const plugin = new EmittersPlugin();
 exports.EmittersPlugin = plugin;
-tslib_1.__exportStar(__webpack_require__(1018), exports);
+tslib_1.__exportStar(__webpack_require__(1050), exports);
 
 
 /***/ }),
-/* 1012 */
+/* 1044 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Emitters = void 0;
-const EmitterInstance_1 = __webpack_require__(1013);
-const Utils_1 = __webpack_require__(879);
-const Emitter_1 = __webpack_require__(1015);
-const Enums_1 = __webpack_require__(1018);
+const EmitterInstance_1 = __webpack_require__(1045);
+const Utils_1 = __webpack_require__(911);
+const Emitter_1 = __webpack_require__(1047);
+const Enums_1 = __webpack_require__(1050);
 class Emitters {
     constructor(container) {
         this.container = container;
@@ -76921,16 +80996,16 @@ exports.Emitters = Emitters;
 
 
 /***/ }),
-/* 1013 */
+/* 1045 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmitterInstance = void 0;
-const Utils_1 = __webpack_require__(879);
-const Enums_1 = __webpack_require__(883);
-const EmitterSize_1 = __webpack_require__(1014);
+const Utils_1 = __webpack_require__(911);
+const Enums_1 = __webpack_require__(915);
+const EmitterSize_1 = __webpack_require__(1046);
 class EmitterInstance {
     constructor(emitters, container, emitterOptions, position) {
         var _a, _b, _c;
@@ -77049,14 +81124,14 @@ exports.EmitterInstance = EmitterInstance;
 
 
 /***/ }),
-/* 1014 */
+/* 1046 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmitterSize = void 0;
-const Enums_1 = __webpack_require__(883);
+const Enums_1 = __webpack_require__(915);
 class EmitterSize {
     constructor() {
         this.mode = Enums_1.SizeMode.percent;
@@ -77081,18 +81156,18 @@ exports.EmitterSize = EmitterSize;
 
 
 /***/ }),
-/* 1015 */
+/* 1047 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Emitter = void 0;
-const Enums_1 = __webpack_require__(883);
-const EmitterRate_1 = __webpack_require__(1016);
-const EmitterLife_1 = __webpack_require__(1017);
-const Utils_1 = __webpack_require__(879);
-const EmitterSize_1 = __webpack_require__(1014);
+const Enums_1 = __webpack_require__(915);
+const EmitterRate_1 = __webpack_require__(1048);
+const EmitterLife_1 = __webpack_require__(1049);
+const Utils_1 = __webpack_require__(911);
+const EmitterSize_1 = __webpack_require__(1046);
 class Emitter {
     constructor() {
         this.direction = Enums_1.MoveDirection.none;
@@ -77128,7 +81203,7 @@ exports.Emitter = Emitter;
 
 
 /***/ }),
-/* 1016 */
+/* 1048 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -77155,7 +81230,7 @@ exports.EmitterRate = EmitterRate;
 
 
 /***/ }),
-/* 1017 */
+/* 1049 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -77181,18 +81256,18 @@ exports.EmitterLife = EmitterLife;
 
 
 /***/ }),
-/* 1018 */
+/* 1050 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(877);
-tslib_1.__exportStar(__webpack_require__(1019), exports);
+const tslib_1 = __webpack_require__(909);
+tslib_1.__exportStar(__webpack_require__(1051), exports);
 
 
 /***/ }),
-/* 1019 */
+/* 1051 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -77206,17 +81281,17 @@ var EmitterClickMode;
 
 
 /***/ }),
-/* 1020 */
+/* 1052 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PolygonMaskPlugin = void 0;
-const tslib_1 = __webpack_require__(877);
-const PolygonMaskInstance_1 = __webpack_require__(1021);
-const PolygonMask_1 = __webpack_require__(1026);
-const Enums_1 = __webpack_require__(1022);
+const tslib_1 = __webpack_require__(909);
+const PolygonMaskInstance_1 = __webpack_require__(1053);
+const PolygonMask_1 = __webpack_require__(1058);
+const Enums_1 = __webpack_require__(1054);
 class PolygonMaskPlugin {
     constructor() {
         this.id = "polygonMask";
@@ -77242,21 +81317,21 @@ class PolygonMaskPlugin {
 }
 const plugin = new PolygonMaskPlugin();
 exports.PolygonMaskPlugin = plugin;
-tslib_1.__exportStar(__webpack_require__(1022), exports);
+tslib_1.__exportStar(__webpack_require__(1054), exports);
 
 
 /***/ }),
-/* 1021 */
+/* 1053 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PolygonMaskInstance = void 0;
-const tslib_1 = __webpack_require__(877);
-const Enums_1 = __webpack_require__(1022);
-const Utils_1 = __webpack_require__(879);
-const PolygonMask_1 = __webpack_require__(1026);
+const tslib_1 = __webpack_require__(909);
+const Enums_1 = __webpack_require__(1054);
+const Utils_1 = __webpack_require__(911);
+const PolygonMask_1 = __webpack_require__(1058);
 class PolygonMaskInstance {
     constructor(container) {
         this.container = container;
@@ -77707,20 +81782,20 @@ exports.PolygonMaskInstance = PolygonMaskInstance;
 
 
 /***/ }),
-/* 1022 */
+/* 1054 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(877);
-tslib_1.__exportStar(__webpack_require__(1023), exports);
-tslib_1.__exportStar(__webpack_require__(1024), exports);
-tslib_1.__exportStar(__webpack_require__(1025), exports);
+const tslib_1 = __webpack_require__(909);
+tslib_1.__exportStar(__webpack_require__(1055), exports);
+tslib_1.__exportStar(__webpack_require__(1056), exports);
+tslib_1.__exportStar(__webpack_require__(1057), exports);
 
 
 /***/ }),
-/* 1023 */
+/* 1055 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -77738,7 +81813,7 @@ var InlineArrangement;
 
 
 /***/ }),
-/* 1024 */
+/* 1056 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -77753,7 +81828,7 @@ var MoveType;
 
 
 /***/ }),
-/* 1025 */
+/* 1057 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -77770,18 +81845,18 @@ var Type;
 
 
 /***/ }),
-/* 1026 */
+/* 1058 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PolygonMask = void 0;
-const Enums_1 = __webpack_require__(1022);
-const Draw_1 = __webpack_require__(1027);
-const Move_1 = __webpack_require__(1029);
-const Inline_1 = __webpack_require__(1030);
-const LocalSvg_1 = __webpack_require__(1031);
+const Enums_1 = __webpack_require__(1054);
+const Draw_1 = __webpack_require__(1059);
+const Move_1 = __webpack_require__(1061);
+const Inline_1 = __webpack_require__(1062);
+const LocalSvg_1 = __webpack_require__(1063);
 class PolygonMask {
     constructor() {
         this.draw = new Draw_1.Draw();
@@ -77845,15 +81920,15 @@ exports.PolygonMask = PolygonMask;
 
 
 /***/ }),
-/* 1027 */
+/* 1059 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Draw = void 0;
-const DrawStroke_1 = __webpack_require__(1028);
-const OptionsColor_1 = __webpack_require__(919);
+const DrawStroke_1 = __webpack_require__(1060);
+const OptionsColor_1 = __webpack_require__(951);
 class Draw {
     constructor() {
         this.enable = false;
@@ -77889,15 +81964,15 @@ exports.Draw = Draw;
 
 
 /***/ }),
-/* 1028 */
+/* 1060 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DrawStroke = void 0;
-const OptionsColor_1 = __webpack_require__(919);
-const Utils_1 = __webpack_require__(879);
+const OptionsColor_1 = __webpack_require__(951);
+const Utils_1 = __webpack_require__(911);
 class DrawStroke {
     constructor() {
         this.color = new OptionsColor_1.OptionsColor();
@@ -77924,14 +81999,14 @@ exports.DrawStroke = DrawStroke;
 
 
 /***/ }),
-/* 1029 */
+/* 1061 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Move = void 0;
-const Enums_1 = __webpack_require__(1022);
+const Enums_1 = __webpack_require__(1054);
 class Move {
     constructor() {
         this.radius = 10;
@@ -77952,14 +82027,14 @@ exports.Move = Move;
 
 
 /***/ }),
-/* 1030 */
+/* 1062 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Inline = void 0;
-const Enums_1 = __webpack_require__(1022);
+const Enums_1 = __webpack_require__(1054);
 class Inline {
     constructor() {
         this.arrangement = Enums_1.InlineArrangement.onePerPoint;
@@ -77976,7 +82051,7 @@ exports.Inline = Inline;
 
 
 /***/ }),
-/* 1031 */
+/* 1063 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -78011,7 +82086,7 @@ exports.LocalSvg = LocalSvg;
 
 
 /***/ }),
-/* 1032 */
+/* 1064 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -95168,38 +99243,10 @@ exports.LocalSvg = LocalSvg;
   else {}
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(29), __webpack_require__(1033)(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(29), __webpack_require__(892)(module)))
 
 /***/ }),
-/* 1033 */
-/***/ (function(module, exports) {
-
-module.exports = function(module) {
-	if (!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if (!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-/* 1034 */
+/* 1065 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -95220,7 +99267,7 @@ var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
 
-var _MemberList = __webpack_require__(1035);
+var _MemberList = __webpack_require__(1066);
 
 var _FetchData = __webpack_require__(306);
 
@@ -95313,7 +99360,7 @@ var MemberListApp = exports.MemberListApp = function MemberListApp(props) {
 };
 
 /***/ }),
-/* 1035 */
+/* 1066 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -95362,7 +99409,7 @@ var MemberList = exports.MemberList = function MemberList(props) {
 };
 
 /***/ }),
-/* 1036 */
+/* 1067 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -95751,7 +99798,7 @@ var FeedApp = exports.FeedApp = function FeedApp(props) {
 };
 
 /***/ }),
-/* 1037 */
+/* 1068 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -95776,7 +99823,7 @@ var _reactRouterDom = __webpack_require__(15);
 
 var _header = __webpack_require__(34);
 
-var _BeforeLoginPosts = __webpack_require__(1038);
+var _BeforeLoginPosts = __webpack_require__(1069);
 
 var _react2 = __webpack_require__(35);
 
@@ -95820,7 +99867,7 @@ var BeforeLogin = exports.BeforeLogin = function BeforeLogin() {
 };
 
 /***/ }),
-/* 1038 */
+/* 1069 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -96114,4053 +100161,6 @@ var BeforeLoginPosts = exports.BeforeLoginPosts = function BeforeLoginPosts(prop
     )
   );
 };
-
-/***/ }),
-/* 1039 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ClarifaiApp = ClarifaiApp;
-async function ClarifaiApp() {
-  var Clarifai = __webpack_require__(1040);
-
-  var app = new Clarifai.App({ apiKey: 'f8b4214227f34f958228b93cd7db08f1' });
-
-  app.models.predict(Clarifai.GENERAL_MODEL, 'https://media-01.creema.net/user/162879/exhibits/4244606/0_3c81efa116f1945288a4cb3e5d7f7cfe_583x585.jpg').then(function (response) {
-    console.log('Clarifai', response);
-  }).catch(function (err) {
-    console.log(err);
-  });
-}
-
-/***/ }),
-/* 1040 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global) {
-
-var App = __webpack_require__(1041);
-
-var _require = __webpack_require__(1059),
-    version = _require.version;
-
-module.exports = global.Clarifai = {
-  version: version,
-  App: App,
-  GENERAL_MODEL: 'aaa03c23b3724a16a56b629203edc62c',
-  FOOD_MODEL: 'bd367be194cf45149e75f01d59f77ba7',
-  TRAVEL_MODEL: 'eee28c313d69466f836ab83287a54ed9',
-  NSFW_MODEL: 'e9576d86d2004ed1a38ba0cf39ecb4b1',
-  WEDDINGS_MODEL: 'c386b7a870114f4a87477c0824499348',
-  WEDDING_MODEL: 'c386b7a870114f4a87477c0824499348',
-  COLOR_MODEL: 'eeed0b6733a644cea07cf4c60f87ebb7',
-  CLUSTER_MODEL: 'cccbe437d6e54e2bb911c6aa292fb072',
-  FACE_DETECT_MODEL: 'a403429f2ddf4b49b307e318f00e528b',
-  FOCUS_MODEL: 'c2cf7cecd8a6427da375b9f35fcd2381',
-  LOGO_MODEL: 'c443119bf2ed4da98487520d01a0b1e3',
-  DEMOGRAPHICS_MODEL: 'c0c0ac362b03416da06ab3fa36fb58e3',
-  GENERAL_EMBED_MODEL: 'bbb5f41425b8468d9b7a554ff10f8581',
-  FACE_EMBED_MODEL: 'd02b4508df58432fbb84e800597b8959',
-  APPAREL_MODEL: 'e0be3b9d6a454f0493ac3a30784001ff',
-  MODERATION_MODEL: 'd16f390eb32cad478c7ae150069bd2c6',
-  TEXTURES_AND_PATTERNS: 'fbefb47f9fdb410e8ce14f24f54b47ff',
-  LANDSCAPE_QUALITY: 'bec14810deb94c40a05f1f0eb3c91403',
-  PORTRAIT_QUALITY: 'de9bd05cfdbf4534af151beb2a5d0953',
-  CELEBRITY_MODEL: 'e466caa0619f444ab97497640cefc4dc'
-};
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(29)))
-
-/***/ }),
-/* 1041 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global, process) {
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var axios = __webpack_require__(515);
-
-var _require = __webpack_require__(1042),
-    checkType = _require.checkType;
-
-var Models = __webpack_require__(1043);
-var Inputs = __webpack_require__(1062);
-var Concepts = __webpack_require__(1060);
-var Workflow = __webpack_require__(1066);
-var Workflows = __webpack_require__(1067);
-var Solutions = __webpack_require__(1068);
-
-var _require2 = __webpack_require__(1056),
-    API = _require2.API,
-    ERRORS = _require2.ERRORS,
-    getBasePath = _require2.getBasePath;
-
-var TOKEN_PATH = API.TOKEN_PATH;
-
-
-if (typeof window !== 'undefined' && !('Promise' in window)) {
-  window.Promise = __webpack_require__(1044);
-}
-
-if (typeof global !== 'undefined' && !('Promise' in global)) {
-  global.Promise = __webpack_require__(1044);
-}
-
-/**
- * top-level class that allows access to models, inputs and concepts
- * @class
- */
-
-var App = function () {
-  function App(arg1, arg2, arg3) {
-    _classCallCheck(this, App);
-
-    var optionsObj = arg1;
-    if ((typeof arg1 === 'undefined' ? 'undefined' : _typeof(arg1)) !== 'object' || arg1 === null) {
-      optionsObj = arg3 || {};
-      optionsObj.clientId = arg1;
-      optionsObj.clientSecret = arg2;
-    }
-    this._validate(optionsObj);
-    this._init(optionsObj);
-  }
-
-  /**
-   * Gets a token from the API using client credentials
-   * @return {Promise(token, error)} A Promise that is fulfilled with the token string or rejected with an error
-   *
-   * @deprecated Please switch to using the API key.
-   */
-
-
-  _createClass(App, [{
-    key: 'getToken',
-    value: function getToken() {
-      return this._config.token();
-    }
-
-    /**
-     * Sets the token to use for the API
-     * @param {String}         _token    The token you are setting
-     * @return {Boolean}                 true if token has valid fields, false if not
-     *
-     * @deprecated Please switch to using the API key.
-     */
-
-  }, {
-    key: 'setToken',
-    value: function setToken(_token) {
-      var token = _token;
-      var now = new Date().getTime();
-      if (typeof _token === 'string') {
-        token = {
-          accessToken: _token,
-          expiresIn: 176400
-        };
-      } else {
-        token = {
-          accessToken: _token.access_token || _token.accessToken,
-          expiresIn: _token.expires_in || _token.expiresIn
-        };
-      }
-      if (token.accessToken && token.expiresIn || token.access_token && token.expires_in) {
-        if (!token.expireTime) {
-          token.expireTime = now + token.expiresIn * 1000;
-        }
-        this._config._token = token;
-        return true;
-      }
-      return false;
-    }
-  }, {
-    key: '_validate',
-    value: function _validate(_ref) {
-      var clientId = _ref.clientId,
-          clientSecret = _ref.clientSecret,
-          token = _ref.token,
-          apiKey = _ref.apiKey,
-          sessionToken = _ref.sessionToken;
-
-      if (clientId || clientSecret) {
-        console.warn('Client ID/secret has been deprecated. Please switch to using the API key. See here how to do ' + 'the switch: https://blog.clarifai.com/introducing-api-keys-a-safer-way-to-authenticate-your-applications');
-      }
-      if ((!clientId || !clientSecret) && !token && !apiKey && !sessionToken) {
-        throw ERRORS.paramsRequired(['apiKey']);
-      }
-    }
-  }, {
-    key: '_init',
-    value: function _init(options) {
-      var _this = this;
-
-      var apiEndpoint = options.apiEndpoint || process && process.env && process.env.API_ENDPOINT || 'https://api.clarifai.com';
-      this._config = {
-        apiEndpoint: apiEndpoint,
-        clientId: options.clientId,
-        clientSecret: options.clientSecret,
-        apiKey: options.apiKey,
-        sessionToken: options.sessionToken,
-        basePath: getBasePath(apiEndpoint, options.userId, options.appId),
-        token: function token() {
-          return new Promise(function (resolve, reject) {
-            var now = new Date().getTime();
-            if (checkType(/Object/, _this._config._token) && _this._config._token.expireTime > now) {
-              resolve(_this._config._token);
-            } else {
-              _this._getToken(resolve, reject);
-            }
-          });
-        }
-      };
-      if (options.token) {
-        this.setToken(options.token);
-      }
-      this.models = new Models(this._config);
-      this.inputs = new Inputs(this._config);
-      this.concepts = new Concepts(this._config);
-      this.workflow = new Workflow(this._config);
-      this.workflows = new Workflows(this._config);
-      this.solutions = new Solutions(this._config);
-    }
-
-    /**
-     * @deprecated Please switch to using the API key.
-     */
-
-  }, {
-    key: '_getToken',
-    value: function _getToken(resolve, reject) {
-      var _this2 = this;
-
-      this._requestToken().then(function (response) {
-        if (response.status === 200) {
-          _this2.setToken(response.data);
-          resolve(_this2._config._token);
-        } else {
-          reject(response);
-        }
-      }, reject);
-    }
-
-    /**
-     * @deprecated Please switch to using the API key.
-     */
-
-  }, {
-    key: '_requestToken',
-    value: function _requestToken() {
-      var url = '' + this._config.basePath + TOKEN_PATH;
-      var clientId = this._config.clientId;
-      var clientSecret = this._config.clientSecret;
-      return axios({
-        'url': url,
-        'method': 'POST',
-        'auth': {
-          'username': clientId,
-          'password': clientSecret
-        }
-      });
-    }
-  }]);
-
-  return App;
-}();
-
-module.exports = App;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(29), __webpack_require__(65)))
-
-/***/ }),
-/* 1042 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SUCCESS_CODES = [200, 201];
-
-module.exports = {
-  isSuccess: function isSuccess(response) {
-    return SUCCESS_CODES.indexOf(response.status) > -1;
-  },
-  deleteEmpty: function deleteEmpty(obj) {
-    var strict = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-    Object.keys(obj).forEach(function (key) {
-      if (obj[key] === null || obj[key] === undefined || strict === true && (obj[key] === '' || obj[key].length === 0 || Object.keys(obj[key]).length === 0)) {
-        delete obj[key];
-      }
-    });
-  },
-  clone: function clone(obj) {
-    var keys = Object.keys(obj);
-    var copy = {};
-    keys.forEach(function (k) {
-      copy[k] = obj[k];
-    });
-    return copy;
-  },
-  checkType: function checkType(regex, val) {
-    if (regex instanceof RegExp === false) {
-      regex = new RegExp(regex);
-    }
-    return regex.test(Object.prototype.toString.call(val));
-  }
-};
-
-/***/ }),
-/* 1043 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var axios = __webpack_require__(515);
-var Promise = __webpack_require__(1044);
-var Model = __webpack_require__(1054);
-var Concepts = __webpack_require__(1060);
-
-var _require = __webpack_require__(1056),
-    API = _require.API,
-    ERRORS = _require.ERRORS,
-    replaceVars = _require.replaceVars;
-
-var _require2 = __webpack_require__(1042),
-    isSuccess = _require2.isSuccess,
-    checkType = _require2.checkType,
-    clone = _require2.clone;
-
-var _require3 = __webpack_require__(1057),
-    wrapToken = _require3.wrapToken,
-    formatModel = _require3.formatModel;
-
-var MODELS_PATH = API.MODELS_PATH,
-    MODEL_PATH = API.MODEL_PATH,
-    MODEL_SEARCH_PATH = API.MODEL_SEARCH_PATH,
-    MODEL_VERSION_PATH = API.MODEL_VERSION_PATH;
-
-/**
- * class representing a collection of models
- * @class
- */
-
-var Models = function () {
-  function Models(_config) {
-    var _this = this;
-
-    var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-
-    _classCallCheck(this, Models);
-
-    this._config = _config;
-    this.rawData = rawData;
-    rawData.forEach(function (modelData, index) {
-      _this[index] = new Model(_this._config, modelData);
-    });
-    this.length = rawData.length;
-  }
-
-  /**
-   * Returns a Model instance given model id or name. It will call search if name is given.
-   * @param {string|object}    model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
-   *   @param {string}           model.id          Model id
-   *   @param {string}           model.name        Model name
-   *   @param {string}           model.version     Model version
-   *   @param {string}           model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
-   * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
-   */
-
-
-  _createClass(Models, [{
-    key: 'initModel',
-    value: function initModel(model) {
-      var _this2 = this;
-
-      var data = {};
-      var fn = void 0;
-      if (checkType(/String/, model)) {
-        data.id = model;
-      } else {
-        data = model;
-      }
-      if (data.id) {
-        fn = function fn(resolve, reject) {
-          resolve(new Model(_this2._config, data));
-        };
-      } else {
-        fn = function fn(resolve, reject) {
-          _this2.search(data.name, data.type).then(function (models) {
-            if (data.version) {
-              resolve(models.rawData.filter(function (model) {
-                return model.modelVersion.id === data.version;
-              }));
-            } else {
-              resolve(models[0]);
-            }
-          }, reject).catch(reject);
-        };
-      }
-      return new Promise(fn);
-    }
-
-    /**
-     * Calls predict given model info and inputs to predict on
-     * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
-     *   @param {string}                   model.id          Model id
-     *   @param {string}                   model.name        Model name
-     *   @param {string}                   model.version     Model version
-     *   @param {string}                   model.language    Model language (only for Clarifai's public models)
-     *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
-     * @param {object[]|object|string}   inputs    An array of objects/object/string pointing to an image resource. A string can either be a url or base64 image bytes. Object keys explained below:
-     *    @param {object}                  inputs[].image     Object with keys explained below:
-     *       @param {string}                 inputs[].image.(url|base64)  Can be a publicly accessibly url or base64 string representing image bytes (required)
-     * @param {boolean} isVideo  indicates if the input should be processed as a video (default false)
-     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-     */
-
-  }, {
-    key: 'predict',
-    value: function predict(model, inputs) {
-      var _this3 = this;
-
-      var config = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-      if (checkType(/Boolean/, config)) {
-        console.warn('"isVideo" argument is deprecated, consider using the configuration object instead');
-        config = {
-          video: config
-        };
-      }
-      if (model.language) {
-        config.language = model.language;
-      }
-      return new Promise(function (resolve, reject) {
-        _this3.initModel(model).then(function (modelObj) {
-          modelObj.predict(inputs, config).then(resolve, reject).catch(reject);
-        }, reject);
-      });
-    }
-
-    /**
-     * Calls train on a model and creates a new model version given model info
-     * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
-     *   @param {string}                   model.id          Model id
-     *   @param {string}                   model.name        Model name
-     *   @param {string}                   model.version     Model version
-     *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
-     * @param {boolean}                  sync        If true, this returns after model has completely trained. If false, this immediately returns default api response.
-     * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
-     */
-
-  }, {
-    key: 'train',
-    value: function train(model) {
-      var _this4 = this;
-
-      var sync = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-      return new Promise(function (resolve, reject) {
-        _this4.initModel(model).then(function (model) {
-          model.train(sync).then(resolve, reject).catch(reject);
-        }, reject);
-      });
-    }
-
-    /**
-     *
-     * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
-     *   @param {string}                   model.id          Model id
-     *   @param {string}                   model.name        Model name
-     *   @param {string}                   model.version     Model version
-     *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
-     * @param {string} input A string pointing to an image resource. A string must be a url
-     * @param {object} config A configuration object consisting of the following required keys
-     *   @param {string} config.id The id of the feedback request
-     *   @param {object} config.data The feedback data to be sent
-     *   @param {object} config.info Meta data related to the feedback request
-     */
-
-  }, {
-    key: 'feedback',
-    value: function feedback(model, input, config) {
-      var _this5 = this;
-
-      return new Promise(function (resolve, reject) {
-        _this5.initModel(model).then(function (model) {
-          return model.feedback(input, config);
-        }).then(function (d) {
-          return resolve(d);
-        }).catch(function (e) {
-          return reject(e);
-        });
-      });
-    }
-
-    /**
-     * Returns a version of the model specified by its id
-     * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
-     *   @param {string}                   model.id          Model id
-     *   @param {string}                   model.name        Model name
-     *   @param {string}                   model.version     Model version
-     *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
-     * @param {string}     versionId   The model's id
-     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-     */
-
-  }, {
-    key: 'getVersion',
-    value: function getVersion(model, versionId) {
-      var _this6 = this;
-
-      return new Promise(function (resolve, reject) {
-        _this6.initModel(model).then(function (model) {
-          model.getVersion(versionId).then(resolve, reject).catch(reject);
-        }, reject);
-      });
-    }
-
-    /**
-     * Returns a list of versions of the model
-     * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
-     *   @param {string}                   model.id          Model id
-     *   @param {string}                   model.name        Model name
-     *   @param {string}                   model.version     Model version
-     *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
-     * @param {object}                   options     Object with keys explained below: (optional)
-     *   @param {number}                   options.page        The page number (optional, default: 1)
-     *   @param {number}                   options.perPage     Number of images to return per page (optional, default: 20)
-     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-     */
-
-  }, {
-    key: 'getVersions',
-    value: function getVersions(model) {
-      var _this7 = this;
-
-      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : { page: 1, perPage: 20 };
-
-      return new Promise(function (resolve, reject) {
-        _this7.initModel(model).then(function (model) {
-          model.getVersions(options).then(resolve, reject).catch(reject);
-        }, reject);
-      });
-    }
-
-    /**
-     * Returns all the model's output info
-     * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
-     *   @param {string}                   model.id          Model id
-     *   @param {string}                   model.name        Model name
-     *   @param {string}                   model.version     Model version
-     *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
-     * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
-     */
-
-  }, {
-    key: 'getOutputInfo',
-    value: function getOutputInfo(model) {
-      var _this8 = this;
-
-      return new Promise(function (resolve, reject) {
-        _this8.initModel(model).then(function (model) {
-          model.getOutputInfo().then(resolve, reject).catch(reject);
-        }, reject);
-      });
-    }
-
-    /**
-     * Returns all the models
-     * @param {Object}     options     Object with keys explained below: (optional)
-     *   @param {Number}     options.page        The page number (optional, default: 1)
-     *   @param {Number}     options.perPage     Number of images to return per page (optional, default: 20)
-     * @return {Promise(Models, error)} A Promise that is fulfilled with an instance of Models or rejected with an error
-     */
-
-  }, {
-    key: 'list',
-    value: function list() {
-      var _this9 = this;
-
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { page: 1, perPage: 20 };
-
-      var url = '' + this._config.basePath + MODELS_PATH;
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.get(url, {
-            params: { 'per_page': options.perPage, 'page': options.page },
-            headers: headers
-          }).then(function (response) {
-            if (isSuccess(response)) {
-              resolve(new Models(_this9._config, response.data.models));
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Create a model
-     * @param {string|object}                  model                                  If string, it is assumed to be the model id. Otherwise, if object is given, it can have any of the following keys:
-     *   @param {string}                         model.id                               Model id
-     *   @param {string}                         model.name                             Model name
-     * @param {object[]|string[]|Concepts[]}   conceptsData                           List of objects with ids, concept id strings or an instance of Concepts object
-     * @param {Object}                         options                                Object with keys explained below:
-     *   @param {boolean}                        options.conceptsMutuallyExclusive      Do you expect to see more than one of the concepts in this model in the SAME image? Set to false (default) if so. Otherwise, set to true.
-     *   @param {boolean}                        options.closedEnvironment              Do you expect to run the trained model on images that do not contain ANY of the concepts in the model? Set to false (default) if so. Otherwise, set to true.
-     * @return {Promise(Model, error)} A Promise that is fulfilled with an instance of Model or rejected with an error
-     */
-
-  }, {
-    key: 'create',
-    value: function create(model) {
-      var _this10 = this;
-
-      var conceptsData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-      var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-      var concepts = conceptsData instanceof Concepts ? conceptsData.toObject('id') : conceptsData.map(function (concept) {
-        var val = concept;
-        if (checkType(/String/, concept)) {
-          val = { 'id': concept };
-        }
-        return val;
-      });
-      var modelObj = model;
-      if (checkType(/String/, model)) {
-        modelObj = { id: model, name: model };
-      }
-      if (modelObj.id === undefined) {
-        throw ERRORS.paramsRequired('Model ID');
-      }
-      var url = '' + this._config.basePath + MODELS_PATH;
-      var data = { model: modelObj };
-      data['model']['output_info'] = {
-        'data': {
-          concepts: concepts
-        },
-        'output_config': {
-          'concepts_mutually_exclusive': !!options.conceptsMutuallyExclusive,
-          'closed_environment': !!options.closedEnvironment
-        }
-      };
-
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.post(url, data, { headers: headers }).then(function (response) {
-            if (isSuccess(response)) {
-              resolve(new Model(_this10._config, response.data.model));
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Returns a model specified by ID
-     * @param {String}     id          The model's id
-     * @return {Promise(Model, error)} A Promise that is fulfilled with an instance of Model or rejected with an error
-     */
-
-  }, {
-    key: 'get',
-    value: function get(id) {
-      var _this11 = this;
-
-      var url = '' + this._config.basePath + replaceVars(MODEL_PATH, [id]);
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.get(url, { headers: headers }).then(function (response) {
-            if (isSuccess(response)) {
-              resolve(new Model(_this11._config, response.data.model));
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Update a model's or a list of models' output config or concepts
-     * @param {object|object[]}      models                                 Can be a single model object or list of model objects with the following attrs:
-     *   @param {string}               models.id                                    The id of the model to apply changes to (Required)
-     *   @param {string}               models.name                                  The new name of the model to update with
-     *   @param {boolean}              models.conceptsMutuallyExclusive             Do you expect to see more than one of the concepts in this model in the SAME image? Set to false (default) if so. Otherwise, set to true.
-     *   @param {boolean}              models.closedEnvironment                     Do you expect to run the trained model on images that do not contain ANY of the concepts in the model? Set to false (default) if so. Otherwise, set to true.
-     *   @param {object[]}             models.concepts                              An array of concept objects or string
-     *     @param {object|string}        models.concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
-     *       @param {string}             models.concepts[].concept.id                   The id of the concept to attach to the model
-     *   @param {object[]}             models.action                                The action to perform on the given concepts. Possible values are 'merge', 'remove', or 'overwrite'. Default: 'merge'
-     * @return {Promise(Models, error)} A Promise that is fulfilled with an instance of Models or rejected with an error
-     */
-
-  }, {
-    key: 'update',
-    value: function update(models) {
-      var _this12 = this;
-
-      var url = '' + this._config.basePath + MODELS_PATH;
-      var modelsList = Array.isArray(models) ? models : [models];
-      var data = { models: modelsList.map(formatModel) };
-      data['action'] = models.action || 'merge';
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.patch(url, data, { headers: headers }).then(function (response) {
-            if (isSuccess(response)) {
-              resolve(new Models(_this12._config, response.data.models));
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Update model by merging concepts
-     * @param {object|object[]}      model                                 Can be a single model object or list of model objects with the following attrs:
-     *   @param {string}               model.id                                    The id of the model to apply changes to (Required)
-     *   @param {object[]}             model.concepts                              An array of concept objects or string
-     *     @param {object|string}        model.concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
-     *       @param {string}             model.concepts[].concept.id                   The id of the concept to attach to the model
-     */
-
-  }, {
-    key: 'mergeConcepts',
-    value: function mergeConcepts() {
-      var model = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-      model.action = 'merge';
-      return this.update(model);
-    }
-
-    /**
-     * Update model by removing concepts
-     * @param {object|object[]}      model                                 Can be a single model object or list of model objects with the following attrs:
-     *   @param {string}               model.id                                    The id of the model to apply changes to (Required)
-     *   @param {object[]}             model.concepts                              An array of concept objects or string
-     *     @param {object|string}        model.concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
-     *       @param {string}             model.concepts[].concept.id                   The id of the concept to attach to the model
-     */
-
-  }, {
-    key: 'deleteConcepts',
-    value: function deleteConcepts() {
-      var model = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-      model.action = 'remove';
-      return this.update(model);
-    }
-
-    /**
-     * Update model by overwriting concepts
-     * @param {object|object[]}      model                                 Can be a single model object or list of model objects with the following attrs:
-     *   @param {string}               model.id                                    The id of the model to apply changes to (Required)
-     *   @param {object[]}             model.concepts                              An array of concept objects or string
-     *     @param {object|string}        model.concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
-     *       @param {string}             model.concepts[].concept.id                   The id of the concept to attach to the model
-     */
-
-  }, {
-    key: 'overwriteConcepts',
-    value: function overwriteConcepts() {
-      var model = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-      model.action = 'overwrite';
-      return this.update(model);
-    }
-
-    /**
-     * Deletes all models (if no ids and versionId given) or a model (if given id) or a model version (if given id and verion id)
-     * @param {String|String[]}      ids         Can be a single string or an array of strings representing the model ids
-     * @param {String}               versionId   The model's version id
-     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-     */
-
-  }, {
-    key: 'delete',
-    value: function _delete(ids) {
-      var versionId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-      var request = void 0,
-          url = void 0,
-          data = void 0;
-      var id = ids;
-
-      if (checkType(/String/, ids) || checkType(/Array/, ids) && ids.length === 1) {
-        if (versionId) {
-          url = '' + this._config.basePath + replaceVars(MODEL_VERSION_PATH, [id, versionId]);
-        } else {
-          url = '' + this._config.basePath + replaceVars(MODEL_PATH, [id]);
-        }
-        request = wrapToken(this._config, function (headers) {
-          return new Promise(function (resolve, reject) {
-            axios.delete(url, { headers: headers }).then(function (response) {
-              var data = clone(response.data);
-              data.rawData = clone(response.data);
-              resolve(data);
-            }, reject);
-          });
-        });
-      } else {
-        if (!ids && !versionId) {
-          url = '' + this._config.basePath + MODELS_PATH;
-          data = { 'delete_all': true };
-        } else if (!versionId && ids.length > 1) {
-          url = '' + this._config.basePath + MODELS_PATH;
-          data = { ids: ids };
-        } else {
-          throw ERRORS.INVALID_DELETE_ARGS;
-        }
-        request = wrapToken(this._config, function (headers) {
-          return new Promise(function (resolve, reject) {
-            axios({
-              method: 'delete',
-              url: url,
-              data: data,
-              headers: headers
-            }).then(function (response) {
-              var data = clone(response.data);
-              data.rawData = clone(response.data);
-              resolve(data);
-            }, reject);
-          });
-        });
-      }
-
-      return request;
-    }
-
-    /**
-     * Search for models by name or type
-     * @param {String}     name        The model name
-     * @param {String}     type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
-     * @return {Promise(models, error)} A Promise that is fulfilled with an instance of Models or rejected with an error
-     */
-
-  }, {
-    key: 'search',
-    value: function search(name) {
-      var _this13 = this;
-
-      var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-      var url = '' + this._config.basePath + MODEL_SEARCH_PATH;
-      return wrapToken(this._config, function (headers) {
-        var params = {
-          'model_query': {
-            name: name,
-            type: type
-          }
-        };
-        return new Promise(function (resolve, reject) {
-          axios.post(url, params, { headers: headers }).then(function (response) {
-            if (isSuccess(response)) {
-              resolve(new Models(_this13._config, response.data.models));
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-  }]);
-
-  return Models;
-}();
-
-module.exports = Models;
-
-/***/ }),
-/* 1044 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(1045)
-
-
-/***/ }),
-/* 1045 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(1046);
-__webpack_require__(1048);
-__webpack_require__(1049);
-__webpack_require__(1050);
-__webpack_require__(1051);
-__webpack_require__(1053);
-
-
-/***/ }),
-/* 1046 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var asap = __webpack_require__(1047);
-
-function noop() {}
-
-// States:
-//
-// 0 - pending
-// 1 - fulfilled with _value
-// 2 - rejected with _value
-// 3 - adopted the state of another promise, _value
-//
-// once the state is no longer pending (0) it is immutable
-
-// All `_` prefixed properties will be reduced to `_{random number}`
-// at build time to obfuscate them and discourage their use.
-// We don't use symbols or Object.defineProperty to fully hide them
-// because the performance isn't good enough.
-
-
-// to avoid using try/catch inside critical functions, we
-// extract them to here.
-var LAST_ERROR = null;
-var IS_ERROR = {};
-function getThen(obj) {
-  try {
-    return obj.then;
-  } catch (ex) {
-    LAST_ERROR = ex;
-    return IS_ERROR;
-  }
-}
-
-function tryCallOne(fn, a) {
-  try {
-    return fn(a);
-  } catch (ex) {
-    LAST_ERROR = ex;
-    return IS_ERROR;
-  }
-}
-function tryCallTwo(fn, a, b) {
-  try {
-    fn(a, b);
-  } catch (ex) {
-    LAST_ERROR = ex;
-    return IS_ERROR;
-  }
-}
-
-module.exports = Promise;
-
-function Promise(fn) {
-  if (typeof this !== 'object') {
-    throw new TypeError('Promises must be constructed via new');
-  }
-  if (typeof fn !== 'function') {
-    throw new TypeError('Promise constructor\'s argument is not a function');
-  }
-  this._40 = 0;
-  this._65 = 0;
-  this._55 = null;
-  this._72 = null;
-  if (fn === noop) return;
-  doResolve(fn, this);
-}
-Promise._37 = null;
-Promise._87 = null;
-Promise._61 = noop;
-
-Promise.prototype.then = function(onFulfilled, onRejected) {
-  if (this.constructor !== Promise) {
-    return safeThen(this, onFulfilled, onRejected);
-  }
-  var res = new Promise(noop);
-  handle(this, new Handler(onFulfilled, onRejected, res));
-  return res;
-};
-
-function safeThen(self, onFulfilled, onRejected) {
-  return new self.constructor(function (resolve, reject) {
-    var res = new Promise(noop);
-    res.then(resolve, reject);
-    handle(self, new Handler(onFulfilled, onRejected, res));
-  });
-}
-function handle(self, deferred) {
-  while (self._65 === 3) {
-    self = self._55;
-  }
-  if (Promise._37) {
-    Promise._37(self);
-  }
-  if (self._65 === 0) {
-    if (self._40 === 0) {
-      self._40 = 1;
-      self._72 = deferred;
-      return;
-    }
-    if (self._40 === 1) {
-      self._40 = 2;
-      self._72 = [self._72, deferred];
-      return;
-    }
-    self._72.push(deferred);
-    return;
-  }
-  handleResolved(self, deferred);
-}
-
-function handleResolved(self, deferred) {
-  asap(function() {
-    var cb = self._65 === 1 ? deferred.onFulfilled : deferred.onRejected;
-    if (cb === null) {
-      if (self._65 === 1) {
-        resolve(deferred.promise, self._55);
-      } else {
-        reject(deferred.promise, self._55);
-      }
-      return;
-    }
-    var ret = tryCallOne(cb, self._55);
-    if (ret === IS_ERROR) {
-      reject(deferred.promise, LAST_ERROR);
-    } else {
-      resolve(deferred.promise, ret);
-    }
-  });
-}
-function resolve(self, newValue) {
-  // Promise Resolution Procedure: https://github.com/promises-aplus/promises-spec#the-promise-resolution-procedure
-  if (newValue === self) {
-    return reject(
-      self,
-      new TypeError('A promise cannot be resolved with itself.')
-    );
-  }
-  if (
-    newValue &&
-    (typeof newValue === 'object' || typeof newValue === 'function')
-  ) {
-    var then = getThen(newValue);
-    if (then === IS_ERROR) {
-      return reject(self, LAST_ERROR);
-    }
-    if (
-      then === self.then &&
-      newValue instanceof Promise
-    ) {
-      self._65 = 3;
-      self._55 = newValue;
-      finale(self);
-      return;
-    } else if (typeof then === 'function') {
-      doResolve(then.bind(newValue), self);
-      return;
-    }
-  }
-  self._65 = 1;
-  self._55 = newValue;
-  finale(self);
-}
-
-function reject(self, newValue) {
-  self._65 = 2;
-  self._55 = newValue;
-  if (Promise._87) {
-    Promise._87(self, newValue);
-  }
-  finale(self);
-}
-function finale(self) {
-  if (self._40 === 1) {
-    handle(self, self._72);
-    self._72 = null;
-  }
-  if (self._40 === 2) {
-    for (var i = 0; i < self._72.length; i++) {
-      handle(self, self._72[i]);
-    }
-    self._72 = null;
-  }
-}
-
-function Handler(onFulfilled, onRejected, promise){
-  this.onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : null;
-  this.onRejected = typeof onRejected === 'function' ? onRejected : null;
-  this.promise = promise;
-}
-
-/**
- * Take a potentially misbehaving resolver function and make sure
- * onFulfilled and onRejected are only called once.
- *
- * Makes no guarantees about asynchrony.
- */
-function doResolve(fn, promise) {
-  var done = false;
-  var res = tryCallTwo(fn, function (value) {
-    if (done) return;
-    done = true;
-    resolve(promise, value);
-  }, function (reason) {
-    if (done) return;
-    done = true;
-    reject(promise, reason);
-  });
-  if (!done && res === IS_ERROR) {
-    done = true;
-    reject(promise, LAST_ERROR);
-  }
-}
-
-
-/***/ }),
-/* 1047 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global) {
-
-// Use the fastest means possible to execute a task in its own turn, with
-// priority over other events including IO, animation, reflow, and redraw
-// events in browsers.
-//
-// An exception thrown by a task will permanently interrupt the processing of
-// subsequent tasks. The higher level `asap` function ensures that if an
-// exception is thrown by a task, that the task queue will continue flushing as
-// soon as possible, but if you use `rawAsap` directly, you are responsible to
-// either ensure that no exceptions are thrown from your task, or to manually
-// call `rawAsap.requestFlush` if an exception is thrown.
-module.exports = rawAsap;
-function rawAsap(task) {
-    if (!queue.length) {
-        requestFlush();
-        flushing = true;
-    }
-    // Equivalent to push, but avoids a function call.
-    queue[queue.length] = task;
-}
-
-var queue = [];
-// Once a flush has been requested, no further calls to `requestFlush` are
-// necessary until the next `flush` completes.
-var flushing = false;
-// `requestFlush` is an implementation-specific method that attempts to kick
-// off a `flush` event as quickly as possible. `flush` will attempt to exhaust
-// the event queue before yielding to the browser's own event loop.
-var requestFlush;
-// The position of the next task to execute in the task queue. This is
-// preserved between calls to `flush` so that it can be resumed if
-// a task throws an exception.
-var index = 0;
-// If a task schedules additional tasks recursively, the task queue can grow
-// unbounded. To prevent memory exhaustion, the task queue will periodically
-// truncate already-completed tasks.
-var capacity = 1024;
-
-// The flush function processes all tasks that have been scheduled with
-// `rawAsap` unless and until one of those tasks throws an exception.
-// If a task throws an exception, `flush` ensures that its state will remain
-// consistent and will resume where it left off when called again.
-// However, `flush` does not make any arrangements to be called again if an
-// exception is thrown.
-function flush() {
-    while (index < queue.length) {
-        var currentIndex = index;
-        // Advance the index before calling the task. This ensures that we will
-        // begin flushing on the next task the task throws an error.
-        index = index + 1;
-        queue[currentIndex].call();
-        // Prevent leaking memory for long chains of recursive calls to `asap`.
-        // If we call `asap` within tasks scheduled by `asap`, the queue will
-        // grow, but to avoid an O(n) walk for every task we execute, we don't
-        // shift tasks off the queue after they have been executed.
-        // Instead, we periodically shift 1024 tasks off the queue.
-        if (index > capacity) {
-            // Manually shift all values starting at the index back to the
-            // beginning of the queue.
-            for (var scan = 0, newLength = queue.length - index; scan < newLength; scan++) {
-                queue[scan] = queue[scan + index];
-            }
-            queue.length -= index;
-            index = 0;
-        }
-    }
-    queue.length = 0;
-    index = 0;
-    flushing = false;
-}
-
-// `requestFlush` is implemented using a strategy based on data collected from
-// every available SauceLabs Selenium web driver worker at time of writing.
-// https://docs.google.com/spreadsheets/d/1mG-5UYGup5qxGdEMWkhP6BWCz053NUb2E1QoUTU16uA/edit#gid=783724593
-
-// Safari 6 and 6.1 for desktop, iPad, and iPhone are the only browsers that
-// have WebKitMutationObserver but not un-prefixed MutationObserver.
-// Must use `global` or `self` instead of `window` to work in both frames and web
-// workers. `global` is a provision of Browserify, Mr, Mrs, or Mop.
-
-/* globals self */
-var scope = typeof global !== "undefined" ? global : self;
-var BrowserMutationObserver = scope.MutationObserver || scope.WebKitMutationObserver;
-
-// MutationObservers are desirable because they have high priority and work
-// reliably everywhere they are implemented.
-// They are implemented in all modern browsers.
-//
-// - Android 4-4.3
-// - Chrome 26-34
-// - Firefox 14-29
-// - Internet Explorer 11
-// - iPad Safari 6-7.1
-// - iPhone Safari 7-7.1
-// - Safari 6-7
-if (typeof BrowserMutationObserver === "function") {
-    requestFlush = makeRequestCallFromMutationObserver(flush);
-
-// MessageChannels are desirable because they give direct access to the HTML
-// task queue, are implemented in Internet Explorer 10, Safari 5.0-1, and Opera
-// 11-12, and in web workers in many engines.
-// Although message channels yield to any queued rendering and IO tasks, they
-// would be better than imposing the 4ms delay of timers.
-// However, they do not work reliably in Internet Explorer or Safari.
-
-// Internet Explorer 10 is the only browser that has setImmediate but does
-// not have MutationObservers.
-// Although setImmediate yields to the browser's renderer, it would be
-// preferrable to falling back to setTimeout since it does not have
-// the minimum 4ms penalty.
-// Unfortunately there appears to be a bug in Internet Explorer 10 Mobile (and
-// Desktop to a lesser extent) that renders both setImmediate and
-// MessageChannel useless for the purposes of ASAP.
-// https://github.com/kriskowal/q/issues/396
-
-// Timers are implemented universally.
-// We fall back to timers in workers in most engines, and in foreground
-// contexts in the following browsers.
-// However, note that even this simple case requires nuances to operate in a
-// broad spectrum of browsers.
-//
-// - Firefox 3-13
-// - Internet Explorer 6-9
-// - iPad Safari 4.3
-// - Lynx 2.8.7
-} else {
-    requestFlush = makeRequestCallFromTimer(flush);
-}
-
-// `requestFlush` requests that the high priority event queue be flushed as
-// soon as possible.
-// This is useful to prevent an error thrown in a task from stalling the event
-// queue if the exception handled by Node.js’s
-// `process.on("uncaughtException")` or by a domain.
-rawAsap.requestFlush = requestFlush;
-
-// To request a high priority event, we induce a mutation observer by toggling
-// the text of a text node between "1" and "-1".
-function makeRequestCallFromMutationObserver(callback) {
-    var toggle = 1;
-    var observer = new BrowserMutationObserver(callback);
-    var node = document.createTextNode("");
-    observer.observe(node, {characterData: true});
-    return function requestCall() {
-        toggle = -toggle;
-        node.data = toggle;
-    };
-}
-
-// The message channel technique was discovered by Malte Ubl and was the
-// original foundation for this library.
-// http://www.nonblocking.io/2011/06/windownexttick.html
-
-// Safari 6.0.5 (at least) intermittently fails to create message ports on a
-// page's first load. Thankfully, this version of Safari supports
-// MutationObservers, so we don't need to fall back in that case.
-
-// function makeRequestCallFromMessageChannel(callback) {
-//     var channel = new MessageChannel();
-//     channel.port1.onmessage = callback;
-//     return function requestCall() {
-//         channel.port2.postMessage(0);
-//     };
-// }
-
-// For reasons explained above, we are also unable to use `setImmediate`
-// under any circumstances.
-// Even if we were, there is another bug in Internet Explorer 10.
-// It is not sufficient to assign `setImmediate` to `requestFlush` because
-// `setImmediate` must be called *by name* and therefore must be wrapped in a
-// closure.
-// Never forget.
-
-// function makeRequestCallFromSetImmediate(callback) {
-//     return function requestCall() {
-//         setImmediate(callback);
-//     };
-// }
-
-// Safari 6.0 has a problem where timers will get lost while the user is
-// scrolling. This problem does not impact ASAP because Safari 6.0 supports
-// mutation observers, so that implementation is used instead.
-// However, if we ever elect to use timers in Safari, the prevalent work-around
-// is to add a scroll event listener that calls for a flush.
-
-// `setTimeout` does not call the passed callback if the delay is less than
-// approximately 7 in web workers in Firefox 8 through 18, and sometimes not
-// even then.
-
-function makeRequestCallFromTimer(callback) {
-    return function requestCall() {
-        // We dispatch a timeout with a specified delay of 0 for engines that
-        // can reliably accommodate that request. This will usually be snapped
-        // to a 4 milisecond delay, but once we're flushing, there's no delay
-        // between events.
-        var timeoutHandle = setTimeout(handleTimer, 0);
-        // However, since this timer gets frequently dropped in Firefox
-        // workers, we enlist an interval handle that will try to fire
-        // an event 20 times per second until it succeeds.
-        var intervalHandle = setInterval(handleTimer, 50);
-
-        function handleTimer() {
-            // Whichever timer succeeds will cancel both timers and
-            // execute the callback.
-            clearTimeout(timeoutHandle);
-            clearInterval(intervalHandle);
-            callback();
-        }
-    };
-}
-
-// This is for `asap.js` only.
-// Its name will be periodically randomized to break any code that depends on
-// its existence.
-rawAsap.makeRequestCallFromTimer = makeRequestCallFromTimer;
-
-// ASAP was originally a nextTick shim included in Q. This was factored out
-// into this ASAP package. It was later adapted to RSVP which made further
-// amendments. These decisions, particularly to marginalize MessageChannel and
-// to capture the MutationObserver implementation in a closure, were integrated
-// back into ASAP proper.
-// https://github.com/tildeio/rsvp.js/blob/cddf7232546a9cf858524b75cde6f9edf72620a7/lib/rsvp/asap.js
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(29)))
-
-/***/ }),
-/* 1048 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var Promise = __webpack_require__(1046);
-
-module.exports = Promise;
-Promise.prototype.done = function (onFulfilled, onRejected) {
-  var self = arguments.length ? this.then.apply(this, arguments) : this;
-  self.then(null, function (err) {
-    setTimeout(function () {
-      throw err;
-    }, 0);
-  });
-};
-
-
-/***/ }),
-/* 1049 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var Promise = __webpack_require__(1046);
-
-module.exports = Promise;
-Promise.prototype['finally'] = function (f) {
-  return this.then(function (value) {
-    return Promise.resolve(f()).then(function () {
-      return value;
-    });
-  }, function (err) {
-    return Promise.resolve(f()).then(function () {
-      throw err;
-    });
-  });
-};
-
-
-/***/ }),
-/* 1050 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-//This file contains the ES6 extensions to the core Promises/A+ API
-
-var Promise = __webpack_require__(1046);
-
-module.exports = Promise;
-
-/* Static Functions */
-
-var TRUE = valuePromise(true);
-var FALSE = valuePromise(false);
-var NULL = valuePromise(null);
-var UNDEFINED = valuePromise(undefined);
-var ZERO = valuePromise(0);
-var EMPTYSTRING = valuePromise('');
-
-function valuePromise(value) {
-  var p = new Promise(Promise._61);
-  p._65 = 1;
-  p._55 = value;
-  return p;
-}
-Promise.resolve = function (value) {
-  if (value instanceof Promise) return value;
-
-  if (value === null) return NULL;
-  if (value === undefined) return UNDEFINED;
-  if (value === true) return TRUE;
-  if (value === false) return FALSE;
-  if (value === 0) return ZERO;
-  if (value === '') return EMPTYSTRING;
-
-  if (typeof value === 'object' || typeof value === 'function') {
-    try {
-      var then = value.then;
-      if (typeof then === 'function') {
-        return new Promise(then.bind(value));
-      }
-    } catch (ex) {
-      return new Promise(function (resolve, reject) {
-        reject(ex);
-      });
-    }
-  }
-  return valuePromise(value);
-};
-
-Promise.all = function (arr) {
-  var args = Array.prototype.slice.call(arr);
-
-  return new Promise(function (resolve, reject) {
-    if (args.length === 0) return resolve([]);
-    var remaining = args.length;
-    function res(i, val) {
-      if (val && (typeof val === 'object' || typeof val === 'function')) {
-        if (val instanceof Promise && val.then === Promise.prototype.then) {
-          while (val._65 === 3) {
-            val = val._55;
-          }
-          if (val._65 === 1) return res(i, val._55);
-          if (val._65 === 2) reject(val._55);
-          val.then(function (val) {
-            res(i, val);
-          }, reject);
-          return;
-        } else {
-          var then = val.then;
-          if (typeof then === 'function') {
-            var p = new Promise(then.bind(val));
-            p.then(function (val) {
-              res(i, val);
-            }, reject);
-            return;
-          }
-        }
-      }
-      args[i] = val;
-      if (--remaining === 0) {
-        resolve(args);
-      }
-    }
-    for (var i = 0; i < args.length; i++) {
-      res(i, args[i]);
-    }
-  });
-};
-
-Promise.reject = function (value) {
-  return new Promise(function (resolve, reject) {
-    reject(value);
-  });
-};
-
-Promise.race = function (values) {
-  return new Promise(function (resolve, reject) {
-    values.forEach(function(value){
-      Promise.resolve(value).then(resolve, reject);
-    });
-  });
-};
-
-/* Prototype Methods */
-
-Promise.prototype['catch'] = function (onRejected) {
-  return this.then(null, onRejected);
-};
-
-
-/***/ }),
-/* 1051 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// This file contains then/promise specific extensions that are only useful
-// for node.js interop
-
-var Promise = __webpack_require__(1046);
-var asap = __webpack_require__(1052);
-
-module.exports = Promise;
-
-/* Static Functions */
-
-Promise.denodeify = function (fn, argumentCount) {
-  if (
-    typeof argumentCount === 'number' && argumentCount !== Infinity
-  ) {
-    return denodeifyWithCount(fn, argumentCount);
-  } else {
-    return denodeifyWithoutCount(fn);
-  }
-};
-
-var callbackFn = (
-  'function (err, res) {' +
-  'if (err) { rj(err); } else { rs(res); }' +
-  '}'
-);
-function denodeifyWithCount(fn, argumentCount) {
-  var args = [];
-  for (var i = 0; i < argumentCount; i++) {
-    args.push('a' + i);
-  }
-  var body = [
-    'return function (' + args.join(',') + ') {',
-    'var self = this;',
-    'return new Promise(function (rs, rj) {',
-    'var res = fn.call(',
-    ['self'].concat(args).concat([callbackFn]).join(','),
-    ');',
-    'if (res &&',
-    '(typeof res === "object" || typeof res === "function") &&',
-    'typeof res.then === "function"',
-    ') {rs(res);}',
-    '});',
-    '};'
-  ].join('');
-  return Function(['Promise', 'fn'], body)(Promise, fn);
-}
-function denodeifyWithoutCount(fn) {
-  var fnLength = Math.max(fn.length - 1, 3);
-  var args = [];
-  for (var i = 0; i < fnLength; i++) {
-    args.push('a' + i);
-  }
-  var body = [
-    'return function (' + args.join(',') + ') {',
-    'var self = this;',
-    'var args;',
-    'var argLength = arguments.length;',
-    'if (arguments.length > ' + fnLength + ') {',
-    'args = new Array(arguments.length + 1);',
-    'for (var i = 0; i < arguments.length; i++) {',
-    'args[i] = arguments[i];',
-    '}',
-    '}',
-    'return new Promise(function (rs, rj) {',
-    'var cb = ' + callbackFn + ';',
-    'var res;',
-    'switch (argLength) {',
-    args.concat(['extra']).map(function (_, index) {
-      return (
-        'case ' + (index) + ':' +
-        'res = fn.call(' + ['self'].concat(args.slice(0, index)).concat('cb').join(',') + ');' +
-        'break;'
-      );
-    }).join(''),
-    'default:',
-    'args[argLength] = cb;',
-    'res = fn.apply(self, args);',
-    '}',
-    
-    'if (res &&',
-    '(typeof res === "object" || typeof res === "function") &&',
-    'typeof res.then === "function"',
-    ') {rs(res);}',
-    '});',
-    '};'
-  ].join('');
-
-  return Function(
-    ['Promise', 'fn'],
-    body
-  )(Promise, fn);
-}
-
-Promise.nodeify = function (fn) {
-  return function () {
-    var args = Array.prototype.slice.call(arguments);
-    var callback =
-      typeof args[args.length - 1] === 'function' ? args.pop() : null;
-    var ctx = this;
-    try {
-      return fn.apply(this, arguments).nodeify(callback, ctx);
-    } catch (ex) {
-      if (callback === null || typeof callback == 'undefined') {
-        return new Promise(function (resolve, reject) {
-          reject(ex);
-        });
-      } else {
-        asap(function () {
-          callback.call(ctx, ex);
-        })
-      }
-    }
-  }
-};
-
-Promise.prototype.nodeify = function (callback, ctx) {
-  if (typeof callback != 'function') return this;
-
-  this.then(function (value) {
-    asap(function () {
-      callback.call(ctx, null, value);
-    });
-  }, function (err) {
-    asap(function () {
-      callback.call(ctx, err);
-    });
-  });
-};
-
-
-/***/ }),
-/* 1052 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// rawAsap provides everything we need except exception management.
-var rawAsap = __webpack_require__(1047);
-// RawTasks are recycled to reduce GC churn.
-var freeTasks = [];
-// We queue errors to ensure they are thrown in right order (FIFO).
-// Array-as-queue is good enough here, since we are just dealing with exceptions.
-var pendingErrors = [];
-var requestErrorThrow = rawAsap.makeRequestCallFromTimer(throwFirstError);
-
-function throwFirstError() {
-    if (pendingErrors.length) {
-        throw pendingErrors.shift();
-    }
-}
-
-/**
- * Calls a task as soon as possible after returning, in its own event, with priority
- * over other events like animation, reflow, and repaint. An error thrown from an
- * event will not interrupt, nor even substantially slow down the processing of
- * other events, but will be rather postponed to a lower priority event.
- * @param {{call}} task A callable object, typically a function that takes no
- * arguments.
- */
-module.exports = asap;
-function asap(task) {
-    var rawTask;
-    if (freeTasks.length) {
-        rawTask = freeTasks.pop();
-    } else {
-        rawTask = new RawTask();
-    }
-    rawTask.task = task;
-    rawAsap(rawTask);
-}
-
-// We wrap tasks with recyclable task objects.  A task object implements
-// `call`, just like a function.
-function RawTask() {
-    this.task = null;
-}
-
-// The sole purpose of wrapping the task is to catch the exception and recycle
-// the task object after its single use.
-RawTask.prototype.call = function () {
-    try {
-        this.task.call();
-    } catch (error) {
-        if (asap.onerror) {
-            // This hook exists purely for testing purposes.
-            // Its name will be periodically randomized to break any code that
-            // depends on its existence.
-            asap.onerror(error);
-        } else {
-            // In a web browser, exceptions are not fatal. However, to avoid
-            // slowing down the queue of pending tasks, we rethrow the error in a
-            // lower priority turn.
-            pendingErrors.push(error);
-            requestErrorThrow();
-        }
-    } finally {
-        this.task = null;
-        freeTasks[freeTasks.length] = this;
-    }
-};
-
-
-/***/ }),
-/* 1053 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var Promise = __webpack_require__(1046);
-
-module.exports = Promise;
-Promise.enableSynchronous = function () {
-  Promise.prototype.isPending = function() {
-    return this.getState() == 0;
-  };
-
-  Promise.prototype.isFulfilled = function() {
-    return this.getState() == 1;
-  };
-
-  Promise.prototype.isRejected = function() {
-    return this.getState() == 2;
-  };
-
-  Promise.prototype.getValue = function () {
-    if (this._65 === 3) {
-      return this._55.getValue();
-    }
-
-    if (!this.isFulfilled()) {
-      throw new Error('Cannot get a value of an unfulfilled promise.');
-    }
-
-    return this._55;
-  };
-
-  Promise.prototype.getReason = function () {
-    if (this._65 === 3) {
-      return this._55.getReason();
-    }
-
-    if (!this.isRejected()) {
-      throw new Error('Cannot get a rejection reason of a non-rejected promise.');
-    }
-
-    return this._55;
-  };
-
-  Promise.prototype.getState = function () {
-    if (this._65 === 3) {
-      return this._55.getState();
-    }
-    if (this._65 === -1 || this._65 === -2) {
-      return 0;
-    }
-
-    return this._65;
-  };
-};
-
-Promise.disableSynchronous = function() {
-  Promise.prototype.isPending = undefined;
-  Promise.prototype.isFulfilled = undefined;
-  Promise.prototype.isRejected = undefined;
-  Promise.prototype.getValue = undefined;
-  Promise.prototype.getReason = undefined;
-  Promise.prototype.getState = undefined;
-};
-
-
-/***/ }),
-/* 1054 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var axios = __webpack_require__(515);
-var ModelVersion = __webpack_require__(1055);
-
-var _require = __webpack_require__(1042),
-    isSuccess = _require.isSuccess,
-    checkType = _require.checkType,
-    clone = _require.clone;
-
-var _require2 = __webpack_require__(1056),
-    API = _require2.API,
-    SYNC_TIMEOUT = _require2.SYNC_TIMEOUT,
-    replaceVars = _require2.replaceVars,
-    STATUS = _require2.STATUS,
-    POLLTIME = _require2.POLLTIME;
-
-var MODEL_QUEUED_FOR_TRAINING = STATUS.MODEL_QUEUED_FOR_TRAINING,
-    MODEL_TRAINING = STATUS.MODEL_TRAINING;
-
-var _require3 = __webpack_require__(1057),
-    wrapToken = _require3.wrapToken,
-    formatMediaPredict = _require3.formatMediaPredict,
-    formatModel = _require3.formatModel,
-    formatObjectForSnakeCase = _require3.formatObjectForSnakeCase;
-
-var MODEL_VERSIONS_PATH = API.MODEL_VERSIONS_PATH,
-    MODEL_VERSION_PATH = API.MODEL_VERSION_PATH,
-    MODELS_PATH = API.MODELS_PATH,
-    MODEL_FEEDBACK_PATH = API.MODEL_FEEDBACK_PATH,
-    MODEL_VERSION_FEEDBACK_PATH = API.MODEL_VERSION_FEEDBACK_PATH,
-    PREDICT_PATH = API.PREDICT_PATH,
-    VERSION_PREDICT_PATH = API.VERSION_PREDICT_PATH,
-    MODEL_INPUTS_PATH = API.MODEL_INPUTS_PATH,
-    MODEL_VERSION_OUTPUT_PATH = API.MODEL_VERSION_OUTPUT_PATH,
-    MODEL_OUTPUT_PATH = API.MODEL_OUTPUT_PATH,
-    MODEL_VERSION_INPUTS_PATH = API.MODEL_VERSION_INPUTS_PATH,
-    MODEL_VERSION_METRICS_PATH = API.MODEL_VERSION_METRICS_PATH;
-
-/**
- * class representing a model
- * @class
- */
-
-var Model = function () {
-  function Model(_config, data) {
-    _classCallCheck(this, Model);
-
-    this._config = _config;
-    this.name = data.name;
-    this.id = data.id;
-    this.createdAt = data.created_at || data.createdAt;
-    this.appId = data.app_id || data.appId;
-    this.outputInfo = data.output_info || data.outputInfo;
-    if (checkType(/(String)/, data.version)) {
-      this.modelVersion = {};
-      this.versionId = data.version;
-    } else {
-      if (data.model_version || data.modelVersion || data.version) {
-        this.modelVersion = new ModelVersion(this._config, data.model_version || data.modelVersion || data.version);
-      }
-      this.versionId = (this.modelVersion || {}).id;
-    }
-    this.rawData = data;
-  }
-
-  /**
-   * Merge concepts to a model
-   * @param {object[]}      concepts    List of concept objects with id
-   * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
-   */
-
-
-  _createClass(Model, [{
-    key: 'mergeConcepts',
-    value: function mergeConcepts() {
-      var concepts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-      var conceptsArr = Array.isArray(concepts) ? concepts : [concepts];
-      return this.update({ action: 'merge', concepts: conceptsArr });
-    }
-
-    /**
-     * Remove concepts from a model
-     * @param {object[]}      concepts    List of concept objects with id
-     * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
-     */
-
-  }, {
-    key: 'deleteConcepts',
-    value: function deleteConcepts() {
-      var concepts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-      var conceptsArr = Array.isArray(concepts) ? concepts : [concepts];
-      return this.update({ action: 'remove', concepts: conceptsArr });
-    }
-
-    /**
-     * Overwrite concepts in a model
-     * @param {object[]}      concepts    List of concept objects with id
-     * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
-     */
-
-  }, {
-    key: 'overwriteConcepts',
-    value: function overwriteConcepts() {
-      var concepts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-      var conceptsArr = Array.isArray(concepts) ? concepts : [concepts];
-      return this.update({ action: 'overwrite', concepts: conceptsArr });
-    }
-
-    /**
-     * Start a model evaluation job
-     * @return {Promise(ModelVersion, error)} A Promise that is fulfilled with a ModelVersion instance or rejected with an error
-     */
-
-  }, {
-    key: 'runModelEval',
-    value: function runModelEval() {
-      var _this = this;
-
-      var url = '' + this._config.basePath + replaceVars(MODEL_VERSION_METRICS_PATH, [this.id, this.versionId]);
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.post(url, {}, { headers: headers }).then(function (response) {
-            if (isSuccess(response)) {
-              resolve(new ModelVersion(_this._config, response.data.model_version));
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Update a model's output config or concepts
-     * @param {object}               model                                 An object with any of the following attrs:
-     *   @param {string}               name                                  The new name of the model to update with
-     *   @param {boolean}              conceptsMutuallyExclusive             Do you expect to see more than one of the concepts in this model in the SAME image? Set to false (default) if so. Otherwise, set to true.
-     *   @param {boolean}              closedEnvironment                     Do you expect to run the trained model on images that do not contain ANY of the concepts in the model? Set to false (default) if so. Otherwise, set to true.
-     *   @param {object[]}             concepts                              An array of concept objects or string
-     *     @param {object|string}        concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
-     *       @param {string}             concepts[].concept.id                   The id of the concept to attach to the model
-     *   @param {object[]}             action                                The action to perform on the given concepts. Possible values are 'merge', 'remove', or 'overwrite'. Default: 'merge'
-     * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
-     */
-
-  }, {
-    key: 'update',
-    value: function update(obj) {
-      var _this2 = this;
-
-      var url = '' + this._config.basePath + MODELS_PATH;
-      var modelData = [obj];
-      var data = { models: modelData.map(function (m) {
-          return formatModel(Object.assign(m, { id: _this2.id }));
-        }) };
-      if (Array.isArray(obj.concepts)) {
-        data['action'] = obj.action || 'merge';
-      }
-
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.patch(url, data, { headers: headers }).then(function (response) {
-            if (isSuccess(response)) {
-              resolve(new Model(_this2._config, response.data.models[0]));
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Create a new model version
-     * @param {boolean}       sync     If true, this returns after model has completely trained. If false, this immediately returns default api response.
-     * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
-     */
-
-  }, {
-    key: 'train',
-    value: function train(sync) {
-      var _this3 = this;
-
-      var url = '' + this._config.basePath + replaceVars(MODEL_VERSIONS_PATH, [this.id]);
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.post(url, null, { headers: headers }).then(function (response) {
-            if (isSuccess(response)) {
-              // Training produces a new model version ID.
-              _this3.versionId = response.data.model.model_version.id;
-
-              if (sync) {
-                var timeStart = Date.now();
-                _this3._pollTrain.bind(_this3)(timeStart, resolve, reject);
-              } else {
-                resolve(new Model(_this3._config, response.data.model));
-              }
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-  }, {
-    key: '_pollTrain',
-    value: function _pollTrain(timeStart, resolve, reject) {
-      var _this4 = this;
-
-      clearTimeout(this.pollTimeout);
-      if (Date.now() - timeStart >= SYNC_TIMEOUT) {
-        return reject({
-          status: 'Error',
-          message: 'Sync call timed out'
-        });
-      }
-      this.getOutputInfo().then(function (model) {
-        var modelStatusCode = model.modelVersion.status.code.toString();
-        if (modelStatusCode === MODEL_QUEUED_FOR_TRAINING || modelStatusCode === MODEL_TRAINING) {
-          _this4.pollTimeout = setTimeout(function () {
-            return _this4._pollTrain(timeStart, resolve, reject);
-          }, POLLTIME);
-        } else {
-          resolve(model);
-        }
-      }, reject).catch(reject);
-    }
-
-    /**
-     * Returns model ouputs according to inputs
-     * @param {object[]|object|string}       inputs    An array of objects/object/string pointing to an image resource. A string can either be a url or base64 image bytes. Object keys explained below:
-     *    @param {object}                      inputs[].image     Object with keys explained below:
-     *       @param {string}                     inputs[].image.(url|base64)   Can be a publicly accessibly url or base64 string representing image bytes (required)
-     *       @param {number[]}                   inputs[].image.crop           An array containing the percent to be cropped from top, left, bottom and right (optional)
-     * @param {object|string} config An object with keys explained below. If a string is passed instead, it will be treated as the language (backwards compatibility)
-     *   @param {string} config.language A string code representing the language to return results in (example: 'zh' for simplified Chinese, 'ru' for Russian, 'ja' for Japanese)
-     *   @param {boolean} config.video indicates if the input should be processed as a video
-     *   @param {object[]} config.selectConcepts An array of concepts to return. Each object in the array will have a form of {name: <CONCEPT_NAME>} or {id: CONCEPT_ID}
-     *   @param {float} config.minValue The minimum confidence threshold that a result must meet. From 0.0 to 1.0
-     *   @param {number} config.maxConcepts The maximum number of concepts to return
-     * @param {boolean} isVideo  Deprecated: indicates if the input should be processed as a video (default false). Deprecated in favor of using config object
-     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-     */
-
-  }, {
-    key: 'predict',
-    value: function predict(inputs) {
-      var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      var isVideo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-
-      if (checkType(/String/, config)) {
-        console.warn('passing the language as a string is deprecated, consider using the configuration object instead');
-        config = {
-          language: config
-        };
-      }
-
-      if (isVideo) {
-        console.warn('"isVideo" argument is deprecated, consider using the configuration object instead');
-        config.video = isVideo;
-      }
-      var video = config.video || false;
-      delete config.video;
-      if (checkType(/(Object|String)/, inputs)) {
-        inputs = [inputs];
-      }
-      var url = '' + this._config.basePath + (this.versionId ? replaceVars(VERSION_PREDICT_PATH, [this.id, this.versionId]) : replaceVars(PREDICT_PATH, [this.id]));
-      return wrapToken(this._config, function (headers) {
-        var params = { inputs: inputs.map(function (input) {
-            return formatMediaPredict(input, video ? 'video' : 'image');
-          }) };
-        if (config && Object.getOwnPropertyNames(config).length > 0) {
-          params['model'] = {
-            output_info: {
-              output_config: formatObjectForSnakeCase(config)
-            }
-          };
-        }
-        return new Promise(function (resolve, reject) {
-          axios.post(url, params, { headers: headers }).then(function (response) {
-            var data = clone(response.data);
-            data.rawData = clone(response.data);
-            resolve(data);
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Returns a version of the model specified by its id
-     * @param {string}     versionId   The model's id
-     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-     */
-
-  }, {
-    key: 'getVersion',
-    value: function getVersion(versionId) {
-      // TODO(Rok) MEDIUM: The version ID isn't URI encoded, as opposed to the model ID. This should probably be
-      //  consistent - i.e. the same in both cases.
-      var url = '' + this._config.basePath + replaceVars(MODEL_VERSION_PATH, [this.id, versionId]);
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.get(url, { headers: headers }).then(function (response) {
-            var data = clone(response.data);
-            data.rawData = clone(response.data);
-            resolve(data);
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Returns a list of versions of the model
-     * @param {object}     options     Object with keys explained below: (optional)
-     *   @param {number}     options.page        The page number (optional, default: 1)
-     *   @param {number}     options.perPage     Number of images to return per page (optional, default: 20)
-     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-     */
-
-  }, {
-    key: 'getVersions',
-    value: function getVersions() {
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { page: 1, perPage: 20 };
-
-      var url = '' + this._config.basePath + replaceVars(MODEL_VERSIONS_PATH, [this.id]);
-      return wrapToken(this._config, function (headers) {
-        var data = {
-          headers: headers,
-          params: { 'per_page': options.perPage, 'page': options.page }
-        };
-        return new Promise(function (resolve, reject) {
-          axios.get(url, data).then(function (response) {
-            var data = clone(response.data);
-            data.rawData = clone(response.data);
-            resolve(data);
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Returns all the model's output info
-     * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
-     */
-
-  }, {
-    key: 'getOutputInfo',
-    value: function getOutputInfo() {
-      var _this5 = this;
-
-      var url = '' + this._config.basePath + (this.versionId ? replaceVars(MODEL_VERSION_OUTPUT_PATH, [this.id, this.versionId]) : replaceVars(MODEL_OUTPUT_PATH, [this.id]));
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.get(url, { headers: headers }).then(function (response) {
-            resolve(new Model(_this5._config, response.data.model));
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Returns all the model's inputs
-     * @param {object}     options     Object with keys explained below: (optional)
-     *   @param {number}     options.page        The page number (optional, default: 1)
-     *   @param {number}     options.perPage     Number of images to return per page (optional, default: 20)
-     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-     */
-
-  }, {
-    key: 'getInputs',
-    value: function getInputs() {
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { page: 1, perPage: 20 };
-
-      var url = '' + this._config.basePath + (this.versionId ? replaceVars(MODEL_VERSION_INPUTS_PATH, [this.id, this.versionId]) : replaceVars(MODEL_INPUTS_PATH, [this.id]));
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.get(url, {
-            params: { 'per_page': options.perPage, 'page': options.page },
-            headers: headers
-          }).then(function (response) {
-            var data = clone(response.data);
-            data.rawData = clone(response.data);
-            resolve(data);
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     *
-     * @param {string} input A string pointing to an image resource. A string must be a url
-     * @param {object} config A configuration object consisting of the following required keys
-     *   @param {string} config.id The id of the feedback request
-     *   @param {object} config.data The feedback data to be sent
-     *   @param {object} config.info Meta data related to the feedback request
-     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-     */
-
-  }, {
-    key: 'feedback',
-    value: function feedback(input, _ref) {
-      var id = _ref.id,
-          data = _ref.data,
-          info = _ref.info;
-
-      var url = '' + this._config.basePath + (this.versionId ? replaceVars(MODEL_VERSION_FEEDBACK_PATH, [this.id, this.versionId]) : replaceVars(MODEL_FEEDBACK_PATH, [this.id]));
-      var media = formatMediaPredict(input).data;
-      info.eventType = 'annotation';
-      var body = {
-        input: {
-          id: id,
-          data: Object.assign(media, data),
-          'feedback_info': formatObjectForSnakeCase(info)
-        }
-      };
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.post(url, body, {
-            headers: headers
-          }).then(function (_ref2) {
-            var data = _ref2.data;
-
-            var d = clone(data);
-            d.rawData = clone(data);
-            resolve(d);
-          }, reject);
-        });
-      });
-    }
-  }]);
-
-  return Model;
-}();
-
-module.exports = Model;
-
-/***/ }),
-/* 1055 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * class representing a version of a model
- * @class
- */
-var ModelVersion = function ModelVersion(_config, data) {
-  _classCallCheck(this, ModelVersion);
-
-  this.id = data.id;
-  this.created_at = this.createdAt = data.created_at || data.createdAt;
-  this.status = data.status;
-  this.active_concept_count = data.active_concept_count;
-  this.metrics = data.metrics;
-  this._config = _config;
-  this.rawData = data;
-};
-
-;
-
-module.exports = ModelVersion;
-
-/***/ }),
-/* 1056 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var MAX_BATCH_SIZE = 128;
-var GEO_LIMIT_TYPES = ['withinMiles', 'withinKilometers', 'withinRadians', 'withinDegrees'];
-var SYNC_TIMEOUT = 360000; // 6 minutes
-var MODEL_QUEUED_FOR_TRAINING = '21103';
-var MODEL_TRAINING = '21101';
-var POLLTIME = 2000;
-
-module.exports = {
-  API: {
-    TOKEN_PATH: '/token',
-    MODELS_PATH: '/models',
-    MODEL_PATH: '/models/$0',
-    MODEL_VERSIONS_PATH: '/models/$0/versions',
-    MODEL_VERSION_PATH: '/models/$0/versions/$1',
-    MODEL_PATCH_PATH: '/models/$0/output_info/data/concepts',
-    MODEL_OUTPUT_PATH: '/models/$0/output_info',
-    MODEL_VERSION_OUTPUT_PATH: '/models/$0/versions/$1/output_info',
-    MODEL_SEARCH_PATH: '/models/searches',
-    MODEL_FEEDBACK_PATH: '/models/$0/feedback',
-    MODEL_VERSION_FEEDBACK_PATH: '/models/$0/versions/$1/feedback',
-    PREDICT_PATH: '/models/$0/outputs',
-    VERSION_PREDICT_PATH: '/models/$0/versions/$1/outputs',
-    CONCEPTS_PATH: '/concepts',
-    CONCEPT_PATH: '/concepts/$0',
-    CONCEPT_SEARCH_PATH: '/concepts/searches',
-    MODEL_INPUTS_PATH: '/models/$0/inputs',
-    MODEL_VERSION_INPUTS_PATH: '/models/$0/versions/$1/inputs',
-    MODEL_VERSION_METRICS_PATH: '/models/$0/versions/$1/metrics',
-    INPUTS_PATH: '/inputs',
-    INPUT_PATH: '/inputs/$0',
-    INPUTS_STATUS_PATH: '/inputs/status',
-    SEARCH_PATH: '/searches',
-    SEARCH_FEEDBACK_PATH: '/searches/feedback',
-    WORKFLOWS_PATH: '/workflows',
-    WORKFLOW_PATH: '/workflows/$0',
-    WORKFLOW_RESULTS_PATH: '/workflows/$0/results'
-  },
-  ERRORS: {
-    paramsRequired: function paramsRequired(param) {
-      var paramList = Array.isArray(param) ? param : [param];
-      return new Error('The following ' + (paramList.length > 1 ? 'params are' : 'param is') + ' required: ' + paramList.join(', '));
-    },
-    MAX_INPUTS: new Error('Number of inputs passed exceeded max of ' + MAX_BATCH_SIZE),
-    INVALID_GEOLIMIT_TYPE: new Error('Incorrect geo_limit type. Value must be any of the following: ' + GEO_LIMIT_TYPES.join(', ')),
-    INVALID_DELETE_ARGS: new Error('Wrong arguments passed. You can only delete all models (provide no arguments), delete select models (provide list of ids),\n    delete a single model (providing a single id) or delete a model version (provide a single id and version id)')
-  },
-  STATUS: {
-    MODEL_QUEUED_FOR_TRAINING: MODEL_QUEUED_FOR_TRAINING,
-    MODEL_TRAINING: MODEL_TRAINING
-  },
-  // var replacement must be given in order
-  replaceVars: function replaceVars(path) {
-    var vars = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-
-    var newPath = path;
-    vars.forEach(function (val, index) {
-      if (index === 0) {
-        val = encodeURIComponent(val);
-      }
-      newPath = newPath.replace(new RegExp('\\$' + index, 'g'), val);
-    });
-    return newPath;
-  },
-  getBasePath: function getBasePath() {
-    var apiEndpoint = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'https://api.clarifai.com';
-    var userId = arguments[1];
-    var appId = arguments[2];
-
-    if (!userId || !appId) {
-      return apiEndpoint + '/v2';
-    }
-    return apiEndpoint + '/v2/users/' + userId + '/apps/' + appId;
-  },
-  GEO_LIMIT_TYPES: GEO_LIMIT_TYPES,
-  MAX_BATCH_SIZE: MAX_BATCH_SIZE,
-  SYNC_TIMEOUT: SYNC_TIMEOUT,
-  POLLTIME: POLLTIME
-};
-
-/***/ }),
-/* 1057 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var Promise = __webpack_require__(1044);
-var validUrl = __webpack_require__(1058);
-
-var _require = __webpack_require__(1056),
-    GEO_LIMIT_TYPES = _require.GEO_LIMIT_TYPES,
-    ERRORS = _require.ERRORS;
-
-var _require2 = __webpack_require__(1042),
-    checkType = _require2.checkType,
-    clone = _require2.clone;
-
-var _require3 = __webpack_require__(1059),
-    VERSION = _require3.version;
-
-module.exports = {
-  wrapToken: function wrapToken(_config, requestFn) {
-    return new Promise(function (resolve, reject) {
-      if (_config.apiKey) {
-        var headers = {
-          Authorization: 'Key ' + _config.apiKey,
-          'X-Clarifai-Client': 'js:' + VERSION
-        };
-        return requestFn(headers).then(resolve, reject);
-      }
-      if (_config.sessionToken) {
-        var _headers = {
-          'X-Clarifai-Session-Token': _config.sessionToken,
-          'X-Clarifai-Client': 'js:' + VERSION
-        };
-        return requestFn(_headers).then(resolve, reject);
-      }
-      _config.token().then(function (token) {
-        var headers = {
-          Authorization: 'Bearer ' + token.accessToken,
-          'X-Clarifai-Client': 'js:' + VERSION
-        };
-        requestFn(headers).then(resolve, reject);
-      }, reject);
-    });
-  },
-  formatModel: function formatModel() {
-    var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-    var formatted = {};
-    if (data.id === null || data.id === undefined) {
-      throw ERRORS.paramsRequired('Model ID');
-    }
-    formatted.id = data.id;
-    if (data.name) {
-      formatted.name = data.name;
-    }
-    formatted.output_info = {};
-    if (data.conceptsMutuallyExclusive !== undefined) {
-      formatted.output_info.output_config = formatted.output_info.output_config || {};
-      formatted.output_info.output_config.concepts_mutually_exclusive = !!data.conceptsMutuallyExclusive;
-    }
-    if (data.closedEnvironment !== undefined) {
-      formatted.output_info.output_config = formatted.output_info.output_config || {};
-      formatted.output_info.output_config.closed_environment = !!data.closedEnvironment;
-    }
-    if (data.concepts) {
-      formatted.output_info.data = {
-        concepts: data.concepts.map(module.exports.formatConcept)
-      };
-    }
-    return formatted;
-  },
-  formatInput: function formatInput(data, includeImage) {
-    var input = checkType(/String/, data) ? { url: data } : data;
-    var formatted = {
-      id: input.id || null,
-      data: {}
-    };
-    if (input.concepts) {
-      formatted.data.concepts = input.concepts;
-    }
-    if (input.metadata) {
-      formatted.data.metadata = input.metadata;
-    }
-    if (input.geo) {
-      formatted.data.geo = { geo_point: input.geo };
-    }
-    if (input.regions) {
-      formatted.data.regions = input.regions;
-    }
-    if (includeImage !== false) {
-      formatted.data.image = {
-        url: input.url,
-        base64: input.base64,
-        crop: input.crop
-      };
-      if (data.allowDuplicateUrl) {
-        formatted.data.image.allow_duplicate_url = true;
-      }
-    }
-    return formatted;
-  },
-  formatMediaPredict: function formatMediaPredict(data) {
-    var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'image';
-
-    var media = void 0;
-    if (checkType(/String/, data)) {
-      if (validUrl.isWebUri(data)) {
-        media = {
-          url: data
-        };
-      } else {
-        media = {
-          base64: data
-        };
-      }
-    } else {
-      media = Object.assign({}, data);
-    }
-
-    // Users can specify their own id to distinguish batch results
-    var id = void 0;
-    if (media.id) {
-      id = media.id;
-      delete media.id;
-    }
-
-    var object = {
-      data: _defineProperty({}, type, media)
-    };
-
-    if (id) {
-      object.id = id;
-    }
-
-    return object;
-  },
-  formatImagesSearch: function formatImagesSearch(image) {
-    var imageQuery = void 0;
-    var input = { input: { data: {} } };
-    var formatted = [];
-    if (checkType(/String/, image)) {
-      imageQuery = { url: image };
-    } else {
-      imageQuery = image.url || image.base64 ? {
-        image: {
-          url: image.url,
-          base64: image.base64,
-          crop: image.crop
-        }
-      } : {};
-    }
-
-    input.input.data = imageQuery;
-    if (image.id) {
-      input.input.id = image.id;
-      input.input.data = { image: {} };
-      if (image.crop) {
-        input.input.data.image.crop = image.crop;
-      }
-    }
-    if (image.metadata !== undefined) {
-      input.input.data.metadata = image.metadata;
-    }
-    if (image.geo !== undefined) {
-      if (checkType(/Array/, image.geo)) {
-        input.input.data.geo = {
-          geo_box: image.geo.map(function (p) {
-            return { geo_point: p };
-          })
-        };
-      } else if (checkType(/Object/, image.geo)) {
-        if (GEO_LIMIT_TYPES.indexOf(image.geo.type) === -1) {
-          throw ERRORS.INVALID_GEOLIMIT_TYPE;
-        }
-        input.input.data.geo = {
-          geo_point: {
-            latitude: image.geo.latitude,
-            longitude: image.geo.longitude
-          },
-          geo_limit: {
-            type: image.geo.type,
-            value: image.geo.value
-          }
-        };
-      }
-    }
-    if (image.type !== 'input' && input.input.data.image) {
-      if (input.input.data.metadata || input.input.data.geo) {
-        var dataCopy = { input: { data: clone(input.input.data) } };
-        var imageCopy = { input: { data: clone(input.input.data) } };
-        delete dataCopy.input.data.image;
-        delete imageCopy.input.data.metadata;
-        delete imageCopy.input.data.geo;
-        input = [{ output: imageCopy }, dataCopy];
-      } else {
-        input = [{ output: input }];
-      }
-    }
-    formatted = formatted.concat(input);
-    return formatted;
-  },
-  formatConcept: function formatConcept(concept) {
-    var formatted = concept;
-    if (checkType(/String/, concept)) {
-      formatted = {
-        id: concept
-      };
-    }
-    return formatted;
-  },
-  formatConceptsSearch: function formatConceptsSearch(query) {
-    if (checkType(/String/, query)) {
-      query = { id: query };
-    }
-    var v = {};
-    var type = query.type === 'input' ? 'input' : 'output';
-    delete query.type;
-    v[type] = {
-      data: {
-        concepts: [query]
-      }
-    };
-    return v;
-  },
-  formatObjectForSnakeCase: function formatObjectForSnakeCase(obj) {
-    return Object.keys(obj).reduce(function (o, k) {
-      o[k.replace(/([A-Z])/g, function (r) {
-        return '_' + r.toLowerCase();
-      })] = obj[k];
-      return o;
-    }, {});
-  }
-};
-
-/***/ }),
-/* 1058 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(module) {(function(module) {
-    'use strict';
-
-    module.exports.is_uri = is_iri;
-    module.exports.is_http_uri = is_http_iri;
-    module.exports.is_https_uri = is_https_iri;
-    module.exports.is_web_uri = is_web_iri;
-    // Create aliases
-    module.exports.isUri = is_iri;
-    module.exports.isHttpUri = is_http_iri;
-    module.exports.isHttpsUri = is_https_iri;
-    module.exports.isWebUri = is_web_iri;
-
-
-    // private function
-    // internal URI spitter method - direct from RFC 3986
-    var splitUri = function(uri) {
-        var splitted = uri.match(/(?:([^:\/?#]+):)?(?:\/\/([^\/?#]*))?([^?#]*)(?:\?([^#]*))?(?:#(.*))?/);
-        return splitted;
-    };
-
-    function is_iri(value) {
-        if (!value) {
-            return;
-        }
-
-        // check for illegal characters
-        if (/[^a-z0-9\:\/\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=\.\-\_\~\%]/i.test(value)) return;
-
-        // check for hex escapes that aren't complete
-        if (/%[^0-9a-f]/i.test(value)) return;
-        if (/%[0-9a-f](:?[^0-9a-f]|$)/i.test(value)) return;
-
-        var splitted = [];
-        var scheme = '';
-        var authority = '';
-        var path = '';
-        var query = '';
-        var fragment = '';
-        var out = '';
-
-        // from RFC 3986
-        splitted = splitUri(value);
-        scheme = splitted[1]; 
-        authority = splitted[2];
-        path = splitted[3];
-        query = splitted[4];
-        fragment = splitted[5];
-
-        // scheme and path are required, though the path can be empty
-        if (!(scheme && scheme.length && path.length >= 0)) return;
-
-        // if authority is present, the path must be empty or begin with a /
-        if (authority && authority.length) {
-            if (!(path.length === 0 || /^\//.test(path))) return;
-        } else {
-            // if authority is not present, the path must not start with //
-            if (/^\/\//.test(path)) return;
-        }
-
-        // scheme must begin with a letter, then consist of letters, digits, +, ., or -
-        if (!/^[a-z][a-z0-9\+\-\.]*$/.test(scheme.toLowerCase()))  return;
-
-        // re-assemble the URL per section 5.3 in RFC 3986
-        out += scheme + ':';
-        if (authority && authority.length) {
-            out += '//' + authority;
-        }
-
-        out += path;
-
-        if (query && query.length) {
-            out += '?' + query;
-        }
-
-        if (fragment && fragment.length) {
-            out += '#' + fragment;
-        }
-
-        return out;
-    }
-
-    function is_http_iri(value, allowHttps) {
-        if (!is_iri(value)) {
-            return;
-        }
-
-        var splitted = [];
-        var scheme = '';
-        var authority = '';
-        var path = '';
-        var port = '';
-        var query = '';
-        var fragment = '';
-        var out = '';
-
-        // from RFC 3986
-        splitted = splitUri(value);
-        scheme = splitted[1]; 
-        authority = splitted[2];
-        path = splitted[3];
-        query = splitted[4];
-        fragment = splitted[5];
-
-        if (!scheme)  return;
-
-        if(allowHttps) {
-            if (scheme.toLowerCase() != 'https') return;
-        } else {
-            if (scheme.toLowerCase() != 'http') return;
-        }
-
-        // fully-qualified URIs must have an authority section that is
-        // a valid host
-        if (!authority) {
-            return;
-        }
-
-        // enable port component
-        if (/:(\d+)$/.test(authority)) {
-            port = authority.match(/:(\d+)$/)[0];
-            authority = authority.replace(/:\d+$/, '');
-        }
-
-        out += scheme + ':';
-        out += '//' + authority;
-        
-        if (port) {
-            out += port;
-        }
-        
-        out += path;
-        
-        if(query && query.length){
-            out += '?' + query;
-        }
-
-        if(fragment && fragment.length){
-            out += '#' + fragment;
-        }
-        
-        return out;
-    }
-
-    function is_https_iri(value) {
-        return is_http_iri(value, true);
-    }
-
-    function is_web_iri(value) {
-        return (is_http_iri(value) || is_https_iri(value));
-    }
-
-})(module);
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(1033)(module)))
-
-/***/ }),
-/* 1059 */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"_from\":\"clarifai\",\"_id\":\"clarifai@2.9.1\",\"_inBundle\":false,\"_integrity\":\"sha512-xUxl0bNhBTRn93BBjzYG3nQ/BRZI5VcAZOn1hsukTEFgE31grtegztMT26AbFdmWkCJin1dM6TaC4APSHYs/Ug==\",\"_location\":\"/clarifai\",\"_phantomChildren\":{},\"_requested\":{\"type\":\"tag\",\"registry\":true,\"raw\":\"clarifai\",\"name\":\"clarifai\",\"escapedName\":\"clarifai\",\"rawSpec\":\"\",\"saveSpec\":null,\"fetchSpec\":\"latest\"},\"_requiredBy\":[\"#USER\",\"/\"],\"_resolved\":\"https://registry.npmjs.org/clarifai/-/clarifai-2.9.1.tgz\",\"_shasum\":\"7dd21c3265de34b557ee3a216cb31e2908c6944c\",\"_spec\":\"clarifai\",\"_where\":\"/sugomori-api/frontend\",\"author\":{\"name\":\"Clarifai Inc.\"},\"bugs\":{\"url\":\"https://github.com/Clarifai/clarifai-javascript/issues\"},\"bundleDependencies\":false,\"dependencies\":{\"axios\":\">=0.11.1 <2\",\"promise\":\"^7.1.1\",\"valid-url\":\"^1.0.9\"},\"deprecated\":false,\"description\":\"Official Clarifai Javascript SDK\",\"devDependencies\":{\"axios-mock-adapter\":\"^1.16.0\",\"babel-eslint\":\"^6.1.2\",\"babel-preset-es2015\":\"^6.14.0\",\"babel-register\":\"^6.14.0\",\"babelify\":\"^7.3.0\",\"del\":\"^2.0.2\",\"envify\":\"^3.4.0\",\"gulp\":\"^3.9.1\",\"gulp-babel\":\"^6.1.2\",\"gulp-browserify\":\"^0.5.1\",\"gulp-eslint\":\"^2.0.0\",\"gulp-insert\":\"^0.5.0\",\"gulp-jasmine\":\"^4.0.0\",\"gulp-notify\":\"2.2.0\",\"gulp-rename\":\"^1.2.2\",\"gulp-replace-task\":\"^0.11.0\",\"gulp-uglify\":\"^1.4.1\",\"gulp-util\":\"^3.0.6\",\"jsdoc\":\"^3.4.1\",\"minami\":\"^1.1.1\",\"release-it\":\"^2.9.0\"},\"homepage\":\"https://github.com/Clarifai/clarifai-javascript#readme\",\"license\":\"Apache-2.0\",\"main\":\"dist/index.js\",\"name\":\"clarifai\",\"repository\":{\"type\":\"git\",\"url\":\"git+https://github.com/Clarifai/clarifai-javascript.git\"},\"scripts\":{\"build\":\"npm run clean && gulp build && npm run jsdoc\",\"clean\":\"gulp cleanbuild\",\"jsdoc\":\"jsdoc src/* -t node_modules/minami -d docs/$npm_package_version && jsdoc src/* -t node_modules/minami -d docs/latest\",\"release\":\"release-it\",\"test\":\"gulp test\",\"unittest\":\"gulp unittest\",\"watch\":\"gulp watch\"},\"version\":\"2.9.1\"}");
-
-/***/ }),
-/* 1060 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var axios = __webpack_require__(515);
-var Concept = __webpack_require__(1061);
-
-var _require = __webpack_require__(1056),
-    API = _require.API,
-    replaceVars = _require.replaceVars;
-
-var CONCEPTS_PATH = API.CONCEPTS_PATH,
-    CONCEPT_PATH = API.CONCEPT_PATH,
-    CONCEPT_SEARCH_PATH = API.CONCEPT_SEARCH_PATH;
-
-var _require2 = __webpack_require__(1057),
-    wrapToken = _require2.wrapToken,
-    formatConcept = _require2.formatConcept;
-
-var _require3 = __webpack_require__(1042),
-    isSuccess = _require3.isSuccess,
-    checkType = _require3.checkType;
-
-/**
- * class representing a collection of concepts
- * @class
- */
-
-
-var Concepts = function () {
-  function Concepts(_config) {
-    var _this = this;
-
-    var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-
-    _classCallCheck(this, Concepts);
-
-    this._config = _config;
-    this.rawData = rawData;
-    rawData.forEach(function (conceptData, index) {
-      _this[index] = new Concept(_this._config, conceptData);
-    });
-    this.length = rawData.length;
-  }
-
-  /**
-   * List all the concepts
-   * @param {object}     options     Object with keys explained below: (optional)
-   *    @param {number}    options.page        The page number (optional, default: 1)
-   *    @param {number}    options.perPage     Number of images to return per page (optional, default: 20)
-   * @return {Promise(Concepts, error)} A Promise that is fulfilled with a Concepts instance or rejected with an error
-   */
-
-
-  _createClass(Concepts, [{
-    key: 'list',
-    value: function list() {
-      var _this2 = this;
-
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { page: 1, perPage: 20 };
-
-      var url = '' + this._config.basePath + CONCEPTS_PATH;
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.get(url, {
-            headers: headers,
-            params: {
-              'page': options.page,
-              'per_page': options.perPage
-            }
-          }).then(function (response) {
-            if (isSuccess(response)) {
-              resolve(new Concepts(_this2._config, response.data.concepts));
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * List a single concept given an id
-     * @param {String}     id          The concept's id
-     * @return {Promise(Concept, error)} A Promise that is fulfilled with a Concept instance or rejected with an error
-     */
-
-  }, {
-    key: 'get',
-    value: function get(id) {
-      var _this3 = this;
-
-      var url = '' + this._config.basePath + replaceVars(CONCEPT_PATH, [id]);
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.get(url, { headers: headers }).then(function (response) {
-            if (isSuccess(response)) {
-              resolve(new Concept(_this3._config, response.data.concept));
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Add a list of concepts given an id and name
-     * @param {object|object[]}   concepts       Can be a single media object or an array of media objects
-     *   @param  {object|string}    concepts[].concept         If string, this is assumed to be the concept id. Otherwise, an object with the following attributes
-     *     @param  {object}           concepts[].concept.id      The new concept's id (Required)
-     *     @param  {object}           concepts[].concept.name    The new concept's name
-     * @return {Promise(Concepts, error)}             A Promise that is fulfilled with a Concepts instance or rejected with an error
-     */
-
-  }, {
-    key: 'create',
-    value: function create() {
-      var _this4 = this;
-
-      var concepts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-      if (checkType(/(Object|String)/, concepts)) {
-        concepts = [concepts];
-      }
-      var data = {
-        'concepts': concepts.map(formatConcept)
-      };
-      var url = '' + this._config.basePath + CONCEPTS_PATH;
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.post(url, data, { headers: headers }).then(function (response) {
-            if (isSuccess(response)) {
-              resolve(new Concepts(_this4._config, response.data.concepts));
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Search for a concept given a name. A wildcard can be given (example: The name "bo*" will match with "boat" and "bow" given those concepts exist
-     * @param  {string}   name  The name of the concept to search for
-     * @return {Promise(Concepts, error)} A Promise that is fulfilled with a Concepts instance or rejected with an error
-     */
-
-  }, {
-    key: 'search',
-    value: function search(name) {
-      var _this5 = this;
-
-      var language = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-      var url = '' + this._config.basePath + CONCEPT_SEARCH_PATH;
-      return wrapToken(this._config, function (headers) {
-        var params = {
-          'concept_query': { name: name, language: language }
-        };
-        return new Promise(function (resolve, reject) {
-          axios.post(url, params, { headers: headers }).then(function (response) {
-            if (isSuccess(response)) {
-              resolve(new Concepts(_this5._config, response.data.concepts));
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Update a concepts
-     * @param {object|object[]}   concepts       Can be a single concept object or an array of concept objects
-     *   @param  {object}           concepts[].concept         A concept object with the following attributes
-     *     @param  {object}           concepts[].concept.id      The concept's id (Required)
-     *     @param  {object}           concepts[].concept.name    The concept's new name
-     * @param {string}            [action=overwrite]  The action to use for the PATCH
-     * @return {Promise(Concepts, error)}             A Promise that is fulfilled with a Concepts instance or rejected with an error
-     */
-
-  }, {
-    key: 'update',
-    value: function update() {
-      var _this6 = this;
-
-      var concepts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'overwrite';
-
-      if (!checkType(/Array/, concepts)) {
-        concepts = [concepts];
-      }
-      var data = {
-        concepts: concepts,
-        action: action
-      };
-      var url = '' + this._config.basePath + CONCEPTS_PATH;
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.patch(url, data, { headers: headers }).then(function (response) {
-            if (isSuccess(response)) {
-              resolve(new Concepts(_this6._config, response.data.concepts));
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-  }]);
-
-  return Concepts;
-}();
-
-;
-
-module.exports = Concepts;
-
-/***/ }),
-/* 1061 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * class representing a concept and its info
- * @class
- */
-var Concept = function Concept(_config, data) {
-  _classCallCheck(this, Concept);
-
-  this.id = data.id;
-  this.name = data.name;
-  this.createdAt = data.created_at || data.createdAt;
-  this.appId = data.app_id || data.appId;
-  this.value = data.value || null;
-  this._config = _config;
-  this.rawData = data;
-};
-
-;
-
-module.exports = Concept;
-
-/***/ }),
-/* 1062 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var axios = __webpack_require__(515);
-var Input = __webpack_require__(1063);
-
-var _require = __webpack_require__(1056),
-    API = _require.API,
-    ERRORS = _require.ERRORS,
-    MAX_BATCH_SIZE = _require.MAX_BATCH_SIZE,
-    replaceVars = _require.replaceVars;
-
-var INPUT_PATH = API.INPUT_PATH,
-    INPUTS_PATH = API.INPUTS_PATH,
-    INPUTS_STATUS_PATH = API.INPUTS_STATUS_PATH,
-    SEARCH_PATH = API.SEARCH_PATH,
-    SEARCH_FEEDBACK_PATH = API.SEARCH_FEEDBACK_PATH;
-
-var _require2 = __webpack_require__(1057),
-    wrapToken = _require2.wrapToken,
-    formatInput = _require2.formatInput,
-    formatImagesSearch = _require2.formatImagesSearch,
-    formatConceptsSearch = _require2.formatConceptsSearch;
-
-var _require3 = __webpack_require__(1042),
-    isSuccess = _require3.isSuccess,
-    checkType = _require3.checkType,
-    clone = _require3.clone;
-
-/**
- * class representing a collection of inputs
- * @class
- */
-
-
-var Inputs = function () {
-  function Inputs(_config) {
-    var _this = this;
-
-    var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-
-    _classCallCheck(this, Inputs);
-
-    this.rawData = rawData;
-    rawData.forEach(function (inputData, index) {
-      if (inputData.input && inputData.score) {
-        inputData.input.score = inputData.score;
-        inputData = inputData.input;
-      }
-      _this[index] = new Input(_this._config, inputData);
-    });
-    this.length = rawData.length;
-    this._config = _config;
-  }
-
-  /**
-   * Get all inputs in app
-   * @param {Object}    options  Object with keys explained below: (optional)
-   *   @param {Number}    options.page  The page number (optional, default: 1)
-   *   @param {Number}    options.perPage  Number of images to return per page (optional, default: 20)
-   * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
-   */
-
-
-  _createClass(Inputs, [{
-    key: 'list',
-    value: function list() {
-      var _this2 = this;
-
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { page: 1, perPage: 20 };
-
-      var url = '' + this._config.basePath + INPUTS_PATH;
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.get(url, {
-            headers: headers,
-            params: {
-              page: options.page,
-              per_page: options.perPage
-            }
-          }).then(function (response) {
-            if (isSuccess(response)) {
-              resolve(new Inputs(_this2._config, response.data.inputs));
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Adds an input or multiple inputs
-     * @param {object|object[]}        inputs                                Can be a single media object or an array of media objects (max of 128 inputs/call; passing > 128 will throw an exception)
-     *   @param {object|string}          inputs[].input                        If string, is given, this is assumed to be an image url
-     *     @param {string}                 inputs[].input.(url|base64)           Can be a publicly accessibly url or base64 string representing image bytes (required)
-     *     @param {string}                 inputs[].input.id                     ID of input (optional)
-     *     @param {number[]}               inputs[].input.crop                   An array containing the percent to be cropped from top, left, bottom and right (optional)
-     *     @param {boolean}               inputs[].input.allowDuplicateUrl       Whether to allow duplicate URL
-     *     @param {object[]}               inputs[].input.metadata               Object with key and values pair (value can be string, array or other objects) to attach to the input (optional)
-     *     @param {object}                 inputs[].input.geo                    Object with latitude and longitude coordinates to associate with an input. Can be used in search query as the proximity of an input to a reference point (optional)
-     *       @param {number}                 inputs[].input.geo.latitude           +/- latitude val of geodata
-     *       @param {number}                 inputs[].input.geo.longitude          +/- longitude val of geodata
-     *     @param {object[]}               inputs[].input.concepts               An array of concepts to attach to media object (optional)
-     *       @param {object|string}          inputs[].input.concepts[].concept     If string, is given, this is assumed to be concept id with value equals true
-     *         @param {string}                 inputs[].input.concepts[].concept.id          The concept id (required)
-     *         @param {boolean}                inputs[].input.concepts[].concept.value       Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
-     * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
-     */
-
-  }, {
-    key: 'create',
-    value: function create(inputs) {
-      var _this3 = this;
-
-      if (checkType(/(String|Object)/, inputs)) {
-        inputs = [inputs];
-      }
-      var url = '' + this._config.basePath + INPUTS_PATH;
-      if (inputs.length > MAX_BATCH_SIZE) {
-        throw ERRORS.MAX_INPUTS;
-      }
-      return wrapToken(this._config, function (headers) {
-        var data = {
-          inputs: inputs.map(formatInput)
-        };
-        return new Promise(function (resolve, reject) {
-          axios.post(url, data, { headers: headers }).then(function (response) {
-            if (isSuccess(response)) {
-              resolve(new Inputs(_this3._config, response.data.inputs));
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Get input by id
-     * @param {String}    id  The input id
-     * @return {Promise(Input, error)} A Promise that is fulfilled with an instance of Input or rejected with an error
-     */
-
-  }, {
-    key: 'get',
-    value: function get(id) {
-      var _this4 = this;
-
-      var url = '' + this._config.basePath + replaceVars(INPUT_PATH, [id]);
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.get(url, { headers: headers }).then(function (response) {
-            if (isSuccess(response)) {
-              resolve(new Input(_this4._config, response.data.input));
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Delete an input or a list of inputs by id or all inputs if no id is passed
-     * @param {string|string[]}    id           The id of input to delete (optional)
-     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-     */
-
-  }, {
-    key: 'delete',
-    value: function _delete() {
-      var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-      var val = void 0;
-      // delete an input
-      if (checkType(/String/, id)) {
-        var url = '' + this._config.basePath + replaceVars(INPUT_PATH, [id]);
-        val = wrapToken(this._config, function (headers) {
-          return axios.delete(url, { headers: headers });
-        });
-      } else {
-        val = this._deleteInputs(id);
-      }
-      return val;
-    }
-  }, {
-    key: '_deleteInputs',
-    value: function _deleteInputs() {
-      var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-      var url = '' + this._config.basePath + INPUTS_PATH;
-      return wrapToken(this._config, function (headers) {
-        var data = id === null ? { delete_all: true } : { ids: id };
-        return axios({
-          url: url,
-          method: 'delete',
-          headers: headers,
-          data: data
-        });
-      });
-    }
-
-    /**
-     * Merge concepts to inputs in bulk
-     * @param {object[]}         inputs    List of concepts to update (max of 128 inputs/call; passing > 128 will throw an exception)
-     *   @param {object}           inputs[].input
-     *     @param {string}           inputs[].input.id        The id of the input to update
-     *     @param {string}           inputs[].input.concepts  Object with keys explained below:
-     *       @param {object}           inputs[].input.concepts[].concept
-     *         @param {string}           inputs[].input.concepts[].concept.id        The concept id (required)
-     *         @param {boolean}          inputs[].input.concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
-     * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
-     */
-
-  }, {
-    key: 'mergeConcepts',
-    value: function mergeConcepts(inputs) {
-      inputs.action = 'merge';
-      return this.update(inputs);
-    }
-
-    /**
-     * Delete concepts to inputs in bulk
-     * @param {object[]}         inputs    List of concepts to update (max of 128 inputs/call; passing > 128 will throw an exception)
-     *   @param {object}           inputs[].input
-     *     @param {string}           inputs[].input.id                           The id of the input to update
-     *     @param {string}           inputs[].input.concepts                     Object with keys explained below:
-     *       @param {object}           inputs[].input.concepts[].concept
-     *         @param {string}           inputs[].input.concepts[].concept.id        The concept id (required)
-     *         @param {boolean}          inputs[].input.concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
-     * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
-     */
-
-  }, {
-    key: 'deleteConcepts',
-    value: function deleteConcepts(inputs) {
-      inputs.action = 'remove';
-      return this.update(inputs);
-    }
-
-    /**
-     * Overwrite inputs in bulk
-     * @param {object[]}         inputs    List of concepts to update (max of 128 inputs/call; passing > 128 will throw an exception)
-     *   @param {object}           inputs[].input
-     *     @param {string}           inputs[].input.id                           The id of the input to update
-     *     @param {string}           inputs[].input.concepts                     Object with keys explained below:
-     *       @param {object}           inputs[].input.concepts[].concept
-     *         @param {string}           inputs[].input.concepts[].concept.id        The concept id (required)
-     *         @param {boolean}          inputs[].input.concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
-     * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
-     */
-
-  }, {
-    key: 'overwriteConcepts',
-    value: function overwriteConcepts(inputs) {
-      inputs.action = 'overwrite';
-      return this.update(inputs);
-    }
-
-    /**
-     * @param {object[]}         inputs    List of inputs to update (max of 128 inputs/call; passing > 128 will throw an exception)
-     *   @param {object}           inputs[].input
-     *     @param {string}           inputs[].input.id                           The id of the input to update
-     *     @param {object}           inputs[].input.metadata                     Object with key values to attach to the input (optional)
-     *     @param {object}           inputs[].input.geo                          Object with latitude and longitude coordinates to associate with an input. Can be used in search query as the proximity of an input to a reference point (optional)
-     *       @param {number}           inputs[].input.geo.latitude                 +/- latitude val of geodata
-     *       @param {number}           inputs[].input.geo.longitude                +/- longitude val of geodata
-     *     @param {string}           inputs[].input.concepts                     Object with keys explained below (optional):
-     *       @param {object}           inputs[].input.concepts[].concept
-     *         @param {string}           inputs[].input.concepts[].concept.id        The concept id (required)
-     *         @param {boolean}          inputs[].input.concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
-     * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
-     */
-
-  }, {
-    key: 'update',
-    value: function update(inputs) {
-      var _this5 = this;
-
-      var url = '' + this._config.basePath + INPUTS_PATH;
-      var inputsList = Array.isArray(inputs) ? inputs : [inputs];
-      if (inputsList.length > MAX_BATCH_SIZE) {
-        throw ERRORS.MAX_INPUTS;
-      }
-      var data = {
-        action: inputs.action,
-        inputs: inputsList.map(function (input) {
-          return formatInput(input, false);
-        })
-      };
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.patch(url, data, { headers: headers }).then(function (response) {
-            if (isSuccess(response)) {
-              resolve(new Inputs(_this5._config, response.data.inputs));
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Search for inputs or outputs based on concepts or images
-     *   @param {object[]}               queries          List of all predictions to match with
-     *     @param {object}                 queries[].concept            An object with the following keys:
-     *       @param {string}                 queries[].concept.id          The concept id
-     *       @param {string}                 queries[].concept.type        Search over 'input' to get input matches to criteria or 'output' to get inputs that are visually similar to the criteria (default: 'output')
-     *       @param {string}                 queries[].concept.name        The concept name
-     *       @param {boolean}                queries[].concept.value       Indicates whether or not the term should match with the prediction returned (default: true)
-     *     @param {object}                 queries[].input              An image object that contains the following keys:
-     *       @param {string}                 queries[].input.id            The input id
-     *       @param {string}                 queries[].input.type          Search over 'input' to get input matches to criteria or 'output' to get inputs that are visually similar to the criteria (default: 'output')
-     *       @param {string}                 queries[].input.(base64|url)  Can be a publicly accessibly url or base64 string representing image bytes (required)
-     *       @param {number[]}               queries[].input.crop          An array containing the percent to be cropped from top, left, bottom and right (optional)
-     *       @param {object}                 queries[].input.metadata      An object with key and value specified by user to refine search with (optional)
-     * @param {Object}                   options       Object with keys explained below: (optional)
-     *    @param {Number}                  options.page          The page number (optional, default: 1)
-     *    @param {Number}                  options.perPage       Number of images to return per page (optional, default: 20)
-     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-     */
-
-  }, {
-    key: 'search',
-    value: function search() {
-      var queries = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : { page: 1, perPage: 20 };
-
-      var formattedAnds = [];
-      var url = '' + this._config.basePath + SEARCH_PATH;
-      var data = {
-        query: {
-          ands: []
-        },
-        pagination: {
-          page: options.page,
-          per_page: options.perPage
-        }
-      };
-
-      if (!Array.isArray(queries)) {
-        queries = [queries];
-      }
-      if (queries.length > 0) {
-        queries.forEach(function (query) {
-          if (query.input) {
-            formattedAnds = formattedAnds.concat(formatImagesSearch(query.input));
-          } else if (query.concept) {
-            formattedAnds = formattedAnds.concat(formatConceptsSearch(query.concept));
-          }
-        });
-        data.query.ands = formattedAnds;
-      }
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.post(url, data, { headers: headers }).then(function (response) {
-            if (isSuccess(response)) {
-              var _data = clone(response.data);
-              _data.rawData = clone(response.data);
-              resolve(_data);
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-  }, {
-    key: 'searchFeedback',
-    value: function searchFeedback(inputID, searchID, endUserID, sessionID) {
-      var url = '' + this._config.basePath + SEARCH_FEEDBACK_PATH;
-      var body = {
-        input: {
-          id: inputID,
-          feedback_info: {
-            event_type: 'search_click',
-            search_id: searchID,
-            end_user_id: endUserID,
-            session_id: sessionID
-          }
-        }
-      };
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.post(url, body, {
-            headers: headers
-          }).then(function (_ref) {
-            var data = _ref.data;
-
-            var d = clone(data);
-            d.rawData = clone(data);
-            resolve(d);
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Get inputs status (number of uploaded, in process or failed inputs)
-     * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-     */
-
-  }, {
-    key: 'getStatus',
-    value: function getStatus() {
-      var url = '' + this._config.basePath + INPUTS_STATUS_PATH;
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.get(url, { headers: headers }).then(function (response) {
-            if (isSuccess(response)) {
-              var data = clone(response.data);
-              data.rawData = clone(response.data);
-              resolve(data);
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-  }]);
-
-  return Inputs;
-}();
-
-;
-
-module.exports = Inputs;
-
-/***/ }),
-/* 1063 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var axios = __webpack_require__(515);
-var Concepts = __webpack_require__(1060);
-var Regions = __webpack_require__(1064);
-
-var _require = __webpack_require__(1056),
-    API = _require.API;
-
-var INPUTS_PATH = API.INPUTS_PATH;
-
-/**
- * class representing an input
- * @class
- */
-
-var Input = function () {
-  function Input(_config, data) {
-    _classCallCheck(this, Input);
-
-    this.id = data.id;
-    this.createdAt = data.created_at || data.createdAt;
-    this.imageUrl = data.data.image.url;
-    this.concepts = new Concepts(_config, data.data.concepts);
-    this.regions = new Regions(_config, data.data.regions || []);
-    this.score = data.score;
-    this.metadata = data.data.metadata;
-    if (data.data.geo && data.data.geo['geo_point']) {
-      this.geo = { geoPoint: data.data.geo['geo_point'] };
-    }
-    this.rawData = data;
-    this._config = _config;
-  }
-
-  /**
-   * Merge concepts to an input
-   * @param {object[]}         concepts    Object with keys explained below:
-   *   @param {object}           concepts[].concept
-   *     @param {string}           concepts[].concept.id        The concept id (required)
-   *     @param {boolean}          concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
-   * @param {object}           metadata                      Object with key values to attach to the input (optional)
-   * @return {Promise(Input, error)} A Promise that is fulfilled with an instance of Input or rejected with an error
-   */
-
-
-  _createClass(Input, [{
-    key: 'mergeConcepts',
-    value: function mergeConcepts(concepts, metadata) {
-      return this._update('merge', concepts, metadata);
-    }
-
-    /**
-     * Delete concept from an input
-     * @param {object[]}         concepts    Object with keys explained below:
-     *   @param {object}           concepts[].concept
-     *     @param {string}           concepts[].concept.id        The concept id (required)
-     *     @param {boolean}          concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
-     * @param {object}           metadata                      Object with key values to attach to the input (optional)
-     * @return {Promise(Input, error)} A Promise that is fulfilled with an instance of Input or rejected with an error
-     */
-
-  }, {
-    key: 'deleteConcepts',
-    value: function deleteConcepts(concepts, metadata) {
-      return this._update('remove', concepts, metadata);
-    }
-
-    /**
-     * Overwrite inputs
-     * @param {object[]}         concepts                      Array of object with keys explained below:
-     *   @param {object}           concepts[].concept
-     *     @param {string}           concepts[].concept.id         The concept id (required)
-     *     @param {boolean}          concepts[].concept.value      Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
-     * @param {object}           metadata                      Object with key values to attach to the input (optional)
-     * @return {Promise(Input, error)} A Promise that is fulfilled with an instance of Input or rejected with an error
-     */
-
-  }, {
-    key: 'overwriteConcepts',
-    value: function overwriteConcepts(concepts, metadata) {
-      return this._update('overwrite', concepts, metadata);
-    }
-  }, {
-    key: '_update',
-    value: function _update(action) {
-      var concepts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-      var metadata = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-
-      var url = '' + this._config.basePath + INPUTS_PATH;
-      var inputData = {};
-      if (concepts.length) {
-        inputData.concepts = concepts;
-      }
-      if (metadata !== null) {
-        inputData.metadata = metadata;
-      }
-      var data = {
-        action: action,
-        inputs: [{
-          id: this.id,
-          data: inputData
-        }]
-      };
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          return axios.patch(url, data, { headers: headers }).then(function (response) {
-            if (isSuccess(response)) {
-              resolve(new Input(response.data.input));
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-  }]);
-
-  return Input;
-}();
-
-;
-
-module.exports = Input;
-
-/***/ }),
-/* 1064 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Region = __webpack_require__(1065);
-
-/**
- * A collection of regions.
- * @class
- */
-
-var Regions = function () {
-  function Regions(_config) {
-    var _this = this;
-
-    var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-
-    _classCallCheck(this, Regions);
-
-    this._config = _config;
-    this.rawData = rawData;
-    rawData.forEach(function (regionData, index) {
-      _this[index] = new Region(_this._config, regionData);
-    });
-    this.length = rawData.length;
-  }
-
-  _createClass(Regions, [{
-    key: Symbol.iterator,
-    value: function value() {
-      var _this2 = this;
-
-      var index = -1;
-      return {
-        next: function next() {
-          return { value: _this2[++index], done: index >= _this2.length };
-        }
-      };
-    }
-  }]);
-
-  return Regions;
-}();
-
-module.exports = Regions;
-
-/***/ }),
-/* 1065 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * Region / bounding box. Region points are percentages from the edge.
- * E.g. top of 0.2 means the cropped input will start 20% down from the original edge.
- * @class
- */
-var Region = function Region(_config, data) {
-  _classCallCheck(this, Region);
-
-  this.id = data.id;
-  this.top = data.region_info.bounding_box.top_row;
-  this.left = data.region_info.bounding_box.left_col;
-  this.bottom = data.region_info.bounding_box.bottom_row;
-  this.right = data.region_info.bounding_box.right_col;
-};
-
-module.exports = Region;
-
-/***/ }),
-/* 1066 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _utils = __webpack_require__(1057);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var axios = __webpack_require__(515);
-
-var _require = __webpack_require__(1056),
-    API = _require.API,
-    replaceVars = _require.replaceVars;
-
-var WORKFLOWS_PATH = API.WORKFLOWS_PATH,
-    WORKFLOW_PATH = API.WORKFLOW_PATH,
-    WORKFLOW_RESULTS_PATH = API.WORKFLOW_RESULTS_PATH;
-
-var _require2 = __webpack_require__(1057),
-    wrapToken = _require2.wrapToken,
-    formatInput = _require2.formatInput;
-
-var _require3 = __webpack_require__(1042),
-    checkType = _require3.checkType;
-
-/**
- * class representing a workflow
- * @class
- */
-
-
-var Workflow = function () {
-  function Workflow(_config) {
-    var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-
-    _classCallCheck(this, Workflow);
-
-    this._config = _config;
-    this.rawData = rawData;
-    this.id = rawData.id;
-    this.createdAt = rawData.created_at || rawData.createdAt;
-    this.appId = rawData.app_id || rawData.appId;
-  }
-
-  /**
-   * @deprecated
-   */
-
-
-  _createClass(Workflow, [{
-    key: 'create',
-    value: function create(workflowId, config) {
-      var url = '' + this._config.basePath + WORKFLOWS_PATH;
-      var modelId = config.modelId;
-      var modelVersionId = config.modelVersionId;
-      var body = {
-        workflows: [{
-          id: workflowId,
-          nodes: [{
-            id: 'concepts',
-            model: {
-              id: modelId,
-              model_version: {
-                id: modelVersionId
-              }
-            }
-          }]
-        }]
-      };
-
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.post(url, body, {
-            headers: headers
-          }).then(function (response) {
-            var workflowId = response.data.workflows[0].id;
-            resolve(workflowId);
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * @deprecated
-     */
-
-  }, {
-    key: 'delete',
-    value: function _delete(workflowId, config) {
-      var url = '' + this._config.basePath + replaceVars(WORKFLOW_PATH, [workflowId]);
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.delete(url, {
-            headers: headers
-          }).then(function (response) {
-            var data = response.data;
-            resolve(data);
-          }, reject);
-        });
-      });
-    }
-
-    /**
-     * Returns workflow output according to inputs
-     * @param {string}                   workflowId    Workflow id
-     * @param {object[]|object|string}   inputs    An array of objects/object/string pointing to an image resource. A string can either be a url or base64 image bytes. Object keys explained below:
-     *    @param {object}                  inputs[].image     Object with keys explained below:
-     *       @param {string}                 inputs[].image.(url|base64)  Can be a publicly accessibly url or base64 string representing image bytes (required)
-     * @param {object} config An object with keys explained below.
-     *   @param {float} config.minValue The minimum confidence threshold that a result must meet. From 0.0 to 1.0
-     *   @param {number} config.maxConcepts The maximum number of concepts to return
-     */
-
-  }, {
-    key: 'predict',
-    value: function predict(workflowId, inputs) {
-      var config = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-      var url = '' + this._config.basePath + replaceVars(WORKFLOW_RESULTS_PATH, [workflowId]);
-      if (checkType(/(Object|String)/, inputs)) {
-        inputs = [inputs];
-      }
-      return wrapToken(this._config, function (headers) {
-        var params = {
-          inputs: inputs.map(formatInput)
-        };
-        if (config && Object.getOwnPropertyNames(config).length > 0) {
-          params['output_config'] = (0, _utils.formatObjectForSnakeCase)(config);
-        }
-        return new Promise(function (resolve, reject) {
-          axios.post(url, params, {
-            headers: headers
-          }).then(function (response) {
-            var data = response.data;
-            resolve(data);
-          }, reject);
-        });
-      });
-    }
-  }]);
-
-  return Workflow;
-}();
-
-module.exports = Workflow;
-
-/***/ }),
-/* 1067 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var axios = __webpack_require__(515);
-var Workflow = __webpack_require__(1066);
-
-var _require = __webpack_require__(1056),
-    API = _require.API,
-    replaceVars = _require.replaceVars;
-
-var WORKFLOWS_PATH = API.WORKFLOWS_PATH,
-    WORKFLOW_PATH = API.WORKFLOW_PATH;
-
-var _require2 = __webpack_require__(1057),
-    wrapToken = _require2.wrapToken;
-
-var _require3 = __webpack_require__(1042),
-    isSuccess = _require3.isSuccess;
-
-/**
- * class representing a collection of workflows
- * @class
- */
-
-
-var Workflows = function () {
-  function Workflows(_config) {
-    var _this = this;
-
-    var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-
-    _classCallCheck(this, Workflows);
-
-    this._config = _config;
-    this.rawData = rawData;
-    rawData.forEach(function (workflowData, index) {
-      _this[index] = new Workflow(_this._config, workflowData);
-    });
-    this.length = rawData.length;
-  }
-
-  /**
-   * Get all workflows in app
-   * @param {Object}    options  Object with keys explained below: (optional)
-   *   @param {Number}    options.page  The page number (optional, default: 1)
-   *   @param {Number}    options.perPage  Number of images to return per page (optional, default: 20)
-   * @return {Promise(Workflows, error)} A Promise that is fulfilled with an instance of Workflows or rejected with an error
-   */
-
-
-  _createClass(Workflows, [{
-    key: 'list',
-    value: function list() {
-      var _this2 = this;
-
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { page: 1, perPage: 20 };
-
-      var url = '' + this._config.basePath + WORKFLOWS_PATH;
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.get(url, {
-            headers: headers,
-            params: {
-              page: options.page,
-              per_page: options.perPage
-            }
-          }).then(function (response) {
-            if (isSuccess(response)) {
-              resolve(new Workflows(_this2._config, response.data.workflows));
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-  }, {
-    key: 'create',
-    value: function create(workflowId, config) {
-      var url = '' + this._config.basePath + WORKFLOWS_PATH;
-      var modelId = config.modelId;
-      var modelVersionId = config.modelVersionId;
-      var body = {
-        workflows: [{
-          id: workflowId,
-          nodes: [{
-            id: 'concepts',
-            model: {
-              id: modelId,
-              model_version: {
-                id: modelVersionId
-              }
-            }
-          }]
-        }]
-      };
-
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.post(url, body, {
-            headers: headers
-          }).then(function (response) {
-            var workflowId = response.data.workflows[0].id;
-            resolve(workflowId);
-          }, reject);
-        });
-      });
-    }
-  }, {
-    key: 'delete',
-    value: function _delete(workflowId) {
-      var url = '' + this._config.basePath + replaceVars(WORKFLOW_PATH, [workflowId]);
-      return wrapToken(this._config, function (headers) {
-        return new Promise(function (resolve, reject) {
-          axios.delete(url, {
-            headers: headers
-          }).then(function (response) {
-            var data = response.data;
-            resolve(data);
-          }, reject);
-        });
-      });
-    }
-  }]);
-
-  return Workflows;
-}();
-
-;
-
-module.exports = Workflows;
-
-/***/ }),
-/* 1068 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Moderation = __webpack_require__(1069);
-
-var Solutions = function Solutions(_config) {
-  _classCallCheck(this, Solutions);
-
-  this.moderation = new Moderation(_config);
-};
-
-module.exports = Solutions;
-
-/***/ }),
-/* 1069 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var axios = __webpack_require__(515);
-
-var _require = __webpack_require__(1057),
-    wrapToken = _require.wrapToken;
-
-var _require2 = __webpack_require__(1042),
-    isSuccess = _require2.isSuccess,
-    clone = _require2.clone;
-
-var BASE_URL = 'https://api.clarifai-moderation.com';
-
-var Moderation = function () {
-  function Moderation(_config) {
-    _classCallCheck(this, Moderation);
-
-    this._config = _config;
-  }
-
-  _createClass(Moderation, [{
-    key: 'predict',
-    value: function predict(modelID, imageURL) {
-      return wrapToken(this._config, function (headers) {
-        var url = BASE_URL + '/v2/models/' + modelID + '/outputs';
-        var params = {
-          inputs: [{
-            data: {
-              image: {
-                url: imageURL
-              }
-            }
-          }]
-        };
-
-        return new Promise(function (resolve, reject) {
-          return axios.post(url, params, { headers: headers }).then(function (response) {
-            if (isSuccess(response)) {
-              var data = clone(response.data);
-              resolve(data);
-            } else {
-              reject(response);
-            }
-          }, reject);
-        });
-      });
-    }
-  }, {
-    key: 'getModerationStatus',
-    value: function getModerationStatus(imageID) {
-      return wrapToken(this._config, function (headers) {
-        var url = BASE_URL + '/v2/inputs/' + imageID + '/outputs';
-        return new Promise(function (resolve, reject) {
-          return axios.get(url, { headers: headers }).then(function (response) {
-            var data = clone(response.data);
-            resolve(data);
-          }, reject);
-        });
-      });
-    }
-  }]);
-
-  return Moderation;
-}();
-
-module.exports = Moderation;
 
 /***/ })
 /******/ ]);

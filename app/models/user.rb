@@ -16,28 +16,15 @@ class User < ApplicationRecord
   def self.new_with_session(_, session)
     super.tap do |user|
       if (data = session['devise.omniauth_data'])
-        user.name = data['name'] if user.name.blank?
         user.email = data['email'] if user.email.blank?
         user.provider = data['provider'] if data['provider'] && user.provider.blank?
         user.uid = data['uid'] if data['uid'] && user.uid.blank?
-        user.password = Devise.friendly_token[0, 20] if user.password.blank?
+        user.password = Devise.friendly_token[0, 20]
+        user.password_confirmation = user.password
+
         user.skip_confirmation!
       end
     end
-  end
-
-  # def logged_in?
-  #   !current_user.nil?
-  # end
-  #  def is_sns_signup?
-  #   p "is_sns_signup"
-  #   !user.provider.nil?
-  # end
-
-  with_options if: !:provider.nil? do
-    validates :name, presence: false
-    validates :password, presence: false
-    validates :email, presence: false
   end
 
   acts_as_followable

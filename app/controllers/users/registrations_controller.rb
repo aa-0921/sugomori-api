@@ -7,6 +7,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     p current_user
+    p "regiの@input_email"
+
+    p @input_email
     p "registorations_controllerのcurrent_user"
     super
   end
