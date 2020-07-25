@@ -245,12 +245,6 @@ export const PostsApp = (props: any) => {
                   <input type="text" placeholder="search" onChange={filterList} className="w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline" />
                 </form>
               </div>
-              {/* clarifaiTagsの表示 */}
-              <ClarifaiTagList />
-
-
-              {/* <div>{clarifaiTags}</div> */}
-              {/* clarifaiTagsの表示 */}
 
               <PostList
                 fetchPosts={fetchPosts}

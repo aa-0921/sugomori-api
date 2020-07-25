@@ -47629,7 +47629,6 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                 React.createElement('input', { type: 'text', placeholder: 'search', onChange: filterList, className: 'w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline' })
               )
             ),
-            React.createElement(_ClarifaiTagList.ClarifaiTagList, null),
             React.createElement(_PostList.PostList, {
               fetchPosts: fetchPosts,
               likeList: likeList,
