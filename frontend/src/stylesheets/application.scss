@@ -68,7 +68,15 @@ details > summary {
   height: 100%;
 }
 
-// loading関連
+// slider関連
+div.postWidthSlider {
+  background-color: #a4abbd !important;
+}
+div.postWidthSlider > div {
+  background-color: #a3bffa !important;
+}
+
+// loading関連-------------------------------------------------
 div.loadingDiv {
   z-index: 2001;
   position: absolute;

@@ -72,9 +72,13 @@ export const PostsApp = (props: any) => {
 
   // modal,open,close
   const modalOpenHandler = (post: any) => {
+
     setClickedPost(post);
+    console.log('clickedPost.id: ', clickedPost.id);
+
     setModalOpen(true);
     removeHeader();
+    // getClarifaiTags();
   };
   const closeHandler = () => {
     setModalOpen(false);
@@ -112,8 +116,7 @@ export const PostsApp = (props: any) => {
     }
   }, [clickedPost]);
 
-  console.log('clickedPost.id: ', clickedPost.id);
-  console.log('clickedPostUser.id: ', clickedPostUser.id);
+  // console.log('clickedPostUser.id: ', clickedPostUser.id);
 
   const pushToLikeList = (picpost_id: number) => {
     console.log('ma', picpost_id);
@@ -191,13 +194,38 @@ export const PostsApp = (props: any) => {
     });
   })();
 
-  // const [collapseOpen, setCollapseOpen] = useState(true);
+  // clarifaiTags関連
 
-  // const toggleCollapse = () => {
-  //   setCollapseOpen(!collapseOpen)
+  // const [clarifaiTags, setClarifaiTags] = useState([])
+
+  // const getClarifaiTags = () => {
+  //   console.log('getClarifaiTagsのclickedPost.id: ', clickedPost.id);
+  //   console.log('REACT_APP_CLARIFAI_API_KEY', process.env.REACT_APP_CLARIFAI_API_KEY);
+
+  //   const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
+
+  //   ClarifaiApp(clarifaiUrl).then((res) => {
+  //     // console.log('ClarifaiApp', res.outputs[0].data.concepts);
+  //     console.log('clarifaiUrl', clarifaiUrl);
+
+  //     console.log('ClarifaiAppのmap', res.map((el: any) => el.name));
+  //     setClarifaiTags(res.slice(0, 3).map((el: any) => `${el.name.toUpperCase()} `))
+  //   })
   // }
 
-  ClarifaiApp();
+
+  const [clarifaiTags, setClarifaiTags] = useState([])
+  const clarifaiUrl = 'https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_56_post_image.jpg'
+  // const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
+
+  useEffect(() => {
+    ClarifaiApp(clarifaiUrl).then((res) => {
+      // console.log('ClarifaiApp', res.outputs[0].data.concepts);
+      console.log('ClarifaiAppのmap', res.map((el: any) => el.name));
+      setClarifaiTags(res.slice(0, 3).map((el: any) => `${el.name.toUpperCase()} `))
+    })
+    console.log('ClarifaiApp', clarifaiTags);
+  }, [])
 
   return (
     <React.Fragment>
@@ -207,10 +235,9 @@ export const PostsApp = (props: any) => {
             <div>
               {/* // Collapse関連 */}
               <Spacer y={2} />
-
               <div className="collapseWrap mt-50 pt-5 h-30">
                 <Collapse.Group>
-                  <Collapse title="" initialVisible>
+                  <Collapse title=" " initialVisible>
                     <Text></Text>
 
                     <div className="bg-white flex justify-center items-center h-10">
@@ -219,6 +246,7 @@ export const PostsApp = (props: any) => {
                       </span>
                       <Row style={{ width: '75%' }}>
                         <Slider
+                          className="postWidthSlider"
                           value={columnWidthValue}
                           onChange={columnWidthHandler}
                           step={20} max={400} min={100} initialValue={300}
@@ -234,6 +262,7 @@ export const PostsApp = (props: any) => {
                   <input type="text" placeholder="search" onChange={filterList} className="w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline" />
                 </form>
               </div>
+              <div>{clarifaiTags}</div>
 
               <PostList
                 fetchPosts={fetchPosts}
@@ -274,6 +303,8 @@ export const PostsApp = (props: any) => {
                         currentUserData={props.currentUserData}
                       />
                     </div>
+                    <div>{clarifaiTags}</div>
+
                     <Spacer y={2} />
 
                     {/* コメント部分ーーーーーーーーーーーーー */}

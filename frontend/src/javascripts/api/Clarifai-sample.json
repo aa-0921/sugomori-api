@@ -1,0 +1,166 @@
+{
+  "status": {
+    "code": 10000,
+    "description": "Ok"
+  },
+  "outputs": [
+    {
+      "id": "b8b2d1188ed141e092df4a0989d5d8f9",
+      "status": {
+        "code": 10000,
+        "description": "Ok"
+      },
+      "created_at": "2016-11-22T17:28:36Z",
+      "model": {
+        "name": "travel-v1.0",
+        "id": "eee28c313d69466f836ab83287a54ed9",
+        "created_at": "2016-09-17T22:18:59Z",
+        "app_id": null,
+        "output_info": {
+          "message": "Show output_info with: GET /models/{model_id}/output_info",
+          "type": "concept"
+        },
+        "model_version": {
+          "id": "d2ffbf9730fd41fea79063270847be82",
+          "created_at": "2016-09-17T22:18:59Z",
+          "status": {
+            "code": 21100,
+            "description": "Model trained successfully"
+          }
+        }
+      },
+      "input": {
+        "id": "b8b2d1188ed141e092df4a0989d5d8f9",
+        "data": {
+          "image": {
+            "url": "https://clarifai.com/cms-assets/20180308185817/travel.jpg"
+          }
+        }
+      },
+      "data": {
+        "concepts": [
+          {
+            "id": "ai_tbXzfXXz",
+            "name": "Outdoor Pool",
+            "app_id": null,
+            "value": 0.95201385
+          },
+          {
+            "id": "ai_CtFL0TP6",
+            "name": "Wellness & Spa",
+            "app_id": null,
+            "value": 0.5191682
+          },
+          {
+            "id": "ai_XB2b9m4v",
+            "name": "Summer",
+            "app_id": null,
+            "value": 0.49868092
+          },
+          {
+            "id": "ai_MbpTFJxj",
+            "name": "Garden",
+            "app_id": null,
+            "value": 0.47994247
+          },
+          {
+            "id": "ai_8v2Tm2Gl",
+            "name": "Hot Tub",
+            "app_id": null,
+            "value": 0.38965574
+          },
+          {
+            "id": "ai_q0SJrBZW",
+            "name": "Water Park",
+            "app_id": null,
+            "value": 0.3072436
+          },
+          {
+            "id": "ai_TCZdTr6B",
+            "name": "Yoga",
+            "app_id": null,
+            "value": 0.28053865
+          },
+          {
+            "id": "ai_zTxfQQKH",
+            "name": "Kids Area",
+            "app_id": null,
+            "value": 0.27112955
+          },
+          {
+            "id": "ai_T4GN2Cdl",
+            "name": "Water Sports",
+            "app_id": null,
+            "value": 0.19529618
+          },
+          {
+            "id": "ai_sf6B79BS",
+            "name": "Sports & Activities",
+            "app_id": null,
+            "value": 0.17493547
+          },
+          {
+            "id": "ai_CVQVtMzc",
+            "name": "Nighttime",
+            "app_id": null,
+            "value": 0.10337732
+          },
+          {
+            "id": "ai_3j6nNvsH",
+            "name": "Casino",
+            "app_id": null,
+            "value": 0.09855646
+          },
+          {
+            "id": "ai_lt2nKTB2",
+            "name": "Terrace",
+            "app_id": null,
+            "value": 0.097663336
+          },
+          {
+            "id": "ai_7Wn1cVgv",
+            "name": "Indoor Swimming Pool",
+            "app_id": null,
+            "value": 0.09621443
+          },
+          {
+            "id": "ai_hmSzCZd5",
+            "name": "Daytime",
+            "app_id": null,
+            "value": 0.07237845
+          },
+          {
+            "id": "ai_J2x9qKdS",
+            "name": "Animals",
+            "app_id": null,
+            "value": 0.06246137
+          },
+          {
+            "id": "ai_m7PCbqbx",
+            "name": "Golf Course",
+            "app_id": null,
+            "value": 0.05252952
+          },
+          {
+            "id": "ai_2jkxl4Fz",
+            "name": "Spring",
+            "app_id": null,
+            "value": 0.04537405
+          },
+          {
+            "id": "ai_dXWGf1bz",
+            "name": "Building",
+            "app_id": null,
+            "value": 0.044785205
+          },
+          {
+            "id": "ai_N09hW8gK",
+            "name": "Massage",
+            "app_id": null,
+            "value": 0.043336816
+          }
+        ]
+      }
+    }
+  ]
+}

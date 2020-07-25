@@ -5,12 +5,14 @@ import { useFormikContext, useField } from 'formik';
 import axios from 'axios';
 import { Input, Spacer } from '@zeit-ui/react';
 import { Modal, Button, Grid, Divider } from '@zeit-ui/react';
+import { ClarifaiApp } from '../api/ClarifaiApp'
 
 export const FormikPost = (props: any) => {
   // export const FormikPost = () => {
   const [postFileName, setPostFileName] = useState('');
   const [postFilePreview, setPostFilePreview] = useState(null);
   // const fileInput = React.useRef(null)
+  const [clarifaiTags, setClarifaiTags] = useState([])
 
   const createPicpost = async (body: any) => {
 
@@ -24,6 +26,20 @@ export const FormikPost = (props: any) => {
       });
     props.setNowLoading(false);
     props.postModalCloseHandler()
+
+
+
+    const clarifaiUrl = 'https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_56_post_image.jpg'
+
+    ClarifaiApp(clarifaiUrl).then((res) => {
+      // console.log('ClarifaiApp', res.outputs[0].data.concepts);
+
+      console.log('ClarifaiAppのmap', res.map((el: any) => el.name));
+
+      setClarifaiTags(res)
+    })
+    console.log('FormikPostのClarifaiApp', clarifaiTags);
+
   };
 
 
@@ -38,11 +54,14 @@ export const FormikPost = (props: any) => {
   const onFileChange = (e: any) => {
     const files = e.target.files
     console.log('onFileChangeのfiles', files)
+    console.log('e.target.files', e.target.files)
+
 
     if (files.length > 0) {
       var file = files[0]
       var reader = new FileReader()
       reader.onload = (e) => {
+        console.log('e.target.result', e.target.result)
         setPostFilePreview(e.target.result)
       };
       reader.readAsDataURL(file)

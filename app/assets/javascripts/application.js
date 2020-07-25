@@ -47420,9 +47420,13 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
 
   // modal,open,close
   var modalOpenHandler = function modalOpenHandler(post) {
+
     setClickedPost(post);
+    console.log('clickedPost.id: ', clickedPost.id);
+
     setModalOpen(true);
     removeHeader();
+    // getClarifaiTags();
   };
   var closeHandler = function closeHandler() {
     setModalOpen(false);
@@ -47461,8 +47465,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
     }
   }, [clickedPost]);
 
-  console.log('clickedPost.id: ', clickedPost.id);
-  console.log('clickedPostUser.id: ', clickedPostUser.id);
+  // console.log('clickedPostUser.id: ', clickedPostUser.id);
 
   var pushToLikeList = function pushToLikeList(picpost_id) {
     console.log('ma', picpost_id);
@@ -47550,13 +47553,46 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
     });
   })();
 
-  // const [collapseOpen, setCollapseOpen] = useState(true);
+  // clarifaiTags関連
 
-  // const toggleCollapse = () => {
-  //   setCollapseOpen(!collapseOpen)
+  // const [clarifaiTags, setClarifaiTags] = useState([])
+
+  // const getClarifaiTags = () => {
+  //   console.log('getClarifaiTagsのclickedPost.id: ', clickedPost.id);
+  //   console.log('REACT_APP_CLARIFAI_API_KEY', process.env.REACT_APP_CLARIFAI_API_KEY);
+
+  //   const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
+
+  //   ClarifaiApp(clarifaiUrl).then((res) => {
+  //     // console.log('ClarifaiApp', res.outputs[0].data.concepts);
+  //     console.log('clarifaiUrl', clarifaiUrl);
+
+  //     console.log('ClarifaiAppのmap', res.map((el: any) => el.name));
+  //     setClarifaiTags(res.slice(0, 3).map((el: any) => `${el.name.toUpperCase()} `))
+  //   })
   // }
 
-  (0, _ClarifaiApp.ClarifaiApp)();
+
+  var _useState19 = (0, _react.useState)([]),
+      _useState20 = _slicedToArray(_useState19, 2),
+      clarifaiTags = _useState20[0],
+      setClarifaiTags = _useState20[1];
+
+  var clarifaiUrl = 'https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_56_post_image.jpg';
+  // const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
+
+  (0, _react.useEffect)(function () {
+    (0, _ClarifaiApp.ClarifaiApp)(clarifaiUrl).then(function (res) {
+      // console.log('ClarifaiApp', res.outputs[0].data.concepts);
+      console.log('ClarifaiAppのmap', res.map(function (el) {
+        return el.name;
+      }));
+      setClarifaiTags(res.slice(0, 3).map(function (el) {
+        return el.name.toUpperCase() + ' ';
+      }));
+    });
+    console.log('ClarifaiApp', clarifaiTags);
+  }, []);
 
   return React.createElement(
     React.Fragment,
@@ -47582,7 +47618,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                 null,
                 React.createElement(
                   _react2.Collapse,
-                  { title: '', initialVisible: true },
+                  { title: ' ', initialVisible: true },
                   React.createElement(_react2.Text, null),
                   React.createElement(
                     'div',
@@ -47596,6 +47632,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                       _react2.Row,
                       { style: { width: '75%' } },
                       React.createElement(_react2.Slider, {
+                        className: 'postWidthSlider',
                         value: columnWidthValue,
                         onChange: columnWidthHandler,
                         step: 20, max: 400, min: 100, initialValue: 300
@@ -47614,6 +47651,11 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                 { action: '' },
                 React.createElement('input', { type: 'text', placeholder: 'search', onChange: filterList, className: 'w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline' })
               )
+            ),
+            React.createElement(
+              'div',
+              null,
+              clarifaiTags
             ),
             React.createElement(_PostList.PostList, {
               fetchPosts: fetchPosts,
@@ -47674,6 +47716,11 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                       removeFromLikeList: removeFromLikeList,
                       currentUserData: props.currentUserData
                     })
+                  ),
+                  React.createElement(
+                    'div',
+                    null,
+                    clarifaiTags
                   ),
                   React.createElement(_react2.Spacer, { y: 2 }),
                   React.createElement(
@@ -55525,6 +55572,8 @@ var _axios2 = _interopRequireDefault(_axios);
 
 var _react2 = __webpack_require__(35);
 
+var _ClarifaiApp = __webpack_require__(541);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
@@ -55542,6 +55591,12 @@ var FormikPost = exports.FormikPost = function FormikPost(props) {
       setPostFilePreview = _useState4[1];
   // const fileInput = React.useRef(null)
 
+
+  var _useState5 = (0, _react.useState)([]),
+      _useState6 = _slicedToArray(_useState5, 2),
+      clarifaiTags = _useState6[0],
+      setClarifaiTags = _useState6[1];
+
   var createPicpost = async function createPicpost(body) {
 
     var headers = { 'content-type': 'multipart/form-data' };
@@ -55553,6 +55608,19 @@ var FormikPost = exports.FormikPost = function FormikPost(props) {
     });
     props.setNowLoading(false);
     props.postModalCloseHandler();
+
+    var clarifaiUrl = 'https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_56_post_image.jpg';
+
+    (0, _ClarifaiApp.ClarifaiApp)(clarifaiUrl).then(function (res) {
+      // console.log('ClarifaiApp', res.outputs[0].data.concepts);
+
+      console.log('ClarifaiAppのmap', res.map(function (el) {
+        return el.name;
+      }));
+
+      setClarifaiTags(res);
+    });
+    console.log('FormikPostのClarifaiApp', clarifaiTags);
   };
 
   var pushToPostList = function pushToPostList(post) {
@@ -55565,11 +55633,13 @@ var FormikPost = exports.FormikPost = function FormikPost(props) {
   var onFileChange = function onFileChange(e) {
     var files = e.target.files;
     console.log('onFileChangeのfiles', files);
+    console.log('e.target.files', e.target.files);
 
     if (files.length > 0) {
       var file = files[0];
       var reader = new FileReader();
       reader.onload = function (e) {
+        console.log('e.target.result', e.target.result);
         setPostFilePreview(e.target.result);
       };
       reader.readAsDataURL(file);

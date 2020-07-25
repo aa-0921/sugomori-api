@@ -14480,6 +14480,12 @@ details > summary {
 #tsparticles {
   height: 100%; }
 
+div.postWidthSlider {
+  background-color: #a4abbd !important; }
+
+div.postWidthSlider > div {
+  background-color: #a3bffa !important; }
+
 div.loadingDiv {
   z-index: 2001;
   position: absolute; }
