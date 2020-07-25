@@ -10,6 +10,7 @@ import * as Icon from '@zeit-ui/react-icons';
 import { CommentApp } from '../components/CommentApp';
 import { LikeButton } from '../components/LikeButton';
 import { PostModal } from '../components/PostModal';
+import { ClarifaiApp } from '../api/ClarifaiApp'
 
 
 
@@ -196,7 +197,7 @@ export const PostsApp = (props: any) => {
   //   setCollapseOpen(!collapseOpen)
   // }
 
-
+  ClarifaiApp();
 
   return (
     <React.Fragment>
@@ -220,7 +221,7 @@ export const PostsApp = (props: any) => {
                         <Slider
                           value={columnWidthValue}
                           onChange={columnWidthHandler}
-                          step={20} max={500} min={100} initialValue={300}
+                          step={20} max={400} min={100} initialValue={300}
                         />
                       </Row>
                       <Text></Text>

@@ -12,6 +12,11 @@
       <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
         <p class="text-center text-3xl">Join Us.</p>
 
+        <% if params[:input_email] then %>
+          <p class="text-center text-m">SNSログインの為、このアプリで使用する名前を入力して下さい</p>
+        <% end %>
+
+
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -23,22 +28,31 @@
             <%= f.text_field :name ,autofocus: true, autocomplete: "name" ,:placeholder =>"your name", class:"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" %>
           </div>
 
-
+          <% if params[:input_email] then %>
             <div class="flex flex-col pt-4">
               <label for="email" class="text-lg">Email</label>
-              <%= f.email_field :email ,autofocus: true, autocomplete: "email" ,:placeholder =>"your@email.com", class:"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" %>
+              <%= f.email_field :email ,autofocus: true,readonly: true ,autocomplete: "email" ,:placeholder =>"your@email.com", class:"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" %>
             </div>
+          <% else %>
+            <div class="flex flex-col pt-4">
+              <label for="email" class="text-lg">Email</label>
+              <%= f.email_field :email ,autofocus: true,autocomplete: "email" ,:placeholder =>"your@email.com", class:"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" %>
+            </div>
+          <% end %>
 
-
+        <% if params[:input_email] then %>
+        <% else %>
           <div class="flex flex-col pt-4">
             <label for="password" class="text-lg">Password <span class="text-sm"> （6字以上）</span></label>
             <%= f.password_field :password, autocomplete: "new-password" ,:placeholder=>"Password", class:"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"%>
           </div>
-
           <div class="flex flex-col pt-4">
             <label for="confirm-password" class="text-lg">Confirm Password</label>
             <%= f.password_field :password_confirmation, autocomplete: "new-password" ,:placeholder=>"Password", class:"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"%>
           </div>
+        <% end %>
+
+
           <div class="actions">
             <%= f.submit "Sign up",class:"bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8" %>
           </div>

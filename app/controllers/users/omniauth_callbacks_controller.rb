@@ -17,23 +17,21 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, kind: "Facebook") if is_navigational_format?
     else
       # 新規登録用にセッションに必要情報を格納
-      # user.skip_confirmation!
-      # user.save!
       if (data = request.env['omniauth.auth'])
         session['devise.omniauth_data'] = {
-          name: data['info']['name'],
           email: data['info']['email'],
           provider: data['provider'],
           uid: data['uid'],
         }
+        @input_email = data['info']['email']
+        p @input_email
       end
-      p data['info']['email']
-      # redirect_to new_user_registration_url
-      redirect_to edit_user_registration_path
-      # set_flash_message(:notice, 'SNSログインのため、空欄を入力して下さい')
-      # set_flash_message(:notice, :need_input)
-      flash.now[:notice] = 'SNSログインのため、空欄を入力して下さい'
+      redirect_to new_user_registration_url(input_email: @input_email)
     end
+  end
+
+  def failure
+    redirect_to root_path
   end
 
   def twitter
@@ -48,12 +46,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           provider: data['provider'],
           uid: data['uid'],
         }
+        @input_email = data['info']['email']
       end
-      # redirect_to new_user_registration_url
-      redirect_to edit_user_registration_path
-      flash.now[:notice] = 'SNSログインのため、空欄を入力して下さい'
-      # set_flash_message(:notice, :need_input)
-
+      redirect_to new_user_registration_url(input_email: @input_email)
     end
   end
 
@@ -69,16 +64,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           provider: data['provider'],
           uid: data['uid'],
         }
+        @input_email = data['info']['email']
       end
-      # redirect_to new_user_registration_url
-      redirect_to edit_user_registration_path
-      flash.now[:notice] = 'SNSログインのため、空欄を入力して下さい'
-      # set_flash_message(:notice, :need_input)
-
+      redirect_to new_user_registration_url(input_email: @input_email)
     end
-  end
-
-  def failure
-    redirect_to root_path
   end
 end
