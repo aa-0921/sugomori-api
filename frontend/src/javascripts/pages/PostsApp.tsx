@@ -11,6 +11,8 @@ import { CommentApp } from '../components/CommentApp';
 import { LikeButton } from '../components/LikeButton';
 import { PostModal } from '../components/PostModal';
 import { ClarifaiApp } from '../api/ClarifaiApp'
+import { ClarifaiTag } from '../components/ClarifaiTag';
+import { ClarifaiTagList } from '../components/ClarifaiTagList';
 
 
 
@@ -194,38 +196,19 @@ export const PostsApp = (props: any) => {
     });
   })();
 
-  // clarifaiTags関連
-
+  // // clarifaiTags関連
   // const [clarifaiTags, setClarifaiTags] = useState([])
+  // const clarifaiUrl = 'https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_56_post_image.jpg'
+  // // const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
 
-  // const getClarifaiTags = () => {
-  //   console.log('getClarifaiTagsのclickedPost.id: ', clickedPost.id);
-  //   console.log('REACT_APP_CLARIFAI_API_KEY', process.env.REACT_APP_CLARIFAI_API_KEY);
-
-  //   const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
-
+  // useEffect(() => {
   //   ClarifaiApp(clarifaiUrl).then((res) => {
   //     // console.log('ClarifaiApp', res.outputs[0].data.concepts);
-  //     console.log('clarifaiUrl', clarifaiUrl);
-
   //     console.log('ClarifaiAppのmap', res.map((el: any) => el.name));
   //     setClarifaiTags(res.slice(0, 3).map((el: any) => `${el.name.toUpperCase()} `))
   //   })
-  // }
-
-
-  const [clarifaiTags, setClarifaiTags] = useState([])
-  const clarifaiUrl = 'https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_56_post_image.jpg'
-  // const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
-
-  useEffect(() => {
-    ClarifaiApp(clarifaiUrl).then((res) => {
-      // console.log('ClarifaiApp', res.outputs[0].data.concepts);
-      console.log('ClarifaiAppのmap', res.map((el: any) => el.name));
-      setClarifaiTags(res.slice(0, 3).map((el: any) => `${el.name.toUpperCase()} `))
-    })
-    console.log('ClarifaiApp', clarifaiTags);
-  }, [])
+  //   console.log('ClarifaiApp', clarifaiTags);
+  // }, [])
 
   return (
     <React.Fragment>
@@ -262,7 +245,12 @@ export const PostsApp = (props: any) => {
                   <input type="text" placeholder="search" onChange={filterList} className="w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline" />
                 </form>
               </div>
-              <div>{clarifaiTags}</div>
+              {/* clarifaiTagsの表示 */}
+              <ClarifaiTagList />
+
+
+              {/* <div>{clarifaiTags}</div> */}
+              {/* clarifaiTagsの表示 */}
 
               <PostList
                 fetchPosts={fetchPosts}
@@ -287,6 +275,11 @@ export const PostsApp = (props: any) => {
                     <div className="imageDiv flex flex-col h-auto">
                       <img src={clickedPost.picture} className="modalImage object-contain rounded-lg" />
                     </div>
+                    <Spacer y={0.2} />
+
+                    <ClarifaiTagList />
+                    <Spacer y={0.5} />
+
                     <div className="flex text-center mt-4">
                       <Link
                         to={'/profilepage/' + clickedPost.user_id}
@@ -303,7 +296,6 @@ export const PostsApp = (props: any) => {
                         currentUserData={props.currentUserData}
                       />
                     </div>
-                    <div>{clarifaiTags}</div>
 
                     <Spacer y={2} />
 

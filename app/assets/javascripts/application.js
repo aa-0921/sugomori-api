@@ -47335,6 +47335,10 @@ var _PostModal = __webpack_require__(903);
 
 var _ClarifaiApp = __webpack_require__(541);
 
+var _ClarifaiTag = __webpack_require__(1070);
+
+var _ClarifaiTagList = __webpack_require__(1071);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var PostsApp = exports.PostsApp = function PostsApp(props) {
@@ -47553,46 +47557,19 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
     });
   })();
 
-  // clarifaiTags関連
-
+  // // clarifaiTags関連
   // const [clarifaiTags, setClarifaiTags] = useState([])
+  // const clarifaiUrl = 'https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_56_post_image.jpg'
+  // // const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
 
-  // const getClarifaiTags = () => {
-  //   console.log('getClarifaiTagsのclickedPost.id: ', clickedPost.id);
-  //   console.log('REACT_APP_CLARIFAI_API_KEY', process.env.REACT_APP_CLARIFAI_API_KEY);
-
-  //   const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
-
+  // useEffect(() => {
   //   ClarifaiApp(clarifaiUrl).then((res) => {
   //     // console.log('ClarifaiApp', res.outputs[0].data.concepts);
-  //     console.log('clarifaiUrl', clarifaiUrl);
-
   //     console.log('ClarifaiAppのmap', res.map((el: any) => el.name));
   //     setClarifaiTags(res.slice(0, 3).map((el: any) => `${el.name.toUpperCase()} `))
   //   })
-  // }
-
-
-  var _useState19 = (0, _react.useState)([]),
-      _useState20 = _slicedToArray(_useState19, 2),
-      clarifaiTags = _useState20[0],
-      setClarifaiTags = _useState20[1];
-
-  var clarifaiUrl = 'https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_56_post_image.jpg';
-  // const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
-
-  (0, _react.useEffect)(function () {
-    (0, _ClarifaiApp.ClarifaiApp)(clarifaiUrl).then(function (res) {
-      // console.log('ClarifaiApp', res.outputs[0].data.concepts);
-      console.log('ClarifaiAppのmap', res.map(function (el) {
-        return el.name;
-      }));
-      setClarifaiTags(res.slice(0, 3).map(function (el) {
-        return el.name.toUpperCase() + ' ';
-      }));
-    });
-    console.log('ClarifaiApp', clarifaiTags);
-  }, []);
+  //   console.log('ClarifaiApp', clarifaiTags);
+  // }, [])
 
   return React.createElement(
     React.Fragment,
@@ -47652,11 +47629,7 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                 React.createElement('input', { type: 'text', placeholder: 'search', onChange: filterList, className: 'w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline' })
               )
             ),
-            React.createElement(
-              'div',
-              null,
-              clarifaiTags
-            ),
+            React.createElement(_ClarifaiTagList.ClarifaiTagList, null),
             React.createElement(_PostList.PostList, {
               fetchPosts: fetchPosts,
               likeList: likeList,
@@ -47689,6 +47662,9 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                     { className: 'imageDiv flex flex-col h-auto' },
                     React.createElement('img', { src: clickedPost.picture, className: 'modalImage object-contain rounded-lg' })
                   ),
+                  React.createElement(_react2.Spacer, { y: 0.2 }),
+                  React.createElement(_ClarifaiTagList.ClarifaiTagList, null),
+                  React.createElement(_react2.Spacer, { y: 0.5 }),
                   React.createElement(
                     'div',
                     { className: 'flex text-center mt-4' },
@@ -47716,11 +47692,6 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                       removeFromLikeList: removeFromLikeList,
                       currentUserData: props.currentUserData
                     })
-                  ),
-                  React.createElement(
-                    'div',
-                    null,
-                    clarifaiTags
                   ),
                   React.createElement(_react2.Spacer, { y: 2 }),
                   React.createElement(
@@ -100226,6 +100197,105 @@ var BeforeLoginPosts = exports.BeforeLoginPosts = function BeforeLoginPosts(prop
           React.createElement(_reactRouterDom.Route, { path: '/' })
         )
       )
+    )
+  );
+};
+
+/***/ }),
+/* 1070 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ClarifaiTag = undefined;
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _react2 = __webpack_require__(35);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var ClarifaiTag = exports.ClarifaiTag = function ClarifaiTag(props) {
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(
+      _react2.Tag,
+      { type: 'secondary' },
+      props.tag
+    )
+  );
+};
+
+/***/ }),
+/* 1071 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ClarifaiTagList = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _react2 = __webpack_require__(35);
+
+var _ClarifaiApp = __webpack_require__(541);
+
+var _ClarifaiTag = __webpack_require__(1070);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var ClarifaiTagList = exports.ClarifaiTagList = function ClarifaiTagList(props) {
+  // clarifaiTags関連
+  var _useState = (0, _react.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      clarifaiTags = _useState2[0],
+      setClarifaiTags = _useState2[1];
+
+  var clarifaiUrl = 'https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_56_post_image.jpg';
+  // const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
+
+  (0, _react.useEffect)(function () {
+    (0, _ClarifaiApp.ClarifaiApp)(clarifaiUrl).then(function (res) {
+      // console.log('ClarifaiApp', res.outputs[0].data.concepts);
+      console.log('ClarifaiAppのmap', res.map(function (el) {
+        return el.name;
+      }));
+      setClarifaiTags(res.slice(0, 10).map(function (el) {
+        return el.name.toUpperCase() + ' ';
+      }));
+    });
+    console.log('ClarifaiApp', clarifaiTags);
+  }, []);
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(
+      'div',
+      { className: 'flex justify-center' },
+      clarifaiTags.map(function (tag, index) {
+        return React.createElement(
+          'div',
+          { key: index, className: 'list mx-1' },
+          React.createElement(_ClarifaiTag.ClarifaiTag, {
+            tag: tag
+          })
+        );
+      })
     )
   );
 };
