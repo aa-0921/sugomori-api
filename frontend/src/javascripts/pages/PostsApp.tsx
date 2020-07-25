@@ -277,7 +277,9 @@ export const PostsApp = (props: any) => {
                     </div>
                     <Spacer y={0.2} />
 
-                    <ClarifaiTagList />
+                    <ClarifaiTagList
+                      clickedPost={clickedPost}
+                    />
                     <Spacer y={0.5} />
 
                     <div className="flex text-center mt-4">

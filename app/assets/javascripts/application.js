@@ -47663,7 +47663,9 @@ var PostsApp = exports.PostsApp = function PostsApp(props) {
                     React.createElement('img', { src: clickedPost.picture, className: 'modalImage object-contain rounded-lg' })
                   ),
                   React.createElement(_react2.Spacer, { y: 0.2 }),
-                  React.createElement(_ClarifaiTagList.ClarifaiTagList, null),
+                  React.createElement(_ClarifaiTagList.ClarifaiTagList, {
+                    clickedPost: clickedPost
+                  }),
                   React.createElement(_react2.Spacer, { y: 0.5 }),
                   React.createElement(
                     'div',
@@ -100265,9 +100267,11 @@ var ClarifaiTagList = exports.ClarifaiTagList = function ClarifaiTagList(props) 
       _useState2 = _slicedToArray(_useState, 2),
       clarifaiTags = _useState2[0],
       setClarifaiTags = _useState2[1];
+  // const testId = 54
+  // const clarifaiUrl = 'https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_56_post_image.jpg'
 
-  var clarifaiUrl = 'https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_56_post_image.jpg';
-  // const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
+
+  var clarifaiUrl = 'https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_' + props.clickedPost.id + '_post_image.jpg';
 
   (0, _react.useEffect)(function () {
     (0, _ClarifaiApp.ClarifaiApp)(clarifaiUrl).then(function (res) {

@@ -7,8 +7,9 @@ import { ClarifaiTag } from '../components/ClarifaiTag';
 export const ClarifaiTagList = (props: any) => {
   // clarifaiTags関連
   const [clarifaiTags, setClarifaiTags] = useState([])
-  const clarifaiUrl = 'https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_56_post_image.jpg'
-  // const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
+  // const testId = 54
+  // const clarifaiUrl = 'https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_56_post_image.jpg'
+  const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${props.clickedPost.id}_post_image.jpg`
 
   useEffect(() => {
     ClarifaiApp(clarifaiUrl).then((res) => {
