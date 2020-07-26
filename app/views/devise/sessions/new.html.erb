@@ -2,7 +2,7 @@
   <div class="w-full flex flex-wrap">
     <!-- Login Section -->
     <div class="w-full md:w-1/2 flex flex-col justify-center items-center">
-      <div class="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-24 mr-auto">
+      <div class="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-24 mr-auto ml-5">
         <a href="#" class="bg-black text-white font-bold text-xl p-4 mr-auto">Logo</a>
       </div>
       <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32 max-w-xl">
@@ -10,7 +10,7 @@
         <%= link_to user_twitter_omniauth_authorize_path, method: :post do %>
           <a href="#" class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
             <div class="px-4 py-3">
-<%= embedded_svg("twitter.svg", class: "twitter-svg w-8 h-8") %>
+              <%= embedded_svg("twitter.svg", class: "twitter-svg w-8 h-8") %>
             </div>
             <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">
             Sign in with Twitter
@@ -106,4 +106,4 @@
 
 </div>
 
-<%= render "devise/shared/links" %>
+
