@@ -213,7 +213,7 @@ export const PostsApp = (props: any) => {
     <React.Fragment>
       <Router>
         <div className="relative">
-          <BackGroundVanta />
+          {/* <BackGroundVanta /> */}
           <div className="About absolute z-10  w-screen">
             <div>
               <div>

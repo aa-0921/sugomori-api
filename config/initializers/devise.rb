@@ -362,8 +362,8 @@ Devise.setup do |config|
   config.omniauth :github,
                   ENV['github_key'],
                   ENV['github_secret'],
-                  scope: 'email',
-                  info_fields: 'email,name',
+                  scope: 'user,public_repo',
+                  # info_fields: 'user,repo',
                   callback_url:
                     if Rails.env.production?
                       "https://sugomori.herokuapp.com/users/auth/github/callback"
