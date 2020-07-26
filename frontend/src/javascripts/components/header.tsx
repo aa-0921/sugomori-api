@@ -8,9 +8,7 @@ export function Header(props: any) {
   // console.log('headerのprops.currentUserData', props.currentUserData)
 
   (function () {
-    const headerTarget = document.getElementById('header');
-    const postButtonTarget = document.getElementById('postButton'),
-
+    const headerTarget = document.getElementById('header'),
       height = 56;
 
     let offset = 0,
@@ -21,13 +19,8 @@ export function Header(props: any) {
         if (lastPosition > height) {
           if (lastPosition > offset) {
             headerTarget.classList.add('head-animation');
-            postButtonTarget.classList.add('postButton-animation');
-
-
           } else {
             headerTarget.classList.remove('head-animation');
-            postButtonTarget.classList.remove('postButton-animation');
-
           }
           offset = lastPosition;
         }
@@ -39,6 +32,37 @@ export function Header(props: any) {
       if (!ticking) {
         window.requestAnimationFrame(function () {
           onScroll(lastPosition);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  })();
+
+
+  (function () {
+    const postButtonTarget = document.getElementById('postButton'),
+      height = 56;
+    let offset = 0,
+      lastPosition = 0,
+      ticking = false;
+    function postButtonOnScroll(lastPosition: any) {
+      if (postButtonTarget != null) {
+        if (lastPosition > height) {
+          if (lastPosition > offset) {
+            postButtonTarget.classList.add('postButton-animation');
+          } else {
+            postButtonTarget.classList.remove('postButton-animation');
+          }
+          offset = lastPosition;
+        }
+      }
+    }
+    window.addEventListener('scroll', function (e) {
+      lastPosition = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          postButtonOnScroll(lastPosition);
           ticking = false;
         });
         ticking = true;

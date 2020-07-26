@@ -17,6 +17,8 @@ import { useToasts, Loading, Row } from '@zeit-ui/react';
 import { FeedApp } from '../pages/FeedApp';
 import { BackGround } from '../pages/BackGround';
 import BackGroundVanta from '../pages/BackGroundVanta';
+import { Skroller } from '../pages/Skroller';
+
 
 import Particles from "react-tsparticles";
 
@@ -112,7 +114,10 @@ export const HomePage = (props: any) => {
                   component={MemberListApp}
                 />}
             />
-            <Route exact path="/background" component={BackGroundVanta} />
+            {/* <Route exact path="/background" component={BackGroundVanta} /> */}
+            <Route exact path="/background" component={Skroller} />
+
+
             <Route exact path="/about" component={About} />
 
 

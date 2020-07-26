@@ -72,6 +72,7 @@
     "react-parallax-tilt": "^1.4.59",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
+    "react-skrollr": "^1.0.4",
     "react-stack-grid": "^0.7.1",
     "react-tsparticles": "^1.17.3",
     "redux": "^4.0.5",

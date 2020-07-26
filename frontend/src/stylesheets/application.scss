@@ -277,3 +277,28 @@ canvas {
 #js_logged_in_component > div > div > div > div.App > div {
   height: 5000px;
 }
+
+// skroller関連
+
+div.skroller_background {
+  font-family: 'Arial';
+  text-align: center;
+  background: #a3bffa;
+  color: #fff;
+}
+span.skroller_span {
+  height: 100px;
+  background: #fff;
+  color: #a3bffa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.skroller_title {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  font-weight: bold;
+}
