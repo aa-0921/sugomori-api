@@ -17,25 +17,25 @@
         <% else %>
         <p class="text-center text-3xl">Join Us.</p>
         <%= link_to user_twitter_omniauth_authorize_path, method: :post do %>
-          <a href="#" class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
+        <div class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
             <div class="px-4 py-3">
               <%= embedded_svg("twitter.svg", class: "twitter-svg w-8 h-8") %>
             </div>
             <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">
             Sign in with Twitter
             </h1>
-          </a>
+        </div>
         <% end %>
 
         <%= link_to user_facebook_omniauth_authorize_path, method: :post do %>
-          <a href="#" class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
-            <div class="px-4 py-3">
-              <%= embedded_svg("facebook.svg", class: "facebook-svg") %>
-            </div>
-            <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">
-            Sign in with Facebook
-            </h1>
-          </a>
+        <div class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
+          <div class="px-4 py-3">
+            <%= embedded_svg("facebook.svg", class: "facebook-svg") %>
+          </div>
+          <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">
+          Sign in with Facebook
+          </h1>
+        </div>
         <% end %>
         <div class="mt-4 flex items-center justify-between">
           <span class="border-b w-1/5 lg:w-1/4"></span>
@@ -89,6 +89,7 @@
         <% end %>
 
         <% if params[:input_email] then %>
+        <div class="mb-24"></div>
         <% else %>
 
         <div class="text-center pt-12 pb-12">

@@ -8,48 +8,28 @@
       <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32 max-w-xl">
         <p class="text-center text-3xl">Welcome.</p>
         <%= link_to user_twitter_omniauth_authorize_path, method: :post do %>
-          <a href="#" class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
+
+        <div class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
+
             <div class="px-4 py-3">
               <%= embedded_svg("twitter.svg", class: "twitter-svg w-8 h-8") %>
             </div>
             <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">
             Sign in with Twitter
             </h1>
-          </a>
+        </div>
         <% end %>
 
         <%= link_to user_facebook_omniauth_authorize_path, method: :post do %>
-          <a href="#" class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
+        <div class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
             <div class="px-4 py-3">
               <%= embedded_svg("facebook.svg", class: "facebook-svg") %>
             </div>
             <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">
             Sign in with Facebook
             </h1>
-          </a>
+        </div>
         <% end %>
-
-<%# SNSログイン %>
-
-
-          <%# <ul className="follow-button">
-            <li className="fbpagebtn">
-              <a href="/users/auth/facebook" title="Facebook">
-                <i className="fa fa-facebook-square fa-4x">Facebook</i>
-              </a>
-            </li>
-            <li className="gpbtn">
-              <a href="/users/auth/github" title="github">
-                <i className="fa fa-github-square fa-4x">github</i>
-              </a>
-            </li>
-            <li className="twbtn">
-              <a href="/users/auth/twitter" title="Twitter">
-                <i className="fa fa-twitter-square fa-4x">Twitter</i>
-              </a>
-            </li>
-          </ul> %>
-
 
 
 
@@ -107,3 +87,4 @@
 </div>
 
 
+<%= render "devise/shared/links" %>
