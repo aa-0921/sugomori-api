@@ -117,7 +117,7 @@ export function Header(props: any) {
                               <ButtonDropdown.Item>
                                 <a
                                   href="/users/edit"
-                                  className="block px-4 py-2 sm:test-sm text-gray-700 hover:bg-gray-100"
+                                  className="block px-4 py-2 sm:test-sm text-gray-700"
                                   role="menuitem"
                                 >
                                   プロフィール変更
@@ -126,7 +126,7 @@ export function Header(props: any) {
                               <ButtonDropdown.Item>
                                 <a
                                   href="/users/sign_out"
-                                  className="block px-4 py-2 sm:test-sm text-gray-700 hover:bg-gray-100"
+                                  className="block px-4 py-2 sm:test-sm text-gray-700"
                                   role="menuitem"
                                 >
                                   ログアウト
