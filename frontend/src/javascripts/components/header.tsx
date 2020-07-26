@@ -23,6 +23,7 @@ export function Header(props: any) {
             headerTarget.classList.add('head-animation');
             postButtonTarget.classList.add('postButton-animation');
 
+
           } else {
             headerTarget.classList.remove('head-animation');
             postButtonTarget.classList.remove('postButton-animation');

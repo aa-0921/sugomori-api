@@ -14663,9 +14663,9 @@ div.loadingDiv {
 summary > svg {
   width: 35px !important; }
 
-div.collapseWrap > div > div > div.jsx-529403286.container.expanded {
+div.collapseWrap > div > div > div.container.expanded {
   width: 100%;
-  background-color: white !important;
+  background-color: transparent !important;
   height: 70px; }
 
 div.collapseWrap > div > div > div > div > div > div {
@@ -14699,6 +14699,13 @@ div.collapseWrap > div > div > div > div > div > div {
   border-left-color: transparent;
   border-top-color: transparent;
   transition: border-bottom-color 0.1s linear 0s, border-left-color 0.1s linear 0.07s, border-top-color 0.1s linear 0.14s; }
+
+canvas {
+  height: 7000px !important;
+  overflow: visible; }
+
+#js_logged_in_component > div > div > div > div.App > div {
+  height: 5000px; }
 
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {

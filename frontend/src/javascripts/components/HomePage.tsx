@@ -16,8 +16,8 @@ import { useState, useEffect } from 'react';
 import { useToasts, Loading, Row } from '@zeit-ui/react';
 import { FeedApp } from '../pages/FeedApp';
 import { BackGround } from '../pages/BackGround';
-// import Particles from 'react-particles-js';
-// import ParticlesBg from "particles-bg";
+import BackGroundVanta from '../pages/BackGroundVanta';
+
 import Particles from "react-tsparticles";
 
 export const HomePage = (props: any) => {
@@ -112,7 +112,7 @@ export const HomePage = (props: any) => {
                   component={MemberListApp}
                 />}
             />
-            <Route exact path="/background" component={BackGround} />
+            <Route exact path="/background" component={BackGroundVanta} />
             <Route exact path="/about" component={About} />
 
 

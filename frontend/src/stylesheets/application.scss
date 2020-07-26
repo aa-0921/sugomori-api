@@ -222,9 +222,9 @@ summary > svg {
   width: 35px !important;
 }
 
-div.collapseWrap > div > div > div.jsx-529403286.container.expanded {
+div.collapseWrap > div > div > div.container.expanded {
   width: 100%;
-  background-color: white !important;
+  background-color: transparent !important;
   height: 70px;
 }
 
@@ -266,4 +266,14 @@ div.collapseWrap > div > div > div > div > div > div {
   border-top-color: transparent;
   transition: border-bottom-color 0.1s linear 0s, border-left-color 0.1s linear 0.07s,
     border-top-color 0.1s linear 0.14s;
+}
+
+// vanta関連
+canvas {
+  height: 7000px !important;
+  overflow: visible;
+}
+
+#js_logged_in_component > div > div > div > div.App > div {
+  height: 5000px;
 }

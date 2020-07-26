@@ -19,7 +19,7 @@ module.exports = [
       filename: '[name].js',
     },
     resolve: {
-      extensions: ['.tsx', '.scss', '.js', '.ts'],
+      extensions: ['.tsx', '.scss', '.js', '.ts', '.jsx'],
     },
     module: {
       rules: [
