@@ -74834,7 +74834,11 @@ var PostList = exports.PostList = function PostList(props) {
         props.filterPosts.map(function (post, index) {
           return React.createElement(
             'div',
-            { key: index, className: 'list' },
+            { key: index, className: 'list',
+              onClick: function onClick() {
+                return props.modalOpenHandler(post);
+              }
+            },
             React.createElement(_Post.Post, {
               post: post,
               likeList: props.likeList,
@@ -74890,28 +74894,12 @@ var Post = exports.Post = function Post(props) {
         glareMaxOpacity: 0.45,
         glarePosition: 'all'
       },
-      React.createElement(
-        'div',
-        null,
-        React.createElement('img', {
-          key: props.post.id,
-          src: props.post.picture,
-          className: 'rounded-lg cursor-pointer'
-          // className="rounded-lg cursor-pointer transform hover:scale-105 hover:skew-y-3 hover:translate-y-1 duration-500 ease-out"
-          , onClick: function onClick() {
-            return props.modalOpenHandler(props.post);
-          }
-        }),
-        React.createElement(
-          'div',
-          null,
-          React.createElement(
-            'p',
-            { className: 'opacity-50' },
-            'Click!!'
-          )
-        )
-      )
+      React.createElement('img', {
+        key: props.post.id,
+        src: props.post.picture,
+        className: 'rounded-lg cursor-pointer'
+        // className="rounded-lg cursor-pointer transform hover:scale-105 hover:skew-y-3 hover:translate-y-1 duration-500 ease-out"
+      })
     )
   );
 };

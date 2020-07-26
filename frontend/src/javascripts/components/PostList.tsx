@@ -39,7 +39,9 @@ export const PostList = (props: any): any => {
         >
           {/* {props.filterPosts.map((post: any, index: number) => ( */}
           {props.filterPosts.map((post: any, index: number) => (
-            <div key={index} className="list">
+            <div key={index} className="list"
+              onClick={() => props.modalOpenHandler(post)}
+            >
               <Post
                 post={post}
                 likeList={props.likeList}
