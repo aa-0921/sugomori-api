@@ -11,6 +11,7 @@ export const Post = (props: any) => {
         glareEnable={true}
         glareMaxOpacity={0.45}
         glarePosition="all"
+        scale={1.08}
       >
         <img
           key={props.post.id}

@@ -17,8 +17,11 @@ class User < ApplicationRecord
     super.tap do |user|
       if (data = session['devise.omniauth_data'])
         user.email = data['email'] if user.email.blank?
+        p user.email
         user.provider = data['provider'] if data['provider'] && user.provider.blank?
+        p user.provider
         user.uid = data['uid'] if data['uid'] && user.uid.blank?
+        p user.uid
         user.password = Devise.friendly_token[0, 20]
         user.password_confirmation = user.password
 

@@ -1,33 +1,36 @@
 <div class="bg-white font-family-karla h-screen">
-
   <div class="w-full flex flex-wrap">
-
     <!-- Login Section -->
     <div class="w-full md:w-1/2 flex flex-col">
-
       <div class="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-24">
         <a href="#" class="bg-black text-white font-bold text-xl p-4">Logo</a>
       </div>
-
       <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
         <p class="text-center text-3xl">Welcome.</p>
-        <a href="#" class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
-          <div class="px-4 py-3">
+        <%= link_to user_twitter_omniauth_authorize_path, method: :post do %>
+          <a href="#" class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
+            <div class="px-4 py-3">
+            <i className="fa fa-twitter-square fa-4x">Twitter</i>
+            </div>
+            <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">
+            Sign in with Twitter
+            </h1>
+          </a>
+        <% end %>
 
-          </div>
-          <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">
-          Sign in with Twitter
-          </h1>
-        </a>
+        <%= link_to user_facebook_omniauth_authorize_path, method: :post do %>
+          <a href="#" class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
+            <div class="px-4 py-3">
+ <i class="fa fa-facebook-square fa-4x" aria-hidden="true">Facebook</i>
+            </div>
+            <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">
+            Sign in with Facebook
+            </h1>
+          </a>
+        <% end %>
 
 <%# SNSログイン %>
 
-          <%= link_to user_twitter_omniauth_authorize_path, method: :post do %>
-            Twitter
-          <% end %>
-          <%= link_to user_github_omniauth_authorize_path, method: :post do %>
-            Github
-          <% end %>
 
           <%# <ul className="follow-button">
             <li className="fbpagebtn">
@@ -87,7 +90,7 @@
         <% end %>
 
         <div class="text-center pt-12 pb-12">
-          <p>Don't have an account? <a href="/users/sign_up" class="underline font-semibold">Register here.</a></p>
+          <p>Don't have an account? <br><a href="/users/sign_up" class="underline font-semibold">Register here.</a></p>
         </div>
       </div>
 

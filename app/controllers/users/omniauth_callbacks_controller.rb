@@ -54,7 +54,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, kind: "GitHub") if is_navigational_format?
     else
       if (data = request.env['omniauth.auth'])
-        p data
         session['devise.omniauth_data'] = {
           email: data['info']['email'],
           provider: data['provider'],
@@ -62,14 +61,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         }
         @input_email = data['info']['email']
       end
-      p data
-
       redirect_to new_user_registration_url(input_email: @input_email)
-
     end
   end
 
+
   def failure
     redirect_to root_path
-end
+  end
 end
