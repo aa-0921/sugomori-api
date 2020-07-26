@@ -48,18 +48,21 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def github
+    p "controllerのgithub"
     user = User.from_omniauth(request.env['omniauth.auth'])
     if user
       sign_in_and_redirect user, event: :authentication
-      set_flash_message(:notice, :success, kind: "GitHub") if is_navigational_format?
+      set_flash_message(:notice, :success, kind: "Github") if is_navigational_format?
     else
       if (data = request.env['omniauth.auth'])
+        p data
         session['devise.omniauth_data'] = {
           email: data['info']['email'],
           provider: data['provider'],
           uid: data['uid'],
         }
         @input_email = data['info']['email']
+        
       end
       redirect_to new_user_registration_url(input_email: @input_email)
     end

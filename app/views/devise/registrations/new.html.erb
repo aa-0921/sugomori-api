@@ -10,15 +10,21 @@
       </div>
 
       <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32 max-w-xl">
-        <p class="text-center text-3xl">Join Us.</p>
+       
 
-               <%= link_to user_twitter_omniauth_authorize_path, method: :post do %>
+        <% if params[:input_email] then %>
+        <p class="text-center text-3xl">SNSログイン</p>
+
+          <p class="text-center text-m">このアプリで使用する名前を入力して下さい</p>
+        <% else %>
+        <p class="text-center text-3xl">アカウント登録</p>
+        <%= link_to user_twitter_omniauth_authorize_path, method: :post do %>
           <a href="#" class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
             <div class="px-4 py-3">
               <%= embedded_svg("twitter.svg", class: "twitter-svg w-8 h-8") %>
             </div>
             <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">
-            Sign in with Twitter
+            Twitterでログイン
             </h1>
           </a>
         <% end %>
@@ -29,14 +35,11 @@
               <%= embedded_svg("facebook.svg", class: "facebook-svg") %>
             </div>
             <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">
-            Sign in with Facebook
+            Facebookでログイン
             </h1>
           </a>
         <% end %>
 
-        <% if params[:input_email] then %>
-          <p class="text-center text-m">SNSログインの為、このアプリで使用する名前を入力して下さい</p>
-        <% else %>
         <div class="mt-4 flex items-center justify-between">
           <span class="border-b w-1/5 lg:w-1/4"></span>
           <a href="#" class="text-xs text-center text-gray-500 uppercase">or signup with email</a>
@@ -53,18 +56,18 @@
 
 
           <div class="flex flex-col pt-4">
-            <label for="name" class="text-lg">Name</label>
+            <label for="name" class="text-lg">アカウント名</label>
             <%= f.text_field :name ,autofocus: true, autocomplete: "name" ,:placeholder =>"your name", class:"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" %>
           </div>
 
           <% if params[:input_email] then %>
             <div class="flex flex-col pt-4">
-              <label for="email" class="text-lg">Email</label>
+              <label for="email" class="text-lg">メールアドレス</label>
               <%= f.email_field :email ,autofocus: true,readonly: true ,autocomplete: "email" ,:placeholder =>"your@email.com", class:"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" %>
             </div>
           <% else %>
             <div class="flex flex-col pt-4">
-              <label for="email" class="text-lg">Email</label>
+              <label for="email" class="text-lg">メールアドレス</label>
               <%= f.email_field :email ,autofocus: true,autocomplete: "email" ,:placeholder =>"your@email.com", class:"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" %>
             </div>
           <% end %>
@@ -89,7 +92,7 @@
         <% end %>
 
         <div class="text-center pt-12 pb-12">
-          <p>Already have an account? <br><a href="/users/sign_in" class="underline font-semibold">Log in here.</a></p>
+          <p>アカウントをお持ちですか？ <br><a href="/users/sign_in" class="underline font-semibold">ログインする</a></p>
         </div>
       </div>
 
