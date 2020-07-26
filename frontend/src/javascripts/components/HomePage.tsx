@@ -113,6 +113,8 @@ export const HomePage = (props: any) => {
                 />}
             />
             <Route exact path="/background" component={BackGround} />
+            <Route exact path="/about" component={About} />
+
 
           </Switch>
           {/* <Footer /> */}

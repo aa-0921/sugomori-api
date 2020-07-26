@@ -231,3 +231,39 @@ div.collapseWrap > div > div > div.jsx-529403286.container.expanded {
 div.collapseWrap > div > div > div > div > div > div {
   line-height: 3rem !important;
 }
+
+// post.tsx関連
+.hbtn {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-block;
+  overflow: hidden;
+  padding: 8px 20px;
+  margin: 0px 3px 6px;
+  text-align: center;
+  border: 2px solid black;
+  text-decoration: none;
+  color: black;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+.hbtn i {
+  padding-right: 8px;
+}
+
+.hb-border-right {
+  border-color: rgb(255, 255, 255);
+  transition-duration: 0.3s;
+  transition: border-bottom-color 0.1s linear 0.14s, border-left-color 0.1s linear 0.07s,
+    border-top-color 0.1s linear 0s;
+}
+
+.hb-border-right:hover {
+  border-color: initial;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  transition: border-bottom-color 0.1s linear 0s, border-left-color 0.1s linear 0.07s,
+    border-top-color 0.1s linear 0.14s;
+}

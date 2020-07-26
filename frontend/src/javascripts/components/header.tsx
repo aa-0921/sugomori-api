@@ -77,6 +77,12 @@ export function Header(props: any) {
                               background
                             </Link>
                             <Link
+                              to="/about"
+                              className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                            >
+                              About
+                            </Link>
+                            <Link
                               to={'/profilepage/' + props.currentUserData.id}
                               className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium  hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                             >
