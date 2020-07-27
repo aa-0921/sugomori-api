@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css2?family=Kosugi&display=swap);
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -14727,6 +14728,11 @@ span.skroller_span {
   justify-content: center;
   align-items: center;
   font-size: 60px;
+  font-weight: bold; }
+
+span.skroller_span {
+  font-family: 'Kosugi', sans-serif;
+  font-size: large;
   font-weight: bold; }
 
 @media (min-width: 640px) {

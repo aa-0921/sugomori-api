@@ -16,6 +16,19 @@ const data = {
   "data-top-bottom": "opacity: 1;transform: translateX(-100%);",
 };
 
+const secondDataLeft = {
+  "data-900-top": "transform: translateY(-100%);",
+  "data-800-top": "transform: translateY(-80%);",
+  "data-650-top": "opacity: 1;transform: translateY(-100%);",
+
+  "data-500-top": "transform: translateY(0%);",
+  "data-150-top": "transform: translateY(0%);",
+  // "data-1000-top": "opacity: 1;transform: translateX(-100%);",
+  // "data-center-center": "opacity: 1;transform: translateX(-100%);",
+  // "data-bottom-top": "opacity: 0;",
+  "data-top-bottom": "opacity: 1;transform: translateY(-100%);",
+};
+
 export const Skroller = () => (
   <ParallaxProvider
     init={{
@@ -44,7 +57,7 @@ export const Skroller = () => (
         <span className="skroller_span">投稿後すぐにタグがつきます</span>
       </Parallax>
       <Parallax data={data}>
-        <span className="mb-5 skroller_span">あなたの投稿にはどんなタグがつくかな？</span>
+        <span className="mb-5 skroller_span">どんなタグがつくか投稿してみましょう</span>
       </Parallax>
       <Parallax data={data}>
         <span className="skroller_span">投稿一覧画面では画像サイズ調整可能</span>
@@ -53,22 +66,48 @@ export const Skroller = () => (
         <span className="skroller_span">スライドバーでグリグリ変更できます</span>
       </Parallax>
       <Parallax data={data}>
+        <span className="skroller_span">全投稿内から検索も可能</span>
+      </Parallax>
+      <Parallax data={data}>
         <span className="skroller_span">SNSログインにも対応</span>
       </Parallax>
       <Parallax data={data}>
-        <span className="skroller_span">Facebook, Twitterでアカウント登録できます</span>
+        <span className="mb-5 skroller_span">Facebook, Twitterでアカウント登録できます</span>
       </Parallax>
       <Parallax data={data}>
-        <span className="skroller_span">スライドバーでグリグリ変更できます</span>
+        <span className="skroller_span">Feed機能搭載</span>
       </Parallax>
       <Parallax data={data}>
-        <span className="skroller_span">スライドバーでグリグリ変更できます</span>
+        <span className="skroller_span">フォローしたユーザーの投稿を一覧で見ることができます
+      </span>
       </Parallax>
-      <Parallax data={data}>
-        <span className="skroller_span">スライドバーでグリグリ変更できます</span>
+      <Parallax data={secondDataLeft}>
+        <span className="skroller_span">主な使用技術
+      </span>
       </Parallax>
-      <Parallax data={data}>
-        <span className="skroller_span">スライドバーでグリグリ変更できます</span>
+      <Parallax data={secondDataLeft}>
+        <span className="skroller_span">その他、いいね等々、、
+      </span>
+      </Parallax>
+
+      <Parallax data={secondDataLeft}>
+        <span className="skroller_span">その他、いいね等々、、
+      </span>
+      </Parallax>
+
+      <Parallax data={secondDataLeft}>
+        <span className="skroller_span">その他、いいね等々、、
+      </span>
+      </Parallax>
+
+      <Parallax data={secondDataLeft}>
+        <span className="skroller_span">その他、いいね等々、、
+      </span>
+      </Parallax>
+
+      <Parallax data={secondDataLeft}>
+        <span className="skroller_span">その他、いいね等々、、
+      </span>
       </Parallax>
 
     </div>
