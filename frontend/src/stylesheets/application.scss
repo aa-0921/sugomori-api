@@ -4,6 +4,7 @@
 
 @tailwind utilities;
 
+$baseColor: $baseColor;
 div.modalWrap {
   max-height: 95vh !important;
   max-width: 900px !important;
@@ -53,13 +54,13 @@ div.collapseWrap > div > div {
 }
 
 div.buttonDropdownWrap > div > button {
-  background-color: #a3bffa !important;
+  background-color: $baseColor !important;
   color: white;
   font-weight: bold;
 }
 
 details > summary {
-  background-color: #a3bffa !important;
+  background-color: $baseColor !important;
   color: white;
 }
 
@@ -73,7 +74,7 @@ div.postWidthSlider {
   background-color: #a4abbd !important;
 }
 div.postWidthSlider > div {
-  background-color: #a3bffa !important;
+  background-color: $baseColor !important;
 }
 
 // loading関連-------------------------------------------------
@@ -283,16 +284,37 @@ canvas {
 div.skroller_background {
   font-family: 'Arial';
   text-align: center;
-  background: #a3bffa;
+  background: $baseColor;
   color: #fff;
+  height: 5000px;
 }
 span.skroller_span {
   height: 100px;
   background: #fff;
-  color: #a3bffa;
+  color: $baseColor;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: x-large;
+}
+
+span.skroller_span.sugomori_is {
+  font-size: xx-large;
+  height: 70px;
+}
+
+span.skroller_span.sugomori_point {
+  font-size: xx-large;
+  height: 70px;
+}
+span.skroller_span.sugomori_use {
+  font-size: xx-large;
+  height: 70px;
+}
+
+span.skroller_span > span {
+  font-size: larger;
+  margin-left: 10px;
 }
 .skroller_title {
   height: 100vh;

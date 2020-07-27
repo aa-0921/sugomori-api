@@ -14712,7 +14712,8 @@ div.skroller_background {
   font-family: 'Arial';
   text-align: center;
   background: #a3bffa;
-  color: #fff; }
+  color: #fff;
+  height: 5000px; }
 
 span.skroller_span {
   height: 100px;
@@ -14720,7 +14721,24 @@ span.skroller_span {
   color: #a3bffa;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  font-size: x-large; }
+
+span.skroller_span.sugomori_is {
+  font-size: xx-large;
+  height: 70px; }
+
+span.skroller_span.sugomori_point {
+  font-size: xx-large;
+  height: 70px; }
+
+span.skroller_span.sugomori_use {
+  font-size: xx-large;
+  height: 70px; }
+
+span.skroller_span > span {
+  font-size: larger;
+  margin-left: 10px; }
 
 .skroller_title {
   height: 100vh;
