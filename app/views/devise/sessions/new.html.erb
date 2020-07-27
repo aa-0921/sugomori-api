@@ -35,7 +35,7 @@
       <%= link_to user_github_omniauth_authorize_path, method: :post do %>
         <div class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
             <div class="px-4 py-3">
-              <%= embedded_svg("facebook.svg", class: "facebook-svg") %>
+              <%= embedded_svg("github.svg", class: "facebook-svg  w-6 h-6") %>
             </div>
             <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">
             Sign in with GitHub
@@ -92,11 +92,7 @@
     <div class="w-1/2 shadow-2xl">
 
       <img class="object-cover w-full h-screen hidden md:block" src="https://cdn.pixabay.com/photo/2018/01/29/19/53/indoors-3117027_1280.jpg">
-
     </div>
   </div>
-
 </div>
 
-
-<%= render "devise/shared/links" %>

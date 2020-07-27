@@ -346,6 +346,7 @@ Devise.setup do |config|
                     end
 
 
+                    
   config.omniauth :twitter,
                   ENV['twitter_key'],
                   ENV['twitter_secret'],
