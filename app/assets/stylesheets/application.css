@@ -14701,11 +14701,15 @@ div.collapseWrap > div > div > div > div > div > div {
   border-top-color: transparent;
   transition: border-bottom-color 0.1s linear 0s, border-left-color 0.1s linear 0.07s, border-top-color 0.1s linear 0.14s; }
 
+div.vanta_app {
+  position: relative; }
+
 canvas {
   height: 100vh !important;
   width: 100% !important;
   overflow: visible;
-  z-index: -1 !important; }
+  z-index: -1 !important;
+  position: relative !important; }
 
 #js_logged_in_component > div > div > div > div.App > div {
   height: 5000px; }
@@ -14742,15 +14746,17 @@ span.skroller_span > span {
   font-size: larger;
   margin-left: 10px; }
 
-.skroller_title {
+.about_title {
+  position: absolute;
+  top: 0;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
   font-size: 100vw;
-  color: transparent;
-  background-color: transparent; }
+  color: #a3bffa;
+  -webkit-background-clip: text !important; }
 
 span.skroller_span {
   font-family: 'Kosugi', sans-serif;

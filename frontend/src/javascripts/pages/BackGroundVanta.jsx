@@ -24,9 +24,9 @@ class BackGroundVanta extends React.Component {
   }
   render() {
     return (
-      <div className="App">
-        <header className="App-header" ref={this.vantaRef}>
-          <div className="App">
+      <div className="vanta_app">
+        <header className="App-header relative" ref={this.vantaRef}>
+          <div className="App relative">
             <a
               className="App-link"
               href="https://reactjs.org"

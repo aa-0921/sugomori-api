@@ -270,12 +270,15 @@ div.collapseWrap > div > div > div > div > div > div {
 }
 
 // vanta関連
-
+div.vanta_app {
+  position: relative;
+}
 canvas {
   height: 100vh !important;
   width: 100% !important;
   overflow: visible;
   z-index: -1 !important;
+  position: relative !important;
 }
 
 #js_logged_in_component > div > div > div > div.App > div {
@@ -320,15 +323,17 @@ span.skroller_span > span {
   margin-left: 10px;
 }
 
-.skroller_title {
+.about_title {
+  position: absolute;
+  top: 0;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
   font-size: 100vw;
-  color: transparent;
-  background-color: transparent;
+  color: $baseColor;
+  -webkit-background-clip: text !important;
 }
 @import url('https://fonts.googleapis.com/css2?family=Kosugi&display=swap');
 span.skroller_span {

@@ -47,7 +47,7 @@ export const Skroller = () => (
   <React.Fragment>
 
     <BackGroundVanta />
-    <div className="skroller_title z-50 w-screen h-screen">家</div>
+    <div className="about_title z-50 w-screen h-screen">家</div>
 
     <ParallaxProvider
       init={{
