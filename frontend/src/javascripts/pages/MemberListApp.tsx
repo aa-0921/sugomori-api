@@ -2,7 +2,7 @@
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { MemberList } from '../components/MemberList';
 import { FetchData } from '../api/FetchData';
 import { Spacer } from '@zeit-ui/react';
@@ -30,7 +30,6 @@ export const MemberListApp = (props: any) => {
   }, [currentUserId]);
   console.log('followUsers', followUsers);
 
-
   const pushToFollowUsers = (target: number) => {
     console.log(target, 'ma');
     const arr = Array.from(followUsers);
@@ -49,12 +48,33 @@ export const MemberListApp = (props: any) => {
   useEffect(() => {
     FetchData(fetchUsersUrl).then((res) => setFetchUsers(res.data));
   }, []);
+
+  // var particleHeight = document.getElementById('about-tsparticles');
+  // particleHeight.style.height = 
+
+  // (function () {
+
+  //   // const particleHeight = document.getElementById('about-tsparticles');
+  //   var particleHeight = document.getElementById('memberlist-wrap');
+  //   var listHeight = particleHeight.style.height
+
+  //   console.log('listHeight', listHeight)
+
+
+  // })();
+
+  // const memberlistWrap = useRef(null);
+  // console.log('memberlistWrap', memberlistWrap)
+  // const memberlistWrapHeight = memberlistWrap.current.scrollHeight;
+  // console.log('memberlistWrapHeight', memberlistWrapHeight)
+
   return (
     <React.Fragment>
       <Router>
         <div className="memberlist-background-wrap relative h-auto">
           <UserListBackGround />
-          <div className="memberlist-wrap absolute top-0">
+          <div id="memberlist-wrap" className="memberlist-wrap absolute top-0" >
+            {/* ref={memberlistWrap} */}
             <Spacer y={3} />
 
             <span>

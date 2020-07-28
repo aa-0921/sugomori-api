@@ -16,11 +16,11 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
   apt-get update && apt-get install -y yarn
 
 
-RUN mkdir /sugomori-api
-WORKDIR /sugomori-api
-ADD . /sugomori-api
-COPY Gemfile /sugomori-api/Gemfile
-COPY Gemfile.lock /sugomori-api/Gemfile.lock
+RUN mkdir /sugomori
+WORKDIR /sugomori
+ADD . /sugomori
+COPY Gemfile /sugomori/Gemfile
+COPY Gemfile.lock /sugomori/Gemfile.lock
 RUN gem install bundler
 RUN bundle install
 RUN SECRET_KEY_BASE=placeholder bundle exec rails assets:precompile

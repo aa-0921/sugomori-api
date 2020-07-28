@@ -14856,6 +14856,9 @@ a.scroll-guide span {
     transform: rotateY(720deg) rotateZ(-45deg) translate(-20px, 20px);
     opacity: 0; } }
 
+#about-tsparticles {
+  height: 600px; }
+
 div.memberlist-wrap {
   width: 15%;
   min-width: 700px;

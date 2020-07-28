@@ -7,10 +7,10 @@ export const UserListBackGround = () => {
 
   return (
 
-    <div className="">
+    <div className="userlist-background">
       <Particles
         className=""
-        id="tsparticles"
+        id="about-tsparticles"
         options={{
           background: {
             color: {
