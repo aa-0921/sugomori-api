@@ -80,7 +80,9 @@ export const Skroller = () => (
         </div> */}
           </div>
         </Tilt>
-        <a className="mt-10 scroll-guide"><span></span>Scroll</a>
+        <a className="mt-10 scroll-guide"><span></span></a>
+        <a className="scroll-guide"><span></span></a>
+        <a className="scroll-guide"><span></span>Scroll</a>
       </div>
 
     </div>

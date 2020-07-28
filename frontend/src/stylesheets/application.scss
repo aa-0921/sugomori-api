@@ -361,6 +361,8 @@ span.skroller_span {
   width: 80vw;
   height: 80vh;
   color: white;
+  margin-bottom: 0px !important;
+  margin-top: 250px !important;
 
   transform-style: preserve-3d;
 
@@ -399,14 +401,17 @@ a.scroll-guide {
   text-decoration: none;
   padding-top: 70px;
   color: #a172b4;
+  font-size: large;
+  padding-left: 6px;
+  margin-bottom: 3px !important;
 }
 
 a.scroll-guide span {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 24px;
-  height: 24px;
+  width: 25px;
+  height: 25px;
   margin-left: -12px;
   border-left: 1px solid #a172b4;
   border-bottom: 1px solid #a172b4;

@@ -49,69 +49,79 @@ export const BackGround = () => {
               },
             },
           },
-          particles: {
-            color: {
-              value: "#ffffff",
+          "particles": {
+            "number": {
+              "value": 19,
+              "density": {
+                "enable": true,
+                "value_area": 868.0624057955
+              }
             },
-            links: {
-              color: "#ffffff",
-              distance: 150,
-              // enable: true,
-              enable: false,
-              opacity: 0.5,
-              width: 1,
-            },
-            collisions: {
-              enable: true,
-            },
-            move: {
-              // direction: "none",
-              direction: "top",
+            "color": {
+              // "value": "#0d21af"
+              "value": "#004BB5"
 
-              enable: true,
-              outMode: "bounce",
-              random: false,
-              speed: 6,
-              straight: false,
             },
-            number: {
-              density: {
-                enable: true,
-                value_area: 800,
+            "shape": {
+              "type": ["triangle", "polygon"],
+              // "type": "polygon",
+
+              "stroke": {
+                "width": 0,
+                "color": "#000"
               },
-              value: 700,
+              "polygon": {
+                "nb_sides": 4
+              },
+              "image": {
+                "src": "img/github.svg",
+                "width": 100,
+                "height": 100
+              }
             },
-            opacity: {
-              value: 0.5,
+            "opacity": {
+              "value": 0.3,
+              "random": true,
+              "anim": {
+                "enable": false,
+                "speed": 1,
+                "opacity_min": 0.1,
+                "sync": false
+              }
             },
-            shape: {
-              type: "circle",
-            },
-            // shape: {
-            //   type: 'images',
-            //   image: [
-            //     { src: 'https://icooon-mono.com/i/icon_15173/icon_151731_64.png', height: 500, width: 500 },
-            //     { src: 'https://icooon-mono.com/i/icon_14421/icon_144211_64.png', height: 500, width: 500 },
-            //     { src: 'https://icooon-mono.com/i/icon_12767/icon_127671_64.png', height: 500, width: 500 },
-            //     { src: 'https://icooon-mono.com/i/icon_13120/icon_131201_64.png', height: 500, width: 500 },
-            //     { src: 'https://icooon-mono.com/i/icon_13330/icon_133301_64.png', height: 500, width: 500 },
-            //   ]
-            // },
-            // size: {
-            //   random: true,
-            //   value: 5,
-            // },
             "size": {
-              "value": 30,
+              "value": 59.186073122420446,
               "random": false,
               "anim": {
-                "enable": true,
-                "speed": 4,
-                "size_min": 20,
+                "enable": false,
+                "speed": 10,
+                "size_min": 40,
                 "sync": false
+              }
+            },
+            "line_linked": {
+              "enable": false,
+              "distance": 200,
+              "color": "#ffffff",
+              "opacity": 1,
+              "width": 2
+            },
+            "move": {
+              "enable": true,
+              "speed": 8,
+              "direction": "none",
+              "random": false,
+              "straight": false,
+              "out_mode": "out",
+              "bounce": false,
+              "attract": {
+                "enable": false,
+                "rotateX": 600,
+                "rotateY": 1200
               }
             }
           },
+
           detectRetina: true,
         }}
       />
