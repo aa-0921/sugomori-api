@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { ButtonDropdown, Grid, Row, Input, Button } from '@zeit-ui/react';
-import { useState, useEffect } from 'react';
+import { ButtonDropdown } from '@zeit-ui/react';
+
 
 
 export function Header(props: any) {
