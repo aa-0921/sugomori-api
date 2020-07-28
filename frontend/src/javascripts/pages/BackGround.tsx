@@ -14,8 +14,9 @@ export const BackGround = () => {
         options={{
           background: {
             color: {
-              // value: "#6C8AC1",
-              value: "#E2F1FF",
+
+              value: "#a3bffa",
+
             },
           },
           fpsLimit: 60,
@@ -78,7 +79,7 @@ export const BackGround = () => {
                 enable: true,
                 value_area: 800,
               },
-              value: 80,
+              value: 700,
             },
             opacity: {
               value: 0.5,

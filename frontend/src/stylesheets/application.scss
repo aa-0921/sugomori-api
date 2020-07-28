@@ -274,7 +274,7 @@ div.vanta_app {
   position: relative;
   background-image: radial-gradient(ellipse, transparent 60%, white 72%);
 }
-canvas {
+div.vanta_app > header > canvas {
   height: 200px !important;
   width: 100% !important;
   overflow: visible;
@@ -351,7 +351,7 @@ span.skroller_span {
 }
 .tilt-title {
   width: 260px;
-  $baseColor: #a3bffa;
+  background-color: $baseColor;
 }
 .parallax-effect-glare-scale {
   display: flex;

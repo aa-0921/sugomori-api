@@ -3,6 +3,7 @@ import { render } from "react-dom";
 import { ParallaxProvider, Parallax } from 'react-skrollr'
 import BackGroundVanta from '../pages/BackGroundVanta';
 import Tilt from 'react-parallax-tilt';
+import { BackGround } from '../pages/BackGround';
 
 
 const leftData = {
@@ -46,36 +47,42 @@ const underData = {
 
 export const Skroller = () => (
   <React.Fragment>
-    <div className="tilt-zone flex flex-col items-center justify-center">
-      <Tilt
-        className="parallax-effect-glare-scale"
-        perspective={300}
-        glareEnable={false}
-        glareMaxOpacity={0.45}
-        scale={1.02}
-      // tiltReverse={true}
-      // glareEnable={true}
-      // glareMaxOpacity={0.45}
-      // glarePosition="all"
-      // scale={1.08}
-      >
-        <div className="inner-element flex items-center justify-center w-screen h-screen">
-          {/* <div className="tilt-box1 bg-indigo-900 w-screen">
+    <div className="relative">
+      <BackGround />
+
+      <div className="absolute top-0 tilt-zone flex flex-col items-center justify-center">
+
+        <Tilt
+          className="parallax-effect-glare-scale"
+          perspective={300}
+          glareEnable={false}
+          glareMaxOpacity={0.45}
+          scale={1.02}
+        // tiltReverse={true}
+        // glareEnable={true}
+        // glareMaxOpacity={0.45}
+        // glarePosition="all"
+        // scale={1.08}
+        >
+          <div className="inner-element flex items-center justify-center w-screen h-screen">
+            {/* <div className="tilt-box1 bg-indigo-900 w-screen">
           <div className="tilt-box2 bg-indigo-800 w-64 h-40">
             <div className="tilt-box3 bg-indigo-700 w-20 h-20">
               <div className="tilt-box4">
                 <div className="tilt-box5"> */}
-          <div className="tilt-title w-30 text-6xl bg-indigo-300">LOVE</div>
-          <div className="tilt-title w-30 text-6xl bg-indigo-300">STAY</div>
-          <div className="tilt-title w-30 text-6xl bg-indigo-300">HOME</div>
-          {/* </div>
+            <div className="tilt-title w-30 text-6xl bg-indigo-300">LOVE</div>
+            <div className="tilt-title w-30 text-6xl bg-indigo-300">STAY</div>
+            <div className="tilt-title w-30 text-6xl bg-indigo-300">HOME</div>
+            {/* </div>
               </div>
             </div>
           </div>
         </div> */}
-        </div>
-      </Tilt>
-      <a className="mt-10 scroll-guide"><span></span>Scroll</a>
+          </div>
+        </Tilt>
+        <a className="mt-10 scroll-guide"><span></span>Scroll</a>
+      </div>
+
     </div>
 
     <ParallaxProvider
