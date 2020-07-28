@@ -74,7 +74,7 @@ details > summary {
 
 // background関連
 #tsparticles {
-  height: 100%;
+  height: auto;
 }
 
 // slider関連
@@ -462,8 +462,11 @@ div.memberlist-wrap {
   width: 15%;
   min-width: 700px;
   margin: auto;
-
   top: 0;
   left: 50%;
   transform: translate(-50%);
+}
+
+div.memberlist-background-wrap {
+  height: auto !important;
 }

@@ -7,6 +7,8 @@ import { MemberList } from '../components/MemberList';
 import { FetchData } from '../api/FetchData';
 import { Spacer } from '@zeit-ui/react';
 import { BackGround } from '../pages/BackGround';
+import { UserListBackGround } from '../pages/UserListBackGround';
+
 
 export const MemberListApp = (props: any) => {
   const [fetchUsers, setFetchUsers] = useState([]);
@@ -50,9 +52,8 @@ export const MemberListApp = (props: any) => {
   return (
     <React.Fragment>
       <Router>
-        <div className="memberlist-background-wrap relative">
-          <BackGround />
-
+        <div className="memberlist-background-wrap relative h-auto">
+          <UserListBackGround />
           <div className="memberlist-wrap absolute top-0">
             <Spacer y={3} />
 

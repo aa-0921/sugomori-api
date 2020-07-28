@@ -14484,7 +14484,7 @@ details > summary {
   color: white; }
 
 #tsparticles {
-  height: 100%; }
+  height: auto; }
 
 div.postWidthSlider {
   background-color: #a4abbd !important; }
@@ -14863,6 +14863,9 @@ div.memberlist-wrap {
   top: 0;
   left: 50%;
   transform: translate(-50%); }
+
+div.memberlist-background-wrap {
+  height: auto !important; }
 
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
