@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { MemberList } from '../components/MemberList';
 import { FetchData } from '../api/FetchData';
 import { Spacer } from '@zeit-ui/react';
+import { BackGround } from '../pages/BackGround';
 
 export const MemberListApp = (props: any) => {
   const [fetchUsers, setFetchUsers] = useState([]);
@@ -49,23 +50,30 @@ export const MemberListApp = (props: any) => {
   return (
     <React.Fragment>
       <Router>
-        <Spacer y={3} />
-        <div className="memberlist-wrap">
-          <span>
-            <MemberList
-              {...props}
-              fetchUsers={fetchUsers}
-              followUsers={followUsers}
-              pushToFollowUsers={pushToFollowUsers}
-              removeFromFollowUsers={removeFromFollowUsers}
-              currentUserData={props.currentUserData}
-            />
-          </span>
+        <div className="memberlist-background-wrap relative">
+          <BackGround />
 
-          <Switch>
-            <Route path="/"></Route>
-          </Switch>
+          <div className="memberlist-wrap absolute top-0">
+            <Spacer y={3} />
+
+            <span>
+              <MemberList
+                {...props}
+                fetchUsers={fetchUsers}
+                followUsers={followUsers}
+                pushToFollowUsers={pushToFollowUsers}
+                removeFromFollowUsers={removeFromFollowUsers}
+                currentUserData={props.currentUserData}
+              />
+            </span>
+
+            <Switch>
+              <Route path="/"></Route>
+            </Switch>
+          </div>
+
         </div>
+
       </Router>
     </React.Fragment>
   );

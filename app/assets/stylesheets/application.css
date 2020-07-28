@@ -14859,7 +14859,10 @@ a.scroll-guide span {
 div.memberlist-wrap {
   width: 15%;
   min-width: 700px;
-  margin: auto; }
+  margin: auto;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%); }
 
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
