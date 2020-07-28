@@ -14702,8 +14702,10 @@ div.collapseWrap > div > div > div > div > div > div {
   transition: border-bottom-color 0.1s linear 0s, border-left-color 0.1s linear 0.07s, border-top-color 0.1s linear 0.14s; }
 
 canvas {
-  height: 7000px !important;
-  overflow: visible; }
+  height: 100vh !important;
+  width: 100% !important;
+  overflow: visible;
+  z-index: -1 !important; }
 
 #js_logged_in_component > div > div > div > div.App > div {
   height: 5000px; }
@@ -14745,8 +14747,10 @@ span.skroller_span > span {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 60px;
-  font-weight: bold; }
+  font-weight: bold;
+  font-size: 100vw;
+  color: transparent;
+  background-color: transparent; }
 
 span.skroller_span {
   font-family: 'Kosugi', sans-serif;
