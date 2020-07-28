@@ -14484,7 +14484,7 @@ details > summary {
   color: white; }
 
 #tsparticles {
-  height: auto; }
+  height: 100%; }
 
 div.postWidthSlider {
   background-color: #a4abbd !important; }
