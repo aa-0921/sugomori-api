@@ -14763,6 +14763,45 @@ span.skroller_span {
   font-size: large;
   font-weight: bold; }
 
+.tilt-zone {
+  width: 100vw;
+  height: 100vh; }
+
+.tilt-title {
+  width: 260px; }
+
+.parallax-effect-glare-scale {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  height: 80vh;
+  color: white;
+  transform-style: preserve-3d; }
+  .parallax-effect-glare-scale .inner-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    font-style: italic;
+    color: white;
+    transform: translateZ(60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 40vh;
+    color: white;
+    border: 5px solid #a1a6e6;
+    border-radius: 20px;
+    transform-style: preserve-3d; }
+
+.tilt-box {
+  transform-style: preserve-3d; }
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
