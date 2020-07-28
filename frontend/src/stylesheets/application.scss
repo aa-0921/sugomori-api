@@ -5,9 +5,17 @@
 @tailwind utilities;
 
 $baseColor: #a3bffa;
+
+// modal関連
 div.modalWrap {
   max-height: 95vh !important;
   max-width: 900px !important;
+}
+#zeit-ui-modal > div > div.content {
+  background-color: #f5f9ff;
+  div {
+    background-color: #f5f9ff;
+  }
 }
 
 div.imageDiv {

@@ -14437,6 +14437,11 @@ div.modalWrap {
   max-height: 95vh !important;
   max-width: 900px !important; }
 
+#zeit-ui-modal > div > div.content {
+  background-color: #f5f9ff; }
+  #zeit-ui-modal > div > div.content div {
+    background-color: #f5f9ff; }
+
 div.imageDiv {
   height: auto; }
 

@@ -95,18 +95,8 @@ export function Header(props: any) {
                             >
                               Feed
                             </Link>
-                            <Link
-                              to="/background"
-                              className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                            >
-                              background
-                            </Link>
-                            <Link
-                              to="/about"
-                              className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                            >
-                              About
-                            </Link>
+
+
                             <Link
                               to={'/profilepage/' + props.currentUserData.id}
                               className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium  hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
@@ -119,11 +109,17 @@ export function Header(props: any) {
                             >
                               MemberInfo
                             </Link>
+                            <Link
+                              to="/background"
+                              className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                            >
+                              About
+                            </Link>
                           </React.Fragment>
                         ) : (
                             <React.Fragment>
                               <Link
-                                to="/"
+                                to="/background"
                                 className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                               >
                                 About
@@ -138,7 +134,7 @@ export function Header(props: any) {
                               <ButtonDropdown.Item main>
                                 Settings
                               </ButtonDropdown.Item>
-                              <ButtonDropdown.Item>
+                              {/* <ButtonDropdown.Item>
                                 <a
                                   href="/users/edit"
                                   className="block px-4 py-2 sm:test-sm text-gray-700"
@@ -146,7 +142,7 @@ export function Header(props: any) {
                                 >
                                   プロフィール変更
                                 </a>
-                              </ButtonDropdown.Item>
+                              </ButtonDropdown.Item> */}
                               <ButtonDropdown.Item>
                                 <a
                                   href="/users/sign_out"

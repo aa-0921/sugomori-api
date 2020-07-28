@@ -9,6 +9,7 @@ import { Header } from './header';
 import { BeforeLoginPosts } from '../pages/BeforeLoginPosts';
 import { useToasts } from '@zeit-ui/react';
 import { useState, useEffect } from 'react';
+import { Skroller } from '../pages/Skroller';
 
 
 export const BeforeLogin = () => {
@@ -36,6 +37,7 @@ export const BeforeLogin = () => {
       <Header currentUserData={currentUserData} />
       <Switch>
         <Route exact path="/" component={BeforeLoginPosts} />
+        <Route exact path="/background" component={Skroller} />
       </Switch>
     </BrowserRouter>
   );
