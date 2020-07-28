@@ -107,7 +107,7 @@ export function Header(props: any) {
                               to="/MemberListApp"
                               className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                             >
-                              MemberInfo
+                              UserList
                             </Link>
                             <Link
                               to="/background"

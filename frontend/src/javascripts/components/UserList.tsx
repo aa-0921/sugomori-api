@@ -69,9 +69,9 @@ export const UserList = (props: any) => {
         <Card hoverable>
           <div className="flex items-center ml-8">
             <div className="flex-1  text-center">
-              <li key={props.user.id} style={{ color: 'white' }} className="flex items-center m-auto">
-                <div className="flex justify-between w-2/5">
-                  <div>
+              <li key={props.user.id} style={{ color: 'white' }} className="flex items-center justify-center m-auto">
+                <div className="flex justify-between w-4/5">
+                  <div className="mr-20">
                     <Link
                       to={'/profilepage/' + props.user.id}
                       onClick={() => goProfile()}

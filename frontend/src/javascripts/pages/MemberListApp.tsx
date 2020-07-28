@@ -50,7 +50,7 @@ export const MemberListApp = (props: any) => {
     <React.Fragment>
       <Router>
         <Spacer y={3} />
-        <div>
+        <div className="memberlist-wrap">
           <span>
             <MemberList
               {...props}
