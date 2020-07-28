@@ -46,7 +46,7 @@ const underData = {
 
 export const Skroller = () => (
   <React.Fragment>
-    <div className="tilt-zone flex items-center justify-center">
+    <div className="tilt-zone flex flex-col items-center justify-center">
       <Tilt
         className="parallax-effect-glare-scale"
         perspective={300}
@@ -75,7 +75,9 @@ export const Skroller = () => (
         </div> */}
         </div>
       </Tilt>
+      <a className="mt-10 scroll-guide"><span></span>Scroll</a>
     </div>
+
     <ParallaxProvider
       init={{
         smoothScrollingDuration: 1000,
@@ -85,7 +87,7 @@ export const Skroller = () => (
       getScrollTop={scrollTop => console.log("scrollTop", scrollTop)}
     >
       <div className="skroller_background">
-
+        <span className="skroller_span"></span>
         <Parallax data={leftData}>
           <span className="skroller_span sugomori_is mb-5 mt-48">SUGOMORI is...</span>
         </Parallax>
