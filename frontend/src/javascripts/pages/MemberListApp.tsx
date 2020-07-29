@@ -68,46 +68,36 @@ export const MemberListApp = (props: any) => {
   // console.log('memberlistWrapHeight', memberlistWrapHeight)
 
 
+  // useEffect(() => {
+
+  //   (function () {
+  //     var listHeight = document.getElementById('memberlist-wrap')
+  //     console.log('listHeight', listHeight)
+  //     console.log('listHeight.scrollHeight', listHeight.scrollHeight)
+
+  //     console.log('listHeight.scrollHeight', listHeight.scrollHeight)
+  //     var particleHeight = document.getElementById('about-tsparticles')
+  //     console.log('particleHeight', particleHeight)
+  //     particleHeight.style.height = listHeight.clientHeight.toString();
+  //     console.log('particleHeight.style.height', particleHeight)
+  //   })();
+
+  // }, [])
+
+
   (function () {
-    var listHeight = document.getElementById('memberlist-wrap'),
-      height = 56;
-
-    let offset = 0,
-      lastPosition = 0,
-      ticking = false;
-    function onScroll(lastPosition: any) {
-      if (listHeight != null) {
-        if (lastPosition > height) {
-          if (lastPosition > offset) {
-            // console.log('particleHeight', particleHeight)
-            console.log('particleHeight', listHeight.clientHeight)
-
-            var particleHeight = document.getElementById('about-tsparticles')
-            console.log('particleHeight', particleHeight)
-
-            particleHeight.style.height = listHeight.clientHeight.toString();
-            console.log('particleHeight.style.height', particleHeight)
-
-            // headerTarget.classList.add('head-animation');
-          } else {
-            // headerTarget.classList.remove('head-animation');
-          }
-          offset = lastPosition;
-        }
-      }
-    }
 
     window.addEventListener('load', function (e) {
-      lastPosition = window.scrollY;
-      if (!ticking) {
-        window.requestAnimationFrame(function () {
-          onScroll(lastPosition);
-          ticking = false;
-        });
-        ticking = true;
-      }
+      var listHeight = document.getElementById('memberlist-wrap')
+      // console.log('particleHeight', particleHeight)
+      console.log('particleHeight', listHeight.clientHeight)
+      var particleHeight = document.getElementById('about-tsparticles')
+      console.log('particleHeight', particleHeight)
+      particleHeight.style.height = listHeight.clientHeight.toString();
+      console.log('particleHeight.style.height', particleHeight)
     });
   })();
+
   return (
     <React.Fragment>
       <Router>
