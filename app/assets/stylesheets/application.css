@@ -1,5 +1,5 @@
-@import url(https://fonts.googleapis.com/css2?family=Pacifico&family=Rowdies&family=Ubuntu:ital,wght@1,300&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Kosugi&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Pacifico&family=Rowdies&family=Ubuntu:ital,wght@1,300&display=swap);
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -14721,44 +14721,6 @@ div.vanta_app > header > canvas {
 #js_logged_in_component > div > div > div > div.App > div {
   height: 5000px; }
 
-div.skroller_background {
-  font-family: 'Arial';
-  text-align: center;
-  background: #a3bffa;
-  color: #fff;
-  height: 5000px; }
-
-span.skroller_span {
-  height: 100px;
-  background: #fff;
-  color: #a3bffa;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: x-large; }
-
-span.skroller_span.thanks {
-  font-size: 3rem;
-  height: 70px;
-  font-weight: 400;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }
-
-span.skroller_span.sugomori_is {
-  font-size: xx-large;
-  height: 70px; }
-
-span.skroller_span.sugomori_point {
-  font-size: xx-large;
-  height: 70px; }
-
-span.skroller_span.sugomori_use {
-  font-size: xx-large;
-  height: 70px; }
-
-span.skroller_span > span {
-  font-size: larger;
-  margin-left: 10px; }
-
 .about_title {
   position: absolute;
   top: 0;
@@ -14770,11 +14732,6 @@ span.skroller_span > span {
   font-size: 100vw;
   color: #a3bffa;
   -webkit-background-clip: text !important; }
-
-span.skroller_span {
-  font-family: 'Kosugi', sans-serif;
-  font-size: large;
-  font-weight: bold; }
 
 .tilt-zone {
   width: 100vw;
@@ -14876,6 +14833,86 @@ div.list > div.card {
 
 #about-tsparticles {
   background-size: cover; }
+
+div.skroller_background {
+  font-family: 'Arial';
+  text-align: center;
+  background: #a3bffa;
+  color: #fff;
+  height: 4600px; }
+
+span.skroller_span {
+  height: 100px;
+  background: #fff;
+  color: #a3bffa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: x-large; }
+
+span.skroller_span.thanks {
+  font-size: 3rem;
+  height: 70px;
+  font-weight: 400;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }
+
+span.skroller_span.sugomori_is {
+  font-size: xx-large;
+  height: 70px; }
+
+span.skroller_span.sugomori_point {
+  font-size: xx-large;
+  height: 70px; }
+
+span.skroller_span.sugomori_use {
+  font-size: xx-large;
+  height: 70px; }
+
+span.skroller_span > span {
+  font-size: larger;
+  margin-left: 10px; }
+
+span.skroller_span {
+  font-family: 'Kosugi', sans-serif;
+  font-size: large;
+  font-weight: bold; }
+
+div.skroller_message_wrap {
+  width: 500px;
+  height: 500px;
+  background-color: #e6f4f1;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 130px;
+  z-index: 1;
+  box-shadow: 10px 10px 10px #a4abbd; }
+
+div.skroller_message_text {
+  color: #00305e;
+  font-size: large;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-right: 10px; }
+  div.skroller_message_text div {
+    text-align: left;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 10px;
+    margin-right: 10px; }
+
+.skroller_message_triangle {
+  border-right: 320px solid transparent;
+  border-left: 320px solid transparent;
+  border-bottom: 310px solid #004bb5;
+  z-index: 4000;
+  margin-top: 450px;
+  width: 0 !important;
+  height: 0 !important;
+  box-shadow: 0 32px 30px -30px rgba(53, 47, 47, 0.15); }
 
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {

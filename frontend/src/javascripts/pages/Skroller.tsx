@@ -83,6 +83,31 @@ const underData = {
   "data-top-bottom": "opacity: 1;transform: translateY(-100%);",
 };
 
+
+const messageData = {
+  "data-1200-top": "opacity: 0.5;",
+  "data-1000-top": "opacity: 1;",
+  "data-750-top": "opacity: 1;",
+
+  "data-650-top": "opacity: 1;",
+
+  "data-bottom-top": "opacity: 1;",
+};
+
+const roofData = {
+  "data-700-top": "transform: translateY(-70%);opacity: 0.5;",
+  "data-680-top": "transform: translateY(-60%);opacity: 0.5;",
+  "data-650-top": "transform: translateY(-20%);",
+
+  "data-500-top": "transform: translateY(44%);opacity: 1;	--transform-scale-x: 1.1;--transform-scale-y: 1.1;",
+
+  // "data-400-top": "transform: translateY(-300%);",
+  // "data-150-top": "opacity: 1;transform: translateY(-350%);",
+  // "data-center-center": "opacity: 1;transform: translateX(-100%);",
+
+
+};
+
 export const Skroller = () => (
   <React.Fragment>
     <div className="relative">
@@ -249,6 +274,34 @@ export const Skroller = () => (
               RSpec, factory_bot, Shoulda Matchers
           </span>
           </span>
+        </Parallax>
+
+        <Parallax data={roofData}>
+          <div className="triangle-wrap flex justify-center items-center rounded-lg">
+            <div className="skroller_message_triangle">
+            </div>
+          </div>
+        </Parallax>
+        <Parallax data={messageData}>
+          <div className="skroller_message_wrap flex justify-center items-center rounded-lg">
+            <div className="skroller_message_text flex flex-col items-start">
+              <div>
+                このアプリを見て頂き、ありがとうございます。
+              </div>
+              <div>
+                これは私が初めて作成したアプリで、JavaScript、ReactやAPIの処理についても知識がゼロの状態からスタートしました。
+              </div>
+              <div>
+                まだまだ勉強不足ですが、ポートフォリオを作成していく中で理解できることが増え、試したいことのイメージがあれもこれもと溢れ、それを形にできることが楽しく、何度も達成感を得ることができました。
+              </div>
+              <div>
+                このアプリについても試したいことや、やりのこしたことがあるので、まだまだアップデートしていきたいと思います。
+              </div>
+              <div>
+                SUGOMORIを見て頂きまして、ありがとうございました。
+              </div>
+            </div>
+          </div>
         </Parallax>
 
       </div>
