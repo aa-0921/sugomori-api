@@ -1,14 +1,35 @@
 import * as React from 'react';
 // import Particles from 'react-particles-js';
+import { useState, useEffect } from 'react';
 import Particles from "react-tsparticles";
 
 
-export const UserListBackGround = () => {
+export const UserListBackGround = (props: any) => {
+  // console.log('UserListBackGroundのprops.listHeight', props.listHeight)
+
+  useEffect(() => {
+    // if (props.listHeight != 0) {
+    // window.addEventListener('load', function (e) {
+
+    console.log('useEffect内props.listHeight', props.listHeight)
+
+    var particleHeight = document.getElementById('about-tsparticles')
+    console.log('useEffect内particleHeight', particleHeight)
+    //   // setListHeight(particleHeight);
+    particleHeight.style.height = props.listHeight + 'px';
+    // })
+    // };
+    console.log('props.listHeight', props.listHeight)
+    console.log('particleHeight.style.height', particleHeight.style.height)
+
+  }, [props.listHeight])
+  // console.log('particleHeight.style.height', particleHeight.style.height)
 
   return (
 
     <div className="userlist-background">
       <Particles
+        // style={memberListStyle}
         className=""
         id="about-tsparticles"
         options={{

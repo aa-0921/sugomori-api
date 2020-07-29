@@ -2,7 +2,7 @@
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import * as React from 'react';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { MemberList } from '../components/MemberList';
 import { FetchData } from '../api/FetchData';
 import { Spacer } from '@zeit-ui/react';
@@ -83,26 +83,45 @@ export const MemberListApp = (props: any) => {
   //   })();
 
   // }, [])
+  const [listHeight, setListHeight] = useState(0);
 
-
-  (function () {
-
+  useEffect(() => {
     window.addEventListener('load', function (e) {
-      var listHeight = document.getElementById('memberlist-wrap')
+      const getListHeight = document.getElementById('memberlist-wrap').offsetHeight
+      console.log('getListHeight', getListHeight)
+
+      // var particleHeight = document.getElementById('about-tsparticles')
       // console.log('particleHeight', particleHeight)
-      console.log('particleHeight', listHeight.clientHeight)
-      var particleHeight = document.getElementById('about-tsparticles')
-      console.log('particleHeight', particleHeight)
-      particleHeight.style.height = listHeight.clientHeight.toString();
-      console.log('particleHeight.style.height', particleHeight)
+      setListHeight(getListHeight);
+      console.log('listHeight', listHeight)
+
+      // particleHeight.style.height = listHeight.clientHeight.toString();
+      // console.log('particleHeight.style.height', particleHeight)
     });
-  })();
+    console.log('listHeight', listHeight)
+
+  }, [])
+  console.log('listHeight', listHeight)
+
+  // (function () {
+  // window.addEventListener('load', function (e) {
+  //   var listHeight = document.getElementById('memberlist-wrap')
+  //   console.log('particleHeight', listHeight.offsetHeight)
+  // var particleHeight = document.getElementById('about-tsparticles')
+  // console.log('particleHeight', particleHeight)
+  // //   // setListHeight(particleHeight);
+  // particleHeight.style.height = listHeight + 'px';
+  //   console.log('particleHeight.style.height', particleHeight)
+  // });
+  // })();
 
   return (
     <React.Fragment>
       <Router>
         <div className="memberlist-background-wrap relative">
-          <UserListBackGround />
+          <UserListBackGround
+            listHeight={listHeight}
+          />
           <div id="memberlist-wrap" className="memberlist-wrap absolute top-0" >
             {/* ref={memberlistWrap} */}
             <Spacer y={3} />

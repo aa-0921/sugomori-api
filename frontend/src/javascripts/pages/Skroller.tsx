@@ -4,9 +4,7 @@ import { ParallaxProvider, Parallax } from 'react-skrollr'
 import BackGroundVanta from '../pages/BackGroundVanta';
 import Tilt from 'react-parallax-tilt';
 import { BackGround } from '../pages/BackGround';
-
-
-
+// import homeIcon from './../../../images/家.svg';
 
 const thanksData = {
   "data-1000-top": "transform: translateY(-50%);opacity: 1;",

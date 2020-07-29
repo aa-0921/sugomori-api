@@ -14821,6 +14821,9 @@ a.scroll-guide span {
     transform: rotateY(720deg) rotateZ(-45deg) translate(-20px, 20px);
     opacity: 0; } }
 
+#about-tsparticles {
+  height: 6000px; }
+
 div.memberlist-wrap {
   width: 15%;
   min-width: 700px;
@@ -14831,9 +14834,6 @@ div.memberlist-wrap {
 
 div.list > div.card {
   background-color: #f4f9ff; }
-
-#about-tsparticles {
-  background-size: cover; }
 
 div.skroller_background {
   font-family: 'Arial';

@@ -414,7 +414,9 @@ a.scroll-guide span {
 }
 
 // memberlist関連
-
+#about-tsparticles {
+  height: 6000px;
+}
 div.memberlist-wrap {
   width: 15%;
   min-width: 700px;
@@ -426,10 +428,6 @@ div.memberlist-wrap {
 
 div.list > div.card {
   background-color: #f4f9ff;
-}
-
-#about-tsparticles {
-  background-size: cover;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Rowdies&family=Ubuntu:ital,wght@1,300&display=swap');
