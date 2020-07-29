@@ -6,6 +6,44 @@ import Tilt from 'react-parallax-tilt';
 import { BackGround } from '../pages/BackGround';
 
 
+
+
+const thanksData = {
+  "data-1000-top": "transform: translateY(-50%);opacity: 1;",
+
+  "data-950-top": "transform: translateY(-40%);",
+  "data-900-top": "transform: translateY(-80%);opacity: 1;",
+  "data-700-top": "transform: translateY(-70%);font-family: 'Ubuntu', sans-serif;",
+  "data-600-top": "transform: translateY(-60%);font-style: italic;",
+  "data-550-top": "transform: translateY(-40%);font-weight: 800;font-variant: small-caps;",
+  "data-500-top": "transform: translateY(-30%);font-family: 'Times New Roman', Times, serif;",
+  "data-450-top": "transform: translateY(-20%);font-family: monospace;font-style: oblique;background-color: #a3bffa !important;",
+
+  "data-400-top": "transform: translateY(-10%);",
+  "data-150-top": "opacity: 1;transform: translateY(0%);",
+  "data-bottom-top": "opacity: 0;",
+  "data-top-bottom": "opacity: 0;transform: translateY(-100%);",
+};
+
+const thanksTextData = {
+
+  "data-1000-top": "transform: translateY(-50%);opacity: 1;",
+
+  "data-950-top": "transform: translateY(-40%);",
+  "data-900-top": "transform: translateY(-80%);opacity: 0.5;",
+  "data-800-top": "transform: translateY(0%);opacity: 1;font-family: 'Rowdies', cursive;",
+  "data-700-top": "font-family: 'Ubuntu', sans-serif;color: #00305e;",
+  "data-600-top": "font-family: 'Pacifico', cursive;",
+  "data-550-top": "font-weight: 800;font-variant: small-caps;color:#404756",
+  "data-500-top": "font-family: 'Times New Roman', Times, serif;",
+  // "data-450-top": "color: #FFF;font-style: oblique;",
+  "data-450-top": "font-style: oblique;",
+
+  "data-400-top": "transform: translateY(0%);",
+  "data-150-top": "transform: translateY(0%);",
+  "data-bottom-top": "opacity: 0;",
+  "data-top-bottom": "opacity: 1;transform: translateY(-100%);",
+};
 const leftData = {
   "data-900-top": "transform: translateX(-100%);",
   "data-800-top": "transform: translateX(-80%);",
@@ -96,7 +134,14 @@ export const Skroller = () => (
       getScrollTop={scrollTop => console.log("scrollTop", scrollTop)}
     >
       <div className="skroller_background">
-        <span className="skroller_span"></span>
+        <Parallax data={thanksData}>
+          <span className="skroller_span thanks">
+            <Parallax data={thanksTextData}>
+              Thanks for coming
+            </Parallax>
+          </span>
+        </Parallax>
+
         <Parallax data={leftData}>
           <span className="skroller_span sugomori_is mb-5 mt-48">SUGOMORI is...</span>
         </Parallax>

@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css2?family=Pacifico&family=Rowdies&family=Ubuntu:ital,wght@1,300&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Kosugi&display=swap);
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
@@ -14736,6 +14737,12 @@ span.skroller_span {
   align-items: center;
   font-size: x-large; }
 
+span.skroller_span.thanks {
+  font-size: 3rem;
+  height: 70px;
+  font-weight: 400;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }
+
 span.skroller_span.sugomori_is {
   font-size: xx-large;
   height: 70px; }
@@ -14864,11 +14871,11 @@ div.memberlist-wrap {
   left: 50%;
   transform: translate(-50%); }
 
-div.memberlist-background-wrap {
-  height: auto !important; }
-
 div.list > div.card {
   background-color: #f4f9ff; }
+
+#about-tsparticles {
+  background-size: cover; }
 
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {

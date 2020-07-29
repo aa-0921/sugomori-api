@@ -295,7 +295,8 @@ div.vanta_app > header > canvas {
   height: 5000px;
 }
 
-// skroller関連
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Rowdies&family=Ubuntu:ital,wght@1,300&display=swap');
+// scroller関連
 
 div.skroller_background {
   font-family: 'Arial';
@@ -314,6 +315,12 @@ span.skroller_span {
   font-size: x-large;
 }
 
+span.skroller_span.thanks {
+  font-size: 3rem;
+  height: 70px;
+  font-weight: 400;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 span.skroller_span.sugomori_is {
   font-size: xx-large;
   height: 70px;
@@ -467,10 +474,10 @@ div.memberlist-wrap {
   transform: translate(-50%);
 }
 
-div.memberlist-background-wrap {
-  height: auto !important;
-}
-
 div.list > div.card {
   background-color: #f4f9ff;
+}
+
+#about-tsparticles {
+  background-size: cover;
 }

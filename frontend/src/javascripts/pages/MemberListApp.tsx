@@ -101,7 +101,7 @@ export const MemberListApp = (props: any) => {
   return (
     <React.Fragment>
       <Router>
-        <div className="memberlist-background-wrap relative h-auto">
+        <div className="memberlist-background-wrap relative">
           <UserListBackGround />
           <div id="memberlist-wrap" className="memberlist-wrap absolute top-0" >
             {/* ref={memberlistWrap} */}
