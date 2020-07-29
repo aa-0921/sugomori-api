@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css2?family=Kosugi&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Pacifico&family=Rowdies&family=Ubuntu:ital,wght@1,300&display=swap);
+@charset "UTF-8";
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -14878,8 +14879,8 @@ span.skroller_span {
   font-weight: bold; }
 
 div.skroller_message_wrap {
-  width: 500px;
-  height: 500px;
+  width: 450px;
+  height: 450px;
   background-color: #e6f4f1;
   margin-left: auto;
   margin-right: auto;
@@ -14890,7 +14891,38 @@ div.skroller_message_wrap {
   bottom: 0;
   margin-bottom: 130px;
   z-index: 1;
-  box-shadow: 10px 10px 10px #a4abbd; }
+  padding: 0.5em 1.4em;
+  background: #668ad8;
+  /*ボタン色*/
+  color: #a3bffa;
+  border-bottom: solid 5px #36528c;
+  /*ボタン色より暗めに*/
+  border-right: solid 5px #5375bd;
+  /*ボタン色より暗めに*/ }
+
+div.skroller_message_wrap:before {
+  content: ' ';
+  position: absolute;
+  bottom: -5px;
+  left: -1px;
+  width: 0;
+  height: 0;
+  border-width: 0 6px 6px 0px;
+  border-style: solid;
+  border-color: #a3bffa;
+  border-bottom-color: #a3bffa; }
+
+div.skroller_message_wrap:after {
+  content: ' ';
+  position: absolute;
+  top: -1px;
+  right: -5px;
+  width: 0;
+  height: 0;
+  border-width: 0px 6px 6px 0px;
+  border-style: solid;
+  border-color: #004bb5;
+  border-bottom-color: transparent; }
 
 div.skroller_message_text {
   color: #00305e;
@@ -14905,8 +14937,8 @@ div.skroller_message_text {
     margin-right: 10px; }
 
 .skroller_message_triangle {
-  border-right: 320px solid transparent;
-  border-left: 320px solid transparent;
+  border-right: 340px solid transparent;
+  border-left: 340px solid transparent;
   border-bottom: 310px solid #004bb5;
   z-index: 4000;
   margin-top: 450px;

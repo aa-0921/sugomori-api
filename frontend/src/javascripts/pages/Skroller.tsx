@@ -99,7 +99,7 @@ const roofData = {
   "data-680-top": "transform: translateY(-60%);opacity: 0.5;",
   "data-650-top": "transform: translateY(-20%);",
 
-  "data-500-top": "transform: translateY(44%);opacity: 1;	--transform-scale-x: 1.1;--transform-scale-y: 1.1;",
+  "data-500-top": "transform: translateY(32%);opacity: 1;	--transform-scale-x: 1.1;--transform-scale-y: 1.1;",
 
   // "data-400-top": "transform: translateY(-300%);",
   // "data-150-top": "opacity: 1;transform: translateY(-350%);",
@@ -195,6 +195,9 @@ export const Skroller = () => (
           <span className="mb-5 skroller_span">どんなタグがつくか投稿してみましょう</span>
         </Parallax>
         <Parallax data={rightData}>
+          <span className="mb-5 skroller_span">（近日中に、表示されたタグから自由に選択できるように改善します）</span>
+        </Parallax>
+        <Parallax data={rightData}>
           <span className="skroller_span">投稿一覧画面では画像サイズ調整可能</span>
         </Parallax>
         <Parallax data={rightData}>
@@ -232,7 +235,7 @@ export const Skroller = () => (
         <Parallax data={underData}>
           <span className="skroller_span">フロントエンド:
           <span>
-              React(16.13.1),React-Router
+              React(16.13.1)・webpack
           </span>
           </span>
         </Parallax>
@@ -295,7 +298,7 @@ export const Skroller = () => (
                 まだまだ勉強不足ですが、ポートフォリオを作成していく中で理解できることが増え、試したいことのイメージがあれもこれもと溢れ、それを形にできることが楽しく、何度も達成感を得ることができました。
               </div>
               <div>
-                このアプリについても試したいことや、やりのこしたことがあるので、まだまだアップデートしていきたいと思います。
+                このアプリについても試したいことや、やり残したことがあるので、まだまだアップデートしていきたいと思います。
               </div>
               <div>
                 SUGOMORIを見て頂きまして、ありがとうございました。
