@@ -93,18 +93,24 @@ const messageData = {
   "data-bottom-top": "opacity: 1;",
 };
 
-const roofData = {
-  "data-700-top": "transform: translateY(-70%);opacity: 0.5;",
-  "data-680-top": "transform: translateY(-60%);opacity: 0.5;",
-  "data-650-top": "transform: translateY(-20%);",
+// const roofData = {
+//   "data-700-top": "transform: translateY(-70%);opacity: 0.5;",
+//   "data-680-top": "transform: translateY(-60%);opacity: 0.5;",
+//   "data-650-top": "transform: translateY(-20%);",
 
-  "data-500-top": "transform: translateY(32%);opacity: 1;	--transform-scale-x: 1.1;--transform-scale-y: 1.1;",
+//   "data-500-top": "transform: translateY(32%);opacity: 1;	--transform-scale-x: 1.1;--transform-scale-y: 1.1;",
 
-  // "data-400-top": "transform: translateY(-300%);",
-  // "data-150-top": "opacity: 1;transform: translateY(-350%);",
-  // "data-center-center": "opacity: 1;transform: translateX(-100%);",
-
-
+//   // "data-400-top": "transform: translateY(-300%);",
+//   // "data-150-top": "opacity: 1;transform: translateY(-350%);",
+//   // "data-center-center": "opacity: 1;transform: translateX(-100%);",
+// };
+const houseData = {
+  "data-700-top": "transform: translateY(-30%);opacity: 0.5;",
+  "data-680-top": "transform: translateY(-20%);opacity: 0.5;",
+  "data-650-top": "transform: translateY(-10%);",
+  "data-600-top": "transform: translateY(0%);",
+  "data-550-top": "transform: translateY(10%);",
+  "data-500-top": "transform: translateY(20%);opacity: 1;--transform-scale-x: 1.1;--transform-scale-y: 1.1;"
 };
 
 export const Skroller = () => (
@@ -339,12 +345,15 @@ c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
           </div>
         </Parallax> */}
         <Spacer y={10} />
-        <div className="flex justify-center items-center">
-          <svg x="0" y="0" width="500px" height="500px" viewBox="0 0 500 500">
-            <use xlinkHref='#home' className="home" fill="#db8c81" x="16px" y="16px" width="500px" height="500px" />
-            {/* fill="#00305e" */}
-          </svg>
-        </div>
+
+        <Parallax data={houseData}>
+          <div className="flex justify-center items-center">
+            <svg x="0" y="0" width="800px" height="800px" viewBox="0 0 800 800">
+              <use xlinkHref='#home' className="home" fill="#db8c81" x="16px" y="16px" width="800px" height="800px" />
+              {/* fill="#00305e" */}
+            </svg>
+          </div>
+        </Parallax>
       </div>
 
 
