@@ -106,11 +106,11 @@ const messageData = {
 // };
 const houseData = {
   "data-700-top": "transform: translateY(-30%);opacity: 0.5;",
-  "data-680-top": "transform: translateY(-20%);opacity: 0.5;",
-  "data-650-top": "transform: translateY(-10%);",
-  "data-600-top": "transform: translateY(0%);",
-  "data-550-top": "transform: translateY(10%);",
-  "data-500-top": "transform: translateY(20%);opacity: 1;--transform-scale-x: 1.1;--transform-scale-y: 1.1;"
+  "data-680-top": "transform: translateY(-10%);opacity: 0.5;",
+  "data-650-top": "transform: translateY(15%);",
+  "data-600-top": "transform: translateY(27%);",
+  "data-550-top": "transform: translateY(30%);",
+  "data-500-top": "transform: translateY(35%);opacity: 1;--transform-scale-x: 1.1;--transform-scale-y: 1.1;"
 };
 
 export const Skroller = () => (
@@ -354,9 +354,31 @@ c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
             </svg>
           </div>
         </Parallax>
+        {/* <Parallax data={houseData}> */}
+        <div className="skroller_house_wrap flex justify-center items-center rounded-lg">
+          <div className="skroller_house_text flex flex-col items-start">
+            <div>
+              このアプリを見て頂き、ありがとうございます。
+            </div>
+            <div>
+              これは私が初めて作成したアプリで、JavaScript、ReactやAPIの処理についても知識がゼロの状態からスタートしました。
+            </div>
+            <div>
+              まだまだ勉強不足ですが、作成していく中で理解できることが増え、試したいことのイメージがあれもこれもと溢れ、それを形にできることが楽しく、何度も達成感を得ることができました。
+            </div>
+            <div>
+              他にも、もっと色々なものを作ってみたいと思っています。
+            </div>
+            <div>
+              このアプリについても試したいことや、やり残したことがあるので、まだまだアップデートしていきたいと思います。
+            </div>
+            <div>
+              SUGOMORIのいろいろな機能を見て、試して頂けると嬉しいです。
+            </div>
+          </div>
+        </div>
+        {/* </Parallax> */}
       </div>
-
-
     </ParallaxProvider>
   </React.Fragment >
 );

@@ -14949,6 +14949,34 @@ div.skroller_message_text {
   height: 0 !important;
   box-shadow: 0 32px 30px -30px rgba(53, 47, 47, 0.15); }
 
+div.skroller_house_wrap {
+  width: 430px;
+  height: 430px;
+  background-color: #e6f4f1;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 130px;
+  z-index: 1;
+  padding: 0.5em 1.4em;
+  background: #f4f9ff; }
+
+div.skroller_house_text {
+  color: #2d4543;
+  font-size: large;
+  font-weight: bold;
+  margin-left: 3px;
+  margin-right: 3px; }
+  div.skroller_house_text div {
+    text-align: left;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 3px;
+    margin-right: 3px; }
+
 .home {
   fill: #42afe3;
   height: 600px;
