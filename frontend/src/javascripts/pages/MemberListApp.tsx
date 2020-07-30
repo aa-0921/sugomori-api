@@ -141,6 +141,7 @@ export const MemberListApp = (props: any) => {
           <UserListBackGround
             // listHeight={listHeight}
             userListHeight={userListHeight}
+            setNowLoading={props.setNowLoading}
           />
           <div id="memberlist-wrap" className="memberlist-wrap absolute top-0" >
             {/* ref={memberlistWrap} */}

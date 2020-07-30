@@ -9,38 +9,18 @@ export const UserListBackGround = (props: any) => {
   console.log('UserListBackGroundのprops.userListHeight', props.userListHeight)
 
   useEffect(() => {
+    props.setNowLoading(true);
     if (props.userListHeight != 0) {
-      // window.addEventListener('load', function (e) {
-
-      // console.log('useEffect内props.listHeight', props.listHeight)
       console.log('useEffect内props.userListHeight', props.userListHeight)
-
-
       var particleHeight = document.getElementById('about-tsparticles')
-      // console.log('useEffect内particleHeight', particleHeight)
-      console.log('useEffect内userListHeight', props.userListHeight)
 
-      //   // setListHeight(particleHeight);
       particleHeight.style.setProperty('--about-tsparticles-height', props.userListHeight + 'px', "important");
-      // })
-      // };
-      // console.log('props.listHeight', props.listHeight)
-      // console.log('particleHeight.style.height', particleHeight.style.height)
+      props.setNowLoading(false);
 
-      // }, [props.listHeight])
-      // var canvasDom = document.getElementsByClassName('tsparticles-canvas-el');
-      // canvasDom[0].style.setProperty('--about-tsparticles-height', props.listHeight + 'px', "important");
     }
 
   }, [props.userListHeight])
-  // }, [])
 
-
-  // console.log('particleHeight.style.height', particleHeight.style.height)
-
-  const heightStyle = {
-    height: 100
-  }
   return (
 
     <div className="userlist-background">
@@ -49,7 +29,9 @@ export const UserListBackGround = (props: any) => {
         className=""
         id="about-tsparticles"
         // style={heightStyle}
-        // style={{ height: '100px !impotant' }}
+        // style={{ height: props.userListHeight + 'px !impotant' }}
+        // style={{ height: props.userListHeight }}
+
         // style={{ height: "100px !impotant" }}
 
 

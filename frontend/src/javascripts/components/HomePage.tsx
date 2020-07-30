@@ -112,6 +112,7 @@ export const HomePage = (props: any) => {
                   {...props}
                   currentUserData={currentUserData}
                   component={MemberListApp}
+                  setNowLoading={setNowLoading}
                 />}
             />
             {/* <Route exact path="/background" component={BackGroundVanta} /> */}
