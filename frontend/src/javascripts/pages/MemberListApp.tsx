@@ -43,11 +43,28 @@ export const MemberListApp = (props: any) => {
     setFollowUsers(nextFollowUsers);
   };
 
+  console.log('fetchUsers.length', fetchUsers.length)
+  // 85.1875px
+  const [userListHeight, setUserListHeight] = useState(0);
+
   const fetchUsersUrl: string = '/users';
 
   useEffect(() => {
-    FetchData(fetchUsersUrl).then((res) => setFetchUsers(res.data));
+    FetchData(fetchUsersUrl).then((res) => {
+      setFetchUsers(res.data)
+
+
+    });
+    console.log('MemberListAppのuserListHeight', userListHeight)
   }, []);
+
+  useEffect(() => {
+    setUserListHeight((fetchUsers.length + 2) * 85.1875)
+
+  }, [fetchUsers]);
+  // setUserListHeight(fetchUsers.length * 85.1875)
+
+  console.log('MemberListAppのuserListHeight', userListHeight)
 
   // var particleHeight = document.getElementById('about-tsparticles');
   // particleHeight.style.height = 
@@ -83,25 +100,27 @@ export const MemberListApp = (props: any) => {
   //   })();
 
   // }, [])
-  const [listHeight, setListHeight] = useState(0);
+  // const [listHeight, setListHeight] = useState(0);
 
-  useEffect(() => {
-    window.addEventListener('load', function (e) {
-      const getListHeight = document.getElementById('memberlist-wrap').offsetHeight
-      console.log('getListHeight', getListHeight)
+  // useEffect(() => {
+  //   // window.addEventListener('load', function (e) {
+  //   const getListHeight = document.getElementById('memberlist-wrap').offsetHeight
+  //   console.log('getListHeight', getListHeight)
 
-      // var particleHeight = document.getElementById('about-tsparticles')
-      // console.log('particleHeight', particleHeight)
-      setListHeight(getListHeight);
-      console.log('listHeight', listHeight)
+  //   // var particleHeight = document.getElementById('about-tsparticles')
+  //   // console.log('particleHeight', particleHeight)
+  //   if (getListHeight != null) {
+  //     setListHeight(getListHeight);
+  //   }
+  //   console.log('listHeight', listHeight)
 
-      // particleHeight.style.height = listHeight.clientHeight.toString();
-      // console.log('particleHeight.style.height', particleHeight)
-    });
-    console.log('listHeight', listHeight)
+  //   // particleHeight.style.height = listHeight.clientHeight.toString();
+  //   // console.log('particleHeight.style.height', particleHeight)
+  //   // });
+  //   console.log('listHeight', listHeight)
 
-  }, [])
-  console.log('listHeight', listHeight)
+  // }, [])
+  // console.log('listHeight', listHeight)
 
   // (function () {
   // window.addEventListener('load', function (e) {
@@ -120,7 +139,8 @@ export const MemberListApp = (props: any) => {
       <Router>
         <div className="memberlist-background-wrap relative">
           <UserListBackGround
-            listHeight={listHeight}
+            // listHeight={listHeight}
+            userListHeight={userListHeight}
           />
           <div id="memberlist-wrap" className="memberlist-wrap absolute top-0" >
             {/* ref={memberlistWrap} */}

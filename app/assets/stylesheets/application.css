@@ -14822,7 +14822,10 @@ a.scroll-guide span {
     opacity: 0; } }
 
 #about-tsparticles {
-  height: 6000px; }
+  height: var(--about-tsparticles-height); }
+
+.tsparticles-canvas-el {
+  height: var(--about-tsparticles-height); }
 
 div.memberlist-wrap {
   width: 15%;
@@ -14959,7 +14962,9 @@ div.skroller_message_text {
   z-index: 3000; }
 
 svg > use.home {
-  width: 900px; }
+  width: 3000px;
+  height: 3000px;
+  margin-top: 300px; }
 
 #home > g > path {
   width: 900px; }

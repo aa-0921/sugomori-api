@@ -4,6 +4,7 @@ import { ParallaxProvider, Parallax } from 'react-skrollr'
 import BackGroundVanta from '../pages/BackGroundVanta';
 import Tilt from 'react-parallax-tilt';
 import { BackGround } from '../pages/BackGround';
+import { Spacer } from "@zeit-ui/react";
 // import homeIcon from './../../../images/家.svg';
 
 const thanksData = {
@@ -109,9 +110,13 @@ const roofData = {
 export const Skroller = () => (
   <React.Fragment>
     <svg display="non" className="h-0" >
-      <symbol id="home" viewBox="0 0 3244.000000 3280.000000">
+      <symbol
+        id="home"
+        viewBox="0 0 3244.000000 3280.000000"
+        preserveAspectRatio="xMinYMin meet"
+      >
         <g
-          transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
+          // transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
           stroke="none"
         >
           <path d="M5320 12048 c-410 -411 -751 -748 -757 -748 -10 0 -13 130 -13 625
@@ -333,9 +338,9 @@ c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
             </div>
           </div>
         </Parallax> */}
+        <Spacer y={10} />
         <div className="flex justify-center items-center">
           <svg><use xlinkHref='#home' className="home" fill="#00305e" /></svg>
-          <svg><use xlinkHref='#home-roof' className="roof" fill="#00305e" /></svg>
         </div>
       </div>
 

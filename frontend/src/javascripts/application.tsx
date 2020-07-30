@@ -8,6 +8,17 @@ import { ZeitProvider, CssBaseline } from '@zeit-ui/react';
 
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // (function () {
+  //   function onLoad() {
+  //     window.resizeTo(1500, 1000);
+  //   }
+
+  //   window.addEventListener('load', function (e) {
+  //     onLoad();
+  //   });
+  // })();
+  // window.resizeTo(1500, 1000);
   const jsLoggedIn = document.getElementById('js_logged_in_component')
   const jsNotLoggedIn = document.getElementById('js_not_logged_in_component')
   if (jsLoggedIn != null) {

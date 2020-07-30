@@ -5,29 +5,42 @@ import Particles from "react-tsparticles";
 
 
 export const UserListBackGround = (props: any) => {
-  console.log('UserListBackGroundのprops.listHeight', props.listHeight)
+  // console.log('UserListBackGroundのprops.listHeight', props.listHeight)
+  console.log('UserListBackGroundのprops.userListHeight', props.userListHeight)
 
   useEffect(() => {
-    if (props.listHeight != 0) {
+    if (props.userListHeight != 0) {
       // window.addEventListener('load', function (e) {
 
-      console.log('useEffect内props.listHeight', props.listHeight)
+      // console.log('useEffect内props.listHeight', props.listHeight)
+      console.log('useEffect内props.userListHeight', props.userListHeight)
+
 
       var particleHeight = document.getElementById('about-tsparticles')
-      console.log('useEffect内particleHeight', particleHeight)
+      // console.log('useEffect内particleHeight', particleHeight)
+      console.log('useEffect内userListHeight', props.userListHeight)
+
       //   // setListHeight(particleHeight);
-      particleHeight.style.height = props.listHeight + 'px';
+      particleHeight.style.setProperty('--about-tsparticles-height', props.userListHeight + 'px', "important");
       // })
       // };
       // console.log('props.listHeight', props.listHeight)
       // console.log('particleHeight.style.height', particleHeight.style.height)
 
       // }, [props.listHeight])
+      // var canvasDom = document.getElementsByClassName('tsparticles-canvas-el');
+      // canvasDom[0].style.setProperty('--about-tsparticles-height', props.listHeight + 'px', "important");
     }
-  }, [props.listHeight])
+
+  }, [props.userListHeight])
+  // }, [])
+
 
   // console.log('particleHeight.style.height', particleHeight.style.height)
 
+  const heightStyle = {
+    height: 100
+  }
   return (
 
     <div className="userlist-background">
@@ -35,6 +48,11 @@ export const UserListBackGround = (props: any) => {
         // style={memberListStyle}
         className=""
         id="about-tsparticles"
+        // style={heightStyle}
+        // style={{ height: '100px !impotant' }}
+        // style={{ height: "100px !impotant" }}
+
+
         options={{
           background: {
             color: {
@@ -95,11 +113,7 @@ export const UserListBackGround = (props: any) => {
               "polygon": {
                 "nb_sides": 4
               },
-              "image": {
-                "src": "img/github.svg",
-                "width": 100,
-                "height": 100
-              }
+
             },
             "opacity": {
               "value": 0.3,
