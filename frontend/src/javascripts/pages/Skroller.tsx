@@ -110,23 +110,23 @@ const roofData = {
 export const Skroller = () => (
   <React.Fragment>
     <svg display="non" className="h-0" >
-      <symbol
-        id="home"
-        viewBox="0 0 3244.000000 3280.000000"
-        preserveAspectRatio="xMinYMin meet"
-      >
-        <g
-          // transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
-          stroke="none"
+      <defs>
+        <symbol
+          id="home"
+          viewBox="0 0 1244.000000 1280.000000"
+          preserveAspectRatio="xMidYMid meet"
         >
-          <path d="M5320 12048 c-410 -411 -751 -748 -757 -748 -10 0 -13 130 -13 625
+          <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
+            fill="#FFFFFF" stroke="none">
+            <path d="M5320 12048 c-410 -411 -751 -748 -757 -748 -10 0 -13 130 -13 625
 l0 625 -1325 0 -1325 0 0 -1957 0 -1958 -950 -950 -950 -950 0 -132 0 -133
 520 0 c503 0 520 -1 530 -19 7 -14 10 -1038 10 -3235 l0 -3216 5150 0 5150 0
 0 3229 c0 2935 1 3229 16 3235 9 3 252 6 540 6 l524 0 0 133 0 133 -172 171
 c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
 -89 9 l-82 -1 -745 -749z"/>
-        </g>
-      </symbol>
+          </g>
+        </symbol>
+      </defs>
     </svg>
     {/* <svg display="non" className="h-0" >
       <symbol id="home-roof" viewBox="0 0 1244.000000 1280.000000">
@@ -340,12 +340,15 @@ c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
         </Parallax> */}
         <Spacer y={10} />
         <div className="flex justify-center items-center">
-          <svg><use xlinkHref='#home' className="home" fill="#00305e" /></svg>
+          <svg x="0" y="0" width="500px" height="500px" viewBox="0 0 500 500">
+            <use xlinkHref='#home' className="home" fill="#db8c81" x="16px" y="16px" width="500px" height="500px" />
+            {/* fill="#00305e" */}
+          </svg>
         </div>
       </div>
 
 
     </ParallaxProvider>
-  </React.Fragment>
+  </React.Fragment >
 );
 
