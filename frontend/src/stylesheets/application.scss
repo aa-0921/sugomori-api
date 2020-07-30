@@ -498,8 +498,8 @@ div.skroller_message_wrap {
 
   background: #668ad8; /*ボタン色*/
   color: $baseColor;
-  border-bottom: solid 5px #36528c; /*ボタン色より暗めに*/
-  border-right: solid 5px #5375bd; /*ボタン色より暗めに*/
+  border-bottom: solid 15px #36528c; /*ボタン色より暗めに*/
+  border-right: solid 15px #5375bd; /*ボタン色より暗めに*/
 }
 
 div.skroller_message_wrap:before {
@@ -511,8 +511,8 @@ div.skroller_message_wrap:before {
   height: 0;
   border-width: 0 6px 6px 0px;
   border-style: solid;
-  border-color: $baseColor;
-  border-bottom-color: $baseColor;
+  border-color: #36528c;
+  border-bottom-color: #36528c;
 }
 
 div.skroller_message_wrap:after {
@@ -524,7 +524,7 @@ div.skroller_message_wrap:after {
   height: 0;
   border-width: 0px 6px 6px 0px;
   border-style: solid;
-  border-color: #004bb5;
+  border-color: #5375bd;
   border-bottom-color: transparent;
 }
 
@@ -546,10 +546,36 @@ div.skroller_message_text {
 .skroller_message_triangle {
   border-right: 340px solid transparent;
   border-left: 340px solid transparent;
-  border-bottom: 310px solid #004bb5;
+  border-bottom: 310px solid #61d5ff;
   z-index: 4000;
   margin-top: 450px;
   width: 0 !important;
   height: 0 !important;
   box-shadow: 0 32px 30px -30px rgba(53, 47, 47, 0.15);
+}
+
+.home {
+  fill: #42afe3;
+  height: 600px;
+  width: 1200px;
+  z-index: 3000;
+}
+
+.roof {
+  fill: #42afe3;
+  height: 600px;
+  width: 600px;
+  z-index: 3000;
+}
+svg > use.home {
+  width: 900px;
+}
+#home > g > path {
+  width: 900px;
+}
+#home {
+  width: 1200px;
+}
+#home > g {
+  width: 1200px;
 }

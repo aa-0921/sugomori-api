@@ -5,24 +5,27 @@ import Particles from "react-tsparticles";
 
 
 export const UserListBackGround = (props: any) => {
-  // console.log('UserListBackGroundのprops.listHeight', props.listHeight)
+  console.log('UserListBackGroundのprops.listHeight', props.listHeight)
 
   useEffect(() => {
-    // if (props.listHeight != 0) {
-    // window.addEventListener('load', function (e) {
+    if (props.listHeight != 0) {
+      // window.addEventListener('load', function (e) {
 
-    console.log('useEffect内props.listHeight', props.listHeight)
+      console.log('useEffect内props.listHeight', props.listHeight)
 
-    var particleHeight = document.getElementById('about-tsparticles')
-    console.log('useEffect内particleHeight', particleHeight)
-    //   // setListHeight(particleHeight);
-    particleHeight.style.height = props.listHeight + 'px';
-    // })
-    // };
-    console.log('props.listHeight', props.listHeight)
-    console.log('particleHeight.style.height', particleHeight.style.height)
+      var particleHeight = document.getElementById('about-tsparticles')
+      console.log('useEffect内particleHeight', particleHeight)
+      //   // setListHeight(particleHeight);
+      particleHeight.style.height = props.listHeight + 'px';
+      // })
+      // };
+      // console.log('props.listHeight', props.listHeight)
+      // console.log('particleHeight.style.height', particleHeight.style.height)
 
+      // }, [props.listHeight])
+    }
   }, [props.listHeight])
+
   // console.log('particleHeight.style.height', particleHeight.style.height)
 
   return (
