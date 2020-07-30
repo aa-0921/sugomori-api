@@ -330,12 +330,12 @@ export const ProfilePage = (props: any) => {
                   type="error"
                   size="mini"
                   auto
-                  ghost
+
                   onClick={() => onClickDelete(clickedPost.id)}
                 >
-                  <Icon.Delete size={8} />
+                  <Icon.Delete size={10} />
                               Delete
-                      </Button>
+                </Button>
               </div>
             </Modal.Action>
           ) : (
