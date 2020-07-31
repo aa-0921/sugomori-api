@@ -5,16 +5,14 @@ import { FetchData } from '../api/FetchData'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { PostList } from '../components/PostList';
 import { FormikPost } from '../components/FormikPost';
-import { Modal, Button, Grid, Divider, Row, Slider, Collapse, Tooltip, Popover, Text } from '@zeit-ui/react';
+import { Modal, Spacer, Divider, Row, Slider, Collapse, Tooltip, Popover, Text } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
 import { CommentApp } from '../components/CommentApp';
 import { LikeButton } from '../components/LikeButton';
 import { PostModal } from '../components/PostModal';
 
 
-
 export const FeedApp = (props: any) => {
-
   // 全投稿の配列のState定義
   const [fetchPosts, setFetchPosts] = useState([]);
   const [initialFetchPosts, setInitialFetchPosts] = useState([]);
@@ -160,22 +158,25 @@ export const FeedApp = (props: any) => {
           <div>
             <div>
               {/* // Collapse関連 */}
-              <div className="collapseWrap mt-18 pt-5">
-                <Collapse.Group className="z-20 mr-5 mt-10">
-                  <Collapse title=" " className="h-1 text-base" initialVisible>
-                    <Text>
-                      <div className="bg-white flex justify-center items-center">
-                        <span className="wr-10 pr-5">
-                          <Icon.Maximize2 size={25} />
-                        </span>
-                        <Row style={{ width: '75%' }}>
-                          <Slider
-                            value={columnWidthValue} onChange={columnWidthHandler}
-                            step={20} max={500} min={100} initialValue={300}
-                          />
-                        </Row>
-                      </div>
-                    </Text>
+              <Spacer y={2} />
+              <div className="collapseWrap mt-50 pt-5 h-30">
+                <Collapse.Group>
+                  <Collapse title=" " initialVisible>
+                    <Text></Text>
+                    <div className="flex justify-center items-center h-10">
+                      <span className="wr-10 pr-5">
+                        <Icon.Maximize2 size={25} />
+                      </span>
+                      <Row style={{ width: '75%' }}>
+                        <Slider
+                          className="postWidthSlider"
+                          value={columnWidthValue} onChange={columnWidthHandler}
+                          step={20} max={400} min={100} initialValue={300}
+                        />
+                      </Row>
+                      <Text></Text>
+                    </div>
+
                   </Collapse>
                 </Collapse.Group>
               </div>
