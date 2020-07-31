@@ -15,10 +15,8 @@ export const UserListBackGround = (props: any) => {
       var particleHeight = document.getElementById('userlist-tsparticles')
 
       particleHeight.style.setProperty('--about-tsparticles-height', props.userListHeight + 'px', "important");
-      props.setNowLoading(false);
-
+      // props.setNowLoading(false);
     }
-
   }, [props.userListHeight])
 
   return (

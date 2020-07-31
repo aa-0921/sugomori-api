@@ -59,7 +59,7 @@ export const MemberListApp = (props: any) => {
     FetchData(fetchUsersUrl).then((res) => {
       setFetchUsers(res.data)
     });
-    props.setNowLoading(false);
+    // props.setNowLoading(false);
 
     console.log('MemberListAppのuserListHeight', userListHeight)
   }, []);
@@ -68,7 +68,7 @@ export const MemberListApp = (props: any) => {
     props.setNowLoading(true);
 
     setUserListHeight((fetchUsers.length + 2) * 85.1875)
-    props.setNowLoading(false);
+    // props.setNowLoading(false);
 
   }, [fetchUsers]);
   // setUserListHeight(fetchUsers.length * 85.1875)
