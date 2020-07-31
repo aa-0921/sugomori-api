@@ -90,7 +90,7 @@ export function Header(props: any) {
                         {props.currentUserData != null ? (
                           <React.Fragment>
                             <Link
-                              to="/feedapp"
+                              to="/feed"
                               className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                             >
                               Feed
