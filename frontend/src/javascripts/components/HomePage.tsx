@@ -88,7 +88,7 @@ export const HomePage = (props: any) => {
                   nowLoading={nowLoading}
                 />}
             />
-            <Route exact path="/feedapp"
+            <Route exact path="/feed"
               render={(props) =>
                 <FeedApp
                   {...props}
@@ -98,7 +98,6 @@ export const HomePage = (props: any) => {
                 />}
             />
             <Route exact path="/pickup" component={Pickup} />
-            <Route exact path="/about" component={About} />
             <Route path="/profilepage/:id"
               render={(props) =>
                 <ProfilePage
@@ -106,7 +105,7 @@ export const HomePage = (props: any) => {
                   currentUserData={currentUserData}
                 />}
             />
-            <Route exact path="/MemberListApp"
+            <Route exact path="/UserList"
               render={(props) =>
                 <MemberListApp
                   {...props}
@@ -116,12 +115,7 @@ export const HomePage = (props: any) => {
                 />}
             />
             {/* <Route exact path="/background" component={BackGroundVanta} /> */}
-            <Route exact path="/background" component={Skroller} />
-
-
-            <Route exact path="/about" component={About} />
-
-
+            <Route exact path="/About" component={Skroller} />
           </Switch>
           {/* <Footer /> */}
         </BrowserRouter >

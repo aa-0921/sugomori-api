@@ -104,13 +104,13 @@ export function Header(props: any) {
                               YourProfile
                             </Link>
                             <Link
-                              to="/MemberListApp"
+                              to="/UserList"
                               className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                             >
                               UserList
                             </Link>
                             <Link
-                              to="/background"
+                              to="/About"
                               className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                             >
                               About
@@ -119,7 +119,7 @@ export function Header(props: any) {
                         ) : (
                             <React.Fragment>
                               <Link
-                                to="/background"
+                                to="/About"
                                 className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                               >
                                 About

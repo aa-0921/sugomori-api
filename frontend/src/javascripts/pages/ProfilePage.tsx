@@ -279,8 +279,8 @@ export const ProfilePage = (props: any) => {
             <h5>{fetchUser.email}</h5>
             <Table data={data}>
               <Table.Column prop="投稿数" label="投稿数" width={60} />
-              <Table.Column prop="フォローしている数" label="フォローしている数" width={80} />
-              <Table.Column prop="いいねしている数" label="いいねしている数" width={80} />
+              <Table.Column prop="フォローしている数" label="フォローしている数" width={200} />
+              <Table.Column prop="いいねしている数" label="いいねしている数" width={200} />
             </Table>
           </div>
           {props.currentUserData.id != props.match.params.id ? (
