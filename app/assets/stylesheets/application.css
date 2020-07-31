@@ -14492,7 +14492,7 @@ details > summary {
 
 #userlist-tsparticles > canvas {
   height: var(--about-tsparticles-height);
-  width: auto; }
+  width: auto !important; }
 
 div.postWidthSlider {
   background-color: #a4abbd !important; }
