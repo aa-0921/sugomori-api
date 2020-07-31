@@ -75,8 +75,8 @@ details > summary {
 }
 
 #userlist-tsparticles {
-  height: var(--about-tsparticles-height);
-  background-size: cover;
+  height: 100%;
+  position: fixed;
 }
 #userlist-tsparticles > canvas {
   height: var(--about-tsparticles-height);

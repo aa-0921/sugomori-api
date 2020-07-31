@@ -1,41 +1,22 @@
 import * as React from 'react';
 // import Particles from 'react-particles-js';
-import { useState, useEffect } from 'react';
 import Particles from "react-tsparticles";
 
 
-export const UserListBackGround = (props: any) => {
-  // console.log('UserListBackGroundのprops.listHeight', props.listHeight)
-  console.log('UserListBackGroundのprops.userListHeight', props.userListHeight)
-
-  useEffect(() => {
-    // props.setNowLoading(true);
-    if (props.userListHeight != 0) {
-      console.log('useEffect内props.userListHeight', props.userListHeight)
-      var particleHeight = document.getElementById('userlist-tsparticles')
-
-      particleHeight.style.setProperty('--about-tsparticles-height', props.userListHeight + 'px', "important");
-      props.setNowLoading(false);
-    }
-  }, [props.userListHeight])
-  props.setNowLoading(false);
+export const UserListBackGround = () => {
 
   return (
 
-    <div className="userlist-background">
+    <div className="h-screen">
       <Particles
-        // style={memberListStyle}
-        className=""
+        className="h-screen"
         id="userlist-tsparticles"
-        // style={heightStyle}
-        // style={{ height: '8000px !impotant' }}
-        // style={{ height: props.userListHeight }}
-
-        // style={{ height: "1000px !impotant" }}
         options={{
           background: {
             color: {
+
               value: "#a3bffa",
+
             },
           },
           fpsLimit: 60,
@@ -70,15 +51,15 @@ export const UserListBackGround = (props: any) => {
           },
           "particles": {
             "number": {
-              "value": 700,
+              "value": 19,
               "density": {
                 "enable": true,
                 "value_area": 868.0624057955
               }
             },
             "color": {
-              "value": "#0d21af"
-              // "value": "#004BB5"
+              // "value": "#0d21af"
+              "value": "#004BB5"
 
             },
             "shape": {
@@ -92,7 +73,11 @@ export const UserListBackGround = (props: any) => {
               "polygon": {
                 "nb_sides": 4
               },
-
+              "image": {
+                "src": "img/github.svg",
+                "width": 100,
+                "height": 100
+              }
             },
             "opacity": {
               "value": 0.3,
@@ -105,12 +90,12 @@ export const UserListBackGround = (props: any) => {
               }
             },
             "size": {
-              "value": 4,
+              "value": 59.186073122420446,
               "random": false,
               "anim": {
                 "enable": false,
-                "speed": 2,
-                "size_min": 10,
+                "speed": 10,
+                "size_min": 40,
                 "sync": false
               }
             },
@@ -123,7 +108,7 @@ export const UserListBackGround = (props: any) => {
             },
             "move": {
               "enable": true,
-              "speed": 2,
+              "speed": 8,
               "direction": "none",
               "random": false,
               "straight": false,

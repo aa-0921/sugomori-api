@@ -54,7 +54,7 @@ export const MemberListApp = (props: any) => {
   const fetchUsersUrl: string = '/users';
 
   useEffect(() => {
-    props.setNowLoading(true);
+    // props.setNowLoading(true);
 
     FetchData(fetchUsersUrl).then((res) => {
       setFetchUsers(res.data)
@@ -65,7 +65,7 @@ export const MemberListApp = (props: any) => {
   }, []);
 
   useEffect(() => {
-    props.setNowLoading(true);
+    // props.setNowLoading(true);
 
     setUserListHeight((fetchUsers.length + 2) * 85.1875)
     // props.setNowLoading(false);
@@ -147,11 +147,7 @@ export const MemberListApp = (props: any) => {
     <React.Fragment>
       <Router>
         <div className="memberlist-background-wrap relative">
-          <UserListBackGround
-            // listHeight={listHeight}
-            userListHeight={userListHeight}
-            setNowLoading={props.setNowLoading}
-          />
+          <UserListBackGround />
           <div id="memberlist-wrap" className="memberlist-wrap absolute top-0" >
             {/* ref={memberlistWrap} */}
             <Spacer y={3} />
