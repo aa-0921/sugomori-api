@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Card, Spacer, Modal, Button, Grid, Divider, Link } from '@zeit-ui/react';
+import { Card, Spacer, Modal, Button, Table, Divider, Link, User } from '@zeit-ui/react';
 import { FetchData } from '../api/FetchData'
 // 投稿一覧関連
 import { PostList } from '../components/PostList';
@@ -15,6 +15,7 @@ export const ProfilePage = (props: any) => {
   const [fetchUser, setFetchUser] = useState({
     id: 0,
     name: '',
+    email: ''
   });
 
   // const paramsID = props.match.params.id;
@@ -251,10 +252,18 @@ export const ProfilePage = (props: any) => {
   useEffect(() => {
     if (currentUserId != 0) {
       FetchData(getFollowListUrl).then((res) => {
+        if (res.data == null) {
+          setFollowUsers([])
+        }
         setFollowUsers(res.data.map((el: any) => el.id));
       });
     }
   }, [currentUserId]);
+  const data = [
+    { 投稿数: fetchUserPosts.length > 0 ? fetchUserPosts.length : 0, フォローしている数: followUsers.length > 0 ? followUsers.length : 0, いいねしている数: likeList.length > 0 ? likeList.length : 0 },
+  ]
+  console.log('followUsers', followUsers)
+  console.log('likeList', likeList)
 
   return (
     <React.Fragment>
@@ -263,9 +272,16 @@ export const ProfilePage = (props: any) => {
       <Card shadow>
         <div className="flex">
           <div className="w-auto">
-            <h1>{props.match.params.id}</h1>
+            {/* <User name={fetchUser.name}>
+              {fetchUser.email}
+            </User> */}
             <h4>{fetchUser.name}</h4>
-            <p>自己紹介</p>
+            <h5>{fetchUser.email}</h5>
+            <Table data={data}>
+              <Table.Column prop="投稿数" label="投稿数" width={60} />
+              <Table.Column prop="フォローしている数" label="フォローしている数" width={80} />
+              <Table.Column prop="いいねしている数" label="いいねしている数" width={80} />
+            </Table>
           </div>
           {props.currentUserData.id != props.match.params.id ? (
             <div className="flex flex-col min-w-0 mt-auto ml-20">
@@ -334,7 +350,7 @@ export const ProfilePage = (props: any) => {
                   onClick={() => onClickDelete(clickedPost.id)}
                 >
                   <Icon.Delete size={10} />
-                              Delete
+                    Delete
                 </Button>
               </div>
             </Modal.Action>

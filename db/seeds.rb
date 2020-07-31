@@ -60,23 +60,23 @@ end
 
 
 all_users = User.all
-# first_user  = all_users[0]
+first_user  = all_users[0]
 
-# followings = all_users[25..50]
-# followers = all_users[2..24]
-# followings.each { |followed| first_user.follow(followed) }
-# followers.each { |follower| follower.follow(first_user) }
+followings = all_users[25..50]
+followers = all_users[2..24]
+followings.each { |followed| first_user.follow(followed) }
+followers.each { |follower| follower.follow(first_user) }
 
 all_picposts = Picpost.all
 
-# like_users = all_users[0..9]
-# like_posts = all_picposts[0..9]
+like_users = all_users[0..9]
+like_posts = all_picposts[0..9]
 
-# like_users.each do |like_user|
-#   like_posts.each do |like_post|
-#     like_post.iine(like_user) 
-#   end
-# end
+like_users.each do |like_user|
+  like_posts.each do |like_post|
+    like_post.iine(like_user) 
+  end
+end
 
 # コメント関連
 
