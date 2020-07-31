@@ -12,7 +12,7 @@ export const UserListBackGround = (props: any) => {
     props.setNowLoading(true);
     if (props.userListHeight != 0) {
       console.log('useEffect内props.userListHeight', props.userListHeight)
-      var particleHeight = document.getElementById('about-tsparticles')
+      var particleHeight = document.getElementById('userlist-tsparticles')
 
       particleHeight.style.setProperty('--about-tsparticles-height', props.userListHeight + 'px', "important");
       props.setNowLoading(false);
@@ -27,7 +27,7 @@ export const UserListBackGround = (props: any) => {
       <Particles
         // style={memberListStyle}
         className=""
-        id="about-tsparticles"
+        id="userlist-tsparticles"
         // style={heightStyle}
         // style={{ height: '8000px !impotant' }}
         // style={{ height: props.userListHeight }}
@@ -71,7 +71,7 @@ export const UserListBackGround = (props: any) => {
           },
           "particles": {
             "number": {
-              "value": 19,
+              "value": 700,
               "density": {
                 "enable": true,
                 "value_area": 868.0624057955
@@ -106,12 +106,12 @@ export const UserListBackGround = (props: any) => {
               }
             },
             "size": {
-              "value": 59.186073122420446,
+              "value": 4,
               "random": false,
               "anim": {
                 "enable": false,
-                "speed": 10,
-                "size_min": 40,
+                "speed": 2,
+                "size_min": 10,
                 "sync": false
               }
             },
@@ -124,7 +124,7 @@ export const UserListBackGround = (props: any) => {
             },
             "move": {
               "enable": true,
-              "speed": 8,
+              "speed": 2,
               "direction": "none",
               "random": false,
               "straight": false,

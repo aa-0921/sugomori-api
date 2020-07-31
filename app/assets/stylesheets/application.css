@@ -14486,6 +14486,14 @@ details > summary {
 #tsparticles {
   height: 100%; }
 
+#userlist-tsparticles {
+  height: var(--about-tsparticles-height);
+  background-size: cover; }
+
+#userlist-tsparticles > canvas {
+  height: var(--about-tsparticles-height);
+  width: auto; }
+
 div.postWidthSlider {
   background-color: #a4abbd !important; }
 
