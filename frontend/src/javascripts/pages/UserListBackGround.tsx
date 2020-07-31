@@ -9,15 +9,16 @@ export const UserListBackGround = (props: any) => {
   console.log('UserListBackGroundのprops.userListHeight', props.userListHeight)
 
   useEffect(() => {
-    props.setNowLoading(true);
+    // props.setNowLoading(true);
     if (props.userListHeight != 0) {
       console.log('useEffect内props.userListHeight', props.userListHeight)
       var particleHeight = document.getElementById('userlist-tsparticles')
 
       particleHeight.style.setProperty('--about-tsparticles-height', props.userListHeight + 'px', "important");
-      // props.setNowLoading(false);
+      props.setNowLoading(false);
     }
   }, [props.userListHeight])
+  props.setNowLoading(false);
 
   return (
 
