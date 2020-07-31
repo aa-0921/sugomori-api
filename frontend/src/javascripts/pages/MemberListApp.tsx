@@ -19,6 +19,8 @@ export const MemberListApp = (props: any) => {
   const getFollowListUrl: string = `/users/follow_list/${currentUserId}`;
   console.log('getFollowListUrl', getFollowListUrl);
   useEffect(() => {
+    props.setNowLoading(true);
+
     if (currentUserId != 0) {
 
       FetchData(getFollowListUrl).then((res) => {
@@ -27,6 +29,8 @@ export const MemberListApp = (props: any) => {
       });
     }
     // }, [props.currentUserData]);
+    props.setNowLoading(false);
+
   }, [currentUserId]);
   console.log('followUsers', followUsers);
 
@@ -44,22 +48,27 @@ export const MemberListApp = (props: any) => {
   };
 
   console.log('fetchUsers.length', fetchUsers.length)
-  // 85.1875px
+
   const [userListHeight, setUserListHeight] = useState(0);
 
   const fetchUsersUrl: string = '/users';
 
   useEffect(() => {
+    props.setNowLoading(true);
+
     FetchData(fetchUsersUrl).then((res) => {
       setFetchUsers(res.data)
-
-
     });
+    props.setNowLoading(false);
+
     console.log('MemberListAppのuserListHeight', userListHeight)
   }, []);
 
   useEffect(() => {
+    props.setNowLoading(true);
+
     setUserListHeight((fetchUsers.length + 2) * 85.1875)
+    props.setNowLoading(false);
 
   }, [fetchUsers]);
   // setUserListHeight(fetchUsers.length * 85.1875)

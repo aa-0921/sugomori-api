@@ -29,12 +29,10 @@ export const UserListBackGround = (props: any) => {
         className=""
         id="about-tsparticles"
         // style={heightStyle}
-        // style={{ height: props.userListHeight + 'px !impotant' }}
+        // style={{ height: '8000px !impotant' }}
         // style={{ height: props.userListHeight }}
 
-        // style={{ height: "100px !impotant" }}
-
-
+        // style={{ height: "1000px !impotant" }}
         options={{
           background: {
             color: {

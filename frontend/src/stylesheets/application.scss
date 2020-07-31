@@ -413,11 +413,9 @@ a.scroll-guide span {
 // memberlist関連
 #about-tsparticles {
   height: var(--about-tsparticles-height);
+  background-size: cover;
 }
 
-.tsparticles-canvas-el {
-  height: var(--about-tsparticles-height);
-}
 div.memberlist-wrap {
   width: 15%;
   min-width: 700px;

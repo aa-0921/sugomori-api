@@ -14820,10 +14820,8 @@ a.scroll-guide span {
     opacity: 0; } }
 
 #about-tsparticles {
-  height: var(--about-tsparticles-height); }
-
-.tsparticles-canvas-el {
-  height: var(--about-tsparticles-height); }
+  height: var(--about-tsparticles-height);
+  background-size: cover; }
 
 div.memberlist-wrap {
   width: 15%;
