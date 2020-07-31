@@ -475,7 +475,8 @@ span.skroller_span > span {
 }
 
 span.skroller_span {
-  font-family: 'Kosugi', sans-serif;
+  font-family: 'mplus-1p-regular';
+
   font-size: large;
   font-weight: bold;
 }
@@ -526,7 +527,14 @@ div.skroller_message_wrap:after {
   border-color: #5375bd;
   border-bottom-color: transparent;
 }
-
+@font-face {
+  font-family: 'mplus-1p-regular';
+  src: url('http://mplus-webfonts.sourceforge.jp/mplus-1p-regular.eot');
+  src: url('http://mplus-webfonts.sourceforge.jp/mplus-1p-regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('http://mplus-webfonts.sourceforge.jp/mplus-1p-regular.woff') format('woff'),
+    url('http://mplus-webfonts.sourceforge.jp/mplus-1p-regular.ttf') format('truetype');
+}
 div.skroller_message_text {
   color: #00305e;
   font-size: large;
@@ -536,7 +544,9 @@ div.skroller_message_text {
 
   div {
     text-align: left;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    font-family: 'mplus-1p-regular';
+
     margin-left: 10px;
     margin-right: 10px;
   }
@@ -580,7 +590,8 @@ div.skroller_house_text {
 
   div {
     text-align: left;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'mplus-1p-regular';
+
     margin-left: 3px;
     margin-right: 3px;
   }
