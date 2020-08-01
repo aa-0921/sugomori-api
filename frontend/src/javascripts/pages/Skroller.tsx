@@ -312,7 +312,7 @@ c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
 
         <Parallax data={houseData}>
           <div className="flex justify-center items-center">
-            <svg x="0" y="0" width="800px" height="800px" viewBox="0 0 800 800">
+            <svg id="home-svg" x="0" y="0" width="800px" height="800px" viewBox="0 0 800 800">
               <use xlinkHref='#home' className="home" fill="#db8c81" x="16px" y="16px" width="800px" height="800px" />
               {/* fill="#00305e" */}
             </svg>

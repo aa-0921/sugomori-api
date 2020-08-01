@@ -86,7 +86,7 @@ export function Header(props: any) {
                 <div className="w-full">
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline w-auto">
-                      <div className="flex">
+                      <div className="header-button flex">
                         {props.currentUserData != null ? (
                           <React.Fragment>
                             <Link

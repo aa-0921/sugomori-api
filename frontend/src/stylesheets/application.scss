@@ -40,6 +40,23 @@ img.modalImage {
 .head-animation {
   transform: translateY(-100%);
 }
+div.header-button > a {
+  border-radius: 15px;
+  background: #a3bffa;
+  box-shadow: -5px -5px 10px #9cb7f0, 5px 5px 10px #aac7ff;
+}
+
+div.buttonDropdownWrap {
+  border-radius: 15px;
+  background: #a3bffa;
+  box-shadow: -5px -5px 10px #9cb7f0, 5px 5px 10px #aac7ff;
+}
+div.header-login-button > nav > a {
+  border-radius: 15px;
+  background: #a3bffa;
+  box-shadow: -5px -5px 10px #9cb7f0, 5px 5px 10px #aac7ff;
+}
+
 // 投稿ボタン関連
 #postButton {
   box-shadow: 0 4px 8px -3px rgba(17, 17, 17, 0.06);
@@ -448,7 +465,7 @@ div.list > div.card {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Rowdies&family=Ubuntu:ital,wght@1,300&display=swap');
-// scroller関連
+// skroller関連
 
 div.skroller_background {
   font-family: 'Arial';
@@ -595,8 +612,10 @@ div.skroller_house_wrap {
   margin-bottom: 130px;
   z-index: 1;
   padding: 0.5em 1.4em;
-
   background: #f4f9ff;
+  border-radius: 79px;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  box-shadow: 34px 34px 69px #e8e8e8, -34px -34px 69px #ffffff;
 }
 div.skroller_house_text {
   color: #2d4543;
@@ -642,7 +661,8 @@ svg > use.home {
 #home > g {
   width: 1200px;
 }
-
+#home-svg {
+}
 .sugomori-logo {
   fill: black;
   stroke: #0500fa;

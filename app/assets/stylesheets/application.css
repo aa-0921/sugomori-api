@@ -14462,6 +14462,21 @@ img.modalImage {
 .head-animation {
   transform: translateY(-100%); }
 
+div.header-button > a {
+  border-radius: 15px;
+  background: #a3bffa;
+  box-shadow: -5px -5px 10px #9cb7f0, 5px 5px 10px #aac7ff; }
+
+div.buttonDropdownWrap {
+  border-radius: 15px;
+  background: #a3bffa;
+  box-shadow: -5px -5px 10px #9cb7f0, 5px 5px 10px #aac7ff; }
+
+div.header-login-button > nav > a {
+  border-radius: 15px;
+  background: #a3bffa;
+  box-shadow: -5px -5px 10px #9cb7f0, 5px 5px 10px #aac7ff; }
+
 #postButton {
   box-shadow: 0 4px 8px -3px rgba(17, 17, 17, 0.06);
   transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
@@ -14981,7 +14996,10 @@ div.skroller_house_wrap {
   margin-bottom: 130px;
   z-index: 1;
   padding: 0.5em 1.4em;
-  background: #f4f9ff; }
+  background: #f4f9ff;
+  border-radius: 79px;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  box-shadow: 34px 34px 69px #e8e8e8, -34px -34px 69px #ffffff; }
 
 div.skroller_house_text {
   color: #2d4543;
