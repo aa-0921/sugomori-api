@@ -15012,6 +15012,18 @@ svg > use.home {
 #home > g {
   width: 1200px; }
 
+.sugomori-logo {
+  fill: black;
+  stroke: #0500fa;
+  width: 70px;
+  height: 70px; }
+
+.header-sugomori-logo {
+  fill: black;
+  stroke: #0500fa;
+  width: 30px;
+  height: 30px; }
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
