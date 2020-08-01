@@ -15068,14 +15068,17 @@ p.regi-join {
   color: #404756; }
 
 p.signin-welcome {
-  color: #404756;
-  justify-items: center;
-  align-items: center;
-  display: flex;
-  margin-top: 20px; }
+  width: 800px;
+  height: 150px;
+  line-height: 35px;
+  margin-top: 45px; }
 
 div.signin-message {
   color: #404756; }
+
+.welcome-wrap {
+  align-items: center;
+  justify-content: center; }
 
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
