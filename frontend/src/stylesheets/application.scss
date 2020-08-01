@@ -698,10 +698,11 @@ p.regi-join {
 }
 
 p.signin-welcome {
-  width: 800px;
   height: 150px;
   line-height: 35px;
   margin-top: 45px;
+  min-width: 180px;
+  padding-top: 60px;
 }
 
 div.signin-message {

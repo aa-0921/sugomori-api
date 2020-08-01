@@ -15068,10 +15068,11 @@ p.regi-join {
   color: #404756; }
 
 p.signin-welcome {
-  width: 800px;
   height: 150px;
   line-height: 35px;
-  margin-top: 45px; }
+  margin-top: 45px;
+  min-width: 180px;
+  padding-top: 60px; }
 
 div.signin-message {
   color: #404756; }
