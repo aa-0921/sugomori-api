@@ -14782,6 +14782,15 @@ div.vanta_app > header > canvas {
 .tilt-box {
   transform-style: preserve-3d; }
 
+.about-knob {
+  width: 4px;
+  height: 4px;
+  top: 50%;
+  right: 30px;
+  font-weight: 600;
+  font-style: normal;
+  color: #a1a6e6; }
+
 a.scroll-guide {
   z-index: 2;
   display: inline-block;
@@ -14847,7 +14856,7 @@ div.skroller_background {
   text-align: center;
   background: #a3bffa;
   color: #fff;
-  height: 4400px; }
+  height: 4480px; }
 
 span.skroller_span {
   height: 100px;

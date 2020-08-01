@@ -159,26 +159,13 @@ c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
           glareEnable={false}
           glareMaxOpacity={0.45}
           scale={1.02}
-        // tiltReverse={true}
-        // glareEnable={true}
-        // glareMaxOpacity={0.45}
-        // glarePosition="all"
-        // scale={1.08}
         >
-          <div className="inner-element flex items-center justify-center w-screen h-screen">
-            {/* <div className="tilt-box1 bg-indigo-900 w-screen">
-          <div className="tilt-box2 bg-indigo-800 w-64 h-40">
-            <div className="tilt-box3 bg-indigo-700 w-20 h-20">
-              <div className="tilt-box4">
-                <div className="tilt-box5"> */}
+          <div className="inner-element relative flex items-center justify-center w-screen h-screen">
+
             <div className="tilt-title w-30 text-6xl bg-indigo-300">LOVE</div>
             <div className="tilt-title w-30 text-6xl bg-indigo-300">STAY</div>
             <div className="tilt-title w-30 text-6xl bg-indigo-300">HOME</div>
-            {/* </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
+            <div className="about-knob absolute">○</div>
           </div>
         </Tilt>
         <a className="mt-10 scroll-guide"><span></span></a>
@@ -210,6 +197,9 @@ c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
         </Parallax>
         <Parallax data={leftData}>
           <span className="skroller_span">みんなのお家時間を写真付きで共有するアプリです。</span>
+        </Parallax>
+        <Parallax data={leftData}>
+          <span className="skroller_span">お家時間の可能性・楽しさを広げることで、STAY HOMEを有意義にしたい。</span>
         </Parallax>
         <Parallax data={leftData}>
           <span className="skroller_span">お家に関することなら何でも投稿可能</span>
@@ -318,33 +308,6 @@ c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
           </span>
         </Parallax>
 
-        {/* <Parallax data={roofData}>
-          <div className="triangle-wrap flex justify-center items-center rounded-lg">
-            <div className="skroller_message_triangle">
-            </div>
-          </div>
-        </Parallax>
-        <Parallax data={messageData}>
-          <div className="skroller_message_wrap flex justify-center items-center rounded-lg">
-            <div className="skroller_message_text flex flex-col items-start">
-              <div>
-                このアプリを見て頂き、ありがとうございます。
-              </div>
-              <div>
-                これは私が初めて作成したアプリで、JavaScript、ReactやAPIの処理についても知識がゼロの状態からスタートしました。
-              </div>
-              <div>
-                まだまだ勉強不足ですが、ポートフォリオを作成していく中で理解できることが増え、試したいことのイメージがあれもこれもと溢れ、それを形にできることが楽しく、何度も達成感を得ることができました。
-              </div>
-              <div>
-                このアプリについても試したいことや、やり残したことがあるので、まだまだアップデートしていきたいと思います。
-              </div>
-              <div>
-                SUGOMORIを見て頂きまして、ありがとうございました。
-              </div>
-            </div>
-          </div>
-        </Parallax> */}
         <Spacer y={10} />
 
         <Parallax data={houseData}>
@@ -355,7 +318,6 @@ c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
             </svg>
           </div>
         </Parallax>
-        {/* <Parallax data={houseData}> */}
         <div className="skroller_house_wrap flex justify-center items-center rounded-lg">
           <div className="skroller_house_text flex flex-col items-start">
             <div>
