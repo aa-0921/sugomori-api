@@ -96,7 +96,6 @@
   "version": "0.1.0",
   "devDependencies": {
     "@babel/register": "^7.10.5",
-    "@svgr/webpack": "^5.4.0",
     "autoprefixer": "^9.8.4",
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
