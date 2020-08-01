@@ -6,7 +6,7 @@ import Tilt from 'react-parallax-tilt';
 import { BackGround } from '../pages/BackGround';
 import { Spacer } from "@zeit-ui/react";
 // import homeIcon from './../../../images/家.svg';
-import RailsLogo from '../../../images/rails_icon.svg';
+// import RailsLogo from '../../../images/rails_icon.svg';
 const thanksData = {
   "data-1000-top": "transform: translateY(-50%);opacity: 1;",
 
@@ -267,7 +267,7 @@ c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
           <span>
               Rails(5.2.4.3)
           </span>
-            <RailsLogo />
+            {/* <RailsLogo /> */}
           </span>
         </Parallax>
 
