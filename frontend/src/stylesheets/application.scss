@@ -661,8 +661,8 @@ svg > use.home {
 #home > g {
   width: 1200px;
 }
-#home-svg {
-}
+
+// signin,signup関連
 .sugomori-logo {
   fill: black;
   stroke: #0500fa;
@@ -675,4 +675,36 @@ svg > use.home {
   stroke: #0500fa;
   width: 30px;
   height: 30px;
+}
+div.signin-form > a > div {
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: inset -5px -5px 15px #ededed, inset 5px 5px 15px #ffffff;
+}
+
+#new_user > div.actions > input {
+  background-color: #404756;
+}
+#new_user > div > label {
+  color: #404756;
+}
+
+div.regi-message > p {
+  color: #404756;
+}
+
+p.regi-join {
+  color: #404756;
+}
+
+p.signin-welcome {
+  color: #404756;
+  justify-items: center;
+  align-items: center;
+  display: flex;
+  margin-top: 20px;
+}
+
+div.signin-message {
+  color: #404756;
 }

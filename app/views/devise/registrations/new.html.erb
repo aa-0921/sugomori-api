@@ -18,7 +18,7 @@
 
           <p class="text-center text-m">このアプリで使用するアカウント名を入力して下さい</p>
         <% else %>
-        <p class="text-center text-3xl">Join Us.</p>
+        <p class="regi-join text-center text-3xl">Join Us.</p>
         <%= link_to user_twitter_omniauth_authorize_path, method: :post do %>
         <div class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
             <div class="px-4 py-3">
@@ -33,7 +33,7 @@
         <%= link_to user_facebook_omniauth_authorize_path, method: :post do %>
         <div class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
           <div class="px-4 py-3">
-            <%= embedded_svg("facebook.svg", class: "facebook-svg") %>
+            <%= embedded_svg("facebook.svg", class: "facebook-svg ml-1") %>
           </div>
           <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">
           Sign in with Facebook
@@ -43,7 +43,7 @@
       <%= link_to user_github_omniauth_authorize_path, method: :post do %>
         <div class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
             <div class="px-4 py-3">
-              <%= embedded_svg("github.svg", class: "facebook-svg  w-6 h-6") %>
+              <%= embedded_svg("github.svg", class: "facebook-svg  w-6 h-6 ml-1") %>
             </div>
             <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">
             Sign in with GitHub
@@ -105,7 +105,7 @@
         <div class="mb-24"></div>
         <% else %>
 
-        <div class="text-center pt-12 pb-12">
+        <div class="regi-message text-center pt-12 pb-12">
           <p>Already have an account? <br><a href="/users/sign_in" class="underline font-semibold">Log in here.</a></p>
         </div>
         <% end %>
