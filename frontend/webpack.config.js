@@ -32,6 +32,22 @@ module.exports = [
             presets: ['es2015', 'react'],
           },
         },
+        {
+          // iフラグを使うと大文字小文字を区別しない
+          test: /\.(jpe?g|png|gif|svg)$/i,
+          loader: 'file-loader',
+        },
+        {
+          test: /\.svg$/,
+          use: [
+            {
+              loader: 'babel-loader',
+            },
+            {
+              loader: 'react-svg-loader',
+            },
+          ],
+        },
       ],
     },
     plugins: [

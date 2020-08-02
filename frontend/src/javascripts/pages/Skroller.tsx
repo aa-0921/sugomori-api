@@ -93,24 +93,13 @@ const messageData = {
   "data-bottom-top": "opacity: 1;",
 };
 
-// const roofData = {
-//   "data-700-top": "transform: translateY(-70%);opacity: 0.5;",
-//   "data-680-top": "transform: translateY(-60%);opacity: 0.5;",
-//   "data-650-top": "transform: translateY(-20%);",
-
-//   "data-500-top": "transform: translateY(32%);opacity: 1;	--transform-scale-x: 1.1;--transform-scale-y: 1.1;",
-
-//   // "data-400-top": "transform: translateY(-300%);",
-//   // "data-150-top": "opacity: 1;transform: translateY(-350%);",
-//   // "data-center-center": "opacity: 1;transform: translateX(-100%);",
-// };
 const houseData = {
   "data-700-top": "transform: translateY(-30%);opacity: 0.5;",
   "data-680-top": "transform: translateY(-10%);opacity: 0.5;",
   "data-650-top": "transform: translateY(15%);",
   "data-600-top": "transform: translateY(27%);",
   "data-550-top": "transform: translateY(35%);opacity: 1;--transform-scale-x: 1.1;--transform-scale-y: 1.1;",
-  // "data-500-top": "transform: translateY(35%);opacity: 1;--transform-scale-x: 1.1;--transform-scale-y: 1.1;"
+
 };
 
 export const Skroller = () => (
@@ -134,20 +123,7 @@ c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
         </symbol>
       </defs>
     </svg>
-    {/* <svg display="non" className="h-0" >
-      <symbol id="home-roof" viewBox="0 0 1244.000000 1280.000000">
-        <g
-          transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
-          stroke="none"
-        >
-          <path d="l0 625 -1325 0 -1325 0 0 -1957 0 -1958 -950 -950 -950 -950 0 -132 0 -133
-520 0 c503 0 520 -1 530 -19 7 -14 10 -1038 10 -3235 l0 -3216 5150 0 5150 0
-0 3229 c0 2935 1 3229 16 3235 9 3 252 6 540 6 l524 0 0 133 0 133 -172 171
-c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
--89 9 l-82 -1 -745 -749z" />
-        </g>
-      </symbol>
-    </svg> */}
+
     <div className="relative">
       <BackGround />
 
@@ -257,6 +233,17 @@ c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
           <span>
               Rails(5.2.4.3)
           </span>
+
+            {/* <RailsLogo width={50} height={50} /> */}
+            {/* <img src="/sugomori/app/assets/images/sugomori-logo.svg" width="32" height="32" /> */}
+            <img src="/assets/sugomori-logo.svg" />
+            {/* <img src={require('!svg-inline-loader!../../../images/rails_icon.svg')} /> */}
+
+            {/* <img src="../../../images/postgresql-icon.svg" width="32" height="32" />
+            
+            {/* <img src="../../../images/rails_icon.svg" width="32" height="32" /> */}
+
+
             {/* <RailsLogo /> */}
           </span>
         </Parallax>
