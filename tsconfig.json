@@ -8,12 +8,11 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "target": "es5",
-    "jsx": "react",
-    "typeRoots": ["types", "node_modules/@types"]
+    "jsx": "react"
   },
   "exclude": ["**/*.spec.ts", "node_modules", "vendor", "public"],
   "compileOnSave": false,
   "types": ["node"],
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "src/custom.d.ts"],
   "allowJs": true
 }

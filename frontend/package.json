@@ -47,6 +47,7 @@
     "eslint-config-airbnb-base": "14.2.0",
     "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
+    "file-loader": "^6.0.0",
     "font-awesome": "^4.7.0",
     "formik": "^2.1.4",
     "html-webpack-plugin": "^4.3.0",
@@ -95,12 +96,12 @@
   "version": "0.1.0",
   "devDependencies": {
     "@babel/register": "^7.10.5",
+    "@svgr/webpack": "^5.4.0",
     "autoprefixer": "^9.8.4",
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.3",
-    "file-loader": "^6.0.0",
     "lint-staged": "^10.2.11",
     "node-sass": "^4.14.1",
     "postcss-cli": "^7.1.1",
@@ -109,7 +110,6 @@
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0",
-    "svg-inline-loader": "^0.8.2",
     "tailwindcss": "^1.4.6",
     "webpack-dev-server": "^3.11.0"
   }
