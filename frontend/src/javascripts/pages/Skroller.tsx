@@ -233,18 +233,20 @@ c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
           <span>
               Rails(5.2.4.3)
           </span>
-
-            {/* <RailsLogo width={50} height={50} /> */}
+            <img src="http://localhost:3000/rails_icon.svg" height="60" width="60" />
+            {/* <img src="http://localhost:3000/public/サンプルpng.png" /> */}
+            {/* <img src="./images/rails_icon.svg" /> */}
+            {/* <RailsLogo width={50} height={50} />
             {/* <img src="/sugomori/app/assets/images/sugomori-logo.svg" width="32" height="32" /> */}
-            <img src="/assets/sugomori-logo.svg" />
+            {/* <img src="/assets/sugomori-logo.svg" /> */}
             {/* <img src={require('!svg-inline-loader!../../../images/rails_icon.svg')} /> */}
 
-            {/* <img src="../../../images/postgresql-icon.svg" width="32" height="32" />
-            
+            {/* <img src="../../../images/postgresql-icon.svg" width="32" height="32" /> */}
+
             {/* <img src="../../../images/rails_icon.svg" width="32" height="32" /> */}
 
 
-            {/* <RailsLogo /> */}
+
           </span>
         </Parallax>
 
