@@ -1,19 +1,14 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { FetchData } from '../api/FetchData'
-
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { PostList } from '../components/PostList';
-import { FormikPost } from '../components/FormikPost';
 import { Modal, Spacer, Divider, Row, Slider, Collapse, Tooltip, Popover, Text } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
 import { CommentApp } from '../components/CommentApp';
 import { LikeButton } from '../components/LikeButton';
 import { PostModal } from '../components/PostModal';
-import { ClarifaiApp } from '../api/ClarifaiApp'
-import { ClarifaiTag } from '../components/ClarifaiTag';
 import { ClarifaiTagList } from '../components/ClarifaiTagList';
-import BackGroundVanta from '../pages/BackGroundVanta';
 
 export const PostsApp = (props: any) => {
 
@@ -45,18 +40,14 @@ export const PostsApp = (props: any) => {
   }, []);
   const currentUserId = props.currentUserData.id;
   const getLikeListUrl: string = `/picposts/like_list/${currentUserId}`;
-  console.log('likeList', likeList);
 
   useEffect(() => {
     if (currentUserId != 0) {
       FetchData(getLikeListUrl).then((res) => {
         setLikeList(res.data);
-        // setLikeList(res.data.map((like: any) => like.id));
-
       });
     };
   }, [currentUserId]);
-
 
   useEffect(() => {
     setFilterPosts(fetchPosts);
@@ -69,17 +60,12 @@ export const PostsApp = (props: any) => {
     setFetchPosts(updateList);
   };
 
-  console.log('likeList', likeList);
-
   // modal,open,close
   const modalOpenHandler = (post: any) => {
-
     setClickedPost(post);
-    console.log('clickedPost.id: ', clickedPost.id);
 
     setModalOpen(true);
     removeHeader();
-    // getClarifaiTags();
   };
   const closeHandler = () => {
     setModalOpen(false);
@@ -110,31 +96,18 @@ export const PostsApp = (props: any) => {
 
   useEffect(() => {
     if (clickedPost.user_id != 0) {
-      console.log('clickedPost.user_id', clickedPost.user_id);
-
       FetchData(getClickedPostUserUrl).then((res) => setClickedPostUser(res.data));
-      console.log('clickedPostUser', clickedPostUser);
     }
   }, [clickedPost]);
 
-  // console.log('clickedPostUser.id: ', clickedPostUser.id);
-
   const pushToLikeList = (picpost_id: number) => {
-    console.log('ma', picpost_id);
     const arr = Array.from(likeList);
     arr.push(picpost_id);
     setLikeList(arr);
-    console.log('picpost_id', picpost_id);
-    console.log('trueorfailse', likeList.includes(clickedPost.id));
-    console.log('likeList', likeList);
   };
-  console.info('likeList', likeList);
-
-  console.log('trueorfailse', likeList.includes(clickedPost.id));
 
   const removeFromLikeList = (picpost_id: number) => {
     const arr = Array.from(likeList);
-    // 
     const nextLikeUsers = arr.filter((el) => el !== picpost_id);
     setLikeList(nextLikeUsers);
   };
@@ -156,10 +129,6 @@ export const PostsApp = (props: any) => {
   const columnWidthHandler = (val: any) => {
     setColumnWidthValue(val)
   }
-
-
-  // Slider関連
-  console.log('likeList', likeList);
 
   // 投稿ボタン関連
   (function () {
@@ -194,20 +163,6 @@ export const PostsApp = (props: any) => {
       }
     });
   })();
-
-  // // clarifaiTags関連
-  // const [clarifaiTags, setClarifaiTags] = useState([])
-  // const clarifaiUrl = 'https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_56_post_image.jpg'
-  // // const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
-
-  // useEffect(() => {
-  //   ClarifaiApp(clarifaiUrl).then((res) => {
-  //     // console.log('ClarifaiApp', res.outputs[0].data.concepts);
-  //     console.log('ClarifaiAppのmap', res.map((el: any) => el.name));
-  //     setClarifaiTags(res.slice(0, 3).map((el: any) => `${el.name.toUpperCase()} `))
-  //   })
-  //   console.log('ClarifaiApp', clarifaiTags);
-  // }, [])
 
   return (
     <React.Fragment>

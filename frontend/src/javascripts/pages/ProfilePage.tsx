@@ -7,9 +7,6 @@ import { PostList } from '../components/PostList';
 import * as Icon from '@zeit-ui/react-icons';
 import { FollowButton } from '../components/FollowButton';
 import { LikeButton } from '../components/LikeButton';
-import { BackGround } from '../pages/BackGround';
-
-
 
 export const ProfilePage = (props: any) => {
   const [fetchUser, setFetchUser] = useState({
@@ -18,60 +15,31 @@ export const ProfilePage = (props: any) => {
     email: ''
   });
 
-  // const paramsID = props.match.params.id;
-  // const [paramsUserID, setParamsUserID] = useState('');
-  // setParamsUserID(props.match.params.id);
-
-  // URLパラメータからユーザー情報の取得
   const getUserUrl: string = `/users/${props.match.params.id}`;
   useEffect(() => {
     FetchData(getUserUrl).then((res) => {
-      console.log('res', res)
-      console.log('res.data', res.data)
-
       setFetchUser(res.data);
     });
   }, [getUserUrl]);
-  // }, [paramsUserID]);
 
-
-
-  // 投稿一覧関連
-  // 全投稿aの配列のState定義
-  // const [fetchPosts, setFetchPosts] = useState([]);
   // このページのユーザーの投稿一覧
   const [fetchUserPosts, setFetchUserPosts] = useState([]);
-
   const [initialFetchPosts, setInitialFetchPosts] = useState([]);
   // 検索のfilter後の投稿の配列の定義
   const [filterPosts, setFilterPosts] = useState([]);
 
-
-
   // このページのユーザーの投稿だけ取得
-
   const userPostUrl: string = `/users/picposts/${props.match.params.id}`;
 
-
-  console.log('props.currentUserData.id', props.currentUserData.id)
-
   // getLikeListUrlの定義
-
   useEffect(() => {
     FetchData(userPostUrl).then((res) => {
-      console.log('userPostUrlのres', res)
-      console.log('userPostUrlのres.data', res.data)
       setFetchUserPosts(res.data);
       setInitialFetchPosts(res.data);
-      console.log('userPostUrlのfetchUserPosts', fetchUserPosts)
-      console.log('userPostUrlのinitialFetchPosts', initialFetchPosts)
     });
   }, [getUserUrl]);
 
-
-
   // このページのユーザーの投稿だけ取得
-
   useEffect(() => {
     setFilterPosts(fetchUserPosts);
   }, [fetchUserPosts]);
@@ -82,7 +50,6 @@ export const ProfilePage = (props: any) => {
     });
     setFetchUserPosts(updateList);
   };
-  console.log('fetchUserPosts', fetchUserPosts);
 
   const [likeList, setLikeList] = useState([]);
   const [clickedPostUser, setClickedPostUser] = useState({
@@ -101,35 +68,21 @@ export const ProfilePage = (props: any) => {
   const [modalOpen, setModalOpen] = useState(false);
   const modalOpenHandler = (post: any) => {
     setClickedPost(post);
-    console.log('clickedPost.id', clickedPost.id)
     setModalOpen(true);
   };
   const closeHandler = () => {
     setModalOpen(false);
   };
-  console.log('clickedPost.id', clickedPost.id)
 
   const getClickedPostUserUrl: string = '/users/' + clickedPost.user_id;
-  console.log('getClickedPostUserUrl', getClickedPostUserUrl);
 
   useEffect(() => {
     if (clickedPost.user_id != 0) {
-      console.log('clickedPost.user_id', clickedPost.user_id);
-      console.log('getClickedPostUserUrl', getClickedPostUserUrl);
-
       FetchData(getClickedPostUserUrl).then((res) => setClickedPostUser(res.data));
-      console.log('clickedPostUser', clickedPostUser);
     }
   }, [clickedPost]);
 
-  console.log('post: ', clickedPost.id);
-  console.log('getClickedPostUserUrl', getClickedPostUserUrl);
-
-  console.log('clickedPostUser.name: ', clickedPostUser.name);
-  console.log('clickedPostUser.id: ', clickedPostUser.id);
-
   const pushToLikeList = (picpost_id: number) => {
-    console.log(picpost_id, 'ma');
     const arr = Array.from(likeList);
     arr.push(picpost_id);
     setLikeList(arr);
@@ -144,7 +97,6 @@ export const ProfilePage = (props: any) => {
 
   // FollowButton関連
   const pushToFollowUsers = (target: number) => {
-    console.log(target, 'ma');
     const arr = Array.from(followUsers);
     arr.push(target);
     setFollowUsers(arr);
@@ -189,9 +141,6 @@ export const ProfilePage = (props: any) => {
   };
   const [followUsers, setFollowUsers] = useState([]);
 
-
-
-
   //deleteButton関連
   const onClickDelete = async (clickedPostId: any) => {
     const method = 'DELETE';
@@ -208,46 +157,27 @@ export const ProfilePage = (props: any) => {
       })
       .catch((error) => { });
     removeFromFetchUserPosts(clickedPost.id);
-
   };
 
   const removeFromFetchUserPosts = (target: number) => {
     const arr = Array.from(fetchUserPosts);
     const nextUserPosts = arr.filter((el) => el.id !== target);
-    console.info('nextUserPosts', nextUserPosts)
     setFetchUserPosts(nextUserPosts);
   };
 
   //deleteButton関連
-
   const buttonSize = "large"
-  console.log('followUsers', followUsers)
   const currentUserId = props.currentUserData.id;
-
-  // const getLikeListUrl: string = `/picposts/like_list/${current_user_id}`;
   const getLikeListUrl: string = `/picposts/like_list/${currentUserId}`;
-
-  console.log('getLikeListUrl', getLikeListUrl)
-  console.log('props.currentUserData.id', props.currentUserData.id)
-  console.log('props.currentUserData.id.class', props.currentUserData.id.class)
-
   const getFollowListUrl: string = `/users/follow_list/${currentUserId}`;
-  console.log('getFollowListUrl: ', getFollowListUrl);
-
-
 
   useEffect(() => {
     if (currentUserId != 0) {
       FetchData(getLikeListUrl).then((res) => {
         setLikeList(res.data);
       });
-      console.log('likeList', likeList)
-
     };
   }, [currentUserId]);
-
-  console.log('likeList', likeList)
-
 
   useEffect(() => {
     if (currentUserId != 0) {
@@ -262,8 +192,6 @@ export const ProfilePage = (props: any) => {
   const data = [
     { 投稿数: fetchUserPosts.length > 0 ? fetchUserPosts.length : 0, フォローしている数: followUsers.length > 0 ? followUsers.length : 0, いいねしている数: likeList.length > 0 ? likeList.length : 0 },
   ]
-  console.log('followUsers', followUsers)
-  console.log('likeList', likeList)
 
   return (
     <React.Fragment>

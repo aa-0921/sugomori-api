@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { ButtonDropdown } from '@zeit-ui/react';
 
-
-
 export function Header(props: any) {
   (function () {
     const headerTarget = document.getElementById('header'),

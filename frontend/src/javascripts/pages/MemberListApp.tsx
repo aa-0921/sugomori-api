@@ -6,15 +6,12 @@ import { useState, useEffect } from 'react';
 import { MemberList } from '../components/MemberList';
 import { FetchData } from '../api/FetchData';
 import { Spacer } from '@zeit-ui/react';
-import { BackGround } from '../pages/BackGround';
 import { UserListBackGround } from '../pages/UserListBackGround';
-
 
 export const MemberListApp = (props: any) => {
   const [fetchUsers, setFetchUsers] = useState([]);
   const [followUsers, setFollowUsers] = useState([]);
 
-  // 開発時点ではログイン処理を飛ばしている為、ID1で固定。後々修正
   const currentUserId = props.currentUserData.id;
   const getFollowListUrl: string = `/users/follow_list/${currentUserId}`;
 
@@ -22,7 +19,6 @@ export const MemberListApp = (props: any) => {
     props.setNowLoading(true);
     if (currentUserId != 0) {
       FetchData(getFollowListUrl).then((res) => {
-        console.log(res.data)
         setFollowUsers(res.data.map((el: any) => el.id));
       });
     }
@@ -30,7 +26,6 @@ export const MemberListApp = (props: any) => {
   }, [currentUserId]);
 
   const pushToFollowUsers = (target: number) => {
-    console.log(target, 'ma');
     const arr = Array.from(followUsers);
     arr.push(target);
     setFollowUsers(arr);
