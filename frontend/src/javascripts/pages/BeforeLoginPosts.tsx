@@ -1,15 +1,12 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { FetchData } from '../api/FetchData'
-
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { PostList } from '../components/PostList';
-import { FormikPost } from '../components/FormikPost';
-import { Modal, Button, Grid, Divider, Row, Slider, Collapse, Popover, Text } from '@zeit-ui/react';
+
+import { Modal, Divider, Row, Slider, Collapse, Text } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
-import { CommentApp } from '../components/CommentApp';
-import { LikeButton } from '../components/LikeButton';
-import { PostModal } from '../components/PostModal';
+
 
 
 export const BeforeLoginPosts = (props: any) => {
@@ -38,8 +35,6 @@ export const BeforeLoginPosts = (props: any) => {
     });
     setFetchPosts(updateList);
   };
-  console.log('fetchPosts', fetchPosts);
-
 
   const [clickedPostUser, setClickedPostUser] = useState({
     id: 0,
@@ -68,15 +63,9 @@ export const BeforeLoginPosts = (props: any) => {
   };
 
   const getClickedPostUserUrl: string = '/users/' + clickedPost.user_id;
-  console.log('getClickedPostUserUrl', getClickedPostUserUrl);
-
   useEffect(() => {
     if (clickedPost.user_id != 0) {
-      console.log('clickedPost.user_id', clickedPost.user_id);
-      console.log('getClickedPostUserUrl', getClickedPostUserUrl);
-
       FetchData(getClickedPostUserUrl).then((res) => setClickedPostUser(res.data));
-      console.log('clickedPostUser', clickedPostUser);
     }
   }, [clickedPost]);
 
@@ -85,7 +74,6 @@ export const BeforeLoginPosts = (props: any) => {
   // Slider関連
   const [columnWidthValue, setColumnWidthValue] = useState(300)
   const columnWidthHandler = (val: any) => {
-    console.log(val)
     setColumnWidthValue(val)
   }
 

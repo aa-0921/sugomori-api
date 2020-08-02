@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { FetchData } from '../api/FetchData'
-
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { PostList } from '../components/PostList';
-import { FormikPost } from '../components/FormikPost';
 import { Modal, Spacer, Divider, Row, Slider, Collapse, Tooltip, Popover, Text } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
 import { CommentApp } from '../components/CommentApp';
@@ -37,21 +35,16 @@ export const FeedApp = (props: any) => {
     FetchData(getFeedPostUrl).then((res) => {
       setFetchPosts(res.data);
       setInitialFetchPosts(res.data);
-      console.log('res.data', res.data);
-
     });
-
   }, []);
+
   const currentUserId = props.currentUserData.id;
   const getLikeListUrl: string = `/picposts/like_list/${currentUserId}`;
-  console.log('likeList', likeList);
 
   useEffect(() => {
     if (currentUserId != 0) {
       FetchData(getLikeListUrl).then((res) => {
         setLikeList(res.data);
-        // setLikeList(res.data.map((like: any) => like.id));
-
       });
     };
   }, [currentUserId]);
@@ -67,8 +60,6 @@ export const FeedApp = (props: any) => {
     });
     setFetchPosts(updateList);
   };
-
-  console.log('likeList', likeList);
 
   // modal,open,close
   const modalOpenHandler = (post: any) => {
@@ -100,28 +91,15 @@ export const FeedApp = (props: any) => {
 
   useEffect(() => {
     if (clickedPost.user_id != 0) {
-      console.log('clickedPost.user_id', clickedPost.user_id);
-
       FetchData(getClickedPostUserUrl).then((res) => setClickedPostUser(res.data));
-      console.log('clickedPostUser', clickedPostUser);
     }
   }, [clickedPost]);
 
-  console.log('clickedPost.id: ', clickedPost.id);
-  console.log('clickedPostUser.id: ', clickedPostUser.id);
-
   const pushToLikeList = (picpost_id: number) => {
-    console.log('ma', picpost_id);
     const arr = Array.from(likeList);
     arr.push(picpost_id);
     setLikeList(arr);
-    console.log('picpost_id', picpost_id);
-    console.log('trueorfailse', likeList.includes(clickedPost.id));
-    console.log('likeList', likeList);
   };
-  console.info('likeList', likeList);
-
-  console.log('trueorfailse', likeList.includes(clickedPost.id));
 
   const removeFromLikeList = (picpost_id: number) => {
     const arr = Array.from(likeList);
@@ -145,11 +123,9 @@ export const FeedApp = (props: any) => {
   // Slider関連
   const [columnWidthValue, setColumnWidthValue] = useState(300)
   const columnWidthHandler = (val: any) => {
-    console.log(val)
     setColumnWidthValue(val)
   }
   // Slider関連
-  console.log('likeList', likeList);
 
   return (
     <React.Fragment>

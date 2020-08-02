@@ -36,10 +36,6 @@ export const HomePage = (props: any) => {
     setNowLoading(true);
     FetchData(getInitialDataUrl).then((res) => {
       setCurrentUserData(res.data);
-      console.log('getInitialDataUrl', getInitialDataUrl);
-      console.log('res.data', res.data);
-      console.log('HomePageのcurrentUserData', currentUserData);
-      console.log('currentUserData');
     });
     setNowLoading(false);
   }, []);

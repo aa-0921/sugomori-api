@@ -19,8 +19,6 @@ export const UserList = (props: any) => {
 
     await fetch(postUrl, { method, body })
       .then((response) => {
-        console.log(response.status);
-        // if (response.status == 204) {
         if (response.status == 200) {
           props.pushToFollowUsers(props.user.id);
         } else {
@@ -40,8 +38,6 @@ export const UserList = (props: any) => {
 
     await fetch(postUrl, { method, body })
       .then((response) => {
-        console.log(response.status);
-        // if (response.status == 204) {
         if (response.status == 200) {
           props.removeFromFollowUsers(props.user.id);
         } else {
@@ -65,7 +61,6 @@ export const UserList = (props: any) => {
     <React.Fragment>
       <Router>
 
-        {/* <Row> */}
         <Card hoverable>
           <div className="flex items-center ml-8">
             <div className="flex-1  text-center">
@@ -95,8 +90,6 @@ export const UserList = (props: any) => {
             </div>
           </div>
         </Card>
-        {/* </Row> */}
-        {/* <Divider /> */}
         <Spacer y={0.4} />
       </Router>
 
