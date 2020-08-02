@@ -323,6 +323,7 @@ export const PostsApp = (props: any) => {
                 postModalCloseHandler={postModalCloseHandler}
                 setNowLoading={props.setNowLoading}
                 nowLoading={props.nowLoading}
+                currentUserId={currentUserId}
               />
               {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
               {/* 投稿ボタン */}

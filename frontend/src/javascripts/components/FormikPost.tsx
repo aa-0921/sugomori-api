@@ -80,13 +80,11 @@ export const FormikPost = (props: any) => {
       onSubmit={(values, { resetForm }) => {
         props.setNowLoading(true);
 
-        values.user_id = 1;
-
         const submitData = new FormData();
 
         submitData.append('picture', values.picture);
         submitData.append('content', values.content);
-        submitData.append('user_id', '1');
+        submitData.append('user_id', props.currentUserId);
 
         const body = submitData;
         createPicpost(body);

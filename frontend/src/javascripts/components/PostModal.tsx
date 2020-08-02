@@ -2,10 +2,6 @@ import * as React from 'react';
 import { FormikPost } from '../components/FormikPost';
 import { Modal, Button, Grid, Divider, Row, Slider, Collapse, Popover, Text } from '@zeit-ui/react';
 
-
-
-
-
 export const PostModal = (props: any) => {
 
   return (
@@ -17,6 +13,7 @@ export const PostModal = (props: any) => {
           filterPosts={props.filterPosts}
           setNowLoading={props.setNowLoading}
           nowLoading={props.nowLoading}
+          currentUserId={props.currentUserId}
         />
       </Modal.Content>
       <Modal.Action

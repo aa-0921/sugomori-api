@@ -30,12 +30,6 @@ export const PostList = (props: any): any => {
           gutterHeight={gutterHeight}
           // duration={700}
           monitorImagesLoaded={true}
-        // appearDelay={30}
-        // appear={scaleDown.appear}
-        // appeared={scaleDown.appeared}
-        // enter={scaleDown.enter}
-        // entered={scaleDown.entered}
-        // leaved={scaleDown.leaved}
         >
           {/* {props.filterPosts.map((post: any, index: number) => ( */}
           {props.filterPosts.map((post: any, index: number) => (
