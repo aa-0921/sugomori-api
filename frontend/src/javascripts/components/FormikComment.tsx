@@ -9,9 +9,6 @@ import { Modal, Button, Grid, Divider } from '@zeit-ui/react';
 export const FormikComment = (props: any) => {
   const createComment = async (body: any) => {
 
-    // console.log('postModalCloseHandler前')
-    // props.postModalCloseHandler
-    // console.log('postModalCloseHandler後')
     const headers = { 'content-type': 'multipart/form-data' };
     const postUrl: string = `/picposts/${props.clickedPostId}/comments`;
     console.log('POST直前')

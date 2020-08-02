@@ -5,8 +5,6 @@ import { ButtonDropdown } from '@zeit-ui/react';
 
 
 export function Header(props: any) {
-  // console.log('headerのprops.currentUserData', props.currentUserData)
-
   (function () {
     const headerTarget = document.getElementById('header'),
       height = 56;

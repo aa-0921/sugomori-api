@@ -13,11 +13,8 @@ export const ClarifaiTagList = (props: any) => {
 
   useEffect(() => {
     ClarifaiApp(clarifaiUrl).then((res) => {
-      // console.log('ClarifaiApp', res.outputs[0].data.concepts);
-      console.log('ClarifaiAppのmap', res.map((el: any) => el.name));
       setClarifaiTags(res.slice(0, 10).map((el: any) => `${el.name.toUpperCase()} `))
     })
-    console.log('ClarifaiApp', clarifaiTags);
   }, [])
   return (
     <React.Fragment>

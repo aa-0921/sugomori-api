@@ -20,31 +20,21 @@ export const FormikPost = (props: any) => {
     const postUrl: string = '/picposts';
     await axios.post(postUrl, body, { headers })
       .then(function (res) {
-        console.log('res.data.data', res.data.data);
         res.data.data.picture = postFilePreview
         pushToPostList(res.data.data);
       });
     props.setNowLoading(false);
     props.postModalCloseHandler()
 
-
-
     const clarifaiUrl = 'https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_56_post_image.jpg'
 
     ClarifaiApp(clarifaiUrl).then((res) => {
-      // console.log('ClarifaiApp', res.outputs[0].data.concepts);
-
-      console.log('ClarifaiAppのmap', res.map((el: any) => el.name));
-
       setClarifaiTags(res)
     })
-    console.log('FormikPostのClarifaiApp', clarifaiTags);
-
   };
 
 
   const pushToPostList = (post: any) => {
-
     const arr = Array.from(props.filterPosts);
     arr.unshift(post);
     props.setFilterPosts(arr);
@@ -53,25 +43,17 @@ export const FormikPost = (props: any) => {
 
   const onFileChange = (e: any) => {
     const files = e.target.files
-    console.log('onFileChangeのfiles', files)
-    console.log('e.target.files', e.target.files)
-
-
     if (files.length > 0) {
       var file = files[0]
       var reader = new FileReader()
       reader.onload = (e) => {
-        console.log('e.target.result', e.target.result)
         setPostFilePreview(e.target.result)
       };
       reader.readAsDataURL(file)
     } else {
       setPostFilePreview(null)
     }
-    console.log('postFilePreview', postFilePreview)
   }
-
-  console.log('postFilePreview', postFilePreview)
 
   return (
     <Formik
@@ -102,9 +84,6 @@ export const FormikPost = (props: any) => {
                     <label>選択されたファイル</label>
                     < Spacer y={3} />
                     <img src={postFilePreview} className="object-scale-down h-48 w-full" />
-                    {/* <div>
-                    <button type="button" onClick={resetInput.bind(this)}>リセットする</button>
-                  </div> */}
                     < Spacer y={1} />
                     <h5>{postFileName}</h5>
                     < Spacer y={3} />
@@ -136,8 +115,6 @@ export const FormikPost = (props: any) => {
                         name="file"
                         type="file"
                         onChange={(e: any) => {
-                          console.log('postFileName', postFileName)
-
                           var file = e.target.files[0];
                           var reader = new FileReader();
                           reader.onload = function (item) {
@@ -145,7 +122,6 @@ export const FormikPost = (props: any) => {
                           };
 
                           reader.readAsDataURL(file);
-
                           setPostFileName(e.target.files[0].name)
                           onFileChange(e)
                         }}

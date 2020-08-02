@@ -31,7 +31,6 @@ export const BeforeLogin = () => {
 
 
   const currentUserData = null;
-  console.log('BeforeLoginのcurrent_user')
   return (
     <BrowserRouter>
       <Header currentUserData={currentUserData} />
