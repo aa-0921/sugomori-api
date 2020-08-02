@@ -234,27 +234,19 @@ c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
               Rails(5.2.4.3)
           </span>
             <img src="http://localhost:3000/images/logos/rails_icon.svg" height="60" width="60" />
-            {/* <img src="http://localhost:3000/public/サンプルpng.png" /> */}
-            {/* <img src="./images/rails_icon.svg" /> */}
-            {/* <RailsLogo width={50} height={50} />
-            {/* <img src="/sugomori/app/assets/images/sugomori-logo.svg" width="32" height="32" /> */}
-            {/* <img src="/assets/sugomori-logo.svg" /> */}
-            {/* <img src={require('!svg-inline-loader!../../../images/rails_icon.svg')} /> */}
-
-            {/* <img src="../../../images/postgresql-icon.svg" width="32" height="32" /> */}
-
-            {/* <img src="../../../images/rails_icon.svg" width="32" height="32" /> */}
-
-
-
           </span>
         </Parallax>
 
         <Parallax data={underData}>
           <span className="skroller_span">フロントエンド:
           <span>
-              React(16.13.1)・webpack
+              React(16.13.1)
           </span>
+            <img src="http://localhost:3000/images/logos/react_icon.svg" height="60" width="60" />
+            <span>
+              webpack
+          </span>
+            <img src="http://localhost:3000/images/logos/webpack_icon.svg" height="60" width="60" />
           </span>
         </Parallax>
 
@@ -263,6 +255,7 @@ c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
           <span>
               PostgreSQL
           </span>
+            <img src="http://localhost:3000/images/logos/postgresql_icon.svg" height="60" width="60" />
           </span>
         </Parallax>
 
@@ -271,29 +264,36 @@ c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
           <span>
               S3
           </span>
+            <img src="http://localhost:3000/images/logos/S3_icon.svg" height="60" width="60" />
           </span>
         </Parallax>
 
         <Parallax data={underData}>
-          <span className="skroller_span">デプロイ:
+          <span className="skroller_span">インフラ:
           <span>
               heroku
           </span>
+            <span>
+              <img src="http://localhost:3000/images/logos/heroku_icon.svg" height="60" width="60" className="pr-5" />
+            </span>
+            <span>
+              Docker
+          </span>
+            <span>
+              <img src="http://localhost:3000/images/logos/docker_icon.svg" height="60" width="60" />
+            </span>
           </span>
         </Parallax>
 
         <Parallax data={underData}>
-          <span className="skroller_span">認証:
-          <span>
-              devise
-          </span>
-          </span>
-        </Parallax>
-        <Parallax data={underData}>
           <span className="skroller_span">テスト:
           <span>
-              RSpec, factory_bot, Shoulda Matchers
+              RSpec
           </span>
+            <span>
+              <img src="http://localhost:3000/images/logos/rspec_icon.svg" height="60" width="60" />
+            </span>
+            ,factory_bot, Shoulda Matchers
           </span>
         </Parallax>
 
