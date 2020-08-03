@@ -14462,11 +14462,6 @@ img.modalImage {
 .head-animation {
   transform: translateY(-100%); }
 
-div.header-button > a {
-  border-radius: 15px;
-  background: #a3bffa;
-  box-shadow: -5px -5px 10px #9cb7f0, 5px 5px 10px #aac7ff; }
-
 div.buttonDropdownWrap {
   border-radius: 15px;
   background: #a3bffa;
@@ -14476,6 +14471,28 @@ div.header-login-button > nav > a {
   border-radius: 15px;
   background: #a3bffa;
   box-shadow: -5px -5px 10px #9cb7f0, 5px 5px 10px #aac7ff; }
+
+.nav {
+  background-color: #a3bffa;
+  box-shadow: 10px 10px 12px 0 rgba(0, 0, 0, 0.07); }
+  .nav .app-logo {
+    color: white; }
+  .nav div.header-button > a {
+    box-shadow: 4px 4px 6px 0 #96b0e6, -4px -4px 6px #acc6ef;
+    cursor: pointer;
+    transition: color 0.2s ease-out, transform 0.2s ease-out;
+    border-radius: 0.8rem !important; }
+    .nav div.header-button > a:hover {
+      background: #a3bffa !important;
+      box-shadow: 4px 4px 6px 0 #96b0e6, -4px -4px 6px #a7c7f9; }
+    .nav div.header-button > a:focus {
+      background: #a3bffa !important;
+      outline: none;
+      transform: scale(0.95);
+      box-shadow: inset 3.3px 3.3px 1px #98b3ea, inset -3.3px -3.3px 1px #aecbff; }
+    .nav div.header-button > a:hover, .nav div.header-button > a:focus {
+      background: #a3bffa !important;
+      color: white; }
 
 #postButton {
   box-shadow: 0 4px 8px -3px rgba(17, 17, 17, 0.06);
