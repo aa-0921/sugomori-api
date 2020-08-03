@@ -98,7 +98,7 @@ const houseData = {
   "data-680-top": "transform: translateY(-10%);opacity: 0.5;",
   "data-650-top": "transform: translateY(15%);",
   "data-600-top": "transform: translateY(27%);",
-  "data-550-top": "transform: translateY(35%);opacity: 1;--transform-scale-x: 1.1;--transform-scale-y: 1.1;",
+  "data-550-top": "transform: translateY(47%);opacity: 1;--transform-scale-x: 1.1;--transform-scale-y: 1.1;",
 
 };
 
