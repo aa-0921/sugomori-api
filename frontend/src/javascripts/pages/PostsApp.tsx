@@ -9,6 +9,7 @@ import { CommentApp } from '../components/CommentApp';
 import { LikeButton } from '../components/LikeButton';
 import { PostModal } from '../components/PostModal';
 import { ClarifaiTagList } from '../components/ClarifaiTagList';
+import { ClarifaiApp } from '../api/ClarifaiApp'
 
 export const PostsApp = (props: any) => {
 
@@ -19,6 +20,7 @@ export const PostsApp = (props: any) => {
   const [filterPosts, setFilterPosts] = useState([]);
   const [likeList, setLikeList] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [clarifaiTags, setClarifaiTags] = useState([])
 
   const [clickedPostUser, setClickedPostUser] = useState({
     id: 0,
@@ -68,6 +70,7 @@ export const PostsApp = (props: any) => {
     removeHeader();
   };
   const closeHandler = () => {
+    setClarifaiTags([])
     setModalOpen(false);
     addHeader();
   };
@@ -164,6 +167,18 @@ export const PostsApp = (props: any) => {
     });
   })();
 
+  // clarifaiTags関連
+  const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
+
+  useEffect(() => {
+    if (clickedPost) {
+      ClarifaiApp(clarifaiUrl).then((res) => {
+        setClarifaiTags(res.slice(0, 10).map((el: any) => `${el.name.toUpperCase()} `))
+      })
+    } else {
+
+    }
+  }, [clickedPost])
   return (
     <React.Fragment>
       <Router>
@@ -226,10 +241,14 @@ export const PostsApp = (props: any) => {
                         <img src={clickedPost.picture} className="modalImage object-contain rounded-lg" />
                       </div>
                       <Spacer y={0.2} />
+                      {clarifaiTags.length > 0 ? (
+                        <ClarifaiTagList
+                          clarifaiTags={clarifaiTags}
+                        />
+                      ) : (
+                          <div className="wait-Clarifai-tag"></div>
+                        )}
 
-                      <ClarifaiTagList
-                        clickedPost={clickedPost}
-                      />
                       <Spacer y={0.5} />
 
                       <div className="flex text-center mt-4">

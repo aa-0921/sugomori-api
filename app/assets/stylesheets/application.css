@@ -14450,6 +14450,9 @@ img.modalImage {
   height: auto;
   max-height: 80vh !important; }
 
+.wait-Clarifai-tag {
+  height: 30px !important; }
+
 #header {
   background: #fff;
   box-shadow: 0 4px 8px -3px rgba(17, 17, 17, 0.06);
