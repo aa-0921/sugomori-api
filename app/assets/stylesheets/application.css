@@ -14442,6 +14442,12 @@ div.modalWrap {
 #zeit-ui-modal > div > div.content {
   background-color: #f5f9ff; }
 
+#zeit-ui-modal > div > div.content {
+  border-radius: 3%; }
+
+#zeit-ui-modal > div > div.content > div {
+  border-radius: 3%; }
+
 div.imageDiv {
   height: auto; }
 
