@@ -10,6 +10,7 @@ $baseColor: #a3bffa;
 div.modalWrap {
   max-height: 95vh !important;
   max-width: 900px !important;
+  padding-bottom: 10px;
 }
 #zeit-ui-modal > div > div.content {
   background-color: #f5f9ff;
@@ -20,6 +21,10 @@ div.modalWrap {
 }
 #zeit-ui-modal > div > div.content > div {
   border-radius: 3%;
+  padding-bottom: 8px !important;
+}
+#zeit-ui-modal > div > div.content > div > button {
+  line-height: 5vh !important;
 }
 
 div.imageDiv {
@@ -32,6 +37,9 @@ img.modalImage {
   max-height: 80vh !important;
 }
 
+div.zeit-divider {
+  margin: 1vh !important;
+}
 .wait-Clarifai-tag {
   height: 30px !important;
 }

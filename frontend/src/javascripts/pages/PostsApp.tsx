@@ -280,7 +280,7 @@ export const PostsApp = (props: any) => {
                       {/* コメント部分ーーーーーーーーーーーーー */}
                     </div>
                   </Modal.Content>
-                  <Divider className="m-6" />
+                  <Divider className="zeit-divider" />
                   <Modal.Action passive onClick={() => setModalOpen(false)}
                     className="h-5">
                     Cancel
