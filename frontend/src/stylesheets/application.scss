@@ -62,6 +62,9 @@ div.zeit-divider {
     transform: translateX(100%);
   }
 }
+div.clarifaiTagList {
+  flex-wrap: wrap;
+}
 div.clarifaiTagList > div {
   white-space: nowrap;
 }
