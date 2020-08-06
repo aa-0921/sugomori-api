@@ -193,7 +193,6 @@ export const PostsApp = (props: any) => {
                   <Collapse.Group>
                     <Collapse title=" " initialVisible>
                       <Text></Text>
-
                       <div className=" flex justify-center items-center h-10">
                         <span className="wr-10 pr-5">
                           <Icon.Maximize2 size={25} />
@@ -256,8 +255,10 @@ export const PostsApp = (props: any) => {
                         >
                           <span>{clickedPostUser.name}</span>
                         </Link>
-                        &emsp; {clickedPost.content}&emsp;
-                      <LikeButton
+                        <span className="modal-content">
+                          &emsp; {clickedPost.content}&emsp;
+                        </span>
+                        <LikeButton
                           likeList={likeList}
                           clickedPost={clickedPost}
                           pushToLikeList={pushToLikeList}
@@ -267,7 +268,7 @@ export const PostsApp = (props: any) => {
                       </div>
                       <Spacer y={2} />
                       {/* コメント部分ーーーーーーーーーーーーー */}
-                      <div className="block">
+                      <div className="comment-wrap block">
                         <CommentApp
                           clickedPostId={clickedPost.id}
                           currentUserData={props.currentUserData}

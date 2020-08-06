@@ -14490,6 +14490,13 @@ div.zeit-divider {
 div.clarifaiTagList > div {
   white-space: nowrap; }
 
+label.comment-label {
+  color: #2a4365;
+  font-weight: bold; }
+
+span.modal-content {
+  color: #404756; }
+
 #header {
   background: #fff;
   box-shadow: 0 4px 8px -3px rgba(17, 17, 17, 0.06);

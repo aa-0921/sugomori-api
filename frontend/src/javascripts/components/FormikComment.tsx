@@ -33,22 +33,11 @@ export const FormikComment = (props: any) => {
 
       onSubmit={(values, { resetForm }) => {
         const submitData = new FormData();
-        console.log('FormikのonSubmit直後')
-        console.log('props.clickedPostId', props.clickedPostId)
-        console.log('props.currentUserData', props.currentUserData)
-        console.log('props.currentUserData.name', props.currentUserData.name)
-
         submitData.append('content', values.content);
         submitData.append('picpost_id', props.clickedPostId);
-
         submitData.append('user_name', props.currentUserData.name);
-        console.log('createComment直前')
-
         const body = submitData;
-        console.log('createComment直前')
-
         createComment(body);
-        // resetForm();
         resetForm({});
       }}
 
@@ -58,7 +47,7 @@ export const FormikComment = (props: any) => {
             <div>
               <React.Fragment>
                 <div>
-                  <label>コメント</label>
+                  <label className="comment-label">コメント</label>
                   <Field
                     type="text"
                     name="content"
