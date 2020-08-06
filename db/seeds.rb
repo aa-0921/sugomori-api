@@ -48,14 +48,14 @@ img_srcs =[
 count = 1
 
 # 3.times {
-users.each do |user|
-  content = Faker::Lorem.sentence(word_count: 3)
-  emoji = Faker::Lorem.multibyte
-  user.picposts.create!(content: "#{content}#{emoji}",
-                        user_id: "#{count}-test-user_id",
-                        picture: img_srcs.sample)
-  count += 1
-end
+# users.each do |user|
+#   content = Faker::Lorem.sentence(word_count: 3)
+#   emoji = Faker::Lorem.multibyte
+#   user.picposts.create!(content: "#{content}#{emoji}",
+#                         user_id: "#{count}-test-user_id",
+#                         picture: img_srcs.sample)
+#   count += 1
+# end
 # }
 
 
@@ -69,32 +69,32 @@ followers.each { |follower| follower.follow(first_user) }
 
 all_picposts = Picpost.all
 
-like_users = all_users[0..9]
-like_posts = all_picposts[0..9]
+# like_users = all_users[0..9]
+# like_posts = all_picposts[0..9]
 
-like_users.each do |like_user|
-  like_posts.each do |like_post|
-    like_post.iine(like_user) 
-  end
-end
+# like_users.each do |like_user|
+#   like_posts.each do |like_post|
+#     like_post.iine(like_user) 
+#   end
+# end
 
 # コメント関連
 
 
 # current_user.comments.create(comment_params)
 
-comment_users = all_users[0..9]
-commented_posts = all_picposts[47..50]
+# comment_users = all_users[0..9]
+# commented_posts = all_picposts[47..50]
 
-comment_users.each do |comment_user|
-  commented_posts.each do |commented_post|
-    content = Faker::Lorem.sentence(word_count: 2)
-    emoji = Faker::Lorem.multibyte
-    comment_user.comments.create!(content: "#{content}#{emoji}",
-                                  picpost_id: commented_post.id,
-                                  user_name: comment_user.name
-                                )
-  end
-end
+# comment_users.each do |comment_user|
+#   commented_posts.each do |commented_post|
+#     content = Faker::Lorem.sentence(word_count: 2)
+#     emoji = Faker::Lorem.multibyte
+#     comment_user.comments.create!(content: "#{content}#{emoji}",
+#                                   picpost_id: commented_post.id,
+#                                   user_name: comment_user.name
+#                                 )
+#   end
+# end
 
 # コメント関連
