@@ -8,7 +8,8 @@ import * as Icon from '@zeit-ui/react-icons';
 import { CommentApp } from '../components/CommentApp';
 import { LikeButton } from '../components/LikeButton';
 import { PostModal } from '../components/PostModal';
-
+import { ClarifaiTagList } from '../components/ClarifaiTagList';
+import { ClarifaiApp } from '../api/ClarifaiApp'
 
 export const FeedApp = (props: any) => {
   // 全投稿の配列のState定義
@@ -18,6 +19,7 @@ export const FeedApp = (props: any) => {
   const [filterPosts, setFilterPosts] = useState([]);
   const [likeList, setLikeList] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [clarifaiTags, setClarifaiTags] = useState([])
 
   const [clickedPostUser, setClickedPostUser] = useState({
     id: 0,
@@ -68,6 +70,7 @@ export const FeedApp = (props: any) => {
     removeHeader();
   };
   const closeHandler = () => {
+    setClarifaiTags([])
     setModalOpen(false);
     addHeader();
   };
@@ -75,11 +78,15 @@ export const FeedApp = (props: any) => {
   const removeHeader = () => {
     const target = document.getElementById('header')
     target.classList.add('head-animation');
+    const postButtonTarget = document.getElementById('postButton');
+    postButtonTarget.classList.add('postButton-animation');
   };
 
   const addHeader = () => {
     const target = document.getElementById('header')
     target.classList.remove('head-animation');
+    const postButtonTarget = document.getElementById('postButton');
+    postButtonTarget.classList.remove('postButton-animation');
   };
 
   const goProfile = () => {
@@ -127,6 +134,53 @@ export const FeedApp = (props: any) => {
   }
   // Slider関連
 
+  // 投稿ボタン関連
+  (function () {
+    const postButtonTarget = document.getElementById('postButton'),
+
+      height = 56;
+
+    let offset = 0,
+      lastPosition = 0,
+      ticking = false;
+    function onScroll(lastPosition: any) {
+      if (postButtonTarget != null) {
+        if (lastPosition > height) {
+          if (lastPosition > offset) {
+            postButtonTarget.classList.add('postButton-animation');
+          } else {
+            postButtonTarget.classList.remove('postButton-animation');
+          }
+          offset = lastPosition;
+        }
+      }
+    }
+
+    window.addEventListener('scroll', function (e) {
+      lastPosition = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          onScroll(lastPosition);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  })();
+
+  // clarifaiTags関連
+  const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
+
+  useEffect(() => {
+    if (clickedPost) {
+      ClarifaiApp(clarifaiUrl).then((res) => {
+        setClarifaiTags(res.slice(0, 10).map((el: any) => `${el.name.toUpperCase()} `))
+      })
+    } else {
+
+    }
+  }, [clickedPost])
+
   return (
     <React.Fragment>
       <Router>
@@ -146,7 +200,8 @@ export const FeedApp = (props: any) => {
                       <Row style={{ width: '75%' }}>
                         <Slider
                           className="postWidthSlider"
-                          value={columnWidthValue} onChange={columnWidthHandler}
+                          value={columnWidthValue}
+                          onChange={columnWidthHandler}
                           step={20} max={400} min={100} initialValue={300}
                         />
                       </Row>
@@ -183,6 +238,15 @@ export const FeedApp = (props: any) => {
                     <div className="imageDiv flex flex-col h-auto">
                       <img src={clickedPost.picture} className="modalImage object-contain rounded-lg" />
                     </div>
+                    <Spacer y={0.2} />
+                    {clarifaiTags.length > 0 ? (
+                      <ClarifaiTagList
+                        clarifaiTags={clarifaiTags}
+                      />
+                    ) : (
+                        <div className="wait-Clarifai-tag"></div>
+                      )}
+                    <Spacer y={0.5} />
                     <div className="flex text-center mt-4">
                       <Link
                         to={'/profilepage/' + clickedPost.user_id}
@@ -190,7 +254,9 @@ export const FeedApp = (props: any) => {
                       >
                         <span>{clickedPostUser.name}</span>
                       </Link>
+                      <span className="modal-content">
                         &emsp; {clickedPost.content}&emsp;
+                        </span>
                       <LikeButton
                         likeList={likeList}
                         clickedPost={clickedPost}
@@ -199,8 +265,9 @@ export const FeedApp = (props: any) => {
                         currentUserData={props.currentUserData}
                       />
                     </div>
+                    <Spacer y={2} />
                     {/* コメント部分ーーーーーーーーーーーーー */}
-                    <div className="block">
+                    <div className="comment-wrap block">
                       <CommentApp
                         clickedPostId={clickedPost.id}
                         currentUserData={props.currentUserData}
@@ -209,7 +276,7 @@ export const FeedApp = (props: any) => {
                     {/* コメント部分ーーーーーーーーーーーーー */}
                   </div>
                 </Modal.Content>
-                <Divider className="m-6" />
+                <Divider className="zeit-divider" />
                 <Modal.Action passive onClick={() => setModalOpen(false)}
                   className="h-5">
                   Cancel

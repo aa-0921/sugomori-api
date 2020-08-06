@@ -40,9 +40,7 @@ export const HomePage = (props: any) => {
     setNowLoading(false);
   }, []);
 
-
   // toast関連
-
   const [, setToast] = useToasts()
   useEffect(() => {
     var notice = document.getElementById("notice");
@@ -55,8 +53,6 @@ export const HomePage = (props: any) => {
     }
   }, []);
   // toast関連
-
-  console.log('HomePageのcurrentUserData', currentUserData);
 
   return (
     <React.Fragment>

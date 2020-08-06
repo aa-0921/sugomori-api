@@ -193,7 +193,7 @@ export const PostsApp = (props: any) => {
                   <Collapse.Group>
                     <Collapse title=" " initialVisible>
                       <Text></Text>
-                      <div className=" flex justify-center items-center h-10">
+                      <div className="flex justify-center items-center h-10">
                         <span className="wr-10 pr-5">
                           <Icon.Maximize2 size={25} />
                         </span>
