@@ -62,7 +62,9 @@ div.zeit-divider {
     transform: translateX(100%);
   }
 }
-
+div.clarifaiTagList > div {
+  white-space: nowrap;
+}
 // header関連
 #header {
   background: #fff;

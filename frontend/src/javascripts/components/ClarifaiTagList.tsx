@@ -8,7 +8,7 @@ export const ClarifaiTagList = (props: any) => {
 
   return (
     <React.Fragment>
-      <div className="flex justify-center">
+      <div className="clarifaiTagList flex justify-center">
         {props.clarifaiTags.map((tag: any, index: number) => (
           <div key={index} className="list mx-1">
             <ClarifaiTag

@@ -248,9 +248,7 @@ export const PostsApp = (props: any) => {
                       ) : (
                           <div className="wait-Clarifai-tag"></div>
                         )}
-
                       <Spacer y={0.5} />
-
                       <div className="flex text-center mt-4">
                         <Link
                           to={'/profilepage/' + clickedPost.user_id}
@@ -267,9 +265,7 @@ export const PostsApp = (props: any) => {
                           currentUserData={props.currentUserData}
                         />
                       </div>
-
                       <Spacer y={2} />
-
                       {/* コメント部分ーーーーーーーーーーーーー */}
                       <div className="block">
                         <CommentApp
