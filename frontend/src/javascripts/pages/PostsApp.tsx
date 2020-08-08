@@ -171,7 +171,7 @@ export const PostsApp = (props: any) => {
   const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
 
   useEffect(() => {
-    if (clickedPost) {
+    if (clickedPost.id != 0) {
       ClarifaiApp(clarifaiUrl).then((res) => {
         setClarifaiTags(res.slice(0, 10).map((el: any) => `${el.name.toUpperCase()} `))
       })
@@ -225,9 +225,6 @@ export const PostsApp = (props: any) => {
                   filterList={filterList}
                   filterPosts={filterPosts}
                   columnWidthValue={columnWidthValue}
-                // gutterWidth={gutterWidth}
-                // gutterHeight={gutterHeight}
-
                 />
               </div>
 

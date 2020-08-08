@@ -28,10 +28,8 @@ export const PostList = (props: any): any => {
           columnWidth={props.columnWidthValue}
           gutterWidth={gutterWidth}
           gutterHeight={gutterHeight}
-          // duration={700}
           monitorImagesLoaded={true}
         >
-          {/* {props.filterPosts.map((post: any, index: number) => ( */}
           {props.filterPosts.map((post: any, index: number) => (
             <div key={index} className="list"
               onClick={() => props.modalOpenHandler(post)}
@@ -42,7 +40,6 @@ export const PostList = (props: any): any => {
                 pushToLikeList={props.pushToLikeList}
                 removeFromLikeList={props.removeFromLikeList}
                 modalOpenHandler={props.modalOpenHandler}
-              // index={index}
               />
             </div>
           ))}

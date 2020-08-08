@@ -8,14 +8,10 @@ import { Modal, Button, Grid, Divider } from '@zeit-ui/react';
 import { ClarifaiApp } from '../api/ClarifaiApp'
 
 export const FormikPost = (props: any) => {
-  // export const FormikPost = () => {
   const [postFileName, setPostFileName] = useState('');
   const [postFilePreview, setPostFilePreview] = useState(null);
-  // const fileInput = React.useRef(null)
-  const [clarifaiTags, setClarifaiTags] = useState([])
 
   const createPicpost = async (body: any) => {
-
     const headers = { 'content-type': 'multipart/form-data' };
     const postUrl: string = '/picposts';
     await axios.post(postUrl, body, { headers })
@@ -25,21 +21,13 @@ export const FormikPost = (props: any) => {
       });
     props.setNowLoading(false);
     props.postModalCloseHandler()
-
-    const clarifaiUrl = 'https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_56_post_image.jpg'
-
-    ClarifaiApp(clarifaiUrl).then((res) => {
-      setClarifaiTags(res)
-    })
   };
-
 
   const pushToPostList = (post: any) => {
     const arr = Array.from(props.filterPosts);
     arr.unshift(post);
     props.setFilterPosts(arr);
   };
-
 
   const onFileChange = (e: any) => {
     const files = e.target.files
@@ -63,13 +51,14 @@ export const FormikPost = (props: any) => {
         props.setNowLoading(true);
 
         const submitData = new FormData();
-
+        console.log('values.picture', values.picture)
         submitData.append('picture', values.picture);
         submitData.append('content', values.content);
         submitData.append('user_id', props.currentUserId);
 
         const body = submitData;
         createPicpost(body);
+        console.log('values.picture', values.picture)
 
         resetForm({});
       }}
@@ -119,6 +108,8 @@ export const FormikPost = (props: any) => {
                           var reader = new FileReader();
                           reader.onload = function (item) {
                             setFieldValue('picture', item.target !== null ? item.target.result : null);
+                            console.log('values.picture', values.picture)
+
                           };
 
                           reader.readAsDataURL(file);

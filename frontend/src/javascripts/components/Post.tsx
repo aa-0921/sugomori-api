@@ -5,7 +5,6 @@ import Tilt from 'react-parallax-tilt';
 export const Post = (props: any) => {
   return (
     <React.Fragment>
-
       <Tilt
         tiltReverse={true}
         glareEnable={true}
