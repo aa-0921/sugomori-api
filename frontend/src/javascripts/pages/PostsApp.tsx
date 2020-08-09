@@ -169,6 +169,8 @@ export const PostsApp = (props: any) => {
 
   // clarifaiTags関連
   const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
+  console.log("clickedPost.picture", clickedPost.picture)
+  console.log("clarifaiUrl", clarifaiUrl)
 
   useEffect(() => {
     if (clickedPost.id != 0) {

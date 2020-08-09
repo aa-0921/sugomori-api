@@ -79,7 +79,6 @@ export const FormikPost = (props: any) => {
                   </div>
                   <div>
                     <label>コメント</label>
-
                     <Field
                       type="text"
                       name="content"
@@ -98,7 +97,7 @@ export const FormikPost = (props: any) => {
                   <div className="flex flex-col items-center" >
                     <label className="transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 text-white font-bold py-6 px-6 border-b-4 border-blue-700 hover:border-red-600 rounded-full cursor-pointer">
                       ファイルを選択して下さい
-                          <input
+                      <input
                         className="hidden"
                         id="file"
                         name="file"
@@ -109,9 +108,7 @@ export const FormikPost = (props: any) => {
                           reader.onload = function (item) {
                             setFieldValue('picture', item.target !== null ? item.target.result : null);
                             console.log('values.picture', values.picture)
-
                           };
-
                           reader.readAsDataURL(file);
                           setPostFileName(e.target.files[0].name)
                           onFileChange(e)

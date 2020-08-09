@@ -22,7 +22,18 @@ class PicpostsController < ApplicationController
     picpost = Picpost.create!(picpost_params)
 
     if picpost.save
-      fix_param = params[:picture].slice!(23..-1)
+       uri = URI.parse(params[:picture])
+      # fix_param = params[:picture].slice!(23..-1)
+      fix_param = params[:picture].gsub!(/^data.*base64,/, "")
+p "params[:picture].class"
+p params[:picture].class
+
+      p "fix_param"
+      p fix_param
+      fileExtension = extension(uri)
+
+      p "fileExtension"
+      p fileExtension
       bin = Base64.decode64(fix_param)
 
       bucket = Aws::S3::Resource.new(
@@ -31,9 +42,11 @@ class PicpostsController < ApplicationController
         :secret_access_key => ENV['AWS_ACCCES_SECRET_KEY'],
       ).bucket('sugomori-app')
 
-      bucket.object("picpost_id_#{picpost.id}_post_image.jpg").put(:body => bin)
-      picpost.picture = bucket.object("picpost_id_#{picpost.id}_post_image.jpg").public_url
-
+      bucket.object("picpost_id_#{picpost.id}_post_image#{fileExtension}").put(:body => bin)
+      picpost.picture = bucket.object("picpost_id_#{picpost.id}_post_image#{fileExtension}").public_url
+picpost.extension = fileExtension
+p "picpost.extension"
+p picpost.extension
       render json: { status: 'SUCCESS', data: picpost }
     else
       render json: { status: 'ERROR', data: picpost.errors }
@@ -73,6 +86,23 @@ class PicpostsController < ApplicationController
 
   private
 
+  def extension(uri)
+    opaque = uri.opaque
+    mime_type = opaque[0, opaque.index(";")]
+    p "mime_type"
+    p mime_type
+    case mime_type
+    when "image/png" then
+      ".png"
+    when "image/jpeg" then
+      ".jpg"
+    when "image/gif" then
+      ".gif"
+    else
+      raise "Unsupport Content-Type"
+    end
+  end
+
   def set_picpost
     @picpost = Picpost.find(params[:id])
   end
@@ -81,29 +111,4 @@ class PicpostsController < ApplicationController
     # params.require(:picpost).permit(:content, :picture)
     params.permit(:content, :picture, :user_id, :file)
   end
-
-  # def index
-  #   @post = Post.all
-  #   render json: @post
-  # end
-
-  # def create
-  #   @post = Post.create(post: params[:post])
-  #   render json: @post
-  # end
-
-  # def update
-  #   @post = Post.find(params[:id])
-  #   @post.update_attributes(post: params[:post])
-  #   render json: @post
-  # end
-
-  # def destroy
-  #   @post = Post.find(params[:id])
-  #   if @post.destroy
-  #     head :no_content, status: :ok
-  #   else
-  #     render json: @post.errors, status: :unprocessable_entity
-  #   end
-  # end
 end
