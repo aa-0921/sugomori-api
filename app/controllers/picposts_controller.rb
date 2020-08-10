@@ -17,23 +17,12 @@ class PicpostsController < ApplicationController
   end
 
   def create
-    p "current_userの内容"
-    p current_user
     picpost = Picpost.create!(picpost_params)
 
     if picpost.save
-       uri = URI.parse(params[:picture])
-      # fix_param = params[:picture].slice!(23..-1)
+      uri = URI.parse(params[:picture])
       fix_param = params[:picture].gsub!(/^data.*base64,/, "")
-p "params[:picture].class"
-p params[:picture].class
-
-      p "fix_param"
-      p fix_param
       fileExtension = extension(uri)
-
-      p "fileExtension"
-      p fileExtension
       bin = Base64.decode64(fix_param)
 
       bucket = Aws::S3::Resource.new(
@@ -44,9 +33,6 @@ p params[:picture].class
 
       bucket.object("picpost_id_#{picpost.id}_post_image#{fileExtension}").put(:body => bin)
       picpost.picture = bucket.object("picpost_id_#{picpost.id}_post_image#{fileExtension}").public_url
-picpost.extension = fileExtension
-p "picpost.extension"
-p picpost.extension
       render json: { status: 'SUCCESS', data: picpost }
     else
       render json: { status: 'ERROR', data: picpost.errors }
