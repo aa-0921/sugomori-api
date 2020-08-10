@@ -169,8 +169,10 @@ export const PostsApp = (props: any) => {
 
   // clarifaiTags関連
   const encodedData = clickedPost.picture
-  const fileExtension = encodedData.toString().slice(encodedData.indexOf('/') + 1, encodedData.indexOf(';'))
-
+  var fileExtension = encodedData.toString().slice(encodedData.indexOf('/') + 1, encodedData.indexOf(';'))
+  if (fileExtension == 'jpeg') {
+    var fileExtension = 'jpg'
+  }
   const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.${fileExtension}`
 
   useEffect(() => {
