@@ -17,7 +17,7 @@ export const Post = (props: any) => {
       >
         <img
           key={props.post.id}
-          src={props.post.picture}
+          src={props.post.thumbnail}
           className="rounded-lg cursor-pointer"
         />
       </Tilt>

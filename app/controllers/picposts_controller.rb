@@ -47,9 +47,10 @@ class PicpostsController < ApplicationController
     p "image"
     p image
     # params[:picture] = image
-    resized_file = image.write('resized_file')
-    p resized_file
+    # resized_file = image.write('resized_file')
+    # p resized_file
     picpost = Picpost.create!(picpost_params)
+    picpost.thumbnail = image
 
     if picpost.save
       uri = URI.parse(params[:picture])
@@ -72,8 +73,24 @@ class PicpostsController < ApplicationController
   end
 
   def index
-    picposts = Picpost.order(created_at: :desc)
-    render json: { status: 'SUCCESS', message: 'Loaded posts', data: picposts }
+    p "indexxxxxxxxxxxxx"
+    if params[:type] ==  "thumb"
+      p "params[:type]"
+      p params[:type]
+      picpost.picture = picpost.thumbnail
+      
+      picposts = Picpost.select(:id, :thumbnail, :created_at).order(created_at: :desc)
+      p "picposts"
+      p picposts
+      render json: { status: 'SUCCESS', message: 'Loaded posts', data: picposts }
+    else
+      p "params[:type]"
+      p params[:type]
+
+
+      picposts = Picpost.order(created_at: :desc)
+      render json: { status: 'SUCCESS', message: 'Loaded posts', data: picposts }
+    end
   end
 
   def feed

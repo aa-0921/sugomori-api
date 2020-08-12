@@ -33,9 +33,12 @@ export const PostsApp = (props: any) => {
     user_id: 0,
   });
 
-  const getAllPostUrl: string = '/picposts';
+  const getAllPostUrl: string = '/picposts&type=thumb';
   useEffect(() => {
+    console.log('getAllPostUrl', getAllPostUrl)
     FetchData(getAllPostUrl).then((res) => {
+      console.log('getAllPostUrl', getAllPostUrl)
+
       setFetchPosts(res.data);
       setInitialFetchPosts(res.data);
     });
