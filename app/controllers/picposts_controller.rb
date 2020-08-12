@@ -40,9 +40,21 @@ class PicpostsController < ApplicationController
     p "original"
     p original
 
-    image = original.resize_to_fit(100, 100)
+    image = original.resize_to_fit(450, 450)
+    resize_image = image.write('resize_image')
+    p "resize_image"
+    p resize_image
     p "image"
     p image
+    p "image.to_blob"
+    p image.to_blob
+    # p Base64.decode64(image)
+      uri = URI.parse(params[:picture])
+      fileExtension = extension(uri)
+    p image_to_blob = Base64.encode64(image.to_blob)
+resized_image_base = "data:image/#{fileExtension};base64,#{image_to_blob}"
+    p "resized_image_base"
+    p resized_image_base
     # params[:picture] = image
     # resized_file = image.write('resized_file')
     # p resized_file
@@ -51,8 +63,11 @@ class PicpostsController < ApplicationController
     # picpost.thumbnail = Base64.decode64(image.to_blob)
 
     # picpost.thumbnail = Base64.encode64(image)
-    # picpost.thumbnail = image.to_blob
-    picpost.thumbnail = image
+    picpost.thumbnail = resized_image_base
+    # picpost.thumbnail = image
+    p "picpost.thumbnail"
+
+    p picpost.thumbnail
 
 
 
