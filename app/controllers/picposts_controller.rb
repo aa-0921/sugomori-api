@@ -1,4 +1,7 @@
 # frozen_string_literal: true
+require 'rubygems'
+require 'RMagick'
+
 
 class PicpostsController < ApplicationController
   before_action :set_picpost, only: %i(show update destroy)
@@ -17,6 +20,35 @@ class PicpostsController < ApplicationController
   end
 
   def create
+    # bin = Base64.decode64(params[:picture])
+    # p "bin"
+    # p bin
+    p "params[:picture]"
+    p params[:picture].class
+    p params[:picture]
+
+    p "params[:file_name]"
+    p params[:file_name].class
+    p params[:file_name]
+    # decode = Base64.decode64(params[:picture])
+    # p  "decode"
+    # p decode
+
+    # image = Magick::Image.from_blob(params[:picture])
+    # p "image"
+    # p image
+
+    # original = Magick::Image.read(params[:picture]).first
+    original = Magick::Image.read(params[:file_name].path()).first
+    p "original"
+    p original
+
+    image = original.resize_to_fit(100, 100)
+    p "image"
+    p image
+    # params[:picture] = image
+    resized_file = image.write('resized_file')
+    p resized_file
     picpost = Picpost.create!(picpost_params)
 
     if picpost.save

@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
   apt-get update && apt-get install -y yarn
 
-
+RUN apt-get install -y imagemagick libmagickcore-dev libmagickwand-dev
 RUN mkdir /sugomori
 WORKDIR /sugomori
 ADD . /sugomori

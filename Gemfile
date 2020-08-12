@@ -26,6 +26,8 @@ gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 gem 'config'
+gem 'rmagick'
+
 # gem 'font-awesome-rails'
 # gem 'font-awesome-sass', '~> 5.4.1'
 
