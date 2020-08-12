@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 require 'rubygems'
-require 'RMagick'
+require 'rmagick'
 
 
 class PicpostsController < ApplicationController
@@ -20,79 +20,36 @@ class PicpostsController < ApplicationController
   end
 
   def create
-    p "params[:picture]"
-    p params[:picture].class
-    p params[:picture]
-
-    p "params[:file_name]"
-    p params[:file_name].class
-    p params[:file_name]
-    # decode = Base64.decode64(params[:picture])
-    # p  "decode"
-    # p decode
-
-    # image = Magick::Image.from_blob(params[:picture])
-    # p "image"
-    # p image
-
-    # original = Magick::Image.read(params[:picture]).first
     original = Magick::Image.read(params[:file_name].path()).first
-    p "original"
-    p original
-
+    # 縦横の指定を300から500でランダムに
     image = original.resize_to_fit(450, 450)
-    resize_image = image.write('resize_image')
-    p "resize_image"
-    p resize_image
-    p "image"
-    p image
-    p "image.to_blob"
-    p image.to_blob
-    # p Base64.decode64(image)
-      uri = URI.parse(params[:picture])
-      fileExtension = extension(uri)
-    p image_to_blob = Base64.encode64(image.to_blob)
-resized_image_base = "data:image/#{fileExtension};base64,#{image_to_blob}"
-    p "resized_image_base"
-    p resized_image_base
-    # params[:picture] = image
-    # resized_file = image.write('resized_file')
-    # p resized_file
+    image_to_blob = Base64.encode64(image.to_blob)
+
+    # resize_image = image.write('resize_image')
+    uri = URI.parse(params[:picture])
+    fileExtension = extension(uri)
+    resized_image_base = "data:image/#{fileExtension};base64,#{image_to_blob}"
+    # p "resized_image_base"
+    # p resized_image_base
+
     picpost = Picpost.create!(picpost_params)
-    # picpost.thumbnail = Base64.encode64(image.to_blob)
-    # picpost.thumbnail = Base64.decode64(image.to_blob)
-
-    # picpost.thumbnail = Base64.encode64(image)
     picpost.thumbnail = resized_image_base
-    # picpost.thumbnail = image
-    p "picpost.thumbnail"
 
-    p picpost.thumbnail
-
-
-
-    p "picpost"
-    p picpost
-
+    # p "picpost.thumbnail"
+    # p picpost.thumbnail
     if picpost.save
-      uri = URI.parse(params[:picture])
+      # uri = URI.parse(params[:picture])
       fix_param = params[:picture].gsub!(/^data.*base64,/, "")
-      p "fix_param"
-      p fix_param
-
-      fileExtension = extension(uri)
-      p "fileExtension後"
-
+      # fileExtension = extension(uri)
       bin = Base64.decode64(fix_param)
-p "decode後"
       bucket = Aws::S3::Resource.new(
         :region => 'ap-northeast-1',
         :access_key_id => ENV['AWS_ACCCES_KEY'],
         :secret_access_key => ENV['AWS_ACCCES_SECRET_KEY'],
       ).bucket('sugomori-app')
-p  "Aws::S3::Resource.new後"
-      bucket.object("picpost_id_#{picpost.id}_post_image#{fileExtension}").put(:body => bin)
-      p  "bucket.object後"
+      
+      bucket.object("picpost_id_#{picpost.id}_post_image.#{fileExtension}").put(:body => bin)
+
       picpost.picture = bucket.object("picpost_id_#{picpost.id}_post_image#{fileExtension}").public_url
       render json: { status: 'SUCCESS', data: picpost }
     else
@@ -101,20 +58,12 @@ p  "Aws::S3::Resource.new後"
   end
 
   def index
-    p "indexxxxxxxxxxxxx"
     if params[:type] ==  "thumb"
-      p "params[:type]"
-      p params[:type]
-      
       picposts = Picpost.select(:id, :thumbnail, :created_at).order(created_at: :desc)
       p "picposts"
       p picposts
       render json: { status: 'SUCCESS', message: 'Loaded posts', data: picposts }
     else
-      p "params[:type]"
-      p params[:type]
-
-
       picposts = Picpost.order(created_at: :desc)
       render json: { status: 'SUCCESS', message: 'Loaded posts', data: picposts }
     end
@@ -155,11 +104,11 @@ p  "Aws::S3::Resource.new後"
     p mime_type
     case mime_type
     when "image/png" then
-      ".png"
+      "png"
     when "image/jpeg" then
-      ".jpg"
+      "jpg"
     when "image/gif" then
-      ".gif"
+      "gif"
     else
       raise "Unsupport Content-Type"
     end

@@ -31,6 +31,7 @@ export const PostsApp = (props: any) => {
     picture: '',
     content: '',
     user_id: 0,
+    thumbnail: ''
   });
 
   const getAllPostUrl: string = '/picposts?type=thumb';
@@ -171,21 +172,27 @@ export const PostsApp = (props: any) => {
   })();
 
   // clarifaiTags関連
-  const encodedData = clickedPost.picture
+  const encodedData = clickedPost.thumbnail
+  console.log('encodedData', encodedData)
   var fileExtension = encodedData.toString().slice(encodedData.indexOf('/') + 1, encodedData.indexOf(';'))
+  console.log('fileExtension', fileExtension)
   if (fileExtension == 'jpeg') {
     var fileExtension = 'jpg'
   }
   const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.${fileExtension}`
-
+  console.log('clarifaiUrl', clarifaiUrl)
   useEffect(() => {
     if (clickedPost.id != 0) {
       ClarifaiApp(clarifaiUrl).then((res) => {
+        console.log('clarifaiUrl', clarifaiUrl)
+
         setClarifaiTags(res.slice(0, 10).map((el: any) => `${el.name.toUpperCase()} `))
       })
     } else {
 
     }
+    console.log('clarifaiUrl', clarifaiUrl)
+
   }, [clickedPost])
   return (
     <React.Fragment>
