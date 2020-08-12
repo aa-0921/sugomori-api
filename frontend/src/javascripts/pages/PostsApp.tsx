@@ -77,6 +77,13 @@ export const PostsApp = (props: any) => {
     setClarifaiTags([])
     setModalOpen(false);
     addHeader();
+    setClickedPost({
+      id: 0,
+      picture: '',
+      content: '',
+      user_id: 0,
+      thumbnail: ''
+    });
   };
 
   const removeHeader = () => {
@@ -84,7 +91,6 @@ export const PostsApp = (props: any) => {
     target.classList.add('head-animation');
     const postButtonTarget = document.getElementById('postButton');
     postButtonTarget.classList.add('postButton-animation');
-
   };
 
   const addHeader = () => {
@@ -100,11 +106,13 @@ export const PostsApp = (props: any) => {
   };
 
   const getClickedPostUserUrl: string = '/users/' + clickedPost.user_id;
-
+  console.log('getClickedPostUserUrl', getClickedPostUserUrl)
   useEffect(() => {
     if (clickedPost.user_id != 0) {
       FetchData(getClickedPostUserUrl).then((res) => setClickedPostUser(res.data));
     }
+    console.log('getClickedPostUserUrl', getClickedPostUserUrl)
+
   }, [clickedPost]);
 
   const pushToLikeList = (picpost_id: number) => {
@@ -140,9 +148,7 @@ export const PostsApp = (props: any) => {
   // 投稿ボタン関連
   (function () {
     const postButtonTarget = document.getElementById('postButton'),
-
       height = 56;
-
     let offset = 0,
       lastPosition = 0,
       ticking = false;
@@ -182,7 +188,7 @@ export const PostsApp = (props: any) => {
   const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.${fileExtension}`
   console.log('clarifaiUrl', clarifaiUrl)
   useEffect(() => {
-    if (clickedPost.id != 0) {
+    if (clickedPost.id != 0 && clickedPost.id != undefined) {
       ClarifaiApp(clarifaiUrl).then((res) => {
         console.log('clarifaiUrl', clarifaiUrl)
 
@@ -192,7 +198,6 @@ export const PostsApp = (props: any) => {
 
     }
     console.log('clarifaiUrl', clarifaiUrl)
-
   }, [clickedPost])
   return (
     <React.Fragment>
@@ -230,7 +235,6 @@ export const PostsApp = (props: any) => {
                     <input type="text" placeholder="search" onChange={filterList} className="w-auto shadow border rounded py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline" />
                   </form>
                 </div>
-
                 <PostList
                   fetchPosts={fetchPosts}
                   likeList={likeList}
@@ -242,7 +246,6 @@ export const PostsApp = (props: any) => {
                   columnWidthValue={columnWidthValue}
                 />
               </div>
-
               <Modal width="100vh" wrapClassName={"modalWrap"}
                 open={modalOpen} onClose={closeHandler}>
                 <React.Fragment>
