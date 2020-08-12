@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const jsLoggedIn = document.getElementById('js_logged_in_component')
   const jsNotLoggedIn = document.getElementById('js_not_logged_in_component')
   if (jsLoggedIn != null) {
+    console.log('jsLoggedIn')
     ReactDOM.render(
       <ZeitProvider>
         <CssBaseline />
@@ -31,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
   if (jsNotLoggedIn != null) {
+    console.log('jsNotLoggedIn')
+
     ReactDOM.render(
       <ZeitProvider>
         <CssBaseline />

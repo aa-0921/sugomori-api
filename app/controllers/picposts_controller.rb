@@ -20,9 +20,6 @@ class PicpostsController < ApplicationController
   end
 
   def create
-    # bin = Base64.decode64(params[:picture])
-    # p "bin"
-    # p bin
     p "params[:picture]"
     p params[:picture].class
     p params[:picture]
@@ -50,21 +47,37 @@ class PicpostsController < ApplicationController
     # resized_file = image.write('resized_file')
     # p resized_file
     picpost = Picpost.create!(picpost_params)
+    # picpost.thumbnail = Base64.encode64(image.to_blob)
+    # picpost.thumbnail = Base64.decode64(image.to_blob)
+
+    # picpost.thumbnail = Base64.encode64(image)
+    # picpost.thumbnail = image.to_blob
     picpost.thumbnail = image
+
+
+
+    p "picpost"
+    p picpost
 
     if picpost.save
       uri = URI.parse(params[:picture])
       fix_param = params[:picture].gsub!(/^data.*base64,/, "")
-      fileExtension = extension(uri)
-      bin = Base64.decode64(fix_param)
+      p "fix_param"
+      p fix_param
 
+      fileExtension = extension(uri)
+      p "fileExtension後"
+
+      bin = Base64.decode64(fix_param)
+p "decode後"
       bucket = Aws::S3::Resource.new(
         :region => 'ap-northeast-1',
         :access_key_id => ENV['AWS_ACCCES_KEY'],
         :secret_access_key => ENV['AWS_ACCCES_SECRET_KEY'],
       ).bucket('sugomori-app')
-
+p  "Aws::S3::Resource.new後"
       bucket.object("picpost_id_#{picpost.id}_post_image#{fileExtension}").put(:body => bin)
+      p  "bucket.object後"
       picpost.picture = bucket.object("picpost_id_#{picpost.id}_post_image#{fileExtension}").public_url
       render json: { status: 'SUCCESS', data: picpost }
     else
@@ -77,7 +90,6 @@ class PicpostsController < ApplicationController
     if params[:type] ==  "thumb"
       p "params[:type]"
       p params[:type]
-      picpost.picture = picpost.thumbnail
       
       picposts = Picpost.select(:id, :thumbnail, :created_at).order(created_at: :desc)
       p "picposts"

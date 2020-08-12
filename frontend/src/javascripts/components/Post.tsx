@@ -4,7 +4,7 @@ import Tilt from 'react-parallax-tilt';
 
 export const Post = (props: any) => {
   console.log('props.post.picture', props.post.picture)
-  console.log('props.post.picture', props.post.picture)
+  console.log('props.post.thumbnail', props.post.thumbnail)
 
   return (
     <React.Fragment>
