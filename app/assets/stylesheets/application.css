@@ -14441,17 +14441,21 @@ div.modalWrap {
   padding-bottom: 10px; }
 
 #zeit-ui-modal > div > div.content {
+  border-radius: 3% !important;
   background-color: #f5f9ff; }
 
-#zeit-ui-modal > div > div.content {
-  border-radius: 3%; }
-
 #zeit-ui-modal > div > div.content > div {
-  border-radius: 3%;
+  border-radius: 3% !important;
   padding-bottom: 8px !important; }
 
 #zeit-ui-modal > div > div.content > div > button {
   line-height: 5vh !important; }
+
+#zeit-ui-modal > div > div.content > div > footer {
+  border-radius: 3% !important; }
+
+#zeit-ui-modal > div > div.content > div > footer > button {
+  border-radius: 3% !important; }
 
 div.imageDiv {
   height: auto; }
@@ -14506,7 +14510,8 @@ div.clarifaiTagList {
   flex-wrap: wrap; }
 
 div.clarifaiTagList > div {
-  white-space: nowrap; }
+  white-space: nowrap;
+  margin-bottom: 4px; }
 
 label.comment-label {
   color: #2a4365;
