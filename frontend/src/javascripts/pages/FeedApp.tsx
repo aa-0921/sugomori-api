@@ -30,6 +30,7 @@ export const FeedApp = (props: any) => {
     picture: '',
     content: '',
     user_id: 0,
+    thumbnail: ''
   });
 
   const getFeedPostUrl: string = 'picposts/following/feed';
@@ -65,7 +66,10 @@ export const FeedApp = (props: any) => {
 
   // modal,open,close
   const modalOpenHandler = (post: any) => {
-    setClickedPost(post);
+    const getClickedPictureUrl: string = `/picposts/${post.id}`;
+    FetchData(getClickedPictureUrl).then((res) => {
+      setClickedPost(res.data);
+    });
     setModalOpen(true);
     removeHeader();
   };
@@ -73,6 +77,13 @@ export const FeedApp = (props: any) => {
     setClarifaiTags([])
     setModalOpen(false);
     addHeader();
+    setClickedPost({
+      id: 0,
+      picture: '',
+      content: '',
+      user_id: 0,
+      thumbnail: ''
+    });
   };
 
   const removeHeader = () => {
@@ -94,10 +105,11 @@ export const FeedApp = (props: any) => {
     props.history.push('/profilepage/' + clickedPost.user_id);
   };
 
-  const getClickedPostUserUrl: string = '/users/' + clickedPost.user_id;
 
   useEffect(() => {
-    if (clickedPost.user_id != 0) {
+    const getClickedPostUserUrl: string = '/users/' + clickedPost.user_id;
+
+    if (clickedPost.user_id != 0 && clickedPost.user_id != undefined) {
       FetchData(getClickedPostUserUrl).then((res) => setClickedPostUser(res.data));
     }
   }, [clickedPost]);
@@ -169,10 +181,18 @@ export const FeedApp = (props: any) => {
   })();
 
   // clarifaiTags関連
-  const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.jpg`
+  const encodedData = clickedPost.thumbnail
+  console.log('encodedData', encodedData)
+  var fileExtension = encodedData.toString().slice(encodedData.indexOf('/') + 1, encodedData.indexOf(';'))
+  console.log('fileExtension', fileExtension)
+  if (fileExtension == 'jpeg') {
+    var fileExtension = 'jpg'
+  }
+  const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.${fileExtension}`
+  console.log('clarifaiUrl', clarifaiUrl)
 
   useEffect(() => {
-    if (clickedPost) {
+    if (clickedPost.id != 0 && clickedPost.id != undefined) {
       ClarifaiApp(clarifaiUrl).then((res) => {
         setClarifaiTags(res.slice(0, 10).map((el: any) => `${el.name.toUpperCase()} `))
       })
@@ -236,7 +256,11 @@ export const FeedApp = (props: any) => {
                 <Modal.Content className="overflow-y-scroll h-screen z-10">
                   <div className="flex flex-col items-center h-auto">
                     <div className="imageDiv flex flex-col h-auto">
-                      <img src={clickedPost.picture} className="modalImage object-contain rounded-lg" />
+                      {clickedPost.picture != '' ? (
+                        <img src={clickedPost.picture} className="modalImage object-contain rounded-lg" />
+                      ) : (
+                          <div className="wait-clickedpost-picture"></div>
+                        )}
                     </div>
                     <Spacer y={0.2} />
                     {clarifaiTags.length > 0 ? (
@@ -293,6 +317,7 @@ export const FeedApp = (props: any) => {
               postModalCloseHandler={postModalCloseHandler}
               setNowLoading={props.setNowLoading}
               nowLoading={props.nowLoading}
+              currentUserId={currentUserId}
             />
             {/*ーーーーーーーーーーーーーーーーーーーーーーーーー */}
             {/* 投稿ボタン */}

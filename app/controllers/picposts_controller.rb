@@ -74,7 +74,7 @@ class PicpostsController < ApplicationController
     p current_user
     p "picpostのuser_following_ids"
     p user_following_ids = current_user.all_following.pluck(:id)
-    feed_posts = Picpost.where("user_id IN (?) OR user_id = ?", user_following_ids, current_user.id)
+    feed_posts = Picpost.where("user_id IN (?) OR user_id = ?", user_following_ids, current_user.id).select(:id, :thumbnail, :created_at).order(created_at: :desc)
     render json: { status: 'SUCCESS', data: feed_posts }
   end
 
