@@ -15168,6 +15168,12 @@ div.signin-message {
   align-items: center;
   justify-content: center; }
 
+.pageuser-name {
+  color: #404756; }
+
+.clickedPostUser-name {
+  color: #404756; }
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;

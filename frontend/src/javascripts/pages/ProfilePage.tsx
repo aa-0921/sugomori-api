@@ -238,7 +238,6 @@ export const ProfilePage = (props: any) => {
     if (clickedPost.id != 0 && clickedPost.id != undefined) {
       ClarifaiApp(clarifaiUrl).then((res) => {
         console.log('clarifaiUrl', clarifaiUrl)
-
         setClarifaiTags(res.slice(0, 10).map((el: any) => `${el.name.toUpperCase()} `))
       })
     }
@@ -256,7 +255,7 @@ export const ProfilePage = (props: any) => {
             {/* <User name={fetchUser.name}>
               {fetchUser.email}
             </User> */}
-            <h4>{fetchUser.name}</h4>
+            <h4 className="pageuser-name">{fetchUser.name}</h4>
 
             <Table data={data}>
               <Table.Column prop="投稿数" label="投稿数" width={60} />
@@ -318,7 +317,7 @@ export const ProfilePage = (props: any) => {
                 )}
               <Spacer y={0.5} />
               <div className="flex text-center mt-4">
-                <span>{clickedPostUser.name}</span>
+                <span className="clickedPostUser-name">{clickedPostUser.name}</span>
 
 
                 <span className="modal-content">
