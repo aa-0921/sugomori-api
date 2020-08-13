@@ -7,7 +7,8 @@ import { PostList } from '../components/PostList';
 import * as Icon from '@zeit-ui/react-icons';
 import { FollowButton } from '../components/FollowButton';
 import { LikeButton } from '../components/LikeButton';
-
+import { ClarifaiTagList } from '../components/ClarifaiTagList';
+import { ClarifaiApp } from '../api/ClarifaiApp'
 export const ProfilePage = (props: any) => {
   const [fetchUser, setFetchUser] = useState({
     id: 0,
@@ -27,9 +28,19 @@ export const ProfilePage = (props: any) => {
   const [initialFetchPosts, setInitialFetchPosts] = useState([]);
   // 検索のfilter後の投稿の配列の定義
   const [filterPosts, setFilterPosts] = useState([]);
+  const [likeList, setLikeList] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [clarifaiTags, setClarifaiTags] = useState([])
 
   // このページのユーザーの投稿だけ取得
   const userPostUrl: string = `/users/picposts/${props.match.params.id}`;
+  const [clickedPost, setClickedPost] = useState({
+    id: 0,
+    picture: '',
+    content: '',
+    user_id: 0,
+    thumbnail: ''
+  });
 
   // getLikeListUrlの定義
   useEffect(() => {
@@ -51,32 +62,51 @@ export const ProfilePage = (props: any) => {
     setFetchUserPosts(updateList);
   };
 
-  const [likeList, setLikeList] = useState([]);
+
   const [clickedPostUser, setClickedPostUser] = useState({
     id: 0,
     name: '',
   });
 
-  const [clickedPost, setClickedPost] = useState({
-    id: 0,
-    picture: '',
-    content: '',
-    user_id: 0,
-  });
+
 
   // modal,open,close
-  const [modalOpen, setModalOpen] = useState(false);
+
   const modalOpenHandler = (post: any) => {
-    setClickedPost(post);
+    const getClickedPictureUrl: string = `/picposts/${post.id}`;
+    FetchData(getClickedPictureUrl).then((res) => {
+      setClickedPost(res.data);
+    });
+    // setClickedPost(post);
     setModalOpen(true);
+    removeHeader();
   };
   const closeHandler = () => {
+    setClarifaiTags([])
     setModalOpen(false);
+    addHeader();
+    setClickedPost({
+      id: 0,
+      picture: '',
+      content: '',
+      user_id: 0,
+      thumbnail: ''
+    });
+  };
+  const removeHeader = () => {
+    const target = document.getElementById('header')
+    target.classList.add('head-animation');
   };
 
-  const getClickedPostUserUrl: string = '/users/' + clickedPost.user_id;
+  const addHeader = () => {
+    const target = document.getElementById('header')
+    target.classList.remove('head-animation');
+
+  };
 
   useEffect(() => {
+    const getClickedPostUserUrl: string = '/users/' + clickedPost.user_id;
+
     if (clickedPost.user_id != 0) {
       FetchData(getClickedPostUserUrl).then((res) => setClickedPostUser(res.data));
     }
@@ -193,6 +223,28 @@ export const ProfilePage = (props: any) => {
     { 投稿数: fetchUserPosts.length > 0 ? fetchUserPosts.length : 0, フォローしている数: followUsers.length > 0 ? followUsers.length : 0, いいねしている数: likeList.length > 0 ? likeList.length : 0 },
   ]
 
+  // clarifaiTags関連
+  const encodedData = clickedPost.thumbnail
+  console.log('encodedData', encodedData)
+  var fileExtension = encodedData.toString().slice(encodedData.indexOf('/') + 1, encodedData.indexOf(';'))
+  console.log('fileExtension', fileExtension)
+  if (fileExtension == 'jpeg') {
+    var fileExtension = 'jpg'
+  }
+  const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.${fileExtension}`
+  console.log('clarifaiUrl', clarifaiUrl)
+  useEffect(() => {
+    if (clickedPost.id != 0 && clickedPost.id != undefined) {
+      ClarifaiApp(clarifaiUrl).then((res) => {
+        console.log('clarifaiUrl', clarifaiUrl)
+
+        setClarifaiTags(res.slice(0, 10).map((el: any) => `${el.name.toUpperCase()} `))
+      })
+    }
+    console.log('clarifaiUrl', clarifaiUrl)
+
+  }, [clickedPost])
+
   return (
     <React.Fragment>
       {/* <BackGround /> */}
@@ -243,18 +295,34 @@ export const ProfilePage = (props: any) => {
           modalOpenHandler={modalOpenHandler}
           filterList={filterList}
           filterPosts={filterPosts}
+
         />
         <Modal width="35rem" open={modalOpen} onClose={closeHandler}>
-          <Modal.Content>
-            <div className=" flex flex-col items-center">
-              <img src={clickedPost.picture} className="rounded-lg" />
-              <Divider />
-              <div className="flex-1  text-center">
-                <Link to={'/profilepage/' + clickedPost.user_id}>
-                  <span>{clickedPostUser.name}</span>
-                </Link>
+          <Modal.Content className="overflow-y-scroll z-10">
+            <div className="flex flex-col items-center h-auto">
+              <div className="imageDiv flex flex-col h-auto">
+                {clickedPost.picture != '' ? (
+                  <img src={clickedPost.picture} className="modalImage object-contain rounded-lg" />
+                ) : (
+                    <div className="wait-clickedpost-picture"></div>
+                  )}
+              </div>
+              <Spacer y={0.2} />
+              {clarifaiTags.length > 0 ? (
+                <ClarifaiTagList
+                  clarifaiTags={clarifaiTags}
+                />
+              ) : (
+                  <div className="wait-Clarifai-tag"></div>
+                )}
+              <Spacer y={0.5} />
+              <div className="flex text-center mt-4">
+                <span>{clickedPostUser.name}</span>
 
+
+                <span className="modal-content">
                   &emsp; {clickedPost.content}&emsp;
+                        </span>
 
                 <LikeButton
                   likeList={likeList}
