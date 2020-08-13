@@ -258,7 +258,11 @@ export const PostsApp = (props: any) => {
                   <Modal.Content className="overflow-y-scroll h-screen z-10">
                     <div className="flex flex-col items-center h-auto">
                       <div className="imageDiv flex flex-col h-auto">
-                        <img src={clickedPost.picture} className="modalImage object-contain rounded-lg" />
+                        {clickedPost.picture != '' ? (
+                          <img src={clickedPost.picture} className="modalImage object-contain rounded-lg" />
+                        ) : (
+                            <div className="wait-clickedpost-picture"></div>
+                          )}
                       </div>
                       <Spacer y={0.2} />
                       {clarifaiTags.length > 0 ? (
