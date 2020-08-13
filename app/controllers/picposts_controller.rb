@@ -11,7 +11,7 @@ class PicpostsController < ApplicationController
     page_user = User.find_by(id: params[:user_id])
     p "page_userの内容"
     p page_user
-    @user_posts = page_user.picposts
+    @user_posts = page_user.picposts.select(:id, :thumbnail, :created_at).order(created_at: :desc)
 
     p "@user_postsの内容"
     p @user_posts

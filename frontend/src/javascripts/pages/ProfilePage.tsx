@@ -33,7 +33,6 @@ export const ProfilePage = (props: any) => {
   const [clarifaiTags, setClarifaiTags] = useState([])
 
   // このページのユーザーの投稿だけ取得
-  const userPostUrl: string = `/users/picposts/${props.match.params.id}`;
   const [clickedPost, setClickedPost] = useState({
     id: 0,
     picture: '',
@@ -43,6 +42,8 @@ export const ProfilePage = (props: any) => {
   });
 
   // getLikeListUrlの定義
+  const userPostUrl: string = `/users/picposts/${props.match.params.id}`;
+
   useEffect(() => {
     FetchData(userPostUrl).then((res) => {
       setFetchUserPosts(res.data);
