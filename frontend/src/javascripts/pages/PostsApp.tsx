@@ -196,20 +196,12 @@ export const PostsApp = (props: any) => {
         setClarifaiTags(res.slice(0, 10).map((el: any) => `${el.name.toUpperCase()} `))
       })
     }
-    console.log('clarifaiUrl', clarifaiUrl)
-    // setClickedPost({
-    //   id: 0,
-    //   picture: '',
-    //   content: '',
-    //   user_id: 0,
-    //   thumbnail: ''
-    // });
+
   }, [clickedPost])
   return (
     <React.Fragment>
       <Router>
         <div className="relative">
-          {/* <BackGroundVanta /> */}
           <div className="About absolute z-10  w-screen">
             <div>
               <div>

@@ -332,7 +332,6 @@ export const ProfilePage = (props: any) => {
                   currentUserData={props.currentUserData}
                 />
               </div>
-
             </div>
           </Modal.Content>
           {props.currentUserData.id == props.match.params.id ? (
@@ -342,7 +341,6 @@ export const ProfilePage = (props: any) => {
                   type="error"
                   size="mini"
                   auto
-
                   onClick={() => onClickDelete(clickedPost.id)}
                 >
                   <Icon.Delete size={10} />

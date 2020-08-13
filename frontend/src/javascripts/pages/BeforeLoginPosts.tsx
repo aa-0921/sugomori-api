@@ -4,8 +4,10 @@ import { FetchData } from '../api/FetchData'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { PostList } from '../components/PostList';
 
-import { Modal, Divider, Row, Slider, Collapse, Text } from '@zeit-ui/react';
+import { Modal, Spacer, Divider, Row, Slider, Collapse, Tooltip, Popover, Text } from '@zeit-ui/react';
 import * as Icon from '@zeit-ui/react-icons';
+import { ClarifaiTagList } from '../components/ClarifaiTagList';
+import { ClarifaiApp } from '../api/ClarifaiApp'
 
 
 
@@ -15,8 +17,10 @@ export const BeforeLoginPosts = (props: any) => {
   const [initialFetchPosts, setInitialFetchPosts] = useState([]);
   // 検索のfilter後の投稿の配列の定義
   const [filterPosts, setFilterPosts] = useState([]);
-  const getAllPostUrl: string = '/picposts';
 
+
+  const [clarifaiTags, setClarifaiTags] = useState([])
+  const getAllPostUrl: string = '/picposts?type=thumb';
   useEffect(() => {
     FetchData(getAllPostUrl).then((res) => {
       setFetchPosts(res.data);
@@ -46,25 +50,47 @@ export const BeforeLoginPosts = (props: any) => {
     picture: '',
     content: '',
     user_id: 0,
+    thumbnail: ''
   });
 
   // modal,open,close
   const [modalOpen, setModalOpen] = useState(false);
   const modalOpenHandler = (post: any) => {
-    setClickedPost(post);
+    const getClickedPictureUrl: string = `/picposts/${post.id}`;
+    FetchData(getClickedPictureUrl).then((res) => {
+      setClickedPost(res.data);
+    });
+    // setClickedPost(post);
     setModalOpen(true);
-    const target = document.getElementById('header')
-    target.classList.add('head-animation');
+    removeHeader();
   };
   const closeHandler = () => {
+    setClarifaiTags([])
     setModalOpen(false);
+    addHeader();
+    setClickedPost({
+      id: 0,
+      picture: '',
+      content: '',
+      user_id: 0,
+      thumbnail: ''
+    });
+  };
+  const removeHeader = () => {
+    const target = document.getElementById('header')
+    target.classList.add('head-animation');
+
+  };
+
+  const addHeader = () => {
     const target = document.getElementById('header')
     target.classList.remove('head-animation');
+
   };
 
   const getClickedPostUserUrl: string = '/users/' + clickedPost.user_id;
   useEffect(() => {
-    if (clickedPost.user_id != 0) {
+    if (clickedPost.user_id != 0 && clickedPost.user_id != undefined) {
       FetchData(getClickedPostUserUrl).then((res) => setClickedPostUser(res.data));
     }
   }, [clickedPost]);
@@ -108,15 +134,33 @@ export const BeforeLoginPosts = (props: any) => {
       }
     });
   })();
+  // clarifaiTags関連
+  const encodedData = clickedPost.thumbnail
+  console.log('encodedData', encodedData)
+  var fileExtension = encodedData.toString().slice(encodedData.indexOf('/') + 1, encodedData.indexOf(';'))
+  console.log('fileExtension', fileExtension)
+  if (fileExtension == 'jpeg') {
+    var fileExtension = 'jpg'
+  }
+  const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.${fileExtension}`
+  console.log('clarifaiUrl', clarifaiUrl)
+  useEffect(() => {
+    if (clickedPost.id != 0 && clickedPost.id != undefined) {
+      ClarifaiApp(clarifaiUrl).then((res) => {
+        console.log('clarifaiUrl', clarifaiUrl)
 
+        setClarifaiTags(res.slice(0, 10).map((el: any) => `${el.name.toUpperCase()} `))
+      })
+    }
+  }, [clickedPost])
 
   return (
     <React.Fragment>
       <Router>
-        <div>
-          <div>
+        <div className="relative">
+          <div className="About absolute z-10  w-screen">
             <div>
-              <div className="collapseWrap mt-18 pt-5">
+              <div className="collapseWrap mt-50 pt-5 h-30">
                 <Collapse.Group className="z-20 mr-5 mt-10">
                   <Collapse title=" " initialVisible>
                     <Text></Text>
@@ -159,12 +203,26 @@ export const BeforeLoginPosts = (props: any) => {
                 {/* <Grid> */}
                 <Modal.Content className="overflow-y-scroll h-screen z-10">
                   <div className="flex flex-col items-center h-auto">
-                    <div className="imageDiv flex flex-col h-auto">
+                    <div className="imageDiv flex flex-col h-auto">    {clickedPost.picture != '' ? (
                       <img src={clickedPost.picture} className="modalImage object-contain rounded-lg" />
+                    ) : (
+                        <div className="wait-clickedpost-picture"></div>
+                      )}
                     </div>
+                    <Spacer y={0.2} />
+                    {clarifaiTags.length > 0 ? (
+                      <ClarifaiTagList
+                        clarifaiTags={clarifaiTags}
+                      />
+                    ) : (
+                        <div className="wait-Clarifai-tag"></div>
+                      )}
+                    <Spacer y={0.5} />
                     <div className="flex text-center mt-4">
                       <span>{clickedPostUser.name}</span>
+                      <span className="modal-content">
                         &emsp; {clickedPost.content}&emsp;
+                        </span>
                     </div>
                   </div>
                 </Modal.Content>
