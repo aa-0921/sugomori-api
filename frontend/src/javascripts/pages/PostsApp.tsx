@@ -68,8 +68,11 @@ export const PostsApp = (props: any) => {
 
   // modal,open,close
   const modalOpenHandler = (post: any) => {
-    setClickedPost(post);
-
+    const getClickedPictureUrl: string = `/picposts/${post.id}`;
+    FetchData(getClickedPictureUrl).then((res) => {
+      setClickedPost(res.data);
+    });
+    // setClickedPost(post);
     setModalOpen(true);
     removeHeader();
   };
@@ -105,14 +108,12 @@ export const PostsApp = (props: any) => {
     props.history.push('/profilepage/' + clickedPost.user_id);
   };
 
-  const getClickedPostUserUrl: string = '/users/' + clickedPost.user_id;
-  console.log('getClickedPostUserUrl', getClickedPostUserUrl)
   useEffect(() => {
-    if (clickedPost.user_id != 0) {
+    const getClickedPostUserUrl: string = '/users/' + clickedPost.user_id;
+    console.log('getClickedPostUserUrl', getClickedPostUserUrl)
+    if (clickedPost.user_id != 0 && clickedPost.user_id != undefined) {
       FetchData(getClickedPostUserUrl).then((res) => setClickedPostUser(res.data));
     }
-    console.log('getClickedPostUserUrl', getClickedPostUserUrl)
-
   }, [clickedPost]);
 
   const pushToLikeList = (picpost_id: number) => {
@@ -194,10 +195,15 @@ export const PostsApp = (props: any) => {
 
         setClarifaiTags(res.slice(0, 10).map((el: any) => `${el.name.toUpperCase()} `))
       })
-    } else {
-
     }
     console.log('clarifaiUrl', clarifaiUrl)
+    // setClickedPost({
+    //   id: 0,
+    //   picture: '',
+    //   content: '',
+    //   user_id: 0,
+    //   thumbnail: ''
+    // });
   }, [clickedPost])
   return (
     <React.Fragment>
