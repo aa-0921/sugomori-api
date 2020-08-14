@@ -25,9 +25,7 @@ const thanksData = {
 };
 
 const thanksTextData = {
-
   "data-1000-top": "transform: translateY(-50%);opacity: 1;",
-
   "data-950-top": "transform: translateY(-40%);",
   "data-900-top": "transform: translateY(-80%);opacity: 0.5;",
   "data-800-top": "transform: translateY(0%);opacity: 1;font-family: 'Rowdies', cursive;",
@@ -35,9 +33,7 @@ const thanksTextData = {
   "data-600-top": "font-family: 'Pacifico', cursive;",
   "data-550-top": "font-weight: 800;font-variant: small-caps;color:#404756",
   "data-500-top": "font-family: 'Times New Roman', Times, serif;",
-  // "data-450-top": "color: #FFF;font-style: oblique;",
   "data-450-top": "font-style: oblique;",
-
   "data-400-top": "transform: translateY(0%);",
   "data-150-top": "transform: translateY(0%);",
   "data-bottom-top": "opacity: 0;",
@@ -45,13 +41,12 @@ const thanksTextData = {
 };
 const leftData = {
   "data-900-top": "transform: translateX(-100%);",
-  "data-800-top": "transform: translateX(-80%);",
-  "data-650-top": "opacity: 1;transform: translateX(-100%);",
+  "data-850-top": "transform: translateX(-80%);",
+  "data-700-top": "opacity: 1;transform: translateX(-100%);",
 
-  "data-500-top": "transform: translateX(0%);",
-  "data-150-top": "transform: translateX(0%);",
-  // "data-1000-top": "opacity: 1;transform: translateX(-100%);",
-  // "data-center-center": "opacity: 1;transform: translateX(-100%);",
+  "data-550-top": "transform: translateX(0%);",
+  "data-200-top": "transform: translateX(0%);",
+
   "data-bottom-top": "opacity: 0;",
   "data-top-bottom": "opacity: 1;transform: translateX(-100%);",
 };
@@ -87,7 +82,6 @@ const messageData = {
   "data-1200-top": "opacity: 0.5;",
   "data-1000-top": "opacity: 1;",
   "data-750-top": "opacity: 1;",
-
   "data-650-top": "opacity: 1;",
 
   "data-bottom-top": "opacity: 1;",
@@ -227,76 +221,77 @@ c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
           <span className="mt-40 mb-5 skroller_span sugomori_use">主な使用技術
       </span>
         </Parallax>
-        <Parallax data={underData}>
-          <span className="skroller_span">
-            バックエンド:
+        <div className="stack-list">
+          <Parallax data={underData}>
+            <span className="skroller_span">
+              バックエンド:
           <span>
-              Rails(5.2.4.3)
+                Rails(5.2.4.3)
           </span>
-            <img src="http://localhost:3000/images/logos/rails_icon.svg" height="60" width="60" />
-          </span>
-        </Parallax>
-
-        <Parallax data={underData}>
-          <span className="skroller_span">フロントエンド:
-          <span>
-              React(16.13.1)
-          </span>
-            <img src="http://localhost:3000/images/logos/react_icon.svg" height="60" width="60" />
-            <span>
-              webpack
-          </span>
-            <img src="http://localhost:3000/images/logos/webpack_icon.svg" height="60" width="60" />
-          </span>
-        </Parallax>
-
-        <Parallax data={underData}>
-          <span className="skroller_span">DB:
-          <span>
-              PostgreSQL
-          </span>
-            <img src="http://localhost:3000/images/logos/postgresql_icon.svg" height="60" width="60" />
-          </span>
-        </Parallax>
-
-        <Parallax data={underData}>
-          <span className="skroller_span">ストレージ:
-          <span>
-              S3
-          </span>
-            <img src="http://localhost:3000/images/logos/S3_icon.svg" height="60" width="60" />
-          </span>
-        </Parallax>
-
-        <Parallax data={underData}>
-          <span className="skroller_span">インフラ:
-          <span>
-              heroku
-          </span>
-            <span>
-              <img src="http://localhost:3000/images/logos/heroku_icon.svg" height="60" width="60" className="pr-5" />
+              <img src="/images/logos/rails_icon.svg" height="60" width="60" />
             </span>
-            <span>
-              Docker
-          </span>
-            <span>
-              <img src="http://localhost:3000/images/logos/docker_icon.svg" height="60" width="60" />
-            </span>
-          </span>
-        </Parallax>
+          </Parallax>
 
-        <Parallax data={underData}>
-          <span className="skroller_span">テスト:
+          <Parallax data={underData}>
+            <span className="skroller_span">フロントエンド:
           <span>
-              RSpec
+                React(16.13.1)
           </span>
-            <span>
-              <img src="http://localhost:3000/images/logos/rspec_icon.svg" height="60" width="60" />
+              <img src="/images/logos/react_icon.svg" height="60" width="60" />
+              <span>
+                webpack
+          </span>
+              <img src="/images/logos/webpack_icon.svg" height="60" width="60" />
             </span>
+          </Parallax>
+
+          <Parallax data={underData}>
+            <span className="skroller_span">DB:
+          <span>
+                PostgreSQL
+          </span>
+              <img src="/images/logos/postgresql_icon.svg" height="60" width="60" />
+            </span>
+          </Parallax>
+
+          <Parallax data={underData}>
+            <span className="skroller_span">ストレージ:
+          <span>
+                S3
+          </span>
+              <img src="/images/logos/S3_icon.svg" height="60" width="60" />
+            </span>
+          </Parallax>
+
+          <Parallax data={underData}>
+            <span className="skroller_span">インフラ:
+          <span>
+                heroku
+          </span>
+              <span>
+                <img src="/images/logos/heroku_icon.svg" height="60" width="60" className="pr-5" />
+              </span>
+              <span>
+                Docker
+          </span>
+              <span>
+                <img src="/images/logos/docker_icon.svg" height="60" width="60" />
+              </span>
+            </span>
+          </Parallax>
+
+          <Parallax data={underData}>
+            <span className="skroller_span">テスト:
+          <span>
+                RSpec
+          </span>
+              <span>
+                <img src="/images/logos/rspec_icon.svg" height="60" width="60" />
+              </span>
             ,factory_bot, Shoulda Matchers
           </span>
-        </Parallax>
-
+          </Parallax>
+        </div>
         <Spacer y={10} />
 
         <Parallax data={houseData}>
