@@ -19,7 +19,9 @@ export const BeforeLogin = () => {
   const [, setToast] = useToasts()
   useEffect(() => {
     var notice = document.getElementById("notice");
-    const displayToast = type => setToast({
+    // const displayToast = (type: NormalTypes) => setToast({
+    const displayToast = (type: string) => setToast({
+
       text: notice.innerHTML,
       type,
     })

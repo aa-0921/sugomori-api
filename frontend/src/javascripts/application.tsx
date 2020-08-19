@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 
 import { HomePage } from './components/HomePage';
 import { BeforeLogin } from './components/BeforeLogin';

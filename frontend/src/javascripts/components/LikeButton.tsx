@@ -11,11 +11,16 @@ export const LikeButton = (props: any) => {
       current_user_id: props.currentUserData.id,
       'X-CSRF-Token': csrf,
     };
-    const body = JSON.stringify(obj);
-    const method = 'PUT';
+    const body: BodyInit = JSON.stringify(obj);
+    const method: string = 'PUT';
     const postUrl: string = '/picposts/like/' + postId;
 
-    await fetch(postUrl, { method, body })
+
+    const RequestInit: RequestInit = {
+      method: method,
+      body: body
+    }
+    await fetch(postUrl, RequestInit)
       .then((response) => {
         if (response.status == 200) {
           props.pushToLikeList(props.clickedPost.id);

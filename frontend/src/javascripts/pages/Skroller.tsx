@@ -1,12 +1,10 @@
-import React from "react";
-import { render } from "react-dom";
+import * as React from 'react';
 import { ParallaxProvider, Parallax } from 'react-skrollr'
-import BackGroundVanta from '../pages/BackGroundVanta';
 import Tilt from 'react-parallax-tilt';
 import { BackGround } from '../pages/BackGround';
 import { Spacer } from "@zeit-ui/react";
-// import homeIcon from './../../../images/家.svg';
-// import RailsLogo from '../../../images/rails_icon.svg';
+
+
 const thanksData = {
   "data-1000-top": "transform: translateY(-50%);opacity: 1;",
 

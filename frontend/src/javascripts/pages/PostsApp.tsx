@@ -10,17 +10,26 @@ import { LikeButton } from '../components/LikeButton';
 import { PostModal } from '../components/PostModal';
 import { ClarifaiTagList } from '../components/ClarifaiTagList';
 import { ClarifaiApp } from '../api/ClarifaiApp'
+import { userData } from '../../javascripts/interfaces/user'
+import { RouteComponentProps } from 'react-router-dom'
 
-export const PostsApp = (props: any) => {
+
+type Props = {
+  currentUserData: userData;
+  setNowLoading: boolean;
+  nowLoading: React.Dispatch<React.SetStateAction<boolean>>
+} & RouteComponentProps<{ id: string }>;
+
+export const PostsApp = (props: Props) => {
 
   // 全投稿の配列のState定義
   const [fetchPosts, setFetchPosts] = useState([]);
   const [initialFetchPosts, setInitialFetchPosts] = useState([]);
   // 検索のfilter後の投稿の配列の定義
   const [filterPosts, setFilterPosts] = useState([]);
-  const [likeList, setLikeList] = useState([]);
+  const [likeList, setLikeList] = useState<number[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
-  const [clarifaiTags, setClarifaiTags] = useState([])
+  const [clarifaiTags, setClarifaiTags] = useState<string[]>([])
 
   const [clickedPostUser, setClickedPostUser] = useState({
     id: 0,
@@ -90,16 +99,20 @@ export const PostsApp = (props: any) => {
   };
 
   const removeHeader = () => {
-    const target = document.getElementById('header')
+    const target: HTMLElement | null = document.getElementById('header')
+    const postButtonTarget: HTMLElement | null = document.getElementById('postButton');
+
+    if (!target || !postButtonTarget) return
+
     target.classList.add('head-animation');
-    const postButtonTarget = document.getElementById('postButton');
     postButtonTarget.classList.add('postButton-animation');
   };
 
   const addHeader = () => {
-    const target = document.getElementById('header')
+    const target: HTMLElement | null = document.getElementById('header')
+    const postButtonTarget: HTMLElement | null = document.getElementById('postButton');
+    if (!target || !postButtonTarget) return
     target.classList.remove('head-animation');
-    const postButtonTarget = document.getElementById('postButton');
     postButtonTarget.classList.remove('postButton-animation');
   };
 
@@ -117,7 +130,7 @@ export const PostsApp = (props: any) => {
   }, [clickedPost]);
 
   const pushToLikeList = (picpost_id: number) => {
-    const arr = Array.from(likeList);
+    const arr: number[] = Array.from(likeList);
     arr.push(picpost_id);
     setLikeList(arr);
   };
@@ -190,7 +203,7 @@ export const PostsApp = (props: any) => {
   console.log('clarifaiUrl', clarifaiUrl)
   useEffect(() => {
     if (clickedPost.id != 0 && clickedPost.id != undefined) {
-      ClarifaiApp(clarifaiUrl).then((res) => {
+      ClarifaiApp(clarifaiUrl).then((res: string[]) => {
         console.log('clarifaiUrl', clarifaiUrl)
 
         setClarifaiTags(res.slice(0, 10).map((el: any) => `${el.name.toUpperCase()} `))

@@ -77,7 +77,7 @@ export const BeforeLoginPosts = (props: any) => {
     });
   };
   const removeHeader = () => {
-    const target = document.getElementById('header')
+    const target: HTMLHeadElement = document.getElementById('header')
     target.classList.add('head-animation');
 
   };

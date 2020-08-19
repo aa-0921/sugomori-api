@@ -69,8 +69,6 @@ export const ProfilePage = (props: any) => {
     name: '',
   });
 
-
-
   // modal,open,close
 
   const modalOpenHandler = (post: any) => {
@@ -95,14 +93,15 @@ export const ProfilePage = (props: any) => {
     });
   };
   const removeHeader = () => {
-    const target = document.getElementById('header')
+    const target: HTMLElement | null = document.getElementById('header')
+    if (!target) return
     target.classList.add('head-animation');
   };
 
   const addHeader = () => {
-    const target = document.getElementById('header')
+    const target: HTMLElement | null = document.getElementById('header')
+    if (!target) return
     target.classList.remove('head-animation');
-
   };
 
   useEffect(() => {

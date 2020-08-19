@@ -1,35 +1,37 @@
 import * as React from 'react';
-
-// import React, { useState, useEffect } from 'react';
-
-import { Home } from '../pages/Home';
 import { Pickup } from '../pages/Pickup';
-
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import { Header } from './header';
-import { About } from '../pages/About';
 import { PostsApp } from '../pages/PostsApp';
 import { ProfilePage } from '../pages/ProfilePage';
 import { MemberListApp } from '../pages/MemberListApp';
 import { FetchData } from '../api/FetchData';
 import { useState, useEffect } from 'react';
-import { useToasts, Loading, Row } from '@zeit-ui/react';
+import { useToasts } from '@zeit-ui/react';
 import { FeedApp } from '../pages/FeedApp';
-import { BackGround } from '../pages/BackGround';
-import BackGroundVanta from '../pages/BackGroundVanta';
 import { Skroller } from '../pages/Skroller';
+import { userData } from '../../javascripts/interfaces/user'
 
+// import { Toast } from '../../../../frontend/node_modules/@zeit-ui/react/dist/use-toast/use-toast'
+// frontend / node_modules /@zeit-ui / react / dist / use - toasts / use - toast.d.ts'
 
-import Particles from "react-tsparticles";
+// export class xxx {
+//   hoge() {
+//     var notice: HTMLElement | null = document.getElementById("notice");
+
+//     notice.addEventListener("focus", handleFocus);
+//   }
+//   handleFocus(e: any) {
+//   }
+// }
 
 export const HomePage = (props: any) => {
-  const [currentUserData, setCurrentUserData] = useState({
+  const [currentUserData, setCurrentUserData] = useState<userData>({
     id: 0,
     email: '',
     name: '',
   })
-  const [nowLoading, setNowLoading] = useState(false)
-
+  const [nowLoading, setNowLoading] = useState<boolean>(false)
   const getInitialDataUrl: string = '/initial_data/show';
 
   useEffect(() => {
@@ -43,14 +45,12 @@ export const HomePage = (props: any) => {
   // toast関連
   const [, setToast] = useToasts()
   useEffect(() => {
-    var notice = document.getElementById("notice");
-    const displayToast = type => setToast({
+    var notice: HTMLElement | null = document.getElementById("notice");
+    if (!notice) return;
+    setToast({
       text: notice.innerHTML,
-      type,
+      type: 'success',
     })
-    if (notice.innerHTML) {
-      displayToast('success')
-    }
   }, []);
   // toast関連
 
