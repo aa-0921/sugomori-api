@@ -18,8 +18,12 @@ export const FeedApp = (props: any) => {
   // 検索のfilter後の投稿の配列の定義
   const [filterPosts, setFilterPosts] = useState([]);
   const [likeList, setLikeList] = useState([]);
+  // const [likeList, setLikeList] = useState<number[]>([]);
+
   const [modalOpen, setModalOpen] = useState(false);
   const [clarifaiTags, setClarifaiTags] = useState([])
+  // const [clarifaiTags, setClarifaiTags] = useState<string[]>([])
+
 
   const [clickedPostUser, setClickedPostUser] = useState({
     id: 0,
@@ -87,16 +91,20 @@ export const FeedApp = (props: any) => {
   };
 
   const removeHeader = () => {
-    const target = document.getElementById('header')
+    const target: HTMLElement | null = document.getElementById('header');
+    const postButtonTarget: HTMLElement | null = document.getElementById('postButton');
+
+    if (!target || !postButtonTarget) return
     target.classList.add('head-animation');
-    const postButtonTarget = document.getElementById('postButton');
     postButtonTarget.classList.add('postButton-animation');
   };
 
   const addHeader = () => {
-    const target = document.getElementById('header')
+    const target: HTMLElement | null = document.getElementById('header');
+    const postButtonTarget: HTMLElement | null = document.getElementById('postButton');
+
+    if (!target || !postButtonTarget) return
     target.classList.remove('head-animation');
-    const postButtonTarget = document.getElementById('postButton');
     postButtonTarget.classList.remove('postButton-animation');
   };
 
@@ -115,7 +123,7 @@ export const FeedApp = (props: any) => {
   }, [clickedPost]);
 
   const pushToLikeList = (picpost_id: number) => {
-    const arr = Array.from(likeList);
+    const arr: number[] = Array.from(likeList);
     arr.push(picpost_id);
     setLikeList(arr);
   };
@@ -193,7 +201,7 @@ export const FeedApp = (props: any) => {
 
   useEffect(() => {
     if (clickedPost.id != 0 && clickedPost.id != undefined) {
-      ClarifaiApp(clarifaiUrl).then((res) => {
+      ClarifaiApp(clarifaiUrl).then((res: string[]) => {
         setClarifaiTags(res.slice(0, 10).map((el: any) => `${el.name.toUpperCase()} `))
       })
     } else {

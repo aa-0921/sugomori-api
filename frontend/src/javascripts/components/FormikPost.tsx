@@ -1,15 +1,18 @@
 import * as React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useState } from 'react';
-import { useFormikContext, useField } from 'formik';
 import axios from 'axios';
-import { Input, Spacer } from '@zeit-ui/react';
-import { Modal, Button, Grid, Divider } from '@zeit-ui/react';
-import { ClarifaiApp } from '../api/ClarifaiApp'
+import { Spacer } from '@zeit-ui/react';
 
 export const FormikPost = (props: any) => {
   const [postFileName, setPostFileName] = useState('');
-  const [postFilePreview, setPostFilePreview] = useState(null);
+  // const [postFilePreview, setPostFilePreview] = useState<string | ArrayBuffer | null | undefined>();
+  // const [postFilePreview, setPostFilePreview] = useState<string | ArrayBuffer | null>();
+
+  const [postFilePreview, setPostFilePreview] = useState();
+  // const [postFilePreview, setPostFilePreview] = useState<string | null>();
+
+
 
   const createPicpost = async (body: any) => {
     const headers = { 'content-type': 'multipart/form-data' };
@@ -35,7 +38,12 @@ export const FormikPost = (props: any) => {
       var file = files[0]
       var reader = new FileReader()
       reader.onload = (e) => {
+        if (!e.target) return
         setPostFilePreview(e.target.result)
+        // setPostFilePreview(e.target.result as string)
+
+        // setPostFilePreview(e.target.result)
+
       };
       reader.readAsDataURL(file)
     } else {

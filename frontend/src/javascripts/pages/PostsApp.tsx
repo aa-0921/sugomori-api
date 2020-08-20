@@ -17,7 +17,7 @@ import { RouteComponentProps } from 'react-router-dom'
 type Props = {
   currentUserData: userData;
   setNowLoading: boolean;
-  nowLoading: React.Dispatch<React.SetStateAction<boolean>>
+  nowLoading: boolean
 } & RouteComponentProps<{ id: string }>;
 
 export const PostsApp = (props: Props) => {
@@ -27,9 +27,14 @@ export const PostsApp = (props: Props) => {
   const [initialFetchPosts, setInitialFetchPosts] = useState([]);
   // 検索のfilter後の投稿の配列の定義
   const [filterPosts, setFilterPosts] = useState([]);
-  const [likeList, setLikeList] = useState<number[]>([]);
+  // const [likeList, setLikeList] = useState<number[]>([]);
+  const [likeList, setLikeList] = useState([]);
+
+
   const [modalOpen, setModalOpen] = useState(false);
-  const [clarifaiTags, setClarifaiTags] = useState<string[]>([])
+  // const [clarifaiTags, setClarifaiTags] = useState<string[]>([])
+  const [clarifaiTags, setClarifaiTags] = useState([])
+
 
   const [clickedPostUser, setClickedPostUser] = useState({
     id: 0,
@@ -136,7 +141,7 @@ export const PostsApp = (props: Props) => {
   };
 
   const removeFromLikeList = (picpost_id: number) => {
-    const arr = Array.from(likeList);
+    const arr: number[] = Array.from(likeList);
     const nextLikeUsers = arr.filter((el) => el !== picpost_id);
     setLikeList(nextLikeUsers);
   };
@@ -200,12 +205,9 @@ export const PostsApp = (props: Props) => {
     var fileExtension = 'jpg'
   }
   const clarifaiUrl = `https://sugomori-app.s3-ap-northeast-1.amazonaws.com/picpost_id_${clickedPost.id}_post_image.${fileExtension}`
-  console.log('clarifaiUrl', clarifaiUrl)
   useEffect(() => {
     if (clickedPost.id != 0 && clickedPost.id != undefined) {
       ClarifaiApp(clarifaiUrl).then((res: string[]) => {
-        console.log('clarifaiUrl', clarifaiUrl)
-
         setClarifaiTags(res.slice(0, 10).map((el: any) => `${el.name.toUpperCase()} `))
       })
     }

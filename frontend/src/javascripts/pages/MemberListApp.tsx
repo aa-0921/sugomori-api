@@ -10,7 +10,12 @@ import { UserListBackGround } from '../pages/UserListBackGround';
 
 export const MemberListApp = (props: any) => {
   const [fetchUsers, setFetchUsers] = useState([]);
+  type UserType = {
+    id: number;
+  }
   const [followUsers, setFollowUsers] = useState([]);
+  // const [followUsers, setFollowUsers] = useState<UserType[]>([]);
+
 
   const currentUserId = props.currentUserData.id;
   const getFollowListUrl: string = `/users/follow_list/${currentUserId}`;
@@ -25,13 +30,13 @@ export const MemberListApp = (props: any) => {
     props.setNowLoading(false);
   }, [currentUserId]);
 
-  const pushToFollowUsers = (target: number) => {
+  const pushToFollowUsers = (target: UserType) => {
     const arr = Array.from(followUsers);
     arr.push(target);
     setFollowUsers(arr);
   };
 
-  const removeFromFollowUsers = (target: number) => {
+  const removeFromFollowUsers = (target: UserType) => {
     const arr = Array.from(followUsers);
     const nextFollowUsers = arr.filter((el) => el !== target);
     setFollowUsers(nextFollowUsers);

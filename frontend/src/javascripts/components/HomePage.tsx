@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Pickup } from '../pages/Pickup';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import { Header } from './header';
 import { PostsApp } from '../pages/PostsApp';
@@ -12,26 +11,15 @@ import { FeedApp } from '../pages/FeedApp';
 import { Skroller } from '../pages/Skroller';
 import { userData } from '../../javascripts/interfaces/user'
 
-// import { Toast } from '../../../../frontend/node_modules/@zeit-ui/react/dist/use-toast/use-toast'
-// frontend / node_modules /@zeit-ui / react / dist / use - toasts / use - toast.d.ts'
-
-// export class xxx {
-//   hoge() {
-//     var notice: HTMLElement | null = document.getElementById("notice");
-
-//     notice.addEventListener("focus", handleFocus);
-//   }
-//   handleFocus(e: any) {
-//   }
-// }
-
 export const HomePage = (props: any) => {
   const [currentUserData, setCurrentUserData] = useState<userData>({
     id: 0,
     email: '',
     name: '',
   })
-  const [nowLoading, setNowLoading] = useState<boolean>(false)
+  let nowLoading: boolean;
+  let setNowLoading: any;
+  [nowLoading, setNowLoading] = useState<boolean>(false)
   const getInitialDataUrl: string = '/initial_data/show';
 
   useEffect(() => {
@@ -66,10 +54,8 @@ export const HomePage = (props: any) => {
           <React.Fragment></React.Fragment>
         )}
       <React.Fragment>
-
         <BrowserRouter>
           <Header currentUserData={currentUserData} />
-
           <Switch>
             <Route exact path="/"
               render={(props) =>
@@ -89,7 +75,6 @@ export const HomePage = (props: any) => {
                   nowLoading={nowLoading}
                 />}
             />
-            <Route exact path="/pickup" component={Pickup} />
             <Route path="/profilepage/:id"
               render={(props) =>
                 <ProfilePage
@@ -112,7 +97,6 @@ export const HomePage = (props: any) => {
           {/* <Footer /> */}
         </BrowserRouter >
       </React.Fragment>
-
     </React.Fragment>
   );
 };

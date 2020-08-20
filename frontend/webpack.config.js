@@ -23,20 +23,30 @@ module.exports = [
     },
     module: {
       rules: [
-        {
-          // 拡張子 .ts もしくは .tsx の場合
-          test: /\.tsx?$/,
-          // TypeScript をコンパイルする
-          use: 'ts-loader',
-        },
+        // {
+        //   // 拡張子 .ts もしくは .tsx の場合
+        //   test: /\.tsx?$/,
+        //   // TypeScript をコンパイルする
+        //   use: 'ts-loader',
+        // },
         {
           test: /\.(js|jsx|tsx|ts)$/,
           exclude: /node_modules/,
-
-          loader: 'babel-loader',
-          query: {
-            presets: ['es2015', 'react'],
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['es2015', 'react'],
+            },
           },
+
+          // loader: 'babel-loader',
+          // options: {
+          //   presets: ['react'],
+          // },
+          // query: {
+          //   // presets: ['es2015', 'react'],
+          //   presets: ['react'],
+          // },
         },
         {
           // iフラグを使うと大文字小文字を区別しない

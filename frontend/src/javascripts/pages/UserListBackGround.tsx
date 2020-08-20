@@ -1,12 +1,9 @@
 import * as React from 'react';
-// import Particles from 'react-particles-js';
 import Particles from "react-tsparticles";
-
 
 export const UserListBackGround = () => {
 
   return (
-
     <div className="h-screen">
       <Particles
         className="h-screen"
@@ -45,7 +42,7 @@ export const UserListBackGround = () => {
                 "size": 40,
                 "duration": 2,
                 "opacity": 8,
-                "speed": 3
+                // "speed": 3
               },
               "repulse": {
                 "distance": 200,

@@ -137,7 +137,7 @@ export const BeforeLoginPosts = (props: any) => {
   // clarifaiTags関連
   const encodedData = clickedPost.thumbnail
   console.log('encodedData', encodedData)
-  var fileExtension = encodedData.toString().slice(encodedData.indexOf('/') + 1, encodedData.indexOf(';'))
+  var fileExtension: string = encodedData.toString().slice(encodedData.indexOf('/') + 1, encodedData.indexOf(';'))
   console.log('fileExtension', fileExtension)
   if (fileExtension == 'jpeg') {
     var fileExtension = 'jpg'

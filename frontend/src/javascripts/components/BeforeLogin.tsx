@@ -1,36 +1,22 @@
 import * as React from 'react';
-
-
-import { Home } from '../pages/Home';
-import { Pickup } from '../pages/Pickup';
-
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import { Header } from './header';
 import { BeforeLoginPosts } from '../pages/BeforeLoginPosts';
 import { useToasts } from '@zeit-ui/react';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Skroller } from '../pages/Skroller';
 
-
 export const BeforeLogin = () => {
-
   // toast関連
-
   const [, setToast] = useToasts()
   useEffect(() => {
-    var notice = document.getElementById("notice");
-    // const displayToast = (type: NormalTypes) => setToast({
-    const displayToast = (type: string) => setToast({
-
+    var notice: HTMLElement | null = document.getElementById("notice");
+    if (!notice) return;
+    setToast({
       text: notice.innerHTML,
-      type,
+      type: 'success',
     })
-    if (notice.innerHTML) {
-      displayToast('success')
-    }
   }, []);
-  // toast関連
-
 
   const currentUserData = null;
   return (

@@ -149,7 +149,7 @@ c-95 93 -1490 1453 -3099 3021 -1610 1567 -2930 2855 -2933 2861 -5 7 -39 10
         smoothScrolling: true,
         forceHeight: false,
       }}
-      getScrollTop={scrollTop => console.log("scrollTop", scrollTop)}
+    // getScrollTop={scrollTop => console.log("scrollTop", scrollTop)}
     >
       <div className="skroller_background">
         <Parallax data={thanksData}>

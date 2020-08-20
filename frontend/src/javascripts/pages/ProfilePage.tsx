@@ -24,11 +24,19 @@ export const ProfilePage = (props: any) => {
   }, [getUserUrl]);
 
   // このページのユーザーの投稿一覧
+
+  // type fetchUserPosts[] = {
+  //   id: number
+  //   thumbnail: string
+  // };
   const [fetchUserPosts, setFetchUserPosts] = useState([]);
+  // const [fetchUserPosts, setFetchUserPosts] = useState<fetchUserPost[]>([]);
+
   const [initialFetchPosts, setInitialFetchPosts] = useState([]);
   // 検索のfilter後の投稿の配列の定義
   const [filterPosts, setFilterPosts] = useState([]);
   const [likeList, setLikeList] = useState([]);
+  // const [likeList, setLikeList] = useState<number[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [clarifaiTags, setClarifaiTags] = useState([])
 
@@ -113,7 +121,7 @@ export const ProfilePage = (props: any) => {
   }, [clickedPost]);
 
   const pushToLikeList = (picpost_id: number) => {
-    const arr = Array.from(likeList);
+    const arr: number[] = Array.from(likeList);
     arr.push(picpost_id);
     setLikeList(arr);
   };
@@ -127,7 +135,7 @@ export const ProfilePage = (props: any) => {
 
   // FollowButton関連
   const pushToFollowUsers = (target: number) => {
-    const arr = Array.from(followUsers);
+    const arr: number[] = Array.from(followUsers);
     arr.push(target);
     setFollowUsers(arr);
   };
@@ -170,6 +178,8 @@ export const ProfilePage = (props: any) => {
       .catch((error) => { });
   };
   const [followUsers, setFollowUsers] = useState([]);
+  // const [followUsers, setFollowUsers] = useState<number[]>([]);
+
 
   //deleteButton関連
   const onClickDelete = async (clickedPostId: any) => {
