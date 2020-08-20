@@ -71,7 +71,7 @@ export const HomePage = (props: any) => {
           <Header currentUserData={currentUserData} />
 
           <Switch>
-            <Route exact path="/"
+            <Route exact path="/home"
               render={(props) =>
                 <PostsApp
                   {...props}
@@ -107,7 +107,7 @@ export const HomePage = (props: any) => {
                 />}
             />
             {/* <Route exact path="/background" component={BackGroundVanta} /> */}
-            <Route exact path="/About" component={Skroller} />
+            <Route exact path="/" component={Skroller} />
           </Switch>
           {/* <Footer /> */}
         </BrowserRouter >

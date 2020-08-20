@@ -35,8 +35,8 @@ export const BeforeLogin = () => {
     <BrowserRouter>
       <Header currentUserData={currentUserData} />
       <Switch>
-        <Route exact path="/" component={BeforeLoginPosts} />
-        <Route exact path="/About" component={Skroller} />
+        <Route exact path="/home" component={BeforeLoginPosts} />
+        <Route exact path="/" component={Skroller} />
       </Switch>
     </BrowserRouter>
   );

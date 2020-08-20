@@ -75,7 +75,7 @@ export function Header(props: any) {
               <div className="flex items-center w-full">
                 <div className="flex-shrink-0">
                   {/* <img className="w-30 h-30 z-20" src="../../../../app/assets/images/LOGO.svg" alt="" /> */}
-                  <Link to="/">
+                  <Link to="/home">
                     <span className="app-logo font-semibold text-xl tracking-tight text-white">SUGOMORI</span>
                   </Link>
                 </div>
@@ -106,7 +106,7 @@ export function Header(props: any) {
                               UserList
                             </Link>
                             <Link
-                              to="/About"
+                              to="/"
                               className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                             >
                               About
@@ -115,7 +115,7 @@ export function Header(props: any) {
                         ) : (
                             <React.Fragment>
                               <Link
-                                to="/About"
+                                to="/"
                                 className="text-lg text-white ml-4 px-3 py-2 rounded-md sm:test-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                               >
                                 About
