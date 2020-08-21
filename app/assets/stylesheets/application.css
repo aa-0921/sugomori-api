@@ -14585,7 +14585,7 @@ details > summary {
   background-color: #a3bffa !important;
   color: white; }
 
-#tsparticles {
+.tsparticles {
   height: 100%; }
 
 #userlist-tsparticles {

@@ -12,14 +12,15 @@ import { Skroller } from '../pages/Skroller';
 import { userData } from '../../javascripts/interfaces/user'
 
 export const HomePage = (props: any) => {
-  const [currentUserData, setCurrentUserData] = useState<userData>({
+  // const [currentUserData, setCurrentUserData] = useState<userData>({
+  const [currentUserData, setCurrentUserData] = useState({
     id: 0,
     email: '',
     name: '',
   })
   let nowLoading: boolean;
   let setNowLoading: any;
-  [nowLoading, setNowLoading] = useState<boolean>(false)
+  [nowLoading, setNowLoading] = useState(false)
   const getInitialDataUrl: string = '/initial_data/show';
 
   useEffect(() => {
@@ -34,7 +35,7 @@ export const HomePage = (props: any) => {
   const [, setToast] = useToasts()
   useEffect(() => {
     var notice: HTMLElement | null = document.getElementById("notice");
-    if (!notice) return;
+    if (!notice.innerHTML) return;
     setToast({
       text: notice.innerHTML,
       type: 'success',
@@ -91,10 +92,8 @@ export const HomePage = (props: any) => {
                   setNowLoading={setNowLoading}
                 />}
             />
-            {/* <Route exact path="/background" component={BackGroundVanta} /> */}
             <Route exact path="/About" component={Skroller} />
           </Switch>
-          {/* <Footer /> */}
         </BrowserRouter >
       </React.Fragment>
     </React.Fragment>

@@ -9,8 +9,7 @@ export const BackGround = () => {
 
     <div className="h-screen">
       <Particles
-        className="h-screen"
-        id="tsparticles"
+        className="tsparticles h-screen"
         options={{
           background: {
             color: {
