@@ -47660,9 +47660,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.PostList = undefined;
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-// import sizeMe from 'react-sizeme';
-// @ts-ignore
-
 
 var _react = __webpack_require__(1);
 
@@ -47680,7 +47677,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-// const { scaleDown } = transitions;
 var PostList = exports.PostList = function PostList(props) {
   var _useState = (0, _react.useState)(20),
       _useState2 = _slicedToArray(_useState, 2),
@@ -72482,14 +72478,11 @@ var UserListBackGround = exports.UserListBackGround = function UserListBackGroun
     "div",
     { className: "h-screen" },
     React.createElement(_reactTsparticles2.default, {
-      className: "h-screen",
-      id: "userlist-tsparticles",
+      className: "userlist-tsparticles h-screen",
       options: {
         background: {
           color: {
-
             value: "#a3bffa"
-
           }
         },
         fpsLimit: 60,
@@ -100673,7 +100666,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var BackGround = exports.BackGround = function BackGround() {
-
   return React.createElement(
     "div",
     { className: "h-screen" },
@@ -100682,9 +100674,7 @@ var BackGround = exports.BackGround = function BackGround() {
       options: {
         background: {
           color: {
-
             value: "#a3bffa"
-
           }
         },
         fpsLimit: 60,
@@ -100795,7 +100785,6 @@ var BackGround = exports.BackGround = function BackGround() {
     })
   );
 };
-// import Particles from 'react-particles-js';
 
 /***/ }),
 /* 1075 */

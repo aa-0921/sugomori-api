@@ -14588,11 +14588,11 @@ details > summary {
 .tsparticles {
   height: 100%; }
 
-#userlist-tsparticles {
+.userlist-tsparticles {
   height: 100%;
   position: fixed; }
 
-#userlist-tsparticles > canvas {
+.userlist-tsparticles > canvas {
   height: var(--about-tsparticles-height);
   width: auto !important; }
 

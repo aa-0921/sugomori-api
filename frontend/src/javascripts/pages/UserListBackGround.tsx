@@ -6,14 +6,11 @@ export const UserListBackGround = () => {
   return (
     <div className="h-screen">
       <Particles
-        className="h-screen"
-        id="userlist-tsparticles"
+        className="userlist-tsparticles h-screen"
         options={{
           background: {
             color: {
-
               value: "#a3bffa",
-
             },
           },
           fpsLimit: 60,

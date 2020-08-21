@@ -1,16 +1,11 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-
 import { Post } from './Post';
 import { Spacer } from '@zeit-ui/react';
-// import sizeMe from 'react-sizeme';
-// @ts-ignore
 import StackGrid, { transitions } from 'react-stack-grid';
-// const { scaleDown } = transitions;
 export const PostList = (props: any): any => {
   const [gutterWidth, setGutterWidth] = useState(20);
   const [gutterHeight, setGutterHeight] = useState(40);
-
 
   useEffect(() => {
     if (props.columnWidthValue <= 300) {
