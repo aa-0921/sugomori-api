@@ -101,7 +101,7 @@ var ReactDOM = _interopRequireWildcard(_reactDom);
 
 var _HomePage = __webpack_require__(12);
 
-var _BeforeLogin = __webpack_require__(1075);
+var _BeforeLogin = __webpack_require__(1076);
 
 var _react2 = __webpack_require__(33);
 
@@ -28642,7 +28642,7 @@ var _Skroller = __webpack_require__(1069);
 
 var _user = __webpack_require__(902);
 
-var _About = __webpack_require__(1077);
+var _About = __webpack_require__(1075);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -72164,7 +72164,7 @@ var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
 
-var _MemberList = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../components/MemberList'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+var _MemberList = __webpack_require__(906);
 
 var _FetchData = __webpack_require__(303);
 
@@ -72269,8 +72269,188 @@ var MemberListApp = exports.MemberListApp = function MemberListApp(props) {
 };
 
 /***/ }),
-/* 906 */,
-/* 907 */,
+/* 906 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MemberList = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _UserList = __webpack_require__(907);
+
+var _react2 = __webpack_require__(33);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var MemberList = exports.MemberList = function MemberList(props) {
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(_react2.Spacer, { y: 1.5 }),
+    React.createElement(
+      'div',
+      null,
+      props.fetchUsers.map(function (user, index) {
+        return React.createElement(
+          'div',
+          { key: index, className: 'list' },
+          React.createElement(_UserList.UserList, _extends({}, props, {
+            user: user,
+            followUsersList: props.followUsers,
+            pushToFollowUsers: props.pushToFollowUsers,
+            removeFromFollowUsers: props.removeFromFollowUsers,
+            currentUserData: props.currentUserData
+          }))
+        );
+      })
+    )
+  );
+};
+
+/***/ }),
+/* 907 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.UserList = undefined;
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _reactRouterDom = __webpack_require__(13);
+
+var _react2 = __webpack_require__(33);
+
+var _reactIcons = __webpack_require__(387);
+
+var Icon = _interopRequireWildcard(_reactIcons);
+
+var _FollowButton = __webpack_require__(904);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var UserList = exports.UserList = function UserList(props) {
+  var onClickFollow = async function onClickFollow(userId) {
+    var csrf = sessionStorage.getItem('X-CSRF-Token');
+    var obj = {
+      current_user_id: props.currentUserData.id,
+      'X-CSRF-Token': csrf
+    };
+    var body = JSON.stringify(obj);
+    var method = 'PUT';
+    var postUrl = '/users/follow/' + userId;
+
+    await fetch(postUrl, { method: method, body: body }).then(function (response) {
+      if (response.status == 200) {
+        props.pushToFollowUsers(props.user.id);
+      } else {
+        throw new Error();
+      }
+    }).catch(function (error) {});
+  };
+  var onClickUnFollow = async function onClickUnFollow(userId) {
+    var obj = {
+      current_user_id: props.currentUserData.id
+    };
+
+    var body = JSON.stringify(obj);
+    var method = 'PUT';
+    var postUrl = '/users/unfollow/' + userId;
+
+    await fetch(postUrl, { method: method, body: body }).then(function (response) {
+      if (response.status == 200) {
+        props.removeFromFollowUsers(props.user.id);
+      } else {
+        throw new Error();
+      }
+    }).catch(function (error) {});
+  };
+  var buttonSize = "small";
+
+  var goProfile = function goProfile() {
+    props.history.push('/profilepage/' + props.user.id);
+    addHeader();
+  };
+  var addHeader = function addHeader() {
+    var target = document.getElementById('header');
+    target.classList.remove('head-animation');
+  };
+
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(
+      _reactRouterDom.BrowserRouter,
+      null,
+      React.createElement(
+        _react2.Card,
+        { hoverable: true },
+        React.createElement(
+          'div',
+          { className: 'flex items-center ml-8' },
+          React.createElement(
+            'div',
+            { className: 'flex-1  text-center' },
+            React.createElement(
+              'li',
+              { key: props.user.id, style: { color: 'white' }, className: 'flex items-center justify-center m-auto' },
+              React.createElement(
+                'div',
+                { className: 'flex justify-between w-4/5' },
+                React.createElement(
+                  'div',
+                  { className: 'mr-20' },
+                  React.createElement(
+                    _reactRouterDom.Link,
+                    {
+                      to: '/profilepage/' + props.user.id,
+                      onClick: function onClick() {
+                        return goProfile();
+                      }
+                    },
+                    props.user.name,
+                    '\u2003'
+                  )
+                ),
+                props.currentUserData.id != props.user.id ? React.createElement(
+                  'div',
+                  null,
+                  React.createElement(_FollowButton.FollowButton, {
+                    onClickFollow: onClickFollow,
+                    onClickUnFollow: onClickUnFollow,
+                    followUsersList: props.followUsersList,
+                    user: props.user,
+                    buttonSize: buttonSize
+                  })
+                ) : React.createElement('div', null)
+              )
+            )
+          )
+        )
+      ),
+      React.createElement(_react2.Spacer, { y: 0.4 })
+    )
+  );
+};
+// import React, { useState, useEffect } from 'react';
+
+/***/ }),
 /* 908 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -100618,6 +100798,90 @@ var BackGround = exports.BackGround = function BackGround() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.About = undefined;
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _BackGround = __webpack_require__(1074);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+// interface about {
+//   hoge: string,
+//   huga: string,
+// }
+
+// export const About: React.FC<about> = (props) => {
+var About = exports.About = function About(props) {
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(
+      'div',
+      { className: 'relative' },
+      React.createElement(_BackGround.BackGround, null),
+      React.createElement(
+        'div',
+        { className: 'About absolute z-10 top-0 left-0' },
+        React.createElement(
+          'div',
+          { className: 'max-w-sm rounded overflow-hidden shadow-lg' },
+          React.createElement('img', {
+            className: 'w-full',
+            src: 'https://source.unsplash.com/random/1600x900/',
+            alt: 'Sunset in the mountains'
+          }),
+          React.createElement(
+            'div',
+            { className: 'px-6 py-4' },
+            React.createElement(
+              'div',
+              { className: 'font-bold text-xl mb-2' },
+              'The Coldest Sunset'
+            ),
+            React.createElement(
+              'p',
+              { className: 'text-gray-700 text-base' },
+              'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.'
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'px-6 py-4' },
+            React.createElement(
+              'span',
+              { className: 'inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2' },
+              '#photography'
+            ),
+            React.createElement(
+              'span',
+              { className: 'inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2' },
+              '#travel'
+            ),
+            React.createElement(
+              'span',
+              { className: 'inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700' },
+              '#winter'
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+/***/ }),
+/* 1076 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.BeforeLogin = undefined;
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
@@ -100630,7 +100894,7 @@ var _reactRouterDom = __webpack_require__(13);
 
 var _header = __webpack_require__(32);
 
-var _BeforeLoginPosts = __webpack_require__(1076);
+var _BeforeLoginPosts = __webpack_require__(1077);
 
 var _react2 = __webpack_require__(33);
 
@@ -100668,7 +100932,7 @@ var BeforeLogin = exports.BeforeLogin = function BeforeLogin() {
 };
 
 /***/ }),
-/* 1076 */
+/* 1077 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -101000,90 +101264,6 @@ var BeforeLoginPosts = exports.BeforeLoginPosts = function BeforeLoginPosts(prop
           _reactRouterDom.Switch,
           null,
           React.createElement(_reactRouterDom.Route, { path: '/' })
-        )
-      )
-    )
-  );
-};
-
-/***/ }),
-/* 1077 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.About = undefined;
-
-var _react = __webpack_require__(1);
-
-var React = _interopRequireWildcard(_react);
-
-var _BackGround = __webpack_require__(1074);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-// interface about {
-//   hoge: string,
-//   huga: string,
-// }
-
-// export const About: React.FC<about> = (props) => {
-var About = exports.About = function About(props) {
-  return React.createElement(
-    React.Fragment,
-    null,
-    React.createElement(
-      'div',
-      { className: 'relative' },
-      React.createElement(_BackGround.BackGround, null),
-      React.createElement(
-        'div',
-        { className: 'About absolute z-10 top-0 left-0' },
-        React.createElement(
-          'div',
-          { className: 'max-w-sm rounded overflow-hidden shadow-lg' },
-          React.createElement('img', {
-            className: 'w-full',
-            src: 'https://source.unsplash.com/random/1600x900/',
-            alt: 'Sunset in the mountains'
-          }),
-          React.createElement(
-            'div',
-            { className: 'px-6 py-4' },
-            React.createElement(
-              'div',
-              { className: 'font-bold text-xl mb-2' },
-              'The Coldest Sunset'
-            ),
-            React.createElement(
-              'p',
-              { className: 'text-gray-700 text-base' },
-              'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.'
-            )
-          ),
-          React.createElement(
-            'div',
-            { className: 'px-6 py-4' },
-            React.createElement(
-              'span',
-              { className: 'inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2' },
-              '#photography'
-            ),
-            React.createElement(
-              'span',
-              { className: 'inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2' },
-              '#travel'
-            ),
-            React.createElement(
-              'span',
-              { className: 'inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700' },
-              '#winter'
-            )
-          )
         )
       )
     )
