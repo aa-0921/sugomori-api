@@ -10,6 +10,7 @@ import { useToasts } from '@zeit-ui/react';
 import { FeedApp } from '../pages/FeedApp';
 import { Skroller } from '../pages/Skroller';
 import { userData } from '../../javascripts/interfaces/user'
+import { About } from '../pages/About';
 
 export const HomePage = (props: any) => {
   // const [currentUserData, setCurrentUserData] = useState<userData>({
@@ -54,6 +55,7 @@ export const HomePage = (props: any) => {
       ) : (
           <React.Fragment></React.Fragment>
         )}
+
       <React.Fragment>
         <BrowserRouter>
           <Header currentUserData={currentUserData} />

@@ -28642,6 +28642,8 @@ var _Skroller = __webpack_require__(1069);
 
 var _user = __webpack_require__(902);
 
+var _About = __webpack_require__(1077);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var HomePage = exports.HomePage = function HomePage(props) {
@@ -101178,6 +101180,90 @@ var BeforeLoginPosts = exports.BeforeLoginPosts = function BeforeLoginPosts(prop
           _reactRouterDom.Switch,
           null,
           React.createElement(_reactRouterDom.Route, { path: '/' })
+        )
+      )
+    )
+  );
+};
+
+/***/ }),
+/* 1077 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.About = undefined;
+
+var _react = __webpack_require__(1);
+
+var React = _interopRequireWildcard(_react);
+
+var _BackGround = __webpack_require__(1074);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+// interface about {
+//   hoge: string,
+//   huga: string,
+// }
+
+// export const About: React.FC<about> = (props) => {
+var About = exports.About = function About(props) {
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(
+      'div',
+      { className: 'relative' },
+      React.createElement(_BackGround.BackGround, null),
+      React.createElement(
+        'div',
+        { className: 'About absolute z-10 top-0 left-0' },
+        React.createElement(
+          'div',
+          { className: 'max-w-sm rounded overflow-hidden shadow-lg' },
+          React.createElement('img', {
+            className: 'w-full',
+            src: 'https://source.unsplash.com/random/1600x900/',
+            alt: 'Sunset in the mountains'
+          }),
+          React.createElement(
+            'div',
+            { className: 'px-6 py-4' },
+            React.createElement(
+              'div',
+              { className: 'font-bold text-xl mb-2' },
+              'The Coldest Sunset'
+            ),
+            React.createElement(
+              'p',
+              { className: 'text-gray-700 text-base' },
+              'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.'
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'px-6 py-4' },
+            React.createElement(
+              'span',
+              { className: 'inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2' },
+              '#photography'
+            ),
+            React.createElement(
+              'span',
+              { className: 'inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2' },
+              '#travel'
+            ),
+            React.createElement(
+              'span',
+              { className: 'inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700' },
+              '#winter'
+            )
+          )
         )
       )
     )

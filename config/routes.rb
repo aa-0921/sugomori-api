@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   get 'initial_data/show'
 
-  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+  # mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   get 'picposts/following/feed' => 'picposts#feed'
 
   resources :picposts do

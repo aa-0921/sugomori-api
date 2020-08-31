@@ -1,9 +1,13 @@
 import * as React from 'react';
 import { BackGround } from '../pages/BackGround';
 
+// interface about {
+//   hoge: string,
+//   huga: string,
+// }
 
-
-export function About() {
+// export const About: React.FC<about> = (props) => {
+export const About = (props: any) => {
   return (
     <React.Fragment>
       <div className="relative">
@@ -39,3 +43,4 @@ export function About() {
     </React.Fragment>
   );
 }
+
