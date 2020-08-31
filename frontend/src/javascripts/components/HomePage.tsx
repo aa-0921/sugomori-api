@@ -60,7 +60,7 @@ export const HomePage = (props: any) => {
         <BrowserRouter>
           <Header currentUserData={currentUserData} />
           <Switch>
-            <Route exact path="/"
+            <Route exact path="/home"
               render={(props) =>
                 <PostsApp
                   {...props}
@@ -94,7 +94,12 @@ export const HomePage = (props: any) => {
                   setNowLoading={setNowLoading}
                 />}
             />
+<<<<<<< HEAD
             <Route exact path="/About" component={Skroller} />
+=======
+            {/* <Route exact path="/background" component={BackGroundVanta} /> */}
+            <Route exact path="/" component={Skroller} />
+>>>>>>> master
           </Switch>
         </BrowserRouter >
       </React.Fragment>
