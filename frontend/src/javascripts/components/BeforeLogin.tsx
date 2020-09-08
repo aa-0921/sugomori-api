@@ -7,6 +7,10 @@ import { useEffect } from 'react';
 import { Skroller } from '../pages/Skroller';
 
 export const BeforeLogin = () => {
+  fetch('https://jsonplaceholder.typicode.com/posts/1')
+    .then(response => response.json())
+    .then(json => console.log(json))
+
   // toast関連
   const [, setToast] = useToasts()
   useEffect(() => {

@@ -100903,7 +100903,14 @@ var _Skroller = __webpack_require__(1069);
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var BeforeLogin = exports.BeforeLogin = function BeforeLogin() {
+  fetch('https://jsonplaceholder.typicode.com/posts/1').then(function (response) {
+    return response.json();
+  }).then(function (json) {
+    return console.log(json);
+  });
+
   // toast関連
+
   var _useToasts = (0, _react2.useToasts)(),
       _useToasts2 = _slicedToArray(_useToasts, 2),
       setToast = _useToasts2[1];
