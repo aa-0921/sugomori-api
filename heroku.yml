@@ -9,5 +9,6 @@ release:
   command:
     - bundle exec rake db:migrate
     - bundle exec rails db:seed
+    - npm run build
 run:
   web: bundle exec puma -C config/puma.rb
