@@ -24,4 +24,4 @@ COPY Gemfile.lock /sugomori/Gemfile.lock
 RUN gem install bundler
 RUN bundle install
 RUN SECRET_KEY_BASE=placeholder bundle exec rails assets:precompile
-RUN cd /sugomori/frontend && NODE_ENV=production &&  npm run build
+RUN cd /sugomori/frontend && yarn install && NODE_ENV=production npm run build
