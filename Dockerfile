@@ -25,5 +25,5 @@ RUN gem install bundler
 RUN bundle install
 RUN SECRET_KEY_BASE=placeholder bundle exec rails assets:precompile
 WORKDIR /sugomori/frontend
-RUN NODE_ENV=production npm install && npm run build
+RUN NODE_ENV=production npm install && npm audit fix && npm run build
 WORKDIR /frontend
