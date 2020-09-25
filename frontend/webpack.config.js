@@ -6,8 +6,8 @@ const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 require('dotenv').config();
-console.log('NODE_ENVの確認');
-console.log('NODE_ENV: ', env.NODE_ENV);
+console.info('NODE_ENVの確認');
+console.info('NODE_ENV: ', env.NODE_ENV);
 
 module.exports = [
   {
