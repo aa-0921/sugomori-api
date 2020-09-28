@@ -69,9 +69,11 @@ module.exports = [
       ],
     },
     plugins: [
-      new Dotenv({ path: path.resolve(__dirname, '..', '.env') }),
+      new Dotenv({
+        // path: path.resolve(__dirname, '..', '.env'),
+        path: path.resolve(__dirname, '.env'),
+      }),
       // new Dotenv({ path: path.resolve(__dirname, '..', './.env') }),
-
       new CaseSensitivePathsPlugin(),
     ],
   },
