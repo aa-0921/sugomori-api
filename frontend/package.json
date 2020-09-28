@@ -89,7 +89,6 @@
     "webpack-merge": "^5.0.8",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0",
     "node-sass": "^4.14.1",
     "tailwindcss": "^1.4.6",
     "@babel/register": "^7.10.5",
@@ -112,5 +111,7 @@
     "typescript": "^3.9.7"
   },
   "version": "0.1.0",
-  "devDependencies": {}
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.0"
+  }
 }
