@@ -86,7 +86,8 @@
     "url-loader": "^4.1.0",
     "vanta": "^0.5.16",
     "webpack-fix-style-only-entries": "^0.2.1",
-    "webpack-merge": "^5.0.8"
+    "webpack-merge": "^5.0.8",
+    "webpack": "^4.44.1"
   },
   "version": "0.1.0",
   "devDependencies": {
@@ -110,7 +111,6 @@
     "tailwindcss": "^1.4.6",
     "ts-loader": "^8.0.2",
     "typescript": "^3.9.7",
-    "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   }
