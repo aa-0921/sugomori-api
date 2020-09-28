@@ -34,4 +34,4 @@ RUN npm audit fix
 RUN npm install --save webpack
 RUN npm audit fix
 RUN npm run build
-WORKDIR /frontend
+WORKDIR /sugomori
