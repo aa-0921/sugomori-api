@@ -1,5 +1,3 @@
-
-
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
@@ -12,10 +10,9 @@ export const MemberListApp = (props: any) => {
   const [fetchUsers, setFetchUsers] = useState([]);
   type UserType = {
     id: number;
-  }
+  };
   const [followUsers, setFollowUsers] = useState([]);
   // const [followUsers, setFollowUsers] = useState<UserType[]>([]);
-
 
   const currentUserId = props.currentUserData.id;
   const getFollowListUrl: string = `/users/follow_list/${currentUserId}`;
@@ -46,19 +43,19 @@ export const MemberListApp = (props: any) => {
 
   useEffect(() => {
     FetchData(fetchUsersUrl).then((res) => {
-      setFetchUsers(res.data)
+      setFetchUsers(res.data);
     });
   }, []);
 
   useEffect(() => {
-    setUserListHeight((fetchUsers.length + 2) * 85.1875)
+    setUserListHeight((fetchUsers.length + 2) * 85.1875);
   }, [fetchUsers]);
   return (
     <React.Fragment>
       <Router>
         <div className="memberlist-background-wrap relative">
           <UserListBackGround />
-          <div id="memberlist-wrap" className="memberlist-wrap absolute top-0" >
+          <div id="memberlist-wrap" className="memberlist-wrap absolute top-0">
             {/* ref={memberlistWrap} */}
             <Spacer y={3} />
 
@@ -77,9 +74,7 @@ export const MemberListApp = (props: any) => {
               <Route path="/"></Route>
             </Switch>
           </div>
-
         </div>
-
       </Router>
     </React.Fragment>
   );
