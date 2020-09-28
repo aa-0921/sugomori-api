@@ -89,7 +89,8 @@
     "webpack-merge": "^5.0.8",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "tailwindcss": "^1.4.6"
   },
   "version": "0.1.0",
   "devDependencies": {
@@ -110,7 +111,6 @@
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0",
-    "tailwindcss": "^1.4.6",
     "ts-loader": "^8.0.2",
     "typescript": "^3.9.7",
     "webpack": "^4.44.1",
