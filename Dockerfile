@@ -24,8 +24,14 @@ COPY Gemfile.lock /sugomori/Gemfile.lock
 RUN gem install bundler
 RUN bundle install
 RUN SECRET_KEY_BASE=placeholder bundle exec rails assets:precompile
-# WORKDIR /sugomori/frontend
-# ENV NODE_ENV=production
-# ENV PATH=$PATH:/sugomori/frontend/node_modules/.bin
-# RUN npm install && npm install --save webpack && npm audit fix && npm run build
-# WORKDIR /frontend
+WORKDIR /sugomori/frontend
+ENV NODE_ENV=production
+ENV PATH=$PATH:/sugomori/frontend/node_modules/.bin
+# RUN npm install && npm audit fix && npm install --save webpack && npm audit fix && npm run build
+
+RUN npm install
+RUN npm audit fix
+RUN npm install --save webpack
+RUN npm audit fix
+RUN npm run build
+WORKDIR /frontend
