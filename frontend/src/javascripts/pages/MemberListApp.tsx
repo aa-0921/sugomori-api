@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { MemberList } from '../components/MemberList';
+import { MemberList } from '../../javascripts/components/MemberList';
 import { FetchData } from '../api/FetchData';
 import { Spacer } from '@zeit-ui/react';
 import { UserListBackGround } from '../pages/UserListBackGround';
